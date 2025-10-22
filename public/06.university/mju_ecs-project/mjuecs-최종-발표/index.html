@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>mjuecs 최종 발표 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content=" 실제 시연 =&gt; oracle database 연결, 김직수 교수 클라우드 등등 기술적 검토 로그인시 명지대 서버와 통신하는 과정 법적 검토 =&gt; 최근 skt 보안 사고로 인해 이것을 조금 확실하게 따질 필요가 있어 보임 실제 프로덕트를 운영하더라도 수익이 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/mju_ecs-project/mjuecs-%EC%B5%9C%EC%A2%85-%EB%B0%9C%ED%91%9C/">
+
+    
+    
+    
+    <meta property="og:title" content="mjuecs 최종 발표">
+    <meta property="og:description" content=" 실제 시연 =&gt; oracle database 연결, 김직수 교수 클라우드 등등 기술적 검토 로그인시 명지대 서버와 통신하는 과정 법적 검토 =&gt; 최근 skt 보안 사고로 인해 이것을 조금 확실하게 따질 필요가 있어 보임 실제 프로덕트를 운영하더라도 수익이 …">
+    <meta property="og:url" content="http://localhost:1313/06.university/mju_ecs-project/mjuecs-%EC%B5%9C%EC%A2%85-%EB%B0%9C%ED%91%9C/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="mjuecs 최종 발표">
+    <meta name="twitter:description" content=" 실제 시연 =&gt; oracle database 연결, 김직수 교수 클라우드 등등 기술적 검토 로그인시 명지대 서버와 통신하는 과정 법적 검토 =&gt; 최근 skt 보안 사고로 인해 이것을 조금 확실하게 따질 필요가 있어 보임 실제 프로덕트를 운영하더라도 수익이 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>mjuecs 최종 발표 **page.html**</h1>
+    <ol>
+<li>실제 시연 =&gt; oracle database 연결, 김직수 교수 클라우드 등등</li>
+<li>기술적 검토
+<ol>
+<li>로그인시 명지대 서버와 통신하는 과정</li>
+</ol>
+</li>
+<li>법적 검토 =&gt; 최근 skt 보안 사고로 인해 이것을 조금 확실하게 따질 필요가 있어 보임
+<ol>
+<li>실제 프로덕트를 운영하더라도 수익이 없고 학생들이 한 프로젝트를 제제하는 경우는 잘 없음(세종대) 하지만 초기에는 학번만 저장하면 실제 서비스해도 법적인 문제가 발생하지 않을 것이라는 생각을 하였음</li>
+<li>현제 해당 프로젝트는 학교의 비밀번호 아이디를 입력하여 로그인 할 수 있도록 만들어 두었음</li>
+<li>비밀번호의 경우 당연히 민감한 개인정보라고 생각하여 초기 설계부터 완전히 저장하지 않는 방향으로 설계하였음 하지만 학교의 학번이 민감한 개인정보인 경우 이것이 법적으로 문제가 될수 있다는 생각을 하였고 해당하는 학교에 로그인이 가능한 프로젝트를 구현한 세종대 github 프로젝트(sejong-univ-auth) 에 직접 질문을 통해 법적 내용을 공유받아 해당 내용을 공유하려고함</li>
+<li>실제로 내가 질문한 내용
+        <img src="/08.media/20250602150647-1748846267271-image.png" alt=" (Image resource not found)" ></li>
+<li><a href="https://github.com/iml1111/sejong-univ-auth/issues/21" class="external-link" target="_blank" rel="noopener noreferrer" >이슈</a>
+        <img src="/08.media/20250602150621-1748846301131-image.png" alt=" (Image resource not found)" ></li>
+<li>접근방식 제공모듈 자체는 개인정보 처리자로 인식되지 않아 상관없지만 해당 모듈(방법론)을 사용하여 프로젝트를 진행할 경우 개인정보 처리자로 인식이 되며 관련 법규에 대한 제제를 받는다</li>
+<li>서비스 사업자는 개인정보 법률 및 해당대학교 이용약관 보안정책에 대한 이행의무를 가진다
+<ol>
+<li>현재 학번을 database 평문저장하고 있음</li>
+<li>개인정보 법률 -&gt; 정확한 판단이 불가
+<ol>
+<li>아이디 -&gt; github  등 여러가지 사이트가 이미 아이디를 공개적인 검색으로 사용</li>
+<li>학번 단독으로 저장되었는데 이 경우 개인정보로 보아도 되는가?</li>
+</ol>
+</li>
+<li>실제 명지대 보안 정책 -&gt; 학교의 보안정책은 괜찮다
+<ol>
+<li>3장 6조 1항 
+<ol>
+<li>학교는 이용자가 이 약관의 의무를 위반하거나 서비스의 정상적인 운영을 방해한 경우, 경고, 일시정지, 영구이용정지 등으로 서비스 이용을 단계적으로 제한할 수 있다.</li>
+<li>동일 계정으로 계속 요청을 하면 일정 시간(10분) 자동으로 막힘으로 고려할 필요가 없다</li>
+</ol>
+</li>
+<li>3장 9조 5항 아호
+<ol>
+<li>학교의 동의 없이 영리를 목적으로 서비스를 사용하는 행위</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>해당 법적인 검토를 통해 실제 프로덕션 상황에서 실제 어떠한 문제가 발생할 수 있는지 간접적인 경험이 되었음</li>
+</ol>
+</li>
+</ol>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

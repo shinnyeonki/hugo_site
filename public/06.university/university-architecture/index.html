@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>university architecture | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content=" PC : 다음에 인출될 명령어의 주소 AC : 임시저장 IR : 최근에 인출된 명령어 MAR : 기억장치 접근 주소 MBR : 기억장치 접근 데이터 SP : 스텍 최상위 주소 2장 사이클 인출 사이클 MAR &lt;- PC MBR &lt;- M[MAR], PC …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/university-architecture/">
+
+    
+    
+    
+    <meta property="og:title" content="university architecture">
+    <meta property="og:description" content=" PC : 다음에 인출될 명령어의 주소 AC : 임시저장 IR : 최근에 인출된 명령어 MAR : 기억장치 접근 주소 MBR : 기억장치 접근 데이터 SP : 스텍 최상위 주소 2장 사이클 인출 사이클 MAR &lt;- PC MBR &lt;- M[MAR], PC …">
+    <meta property="og:url" content="http://localhost:1313/06.university/university-architecture/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="university architecture">
+    <meta name="twitter:description" content=" PC : 다음에 인출될 명령어의 주소 AC : 임시저장 IR : 최근에 인출된 명령어 MAR : 기억장치 접근 주소 MBR : 기억장치 접근 데이터 SP : 스텍 최상위 주소 2장 사이클 인출 사이클 MAR &lt;- PC MBR &lt;- M[MAR], PC …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>university architecture **page.html**</h1>
+    <ul>
+<li>PC : 다음에 인출될 명령어의 주소</li>
+<li>AC : 임시저장</li>
+<li>IR : 최근에 인출된 명령어</li>
+<li>MAR : 기억장치 접근 주소</li>
+<li>MBR : 기억장치 접근 데이터</li>
+<li>SP : 스텍 최상위 주소</li>
+<li></li>
+</ul>
+<h3 id="2장">2장</h3>
+<h3 id="사이클">사이클</h3>
+<h4 id="인출-사이클">인출 사이클</h4>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">MAR &lt;- PC
+MBR &lt;- M[MAR], PC &lt;- PC + 1
+IR &lt;- MBR
+</code></pre><h4 id="실행-사이클">실행 사이클</h4>
+<p>load</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"></code></pre></div><h4 id="인터럽트-사이클">인터럽트 사이클</h4>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">MBR &lt;- PC
+MAR &lt;- SP, PC &lt;- ISR 의 시작 주소
+M[MAR] &lt;- MBR , SP &lt;- SP-1
+</code></pre><h4 id="간접-사이클">간접 사이클</h4>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">MAR &lt;- IR(addr)
+MBR &lt;- M[MAR]
+IR(addr) &lt;- MBR
+</code></pre><h4 id="sub-call">Sub call</h4>
+<p>인터럽트 사이클과 비슷<br>
+<code>CALL X</code> 명령시</p>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">MBR &lt;- PC
+MAR &lt;- SP, PC &lt;- X
+M[MAR] &lt;- MBR, SP &lt;- SP - 1
+</code></pre><p><code>RET</code> 명령시</p>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">SP &lt;- SP + 1
+MAR &lt;- SP
+PC &lt;- MBR &lt;- M[MAR]
+</code></pre><h3 id="4장">4장</h3>
+<p>제어 유니트</p>
+<ul>
+<li>명령어 해독기 inscruction decoder</li>
+<li>CAR 제어 주소 레지스터 : 다음에 실행할 마이크로 명령어의 주소를 저장하는 레지스터</li>
+<li>제어 기억장치(control memory) : 마이크로명령어들로 이루어진 마이크로프로그램을 저장하는 내부 기억 장치</li>
+<li>CBR 제어 버퍼 레지스터 : 제어 기억장치로 부터 읽혀진 마이크로 명령어를 일시적으로 저장하는 레지스터</li>
+<li>SBR 서브 루틴 레지스터 : 마이크로프로그램에서 서브 루틴이 호출되는 경우에 현재의 CAR 을 일시적으로 저장하는 레지스터</li>
+<li>순서제어 모듈(sequencing module) : 마이크로명령어의 실행 순서를 결정하는 회로들의 집합</li>
+<li></li>
+</ul>
+<p>인출 사이클 마이크로 프로그램</p>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">ORG 4
+INDRT : IRTAR  U   JMP   NEXT                   ; MAR &lt;- IR(addr),
+											    ; 다음 마이크로명령어 실행
+		READ   U   JMP   NEXT                   ; MBR &lt;- M[MAR],
+											    ; 다음 마이크로 명령어 실행  
+		BRTIR  U   RET                          ; IR(addr) &lt;- MBR,
+												; 실행 사이클 루틴으로 복귀
+</code></pre><h3 id="mesi">MESI</h3>
+<p>
+        <img src="/08.media/20250608140639-1749360099887-image.png" alt=" (Image resource not found)" ></p>
+<ul>
+<li>수정 (M : Modified) 상태 : 데이터가 수정(변경) 된 상태</li>
+<li>베타 (E : Exclusive) 상태 : 유일한 복사본이고, 주기억장치의 내용과 동일한 상태</li>
+<li>공유 (S : Shared) 상태 : 데이터가 두 개 이상의 프로세서 캐시에 적재되어 있는 상태</li>
+<li>무효 (I : Invalid) 상태 : 데이터가 다른 프로세서에 의해 수정되어 무효가 된 상태</li>
+</ul>
+<ol>
+<li>초기 cache miss 후 캐쉬로 등록 ( - -&gt; E )</li>
+<li>수정 (메인 메모리 반영  x) ( E -&gt; M )</li>
+<li>다른 코어가 값을 읽는 경우 ( E -&gt; S , M-&gt;S, - -&gt; S , -&gt; S )</li>
+<li>..</li>
+<li>캐시간 전송이 가능할 수도 못할 수도 있음 못하면 메인메모리에 update 후 동기화</li>
+<li>수정( 메인 메모리 반영 x ) ( S-&gt;M )</li>
+<li>수정( 메인 메모리 반영 x ) ( M-&gt;M )</li>
+<li>다른 코어가 M 인상태에서 수정 ( M-&gt;I, I-&gt;M )</li>
+<li></li>
+</ol>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

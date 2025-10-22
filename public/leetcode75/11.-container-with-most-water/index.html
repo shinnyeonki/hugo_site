@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>11. Container With Most Water | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="투포인터">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/leetcode75/11.-container-with-most-water/">
+
+    
+    
+    
+    <meta property="og:title" content="11. Container With Most Water">
+    <meta property="og:description" content="투포인터">
+    <meta property="og:url" content="http://localhost:1313/leetcode75/11.-container-with-most-water/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="11. Container With Most Water">
+    <meta name="twitter:description" content="투포인터">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>11. Container With Most Water **page.html**</h1>
+    <p>
+        <img src="/08.media/20250107074110.png" alt=" (Image resource not found)" ></p>
+<p>완전 탐색의 $O(n^2)$ 시간 탐색을
+선형시간 $O(n)$ 으로 변경</p>
+<p>완전 탐색 풀이</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> maxArea(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> height) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> ; i<span style="color:#f92672">&lt;</span> height.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> ; i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> height.size() ; j<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> width <span style="color:#f92672">=</span> j <span style="color:#f92672">-</span> i;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> length <span style="color:#f92672">=</span> min(height[i], height[j]);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> area <span style="color:#f92672">=</span> width <span style="color:#f92672">*</span> length;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(ret <span style="color:#f92672">&lt;</span> area) ret <span style="color:#f92672">=</span> area;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>이 문제를 선형시간으로 풀 수 있는 이유
+2개의 포인터를 양쪽 끝으로 지정하고 포인터(넓은 의미의)를 이동 시킬 때(width 크기가 큰것 부터 작은 순으로 탐색), 만약 left 위치의 높이가 작다고 가정할 때 right 위치를 줄이면 width 가 줄어들기 때문에 총 넓이가 무조건 작다고 할 수 있다 만약 <code>height[right]</code> 가 <code>height[left]</code> 보다 작더라 하더라도 더 작아진다고 할 수 있으므로 넓이가 작아지는 것은 확실 그러므로 가짓수를 확실 하게 쳐 낼 수 있다</p>
+<blockquote>
+<p>결론 이미 해당 높이의 최대 영역을 가지고 있기 때문</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> maxArea(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> height) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> right <span style="color:#f92672">=</span> height.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> max_area <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(left <span style="color:#f92672">&lt;</span> right){
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 넓이 구하기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">int</span> w <span style="color:#f92672">=</span> right <span style="color:#f92672">-</span> left;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> h <span style="color:#f92672">=</span> min(height[left], height[right]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> area <span style="color:#f92672">=</span> h <span style="color:#f92672">*</span> w;
+</span></span><span style="display:flex;"><span>            max_area <span style="color:#f92672">=</span> max(max_area, area);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 포인터 이동
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span>(height[left] <span style="color:#f92672">&lt;</span> height[right]) left<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span>(height[left] <span style="color:#f92672">&gt;</span> height[right]) right<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                left<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>                right<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> max_area;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>네트워크 관련 명령어 모음 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="unix 공통 ifconfig netstat ping traceroute : 지나간 네트워크 대역 확인 nc(netcat) : nmap : route : 라우팅 테이블? arp : 동일 네트워크 맥주소 확인 프로토콜 telnet
+linux ss -ltan : -l …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B4%80%EB%A0%A8-%EB%AA%85%EB%A0%B9%EC%96%B4-%EB%AA%A8%EC%9D%8C/">
+
+    
+    
+    
+    <meta property="og:title" content="네트워크 관련 명령어 모음">
+    <meta property="og:description" content="unix 공통 ifconfig netstat ping traceroute : 지나간 네트워크 대역 확인 nc(netcat) : nmap : route : 라우팅 테이블? arp : 동일 네트워크 맥주소 확인 프로토콜 telnet
+linux ss -ltan : -l …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B4%80%EB%A0%A8-%EB%AA%85%EB%A0%B9%EC%96%B4-%EB%AA%A8%EC%9D%8C/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="네트워크 관련 명령어 모음">
+    <meta name="twitter:description" content="unix 공통 ifconfig netstat ping traceroute : 지나간 네트워크 대역 확인 nc(netcat) : nmap : route : 라우팅 테이블? arp : 동일 네트워크 맥주소 확인 프로토콜 telnet
+linux ss -ltan : -l …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>네트워크 관련 명령어 모음 **page.html**</h1>
+    <h2 id="unix-공통">unix 공통</h2>
+<p>ifconfig
+netstat
+ping
+traceroute : 지나간 네트워크 대역 확인
+nc(netcat) :
+nmap :
+route : 라우팅 테이블?
+arp : 동일 네트워크 맥주소 확인 프로토콜
+telnet</p>
+<h2 id="linux">linux</h2>
+<p><code>ss -ltan</code> : -l listen, -a all, -t tcp, -n numeric</p>
+<h3 id="ip">ip</h3>
+<p>ip route
+ip addr</p>
+<h2 id="window">window</h2>
+<p>ipconfig
+netstat
+ping
+arp : 동일 네트워크 맥주소 확인 프로토콜
+tracert</p>
+<p>=================
+mac
+맥 환경에서, 
+잘모르는 프레임웍 이용한 서버 동작시,
+특정프로그램 이용시,
+내가 사용하는 것 외 데이터가 세어나가는지,
+내가 모르는 포트를 열어놓은 프로세스가 있는지 (찾아서 kill하려고),
+혹은 방화벽 제외 / NAT환경에서의 포트포워딩 정책에 SNAT, DNAT등에 포트 값을 알아내야 할 경우
+lsof와 netstast과 다음과 같은 옵션으로 찾으면 된다.
+(기타 : linux의 경우 netstat -anp | grep 포트번호 or LISTEN or EST등의 소켓 상태로 필터링해서 사용해왔음)</p>
+<p>lsof (list open files) 이용시
+$ sudo lsof -iTCP -sTCP:LISTEN -n -P</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

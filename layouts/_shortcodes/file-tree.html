@@ -1,0 +1,91 @@
+{{- /* 파라미터 가져오기 (mode 기본값: 'regular') */ -}}
+{{- $path := .Get "path" -}}
+{{- $mode := .Get "mode" | default "regular" -}}
+{{- /* 각 트리 인스턴스에 고유 ID 부여 */ -}}
+{{- $treeID := printf "file-tree-%d" now.UnixNano -}}
+
+<div id="{{ $treeID }}" class="file-tree p-4 mb-5 border border-gray-200 rounded-lg bg-gray-50 text-sm">
+
+  {{- if $path -}}
+    {{- /* --- 경로가 지정된 경우 --- */ -}}
+    {{- with .Site.GetPage $path -}}
+      <h4 class="text-base font-semibold text-gray-700 mb-2">'{{ $path }}' 하위 구조 (Mode: {{ $mode }})</h4>
+      <ul>
+        <li>
+          <details open> {{/* 시작점은 항상 열려있도록 'open' 속성 추가 */}}
+            <summary class="flex items-center gap-x-2 cursor-pointer select-none">
+              <span class="folder-icon text-lg">📂</span>
+              <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title }}</a>
+            </summary>
+            {{- partial "file-tree.html" (dict "currentNode" . "mode" $mode) -}}
+          </details>
+        </li>
+      </ul>
+    {{- else -}}
+      <p class="text-red-600">오류: 경로 '{{ $path }}'를 찾을 수 없습니다.</p>
+    {{- end -}}
+
+  {{- else -}}
+    {{- /* --- 경로가 지정되지 않은 경우 (전체 구조) --- */ -}}
+    <h4 class="text-base font-semibold text-gray-700 mb-2">사이트 전체 구조 (Mode: {{ $mode }})</h4>
+
+    {{- if eq $mode "all" -}}
+      {{- /* 'all' 모드에서는 홈페이지가 모든 것의 시작점 */ -}}
+      {{- partial "file-tree.html" (dict "currentNode" .Site.Home "mode" $mode) -}}
+    {{- else -}}
+      {{- /* 'regular' 모드: 최상위 폴더와 파일을 각각 처리 */ -}}
+      <ul class="list-none p-0">
+        {{- /* 최상위 폴더(섹션) 먼저 순회 */ -}}
+        {{- range .Site.Sections.ByTitle -}}
+          <li class="mt-1">
+            <details>
+              <summary class="flex items-center gap-x-2 cursor-pointer select-none">
+                <span class="folder-icon text-lg">📁</span>
+                <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title }}</a>
+              </summary>
+              {{- partial "file-tree.html" (dict "currentNode" . "mode" $mode) -}}
+            </details>
+          </li>
+        {{- end -}}
+
+        {{- /* 최상위 파일(페이지) 순회 */ -}}
+        {{- range where .Site.RegularPages "Section" "" | sort ".Title" -}}
+          <li class="mt-1 flex items-center gap-x-2">
+            <span class="text-lg">📄</span>
+            <a href="{{ .RelPermalink }}" class="text-gray-800 hover:underline">{{ .Title }}</a>
+          </li>
+        {{- end -}}
+      </ul>
+    {{- end -}}
+  {{- end -}}
+</div>
+
+{{- /* 스크립트는 페이지당 한 번만 포함되도록 처리 */ -}}
+{{- if not ($.Page.Scratch.Get "fileTreeScriptLoaded") -}}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const fileTrees = document.querySelectorAll('.file-tree');
+    fileTrees.forEach(tree => {
+      const detailsElements = tree.querySelectorAll('details');
+      detailsElements.forEach(details => {
+        const summary = details.querySelector('summary');
+        const icon = summary.querySelector('.folder-icon');
+        
+        // 초기 상태가 열려있으면 아이콘 변경
+        if (details.hasAttribute('open')) {
+            icon.textContent = '📂';
+        }
+
+        details.addEventListener('toggle', () => {
+          if (details.open) {
+            icon.textContent = '📂';
+          } else {
+            icon.textContent = '📁';
+          }
+        });
+      });
+    });
+  });
+</script>
+{{- $.Page.Scratch.Set "fileTreeScriptLoaded" true -}}
+{{- end -}}

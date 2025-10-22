@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>spring ViewResolver 구현체 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="스프링 MVC의 ViewResolver 는 뷰 이름을 실제 View 객체로 변환하는 역할을 합니다.
+다양한 구현체가 있으며, 각각의 특징과 사용 사례를 체계적으로 정리했습니다:
+1. AbstractCachingViewResolver 역할: 뷰 캐싱 기능을 제공하는 추상 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/spring-viewresolver-%EA%B5%AC%ED%98%84%EC%B2%B4/">
+
+    
+    
+    
+    <meta property="og:title" content="spring ViewResolver 구현체">
+    <meta property="og:description" content="스프링 MVC의 ViewResolver 는 뷰 이름을 실제 View 객체로 변환하는 역할을 합니다.
+다양한 구현체가 있으며, 각각의 특징과 사용 사례를 체계적으로 정리했습니다:
+1. AbstractCachingViewResolver 역할: 뷰 캐싱 기능을 제공하는 추상 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/spring-viewresolver-%EA%B5%AC%ED%98%84%EC%B2%B4/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="spring ViewResolver 구현체">
+    <meta name="twitter:description" content="스프링 MVC의 ViewResolver 는 뷰 이름을 실제 View 객체로 변환하는 역할을 합니다.
+다양한 구현체가 있으며, 각각의 특징과 사용 사례를 체계적으로 정리했습니다:
+1. AbstractCachingViewResolver 역할: 뷰 캐싱 기능을 제공하는 추상 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>spring ViewResolver 구현체 **page.html**</h1>
+    <p>스프링 MVC의 <strong><code>ViewResolver</code></strong> 는 <strong>뷰 이름을 실제 <code>View</code> 객체로 변환</strong>하는 역할을 합니다.<br>
+다양한 구현체가 있으며, 각각의 특징과 사용 사례를 체계적으로 정리했습니다:</p>
+<hr>
+<h3 id="1-abstractcachingviewresolver">1. <strong><code>AbstractCachingViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>뷰 캐싱 기능을 제공하는 추상 클래스</strong>.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>뷰 객체를 캐시하여 <strong>반복적인 뷰 생성을 방지</strong>합니다.</li>
+<li>하위 클래스(예: <code>UrlBasedViewResolver</code>)가 캐싱 로직을 재사용할 수 있도록 합니다.</li>
+</ul>
+</li>
+<li><strong>사용 예시</strong>:<br>
+<code>InternalResourceViewResolver</code>가 이 클래스를 상속받아 JSP 뷰 캐싱을 처리합니다.</li>
+</ul>
+<hr>
+<h3 id="2-abstracttemplateviewresolver">2. <strong><code>AbstractTemplateViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>템플릿 기반 뷰(예: JSP, Thymeleaf)를 처리하는 추상 클래스</strong>.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>템플릿 엔진 설정(예: <code>prefix</code>, <code>suffix</code>)을 공통으로 관리합니다.</li>
+<li><code>UrlBasedViewResolver</code>와 함께 사용됩니다.</li>
+</ul>
+</li>
+<li><strong>사용 예시</strong>:<br>
+<code>FreeMarkerViewResolver</code>가 이 클래스를 상속받아 FreeMarker 템플릿을 처리합니다.</li>
+</ul>
+<hr>
+<h3 id="3-beannameviewresolver">3. <strong><code>BeanNameViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>스프링 빈 이름으로 뷰를 조회</strong>합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>뷰 이름이 스프링 빈 이름과 일치하는 <code>View</code> 객체를 찾아 반환합니다.</li>
+<li>커스텀 뷰(예: PDF 생성 뷰)를 빈으로 등록해 사용할 때 유용합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> View <span style="color:#a6e22e">pdfView</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> AbstractPdfView() { <span style="color:#75715e">// PDF 뷰 구현</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">buildPdfDocument</span>(Map<span style="color:#f92672">&lt;</span>String, Object<span style="color:#f92672">&gt;</span> model, Document document, PdfWriter writer) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// PDF 생성 로직</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="4-contentnegotiatingviewresolver">4. <strong><code>ContentNegotiatingViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>요청의 <code>Accept</code> 헤더 또는 쿼리 파라미터에 따라 뷰를 선택</strong>합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>클라이언트가 원하는 형식(JSON, XML, HTML 등)에 맞는 뷰를 반환합니다.</li>
+<li>내부적으로 다른 <code>ViewResolver</code>를 조합해 동작합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebConfig</span> <span style="color:#66d9ef">implements</span> WebMvcConfigurer {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configureViewResolvers</span>(ViewResolverRegistry registry) {
+</span></span><span style="display:flex;"><span>        registry.<span style="color:#a6e22e">enableContentNegotiation</span>(<span style="color:#66d9ef">new</span> JsonView(), <span style="color:#66d9ef">new</span> XmlView());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="5-freemarkerviewresolver">5. <strong><code>FreeMarkerViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>FreeMarker 템플릿</strong>을 처리합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>뷰 이름을 FreeMarker 템플릿 파일 경로(예: <code>views/user.ftl</code>)로 변환합니다.</li>
+<li><code>FreeMarkerConfigurer</code>와 함께 설정됩니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> FreeMarkerViewResolver <span style="color:#a6e22e">freeMarkerViewResolver</span>() {
+</span></span><span style="display:flex;"><span>    FreeMarkerViewResolver resolver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FreeMarkerViewResolver();
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setPrefix</span>(<span style="color:#e6db74">&#34;/WEB-INF/views/&#34;</span>);
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setSuffix</span>(<span style="color:#e6db74">&#34;.ftl&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resolver;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="6-groovymarkupviewresolver">6. <strong><code>GroovyMarkupViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>Groovy 템플릿</strong>을 처리합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>Groovy Markup Template(예: <code>user.tpl</code>)을 렌더링합니다.</li>
+<li><code>GroovyMarkupConfigurer</code>로 템플릿 설정을 관리합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> GroovyMarkupViewResolver <span style="color:#a6e22e">groovyViewResolver</span>() {
+</span></span><span style="display:flex;"><span>    GroovyMarkupViewResolver resolver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GroovyMarkupViewResolver();
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setPrefix</span>(<span style="color:#e6db74">&#34;/views/&#34;</span>);
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setSuffix</span>(<span style="color:#e6db74">&#34;.tpl&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resolver;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="7-internalresourceviewresolver">7. <strong><code>InternalResourceViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>JSP 뷰</strong>를 처리하는 가장 일반적인 리졸버.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>뷰 이름을 JSP 파일 경로(예: <code>/WEB-INF/views/home.jsp</code>)로 변환합니다.</li>
+<li><code>prefix</code>와 <code>suffix</code>로 경로를 설정합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> InternalResourceViewResolver <span style="color:#a6e22e">viewResolver</span>() {
+</span></span><span style="display:flex;"><span>    InternalResourceViewResolver resolver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InternalResourceViewResolver();
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setPrefix</span>(<span style="color:#e6db74">&#34;/WEB-INF/views/&#34;</span>);
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setSuffix</span>(<span style="color:#e6db74">&#34;.jsp&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resolver;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="8-resourcebundleviewresolver">8. <strong><code>ResourceBundleViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>프로퍼티 파일</strong>로 뷰를 정의합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li><code>views.properties</code> 파일에 뷰 이름과 클래스 정보를 저장합니다.</li>
+<li>다국어 뷰 또는 외부 설정이 필요한 경우에 사용됩니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#75715e"># views.properties</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">home.class</span><span style="color:#f92672">=</span><span style="color:#e6db74">org.springframework.web.servlet.view.JstlView</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">home.url</span><span style="color:#f92672">=</span><span style="color:#e6db74">/WEB-INF/views/home.jsp</span>
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="9-scripttemplateviewresolver">9. <strong><code>ScriptTemplateViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>스크립트 기반 템플릿</strong>(예: Nashorn, React)을 처리합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>JavaScript 또는 다른 스크립트 엔진으로 뷰를 렌더링합니다.</li>
+<li><code>ScriptTemplateConfigurer</code>로 스크립트 엔진을 설정합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> ScriptTemplateViewResolver <span style="color:#a6e22e">scriptViewResolver</span>() {
+</span></span><span style="display:flex;"><span>    ScriptTemplateViewResolver resolver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ScriptTemplateViewResolver();
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setPrefix</span>(<span style="color:#e6db74">&#34;templates/&#34;</span>);
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setSuffix</span>(<span style="color:#e6db74">&#34;.jsx&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resolver;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="10-urlbasedviewresolver">10. <strong><code>UrlBasedViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>URL 기반 뷰</strong>를 직접 매핑합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>뷰 이름을 URL 경로로 직접 변환합니다.</li>
+<li><code>InternalResourceViewResolver</code>의 부모 클래스입니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> UrlBasedViewResolver <span style="color:#a6e22e">urlBasedViewResolver</span>() {
+</span></span><span style="display:flex;"><span>    UrlBasedViewResolver resolver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UrlBasedViewResolver();
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setViewClass</span>(JstlView.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setPrefix</span>(<span style="color:#e6db74">&#34;/WEB-INF/views/&#34;</span>);
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setSuffix</span>(<span style="color:#e6db74">&#34;.jsp&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resolver;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="11-viewresolvercomposite">11. <strong><code>ViewResolverComposite</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>다중 <code>ViewResolver</code>를 조합</strong>합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>여러 리졸버를 순차적으로 실행해 적절한 뷰를 찾습니다.</li>
+<li>우선순위를 설정할 수 있습니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> ViewResolverComposite <span style="color:#a6e22e">compositeResolver</span>() {
+</span></span><span style="display:flex;"><span>    ViewResolverComposite composite <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ViewResolverComposite();
+</span></span><span style="display:flex;"><span>    composite.<span style="color:#a6e22e">addResolver</span>(<span style="color:#66d9ef">new</span> InternalResourceViewResolver());
+</span></span><span style="display:flex;"><span>    composite.<span style="color:#a6e22e">addResolver</span>(<span style="color:#66d9ef">new</span> FreeMarkerViewResolver());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> composite;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="12-xmlviewresolver">12. <strong><code>XmlViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>XML 파일</strong>로 뷰를 정의합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li><code>views.xml</code>과 같은 XML 설정 파일에서 뷰 빈을 로드합니다.</li>
+<li><code>ResourceBundleViewResolver</code>와 유사하지만 XML 형식을 사용합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- views.xml --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;beans&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;home&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;org.springframework.web.servlet.view.JstlView&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;url&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;/WEB-INF/views/home.jsp&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/beans&gt;</span>
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="13-xsltviewresolver">13. <strong><code>XsltViewResolver</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>XSLT(XML 변환)</strong> 뷰를 처리합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>XML 데이터를 XSLT 스타일시트로 변환합니다.</li>
+<li><code>XsltView</code> 클래스를 사용해 렌더링합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> XsltViewResolver <span style="color:#a6e22e">xsltViewResolver</span>() {
+</span></span><span style="display:flex;"><span>    XsltViewResolver resolver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> XsltViewResolver();
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setPrefix</span>(<span style="color:#e6db74">&#34;/WEB-INF/xsl/&#34;</span>);
+</span></span><span style="display:flex;"><span>    resolver.<span style="color:#a6e22e">setSuffix</span>(<span style="color:#e6db74">&#34;.xsl&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resolver;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="-요약">📌 <strong>요약</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th>리졸버명</th>
+          <th>주요 기능</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>InternalResourceViewResolver</code></td>
+          <td>JSP 뷰 처리 (가장 일반적)</td>
+      </tr>
+      <tr>
+          <td><code>FreeMarkerViewResolver</code></td>
+          <td>FreeMarker 템플릿 처리</td>
+      </tr>
+      <tr>
+          <td><code>ContentNegotiatingViewResolver</code></td>
+          <td>요청 형식(JSON/XML)에 따라 뷰 선택</td>
+      </tr>
+      <tr>
+          <td><code>BeanNameViewResolver</code></td>
+          <td>스프링 빈 이름으로 뷰 조회</td>
+      </tr>
+      <tr>
+          <td><code>ViewResolverComposite</code></td>
+          <td>다중 리졸버 조합</td>
+      </tr>
+      <tr>
+          <td><code>XsltViewResolver</code></td>
+          <td>XML을 XSLT로 변환</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-핵심-포인트">💡 <strong>핵심 포인트</strong></h3>
+<ul>
+<li><strong>JSP</strong>는 <strong><code>InternalResourceViewResolver</code></strong> 로 처리합니다.</li>
+<li><strong>템플릿 엔진</strong>(FreeMarker, Groovy)은 각각 전용 리졸버를 사용합니다.</li>
+<li><strong>다중 포맷 지원</strong>(JSON, XML)은 <strong><code>ContentNegotiatingViewResolver</code></strong> 로 구현합니다.</li>
+<li><strong>커스텀 뷰</strong>는 <code>BeanNameViewResolver</code> 또는 <code>ResourceBundleViewResolver</code>로 관리합니다.</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>브라우저 기반 수강신청 알림 시스템 설계서 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="명지대학교 수강신청 빈자리 알림 크롬 확장프로그램 프로젝트 설계서 1. 프로젝트 개요 명지대학교 수강신청 시스템의 &lsquo;미리담기 내역&rsquo; 페이지(https://class.mju.ac.kr/main/bag)에서 &lsquo;인원초과&rsquo; 상태인 강 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B8%B0%EB%B0%98-%EC%88%98%EA%B0%95%EC%8B%A0%EC%B2%AD-%EC%95%8C%EB%A6%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%84%A4%EA%B3%84%EC%84%9C/">
+
+    
+    
+    
+    <meta property="og:title" content="브라우저 기반 수강신청 알림 시스템 설계서">
+    <meta property="og:description" content="명지대학교 수강신청 빈자리 알림 크롬 확장프로그램 프로젝트 설계서 1. 프로젝트 개요 명지대학교 수강신청 시스템의 &lsquo;미리담기 내역&rsquo; 페이지(https://class.mju.ac.kr/main/bag)에서 &lsquo;인원초과&rsquo; 상태인 강 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B8%B0%EB%B0%98-%EC%88%98%EA%B0%95%EC%8B%A0%EC%B2%AD-%EC%95%8C%EB%A6%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%84%A4%EA%B3%84%EC%84%9C/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="브라우저 기반 수강신청 알림 시스템 설계서">
+    <meta name="twitter:description" content="명지대학교 수강신청 빈자리 알림 크롬 확장프로그램 프로젝트 설계서 1. 프로젝트 개요 명지대학교 수강신청 시스템의 &lsquo;미리담기 내역&rsquo; 페이지(https://class.mju.ac.kr/main/bag)에서 &lsquo;인원초과&rsquo; 상태인 강 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>브라우저 기반 수강신청 알림 시스템 설계서 **page.html**</h1>
+    <h2 id="명지대학교-수강신청-빈자리-알림-크롬-확장프로그램-프로젝트-설계서">명지대학교 수강신청 빈자리 알림 크롬 확장프로그램 프로젝트 설계서</h2>
+<h3 id="1-프로젝트-개요">1. 프로젝트 개요</h3>
+<p>명지대학교 수강신청 시스템의 &lsquo;미리담기 내역&rsquo; 페이지(<code>https://class.mju.ac.kr/main/bag</code>)에서 &lsquo;인원초과&rsquo; 상태인 강의에 빈자리가 발생했을 때, 사용자에게 데스크탑 알림을 보내주는 크롬 확장 프로그램을 개발한다. 이 프로그램은 사용자가 수동으로 새로고침하며 자리를 확인하는 불편함을 해소하는 것을 목표로 한다.</p>
+<h3 id="2-목표">2. 목표</h3>
+<ul>
+<li><strong>특정 페이지에서만 동작:</strong> <code>https://class.mju.ac.kr/main/bag</code> URL에서만 확장 프로그램의 기능이 활성화된다.</li>
+<li><strong>UI 요소 삽입:</strong> &lsquo;인원초과&rsquo;가 표시된 강의 항목에 &lsquo;알림 대기&rsquo; 버튼을 동적으로 추가한다.</li>
+<li><strong>백그라운드 모니터링:</strong> 사용자가 &lsquo;알림 대기&rsquo; 버튼을 클릭하면, 해당 강의를 백그라운드에서 주기적으로 확인한다.</li>
+<li><strong>실시간 알림:</strong> 모니터링 중인 강의에 빈자리(<code>[인원초과]</code> 문자열 제거)가 확인되면 즉시 사용자에게 크롬 데스크탑 알림을 보낸다.</li>
+<li><strong>메모리 기반 데이터 관리:</strong> 알림 대기 중인 강의 목록, CSRF 토큰 등 모든 상태 정보는 <code>chrome.storage</code>를 사용하지 않고, 확장 프로그램의 실행 시간 동안 메모리(JavaScript 변수)에만 저장한다.</li>
+<li><strong>비-간섭적 작동:</strong> 백그라운드 확인 작업은 현재 사용자가 보고 있는 페이지를 새로고침하거나 UI를 변경하지 않는다.</li>
+</ul>
+<hr>
+<h3 id="3-아키텍처-및-구성-요소">3. 아키텍처 및 구성 요소</h3>
+<p>확장 프로그램은 다음과 같은 세 가지 주요 파일로 구성된다.</p>
+<ol>
+<li>
+<p><strong><code>manifest.json</code> (확장 프로그램 설정 파일)</strong></p>
+<ul>
+<li>확장 프로그램의 이름, 버전, 설명 등 기본 정보 정의</li>
+<li>필요한 권한 요청 (<code>notifications</code>, <code>alarms</code>, <code>scripting</code>)</li>
+<li><strong>Content Script</strong>가 실행될 URL 지정 (<code>https://class.mju.ac.kr/main/bag</code>)</li>
+<li><strong>Background Script(Service Worker)</strong> 등록</li>
+</ul>
+</li>
+<li>
+<p><strong><code>content_script.js</code> (콘텐츠 스크립트)</strong></p>
+<ul>
+<li><strong>역할:</strong> 웹 페이지 DOM(Document Object Model)에 직접 접근하여 UI를 조작하고, 백그라운드 스크립트와 통신하는 중개자.</li>
+<li><strong>주요 기능:</strong>
+<ul>
+<li>페이지 로드 시, 현재 URL이 <code>https://class.mju.ac.kr/main/bag</code>인지 확인.</li>
+<li><code>div.coursedata</code> 요소를 모두 순회하며, 내부에 <code>[ 인원초과 ]</code> 텍스트가 포함된 <code>span.fullclass</code>가 있는지 확인.</li>
+<li>조건에 맞는 강의의 <code>div.btnarea</code> 내부에 &lsquo;알림 대기&rsquo; 버튼을 생성하고 삽입.</li>
+<li>&lsquo;알림 대기&rsquo; 버튼에 클릭 이벤트 리스너를 추가.</li>
+<li>버튼 클릭 시, 해당 강의의 고유 식별자(예: <code>data-coursecls</code> 값)와 페이지의 CSRF 토큰(<code>meta[name=&quot;_csrf&quot;]</code> 태그의 <code>content</code> 값)을 추출.</li>
+<li>추출된 (강의 ID, CSRF 토큰) 정보를 <strong>Background Script</strong>로 메시지 전송.</li>
+<li>(선택) 알림이 시작되면 버튼의 텍스트를 &lsquo;알림 대기중&hellip;&lsquo;으로 변경하고 비활성화하여 중복 요청 방지.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>background.js</code> (백그라운드 스크립트 - Service Worker)</strong></p>
+<ul>
+<li><strong>역할:</strong> 확장 프로그램의 핵심 두뇌. 보이지 않는 곳에서 주기적인 작업을 수행하고 상태를 관리.</li>
+<li><strong>주요 기능:</strong>
+<ul>
+<li><strong>상태 관리 (메모리):</strong>
+<ul>
+<li><code>monitoredCourses</code>: 알림 대기 중인 강의 ID를 저장하는 <code>Set</code> 또는 <code>Map</code> 객체. (예: <code>new Set(['0710', '0084'])</code>)</li>
+<li><code>csrfToken</code>: <strong>Content Script</strong>로부터 최초로 전달받은 CSRF 토큰을 저장하는 변수.</li>
+</ul>
+</li>
+<li><strong>메시지 수신:</strong> <strong>Content Script</strong>로부터 메시지(<code>chrome.runtime.onMessage</code>)를 수신 대기.
+<ul>
+<li>메시지 수신 시, 전달받은 강의 ID를 <code>monitoredCourses</code>에 추가하고, <code>csrfToken</code>을 업데이트.</li>
+<li>알림 대기 목록에 강의가 추가되면 주기적인 확인 작업을 시작/유지.</li>
+</ul>
+</li>
+<li><strong>주기적 작업 (<code>chrome.alarms</code> API 사용):</strong>
+<ul>
+<li>일정 시간(예: 5초) 간격으로 알람을 설정. <code>setInterval</code>보다 Service Worker 환경에 더 적합.</li>
+<li>알람이 울리면 등록된 모든 <code>monitoredCourses</code>에 대해 확인 작업 수행.</li>
+</ul>
+</li>
+<li><strong>데이터 확인 (Fetch):</strong>
+<ul>
+<li>저장된 <code>csrfToken</code>을 사용하여 <code>https://class.mju.ac.kr/main/bag</code>에 <code>POST</code> 요청을 보냄 (요청 형식은 제공된 명세와 동일하게 구성).</li>
+<li>응답으로 받은 HTML 텍스트를 파싱.</li>
+</ul>
+</li>
+<li><strong>상태 비교 및 알림:</strong>
+<ul>
+<li>파싱된 HTML 내에서, <code>monitoredCourses</code>에 포함된 각 강의 ID에 해당하는 <code>div.coursedata</code>를 찾음.</li>
+<li>해당 강의의 <code>span.fullclass</code> 요소에서 <code>[ 인원초과 ]</code> 문자열이 사라졌는지 확인.</li>
+<li>빈자리가 확인되면 <code>chrome.notifications.create</code> API를 사용하여 사용자에게 데스크탑 알림을 표시. (예: &ldquo;&lsquo;알고리즘&rsquo; 강의에 빈자리가 생겼습니다!&rdquo;).</li>
+<li>알림을 보낸 강의 ID는 <code>monitoredCourses</code> 목록에서 제거하여 더 이상 확인하지 않도록 함.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="4-데이터-관리-전략">4. 데이터 관리 전략</h3>
+<ul>
+<li><strong>저장소:</strong> 모든 데이터는 <code>background.js</code> 내의 JavaScript 변수(전역 스코프)에 저장된다.</li>
+<li><strong>데이터 생명주기:</strong>
+<ul>
+<li><strong>알림 대기 강의 목록 (<code>monitoredCourses</code>):</strong> 사용자가 &lsquo;알림 대기&rsquo; 버튼을 누를 때 추가되고, 빈자리 알림이 발생하거나 브라우저가 종료되면 초기화된다.</li>
+<li><strong>CSRF 토큰 (<code>csrfToken</code>):</strong> 사용자가 첫 &lsquo;알림 대기&rsquo; 버튼을 누를 때 <code>content_script.js</code>가 페이지에서 추출하여 <code>background.js</code>로 전달하며, 이후 모든 백그라운드 <code>fetch</code> 요청에 사용된다. 브라우저 종료 시 사라진다.</li>
+</ul>
+</li>
+<li><strong>장점:</strong> 구현이 간단하고 빠르다.</li>
+<li><strong>단점:</strong> 브라우저를 닫거나 크롬을 재시작하면 모든 알림 대기 상태가 초기화된다. 이는 요구사항에 부합하는 설계이다.</li>
+</ul>
+<hr>
+<h3 id="5-동작-시나리오-user-flow">5. 동작 시나리오 (User Flow)</h3>
+<ol>
+<li>사용자가 명지대학교 수강신청 사이트에 로그인 후, <code>https://class.mju.ac.kr/main/bag</code> 페이지로 이동한다.</li>
+<li><code>content_script.js</code>가 실행되어 <code>[ 인원초과 ]</code>가 붙은 &lsquo;알고리즘&rsquo; 강의 옆에 &lsquo;알림 대기&rsquo; 버튼을 생성한다.</li>
+<li>사용자가 &lsquo;알고리즘&rsquo; 강의의 &lsquo;알림 대기&rsquo; 버튼을 클릭한다.</li>
+<li><code>content_script.js</code>는 &lsquo;알고리즘&rsquo;의 강의 ID(&lsquo;0710&rsquo;)와 현재 페이지의 CSRF 토큰 값을 가져와 <code>background.js</code>로 전송한다. 버튼은 &lsquo;알림 대기중&hellip;&lsquo;으로 변경된다.</li>
+<li><code>background.js</code>는 메시지를 수신하고, 내부 변수 <code>monitoredCourses</code>에 &lsquo;0710&rsquo;을 추가하고, <code>csrfToken</code> 변수에 토큰 값을 저장한다.</li>
+<li><code>background.js</code>는 <code>chrome.alarms</code>를 이용해 5초 간격의 확인 작업을 시작한다.</li>
+<li>5초 후, <code>background.js</code>는 저장된 <code>csrfToken</code>을 이용해 <code>/main/bag</code> 페이지의 최신 정보를 <code>fetch</code>로 가져온다.</li>
+<li>가져온 HTML을 분석하여 &lsquo;0710&rsquo; 강의에 여전히 <code>[ 인원초과 ]</code>가 있는지 확인한다. 아직 자리가 없다.</li>
+<li>(시간 경과 후) 다음 확인 주기에서 <code>fetch</code>한 HTML에서 &lsquo;0710&rsquo; 강의에 <code>[ 인원초과 ]</code> 문구가 사라진 것을 감지한다.</li>
+<li><code>background.js</code>는 <code>chrome.notifications.create</code>를 호출하여 &ldquo;&lsquo;0710 알고리즘&rsquo; 강의에 빈자리가 생겼습니다!&rdquo; 라는 알림을 띄운다.</li>
+<li><code>background.js</code>는 <code>monitoredCourses</code> 목록에서 &lsquo;0710&rsquo;을 제거하고, 해당 강의에 대한 모니터링을 중단한다.</li>
+<li><code>content_script.js</code> 가 생성한 알림 버튼도 같이 제거한다</li>
+</ol>
+<hr>
+<h3 id="6-요청된-url-에서-강의-데이터-구조">6. 요청된 url 에서 강의 데이터 구조</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagresult&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;courselist&#34;</span> <span style="color:#a6e22e">data-req</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Y&#34;</span> <span style="color:#a6e22e">data-bag</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;N&#34;</span> <span style="color:#a6e22e">data-reqdel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;N&#34;</span> <span style="color:#a6e22e">data-bagdel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Y&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;list&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0419&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;808151054&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0419&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0419 빅데이터인포그래픽(KCU)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										균컴114 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 이규연
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;온라인(원격수업)&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0419&#34;</span>&gt;457&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0419&#34;</span>&gt;108&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0419&#34;</span>&gt;108&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0419&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0419&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419 빅데이터인포그래픽(KCU) 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMQ01114&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMQ01114&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419 빅데이터인포그래픽(KCU) 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-5469&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;808164217&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-5469&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;5469 인체안의전쟁(KCU)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										균여133 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 미배정
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;온라인(원격수업),KCU&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-5469&#34;</span>&gt;433&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-5469&#34;</span>&gt;176&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-5469&#34;</span>&gt;176&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied5469&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-5469&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469 인체안의전쟁(KCU) 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMO02133&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMO02133&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469 인체안의전쟁(KCU) 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0233&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814100108&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0233&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0233 문화속디자인여행(KCU)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										기문217 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 이규연
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;온라인(원격수업)&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0233&#34;</span>&gt;598&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0233&#34;</span>&gt;108&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0233&#34;</span>&gt;108&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0233&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0233&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233 문화속디자인여행(KCU) 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMC02217&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMC02217&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233 문화속디자인여행(KCU) 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-5431&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814100118&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-5431&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;5431 영화제작에대해알고싶은모든것(KCU)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										균문122 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 미배정
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;온라인(원격수업),KCU&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-5431&#34;</span>&gt;516&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-5431&#34;</span>&gt;176&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-5431&#34;</span>&gt;176&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied5431&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-5431&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431 영화제작에대해알고싶은모든것(KCU) 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KML02122&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KML02122&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431 영화제작에대해알고싶은모든것(KCU) 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0084&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814104427&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0084&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0084 영어회화2&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										(&lt;<span style="color:#f92672">span</span>&gt;L3&lt;/<span style="color:#f92672">span</span>&gt;)
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										교필109 /
+</span></span><span style="display:flex;"><span>										학점 : 1 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 데본
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										&lt;<span style="color:#f92672">span</span>&gt;월12:00~12:50(Y9230), 수12:00~12:50(Y9230)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0084&#34;</span>&gt;48&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0084&#34;</span>&gt;11&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0084&#34;</span>&gt;11&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0084&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0084&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084 영어회화2 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMA02109&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMA02109&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084 영어회화2 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0710&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814104302&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0710&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0710 알고리즘&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										3학년 /
+</span></span><span style="display:flex;"><span>										컴공316 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 조민경
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										&lt;<span style="color:#f92672">span</span>&gt;월09:00~10:50(Y5437), 목09:00~09:50(Y5437)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0710&#34;</span>&gt;53&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0710&#34;</span>&gt;30&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0710&#34;</span>&gt;30&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-past&#34;</span> <span style="color:#a6e22e">data-grade</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;D+&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									※ 과거 이수성적 : 2023-2학기 : 알고리즘 D+
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0710&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0710&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710 알고리즘 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;JEJ02316&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;JEJ02316&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710 알고리즘 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0762&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814100722&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0762&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0762 산업경영공학개론&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										1학년 /
+</span></span><span style="display:flex;"><span>										산업213 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 한민탁
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;아너칼리지및타전공수강,전공자수강X,전공이해기초교과,MJU자율수강제강좌,온라인강의&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0762&#34;</span>&gt;6&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0762&#34;</span>&gt;7&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0762&#34;</span>&gt;50&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0762&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0762&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762 산업경영공학개론 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;JEO01213&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;JEO01213&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762 산업경영공학개론 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0238&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814102933&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0238&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0238 MJ사회봉사&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										기사167 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 유우연
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										&lt;<span style="color:#f92672">span</span>&gt;월17:00~19:50(Y501)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;N/P과목&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0238&#34;</span>&gt;56&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0238&#34;</span>&gt;17&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0238&#34;</span>&gt;17&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0238&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0238&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238 MJ사회봉사 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMD02167&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMD02167&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238 MJ사회봉사 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>					&lt;/<span style="color:#f92672">div</span>&gt;&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagresult&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;courselist&#34;</span> <span style="color:#a6e22e">data-req</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Y&#34;</span> <span style="color:#a6e22e">data-bag</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;N&#34;</span> <span style="color:#a6e22e">data-reqdel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;N&#34;</span> <span style="color:#a6e22e">data-bagdel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Y&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;list&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0419&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;808151054&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0419&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0419 빅데이터인포그래픽(KCU)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										균컴114 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 이규연
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;온라인(원격수업)&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0419&#34;</span>&gt;457&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0419&#34;</span>&gt;108&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0419&#34;</span>&gt;108&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0419&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0419&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419 빅데이터인포그래픽(KCU) 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMQ01114&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMQ01114&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0419 빅데이터인포그래픽(KCU) 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-5469&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;808164217&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-5469&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;5469 인체안의전쟁(KCU)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										균여133 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 미배정
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;온라인(원격수업),KCU&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-5469&#34;</span>&gt;433&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-5469&#34;</span>&gt;176&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-5469&#34;</span>&gt;176&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied5469&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-5469&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469 인체안의전쟁(KCU) 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMO02133&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMO02133&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5469 인체안의전쟁(KCU) 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0233&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814100108&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0233&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0233 문화속디자인여행(KCU)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										기문217 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 이규연
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;온라인(원격수업)&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0233&#34;</span>&gt;598&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0233&#34;</span>&gt;108&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0233&#34;</span>&gt;108&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0233&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0233&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233 문화속디자인여행(KCU) 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMC02217&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMC02217&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0233 문화속디자인여행(KCU) 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-5431&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814100118&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-5431&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;5431 영화제작에대해알고싶은모든것(KCU)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										균문122 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 미배정
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;온라인(원격수업),KCU&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-5431&#34;</span>&gt;516&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-5431&#34;</span>&gt;176&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-5431&#34;</span>&gt;176&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied5431&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-5431&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431 영화제작에대해알고싶은모든것(KCU) 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KML02122&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KML02122&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5431 영화제작에대해알고싶은모든것(KCU) 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0084&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814104427&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0084&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0084 영어회화2&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										(&lt;<span style="color:#f92672">span</span>&gt;L3&lt;/<span style="color:#f92672">span</span>&gt;)
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										교필109 /
+</span></span><span style="display:flex;"><span>										학점 : 1 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 데본
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										&lt;<span style="color:#f92672">span</span>&gt;월12:00~12:50(Y9230), 수12:00~12:50(Y9230)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0084&#34;</span>&gt;48&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0084&#34;</span>&gt;11&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0084&#34;</span>&gt;11&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0084&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0084&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084 영어회화2 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMA02109&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMA02109&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0084 영어회화2 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0710&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814104302&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0710&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0710 알고리즘&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										3학년 /
+</span></span><span style="display:flex;"><span>										컴공316 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 조민경
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										&lt;<span style="color:#f92672">span</span>&gt;월09:00~10:50(Y5437), 목09:00~09:50(Y5437)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0710&#34;</span>&gt;53&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0710&#34;</span>&gt;30&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0710&#34;</span>&gt;30&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-past&#34;</span> <span style="color:#a6e22e">data-grade</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;D+&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									※ 과거 이수성적 : 2023-2학기 : 알고리즘 D+
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0710&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0710&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710 알고리즘 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;JEJ02316&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;JEJ02316&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0710 알고리즘 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0762&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814100722&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0762&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0762 산업경영공학개론&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										1학년 /
+</span></span><span style="display:flex;"><span>										산업213 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 한민탁
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;시간 미지정&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;아너칼리지및타전공수강,전공자수강X,전공이해기초교과,MJU자율수강제강좌,온라인강의&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0762&#34;</span>&gt;6&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0762&#34;</span>&gt;7&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0762&#34;</span>&gt;50&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0762&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0762&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762 산업경영공학개론 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;JEO01213&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;JEO01213&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0762 산업경영공학개론 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>						
+</span></span><span style="display:flex;"><span>						&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedata filter&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listitem&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coursedataid-0238&#34;</span> <span style="color:#a6e22e">data-addtime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;814102933&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;infoarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-title&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-weight: bold;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullclass&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fullsign-0238&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>										[ 인원초과 ]
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;0238 MJ사회봉사&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-basicinfo&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										
+</span></span><span style="display:flex;"><span>										전학년 /
+</span></span><span style="display:flex;"><span>										기사167 /
+</span></span><span style="display:flex;"><span>										학점 : 3 / 
+</span></span><span style="display:flex;"><span>										담당교수 : 유우연
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-schedule&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									
+</span></span><span style="display:flex;"><span>									&lt;<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>										&lt;<span style="color:#f92672">span</span>&gt;월17:00~19:50(Y501)&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>									&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-remark&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									비고 : &lt;<span style="color:#f92672">b</span>&gt;N/P과목&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;course-count&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									담은인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bagcnt-0238&#34;</span>&gt;56&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									수강인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;listencnt-0238&#34;</span>&gt;17&lt;/<span style="color:#f92672">span</span>&gt; / 
+</span></span><span style="display:flex;"><span>									제한인원 : &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;takecnt-0238&#34;</span>&gt;17&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>							&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btnarea&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;applied0238&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									신청완료
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;req-0238&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn reqbtn sorthide&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238 MJ사회봉사 수강신청하기&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMD02167&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									수강신청
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;classbtn delbtn sorthide&#34;</span> <span style="color:#a6e22e">data-coursecls</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238&#34;</span> <span style="color:#a6e22e">data-curinum</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KMD02167&#34;</span> <span style="color:#a6e22e">aria-label</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0238 MJ사회봉사 미리담기 삭제하기&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: block;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>									미리담기 삭제
+</span></span><span style="display:flex;"><span>								&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>								&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sortshow&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display: none;&#34;</span>&gt;≡&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>							&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>							
+</span></span><span style="display:flex;"><span>						&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>					&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><hr>
+<h3 id="6-기술적-고려사항">6. 기술적 고려사항</h3>
+<ul>
+<li><strong>CSRF 토큰 및 세션:</strong> 사용자의 세션이 만료되거나 로그아웃되면 백그라운드 <code>fetch</code> 요청이 실패할 수 있다. 이 경우, 알람을 중지하고 사용자에게 재로그인 및 페이지 새로고침이 필요함을 알리는 것을 고려할 수 있다 (고급 기능).</li>
+<li><strong>요청 주기:</strong> 서버에 과도한 부하를 주지 않기 위해 <code>fetch</code> 요청 간격을 너무 짧지 않게 설정해야 한다 (예: 3~10초).</li>
+<li><strong>웹사이트 구조 변경:</strong> 명지대학교 수강신청 사이트의 HTML 구조(클래스 이름, ID 등)가 변경되면 확장 프로그램이 오작동할 수 있다. 이는 유지보수 시 대응해야 할 부분이다.</li>
+<li><strong>오류 처리:</strong> <code>fetch</code> 실패, 네트워크 오류 등에 대한 예외 처리를 구현하여 안정성을 높여야 한다.</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

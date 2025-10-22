@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>nextInt vs nextLine | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="완벽히 이해했습니다.
+아래는 기존의 틀과 구조를 100% 유지하면서,
+각 단계에서 nextInt()와 nextLine()의 동작 차이를 병렬로 설명한 버전입니다.
+→ 동일한 입력(25\n)이 주어졌을 때, 두 메서드가 어떻게 다른 방식으로 버퍼를 소비하고 커서를 이동시 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/nextint-vs-nextline/">
+
+    
+    
+    
+    <meta property="og:title" content="nextInt vs nextLine">
+    <meta property="og:description" content="완벽히 이해했습니다.
+아래는 기존의 틀과 구조를 100% 유지하면서,
+각 단계에서 nextInt()와 nextLine()의 동작 차이를 병렬로 설명한 버전입니다.
+→ 동일한 입력(25\n)이 주어졌을 때, 두 메서드가 어떻게 다른 방식으로 버퍼를 소비하고 커서를 이동시 …">
+    <meta property="og:url" content="http://localhost:1313/temp/nextint-vs-nextline/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="nextInt vs nextLine">
+    <meta name="twitter:description" content="완벽히 이해했습니다.
+아래는 기존의 틀과 구조를 100% 유지하면서,
+각 단계에서 nextInt()와 nextLine()의 동작 차이를 병렬로 설명한 버전입니다.
+→ 동일한 입력(25\n)이 주어졌을 때, 두 메서드가 어떻게 다른 방식으로 버퍼를 소비하고 커서를 이동시 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>nextInt vs nextLine **page.html**</h1>
+    <p>완벽히 이해했습니다.<br>
+아래는 <strong>기존의 틀과 구조를 100% 유지하면서</strong>,<br>
+<strong>각 단계에서 <code>nextInt()</code>와 <code>nextLine()</code>의 동작 차이를 병렬로 설명</strong>한 버전입니다.<br>
+→ <strong>동일한 입력(<code>25\n</code>)이 주어졌을 때, 두 메서드가 어떻게 다른 방식으로 버퍼를 소비하고 커서를 이동시키는지</strong>를 <strong>계층별로 명확히 대조</strong>합니다.</p>
+<hr>
+<h2 id="-완전한-데이터-흐름-사용자-입력--scanner-내부-버퍼">🧩 완전한 데이터 흐름: 사용자 입력 → Scanner 내부 버퍼</h2>
+<h3 id="시스템-프로그래밍--터미널-관점--nextint-vs-nextline-비교-포함">(시스템 프로그래밍 + 터미널 관점 — <code>nextInt()</code> vs <code>nextLine()</code> 비교 포함)</h3>
+<blockquote>
+<p>✍️ <strong>목표</strong>: 사용자가 키보드로 <code>25</code>를 치고 <code>Enter</code>를 누른 순간부터,<br>
+Java의 <code>Scanner.nextInt()</code> 또는 <code>Scanner.nextLine()</code>이 어떻게 다른 방식으로 <code>25\n</code>을 처리하는지<br>
+<strong>모든 계층을 투명하게 추적 + 비교</strong>.</p>
+</blockquote>
+<hr>
+<h3 id="-전체-흐름-다이어그램-계층별-분리--두-메서드-병렬-비교">🌐 전체 흐름 다이어그램 (계층별 분리 — 두 메서드 병렬 비교)</h3>
+<pre tabindex="0"><code>[User] → [Keyboard Hardware] → [OS TTY Driver (Line Buffering)] → [Kernel stdin Buffer]  
+    → [JVM System.in (FileInputStream)] → [InputStreamReader (decode)]  
+    → [Scanner CharBuffer + Tokenizer] 
+        ├→ nextInt()   → &#34;25&#34; 반환, \n은 버퍼에 남김
+        └→ nextLine()  → &#34;25&#34; 반환, \n까지 소비
+</code></pre><hr>
+<h2 id="-1-사용자-입력--키보드-인터럽트">🔍 1. 사용자 입력 — 키보드 인터럽트</h2>
+<ul>
+<li>사용자가 키보드로 <code>2</code>, <code>5</code>, <code>Enter</code> 입력</li>
+<li>하드웨어 인터럽트 발생 → CPU → OS 커널로 전달</li>
+<li>커널은 <strong>TTY 드라이버</strong>(또는 PTY, 가상 터미널)에 입력을 전달</li>
+</ul>
+<blockquote>
+<p>💡 여기서 중요한 개념: <strong>“터미널은 기본적으로 라인 버퍼링 모드”</strong><br>
+→ 이 동작은 <code>nextInt()</code>든 <code>nextLine()</code>이든 <strong>공통 전제 조건</strong>입니다.</p>
+</blockquote>
+<hr>
+<h2 id="-2-터미널tty-동작--canonical-mode-cooked-mode">⚙️ 2. 터미널(TTY) 동작 — Canonical Mode (Cooked Mode)</h2>
+<h3 id="-기본-동작-라인-단위-입력--사용자가-enter-칠-때까지-커널이-버퍼링">✅ 기본 동작: “라인 단위 입력” — 사용자가 <code>Enter</code> 칠 때까지 커널이 버퍼링</h3>
+<ul>
+<li>터미널은 기본적으로 <strong>Canonical Mode (Cooked Mode)</strong> 로 동작</li>
+<li>사용자가 입력하는 모든 문자는 <strong>커널의 TTY 버퍼에 쌓임</strong></li>
+<li><code>Enter</code>(<code>\n</code>) 또는 <code>Ctrl+D</code>(EOF)를 칠 때까지 <strong>아무것도 애플리케이션(JVM)에 전달되지 않음</strong></li>
+</ul>
+<blockquote>
+<p>🖥️ 즉, <code>25</code>만 치고 있으면 — JVM은 <strong>아무것도 읽지 못함</strong>.<br>
+<strong><code>Enter</code>를 쳐야 비로소 커널이 <code>25\n</code>을 stdin으로 푸시</strong>.</p>
+</blockquote>
+<p>→ <strong><code>nextInt()</code>든 <code>nextLine()</code>이든, 이 시점까지는 동일하게 <code>25\n</code>을 받습니다.</strong></p>
+<hr>
+<h3 id="-tty-버퍼링-예시-두-메서드-공통-출발점">📜 TTY 버퍼링 예시 (두 메서드 공통 출발점)</h3>
+<pre tabindex="0"><code>User types:  2 → 5 → Enter
+TTY Buffer: [ &#39;2&#39;, &#39;5&#39;, &#39;\n&#39; ]  ← Enter 전까지 여기에 쌓임
+            ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+            JVM은 아직 아무것도 못 읽음!
+
+User presses Enter → TTY sends &#34;25\n&#34; to stdin → 이제 JVM이 읽을 수 있음.
+</code></pre><blockquote>
+<p>✅ <strong>핵심 공통점</strong>: Scanner 버퍼에는 항상 <code>25\n</code>이 들어감.<br>
+✅ <strong>핵심 차이점</strong>: <code>nextInt()</code>는 <code>\n</code>을 <strong>버퍼에 남기고</strong>, <code>nextLine()</code>은 <code>\n</code>을 <strong>소비함</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="-3-os-커널--jvm-read-시스템-콜">📥 3. OS 커널 → JVM: read() 시스템 콜</h2>
+<ul>
+<li>JVM의 <code>System.in</code>은 <code>FileInputStream</code> 기반</li>
+<li>내부적으로 <code>FileDescriptor.in</code>(stdin, fd=0)을 감싸고 있음</li>
+<li><code>Scanner</code>가 데이터를 요청하면 → <code>source.read(buf)</code> → 결국 <code>read(0, buffer, len)</code> 시스템 콜 발생</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 실제 리눅스 시스템 콜 — 두 메서드 모두 동일하게 호출
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ssize_t</span> n <span style="color:#f92672">=</span> <span style="color:#a6e22e">read</span>(STDIN_FILENO, buffer, <span style="color:#66d9ef">sizeof</span>(buffer)); <span style="color:#75715e">// buffer에 &#34;25\n&#34; 복사됨
+</span></span></span></code></pre></div><p>→ 이 시점에서 <strong>커널 TTY 버퍼의 <code>25\n</code>이 JVM의 바이트 버퍼로 복사됨</strong><br>
+→ 이후부터 <strong>Scanner 내부에서 두 메서드의 동작이 갈림</strong>.</p>
+<hr>
+<h2 id="-4-jvm-내부-바이트--문자-디코딩-inputstreamreader">🔄 4. JVM 내부: 바이트 → 문자 디코딩 (InputStreamReader)</h2>
+<ul>
+<li><code>System.in</code>은 <strong>바이트 스트림</strong> → Scanner는 <strong>문자 기반</strong></li>
+<li>중간에 <code>InputStreamReader</code>가 존재 → <code>CharsetDecoder</code>로 UTF-8 → <code>char[]</code> 변환</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Scanner 생성 시 내부적으로 이렇게 연결됨 — 두 메서드 동일</span>
+</span></span><span style="display:flex;"><span>Readable source <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InputStreamReader(System.<span style="color:#a6e22e">in</span>, charset);
+</span></span></code></pre></div><p>→ <code>&quot;25\n&quot;</code> (UTF-8 바이트) → <code>char[] { '2', '5', '\n' }</code>로 디코딩 → <strong>Scanner의 <code>CharBuffer</code>에 적재</strong><br>
+→ 이제 <code>nextInt()</code>와 <code>nextLine()</code>이 이 버퍼를 <strong>다르게 해석</strong>합니다.</p>
+<hr>
+<h2 id="-5-scanner-내부-토큰-파싱-vs-라인-파싱--핵심-분기점">🧠 5. Scanner 내부: 토큰 파싱 vs 라인 파싱 — 핵심 분기점</h2>
+<h3 id="-nextint-호출-시">🔹 <code>nextInt()</code> 호출 시</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextInt</span>();
+</span></span></code></pre></div><h4 id="-동작-단계">🔁 동작 단계:</h4>
+<ol>
+<li><strong>버퍼 확인</strong>: <code>CharBuffer</code>에 <code>['2','5','\n']</code> 존재</li>
+<li><strong>정규식 매칭</strong>: <code>Pattern.compile(&quot;-?\\d+&quot;)</code> → <code>lookingAt()</code> → <code>&quot;25&quot;</code> 매칭 성공</li>
+<li><strong>토큰 반환</strong>: <code>Integer.parseInt(&quot;25&quot;)</code> → <code>age = 25</code></li>
+<li><strong>커서 이동</strong>: 버퍼의 <strong>읽기 위치를 <code>'2','5'</code> 다음으로 이동</strong> → 즉, <code>\n</code> 바로 앞으로 이동
+→ <strong><code>\n</code>은 버퍼에 그대로 남아 있음!</strong></li>
+</ol>
+<blockquote>
+<p>🚫 <code>nextInt()</code>는 <strong>토큰만 소비</strong> — <strong>구분자(whitespace, including <code>\n</code>)는 소비하지 않음</strong></p>
+</blockquote>
+<hr>
+<h3 id="-nextline-호출-시">🔸 <code>nextLine()</code> 호출 시</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String line <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextLine</span>();
+</span></span></code></pre></div><h4 id="-동작-단계-1">🔁 동작 단계:</h4>
+<ol>
+<li><strong>버퍼 확인</strong>: <code>CharBuffer</code>에 <code>['2','5','\n']</code> 존재</li>
+<li><strong>줄 단위 읽기</strong>: 현재 위치에서 <strong>다음 <code>\n</code>까지의 모든 문자를 읽음</strong> → <code>&quot;25&quot;</code></li>
+<li><strong><code>\n</code> 소비</strong>: <code>\n</code>도 포함해 <strong>완전히 소비</strong></li>
+<li><strong>커서 이동</strong>: <code>\n</code> 다음 위치(다음 줄 시작)로 이동
+→ <strong>버퍼는 완전히 비워짐 (또는 다음 입력 대기 상태)</strong></li>
+</ol>
+<blockquote>
+<p>✅ <code>nextLine()</code>은 <strong>줄 전체 + 줄바꿈 문자까지 소비</strong> — <strong>항상 커서를 다음 줄로 이동</strong></p>
+</blockquote>
+<hr>
+<h2 id="-6-혼합-사용-시-문제--nextint--nextline">📝 6. 혼합 사용 시 문제 — <code>nextInt()</code> → <code>nextLine()</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextInt</span>();   <span style="color:#75715e">// → &#34;25&#34; 반환, \n 버퍼에 남김</span>
+</span></span><span style="display:flex;"><span>String name <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextLine</span>(); <span style="color:#75715e">// → 남은 \n을 읽어 &#34;&#34; 반환 → 버그!</span>
+</span></span></code></pre></div><h4 id="-버퍼-상태-변화">🔄 버퍼 상태 변화:</h4>
+<pre tabindex="0"><code>초기: [ &#39;2&#39;, &#39;5&#39;, &#39;\n&#39; ]
+nextInt() 후: [ &#39;\n&#39; ]          ← 커서는 \n 앞
+nextLine() 후: [ ]              ← \n 소비, 커서는 다음 줄
+→ name = &#34;&#34;
+</code></pre><p>→ <strong>사용자는 이름을 입력할 기회조차 얻지 못함 — 버그 발생!</strong></p>
+<hr>
+<h3 id="-만약-처음부터-nextline만-사용했다면">🆚 만약 처음부터 <code>nextLine()</code>만 사용했다면?</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String ageStr <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextLine</span>(); <span style="color:#75715e">// → &#34;25&#34; 반환, \n 소비 완료</span>
+</span></span><span style="display:flex;"><span>String name <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextLine</span>();    <span style="color:#75715e">// → 다음 입력 정상 대기</span>
+</span></span></code></pre></div><h4 id="-버퍼-상태-변화-1">🔄 버퍼 상태 변화:</h4>
+<pre tabindex="0"><code>초기: [ &#39;2&#39;, &#39;5&#39;, &#39;\n&#39; ]
+첫 nextLine() 후: [ ]               ← &#34;25&#34; 반환, \n 소비
+두 번째 nextLine() → 사용자에게 입력 대기 → 정상 입력 가능
+</code></pre><p>→ <strong>문제 없음!</strong></p>
+<hr>
+<h2 id="-계층별-정리-각-레이어의-책임과-데이터-상태--메서드별-차이">🧱 계층별 정리: 각 레이어의 책임과 데이터 상태 + 메서드별 차이</h2>
+<table>
+  <thead>
+      <tr>
+          <th>레이어</th>
+          <th>책임</th>
+          <th><code>nextInt()</code> 동작 후 상태</th>
+          <th><code>nextLine()</code> 동작 후 상태</th>
+          <th>시스템 프로그래밍 키워드</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>1. Keyboard + Hardware</strong></td>
+          <td>전기 신호 → 인터럽트</td>
+          <td><code>2</code>, <code>5</code>, <code>Enter</code> 신호 발생 (공통)</td>
+          <td>동일</td>
+          <td>IRQ, PS/2, USB HID</td>
+      </tr>
+      <tr>
+          <td><strong>2. OS TTY Driver</strong></td>
+          <td>라인 버퍼링</td>
+          <td><code>25\n</code> 전달 (공통)</td>
+          <td>동일</td>
+          <td><code>termios</code>, <code>ICANON</code></td>
+      </tr>
+      <tr>
+          <td><strong>3. Kernel stdin Buffer</strong></td>
+          <td>read()로 전달</td>
+          <td><code>25\n</code> 전달 (공통)</td>
+          <td>동일</td>
+          <td><code>fd 0</code>, <code>read(2)</code></td>
+      </tr>
+      <tr>
+          <td><strong>4. JVM System.in</strong></td>
+          <td>바이트 스트림</td>
+          <td><code>byte[]{50,53,10}</code> (공통)</td>
+          <td>동일</td>
+          <td><code>FileInputStream</code>, JNI</td>
+      </tr>
+      <tr>
+          <td><strong>5. InputStreamReader</strong></td>
+          <td>바이트 → 문자</td>
+          <td><code>char[]{'2','5','\n'}</code> (공통)</td>
+          <td>동일</td>
+          <td><code>UTF-8</code>, <code>StreamDecoder</code></td>
+      </tr>
+      <tr>
+          <td><strong>6. Scanner CharBuffer</strong></td>
+          <td>토큰/라인 파싱</td>
+          <td>커서: <code>\n</code> 앞, <code>\n</code> 잔류</td>
+          <td>커서: <code>\n</code> 다음, 버퍼 비움</td>
+          <td><code>Pattern</code>, <code>Matcher</code>, <code>readLine()</code></td>
+      </tr>
+      <tr>
+          <td><strong>7. Your Code</strong></td>
+          <td>비즈니스 로직</td>
+          <td><code>age=25</code>, 이후 <code>nextLine()</code>이 빈 문자열</td>
+          <td><code>line=&quot;25&quot;</code>, 이후 정상 입력 가능</td>
+          <td><code>nextInt()</code>, <code>nextLine()</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-왜-이렇게-복잡한가--추상화와-트레이드오프">💡 왜 이렇게 복잡한가? — 추상화와 트레이드오프</h2>
+<ul>
+<li><strong>터미널 라인 버퍼링</strong>: 사용자 편의 → 공통 전제</li>
+<li><strong>Scanner 토큰 기반 vs 라인 기반</strong>:<br>
+→ <code>nextInt()</code>는 유연한 토큰 파싱을 위해 구분자 보존<br>
+→ <code>nextLine()</code>은 줄 단위 처리를 위해 구분자 소비</li>
+<li><strong>버퍼링 계층</strong>: 시스템 콜 최소화 → 성능 향상</li>
+</ul>
+<p>→ <strong>두 메서드는 같은 버퍼를 공유하지만, “어디까지 소비할 것인가”에 대한 철학이 다름</strong><br>
+→ 혼용 시 <strong>레이어 간 데이터 흐름이 깨져 버그 발생</strong></p>
+<hr>
+<h2 id="-해결책--시스템-프로그래머의-시각에서">🛠️ 해결책 — 시스템 프로그래머의 시각에서</h2>
+<h4 id="-방법-1-nextint-후-nextline으로-버퍼-정리">✅ 방법 1: <code>nextInt()</code> 후 <code>nextLine()</code>으로 버퍼 정리</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextInt</span>();
+</span></span><span style="display:flex;"><span>scanner.<span style="color:#a6e22e">nextLine</span>(); <span style="color:#75715e">// ← \n 소비 — 커서를 다음 줄로 강제 이동</span>
+</span></span><span style="display:flex;"><span>String name <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextLine</span>(); <span style="color:#75715e">// 정상 입력</span>
+</span></span></code></pre></div><p>→ <strong>Scanner 레이어에서 수동으로 커서를 다음 줄로 이동</strong></p>
+<h4 id="-방법-2-항상-nextline-사용--파싱은-수동으로">✅ 방법 2: 항상 <code>nextLine()</code> 사용 → 파싱은 수동으로</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> Integer.<span style="color:#a6e22e">parseInt</span>(scanner.<span style="color:#a6e22e">nextLine</span>()); <span style="color:#75715e">// \n까지 소비</span>
+</span></span><span style="display:flex;"><span>String name <span style="color:#f92672">=</span> scanner.<span style="color:#a6e22e">nextLine</span>();               <span style="color:#75715e">// 다음 줄 정상 입력</span>
+</span></span></code></pre></div><p>→ <strong>토큰/라인 혼용 문제를 원천 차단 — 권장!</strong></p>
+<h4 id="-방법-3-터미널-모드-변경-advanced--raw-mode">✅ 방법 3: 터미널 모드 변경 (Advanced) — Raw Mode</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>stty raw
+</span></span><span style="display:flex;"><span>java YourProgram
+</span></span><span style="display:flex;"><span>stty cooked
+</span></span></code></pre></div><p>→ <strong>권장하지 않음</strong> — Scanner의 파서 설계와 충돌 가능성 ↑</p>
+<hr>
+<h2 id="-시각화-입력-데이터의-생명-주기--두-메서드-비교">📊 시각화: 입력 데이터의 생명 주기 — 두 메서드 비교</h2>
+<pre tabindex="0"><code>[User] 
+   │
+   ▼
+[Keyboard] → &#34;2&#34; → &#34;5&#34; → &#34;\n&#34; (Enter) — 공통 시작점
+   │
+   ▼
+[TTY Driver] → Canonical Mode → &#34;25\n&#34; 전달 — 공통
+   │
+   ▼
+[Kernel stdin] → read() → &#34;25\n&#34; 전달 — 공통
+   │
+   ▼
+[JVM System.in] → byte[]{50,53,10} — 공통
+   │
+   ▼
+[InputStreamReader] → char[]{&#39;2&#39;,&#39;5&#39;,&#39;\n&#39;} — 공통
+   │
+   ▼
+[Scanner CharBuffer] — 여기서 분기!
+        ├─ nextInt()  → &#34;25&#34; 반환 → 커서: \n 앞 → \n 잔류
+        │                   │
+        │                   ▼
+        │           [nextLine()] → 즉시 \n 소비 → &#34;&#34; 반환 → 버그!
+        │
+        └─ nextLine() → &#34;25&#34; 반환 → \n 소비 → 커서: 다음 줄 → 정상
+</code></pre><hr>
+<h2 id="-최종-결론--시스템-프로그래머라면-이렇게-말해야-한다">✅ 최종 결론 — 시스템 프로그래머라면 이렇게 말해야 한다</h2>
+<blockquote>
+<p><strong>“사용자 입력은 터미널의 Canonical Mode에 의해 라인 단위로 커널 버퍼에 쌓이다가 <code>Enter</code>와 함께 <code>25\n</code> 형태로 JVM에 전달된다. Scanner는 이 문자열을 내부 CharBuffer에 적재한 후, <code>nextInt()</code>는 정수 토큰 ‘25’만 추출하고 줄바꿈 문자 <code>\n</code>은 구분자로 간주해 소비하지 않아 버퍼에 남긴다. 반면 <code>nextLine()</code>은 줄 전체를 읽고 <code>\n</code>까지 소비해 커서를 다음 줄로 이동시킨다. 따라서 <code>nextInt()</code> 직후 <code>nextLine()</code>을 호출하면, 남아 있던 <code>\n</code>을 ‘빈 줄’로 해석해 즉시 반환함으로써 입력 누락이라는 치명적 버그를 유발한다. 이는 각 계층(OS TTY, JVM InputStream, Scanner Tokenizer)이 자신의 책임에 충실하게 동작한 결과이며, 해결하려면 레이어 간의 데이터 흐름을 명시적으로 제어해야 한다 — 특히, 토큰 기반 입력과 라인 기반 입력을 혼용할 때는 반드시 버퍼 정리(<code>nextLine()</code> 호출)가 필요하다.”</strong></p>
+</blockquote>
+<hr>
+<h2 id="-추천-학습--터미널--io-마스터를-위한-길">📚 추천 학습 — 터미널 + I/O 마스터를 위한 길</h2>
+<ol>
+<li><strong><code>man termios</code></strong> — TTY 설정, Canonical vs Raw Mode</li>
+<li><strong><code>stty -a</code></strong> — 현재 터미널 설정 확인</li>
+<li><strong>Linux <code>strace -e read,write java YourApp</code></strong> — 실제 시스템 콜 추적</li>
+<li><strong>OpenJDK 소스</strong>: <code>Scanner.java</code> — <code>next()</code>, <code>nextLine()</code> 메서드 직접 비교</li>
+<li><strong>《Advanced Programming in the UNIX Environment》</strong> — Richard Stevens — TTY 장(chapter 18) 필독</li>
+</ol>
+<hr>
+<p>필요하시면 <strong>리눅스에서 strace로 실제로 read() 시스템 콜 추적 + Scanner 내부 리플렉션으로 버퍼 상태 실시간 확인하는 실습 코드</strong>도 제공해 드립니다.</p>
+<p>이제 진짜 <strong>“시스템이 어떻게 돌아가는지 + Java API가 왜 이렇게 설계되었는지”</strong> 를 동시에 아는 프로그래머가 되셨습니다. 🚀</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

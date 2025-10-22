@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>composite pattern | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="복합 객체와 단일 객체를 동일하게 취급하고 싶다 과일과 과일박스를 동일한 과일박스 안에 넣고 싶다 트리 형태로 퍼져나간다
+class animal: def __init__(self, name): self.name = name def speak(self): pass …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/composite-pattern/">
+
+    
+    
+    
+    <meta property="og:title" content="composite pattern">
+    <meta property="og:description" content="복합 객체와 단일 객체를 동일하게 취급하고 싶다 과일과 과일박스를 동일한 과일박스 안에 넣고 싶다 트리 형태로 퍼져나간다
+class animal: def __init__(self, name): self.name = name def speak(self): pass …">
+    <meta property="og:url" content="http://localhost:1313/temp/composite-pattern/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="composite pattern">
+    <meta name="twitter:description" content="복합 객체와 단일 객체를 동일하게 취급하고 싶다 과일과 과일박스를 동일한 과일박스 안에 넣고 싶다 트리 형태로 퍼져나간다
+class animal: def __init__(self, name): self.name = name def speak(self): pass …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>composite pattern **page.html**</h1>
+    <p>복합 객체와 단일 객체를 동일하게 취급하고 싶다
+과일과 과일박스를 동일한 과일박스 안에 넣고 싶다
+트리 형태로 퍼져나간다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">animal</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, name):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">speak</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">dog</span>(animal):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">speak</span>(self):
+</span></span><span style="display:flex;"><span>        print(self<span style="color:#f92672">.</span>name)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">cat</span>(animal):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">speak</span>(self):
+</span></span><span style="display:flex;"><span>        print(self<span style="color:#f92672">.</span>name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">animal_group</span>(animal):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>animals <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(self, animal):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>animals<span style="color:#f92672">.</span>append(animal)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">speak</span>(self):
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;group speak&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> animal <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>animals:
+</span></span><span style="display:flex;"><span>            animal<span style="color:#f92672">.</span>speak()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>group1 <span style="color:#f92672">=</span> animal_group()
+</span></span><span style="display:flex;"><span>group1<span style="color:#f92672">.</span>add(dog(<span style="color:#e6db74">&#34;dog1&#34;</span>))
+</span></span><span style="display:flex;"><span>group1<span style="color:#f92672">.</span>add(dog(<span style="color:#e6db74">&#34;dog2&#34;</span>))
+</span></span><span style="display:flex;"><span>group1<span style="color:#f92672">.</span>add(cat(<span style="color:#e6db74">&#34;cat1&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>group2 <span style="color:#f92672">=</span> animal_group()
+</span></span><span style="display:flex;"><span>group2<span style="color:#f92672">.</span>add(cat(<span style="color:#e6db74">&#34;cat2&#34;</span>))
+</span></span><span style="display:flex;"><span>group2<span style="color:#f92672">.</span>add(group1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>group2<span style="color:#f92672">.</span>speak()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">====</span>
+</span></span><span style="display:flex;"><span>group speak
+</span></span><span style="display:flex;"><span>cat2
+</span></span><span style="display:flex;"><span>group speak
+</span></span><span style="display:flex;"><span>dog1
+</span></span><span style="display:flex;"><span>dog2
+</span></span><span style="display:flex;"><span>cat1
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

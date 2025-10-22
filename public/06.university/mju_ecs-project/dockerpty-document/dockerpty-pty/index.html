@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>dockerpty pty | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="문서: dockerpty 모듈 개요 제공된 코드는 dockerpty라는 Python 모듈을 나타내며, 특히 pty.py 파일에 초점을 맞추고 있습니다. 이 문서에서는 모듈의 주요 구성 요소와 기능을 설명합니다.
+소개 dockerpty 모듈은 Docker 컨테이너와 의사 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/mju_ecs-project/dockerpty-document/dockerpty-pty/">
+
+    
+    
+    
+    <meta property="og:title" content="dockerpty pty">
+    <meta property="og:description" content="문서: dockerpty 모듈 개요 제공된 코드는 dockerpty라는 Python 모듈을 나타내며, 특히 pty.py 파일에 초점을 맞추고 있습니다. 이 문서에서는 모듈의 주요 구성 요소와 기능을 설명합니다.
+소개 dockerpty 모듈은 Docker 컨테이너와 의사 …">
+    <meta property="og:url" content="http://localhost:1313/06.university/mju_ecs-project/dockerpty-document/dockerpty-pty/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="dockerpty pty">
+    <meta name="twitter:description" content="문서: dockerpty 모듈 개요 제공된 코드는 dockerpty라는 Python 모듈을 나타내며, 특히 pty.py 파일에 초점을 맞추고 있습니다. 이 문서에서는 모듈의 주요 구성 요소와 기능을 설명합니다.
+소개 dockerpty 모듈은 Docker 컨테이너와 의사 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>dockerpty pty **page.html**</h1>
+    <h3 id="문서-dockerpty-모듈-개요">문서: <code>dockerpty</code> 모듈 개요</h3>
+<p>제공된 코드는 <code>dockerpty</code>라는 Python 모듈을 나타내며, 특히 <code>pty.py</code> 파일에 초점을 맞추고 있습니다. 이 문서에서는 모듈의 주요 구성 요소와 기능을 설명합니다.</p>
+<hr>
+<h3 id="소개"><strong>소개</strong></h3>
+<p><code>dockerpty</code> 모듈은 Docker 컨테이너와 의사 터미널(PTY) 인터페이스를 통해 상호작용하는 것을 용이하게 설계되었습니다. 사용자가 로컬 터미널 세션과 유사한 방식으로 Docker 컨테이너 터미널에 연결하고 제어할 수 있도록 합니다.</p>
+<p>이 모듈의 주요 목적은 PTY의 라이프사이클을 관리하는 것인데, 호스트와 컨테이너 간의 입력/출력 스트림을 처리하며 터미널 창 크기를 조정하는 작업을 포함합니다.</p>
+<hr>
+<h3 id="주요-클래스-및-기능"><strong>주요 클래스 및 기능</strong></h3>
+<h4 id="1-winchhandler">1. <strong>WINCHHandler</strong></h4>
+<ul>
+<li><strong>목적</strong>: 터미널 창 크기가 변경될 때 동적으로 PTY를 조정하기 위해 <code>SIGWINCH</code> 신호를 처리합니다.</li>
+<li><strong>메서드</strong>:
+<ul>
+<li><code>__init__(self, pty)</code>: PTY를 참조하여 핸들러를 초기화합니다.</li>
+<li><code>start(self)</code>: <code>SIGWINCH</code> 신호를 트랩하고 PTY를 조정합니다.</li>
+<li><code>stop(self)</code>: <code>SIGWINCH</code> 신호 트랩을 중지하고 이전 신호 핸들러를 복원합니다.</li>
+<li><code>__enter__(self)</code> &amp; <code>__exit__(self, *_)</code>: <code>start()</code> 및 <code>stop()</code> 메서드를 호출하는 컨텍스트 관리 메서드입니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-operation-추상-기본-클래스">2. <strong>Operation (추상 기본 클래스)</strong></h4>
+<ul>
+<li><strong>목적</strong>: Docker 컨테이너 또는 exec 관련 작업을 위한 추상 기본 클래스로 사용됩니다.</li>
+<li><strong>메서드</strong>:
+<ul>
+<li><code>israw(self, **kwargs)</code>: 해당 작업이 raw 모드로 작동해야 하는지 여부를 결정합니다 (즉, 컨테이너/exec에 TTY가 할당되었는지 확인).</li>
+<li><code>start(self, **kwargs)</code>: 작업 실행을 시작합니다 (하위 클래스에서 구현해야 함).</li>
+<li><code>resize(self, height, width, **kwargs)</code>: PTY를 조정합니다 (하위 클래스에서 구현해야 함).</li>
+<li><code>sockets(self)</code>: 입력/출력 스트림에 대한 소켓을 반환합니다 (하위 클래스에서 구현해야 함).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-runoperation">3. <strong>RunOperation</strong></h4>
+<ul>
+<li>
+<p><strong>목적</strong>: <code>docker run</code>-like 명령을 관리하기 위해 <code>Operation</code> 인터페이스를 구현합니다.</p>
+</li>
+<li>
+<p><strong>초기화</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>RunOperation(client, container, interactive<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, stdout<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, stderr<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, stdin<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span></code></pre></div><ul>
+<li><code>client</code>: Docker 클라이언트 인스턴스.</li>
+<li><code>container</code>: Docker에서 반환된 컨테이너 사전.</li>
+<li><code>interactive</code>: 세션이 대화형으로 작동해야 하는지 여부 (기본값: <code>True</code>).</li>
+<li><code>stdout</code>, <code>stderr</code>, <code>stdin</code>: 표준 출력, 오류 및 입력 스트림 (기본값은 <code>sys.stdout</code>, <code>sys.stderr</code>, <code>sys.stdin</code>).</li>
+<li><code>logs</code>: 컨테이너 로그를 포함할지 여부 (설정되지 않으면 폐기 예정 경고 발생).</li>
+</ul>
+</li>
+<li>
+<p><strong>주요 메서드</strong>:</p>
+<ul>
+<li><code>start(self, sockets=None, **kwargs)</code>: PTY를 설정하고 호스트와 컨테이너 간 데이터 전송을 시작합니다.</li>
+<li><code>israw(self, **kwargs)</code>: 컨테이너가 <code>tty=True</code>로 시작되었는지 확인합니다.</li>
+<li><code>sockets(self)</code>: <code>stdin</code>, <code>stdout</code>, <code>stderr</code>에 대한 소켓을 반환합니다.</li>
+<li><code>resize(self, height, width, **kwargs)</code>: 컨테이너의 PTY를 조정합니다.</li>
+<li><code>_container_info(self)</code>: 컨테이너에 대한 자세한 정보를 검색합니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="4-execoperation">4. <strong>ExecOperation</strong></h4>
+<ul>
+<li>
+<p><strong>목적</strong>: <code>docker exec</code>-like 명령을 관리하기 위해 <code>Operation</code> 인터페이스를 구현합니다.</p>
+</li>
+<li>
+<p><strong>초기화</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ExecOperation(client, exec_id, interactive<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, stdout<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, stderr<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, stdin<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span></code></pre></div><ul>
+<li><code>client</code>: Docker 클라이언트 인스턴스.</li>
+<li><code>exec_id</code>: <code>client.exec_create</code>를 사용하여 생성된 <code>exec</code> 인스턴스 ID.</li>
+<li><code>interactive</code>: 세션이 대화형으로 작동해야 하는지 여부 (기본값: <code>True</code>).</li>
+<li><code>stdout</code>, <code>stderr</code>, <code>stdin</code>: 표준 출력, 오류 및 입력 스트림 (기본값은 <code>sys.stdout</code>, <code>sys.stderr</code>, <code>sys.stdin</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>주요 메서드</strong>:</p>
+<ul>
+<li><code>start(self, sockets=None, **kwargs)</code>: <code>exec</code> 프로세스를 시작하고 데이터 펌프를 설정합니다.</li>
+<li><code>israw(self, **kwargs)</code>: <code>exec</code> 프로세스가 <code>tty=True</code>로 시작되었는지 확인합니다.</li>
+<li><code>sockets(self)</code>: <code>exec</code> 프로세스의 모든 I/O 스트림에 대한 단일 소켓을 반환합니다.</li>
+<li><code>resize(self, height, width, **kwargs)</code>: <code>exec</code> 프로세스의 PTY를 조정합니다.</li>
+<li><code>is_process_tty(self)</code>: <code>exec</code> 프로세스에 TTY가 할당되어 있는지 확인합니다.</li>
+<li><code>_exec_info(self)</code>: <code>exec</code> 인스턴스에 대한 자세한 정보를 검색합니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="5-pseudoterminal">5. <strong>PseudoTerminal</strong></h4>
+<ul>
+<li>
+<p><strong>목적</strong>: Docker 컨테이너 또는 <code>exec</code> 프로세스를 위한 PTY의 라이프사이클을 관리합니다.</p>
+</li>
+<li>
+<p><strong>초기화</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>PseudoTerminal(client, operation)
+</span></span></code></pre></div><ul>
+<li><code>client</code>: Docker 클라이언트 인스턴스.</li>
+<li><code>operation</code>: <code>RunOperation</code> 또는 <code>ExecOperation</code> 인스턴스.</li>
+</ul>
+</li>
+<li>
+<p><strong>주요 메서드</strong>:</p>
+<ul>
+<li><code>sockets(self)</code>: 기본 작업의 <code>sockets()</code> 메서드에 위임합니다.</li>
+<li><code>start(self, sockets=None)</code>: PTY 세션을 시작하고, 호스트와 컨테이너 간 입력/출력 스트림을 관리하며, 터미널 크기를 조정합니다.</li>
+<li><code>resize(self, size=None)</code>: 현재 터미널 크기 또는 지정된 크기에 따라 PTY를 조정합니다.</li>
+<li><code>_hijack_tty(self, pumps)</code>: 호스트와 컨테이너 간 데이터를 읽고 쓰기 위한 주요 루프를 관리합니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="헬퍼-함수"><strong>헬퍼 함수</strong></h3>
+<h4 id="exec_create"><code>exec_create</code></h4>
+<ul>
+<li>
+<p><strong>목적</strong>: 컨테이너에 대해 <code>exec</code> 인스턴스를 생성합니다.</p>
+</li>
+<li>
+<p><strong>시그니처</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>exec_create(client, container, command, interactive<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><ul>
+<li><code>client</code>: Docker 클라이언트 인스턴스.</li>
+<li><code>container</code>: 대상 컨테이너.</li>
+<li><code>command</code>: 컨테이너 내에서 실행할 명령.</li>
+<li><code>interactive</code>: 세션이 대화형으로 작동해야 하는지 여부 (기본값: <code>True</code>).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="종속성"><strong>종속성</strong></h3>
+<ul>
+<li><strong>표준 라이브러리</strong>:
+<ul>
+<li><code>sys</code>: 표준 입력/출력/오류 스트림에 접근하기 위해.</li>
+<li><code>signal</code>: <code>SIGWINCH</code> 신호를 처리하기 위해.</li>
+<li><code>warnings</code>: 폐기 경고를 발행하기 위해.</li>
+<li><code>ssl.SSLError</code>: SSL 관련 오류를 처리하기 위해.</li>
+</ul>
+</li>
+<li><strong>내부 모듈</strong>:
+<ul>
+<li><code>dockerpty.io</code>: 저수준 I/O 작업 및 스트림 관리를 처리합니다.</li>
+<li><code>dockerpty.tty</code>: 터미널 조작 유틸리티를 제공합니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="예제-사용법"><strong>예제 사용법</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> docker
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dockerpty <span style="color:#f92672">import</span> PseudoTerminal
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Docker 클라이언트 초기화</span>
+</span></span><span style="display:flex;"><span>client <span style="color:#f92672">=</span> docker<span style="color:#f92672">.</span>Client()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 컨테이너 생성</span>
+</span></span><span style="display:flex;"><span>container <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>create_container(
+</span></span><span style="display:flex;"><span>    image<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;busybox:latest&#39;</span>,
+</span></span><span style="display:flex;"><span>    stdin_open<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    tty<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    command<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/bin/sh&#39;</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 컨테이너의 PTY 시작</span>
+</span></span><span style="display:flex;"><span>pty <span style="color:#f92672">=</span> PseudoTerminal(client, RunOperation(client, container))
+</span></span><span style="display:flex;"><span>pty<span style="color:#f92672">.</span>start()
+</span></span></code></pre></div><hr>
+<h3 id="결론"><strong>결론</strong></h3>
+<p><code>dockerpty</code> 모듈은 Docker 컨테이너와 의사 터미널을 통한 상호작용을 위한 견고한 프레임워크를 제공합니다. PTY를 활용하여 컨테이너화된 애플리케이션을 터미널 기반 워크플로우로 원활히 통합할 수 있으며, 로컬 터미널 세션과 유사한 사용자 경험을 보장합니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

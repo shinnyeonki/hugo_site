@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>lab5 과제 추가 설명 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="파일의 이름을 바꾸는 프로그램을 작성하는데, - 파일의 이름을 같은 디렉토리 안에서 바꾸거나 - 다른 디렉토리로 이동하여 바꾸는 기능이 모두 구현되어야 합니다. - 4-1 강의자료에서 학습한 시스템 호출들을 사용하여 작성하기 바랍니다. manual rename …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/system-programminguniversity/lab5-%EA%B3%BC%EC%A0%9C-%EC%B6%94%EA%B0%80-%EC%84%A4%EB%AA%85/">
+
+    
+    
+    
+    <meta property="og:title" content="lab5 과제 추가 설명">
+    <meta property="og:description" content="파일의 이름을 바꾸는 프로그램을 작성하는데, - 파일의 이름을 같은 디렉토리 안에서 바꾸거나 - 다른 디렉토리로 이동하여 바꾸는 기능이 모두 구현되어야 합니다. - 4-1 강의자료에서 학습한 시스템 호출들을 사용하여 작성하기 바랍니다. manual rename …">
+    <meta property="og:url" content="http://localhost:1313/06.university/system-programminguniversity/lab5-%EA%B3%BC%EC%A0%9C-%EC%B6%94%EA%B0%80-%EC%84%A4%EB%AA%85/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="lab5 과제 추가 설명">
+    <meta name="twitter:description" content="파일의 이름을 바꾸는 프로그램을 작성하는데, - 파일의 이름을 같은 디렉토리 안에서 바꾸거나 - 다른 디렉토리로 이동하여 바꾸는 기능이 모두 구현되어야 합니다. - 4-1 강의자료에서 학습한 시스템 호출들을 사용하여 작성하기 바랍니다. manual rename …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>lab5 과제 추가 설명 **page.html**</h1>
+    <pre tabindex="0"><code>파일의 이름을 바꾸는 프로그램을 작성하는데, 
+- 파일의 이름을 같은 디렉토리 안에서 바꾸거나 
+- 다른 디렉토리로 이동하여 바꾸는 기능이 모두 구현되어야 합니다. 
+- 4-1 강의자료에서 학습한 시스템 호출들을 사용하여 작성하기 바랍니다.
+</code></pre><h2 id="manual-rename">manual rename</h2>
+<p><code>rename()</code> 함수는 파일의 이름을 변경하며, 필요시 디렉토리 간에 이동할 수 있습니다. 이 함수는 다음과 같은 특성을 가지고 있습니다:</p>
+<ul>
+<li><strong>하드 링크와의 영향</strong>: 다른 하드 링크(예: <code>link(2)</code>를 사용하여 생성된 링크)에 대해서는 영향을 미치지 않습니다.</li>
+<li><strong>열린 파일 디스크립터</strong>: <code>oldpath</code>에 대한 열린 파일 디스크립터는 영향을 받지 않습니다.</li>
+</ul>
+<h2 id="성공-여부-결정">성공 여부 결정</h2>
+<p><code>rename()</code> 작업이 성공하는지 여부는 여러 가지 제약 조건에 따라 결정됩니다. 아래는 관련된 오류 상황입니다:</p>
+<ul>
+<li><strong>newpath가 이미 존재하는 경우</strong>: <code>rename()</code>은 원자적으로 대체되므로, 이 시점에서 다른 프로세스가 <code>newpath</code>를 접근하려고 할 때 파일이 없다고 발견되는 상황은 없습니다. 그러나 <code>oldpath</code>와 <code>newpath</code>가 모두 파일을 참조하는 상태가 발생할 수 있는 시간 여유가 있습니다.</li>
+<li><strong>oldpath와 newpath가 동일한 하드 링크인 경우</strong>: 두 경로가 동일한 파일을 참조하고 있다면, <code>rename()</code>은 아무 작업도 하지 않고 성공 상태를 반환합니다.</li>
+<li><strong>newpath가 존재하지만 작업이 실패하는 경우</strong>: 어떤 이유로든 작업이 실패하면, <code>rename()</code>은 <code>newpath</code>의 인스턴스를 그대로 유지합니다.</li>
+<li><strong>oldpath가 디렉토리를 참조하는 경우</strong>: 이 경우, <code>newpath</code>는 존재하지 않거나 비어 있는 디렉토리를 지정해야 합니다.</li>
+<li><strong>oldpath가 심볼릭 링크를 참조하는 경우</strong>: 링크가 이름이 변경됩니다. 만약 <code>newpath</code>가 심볼릭 링크를 참조한다면, 해당 링크는 덮어씌워집니다.</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

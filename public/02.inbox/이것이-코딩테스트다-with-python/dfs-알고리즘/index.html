@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>DFS 알고리즘 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content=" 1.gif)
+stack vs recursion 풀이 2개로 나뉘며 stack 의 경우 dfs 시 탐색해야할 나머지 노드를 stack 에 저장해두고 빼서 탐색하는 방식의 알고리즘 recursion 의 경우 하위 트리가 없을 때 또는 자신이 null 일때 탈출조건을 준다 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EC%9D%B4%EA%B2%83%EC%9D%B4-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%8B%A4-with-python/dfs-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">
+
+    
+    
+    
+    <meta property="og:title" content="DFS 알고리즘">
+    <meta property="og:description" content=" 1.gif)
+stack vs recursion 풀이 2개로 나뉘며 stack 의 경우 dfs 시 탐색해야할 나머지 노드를 stack 에 저장해두고 빼서 탐색하는 방식의 알고리즘 recursion 의 경우 하위 트리가 없을 때 또는 자신이 null 일때 탈출조건을 준다 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EC%9D%B4%EA%B2%83%EC%9D%B4-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%8B%A4-with-python/dfs-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="DFS 알고리즘">
+    <meta name="twitter:description" content=" 1.gif)
+stack vs recursion 풀이 2개로 나뉘며 stack 의 경우 dfs 시 탐색해야할 나머지 노드를 stack 에 저장해두고 빼서 탐색하는 방식의 알고리즘 recursion 의 경우 하위 트리가 없을 때 또는 자신이 null 일때 탈출조건을 준다 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>DFS 알고리즘 **page.html**</h1>
+    <p>
+        <img src="/08.media/20231228191101.gif" alt="1_GT9oSo0agIeIj6nTg3jFEA (Image resource not found)" >1.gif)</p>
+<blockquote>
+<p>stack vs recursion 풀이 2개로 나뉘며
+stack 의 경우 dfs 시 탐색해야할 나머지 노드를 stack 에 저장해두고 빼서 탐색하는 방식의 알고리즘
+recursion 의 경우
+하위 트리가 없을 때 또는 자신이 null 일때 탈출조건을 준다면 recursion 풀이가 가능하다</p>
+</blockquote>
+<h2 id="binary-tree-dfs">binary tree DFS</h2>
+<ol>
+<li>stack 기반 풀이
+1.</li>
+<li>recursion 기반 풀이
+1.</li>
+</ol>
+<h2 id="grath-dfs">grath DFS</h2>
+<p>기본적으로 작은 숫자부터 탐색하는 것을 기본으로 한다</p>
+<p>recursion 풀이</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> visited[<span style="color:#ae81ff">9</span>];
+</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> graph[<span style="color:#ae81ff">9</span>];
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// DFS 함수 정의
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(<span style="color:#66d9ef">int</span> x) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 현재 노드 방문 처리
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    visited[x] <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 현재 노드와 연결된 다른 노드를 재귀적으로 방문
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> graph[x].size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> graph[x][i];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>visited[y]) dfs(y);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 각 노드의 인접 노드 정보를 초기화 리스트로 간단하게 할당
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    graph[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">8</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">7</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">7</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">7</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">7</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dfs(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>stack 풀이</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stack&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> visited[<span style="color:#ae81ff">9</span>];
+</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> graph[<span style="color:#ae81ff">9</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs_iterative</span>(<span style="color:#66d9ef">int</span> start) {
+</span></span><span style="display:flex;"><span>    stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> s;
+</span></span><span style="display:flex;"><span>    s.push(start);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> s.top();
+</span></span><span style="display:flex;"><span>        s.pop();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>visited[x]) {
+</span></span><span style="display:flex;"><span>            visited[x] <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>            cout <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	    <span style="color:#75715e">// 재귀 DFS와 동일한 방문 순서를 위해 인접 노드를 역순으로 스택에 넣습니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> graph[x].rbegin(); it <span style="color:#f92672">!=</span> graph[x].rend(); <span style="color:#f92672">++</span>it) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> y <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>it;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>visited[y])
+</span></span><span style="display:flex;"><span>                    s.push(y);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 각 노드의 인접 노드 정보를 초기화 리스트로 간단하게 할당
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    graph[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">8</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">7</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">7</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">7</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>};
+</span></span><span style="display:flex;"><span>    graph[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">7</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dfs_iterative(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

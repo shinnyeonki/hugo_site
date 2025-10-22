@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>terminal auto logging | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="Terminal Auto Logger 프로젝트 개요 프로젝트 이름: terminal auto logger 로그 디렉토리: ~/.local/log/terminal_auto_log 핵심 동작: terminal_auto_logger.sh: 쉘 시작 시 실행되어 로깅 환경을 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/terminal-auto-logging/">
+
+    
+    
+    
+    <meta property="og:title" content="terminal auto logging">
+    <meta property="og:description" content="Terminal Auto Logger 프로젝트 개요 프로젝트 이름: terminal auto logger 로그 디렉토리: ~/.local/log/terminal_auto_log 핵심 동작: terminal_auto_logger.sh: 쉘 시작 시 실행되어 로깅 환경을 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/terminal-auto-logging/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="terminal auto logging">
+    <meta name="twitter:description" content="Terminal Auto Logger 프로젝트 개요 프로젝트 이름: terminal auto logger 로그 디렉토리: ~/.local/log/terminal_auto_log 핵심 동작: terminal_auto_logger.sh: 쉘 시작 시 실행되어 로깅 환경을 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>terminal auto logging **page.html**</h1>
+    <h2 id="terminal-auto-logger">Terminal Auto Logger</h2>
+<h3 id="프로젝트-개요">프로젝트 개요</h3>
+<ul>
+<li><strong>프로젝트 이름</strong>: <code>terminal auto logger</code></li>
+<li><strong>로그 디렉토리</strong>: <code>~/.local/log/terminal_auto_log</code></li>
+<li><strong>핵심 동작</strong>:
+<ol>
+<li><code>terminal_auto_logger.sh</code>: 쉘 시작 시 실행되어 로깅 환경을 설정하고, 실제 로깅을 담당하는 Executor 스크립트를 호출합니다.</li>
+<li><code>_tal_executor.sh</code>: <code>script</code> 명령을 직접 실행하고, 세션이 종료된 후 로그 파일의 이름을 최종적으로 결정합니다. (내부 헬퍼 스크립트)</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="1-executor-스크립트-생성">1. <strong>Executor 스크립트 생성: <code>_tal_executor.sh</code></strong></h3>
+<p>이 스크립트는 실제 로깅을 실행하고 세션 종료 후 파일명 변경을 담당하는 핵심 로직입니다. 사용자가 직접 실행하는 것이 아닌, 메인 스크립트에 의해 호출됩니다.</p>
+<p><strong>파일 위치</strong>: <code>~/.local/bin/_tal_executor.sh</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이 스크립트는 terminal_auto_logger.sh에 의해 호출되는 내부 헬퍼입니다.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 사용자가 직접 실행하지 마세요.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 인자 파싱</span>
+</span></span><span style="display:flex;"><span>TEMP_LOG_FILE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>LOG_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>PID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$3<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>TTY_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$4<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>START_TIMESTAMP<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$5<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># &#39;script&#39; 명령으로 실제 로깅 세션 시작</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -q: 시작/종료 메시지 숨김</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -f: 실시간으로 버퍼를 비워 파일에 기록</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -a: 파일에 이어쓰기 (메타데이터를 먼저 기록했으므로 필수)</span>
+</span></span><span style="display:flex;"><span>script -qfa <span style="color:#e6db74">&#34;</span>$TEMP_LOG_FILE<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>EXIT_CODE<span style="color:#f92672">=</span>$? <span style="color:#75715e"># script 명령의 종료 코드 캡처</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 세션 종료 후 로그 파일 이름 변경</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 임시 로그 파일이 존재하고 내용이 있을 때만 이름 변경을 시도</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -s <span style="color:#e6db74">&#34;</span>$TEMP_LOG_FILE<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    END_TIMESTAMP<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date +<span style="color:#e6db74">&#34;%Y%m%d_%H%M%S&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 종료 코드에 따라 최종 파일명 결정</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$EXIT_CODE<span style="color:#e6db74">&#34;</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 정상 종료 (exit, logout 등)</span>
+</span></span><span style="display:flex;"><span>        END_PART<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$END_TIMESTAMP<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 비정상 종료 (kill, 시스템 다운 등)</span>
+</span></span><span style="display:flex;"><span>        END_PART<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aborted&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    FINAL_LOG_FILE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>LOG_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/terminal_(</span><span style="color:#e6db74">${</span>START_TIMESTAMP<span style="color:#e6db74">}</span><span style="color:#e6db74"> ~ </span><span style="color:#e6db74">${</span>END_PART<span style="color:#e6db74">}</span><span style="color:#e6db74">)_</span><span style="color:#e6db74">${</span>PID<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>TTY_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">.log&#34;</span>
+</span></span><span style="display:flex;"><span>    mv <span style="color:#e6db74">&#34;</span>$TEMP_LOG_FILE<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span>$FINAL_LOG_FILE<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 세션 동안 아무런 출력이 없었으면 임시 파일 삭제</span>
+</span></span><span style="display:flex;"><span>    rm -f <span style="color:#e6db74">&#34;</span>$TEMP_LOG_FILE<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><h3 id="2-메인-스크립트-개선">2. <strong>메인 스크립트 개선: <code>terminal_auto_logger.sh</code></strong></h3>
+<p>이 스크립트는 쉘 설정 파일(<code>.bashrc</code>, <code>.zshrc</code>)에서 호출되며, 모든 안정성 검사와 환경 설정을 담당합니다.</p>
+<p><strong>파일 위치</strong>: <code>~/.local/bin/terminal_auto_logger.sh</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 안정성 검사 ---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. &#39;script&#39; 명령어가 없으면 즉시 종료</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! command -v script &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Terminal Auto Logger: &#39;script&#39; command not found. Logging disabled.&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 이미 로깅 중이거나(재귀 방지), tmux/screen 세션 내에서는 실행하지 않음</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$TERMINAL_AUTO_LOGGER_ACTIVE<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$TMUX<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span>$TERM<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> screen* <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 로깅 준비 ---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로그 디렉토리 생성</span>
+</span></span><span style="display:flex;"><span>LOG_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/.local/log/terminal_auto_log&#34;</span>
+</span></span><span style="display:flex;"><span>mkdir -p <span style="color:#e6db74">&#34;</span>$LOG_DIR<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로그 파일명에 사용할 변수 설정</span>
+</span></span><span style="display:flex;"><span>TTY_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>tty | sed <span style="color:#e6db74">&#39;s|/|_|g&#39;</span> | sed <span style="color:#e6db74">&#39;s|[^a-zA-Z0-9_-]||g&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>START_TIMESTAMP<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date +<span style="color:#e6db74">&#34;%Y%m%d_%H%M%S&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>PID<span style="color:#f92672">=</span>$$
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 종료 후 이름이 변경될 임시 로그 파일</span>
+</span></span><span style="display:flex;"><span>TEMP_LOG_FILE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>LOG_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/session_</span><span style="color:#e6db74">${</span>START_TIMESTAMP<span style="color:#e6db74">}</span><span style="color:#e6db74">.tmp&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- 로깅 시작 ---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 로깅 세션 메타데이터를 임시 파일에 기록</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34; SCRIPT_SESSION_START&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;=================================================&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;  Project: Terminal Auto Logger&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;  User: </span><span style="color:#66d9ef">$(</span>whoami<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;  Host: </span><span style="color:#66d9ef">$(</span>hostname<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;  TTY: </span><span style="color:#66d9ef">$(</span>tty<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;  Shell: </span>$SHELL<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;  Started: </span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;  Ended: &#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;=================================================&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span> &gt; <span style="color:#e6db74">&#34;</span>$TEMP_LOG_FILE<span style="color:#e6db74">&#34;</span> <span style="color:#75715e"># 이어쓰기가 아닌 새로 쓰기</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 재귀 실행 방지를 위한 환경 변수 설정</span>
+</span></span><span style="display:flex;"><span>export TERMINAL_AUTO_LOGGER_ACTIVE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 쉘을 Executor 스크립트로 대체하여 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 필요한 모든 정보를 인자로 전달</span>
+</span></span><span style="display:flex;"><span>exec ~/.local/bin/_tal_executor.sh <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;</span>$TEMP_LOG_FILE<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;</span>$LOG_DIR<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;</span>$PID<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;</span>$TTY_NAME<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;</span>$START_TIMESTAMP<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h3 id="3-설치-및-설정">3. <strong>설치 및 설정</strong></h3>
+<p><strong>1단계: 디렉토리 생성</strong>
+사용자 로컬 바이너리 디렉토리와 로그 디렉토리를 생성합니다. (<code>~/.local/bin</code>은 많은 시스템에서 자동으로 PATH에 추가됩니다.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p ~/.local/bin
+</span></span><span style="display:flex;"><span>mkdir -p ~/.local/log/terminal_auto_log
+</span></span></code></pre></div><p><strong>2단계: 스크립트 저장 및 권한 설정</strong>
+위에서 작성한 두 스크립트 코드를 각각 <code>~/.local/bin/terminal_auto_logger.sh</code>와 <code>~/.local/bin/_tal_executor.sh</code>에 저장한 후, 실행 권한을 부여합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ~/.local/bin/terminal_auto_logger.sh
+</span></span><span style="display:flex;"><span>chmod +x ~/.local/bin/_tal_executor.sh
+</span></span></code></pre></div><p><strong>3단계: 쉘 설정 파일에 적용 (<code>~/.bashrc</code> 또는 <code>~/.zshrc</code>)</strong>
+쉘 설정 파일 가장 아래쪽에 다음 코드를 추가합니다.</p>
+<h4 id="bash-사용자-bashrc">Bash 사용자 (<code>~/.bashrc</code>):</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Terminal Auto Logger (안정성 강화 버전)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ~/.local/bin 이 PATH에 있는지 확인하고, 없다면 추가</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;:</span>$PATH<span style="color:#e6db74">:&#34;</span> !<span style="color:#f92672">=</span> *<span style="color:#e6db74">&#34;:</span>$HOME<span style="color:#e6db74">/.local/bin:&#34;</span>* <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/.local/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> -t <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> -z <span style="color:#e6db74">&#34;</span>$TERMINAL_AUTO_LOGGER_ACTIVE<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    source ~/.local/bin/terminal_auto_logger.sh
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><h4 id="zsh-사용자-zshrc">Zsh 사용자 (<code>~/.zshrc</code>):</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span><span style="color:#75715e"># Terminal Auto Logger (안정성 강화 버전)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ~/.local/bin 이 PATH에 있는지 확인하고, 없다면 추가</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;:</span>$PATH<span style="color:#e6db74">:&#34;</span> !<span style="color:#f92672">=</span> *<span style="color:#e6db74">&#34;:</span>$HOME<span style="color:#e6db74">/.local/bin:&#34;</span>* <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/.local/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> -o interactive <span style="color:#f92672">&amp;&amp;</span> -z <span style="color:#e6db74">&#34;</span>$TERMINAL_AUTO_LOGGER_ACTIVE<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    source ~/.local/bin/terminal_auto_logger.sh
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><p><strong>4단계: 적용</strong>
+<code>source ~/.bashrc</code> (또는 <code>source ~/.zshrc</code>)를 실행하거나 새 터미널을 열면 로깅이 자동으로 시작됩니다.</p>
+<hr>
+<h2 id="-주요-개선-사항-및-작동-원리">💡 주요 개선 사항 및 작동 원리</h2>
+<ol>
+<li>
+<p><strong>2-Script 구조의 안정성</strong>:</p>
+<ul>
+<li>메인 스크립트(<code>terminal_auto_logger.sh</code>)는 환경 검사와 설정만 담당하여 역할이 명확합니다.</li>
+<li><code>exec</code>를 통해 쉘 프로세스가 Executor 스크립트(<code>_tal_executor.sh</code>)로 완전히 대체됩니다.</li>
+<li>Executor는 <code>script</code>가 <strong>종료될 때까지 기다린 후</strong>, 그 종료 상태(성공/실패)를 확인하여 후처리(파일명 변경)를 수행합니다. 이 구조 덕분에 세션 종료 시점의 정보를 파일명에 안정적으로 반영할 수 있습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>정확한 파일명 생성</strong>:</p>
+<ul>
+<li>세션이 시작되면 <code>.tmp</code> 확장자를 가진 임시 파일에 로그가 기록됩니다.</li>
+<li>사용자가 <code>exit</code> 등으로 정상 종료하면 <code>script</code>는 종료 코드 <code>0</code>을 반환하고, 파일명은 <code>... (시작시간 ~ 종료시간).log</code> 형식으로 변경됩니다.</li>
+<li>세션이 <code>kill</code> 명령으로 강제 종료되거나 비정상적으로 끝나면, <code>script</code>는 <code>0</code>이 아닌 종료 코드를 반환하고, 파일명은 <code>... (시작시간 ~ aborted).log</code> 형식으로 변경되어 문제 상황을 명확히 알려줍니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>예측 가능한 동작</strong>:</p>
+<ul>
+<li><code>tmux</code>/<code>screen</code> 환경이나 이미 로깅 중인 세션에서는 중복 실행되지 않아 충돌을 원천적으로 방지합니다.</li>
+<li>환경 변수명을 <code>TERMINAL_AUTO_LOGGER_ACTIVE</code>로 명확하게 지정하여 다른 프로그램과의 잠재적 충돌 가능성을 최소화했습니다.</li>
+<li>로그 디렉토리와 스크립트 위치를 <code>~/.local</code> 아래로 표준화하여 시스템을 깔끔하게 유지합니다.</li>
+</ul>
+</li>
+</ol>
+<p>이 개선된 솔루션은 요구하신 모든 사항을 만족시키면서, 예측 불가능한 상황에 더욱 잘 대처할 수 있도록 설계되었습니다. 안정적이고 신뢰도 높은 터미널 활동 기록 시스템으로 활용하실 수 있습니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

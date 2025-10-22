@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>spring HandlerAdapter 구현체 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="스프링 MVC의 **HandlerAdapter**는 다양한 유형의 핸들러(컨트롤러)를 실행하는 인터페이스입니다.
+각 HandlerAdapter 구현체는 특정 유형의 핸들러를 지원합니다.
+아래에서 언급된 6가지 구현체를 체계적으로 설명합니다:
+1. …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/spring-handleradapter-%EA%B5%AC%ED%98%84%EC%B2%B4/">
+
+    
+    
+    
+    <meta property="og:title" content="spring HandlerAdapter 구현체">
+    <meta property="og:description" content="스프링 MVC의 **HandlerAdapter**는 다양한 유형의 핸들러(컨트롤러)를 실행하는 인터페이스입니다.
+각 HandlerAdapter 구현체는 특정 유형의 핸들러를 지원합니다.
+아래에서 언급된 6가지 구현체를 체계적으로 설명합니다:
+1. …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/spring-handleradapter-%EA%B5%AC%ED%98%84%EC%B2%B4/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="spring HandlerAdapter 구현체">
+    <meta name="twitter:description" content="스프링 MVC의 **HandlerAdapter**는 다양한 유형의 핸들러(컨트롤러)를 실행하는 인터페이스입니다.
+각 HandlerAdapter 구현체는 특정 유형의 핸들러를 지원합니다.
+아래에서 언급된 6가지 구현체를 체계적으로 설명합니다:
+1. …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>spring HandlerAdapter 구현체 **page.html**</h1>
+    <p>스프링 MVC의 **<code>HandlerAdapter</code>**는 다양한 유형의 핸들러(컨트롤러)를 실행하는 인터페이스입니다.<br>
+각 <code>HandlerAdapter</code> 구현체는 특정 유형의 핸들러를 지원합니다.<br>
+아래에서 언급된 6가지 구현체를 체계적으로 설명합니다:</p>
+<hr>
+<h3 id="1-abstracthandlermethodadapter">1. <strong><code>AbstractHandlerMethodAdapter</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>메서드 기반 핸들러 어댑터의 추상 클래스</strong>.</li>
+<li><strong>특징</strong>:
+<ul>
+<li><code>HandlerMethod</code>를 처리하는 어댑터의 기본 기능을 제공합니다.</li>
+<li><code>RequestMappingHandlerAdapter</code>의 상위 클래스로, 메서드 단위 처리 로직을 공통화합니다.</li>
+</ul>
+</li>
+<li><strong>사용 예시</strong>:<br>
+구체적인 구현체(<code>RequestMappingHandlerAdapter</code>)에서 확장되어 사용됩니다.</li>
+</ul>
+<hr>
+<h3 id="2-handlerfunctionadapter">2. <strong><code>HandlerFunctionAdapter</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>함수형 프로그래밍 스타일 핸들러</strong>(<code>HandlerFunction</code>)를 지원합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li><code>RouterFunction</code>과 함께 사용되며, 람다 표현식으로 핸들러를 정의합니다.</li>
+<li>Spring 5+에서 도입된 <strong>함수형 엔드포인트</strong>를 처리합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> RouterFunction<span style="color:#f92672">&lt;</span>ServerResponse<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">route</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> RouterFunctions.<span style="color:#a6e22e">route</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/api/users&#34;</span>, request <span style="color:#f92672">-&gt;</span> ServerResponse.<span style="color:#a6e22e">ok</span>().<span style="color:#a6e22e">body</span>(...))
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="3-httprequesthandleradapter">3. <strong><code>HttpRequestHandlerAdapter</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong><code>HttpRequestHandler</code> 인터페이스 구현체</strong>를 처리합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>서블릿 API(<code>HttpServletRequest</code>, <code>HttpServletResponse</code>)를 직접 사용하는 레거시 코드와 호환됩니다.</li>
+<li><code>@Controller</code> 애노테이션 없이도 핸들러를 등록할 수 있습니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LegacyHandler</span> <span style="color:#66d9ef">implements</span> HttpRequestHandler {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handleRequest</span>(HttpServletRequest request, HttpServletResponse response) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 직접 응답을 생성합니다.</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="4-requestmappinghandleradapter">4. <strong><code>RequestMappingHandlerAdapter</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>애노테이션 기반 컨트롤러</strong>(<code>@RequestMapping</code>, <code>@RestController</code>)를 처리합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li><code>@GetMapping</code>, <code>@PostMapping</code>, <code>@PathVariable</code>, <code>@RequestBody</code> 등을 지원합니다.</li>
+<li>현대적인 스프링 애플리케이션에서 <strong>가장 많이 사용되는 어댑터</strong>입니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserController</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/users&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>User<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getUsers</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> userService.<span style="color:#a6e22e">findAll</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="5-simplecontrollerhandleradapter">5. <strong><code>SimpleControllerHandlerAdapter</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong><code>Controller</code> 인터페이스 구현체</strong>를 처리합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>과거에 사용되던 방식으로, <code>Controller</code> 인터페이스의 <code>handleRequest()</code> 메서드를 호출합니다.</li>
+<li><code>@Controller</code> 애노테이션 없이 빈으로 등록해야 합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OldController</span> <span style="color:#66d9ef">implements</span> Controller {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ModelAndView <span style="color:#a6e22e">handleRequest</span>(HttpServletRequest request, HttpServletResponse response) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> ModelAndView(<span style="color:#e6db74">&#34;viewName&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="6-simpleservlethandleradapter">6. <strong><code>SimpleServletHandlerAdapter</code></strong></h3>
+<ul>
+<li><strong>역할</strong>: <strong>일반 서블릿</strong>(<code>javax.servlet.Servlet</code>)을 핸들러로 사용합니다.</li>
+<li><strong>특징</strong>:
+<ul>
+<li>기존 서블릿을 스프링 MVC에서 재사용할 수 있도록 합니다.</li>
+<li>서블릿의 <code>service()</code> 메서드를 직접 호출합니다.</li>
+</ul>
+</li>
+<li><strong>예시</strong>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@WebServlet</span>(<span style="color:#e6db74">&#34;/legacy&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LegacyServlet</span> <span style="color:#66d9ef">extends</span> HttpServlet {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doGet</span>(HttpServletRequest req, HttpServletResponse res) {
+</span></span><span style="display:flex;"><span>        res.<span style="color:#a6e22e">getWriter</span>().<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;Legacy Servlet Response&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h3 id="-요약">📌 <strong>요약</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th>어댑터명</th>
+          <th>처리 대상</th>
+          <th>주요 사용 사례</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>HandlerFunctionAdapter</code></td>
+          <td><code>HandlerFunction</code></td>
+          <td>함수형 라우팅(람다 기반)</td>
+      </tr>
+      <tr>
+          <td><code>HttpRequestHandlerAdapter</code></td>
+          <td><code>HttpRequestHandler</code></td>
+          <td>서블릿 API 기반 레거시 코드</td>
+      </tr>
+      <tr>
+          <td><code>RequestMappingHandlerAdapter</code></td>
+          <td><code>@RequestMapping</code> 기반 컨트롤러</td>
+          <td>현대적인 REST API 개발</td>
+      </tr>
+      <tr>
+          <td><code>SimpleControllerHandlerAdapter</code></td>
+          <td><code>Controller</code> 인터페이스</td>
+          <td>과거 버전 호환용 컨트롤러</td>
+      </tr>
+      <tr>
+          <td><code>SimpleServletHandlerAdapter</code></td>
+          <td>일반 서블릿</td>
+          <td>기존 서블릿 통합</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-핵심-포인트">💡 <strong>핵심 포인트</strong></h3>
+<ul>
+<li><strong>현대적인 개발</strong>에서는 <strong><code>RequestMappingHandlerAdapter</code></strong> 가 주력으로 사용됩니다.</li>
+<li><strong>함수형 프로그래밍</strong>은 <strong><code>HandlerFunctionAdapter</code></strong> 로 처리합니다.</li>
+<li><strong>레거시 코드</strong> 통합 시 <code>HttpRequestHandlerAdapter</code> 또는 <code>SimpleServletHandlerAdapter</code>를 사용합니다.</li>
+<li><code>SimpleControllerHandlerAdapter</code>는 거의 사용되지 않으며, <code>@Controller</code> 애노테이션으로 대체되었습니다.</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

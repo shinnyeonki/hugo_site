@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title> | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="NTP 와 같은 프로토콜을 통해 시간을 동기화 할 수 있지만 원격지 서버의 허용을 대부분 안해주기 때문에 웹서버의 요청시 http 응답의 Date 항목을 통해 원격지 서버의 시간을 예측해 본다
+현재 서버의 시간을 확인하는 예시
+int main() { struct …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/%EC%9B%90%EA%B2%A9%EC%A7%80-%EC%84%9C%EB%B2%84-%EC%8B%9C%EA%B0%84-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/">
+
+    
+    
+    
+    <meta property="og:title" content="">
+    <meta property="og:description" content="NTP 와 같은 프로토콜을 통해 시간을 동기화 할 수 있지만 원격지 서버의 허용을 대부분 안해주기 때문에 웹서버의 요청시 http 응답의 Date 항목을 통해 원격지 서버의 시간을 예측해 본다
+현재 서버의 시간을 확인하는 예시
+int main() { struct …">
+    <meta property="og:url" content="http://localhost:1313/temp/%EC%9B%90%EA%B2%A9%EC%A7%80-%EC%84%9C%EB%B2%84-%EC%8B%9C%EA%B0%84-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="NTP 와 같은 프로토콜을 통해 시간을 동기화 할 수 있지만 원격지 서버의 허용을 대부분 안해주기 때문에 웹서버의 요청시 http 응답의 Date 항목을 통해 원격지 서버의 시간을 예측해 본다
+현재 서버의 시간을 확인하는 예시
+int main() { struct …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1> **page.html**</h1>
+    <p>NTP 와 같은 프로토콜을  통해 시간을 동기화 할 수 있지만 원격지 서버의 허용을 대부분 안해주기 때문에 웹서버의 요청시 http 응답의 Date 항목을 통해 원격지 서버의 시간을 예측해 본다</p>
+<p>현재 서버의 시간을 확인하는 예시</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> timespec ts;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 현재 시간을 가져옵니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">clock_gettime</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>ts);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 시간 출력
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">%04ld-%02ld-%02ld %02ld:%02ld:%02ld.%09ld&#34;</span>,
+</span></span><span style="display:flex;"><span>               ts.tv_sec <span style="color:#f92672">/</span> <span style="color:#ae81ff">31557600</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1970</span>, <span style="color:#75715e">// 연도 계산
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               (ts.tv_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">31557600</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2629743</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#75715e">// 월 계산
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               (ts.tv_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">2629743</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">86400</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#75715e">// 일 계산
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               (ts.tv_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">86400</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">3600</span>, <span style="color:#75715e">// 시 계산
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               (ts.tv_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">3600</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span>, <span style="color:#75715e">// 분 계산
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               ts.tv_sec <span style="color:#f92672">%</span> <span style="color:#ae81ff">60</span>, <span style="color:#75715e">// 초 계산
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>               ts.tv_nsec); <span style="color:#75715e">// 나노초
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">fflush</span>(stdout); <span style="color:#75715e">// 출력 버퍼를 플러시하여 즉시 출력
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">usleep</span>(<span style="color:#ae81ff">1000</span>); <span style="color:#75715e">// 10,000 마이크로초 (1 밀리초) 대기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>위와 같은 인터페이스로 구현하고자 한다</p>
+<table>
+  <thead>
+      <tr>
+          <th>프로그램 시작부터 요청 전까지</th>
+          <th>원격지 서버 요청부터 도착시점</th>
+          <th>원격지 서버 처리 시간</th>
+          <th>원격지 서버 부터 client 까지</th>
+          <th>Date 항목 처리</th>
+          <th>출력</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<ol>
+<li>프로그램 시작</li>
+<li>원격지 서버 요청 도착</li>
+<li>원격지 서버 처리 시간</li>
+<li>원격지 서버 출발 부터 client 까지</li>
+<li>시간 추출 및 처리</li>
+<li>출력</li>
+</ol>
+<p>원격지 서버 처리시간은 정확히 그시간을 확인할 길이 없음
+4 원격지 서버 출발 부터 client 까지 delay 의 경우 실시간으로 변경됨
+5 시간 추출 및 처리의 경우 일반적으로 비슷한 시간이 걸림
+6 출력 시간의 경우 비슷한 시간이 걸림</p>
+<p>네트워크 지연시간</p>
+<pre tabindex="0"><code> curl -s -o /dev/null -w %{time_total}\\n class.mju.ac.kr
+</code></pre><p>서버 데이터 갱신시간의 규칙 예측하기</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

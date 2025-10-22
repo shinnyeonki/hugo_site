@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>IPC (massage passing) | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="아래는 Unix에서 사용되는 다양한 프로세스 간 통신(Inter-Process Communication, IPC) 방식들에 대한 자세한 설명입니다.
+주요 내용은 다음과 같은 IPC 기법들을 포함합니다:
+Ordinary Pipe (일반 파이프) Named Pipe …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/ipc-massage-passing/">
+
+    
+    
+    
+    <meta property="og:title" content="IPC (massage passing)">
+    <meta property="og:description" content="아래는 Unix에서 사용되는 다양한 프로세스 간 통신(Inter-Process Communication, IPC) 방식들에 대한 자세한 설명입니다.
+주요 내용은 다음과 같은 IPC 기법들을 포함합니다:
+Ordinary Pipe (일반 파이프) Named Pipe …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/ipc-massage-passing/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="IPC (massage passing)">
+    <meta name="twitter:description" content="아래는 Unix에서 사용되는 다양한 프로세스 간 통신(Inter-Process Communication, IPC) 방식들에 대한 자세한 설명입니다.
+주요 내용은 다음과 같은 IPC 기법들을 포함합니다:
+Ordinary Pipe (일반 파이프) Named Pipe …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>IPC (massage passing) **page.html**</h1>
+    <p>아래는 <strong>Unix에서 사용되는 다양한 프로세스 간 통신</strong>(Inter-Process Communication, IPC) 방식들에 대한 <strong>자세한 설명</strong>입니다.<br>
+주요 내용은 다음과 같은 IPC 기법들을 포함합니다:</p>
+<ol>
+<li><strong>Ordinary Pipe (일반 파이프)</strong></li>
+<li><strong>Named Pipe (FIFO)</strong></li>
+<li><strong>UNIX Domain Socket</strong></li>
+</ol>
+<hr>
+<h3 id="-1-ordinary-pipe-일반-파이프">🔹 1. Ordinary Pipe (일반 파이프)</h3>
+<h4 id="-개념">✅ 개념</h4>
+<ul>
+<li><code>pipe()</code> 시스템 콜을 통해 생성됨</li>
+<li>두 개의 <strong>파일 디스크립터</strong>(file descriptor) 반환:
+<ul>
+<li>하나는 <strong>쓰기 전용</strong>(write-end)</li>
+<li>하나는 <strong>읽기 전용</strong>(read-end)</li>
+</ul>
+</li>
+<li>데이터는 쓰기 쪽으로 넣고, 읽기 쪽에서 뺌 → <strong>Producer-Consumer 패턴</strong></li>
+<li>단방향(unidirectional) 통신만 지원</li>
+</ul>
+<h4 id="-특징">✅ 특징</h4>
+<table>
+  <thead>
+      <tr>
+          <th>항목</th>
+          <th>내용</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>범위</strong></td>
+          <td>부모와 자식 프로세스 간만 가능 (fork 이후 공유)</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>존속성</strong></td>
+          <td>프로세스 종료 시 사라짐</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>방향성</strong></td>
+          <td>단방향 (한쪽에서만 보내고 한쪽에서만 받음)</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>사용 예시</strong></td>
+          <td>쉘 명령어 연결 (<code>ls | grep &quot;txt&quot;</code>)</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="-예제-코드">✅ 예제 코드</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> pipefd[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pid_t</span> pid;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> buf;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">pipe</span>(pipefd) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Pipe failed&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    pid <span style="color:#f92672">=</span> <span style="color:#a6e22e">fork</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) { <span style="color:#75715e">// Fork 실패
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Fork failed&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) { <span style="color:#75715e">// 자식 프로세스 (reader)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">close</span>(pipefd[<span style="color:#ae81ff">1</span>]); <span style="color:#75715e">// 쓰기 fd 닫기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">read</span>(pipefd[<span style="color:#ae81ff">0</span>], <span style="color:#f92672">&amp;</span>buf, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">write</span>(STDOUT_FILENO, <span style="color:#f92672">&amp;</span>buf, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">close</span>(pipefd[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> { <span style="color:#75715e">// 부모 프로세스 (writer)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">close</span>(pipefd[<span style="color:#ae81ff">0</span>]); <span style="color:#75715e">// 읽기 fd 닫기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">write</span>(pipefd[<span style="color:#ae81ff">1</span>], <span style="color:#e6db74">&#34;Hello from parent&#34;</span>, <span style="color:#ae81ff">17</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">close</span>(pipefd[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">wait</span>(NULL); <span style="color:#75715e">// 자식 기다리기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>이 코드는 부모가 메시지를 보내고 자식이 그것을 출력하는 간단한 파이프 예제입니다.</p>
+</blockquote>
+<hr>
+<h3 id="-2-named-pipe-fifo-first-in-first-out">🔹 2. Named Pipe (FIFO: First In First Out)</h3>
+<h4 id="-개념-1">✅ 개념</h4>
+<ul>
+<li>이름을 가진 파일 형태의 파이프</li>
+<li><code>mkfifo()</code> 함수로 생성되며, 실제 파일처럼 <code>/tmp/myfifo</code> 같은 경로에 존재함</li>
+<li>여러 프로세스 간 통신 가능 (부모-자식 관계 필요 없음)</li>
+</ul>
+<h4 id="-특징-1">✅ 특징</h4>
+<table>
+  <thead>
+      <tr>
+          <th>항목</th>
+          <th>내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>범위</strong></td>
+          <td>관련 없는 모든 프로세스 간 통신 가능</td>
+      </tr>
+      <tr>
+          <td><strong>존속성</strong></td>
+          <td>프로세스 종료 후에도 유지됨 (수동 삭제 필요)</td>
+      </tr>
+      <tr>
+          <td><strong>방향성</strong></td>
+          <td>기본 단방향, 하지만 양방향도 가능 (두 FIFO 사용하면 됨)</td>
+      </tr>
+      <tr>
+          <td><strong>형태</strong></td>
+          <td>파일 시스템 상에 물리적으로 존재하는 파일</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="-예제-코드-1">✅ 예제 코드</h4>
+<h5 id="-fifo-생성자">🧱 FIFO 생성자</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/types.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/stat.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mkfifo</span>(<span style="color:#e6db74">&#34;myfifo&#34;</span>, <span style="color:#ae81ff">0666</span>); <span style="color:#75715e">// 권한 0666으로 myfifo 생성
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="-쓰기writer">📝 쓰기(writer)</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;myfifo&#34;</span>, O_WRONLY); <span style="color:#75715e">// Blocking 모드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">write</span>(fd, <span style="color:#e6db74">&#34;Hello from writer&#34;</span>, <span style="color:#ae81ff">17</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">close</span>(fd);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="-읽기reader">📖 읽기(reader)</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">80</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;myfifo&#34;</span>, O_RDONLY);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">read</span>(fd, buffer, <span style="color:#66d9ef">sizeof</span>(buffer));
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Received: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">close</span>(fd);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>위 코드를 실행하려면 세 개의 터미널 창에서 각각 순서대로 실행해야 합니다:</p>
+<pre tabindex="0"><code>$ ./creator
+$ ./reader   # reader 먼저 실행하고 대기
+$ ./writer   # writer가 메시지 전송
+</code></pre></blockquote>
+<hr>
+<h3 id="-3-unix-domain-socket-로컬-소켓">🔹 3. UNIX Domain Socket (로컬 소켓)</h3>
+<h4 id="-개념-2">✅ 개념</h4>
+<ul>
+<li>로컬 머신 내에서만 사용되는 소켓</li>
+<li>파일 시스템 경로(<code>/tmp/mysocket</code>)를 주소로 사용함</li>
+<li>TCP/IP 소켓과 비슷하지만, 커널 내부에서 처리되어 더 빠름</li>
+</ul>
+<h4 id="-특징-2">✅ 특징</h4>
+<table>
+  <thead>
+      <tr>
+          <th>항목</th>
+          <th>내용</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>범위</strong></td>
+          <td>동일 머신 내의 프로세스 간</td>
+      </tr>
+      <tr>
+          <td><strong>존속성</strong></td>
+          <td>프로세스 종료 후에도 파일 유지(삭제 필요)</td>
+      </tr>
+      <tr>
+          <td><strong>방향성</strong></td>
+          <td>양방향(full-duplex), 스트림 또는 데이터그램 방식 가능</td>
+      </tr>
+      <tr>
+          <td><strong>성능</strong></td>
+          <td>일반 파이프보다 느리지만 네트워크 소켓보다 빠름</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="-예제-코드-2">✅ 예제 코드</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/socket.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/un.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> sv[<span style="color:#ae81ff">2</span>]; <span style="color:#75715e">// 소켓 페어
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">100</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">socketpair</span>(AF_UNIX, SOCK_STREAM, <span style="color:#ae81ff">0</span>, sv) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Socketpair failed&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pid_t</span> pid <span style="color:#f92672">=</span> <span style="color:#a6e22e">fork</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">perror</span>(<span style="color:#e6db74">&#34;Fork failed&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) { <span style="color:#75715e">// 자식 프로세스 (수신)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">close</span>(sv[<span style="color:#ae81ff">0</span>]); <span style="color:#75715e">// 부모 쪽 fd 닫기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">read</span>(sv[<span style="color:#ae81ff">1</span>], buffer, <span style="color:#66d9ef">sizeof</span>(buffer) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Child received: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">close</span>(sv[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> { <span style="color:#75715e">// 부모 프로세스 (송신)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">close</span>(sv[<span style="color:#ae81ff">1</span>]); <span style="color:#75715e">// 자식 쪽 fd 닫기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">write</span>(sv[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;Hello my child&#34;</span>, <span style="color:#ae81ff">15</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">close</span>(sv[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">wait</span>(NULL); <span style="color:#75715e">// 자식 종료 대기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="-전체-비교표">📊 전체 비교표</h3>
+<table>
+  <thead>
+      <tr>
+          <th>항목</th>
+          <th>Ordinary Pipe</th>
+          <th>Named Pipe (FIFO)</th>
+          <th>Unix Domain Socket</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>통신 범위</strong></td>
+          <td>부모-자식 프로세스</td>
+          <td>모든 프로세스</td>
+          <td>모든 프로세스</td>
+      </tr>
+      <tr>
+          <td><strong>존속성</strong></td>
+          <td>일시적</td>
+          <td>영구적 (파일 시스템에 남음)</td>
+          <td>영구적 (경로로 지정된 파일)</td>
+      </tr>
+      <tr>
+          <td><strong>방향성</strong></td>
+          <td>단방향</td>
+          <td>단방향/양방향 가능</td>
+          <td>양방향(full-duplex)</td>
+      </tr>
+      <tr>
+          <td><strong>방식</strong></td>
+          <td>Direct</td>
+          <td>Indirect</td>
+          <td>Indirect</td>
+      </tr>
+      <tr>
+          <td><strong>동기화</strong></td>
+          <td>기본 blocking</td>
+          <td>기본 blocking</td>
+          <td>기본 blocking</td>
+      </tr>
+      <tr>
+          <td><strong>비동기 지원</strong></td>
+          <td>가능</td>
+          <td>가능</td>
+          <td>가능</td>
+      </tr>
+      <tr>
+          <td><strong>성능</strong></td>
+          <td>매우 빠름</td>
+          <td>중간</td>
+          <td>빠름</td>
+      </tr>
+      <tr>
+          <td><strong>복잡성</strong></td>
+          <td>낮음</td>
+          <td>중간</td>
+          <td>약간 복잡</td>
+      </tr>
+      <tr>
+          <td><strong>사용 목적</strong></td>
+          <td>간단한 parent-child 통신</td>
+          <td>여러 프로세스 간 안정적인 통신</td>
+          <td>고성능 로컬 멀티프로세스 통신</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-성능-비교-내부-구현-기준">🚀 성능 비교 (내부 구현 기준)</h3>
+<pre tabindex="0"><code>Ordinary Pipe &gt; Unix Domain Socket &gt; Named Pipe (FIFO) &gt; Network Socket
+</code></pre><ul>
+<li><strong>Ordinary Pipe</strong> : 가장 빠르고 간단 (커널 내부 버퍼 사용)</li>
+<li><strong>Unix Domain Socket</strong> : 양방향, full-duplex, 네트워크 소켓처럼 사용 가능</li>
+<li><strong>Named Pipe (FIFO)</strong> : 파일 시스템 기반이므로 약간 느림</li>
+<li><strong>Network Socket</strong> : TCP/IP 오버헤드가 있어 가장 느림</li>
+</ul>
+<hr>
+<h3 id="-요약">💬 요약</h3>
+<ul>
+<li><strong>Ordinary Pipe</strong>: 부모-자식 간 단방향 통신, 가장 간단하고 빠름</li>
+<li><strong>Named Pipe (FIFO)</strong>: 파일처럼 생성하여 여러 프로세스 간 통신 가능</li>
+<li><strong>UNIX Domain Socket</strong>: 로컬 머신 내에서 네트워크 소켓처럼 사용되는 고성능 통신 수단</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

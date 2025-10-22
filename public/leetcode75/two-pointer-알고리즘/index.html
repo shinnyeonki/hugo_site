@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>two pointer 알고리즘 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="two pointer 알고리즘 1차원 배열에서 각자 다른 원소를 가리키는 2개의 포인터를 사용하여 목표값을 구한다 $O(n^2)$ =&gt; $O(n)$ 해결하는 기법
+이분탐색 vs 투포인터
+문제 예시 주어진 정수 배열 height의 길이를 n이라고 할 때, n개의 수 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/leetcode75/two-pointer-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">
+
+    
+    
+    
+    <meta property="og:title" content="two pointer 알고리즘">
+    <meta property="og:description" content="two pointer 알고리즘 1차원 배열에서 각자 다른 원소를 가리키는 2개의 포인터를 사용하여 목표값을 구한다 $O(n^2)$ =&gt; $O(n)$ 해결하는 기법
+이분탐색 vs 투포인터
+문제 예시 주어진 정수 배열 height의 길이를 n이라고 할 때, n개의 수 …">
+    <meta property="og:url" content="http://localhost:1313/leetcode75/two-pointer-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="two pointer 알고리즘">
+    <meta name="twitter:description" content="two pointer 알고리즘 1차원 배열에서 각자 다른 원소를 가리키는 2개의 포인터를 사용하여 목표값을 구한다 $O(n^2)$ =&gt; $O(n)$ 해결하는 기법
+이분탐색 vs 투포인터
+문제 예시 주어진 정수 배열 height의 길이를 n이라고 할 때, n개의 수 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>two pointer 알고리즘 **page.html**</h1>
+    <h1 id="two-pointer-알고리즘">two pointer 알고리즘</h1>
+<p>1차원 배열에서 각자 다른 원소를 가리키는 2개의 포인터를 사용하여 목표값을 구한다
+$O(n^2)$ =&gt; $O(n)$ 해결하는 기법</p>
+<p>이분탐색 vs 투포인터</p>
+<h2 id="문제-예시">문제 예시</h2>
+<pre tabindex="0"><code>주어진 정수 배열 height의 길이를 n이라고 할 때, n개의 수직 선이 그려져 있습니다. i번째 선의 두 끝점은 (i, 0)과 (i, height[i])입니다.
+두 개의 선을 선택하여 x축과 함께 컨테이너를 형성했을 때, 이 컨테이너가 최대한 많은 물을 저장할 수 있도록 두 선을 찾는 문제입니다.
+최대 물의 양을 반환하세요.
+컨테이너를 기울일 수 없다는 점에 유의하세요.
+
+예시 1:
+입력: height = [1,8,6,2,5,4,8,3,7]
+출력: 49
+설명: 위의 수직 선들은 배열 [1,8,6,2,5,4,8,3,7]로 표현됩니다. 이 경우, 물이 저장될 수 있는 최대 면적은 49입니다.
+
+예시 2:
+입력: height = [1,1]
+출력: 1
+
+제약 조건:
+n == height.length
+2 &lt;= n &lt;= 10^5
+0 &lt;= height[i] &lt;= 10^4
+</code></pre><p>이중 반복문 $O(n^2)$ =&gt; $O(n)$ 반복 1회</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxArea</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> height) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> ; i<span style="color:#f92672">&lt;</span> height.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> ; i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> height.size() ; j<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> width <span style="color:#f92672">=</span> j <span style="color:#f92672">-</span> i;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> length <span style="color:#f92672">=</span> min(height[i], height[j]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> area <span style="color:#f92672">=</span> width <span style="color:#f92672">*</span> length;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(ret <span style="color:#f92672">&lt;</span> area) ret <span style="color:#f92672">=</span> area;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

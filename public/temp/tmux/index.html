@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>tmux | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content=" tmux는 터미널 멀티플렉서로, 하나의 터미널 창에서 여러 세션을 관리할 수 있게 해줍니다. 아래에 tmux의 기본 사용법(생성, 접근, 종료 등)을 정리해 드릴게요.
+🔹 1. tmux 설치 확인 (리눅스 기준) tmux -V # 버전 확인 설치가 필요하다면:
+우분투 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/tmux/">
+
+    
+    
+    
+    <meta property="og:title" content="tmux">
+    <meta property="og:description" content=" tmux는 터미널 멀티플렉서로, 하나의 터미널 창에서 여러 세션을 관리할 수 있게 해줍니다. 아래에 tmux의 기본 사용법(생성, 접근, 종료 등)을 정리해 드릴게요.
+🔹 1. tmux 설치 확인 (리눅스 기준) tmux -V # 버전 확인 설치가 필요하다면:
+우분투 …">
+    <meta property="og:url" content="http://localhost:1313/temp/tmux/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="tmux">
+    <meta name="twitter:description" content=" tmux는 터미널 멀티플렉서로, 하나의 터미널 창에서 여러 세션을 관리할 수 있게 해줍니다. 아래에 tmux의 기본 사용법(생성, 접근, 종료 등)을 정리해 드릴게요.
+🔹 1. tmux 설치 확인 (리눅스 기준) tmux -V # 버전 확인 설치가 필요하다면:
+우분투 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>tmux **page.html**</h1>
+    <p>
+        <img src="/08.media/20250117105337.png" alt="Pasted image 20250117105337 (Image resource not found)" >
+
+        <img src="/08.media/20250117105406.png" alt="Pasted image 20250117105406 (Image resource not found)" >
+
+        <img src="/08.media/20250117105309.png" alt="Pasted image 20250117105309 (Image resource not found)" ></p>
+<p><code>tmux</code>는 터미널 멀티플렉서로, 하나의 터미널 창에서 여러 세션을 관리할 수 있게 해줍니다. 아래에 <code>tmux</code>의 기본 사용법(생성, 접근, 종료 등)을 정리해 드릴게요.</p>
+<hr>
+<h2 id="-1-tmux-설치-확인-리눅스-기준">🔹 1. tmux 설치 확인 (리눅스 기준)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux -V  <span style="color:#75715e"># 버전 확인</span>
+</span></span></code></pre></div><p>설치가 필요하다면:</p>
+<ul>
+<li>
+<p>우분투/데비안:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install tmux
+</span></span></code></pre></div></li>
+<li>
+<p>CentOS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install tmux
+</span></span></code></pre></div></li>
+<li>
+<p>macOS (Homebrew):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install tmux
+</span></span></code></pre></div></li>
+</ul>
+<hr>
+<h2 id="-2-세션-생성">🔹 2. 세션 생성</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux new -s <span style="color:#f92672">[</span>세션이름<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>예시:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux new -s mysession
+</span></span></code></pre></div><p>이렇게 하면 <code>mysession</code>이라는 이름의 새로운 tmux 세션이 시작됩니다.</p>
+<hr>
+<h2 id="-3-tmux에서-나가기-detach">🔹 3. tmux에서 나가기 (detach)</h2>
+<p><strong>tmux 세션 안에서 나와서도 계속 실행되도록 하려면:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Ctrl + b 를 누른 후 d 를 누릅니다.
+</span></span></code></pre></div><blockquote>
+<p>즉, <code>Ctrl+b</code> → <code>d</code> 순서로 입력하면 현재 세션에서 분리(detach)됩니다.</p>
+</blockquote>
+<hr>
+<h2 id="-4-실행-중인-세션-보기">🔹 4. 실행 중인 세션 보기</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux ls
+</span></span></code></pre></div><p>또는</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux list-sessions
+</span></span></code></pre></div><p>출력 예시:</p>
+<pre tabindex="0"><code>mysession: 1 windows (created Mon Jan  1 00:00:00 2024)
+anothersession: 2 windows (created Mon Jan  1 00:05:00 2024)
+</code></pre><hr>
+<h2 id="-5-세션에-다시-접속-attach">🔹 5. 세션에 다시 접속 (attach)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux attach -t <span style="color:#f92672">[</span>세션이름<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>예시:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux attach -t mysession
+</span></span></code></pre></div><hr>
+<h2 id="-6-세션-종료-kill">🔹 6. 세션 종료 (kill)</h2>
+<h3 id="특정-세션-종료">특정 세션 종료:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux kill-session -t <span style="color:#f92672">[</span>세션이름<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>예시:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux kill-session -t mysession
+</span></span></code></pre></div><h3 id="모든-세션-종료">모든 세션 종료:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux kill-server
+</span></span></code></pre></div><hr>
+<h2 id="-7-윈도우-및-패널-관리-부가-정보">🔹 7. 윈도우 및 패널 관리 (부가 정보)</h2>
+<table>
+  <thead>
+      <tr>
+          <th>기능</th>
+          <th>명령어</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>새 윈도우 만들기</td>
+          <td><code>Ctrl + b</code> → <code>c</code></td>
+      </tr>
+      <tr>
+          <td>윈도우 전환</td>
+          <td><code>Ctrl + b</code> → <code>n</code> (다음), <code>p</code> (이전)</td>
+      </tr>
+      <tr>
+          <td>화면 분할 (수평)</td>
+          <td><code>Ctrl + b</code> → <code>&quot;</code></td>
+      </tr>
+      <tr>
+          <td>화면 분할 (수직)</td>
+          <td><code>Ctrl + b</code> → <code>%</code></td>
+      </tr>
+      <tr>
+          <td>패널 전환</td>
+          <td><code>Ctrl + b</code> → <code>o</code></td>
+      </tr>
+      <tr>
+          <td>패널 크기 조절</td>
+          <td><code>Ctrl + b</code> → <code>Alt + 방향키</code></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-8-기본-세션-없이-tmux-시작">🔹 8. 기본 세션 없이 tmux 시작</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tmux
+</span></span></code></pre></div><p>이렇게 하면 자동으로 <code>0</code>번 이름의 세션이 생성되고 들어갑니다.</p>
+<hr>
+<p>필요하시면 <code>.tmux.conf</code> 설정 파일 예제나 고급 사용법도 알려드릴 수 있어요! 😊<br>
+추가 질문 있으신가요?</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

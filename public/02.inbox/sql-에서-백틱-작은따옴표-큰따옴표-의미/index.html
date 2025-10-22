@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>sql 에서 백틱, 작은따옴표, 큰따옴표 의미 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="각 데이터베이스 관리 시스템(DBMS)에서 백틱(`), 작은따옴표(&rsquo;), 그리고 큰따옴표(&quot;)의 사용과 의미는 조금씩 다릅니다
+Oracle 백틱(`): Oracle에서는 백틱을 사용하지 않습니다. 특별한 의미를 가지지 않으며, 식별자나 문자열을 나타 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/sql-%EC%97%90%EC%84%9C-%EB%B0%B1%ED%8B%B1-%EC%9E%91%EC%9D%80%EB%94%B0%EC%98%B4%ED%91%9C-%ED%81%B0%EB%94%B0%EC%98%B4%ED%91%9C-%EC%9D%98%EB%AF%B8/">
+
+    
+    
+    
+    <meta property="og:title" content="sql 에서 백틱, 작은따옴표, 큰따옴표 의미">
+    <meta property="og:description" content="각 데이터베이스 관리 시스템(DBMS)에서 백틱(`), 작은따옴표(&rsquo;), 그리고 큰따옴표(&quot;)의 사용과 의미는 조금씩 다릅니다
+Oracle 백틱(`): Oracle에서는 백틱을 사용하지 않습니다. 특별한 의미를 가지지 않으며, 식별자나 문자열을 나타 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/sql-%EC%97%90%EC%84%9C-%EB%B0%B1%ED%8B%B1-%EC%9E%91%EC%9D%80%EB%94%B0%EC%98%B4%ED%91%9C-%ED%81%B0%EB%94%B0%EC%98%B4%ED%91%9C-%EC%9D%98%EB%AF%B8/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="sql 에서 백틱, 작은따옴표, 큰따옴표 의미">
+    <meta name="twitter:description" content="각 데이터베이스 관리 시스템(DBMS)에서 백틱(`), 작은따옴표(&rsquo;), 그리고 큰따옴표(&quot;)의 사용과 의미는 조금씩 다릅니다
+Oracle 백틱(`): Oracle에서는 백틱을 사용하지 않습니다. 특별한 의미를 가지지 않으며, 식별자나 문자열을 나타 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>sql 에서 백틱, 작은따옴표, 큰따옴표 의미 **page.html**</h1>
+    <p>각 데이터베이스 관리 시스템(DBMS)에서 백틱(`), 작은따옴표(&rsquo;), 그리고 큰따옴표(&quot;)의 사용과 의미는 조금씩 다릅니다</p>
+<h2 id="oracle">Oracle</h2>
+<ul>
+<li><strong>백틱(`)</strong>: Oracle에서는 백틱을 사용하지 않습니다. 특별한 의미를 가지지 않으며, 식별자나 문자열을 나타내는 데 사용되지 않습니다.</li>
+<li><strong>작은따옴표(')</strong>: 문자열 리터럴을 정의하는 데 사용됩니다. 예를 들어, <code>SELECT '문자열' FROM DUAL;</code>과 같이 사용할 수 있습니다.</li>
+<li><strong>큰따옴표(&quot;)</strong>: 식별자(테이블 이름, 컬럼 이름 등)를 정의하는 데 사용됩니다. 대소문자를 구분하며, 기본적으로 Oracle은 대소문자를 구분하지 않지만, 큰따옴표로 묶인 식별자는 대소문자를 구분합니다. 예를 들어, <code>SELECT &quot;Column&quot; FROM &quot;MyTable&quot;;</code>과 같이 사용할 수 있습니다.</li>
+</ul>
+<h2 id="mysql">MySQL</h2>
+<ul>
+<li><strong>백틱(`)</strong>: 테이블 이름이나 컬럼 이름 같은 식별자를 묶는 데 사용됩니다. MySQL에서는 특별한 문자나 예약어, 공백 등이 포함된 식별자를 백틱으로 묶어 사용할 수 있습니다.</li>
+<li><strong>작은따옴표(&rsquo;)</strong>: 문자열 리터럴을 정의하는 데 사용됩니다.</li>
+<li><strong>큰따옴표(&quot;)</strong>: 기본 설정(SQL 모드)에 따라 다르지만, ANSI_QUOTES SQL 모드가 활성화되어 있을 때 식별자를 묶는 데 사용될 수 있습니다. 그렇지 않은 경우에는 작은따옴표와 같이 문자열 리터럴을 정의하는 데 사용됩니다.</li>
+</ul>
+<h2 id="postgresql">PostgreSQL</h2>
+<ul>
+<li><strong>백틱(`)</strong>: PostgreSQL에서는 백틱을 사용하지 않습니다. 특별한 의미를 가지지 않으며, 식별자나 문자열을 나타내는 데 사용되지 않습니다.</li>
+<li><strong>작은따옴표(&rsquo;)</strong>: 문자열 리터럴을 정의하는 데 사용됩니다.</li>
+<li><strong>큰따옴표(&quot;)</strong>: 식별자를 묶는 데 사용됩니다. PostgreSQL에서는 큰따옴표로 묶인 식별자가 대소문자를 구분합니다. 예를 들어, <code>SELECT &quot;Column&quot; FROM &quot;MyTable&quot;;</code>에서 &ldquo;MyTable&quot;과 &ldquo;Column&quot;은 대소문자를 구분하는 식별자입니다.</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>데이터베이스2 쿼리 과정 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="대학 수업 database 에서 배운 모든 내용 정리">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/databaseuniversity/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A42-%EC%BF%BC%EB%A6%AC-%EA%B3%BC%EC%A0%95/">
+
+    
+    
+    
+    <meta property="og:title" content="데이터베이스2 쿼리 과정">
+    <meta property="og:description" content="대학 수업 database 에서 배운 모든 내용 정리">
+    <meta property="og:url" content="http://localhost:1313/06.university/databaseuniversity/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A42-%EC%BF%BC%EB%A6%AC-%EA%B3%BC%EC%A0%95/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="데이터베이스2 쿼리 과정">
+    <meta name="twitter:description" content="대학 수업 database 에서 배운 모든 내용 정리">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>데이터베이스2 쿼리 과정 **page.html**</h1>
+    <p>
+        <img src="/08.media/20241007141954.png" alt=" (Image resource not found)" ></p>
+<ol>
+<li>쿼리 비용 측정</li>
+<li>관계 대수 평가 알고리즘</li>
+<li>개별 연산을 결합하는 알고리즘</li>
+</ol>
+<h2 id="쿼리-비용-측정">쿼리 비용 측정</h2>
+<p>단순하게 disk 만 고려함 disk io 가 가장 큰 요소</p>
+<p>seek(디스크에서 찾기) + transfer(메모리로 가져오기)</p>
+<p>seek를 통해 시작 위치를 찾는다(instructor table 의 시작 data 위치)
+transfer</p>
+<ul>
+<li>$t_T$ : time to transfer one block
+<ul>
+<li>assuming for simplicity that write cost is same as read cost</li>
+<li>typically, cost to write a block is greater than read cost, since data is read back after being written to ensure that the write was successful</li>
+</ul>
+</li>
+<li>$t_S$ : time for one seek</li>
+</ul>
+<p>크게 selection 과 join 을 쓰기 위해 발행하는 cost 를 계한해 본다</p>
+<h3 id="selection">selection</h3>
+<p>$h_i$ = 트리 높이
+$h_i(t_T+t_S)$ : 트리 통과 시간
+b : 조건에 들어가는 record 이 차지하는 블록 개수
+n : 조건에 들어가는 record 개수</p>
+<p>A1 : Linear Search : $t_s+b_r<em>t_T$ //br 개의 블락에 걸쳐 존재
+A1 , Equal on key : $t_s+b_r</em>t_T$ // 동등하면 평균적으로 1/2
+A2 : Primary index, Equal on key : $(h_i+1)(t_T+t_S)$ // 트리 통과 + 1개의 튜플 찾기
+A3 : Primary index, Equal on nonkey (중복 존재 가능): $h_i\times(t_T+t_S)+b\times t_T + t_S$
+A4 : Secondary index, Equal on key $(h_i+1)(t_T+t_S)$ //  1개만 가능하니까 바로 찾음
+A4 : Secondary index, Equal on nonkey $(h_i+n)(t_T+t_S)$ // n개의 중복 튜플 , cost 큼
+A5 : Pirmary index, comparison : $h_i\times(t_T+t_S)+b\times t_T + t_S$
+A6 : Secondary index, comparison : $(h_i+n)(t_T+t_S)$ // cost 큼
+A7 : conjunctive selection using index :  최소 비용 조건을 먼저 이후는 메모리에서
+A8 : conjunctive selection composite index : 가능하다면 복합 인덱스 사용
+A9 : conjunctive selection by intersection of identifiers :  나오는 리프 노드의 포인터 record 의 교집합
+A10 : disjunctive selection by union of identifiers : 리프노트 포인터 합집합 또는 리니어 서치</p>
+<h2 id="sorting">sorting</h2>
+<p>sorting 사용 이유</p>
+<ul>
+<li>
+<p>output 출력시 사용</p>
+</li>
+<li>
+<p>join 시에 정렬이 되있을 때 편한 사용</p>
+</li>
+<li>
+<p>Nested loop join</p>
+</li>
+<li>
+<p>Block Nested loop join</p>
+</li>
+<li>
+<p>index join</p>
+</li>
+<li>
+<p>merge join</p>
+</li>
+<li>
+<p>hash join</p>
+</li>
+<li></li>
+</ul>
+<p>r = b_r 개의 블록, n_r 개의 튜플
+s = b_s 개의 블록, n_s 개의 튜플</p>
+<p>nested-loop join
+s 관점 n_r * b_r 개의 transfer
+r 관점 b_r 개의 transfer
+s 관점 n_r 번 seek
+r 관점 b_r 개 seek</p>
+<p>block nested-loop join
+n_r 을 b_r 로 교체</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

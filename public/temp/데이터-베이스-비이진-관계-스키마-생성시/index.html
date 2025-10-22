@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>데이터 베이스 비이진 관계 스키마 생성시 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="비이진 관계에서의 기본 키 선택 비이진 관계에서 카디널리티 제약이 없는 경우, 앞서 설명한 대로 형성된 슈퍼키가 유일한 후보 키가 되며, 이를 기본 키로 선택합니다. 하지만 카디널리티 제약이 있을 경우 기본 키 선택이 더 복잡해집니다.
+우리가 6.4절에서 언급한 바와 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%B9%84%EC%9D%B4%EC%A7%84-%EA%B4%80%EA%B3%84-%EC%8A%A4%ED%82%A4%EB%A7%88-%EC%83%9D%EC%84%B1%EC%8B%9C/">
+
+    
+    
+    
+    <meta property="og:title" content="데이터 베이스 비이진 관계 스키마 생성시">
+    <meta property="og:description" content="비이진 관계에서의 기본 키 선택 비이진 관계에서 카디널리티 제약이 없는 경우, 앞서 설명한 대로 형성된 슈퍼키가 유일한 후보 키가 되며, 이를 기본 키로 선택합니다. 하지만 카디널리티 제약이 있을 경우 기본 키 선택이 더 복잡해집니다.
+우리가 6.4절에서 언급한 바와 …">
+    <meta property="og:url" content="http://localhost:1313/temp/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%B9%84%EC%9D%B4%EC%A7%84-%EA%B4%80%EA%B3%84-%EC%8A%A4%ED%82%A4%EB%A7%88-%EC%83%9D%EC%84%B1%EC%8B%9C/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="데이터 베이스 비이진 관계 스키마 생성시">
+    <meta name="twitter:description" content="비이진 관계에서의 기본 키 선택 비이진 관계에서 카디널리티 제약이 없는 경우, 앞서 설명한 대로 형성된 슈퍼키가 유일한 후보 키가 되며, 이를 기본 키로 선택합니다. 하지만 카디널리티 제약이 있을 경우 기본 키 선택이 더 복잡해집니다.
+우리가 6.4절에서 언급한 바와 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>데이터 베이스 비이진 관계 스키마 생성시 **page.html**</h1>
+    <h2 id="비이진-관계에서의-기본-키-선택">비이진 관계에서의 기본 키 선택</h2>
+<p>비이진 관계에서 카디널리티 제약이 없는 경우, 앞서 설명한 대로 형성된 슈퍼키가 유일한 후보 키가 되며, 이를 기본 키로 선택합니다. 하지만 카디널리티 제약이 있을 경우 기본 키 선택이 더 복잡해집니다.</p>
+<p>우리가 6.4절에서 언급한 바와 같이, 비이진 관계 집합에서 최대 한 개의 화살표만 허용합니다. 이는 비이진 관계 집합에서 두 개 이상의 화살표가 있을 경우 해석이 두 가지로 나뉘어질 수 있기 때문입니다.</p>
+<h2 id="예시">예시</h2>
+<p>관계 집합 ( R )이 엔티티 집합 ( E1, E2, E3, E4 ) 간의 관계를 나타내고, 화살표가 ( E3 )와 ( E4 )로만 향해 있다고 가정합니다. 이 경우 두 가지 가능한 해석이 있습니다:</p>
+<ol>
+<li>
+<p><strong>첫 번째 해석</strong>:</p>
+<ul>
+<li>( E1 )과 ( E2 )의 특정 조합이 ( E3 )와 ( E4 )의 조합과 최대 한 번만 연결될 수 있습니다.</li>
+<li>이 경우 관계 ( R )의 기본 키는 ( E1 )과 ( E2 )의 기본 키의 합집합으로 구성됩니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>두 번째 해석</strong>:</p>
+<ul>
+<li>( E1 ), ( E2 ), ( E3 )의 특정 조합이 ( E4 )의 조합과 최대 한 번만 연결될 수 있으며, 또한 ( E1 ), ( E2 ), ( E4 )의 조합이 ( E3 )의 조합과 최대 한 번만 연결될 수 있습니다.</li>
+<li>이 경우 ( E1 ), ( E2 ), ( E3 )의 기본 키의 합집합과 ( E1 ), ( E2 ), ( E4 )의 기본 키의 합집합이 모두 후보 키가 됩니다.</li>
+</ul>
+</li>
+</ol>
+<p>이 두 해석은 모두 실제로 사용되며, 특정 모델링을 위해서도 올바른 해석입니다. 따라서 혼란을 피하기 위해 비이진 관계 집합에서 오직 하나의 화살표만 허용하며, 이 경우 두 해석이 동등하게 적용됩니다.</p>
+<h2 id="비이진-관계의-대체">비이진 관계의 대체</h2>
+<p>여러 화살표가 필요한 상황을 표현하기 위해 E-R 설계를 수정하여 비이진 관계 집합을 엔티티 집합으로 대체할 수 있습니다. 즉, 비이진 관계 집합의 각 인스턴스를 엔티티로 간주하고, 이 엔티티를 ( E1, E2, E4 )의 인스턴스와 별도의 관계 집합을 통해 연결할 수 있습니다.</p>
+<h2 id="함수적-종속성">함수적 종속성</h2>
+<p>더 간단한 접근법은 함수적 종속성을 사용하는 것입니다. 이는 이후 장에서 다룰 내용으로, 이러한 해석을 명확하게 지정할 수 있게 해줍니다.</p>
+<h2 id="최종-기본-키-선택">최종 기본 키 선택</h2>
+<p>관계 집합 ( R )의 기본 키는 관계 집합 ( R )로부터의 화살표가 없는 참여 엔티티 집합 ( E_i )의 기본 키의 합집합으로 정의됩니다.</p>
+<p>이러한 내용은 비이진 관계에서 기본 키를 정의하고 선택하는 데 중요한 역할을 합니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

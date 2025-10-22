@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>leetcode sql 문제 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="1581 문제 not in 으로 풀기
+SELECT customer_id, count(*) &#39;count_no_trans&#39; FROM visits as vi where visit_id not in ( select visit_id from Transactions …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/leetcode-sql-%EB%AC%B8%EC%A0%9C-%ED%92%80%EA%B8%B0/leetcode-sql-%EB%AC%B8%EC%A0%9C/">
+
+    
+    
+    
+    <meta property="og:title" content="leetcode sql 문제">
+    <meta property="og:description" content="1581 문제 not in 으로 풀기
+SELECT customer_id, count(*) &#39;count_no_trans&#39; FROM visits as vi where visit_id not in ( select visit_id from Transactions …">
+    <meta property="og:url" content="http://localhost:1313/leetcode-sql-%EB%AC%B8%EC%A0%9C-%ED%92%80%EA%B8%B0/leetcode-sql-%EB%AC%B8%EC%A0%9C/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="leetcode sql 문제">
+    <meta name="twitter:description" content="1581 문제 not in 으로 풀기
+SELECT customer_id, count(*) &#39;count_no_trans&#39; FROM visits as vi where visit_id not in ( select visit_id from Transactions …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>leetcode sql 문제 **page.html**</h1>
+    <h2 id="1581-문제">1581 문제</h2>
+<p>not in 으로 풀기</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> customer_id, <span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>) <span style="color:#e6db74">&#39;count_no_trans&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> visits <span style="color:#66d9ef">as</span> vi
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">where</span> visit_id <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">in</span> ( <span style="color:#66d9ef">select</span> visit_id
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">from</span> Transactions
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> customer_id
+</span></span></code></pre></div><p>left join 으로 풀기</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> Visits <span style="color:#66d9ef">as</span> vi <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> Transactions <span style="color:#66d9ef">as</span> tr <span style="color:#66d9ef">on</span> vi.visit_id <span style="color:#f92672">=</span> tr.visit_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">where</span> tr.visit_id <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">null</span> <span style="color:#75715e">--거래기록이 없는 사람 제외
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> customer_id
+</span></span></code></pre></div><h2 id="1280">1280</h2>
+<p>참여한 시험이 0개를 어떻게 표현하지
+join 풀이</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span>
+</span></span><span style="display:flex;"><span>    st.student_id,
+</span></span><span style="display:flex;"><span>    st.student_name,
+</span></span><span style="display:flex;"><span>    su.subject_name,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COUNT</span>(e.subject_name) <span style="color:#66d9ef">AS</span> attended_exams
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span>
+</span></span><span style="display:flex;"><span>    Students <span style="color:#66d9ef">AS</span> st
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CROSS</span> <span style="color:#66d9ef">JOIN</span> Subjects <span style="color:#66d9ef">AS</span> su
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">JOIN</span> Examinations <span style="color:#66d9ef">AS</span> e <span style="color:#66d9ef">ON</span> st.student_id <span style="color:#f92672">=</span> e.student_id <span style="color:#66d9ef">and</span> su.subject_name <span style="color:#f92672">=</span> e.subject_name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span>
+</span></span><span style="display:flex;"><span>    st.student_name,
+</span></span><span style="display:flex;"><span>    su.subject_name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span>
+</span></span><span style="display:flex;"><span>    st.student_id,
+</span></span><span style="display:flex;"><span>    su.subject_name
+</span></span></code></pre></div><p>Coalese 함수 사용
+속도와 null 의 적절한 처리를 위해 미리 exam 테이블의 개수를 세서 조인한다
+또한 Coalese 함수 또는 NVL 사용해서 적절한 null 값 처리를 한다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> s.student_id, s.student_name, sub.subject_name, COALESCE(e.attended_exams, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">AS</span> attended_exams
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> Students s
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CROSS</span> <span style="color:#66d9ef">JOIN</span> Subjects sub
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SELECT</span> student_id, subject_name, <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> attended_exams
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FROM</span> Examinations
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> student_id, subject_name
+</span></span><span style="display:flex;"><span>) e <span style="color:#66d9ef">ON</span> s.student_id <span style="color:#f92672">=</span> e.student_id <span style="color:#66d9ef">AND</span> sub.subject_name <span style="color:#f92672">=</span> e.subject_name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> s.student_id, sub.subject_name;
+</span></span></code></pre></div><h2 id="570">570</h2>
+<p>미리 계산</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> cte <span style="color:#66d9ef">as</span> (<span style="color:#66d9ef">select</span> t.id, <span style="color:#66d9ef">count</span>(s.id) <span style="color:#66d9ef">as</span> cnt
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> Employee <span style="color:#66d9ef">as</span> s <span style="color:#66d9ef">join</span> Employee <span style="color:#66d9ef">as</span> t
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">on</span> s.managerId <span style="color:#f92672">=</span> t.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> s.managerId)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> Employee <span style="color:#66d9ef">as</span> e
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">join</span> cte <span style="color:#66d9ef">on</span> e.id <span style="color:#f92672">=</span> cte.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">where</span> cte.cnt <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>
+</span></span></code></pre></div><p>join &amp; group by</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> t.name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> Employee <span style="color:#66d9ef">as</span> s
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">join</span> Employee <span style="color:#66d9ef">as</span> t <span style="color:#66d9ef">on</span> s.managerId <span style="color:#f92672">=</span> t.id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> s.managerId
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">having</span> <span style="color:#66d9ef">count</span>(s.id) <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">count</span>(s.id) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>미친 깔끔</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> Employee
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> id <span style="color:#66d9ef">IN</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SELECT</span> managerId
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">FROM</span> Employee
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> managerId
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">HAVING</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">5</span>)
+</span></span></code></pre></div><h2 id="1934-개같이-멸망">1934 개같이 멸망</h2>
+<p>요청조차 하지 않은 사용자의 비율 계산처리??</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> s.user_id, round(<span style="color:#66d9ef">avg</span>
+</span></span><span style="display:flex;"><span>    (<span style="color:#66d9ef">case</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> action <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;confirmed&#39;</span> <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>), <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">as</span> confirmation_rate
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span>
+</span></span><span style="display:flex;"><span>    signups <span style="color:#66d9ef">as</span> s <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> confirmations <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">c</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">on</span> s.user_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>.user_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> s.user_id
+</span></span></code></pre></div><p>round 소수점 숫자 정확도 정해주기
+avg 를 사용하는 방법임 나는 나누기로 할려고 했지만&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    s.user_id,
+</span></span><span style="display:flex;"><span>    COALESCE(
+</span></span><span style="display:flex;"><span>        ROUND(
+</span></span><span style="display:flex;"><span>	        <span style="color:#66d9ef">COUNT</span> ( 
+</span></span><span style="display:flex;"><span>		        <span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">c</span>.action <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;confirmed&#39;</span> <span style="color:#66d9ef">THEN</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">END</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">0</span> <span style="color:#f92672">/</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#66d9ef">c</span>.user_id),<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    ,<span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">AS</span> confirmation_rate
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span>    signups <span style="color:#66d9ef">AS</span> s
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> confirmations <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">c</span> <span style="color:#66d9ef">ON</span> s.user_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>.user_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span>
+</span></span><span style="display:flex;"><span>    s.user_id;
+</span></span></code></pre></div><p>끝까지 나누기로 풀기</p>
+<h2 id="1251-멸망">1251 멸망</h2>
+<p>가격의 평균을 구하되 units 의 개수에 따른 가중치를 계산해주어야 한다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> product_id , round(<span style="color:#66d9ef">avg</span>(up)<span style="color:#f92672">/</span><span style="color:#66d9ef">sum</span>(units),<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">as</span> average_price
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span>
+</span></span><span style="display:flex;"><span>    (<span style="color:#66d9ef">select</span> p.product_id , units , units <span style="color:#f92672">*</span>price
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">from</span> prices <span style="color:#66d9ef">as</span> p <span style="color:#66d9ef">join</span> unitssold <span style="color:#66d9ef">as</span> u
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">on</span> p.product_id <span style="color:#f92672">=</span> u.product_id <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>            u.purchase_date <span style="color:#66d9ef">BETWEEN</span> start_date <span style="color:#66d9ef">and</span> end_date
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> p.product_id, units , price) <span style="color:#66d9ef">as</span> temp(product_id, units, up)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> product_id
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    p.product_id,
+</span></span><span style="display:flex;"><span>    round(<span style="color:#66d9ef">SUM</span>(p.price <span style="color:#f92672">*</span> u.units) <span style="color:#f92672">/</span> <span style="color:#66d9ef">SUM</span>(u.units),<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">AS</span> average_price
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> prices <span style="color:#66d9ef">AS</span> p
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> unitssold <span style="color:#66d9ef">AS</span> u <span style="color:#66d9ef">ON</span> p.product_id <span style="color:#f92672">=</span> u.product_id
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">AND</span> u.purchase_date <span style="color:#66d9ef">BETWEEN</span> p.start_date <span style="color:#66d9ef">AND</span> p.end_date
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> p.product_id;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    p.product_id,
+</span></span><span style="display:flex;"><span>    ROUND(<span style="color:#66d9ef">SUM</span>(p.price <span style="color:#f92672">*</span> u.units) OVER (PARTITION <span style="color:#66d9ef">BY</span> p.product_id) <span style="color:#f92672">/</span> <span style="color:#66d9ef">SUM</span>(u.units) OVER (PARTITION <span style="color:#66d9ef">BY</span> p.product_id), <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">AS</span> average_price
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> prices <span style="color:#66d9ef">AS</span> p
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> unitssold <span style="color:#66d9ef">AS</span> u <span style="color:#66d9ef">ON</span> p.product_id <span style="color:#f92672">=</span> u.product_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">AND</span> u.purchase_date <span style="color:#66d9ef">BETWEEN</span> p.start_date <span style="color:#66d9ef">AND</span> p.end_date;
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>product_id</th>
+          <th>start_date</th>
+          <th>end_date</th>
+          <th>price</th>
+          <th>product_id</th>
+          <th>purchase_date</th>
+          <th>units</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>2019-02-17</td>
+          <td>2019-02-28</td>
+          <td>5</td>
+          <td>1</td>
+          <td>2019-02-25</td>
+          <td>100</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2019-03-01</td>
+          <td>2019-03-22</td>
+          <td>20</td>
+          <td>1</td>
+          <td>2019-03-01</td>
+          <td>15</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>2019-02-01</td>
+          <td>2019-02-20</td>
+          <td>15</td>
+          <td>2</td>
+          <td>2019-02-10</td>
+          <td>200</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>2019-02-21</td>
+          <td>2019-03-31</td>
+          <td>30</td>
+          <td>2</td>
+          <td>2019-03-22</td>
+          <td>30</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="1633">1633</h2>
+<p>null 이 존재하는 culumn 의 속성을 group 으로 묶으면?
+애초에 고민을 할 필요가 없는 문제 join  할 필요가 없다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> 
+</span></span><span style="display:flex;"><span>	contest_id,
+</span></span><span style="display:flex;"><span>	round( <span style="color:#66d9ef">count</span>(user_id) <span style="color:#f92672">/</span> ( 
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">select</span> <span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">from</span> users)
+</span></span><span style="display:flex;"><span>		 , <span style="color:#ae81ff">4</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#66d9ef">as</span> percentage
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> register
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> contest_id
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> percentage <span style="color:#66d9ef">desc</span>, contest_id
+</span></span></code></pre></div><h2 id="1211">1211</h2>
+<p>그룹으로 묶인 것의 선택적으로 조건을 적용</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span>
+</span></span><span style="display:flex;"><span>    query_name,
+</span></span><span style="display:flex;"><span>    round( <span style="color:#66d9ef">avg</span>(rating<span style="color:#f92672">/</span><span style="color:#66d9ef">position</span>),<span style="color:#ae81ff">2</span> ) <span style="color:#66d9ef">as</span> quality,
+</span></span><span style="display:flex;"><span>    round( <span style="color:#66d9ef">avg</span>(
+</span></span><span style="display:flex;"><span>        (<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">when</span> rating <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">end</span> )
+</span></span><span style="display:flex;"><span>    ) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> ,<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">as</span> poor_query_percentage
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">from</span> Queries
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> query_name
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">having</span> query_name <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>
+</span></span></code></pre></div><p>month    | country | trans_count | approved_count | trans_total_amount | approved_total_amount</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

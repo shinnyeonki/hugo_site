@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>00.Data View and Bases on My Test Site</title>
+    <link>http://localhost:1313/00.data-view-and-bases/</link>
+    <description>Recent content in 00.Data View and Bases on My Test Site</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 05 Jul 2025 10:09:54 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/00.data-view-and-bases/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>05. Share Note</title>
+      <link>http://localhost:1313/00.data-view-and-bases/05.-share-note/</link>
+      <pubDate>Sat, 05 Jul 2025 10:09:54 +0900</pubDate>
+      <guid>http://localhost:1313/00.data-view-and-bases/05.-share-note/</guid>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dataview&#34; data-lang=&#34;dataview&#34;&gt;TABLE WITHOUT ID&#xA;  link(file.path, truncate(file.name, 28)) as Note,&#xA;  dateformat(share_updated, &amp;#34;yyyy-MM-dd&amp;#34;) as &amp;#34;Shared on&amp;#34;, &#xA;  elink(share_link, regexreplace(share_link, &amp;#34;^.*?(\w+)(#.+?|)$&amp;#34;, &amp;#34;$1&amp;#34;)) as Link,&#xA;  choice(regextest(&amp;#34;#&amp;#34;, share_link), &amp;#34;🔒&amp;#34;, &amp;#34;&amp;#34;) as &amp;#34;&amp;#34;&#xA;WHERE share_link&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>이것이 코딩테스트다 with python</title>
+      <link>http://localhost:1313/00.data-view-and-bases/%EC%9D%B4%EA%B2%83%EC%9D%B4-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%8B%A4-with-python/</link>
+      <pubDate>Sun, 29 Jun 2025 04:36:57 +0900</pubDate>
+      <guid>http://localhost:1313/00.data-view-and-bases/%EC%9D%B4%EA%B2%83%EC%9D%B4-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%8B%A4-with-python/</guid>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dataview&#34; data-lang=&#34;dataview&#34;&gt;TABLE index&#xA;WHERE source = &amp;#34;이것이 코딩테스트다 with python&amp;#34;&#xA;SORT index&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>따라IT</title>
+      <link>http://localhost:1313/00.data-view-and-bases/%EB%94%B0%EB%9D%BCit/</link>
+      <pubDate>Sun, 29 Jun 2025 04:36:56 +0900</pubDate>
+      <guid>http://localhost:1313/00.data-view-and-bases/%EB%94%B0%EB%9D%BCit/</guid>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dataview&#34; data-lang=&#34;dataview&#34;&gt;TABLE index&#xA;WHERE source = &amp;#34;따라IT Network&amp;#34;&#xA;sort index&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>12. Data View recent modified</title>
+      <link>http://localhost:1313/00.data-view-and-bases/12.-data-view-recent-modified/</link>
+      <pubDate>Thu, 26 Jun 2025 00:41:23 +0900</pubDate>
+      <guid>http://localhost:1313/00.data-view-and-bases/12.-data-view-recent-modified/</guid>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dataview&#34; data-lang=&#34;dataview&#34;&gt;table &#xA;&#x9;modified as &amp;#34;최근 수정 일시&amp;#34;,&#xA;&#x9;created as &amp;#34;생성일&amp;#34;&#xA;from &amp;#34;&amp;#34;&#xA;where modified&#xA;sort modified desc&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>11. Data View all tag</title>
+      <link>http://localhost:1313/00.data-view-and-bases/11.-data-view-all-tag/</link>
+      <pubDate>Mon, 09 Jun 2025 16:49:04 +0900</pubDate>
+      <guid>http://localhost:1313/00.data-view-and-bases/11.-data-view-all-tag/</guid>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dataview&#34; data-lang=&#34;dataview&#34;&gt;TABLE WITHOUT ID tag  AS Tags,&#xA;length(rows.file.link) AS &amp;#34;File Count&amp;#34;&#xA;FROM &amp;#34;&amp;#34;&#xA;WHERE file.tags&#xA;FLATTEN file.tags AS tag&#xA;GROUP BY tag&#xA;SORT length(rows.file.link) DESC&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dataview&#34; data-lang=&#34;dataview&#34;&gt;TABLE WITHOUT ID (tag + &amp;#34;(&amp;#34; + length(rows.file.link) + &amp;#34;)&amp;#34;) AS Tags, join(rows.file.link, &amp;#34;&#xA;&amp;#34;) AS Files&#xA;FROM &amp;#34;&amp;#34;&#xA;WHERE file.tags&#xA;FLATTEN file.tags AS tag&#xA;GROUP BY tag&#xA;SORT length(rows.file.link) DESC&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/00.data-view-and-bases/%ED%95%99%EA%B5%90-database-%EA%B0%95%EC%9D%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/00.data-view-and-bases/%ED%95%99%EA%B5%90-database-%EA%B0%95%EC%9D%98/</guid>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dataview&#34; data-lang=&#34;dataview&#34;&gt;table sequence&#xA;where source = &amp;#34;database(university)&amp;#34; and (&amp;#34;00&amp;#34; &amp;lt; sequence and &amp;#34;10&amp;#34; &amp;gt; sequence)&#xA;sort sequence&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-dataview&#34; data-lang=&#34;dataview&#34;&gt;table sequence&#xA;where source = &amp;#34;database(university)&amp;#34; and (&amp;#34;10&amp;#34; &amp;lt;= sequence and &amp;#34;20&amp;#34; &amp;gt; sequence)&#xA;sort sequence&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

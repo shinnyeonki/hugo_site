@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>의존관계 주입(dependency injection) | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content=" 생성자 주입 설정자 수정자 주입(setter) 필드 주입 일반 메서드 주입 생성자 주입 생성자 주입(Constructor Injection) 이 방법 객체 생성 시점 의존성 부여 불변,필수
+public class ExampleClass { private …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%A3%BC%EC%9E%85dependency-injection/">
+
+    
+    
+    
+    <meta property="og:title" content="의존관계 주입(dependency injection)">
+    <meta property="og:description" content=" 생성자 주입 설정자 수정자 주입(setter) 필드 주입 일반 메서드 주입 생성자 주입 생성자 주입(Constructor Injection) 이 방법 객체 생성 시점 의존성 부여 불변,필수
+public class ExampleClass { private …">
+    <meta property="og:url" content="http://localhost:1313/temp/%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%A3%BC%EC%9E%85dependency-injection/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="의존관계 주입(dependency injection)">
+    <meta name="twitter:description" content=" 생성자 주입 설정자 수정자 주입(setter) 필드 주입 일반 메서드 주입 생성자 주입 생성자 주입(Constructor Injection) 이 방법 객체 생성 시점 의존성 부여 불변,필수
+public class ExampleClass { private …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>의존관계 주입(dependency injection) **page.html**</h1>
+    <ul>
+<li>생성자 주입</li>
+<li>설정자 수정자 주입(setter)</li>
+<li>필드 주입</li>
+<li>일반 메서드 주입</li>
+</ul>
+<h2 id="생성자-주입">생성자 주입</h2>
+<p>생성자 주입(Constructor Injection) 이 방법 객체 생성 시점 의존성 부여
+불변,필수</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExampleClass</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> SomeDependency dependency;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ExampleClass</span>(SomeDependency dependency) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dependency</span> <span style="color:#f92672">=</span> dependency;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>spring 에서는 @Autowired 를 통해 의존성을 주입하는데
+생성자가 1개 라면 생략 가능하다</p>
+</blockquote>
+<hr>
+<h2 id="설정자-주입">설정자 주입</h2>
+<p>설정자 주입(Setter Injection) 이 방법은 객체 생성 이후에도 의존성 변경 가능</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExampleClass</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> SomeDependency dependency;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDependency</span>(SomeDependency dependency) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dependency</span> <span style="color:#f92672">=</span> dependency;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="필드-주입">필드 주입</h2>
+<p>필드 주입(Field Injection)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExampleClass</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Inject</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> SomeDependency dependency;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>public 접근제어자를 사용하지 않고 private 을 사용하고도 @Autowired 를 사용하여 의존성 주입을 할 수 있다 하지만 권장하지 않음</p>
+</blockquote>
+<hr>
+<h2 id="일반-메서드-주입">일반 메서드 주입</h2>
+<p>일반 메서드 주입(Method Injection)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExampleClass</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> SomeDependency dependency;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">anyMethodName</span>(SomeDependency dependency) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dependency</span> <span style="color:#f92672">=</span> dependency;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

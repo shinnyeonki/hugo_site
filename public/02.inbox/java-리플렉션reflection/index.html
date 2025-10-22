@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>java 리플렉션(reflection) | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="클래스 인터페이스의 메타 정보를 java.lang.Class 클래스 객체에서 관리한다 이를 통해 런타임 시점에 클래스의 정보를 확인할 수 있다
+Class class = 클래스 이름.class; // 클래스 이름을 통해 얻는다 Class class = …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/java-%EB%A6%AC%ED%94%8C%EB%A0%89%EC%85%98reflection/">
+
+    
+    
+    
+    <meta property="og:title" content="java 리플렉션(reflection)">
+    <meta property="og:description" content="클래스 인터페이스의 메타 정보를 java.lang.Class 클래스 객체에서 관리한다 이를 통해 런타임 시점에 클래스의 정보를 확인할 수 있다
+Class class = 클래스 이름.class; // 클래스 이름을 통해 얻는다 Class class = …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/java-%EB%A6%AC%ED%94%8C%EB%A0%89%EC%85%98reflection/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="java 리플렉션(reflection)">
+    <meta name="twitter:description" content="클래스 인터페이스의 메타 정보를 java.lang.Class 클래스 객체에서 관리한다 이를 통해 런타임 시점에 클래스의 정보를 확인할 수 있다
+Class class = 클래스 이름.class; // 클래스 이름을 통해 얻는다 Class class = …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>java 리플렉션(reflection) **page.html**</h1>
+    <p>클래스 인터페이스의 메타 정보를 java.lang.Class 클래스 객체에서 관리한다
+이를 통해 런타임 시점에 클래스의 정보를 확인할 수 있다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Class <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#a6e22e">클래스</span> 이름.<span style="color:#a6e22e">class</span>; <span style="color:#75715e">// 클래스 이름을 통해 얻는다</span>
+</span></span><span style="display:flex;"><span>Class <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#a6e22e">Class</span>.<span style="color:#a6e22e">forName</span>(클래스 이름); <span style="color:#75715e">// 클래스 이름을 통해 얻는다</span>
+</span></span><span style="display:flex;"><span>Class <span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#a6e22e">객체</span> 참조 변수.<span style="color:#a6e22e">getClass</span>(); <span style="color:#75715e">// 객체의 이름을 통해 얻는다</span>
+</span></span></code></pre></div><p>이렇게 얻어진 객체로 부터 여러가지 정보를 확인할 수 있다</p>
+<table>
+  <thead>
+      <tr>
+          <th>메서드</th>
+          <th>info</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Package getPackage()</td>
+          <td>패키지 정보 읽기</td>
+      </tr>
+      <tr>
+          <td>String getSimpleName()</td>
+          <td>패키지를 제외한 타입 이름</td>
+      </tr>
+      <tr>
+          <td>String getName()</td>
+          <td>패키지를 포함한 전체 타입 이름</td>
+      </tr>
+      <tr>
+          <td>Constuctor[] getDeclaredConstructors()</td>
+          <td>생성자 정보 읽기</td>
+      </tr>
+      <tr>
+          <td>Method[] getDeclaredMethod()</td>
+          <td>메서드 정보 읽기</td>
+      </tr>
+      <tr>
+          <td>Field[] getDeclaredField()</td>
+          <td>필드 정보 읽기</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>등등 많은 것들 을 얻을 수 있다</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p><a href="https://cla9.tistory.com/52" class="external-link" target="_blank" rel="noopener noreferrer" >제네릭은 런타임에는 타입을 알지 못한다</a></p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

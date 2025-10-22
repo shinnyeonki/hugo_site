@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>obsidian 데이터 바인딩 처리 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="Spring MVC의 데이터 바인딩과 관련된 주요 처리 과정을 순서대로 정리해드리겠습니다:
+요청 수신 DispatcherServlet이 HTTP 요청을 받음 컨트롤러 매핑 요청 URL에 매핑된 적절한 컨트롤러 메서드를 찾음 파라미터 바인딩 단계 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/younghan-mvc1/obsidian-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%94%EC%9D%B8%EB%94%A9-%EC%B2%98%EB%A6%AC/">
+
+    
+    
+    
+    <meta property="og:title" content="obsidian 데이터 바인딩 처리">
+    <meta property="og:description" content="Spring MVC의 데이터 바인딩과 관련된 주요 처리 과정을 순서대로 정리해드리겠습니다:
+요청 수신 DispatcherServlet이 HTTP 요청을 받음 컨트롤러 매핑 요청 URL에 매핑된 적절한 컨트롤러 메서드를 찾음 파라미터 바인딩 단계 …">
+    <meta property="og:url" content="http://localhost:1313/younghan-mvc1/obsidian-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%94%EC%9D%B8%EB%94%A9-%EC%B2%98%EB%A6%AC/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="obsidian 데이터 바인딩 처리">
+    <meta name="twitter:description" content="Spring MVC의 데이터 바인딩과 관련된 주요 처리 과정을 순서대로 정리해드리겠습니다:
+요청 수신 DispatcherServlet이 HTTP 요청을 받음 컨트롤러 매핑 요청 URL에 매핑된 적절한 컨트롤러 메서드를 찾음 파라미터 바인딩 단계 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>obsidian 데이터 바인딩 처리 **page.html**</h1>
+    <p>Spring MVC의 데이터 바인딩과 관련된 주요 처리 과정을 순서대로 정리해드리겠습니다:</p>
+<ol>
+<li>요청 수신</li>
+</ol>
+<ul>
+<li>DispatcherServlet이 HTTP 요청을 받음</li>
+</ul>
+<ol start="2">
+<li>컨트롤러 매핑</li>
+</ol>
+<ul>
+<li>요청 URL에 매핑된 적절한 컨트롤러 메서드를 찾음</li>
+</ul>
+<ol start="3">
+<li>파라미터 바인딩 단계</li>
+</ol>
+<ul>
+<li>@ModelAttribute 객체 생성</li>
+<li>요청 파라미터를 객체의 프로퍼티에 매핑 시도
+<ul>
+<li>타입 변환 시도</li>
+<li>변환 성공: 해당 필드에 값 설정</li>
+<li>변환 실패: BindingResult에 에러 정보 저장 (bindingFailure = true)</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>검증 단계 (@Valid 또는 @Validated 사용 시)</li>
+</ol>
+<ul>
+<li>Validator 실행</li>
+<li>검증 규칙 위반 시 BindingResult에 에러 정보 저장 (bindingFailure = false)</li>
+</ul>
+<ol start="5">
+<li>컨트롤러 메서드 실행</li>
+</ol>
+<ul>
+<li>바인딩(및 검증)이 완료된 @ModelAttribute 객체를 메서드 파라미터로 전달</li>
+<li>BindingResult는 해당 객체의 바로 다음 파라미터로 전달</li>
+</ul>
+<ol start="6">
+<li>뷰 렌더링</li>
+</ol>
+<ul>
+<li>BindingResult의 내용을 활용하여 오류 메시지 표시</li>
+<li>rejectedValue 등을 사용하여 사용자 입력값 유지</li>
+</ul>
+<p>중요한 점:</p>
+<ul>
+<li>각 @ModelAttribute마다 별도의 BindingResult가 필요</li>
+<li>바인딩 실패와 검증 실패는 구분되어 처리됨</li>
+<li>바인딩은 컨트롤러 메서드 실행 전에 완료됨</li>
+</ul>
+<p>이러한 순서로 Spring MVC는 요청 파라미터를 처리하고 컨트롤러에 전달합니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

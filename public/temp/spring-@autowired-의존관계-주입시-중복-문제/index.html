@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>spring @Autowired 의존관계 주입시 중복 문제 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="Autowired 어노테이션을 통해 어떠한 객체를 생성할 spring에서 의존 관계를 자동으로 주입해 준다 이때 조회되는 빈이 2개 이상이라면 즉 동일한 부모타입의 객체가 2개가 중복으로 등록되었다면 다음의 3가지 방법으로 해결한다 조회 대상 빈이 2개 이상일 때 해결 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/spring-@autowired-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%A3%BC%EC%9E%85%EC%8B%9C-%EC%A4%91%EB%B3%B5-%EB%AC%B8%EC%A0%9C/">
+
+    
+    
+    
+    <meta property="og:title" content="spring @Autowired 의존관계 주입시 중복 문제">
+    <meta property="og:description" content="Autowired 어노테이션을 통해 어떠한 객체를 생성할 spring에서 의존 관계를 자동으로 주입해 준다 이때 조회되는 빈이 2개 이상이라면 즉 동일한 부모타입의 객체가 2개가 중복으로 등록되었다면 다음의 3가지 방법으로 해결한다 조회 대상 빈이 2개 이상일 때 해결 …">
+    <meta property="og:url" content="http://localhost:1313/temp/spring-@autowired-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%A3%BC%EC%9E%85%EC%8B%9C-%EC%A4%91%EB%B3%B5-%EB%AC%B8%EC%A0%9C/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="spring @Autowired 의존관계 주입시 중복 문제">
+    <meta name="twitter:description" content="Autowired 어노테이션을 통해 어떠한 객체를 생성할 spring에서 의존 관계를 자동으로 주입해 준다 이때 조회되는 빈이 2개 이상이라면 즉 동일한 부모타입의 객체가 2개가 중복으로 등록되었다면 다음의 3가지 방법으로 해결한다 조회 대상 빈이 2개 이상일 때 해결 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>spring @Autowired 의존관계 주입시 중복 문제 **page.html**</h1>
+    <p>Autowired 어노테이션을 통해 어떠한 객체를 생성할 spring에서 의존 관계를 자동으로 주입해 준다
+이때 조회되는 빈이 2개 이상이라면 즉 동일한 부모타입의 객체가 2개가 중복으로 등록되었다면 다음의 3가지 방법으로 해결한다
+조회 대상 빈이 2개 이상일 때 해결 방법</p>
+<ul>
+<li>@Autowired 필드 명 매칭</li>
+<li>@Qualifier -&gt; @Qualifier끼리 매칭 빈 이름 매칭</li>
+<li>@Primary 사용</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

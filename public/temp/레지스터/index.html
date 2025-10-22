@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>레지스터 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="x86-64, AMD64 CPU
+rax, rbx, rcx, rdx: 64비트 범용 레지스터입니다. rsi, rdi: 소스 인덱스와 목적지 인덱스 레지스터입니다. rbp, rsp: 베이스 포인터와 스택 포인터 레지스터입니다. r8에서 r15까지: 추가적인 64비트 범용 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/%EB%A0%88%EC%A7%80%EC%8A%A4%ED%84%B0/">
+
+    
+    
+    
+    <meta property="og:title" content="레지스터">
+    <meta property="og:description" content="x86-64, AMD64 CPU
+rax, rbx, rcx, rdx: 64비트 범용 레지스터입니다. rsi, rdi: 소스 인덱스와 목적지 인덱스 레지스터입니다. rbp, rsp: 베이스 포인터와 스택 포인터 레지스터입니다. r8에서 r15까지: 추가적인 64비트 범용 …">
+    <meta property="og:url" content="http://localhost:1313/temp/%EB%A0%88%EC%A7%80%EC%8A%A4%ED%84%B0/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="레지스터">
+    <meta name="twitter:description" content="x86-64, AMD64 CPU
+rax, rbx, rcx, rdx: 64비트 범용 레지스터입니다. rsi, rdi: 소스 인덱스와 목적지 인덱스 레지스터입니다. rbp, rsp: 베이스 포인터와 스택 포인터 레지스터입니다. r8에서 r15까지: 추가적인 64비트 범용 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>레지스터 **page.html**</h1>
+    <h2 id="x86-64-amd64">x86-64, AMD64</h2>
+<p>CPU</p>
+<ul>
+<li>rax, rbx, rcx, rdx: 64비트 범용 레지스터입니다.</li>
+<li>rsi, rdi: 소스 인덱스와 목적지 인덱스 레지스터입니다.</li>
+<li>rbp, rsp: 베이스 포인터와 스택 포인터 레지스터입니다.</li>
+<li>r8에서 r15까지: 추가적인 64비트 범용 레지스터입니다.</li>
+<li>rip: 명령어 포인터 레지스터입니다.
+<ul>
+<li>eflags: 프로세서의 현재 상태를 나타내는 플래그 레지스터입니다.</li>
+<li>eax, ebx, ecx, edx: 32비트 범용 레지스터입니다.</li>
+<li>esi, edi: 32비트 소스 인덱스와 목적지 인덱스 레지스터입니다.</li>
+<li>ebp, esp: 32비트 베이스 포인터와 스택 포인터 레지스터입니다.</li>
+</ul>
+</li>
+</ul>
+<p>Segs (세그먼트 레지스터):</p>
+<ol>
+<li>cs: 코드 세그먼트</li>
+<li>ss: 스택 세그먼트</li>
+<li>ds: 데이터 세그먼트</li>
+<li>es: 추가 데이터 세그먼트</li>
+<li>fs: 추가 데이터 세그먼트</li>
+<li>gs: 추가 데이터 세그먼트
+FPU (부동 소수점 유닛):</li>
+<li>st0에서 st7까지: FPU 스택 레지스터</li>
+<li>fctrl: FPU 제어 레지스터</li>
+<li>fstat: FPU 상태 레지스터</li>
+<li>ftag: FPU 태그 워드</li>
+<li>fiseg: FPU 명령 포인터 세그먼트</li>
+<li>fioff: FPU 명령 포인터 오프셋</li>
+<li>foseg: FPU 데이터 포인터 세그먼트</li>
+<li>fooff: FPU 데이터 포인터 오프셋</li>
+<li>fop: FPU 연산 코드</li>
+</ol>
+<p>SSE 섹션:</p>
+<ol>
+<li>xmm0부터 xmm31까지: 128비트 XMM 레지스터입니다. 각 레지스터는 8개의 16비트 부동소수점 값(bfloat16)을 저장할 수 있습니다.</li>
+<li>mxcsr: SSE 제어 및 상태 레지스터로, 부동소수점 연산 모드와 예외 처리를 제어합니다.</li>
+</ol>
+<ul>
+<li><strong>YMM 레지스터:</strong>
+<ul>
+<li><code>ymm0h</code>, <code>ymm1h</code>, &hellip; <code>ymm31h</code>는 AVX512의 상위 256비트 부분을 나타내며, <code>ymm0</code>, <code>ymm1</code>, &hellip; <code>ymm31</code>는 하위 256비트 부분을 나타냅니다. <code>ymm</code>는 256비트 크기의 AVX 레지스터를 의미하며, AVX512에서는 <code>zmm</code> 레지스터가 512비트로 확장됩니다.</li>
+<li>각 YMM 레지스터는 벡터 연산을 위해 사용됩니다. 벡터 연산은 한 번에 여러 데이터를 처리할 수 있어 병렬 처리를 효율적으로 수행할 수 있습니다.</li>
+</ul>
+</li>
+<li><strong><code>ymm0h</code>, <code>ymm1h</code> 등:</strong>
+<ul>
+<li>이들은 AVX 레지스터의 상위 비트 (하위 256비트를 제외한 부분)입니다. <code>ymm0h</code>는 <code>ymm0</code> 레지스터의 상위 256비트입니다.</li>
+<li>각 레지스터가 <code>0x0</code> 값을 가지는 것은 이 레지스터가 현재 비어 있거나, 아직 연산에 사용되지 않았음을 의미할 수 있습니다.</li>
+</ul>
+</li>
+<li><strong><code>ymm0</code>, <code>ymm1</code> 등:</strong>
+<ul>
+<li>이들은 AVX 레지스터의 하위 비트이며, 주로 연산에 사용되는 실제 데이터가 이곳에 저장됩니다.</li>
+<li>예를 들어, <code>ymm8 = {v16_bfloat16 = {0x0 &lt;repeats 16 times&gt;}}</code>는 <code>ymm8</code> 레지스터가 <code>bfloat16</code> 형식의 데이터 16개로 채워져 있고, 그 값이 모두 <code>0x0</code>임을 나타냅니다.</li>
+</ul>
+</li>
+</ul>
+<p>Other Register</p>
+<ul>
+<li>
+<p>k0-k7: AVX-512 마스크 레지스터입니다.</p>
+</li>
+<li>
+<p>zmm8h, zmm9h: 512비트 AVX-512 벡터 레지스터의 상위 부분입니다.</p>
+</li>
+<li>
+<p>fs_base, gs_base: FS와 GS 세그먼트의 베이스 주소입니다.</p>
+</li>
+<li>
+<p>orig_rax: 시스템 콜 진입 시 원본 RAX 값입니다.</p>
+</li>
+<li>
+<p>al, bl, cl, dl, sil, dil, bpl, spl: 8비트 하위 레지스터들입니다.</p>
+</li>
+<li>
+<p>r8l-r15l: 확장 레지스터의 8비트 하위 부분입니다.</p>
+</li>
+<li>
+<p>ah, bh, ch, dh: 8비트 상위 레지스터들입니다.</p>
+</li>
+<li>
+<p>ax, bx, cx, dx, si, di, bp: 16비트 레지스터들입니다.</p>
+</li>
+<li>
+<p>r8w-r15w: 확장 레지스터의 16비트 부분입니다.</p>
+</li>
+<li>
+<p>r8d-r15d: 확장 레지스터의 32비트 부분입니다.</p>
+</li>
+<li>
+<p>zmm8, zmm9: 512비트 AVX-512 벡터 레지스터입니다.</p>
+</li>
+<li>
+<p>MMX 섹션:</p>
+<ul>
+<li>zmm0h부터 zmm29h: 512비트 ZMM 레지스터의 상위 256비트 부분입니다.</li>
+<li>zmm0부터 zmm29: 전체 512비트 ZMM 레지스터입니다.</li>
+</ul>
+</li>
+<li>
+<p>AMD3DNow 섹션:</p>
+<ul>
+<li>zmm10h부터 zmm31h: ZMM 레지스터의 상위 256비트 부분입니다.</li>
+<li>zmm10부터 zmm31: 전체 512비트 ZMM 레지스터입니다.</li>
+</ul>
+</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

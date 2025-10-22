@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>c&#43;&#43; 입력함수 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="// 정수 int n; cin &gt;&gt; n; // 문자열 string str; cin &gt;&gt; str; &lt;iostrem&gt; 에 포함 표준 입력 버퍼에서 개행문자를 제외한 값을 가져옴 공백이나 개행입력시 공백 이전까지의 값만 결과로 받아드린다 개행 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/c&#43;&#43;-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98/">
+
+    
+    
+    
+    <meta property="og:title" content="c&#43;&#43; 입력함수">
+    <meta property="og:description" content="// 정수 int n; cin &gt;&gt; n; // 문자열 string str; cin &gt;&gt; str; &lt;iostrem&gt; 에 포함 표준 입력 버퍼에서 개행문자를 제외한 값을 가져옴 공백이나 개행입력시 공백 이전까지의 값만 결과로 받아드린다 개행 …">
+    <meta property="og:url" content="http://localhost:1313/temp/c&#43;&#43;-%EC%9E%85%EB%A0%A5%ED%95%A8%EC%88%98/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="c&#43;&#43; 입력함수">
+    <meta name="twitter:description" content="// 정수 int n; cin &gt;&gt; n; // 문자열 string str; cin &gt;&gt; str; &lt;iostrem&gt; 에 포함 표준 입력 버퍼에서 개행문자를 제외한 값을 가져옴 공백이나 개행입력시 공백 이전까지의 값만 결과로 받아드린다 개행 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>c&#43;&#43; 입력함수 **page.html**</h1>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 정수  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> n;  
+</span></span><span style="display:flex;"><span>cin <span style="color:#f92672">&gt;&gt;</span> n;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 문자열  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>string str;  
+</span></span><span style="display:flex;"><span>cin <span style="color:#f92672">&gt;&gt;</span> str;
+</span></span></code></pre></div><ul>
+<li><code>&lt;iostrem&gt;</code> 에 포함</li>
+<li>표준 입력 버퍼에서 개행문자를 제외한 값을 가져옴</li>
+<li>공백이나 개행입력시 공백 이전까지의 값만 결과로 받아드린다</li>
+<li>개행문자를 입력 버퍼에 남겨둔다</li>
+</ul>
+<p>getline()함수는 두 가지가 존재하는데 각가 다른 라이브러리에 존재한다. istream 라이브러리에 속한 cin.getline()함수와 string 라이브러리에 속하는 getline()함수가 있다.</p>
+<ul>
+<li><strong>istream 라이브러리의 cin.getline()</strong>
+<ul>
+<li>문자 배열이며 마지막 글자가 ‘\0’(terminator)인 c-string을 입력 받는데 사용</li>
+<li>n-1개의 문자 개수만큼 읽어와 str에 저장 (n번째 문자는 NULL(‘\0’)로 바꾼다.)</li>
+<li>세 번째 인자인 delim은 별도로 지정해주지 않으면 엔터(‘\n’)로 인식</li>
+<li>delim을 지정해주면 그 제한자(delim)문자 직전까지 읽어서 str에 저장</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>cin.getline(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str, streamsize n);  
+</span></span><span style="display:flex;"><span>cin.getline(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> str, streamsize n, <span style="color:#66d9ef">char</span> dlim);
+</span></span></code></pre></div><p>cin.getline(변수 주소, 최대 입력 가능 문자수, 종결 문자);<br>
+ex) cin.getline(str, 100);</p>
+<ul>
+<li><strong>string 라이브러리의 getline()</strong>
+<ul>
+<li>최대 문자 수를 입력하지 않아도 됨.</li>
+<li>원하는 구분자(delimiter)를 만날 때 까지 모든 문자열을 입력 받아 하나의 string 객체에 저장</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>getline(istream<span style="color:#f92672">&amp;</span> is, string str);  
+</span></span><span style="display:flex;"><span>getline(istream<span style="color:#f92672">&amp;</span> is, string str, <span style="color:#66d9ef">char</span> dlim);
+</span></span></code></pre></div><p>getline(입력스트림 오브젝트, 문자열을 저장할 string객체, 종결 문자);<br>
+ex) getline(cin, str);</p>
+<h2 id="주의"><a href="https://kyu9341.github.io/C-C/2020/01/17/C&#43;&#43;getline%28%29/#%EC%A3%BC%EC%9D%98" class="external-link" target="_blank" rel="noopener noreferrer"  title="주의"></a>주의<a href="https://kyu9341.github.io/C-C/2020/01/17/C&#43;&#43;getline%28%29/#%EC%A3%BC%EC%9D%98" class="external-link" target="_blank" rel="noopener noreferrer" ></a></h2>
+<p>getline() 함수를 사용할 때 주의할 점이 있다.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1  <br>2  <br>3  <br>4</td>
+          <td>int n;  <br>string str;  <br>cin &raquo; n;  <br>getline(cin, str);</td>
+      </tr>
+  </tbody>
+</table>
+<p>위와 같은 상황을 보자. 위 코드대로 실행을 하면 n을 입력 받은 후 문자열을 입력받지 않고 바로 다음 코드로 넘어가게 된다. 이유는 버퍼에 정수 값을 입력한 뒤 누른 엔터(‘\n’)가 그대로 남아있어 getline()에 들어가기 때문이다. 이를 해결하기 위해 <strong>cin.ignore()</strong> 라는 함수를 사용할 수 있다.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1  <br>2  <br>3  <br>4  <br>5</td>
+          <td>int n;  <br>string str;  <br>cin &raquo; n;  <br>cin.ignore();  <br>getline(cin, str);</td>
+      </tr>
+  </tbody>
+</table>
+<p>위와 같이 변경하면 cin.ingore()가 입력 버퍼의 모든 내용을 제거해주어 getline()이 정상적으로 동작할 수 있다.</p>
+<p>추가적으로 cin.ignore() 함수에 대해 알아보자면<br>
+cin.ignore(int n, char dlim);<br>
+cin.ignore(읽어들일 문자의 개수, 종결 문자);<br>
+와 같은 형태로도 사용이 가능하다.</p>
+<ul>
+<li>표준 입력 버퍼에서 문자를 하나만 가져온다.</li>
+<li>문자 하나만 입력이 가능하며 공백과 개행도 입력으로 포함한다.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1  <br>2  <br>3</td>
+          <td>char ch1, ch2;  <br>ch1 = cin.get();  <br>ch2 = cin.get();</td>
+      </tr>
+  </tbody>
+</table>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

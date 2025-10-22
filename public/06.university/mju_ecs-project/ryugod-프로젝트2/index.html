@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>ryugod 프로젝트2 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="mysql template 자료 : https://hub.docker.com/_/mysql postgres template 자료 : https://hub.docker.com/_/postgres mongoDB template 자료 : …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/mju_ecs-project/ryugod-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82/">
+
+    
+    
+    
+    <meta property="og:title" content="ryugod 프로젝트2">
+    <meta property="og:description" content="mysql template 자료 : https://hub.docker.com/_/mysql postgres template 자료 : https://hub.docker.com/_/postgres mongoDB template 자료 : …">
+    <meta property="og:url" content="http://localhost:1313/06.university/mju_ecs-project/ryugod-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="ryugod 프로젝트2">
+    <meta name="twitter:description" content="mysql template 자료 : https://hub.docker.com/_/mysql postgres template 자료 : https://hub.docker.com/_/postgres mongoDB template 자료 : …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>ryugod 프로젝트2 **page.html**</h1>
+    <p>mysql template 자료 : <a href="https://hub.docker.com/_/mysql" class="external-link" target="_blank" rel="noopener noreferrer" >https://hub.docker.com/_/mysql</a>
+postgres template 자료 : <a href="https://hub.docker.com/_/postgres" class="external-link" target="_blank" rel="noopener noreferrer" >https://hub.docker.com/_/postgres</a>
+mongoDB template 자료 : <a href="https://hub.docker.com/_/mongo" class="external-link" target="_blank" rel="noopener noreferrer" >https://hub.docker.com/_/mongo</a>
+&hellip;</p>
+<h3 id="api">API</h3>
+<p>컨테이너 생성 : <code>POST /api/{userId}/container</code>
+요청 본문:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;image&#34;</span>: <span style="color:#e6db74">&#34;ubuntu:22.04&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;template&#34;</span>,  <span style="color:#75715e">// 또는 &#34;manual&#34; 현재는 menual 만 사용
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">&#34;container_port&#34;</span> : <span style="color:#e6db74">&#34;3306&#34;</span>, <span style="color:#75715e">// 컨테이너 내부에서 사용하는 서비스 포트 22는 자동
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">&#34;env&#34;</span> : [] <span style="color:#75715e">// mysql 의 경우 MYSQL_ROOT_PASSWORD 변수가 필수로 필요하다
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>응답:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span> : <span style="color:#e6db74">&#34;success&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;container_id&#34;</span>: <span style="color:#e6db74">&#34;c123456789&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;container_name&#34;</span>: <span style="color:#e6db74">&#34;MjuEcs-username-1&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>터미널 세션 API : <code>POST /api/terminals/create</code></p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

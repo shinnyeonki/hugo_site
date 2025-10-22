@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>데이터베이스 디자인 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="대학 수업 database 에서 배운 모든 내용 정리">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/databaseuniversity/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%94%94%EC%9E%90%EC%9D%B8/">
+
+    
+    
+    
+    <meta property="og:title" content="데이터베이스 디자인">
+    <meta property="og:description" content="대학 수업 database 에서 배운 모든 내용 정리">
+    <meta property="og:url" content="http://localhost:1313/06.university/databaseuniversity/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%94%94%EC%9E%90%EC%9D%B8/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="데이터베이스 디자인">
+    <meta name="twitter:description" content="대학 수업 database 에서 배운 모든 내용 정리">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>데이터베이스 디자인 **page.html**</h1>
+    <h2 id="나쁜-디자인과-좋은-디자인">나쁜 디자인과 좋은 디자인</h2>
+<p>$R = in_dept(ID, name, salary, dept_name, building, budget)$</p>
+<ul>
+<li>나쁜 디자인</li>
+</ul>
+<ol>
+<li>정보의 중복: 중복 데이터는 아래의 이상현상에서 자세히 나타난다
+dept_name -&gt;building, budget :  functional dependency 관계로 building, budget 은 정보의 중복이 발생할 수 있다</li>
+<li>이상 현상: Anomaly
+<ol>
+<li>Insertion Anomaly:loan-number 없이branch-name 등 insert 불가</li>
+<li>Deletion Anomaly: 어떤 branch의 마지막 loan을 delete하면 branch 자체가 사라짐</li>
+<li>Update Anomaly: 어떤 특정한 branch의 정보(예: Downtown의assets) 를 update하면 해당되는 튜플들을 모두 업데이트해야 함 한개라도 실패하면 안된다</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>Decomposition 이 필요하다는 결론
+<ul>
+<li>중복 데이터를 최소화</li>
+<li>정보를 보존 하면서 분리</li>
+<li>함수 종속성 유지 (BCNF)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>functional dependency 는 현실의 실세계의 돌아가는 법칙을 반영한 것이다</p>
+</blockquote>
+<h2 id="정규화">정규화</h2>
+<ul>
+<li>1NF : 데이터는 원자적이어야 한다(Domain is atomic if its elements are considered to beindivisible)</li>
+<li>2NF second nomal form</li>
+<li>3NF</li>
+<li>BCNF</li>
+<li>4NF</li>
+</ul>
+<h3 id="1정규화">1정규화</h3>
+<table>
+  <thead>
+      <tr>
+          <th>앨범이름</th>
+          <th>가수명</th>
+          <th>곡명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1집</td>
+          <td>에일라</td>
+          <td>A,B,C,D &hellip;</td>
+      </tr>
+  </tbody>
+</table>
+<p>1FN : 테이블을 구성하는 모든 요소들이 atomic(원자적이다) 즉 분해 불가능하다 위의 엘범 테이블의 경우 곡명에 여러가지 곡이 들어가 있고 만약 각각을 parsing 해서 사용하게 되면 첫번째 정규화 규칙을 지키지 못하게 된다
+하지만 여기서 나는 곡명을 파싱하지 않고 그냥 통째로만 사용할 꺼야 라고 한다면 제 1정규화가 되어있지 않다고 말할 수 없다</p>
+<h3 id="손실분해-lossy-decomposition">손실분해 Lossy Decomposition</h3>
+<p>분해를 할 때 정보를 모두 저장되어 있는 채로 분리할 수 있어야 한다</p>
+<p>Branch = (b_name, b_city, asset), Loan = (loan#, c_name, amount)</p>
+<ul>
+<li>문제점: 상관 관계가 없어짐 (연결 정보의 손실)</li>
+<li>Called a Connection Trap
+Branch = (b_name, b_city, asset), Loan = (loan#, c_name, amount, b_city)</li>
+<li>natural join시 tuple 증가</li>
+<li>information(relationship) 상실</li>
+<li>잘못된 상관 관계(b_city)
+
+        <img src="/08.media/20240613041271.png" alt="Pasted image 20240613041271 (Image resource not found)" ></li>
+</ul>
+<blockquote>
+<p>정확하지 않은 정보가 늘어나는 것 또한 손실분해라고 한다</p>
+</blockquote>
+<p>즉 분해를 할 때 Lossless-join Decomposition 을 해야한다
+분해를 하면 자연조인시(공통 attribute 가 존재할 때) 본래의 원본 테이블보다 크거나 같다 같을 때 만을  Lossless-join Decomposition 이라고 한다
+
+        <img src="/08.media/20240613041954.png" alt="Pasted image 20240613041954 (Image resource not found)" ></p>
+<p>분해를 할 때 아래의 것을 본래는 고려하면서 분해를 해야한다</p>
+<ul>
+<li>Functional Dependencies</li>
+<li>multivalued dependencies (we will not cover this!) : 어떤 함수 종속도 존재하지 않은 분해의 무손실 분해를 보장할 수 있는 다중값 종속</li>
+</ul>
+<h3 id="기능적-종속성-functional-dependency">기능적 종속성 functional dependency</h3>
+<p>a -&gt; b</p>
+<ul>
+<li>a functionally determines b</li>
+<li>a, b : set of attributes 집합이 가능하다</li>
+<li>two tuples with same a have same b</li>
+<li>a가 정해지면 반드시 b가 정해진다.</li>
+<li>a 값이 같은데 b 값이 다를 수 없다</li>
+</ul>
+<blockquote>
+<p>실제 Application의 규칙에 의해 정해짐(실 세계의 규칙을 반영)</p>
+</blockquote>
+<p>예시) student 테이블
+student = {ID, name, gen, &hellip;}
+ID -&gt; name gen &hellip;
+ID 는 이름 성별 등등을 결정한다 즉 id가 같은 tuple 은 다른 이름을 가질 수 없다</p>
+<blockquote>
+<p>trivial 이라는 것은
+customer-name, loan-number →customer-name
+customer-name →customer-name
+당연히 기능적 종속성을 만족하는 관계이다</p>
+</blockquote>
+<p><strong>closure set of functional dependency</strong>
+F : 함수 종속의 집합
+F+ : F 로 부터 추론 가능한 모든 집합</p>
+<p><strong>attribute set closure</strong>
+(AG)+ 는 AG 로 만들 수 있는 모든 Attrubute 집합이다
+AG 가 후보키 인지 확인법</p>
+<ol>
+<li>슈퍼키가 맞는가 즉 AG 를 통해 R 을 구성할 수 있는가</li>
+<li>AG 의 부분집합이 존재하는가
+함수 분해를 통해 무손실 분해를 증명할 수 있다</li>
+</ol>
+<h2 id="lossless-join-decomposition-revisited">Lossless-join Decomposition Revisited</h2>
+<p>R1 과 R2 의 교집합 attribute 가 superkey 일 때 원본으로 되돌릴수 있다
+즉 분해할 때 superkey 를 각각 가져가야 한다
+3단계일때</p>
+<h2 id="boyce-codd-normal-form-bcnf">Boyce-Codd Normal Form BCNF</h2>
+<p>trivial 하지 않은 모든 함수종속에서 결정자가 superKey인 경우 BCNF</p>
+<h2 id="third-normal-form-motivation">Third Normal Form: Motivation</h2>
+<h2 id="meterialized-view">meterialized view</h2>
+<p>from 의 경우 미리 1번만 조인 시켜서  작동하게 되는데 즉 1회성으로 메모리에
+하지만 meterialized view 는 물리적으로 보조메모리에 저장시킨다</p>
+<blockquote>
+<p>BCNF 는 데이터중복을 방지하여 어노몰리 문제가 사라지지만 함수 의존성을 보장하지 못할 수도 있다 그래서 3NF 를 사용하여 데이터 중복이 되더라도 즉 어노몰리 문제가 발생하더라도 함수의존성을 보존하는 것을 목표로  한다</p>
+</blockquote>
+<blockquote>
+<p>분해 문제 풀어보기
+3nf 는 일정수준의 중복이 필연적으로 발생하게 된다</p>
+</blockquote>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

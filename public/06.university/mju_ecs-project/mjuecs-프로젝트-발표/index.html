@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>mjuecs 프로젝트 발표 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="캡스톤 디자인1 최종 발표 MJUECS 목차 프로젝트 주제 선정 이유 및 구현하려고 했던 목표 실제 프로젝트 구현 내용 및 원래 목표와의 차이 (목표 대비 미흡한 점 혹은 초과 달성한 성과 등) 프로젝트 진행시 가장 어려웠던 점 및 해결 과정 프로젝트 결과 아쉬웠다고 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/mju_ecs-project/mjuecs-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B0%9C%ED%91%9C/">
+
+    
+    
+    
+    <meta property="og:title" content="mjuecs 프로젝트 발표">
+    <meta property="og:description" content="캡스톤 디자인1 최종 발표 MJUECS 목차 프로젝트 주제 선정 이유 및 구현하려고 했던 목표 실제 프로젝트 구현 내용 및 원래 목표와의 차이 (목표 대비 미흡한 점 혹은 초과 달성한 성과 등) 프로젝트 진행시 가장 어려웠던 점 및 해결 과정 프로젝트 결과 아쉬웠다고 …">
+    <meta property="og:url" content="http://localhost:1313/06.university/mju_ecs-project/mjuecs-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%B0%9C%ED%91%9C/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="mjuecs 프로젝트 발표">
+    <meta name="twitter:description" content="캡스톤 디자인1 최종 발표 MJUECS 목차 프로젝트 주제 선정 이유 및 구현하려고 했던 목표 실제 프로젝트 구현 내용 및 원래 목표와의 차이 (목표 대비 미흡한 점 혹은 초과 달성한 성과 등) 프로젝트 진행시 가장 어려웠던 점 및 해결 과정 프로젝트 결과 아쉬웠다고 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>mjuecs 프로젝트 발표 **page.html**</h1>
+    <h2 id="캡스톤-디자인1-최종-발표-mjuecs">캡스톤 디자인1 최종 발표 MJUECS</h2>
+<p>
+        <img src="/08.media/20250610085832-1749513512537-image.png" alt=" (Image resource not found)" ></p>
+<div class="page-break" style="page-break-before: always;"></div>
+<hr>
+<h2 id="목차">목차</h2>
+<ol>
+<li>프로젝트 주제 선정 이유 및 구현하려고 했던 목표</li>
+<li>실제 프로젝트 구현 내용 및 원래 목표와의 차이 (목표 대비 미흡한 점 혹은 초과 달성한 성과 등)</li>
+<li>프로젝트 진행시 가장 어려웠던 점 및 해결 과정</li>
+<li>프로젝트 결과 아쉬웠다고 생각되는 점 및 성과라고 생각되는 점</li>
+<li>Futre Works (고도화 방안)</li>
+<li>기타 프로젝트 성과를 잘 설명할 수 있는 사항들 (자유롭게)</li>
+</ol>
+<div class="page-break" style="page-break-before: always;"></div>
+<hr>
+<h2 id="프로젝트-주제-선정-이유-및-구현하려고-했던-목표">프로젝트 주제 선정 이유 및 구현하려고 했던 목표</h2>
+<blockquote>
+<p>[!warning]
+<strong>컴공 또는 정통 수업에서 실습시 개발환경 구성하기가 쉽지 않는 경우가 많음</strong></p>
+</blockquote>
+<ol>
+<li>아키텍쳐 문제
+<ol>
+<li>apple silicon 은 aarch64 기반, database 수업시 oracle database 기반으로 수업이 많이 진행됨 oracle databse 의 경우 amd64 아키텍쳐만 지원</li>
+<li>클라우드 컴퓨팅(하둡, spark system 이미지), system 최근은 이러한 경우가 많이 사라졌지만 여전히 이와 같이 아키텍쳐에 종족적인 경우가 많음</li>
+<li>system programming 에서 시스템 콜 실습시에 <code>sys_write</code> 번호는 x86-64에서 1, AArch64에서도 64입니다.</li>
+<li>컴퓨터 구조론, 컴퓨터 아키텍쳐와 같은 저수준을 다루는 수업에서는 일반적으로 오랬동안 산업계에서 절대적인 위치를 가져왔던 amd64 아키텍쳐가 기본적으로 사용됨</li>
+</ol>
+</li>
+<li>자동화  문제</li>
+</ol>
+<blockquote>
+<p>[!warning]
+<strong>프로젝트 진행시에 공동 db 를 만들어 두고 개발시 dummy data 같은 것들을 미리 넣어두고 사용하면 테스트시 편리함</strong></p>
+</blockquote>
+<blockquote>
+<p>[!Goal]
+목표 : 명지대 학생만 무료로 사용할 수 있는 컨테이너 기반 클라우스 서비스</p>
+</blockquote>
+<div class="page-break" style="page-break-before: always;"></div>
+<hr>
+<h2 id="실제-프로젝트-구현-내용-및-원래-목표와의-차이">실제 프로젝트 구현 내용 및 원래 목표와의 차이</h2>
+<p>학교 망 내부에서 해당 프로젝트를 구성해서 실제 구동 및 유비보수 비용이 들지 않도록 만들려고 했지만 학교 내부에서 방화벽 없이 사용할 수 있는 ip 를 받지 못함</p>
+<blockquote>
+<p>[!info]
+학교 공인 IP 대역</p>
+<ol>
+<li><strong>서브넷 마스크</strong> : <code>255.255.248.0</code></li>
+<li><strong>IP 개수</strong> :  2<sup>(32 - 21)</sup> = <strong>2048개</strong> (첫 번째와 마지막 주소 포함)</li>
+<li><strong>네트워크 주소</strong> : <code>117.17.150.0</code>, <strong>브로드캐스트 주소</strong> : <code>117.17.157.255</code>, <strong>사용 가능한 호스트 주소 범위</strong> :  <code>117.17.150.1</code> ~ <code>117.17.157.254</code><br>
+학교 내부망의 경우 10.xx.xx.xx 망을 중심으로 Tree 형태로 구성되어 있다<br>
+하위에 192.168 사설 망(Y5401, Y5445, MJUWLAN)들이 존재</li>
+</ol>
+</blockquote>
+<p>
+        <img src="/08.media/20250610040625-1749498085362-image.png" alt="|397x306 (Image resource not found)" > 
+        <img src="/08.media/20250610040658-1749498478344-image.png" alt="|399x295 (Image resource not found)" ></p>
+<div class="page-break" style="page-break-before: always;"></div>
+<hr>
+<h2 id="프로젝트-진행시-가장-어려웠던-점-및-해결-과정">프로젝트 진행시 가장 어려웠던 점 및 해결 과정</h2>
+<p>컨테이너의 상태를 db 에서 관리하고 있는데 도커 데몬 출력과의 데이터 불일치가 일어날 가능성이 존재<br>
+사용자가 터미널에서 컨테이너를 강제로 정지시킬때 <code>kill -9 1</code> 해당 문제가 발생</p>
+<h3 id="정상-프로세스">정상 프로세스</h3>
+<ol>
+<li>docker demon 에서 컨테이너의 상태가 up, db  또한 컨테이너의 상태가 up 상태라고 저장되어 있음</li>
+<li>사용자가 웹 화면에서 정지 버튼을 누름</li>
+<li>docker 컨테이너 상태가 정지됨 하지만 db 또한 stop 상태로 업데이트</li>
+</ol>
+<h3 id="비정상-프로세스">비정상 프로세스</h3>
+<ol>
+<li>docker demon 에서 컨테이너의 상태가 up, db  또한 컨테이너의 상태가 up 상태라고 저장되어 있음</li>
+<li>사용자가 터미널에서 <code>kill -9 1</code> 입력 최상위 프로세스를 종료
+(bare machine 의 init 프로세스는 아니지만 컨테이너 최상위 프로세스임)</li>
+<li>docker 컨테이너 상태가 정지됨 하지만 db 에는 그대로 up 상태임을 나타냄</li>
+</ol>
+<h3 id="해결">해결</h3>
+<p>해당 문제를 전형적인 <strong>Cache Inconsistency</strong> 와 비슷한 문제 로 판단하여 여러 논리들을 붙여서 해결했지만 근본적인 해결 책이 아니라고 느낌, source of Truth 아키텍쳐로 설계해야 옳다는 결론</p>
+<div class="page-break" style="page-break-before: always;"></div>
+<hr>
+<h2 id="futre-works-고도화-방안">Futre Works (고도화 방안)</h2>
+<ol>
+<li>데이터베이스(DB)의 역할을 <strong>사용자 인증 정보 관리에만 국한</strong>하고, 컨테이너의 생성, 상태, 소유권 등 모든 운영 정보는 각 Docker 호스트로부터 실시간으로 조회하여 백엔드 서버측의 인메모리 캐시에 올려두고(캐싱) 저장 및 관리</li>
+<li>컨테이너와 사용자의 매핑은 <strong>엄격한 컨테이너 네이밍 규칙</strong> 또는 container labeling 기능을 활용하여 이는 Docker 호스트의 실제 상태를 시스템의 유일한 진실 공급원(Source of Truth)으로 삼아 DB와 실제 상태 간의 불일치 가능성을 원천적으로 제거하려는 설계</li>
+<li>docker host 를 메인 서버와 분리하여 scale out 이 가능하게 설계한다면 이것은 네트워크 3계층 네트워크 계층의 데이터 플레인 계층과 제어 플레인 계층의 구분과 역할에 많은 공통점이 있다고 판단함 네트워크 에서의 영감을 받아 해당 프로젝트를 고도화 하고자 하는 방향이 있음</li>
+<li>커뮤니티 기능을 활성화 하여 image 템플릿을 사용자간 공유 업로드 하여 사용할 수 있다면 더욱 활성화가 가능할 것으로 보임</li>
+</ol>
+<p>참고 : <a href="https://share.note.sx/v4psgxdd#Y5O2qjdKYsrASdE/rxbiWrMGN9Q/BipEsTZ5Dln3e3s" class="external-link" target="_blank" rel="noopener noreferrer" >mjuecs 발전 방향 및 고도화 아키텍쳐 설계서</a></p>
+<div class="page-break" style="page-break-before: always;"></div>
+<hr>
+<h2 id="기타-프로젝트-성과를-잘-설명할-수-있는-사항들">기타 프로젝트 성과를 잘 설명할 수 있는 사항들</h2>
+<blockquote>
+<p>[!danger]
+법적 검토 : 최근 SKT 의 보안 사고 이슈</p>
+</blockquote>
+<p>현재 해당 프로젝트의 기능중 하나인 학교 아이디와 비밀번호로 로그인이 가능하게 하였는데<br>
+
+        <img src="/08.media/20250610050650-1749501170239-image.png" alt="|594x304 (Image resource not found)" >
+해당 기능과 비슷하게 세종대에서 구현한 모델이 있어 소개하고 해당 프로젝트를 설계 및 구현한 사람에게 법률 관련 문의를 질의함<br>
+<a href="https://github.com/iml1111/sejong-univ-auth/issues/21#issuecomment-2908149985" class="external-link" target="_blank" rel="noopener noreferrer" >학교 로그인 프로젝트 github</a></p>
+<blockquote>
+<p>[!conclusion]</p>
+<ol>
+<li>해당 프로젝트는 개인정보 보호법과 해당 학교의 이용약관 및 보안정책에 대한 이행의무를 가진다</li>
+<li>학교의 이용약관에서는 문제가 없다고 판단이 되고 개인정보 보호법에는 약간의 수정을 거친다면 문제가 없을 수 있다고 판단된다 하지만 해당 판단은  법률지식이 없는 공대생 입장이므로 법률 전문가의 질의가 필요하다고 판단된다</li>
+</ol>
+</blockquote>
+<div class="page-break" style="page-break-before: always;"></div>
+<hr>
+<h3 id="따져봐야할-지점---사용자의-학번은-db-에-평문으로-저장">따져봐야할 지점  : 사용자의 학번은 db 에 평문으로 저장</h3>
+<p>비밀번호의 경우 암호화 저장이 맞지만 아이디의 경우 평문저장이 문제가 되지 않는다 (해당 id(학번)은 웹사이트내에서 사용됨으로 평문으로 필요)<br>
+하지만 사용자의 id 가 db 에 저장되는 순간 법적으로 개인정보 처리자로 인식, 또한 학교구성원의 정보 임으로 학교 이용약관의 이행의무 또한 가지고 있음</p>
+<p><a href="https://www.mju.ac.kr/mjukr/154/subview.do" class="external-link" target="_blank" rel="noopener noreferrer" >학교 정보 처리 이용 약관</a></p>
+<ul>
+<li>3장 6조 1항
+<ul>
+<li>학교는 이용자가 이 약관의 의무를 위반하거나 서비스의 정상적인 운영을 방해한 경우, 경고, 일시정지, 영구이용정지 등으로 서비스 이용을 단계적으로 제한할 수 있다.</li>
+</ul>
+</li>
+<li><span style="background:#fff88f">=&gt; 의도적으로 서버측에 과도한 요청을 날리는 문제인데 동일 계정으로 서버측에 요청을 하면 일정 시간 자동으로 막힘 따로 제한할 필요가 없다</span></li>
+<li>3장 9조 5항 아호
+<ul>
+<li>학교의 동의 없이 영리를 목적으로 서비스를 사용하는 행위</li>
+</ul>
+</li>
+<li><span style="background:#fff88f">=&gt; 영리를 목적으로 사용하지 않으므로 상관이 없음</span></li>
+</ul>
+<p><span style="background:rgba(5, 117, 197, 0.2)">사용자의 정보</span>를 저장하는 경우 사용자에게 개인정보 처리 방침을 공시하여야 한다</p>
+<ul>
+<li>개인정보 보호법 제29조 (안전조치 의무)
+<ul>
+<li>개인정보 처리자는 개인정보가 분실·도난·유출·변조·훼손되지 않도록 안전성 확보에 필요한 기술적·관리적 조치를 해야 함.</li>
+</ul>
+</li>
+</ul>
+<div class="page-break" style="page-break-before: always;"></div>
+<hr>
+<blockquote>
+<p>[!tip]
+별점 -&gt; 비밀번호 저장 방침</p>
+</blockquote>
+<p>사용자의 정보중 비밀번호를 저장하려고 하는 경우</p>
+<ul>
+<li>정보통신망법 제28조 (개인정보의 보호조치)
+<ul>
+<li>이용자의 개인정보를 보호하기 위해 비밀번호는 암호화하여 저장해야 하고, 해킹이나 유출 우려가 없도록 접근통제·방화벽 구축 등의 조치를 해야 함.</li>
+</ul>
+</li>
+<li>개인정보의 기술적·관리적 보호조치 기준 (행정안전부 고시)
+<ul>
+<li>비밀번호는 복호화가 불가능한 **단방향 암호화(SHA-256 이상)**로 저장할 것.</li>
+<li>가능하면 비밀번호 정책(복잡성, 최소 길이, 변경 주기) 도 설정해야 함.</li>
+</ul>
+</li>
+</ul>
+<hr>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

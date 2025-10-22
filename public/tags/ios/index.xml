@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ios on My Test Site</title>
+    <link>http://localhost:1313/tags/ios/</link>
+    <description>Recent content in Ios on My Test Site</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 15 May 2024 14:30:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ios 터미널 접근</title>
+      <link>http://localhost:1313/02.inbox/ios-%ED%84%B0%EB%AF%B8%EB%84%90-%EC%A0%91%EA%B7%BC/</link>
+      <pubDate>Wed, 15 May 2024 14:30:00 +0900</pubDate>
+      <guid>http://localhost:1313/02.inbox/ios-%ED%84%B0%EB%AF%B8%EB%84%90-%EC%A0%91%EA%B7%BC/</guid>
+      <description>&lt;h2 id=&#34;외부-접근&#34;&gt;외부 접근&lt;/h2&gt;&#xA;&lt;p&gt;ios 는 모바일 운영체제로서 샌드박스 형태의 아키텍쳐를 취하고 있다&#xA;즉 앱 하나하나다 일종의 User 로서 로그인하게 되고 유저의 home 영역을 제외한 곳은 읽기 조차 금지 되어있다 하지만 android 는 초창기 부터 다른 A 앱에서 B 앱의 접근을 api 로서 허용하고 있으며 이를 활용해 삼성의 &amp;lsquo;내파일&amp;rsquo; &amp;lsquo;사진&amp;rsquo; &amp;lsquo;한글뷰어&amp;rsquo; 과 같은 앱들은 android 가 제공하는 공용 공간에 접근 api 를 사용하여 동일한 공간에 사용자의 파일을 몰아넣고 데스크탑과 비슷한 환경을 구축해놓았다 하지만 ios 의 경우에는 이런것이 매우 부족하다 하지만 ios 13 부터였나(?) 이러한 api 가 개발자들에게 지원되기 시작했고 이를 이를 통해 할 수 있는 포텐셜이 늘어나게 되었다&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>그래서 컴퓨터는 어떻게 동작하나요 2 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="여기서 부터는 32 비트로 설계하게 된다 즉 word 가 32 비트 이다
+변경점 RAM RAM 의 경우 data bit size 는 32가 가능하지만 address bit width 의 경우 32 비트가 가능하지 않다(logisim 의 한계 4기가의 메모리는 감당하지 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-2/">
+
+    
+    
+    
+    <meta property="og:title" content="그래서 컴퓨터는 어떻게 동작하나요 2">
+    <meta property="og:description" content="여기서 부터는 32 비트로 설계하게 된다 즉 word 가 32 비트 이다
+변경점 RAM RAM 의 경우 data bit size 는 32가 가능하지만 address bit width 의 경우 32 비트가 가능하지 않다(logisim 의 한계 4기가의 메모리는 감당하지 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-2/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="그래서 컴퓨터는 어떻게 동작하나요 2">
+    <meta name="twitter:description" content="여기서 부터는 32 비트로 설계하게 된다 즉 word 가 32 비트 이다
+변경점 RAM RAM 의 경우 data bit size 는 32가 가능하지만 address bit width 의 경우 32 비트가 가능하지 않다(logisim 의 한계 4기가의 메모리는 감당하지 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>그래서 컴퓨터는 어떻게 동작하나요 2 **page.html**</h1>
+    <p>여기서 부터는 32 비트로 설계하게 된다
+즉 word 가 32 비트 이다</p>
+<h2 id="변경점">변경점</h2>
+<h3 id="ram">RAM</h3>
+<p>RAM 의 경우 data bit size 는 32가 가능하지만 address bit width 의 경우 32 비트가 가능하지 않다(logisim 의 한계 4기가의 메모리는 감당하지 못한다) 그러므로 address bit width 의 경우 24 비트로 한다</p>
+<p>현대 컴퓨터에 사용하는 RAM 과 ㄱ</p>
+<h3 id="register">Register</h3>
+<ol>
+<li>IAR INSTRUCTION ADDRESS REGISTER 을 PC PROGRAM COUTER 로 표기한다</li>
+<li>레지스터의 경우 7비트에서는 2개가 존재했다</li>
+</ol>
+<h3 id="instruction-set">Instruction set</h3>
+<p><strong>8비트</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>0~3</th>
+          <th>4~5</th>
+          <th>6~7</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>OPCODE</td>
+          <td>레지스터 선택자 RA</td>
+          <td>레시스터 선택자 RB</td>
+      </tr>
+  </tbody>
+</table>
+<p>1<del>4 : 4비트는 명령어의 종류 선택하는 OPCODE 이다
+5</del>6 : 2비트는 레지스터 선택자(RA)로 00 부터 11 까지 각각 R0, R1, R2, R3 레지스터에 매핑되어 있다
+7~8 : 2비트는 레지스터 2비트는 레지스터 선택자(RB)로 00 부터 11 까지 각각 R0, R1, R2, R3 레지스터에 매핑되어 있다</p>
+<p><strong>32 비트</strong></p>
+<h3 id="ram-1">RAM</h3>
+<p><a href="http://localhost:1313/02.inbox/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EB%8C%80-%ED%81%AC%EA%B8%B0/" class="internal-link">메모리 최대 크기</a>
+위를 참고하자
+Logisim에서 구현한 컴퓨터의 경우는 메인 CPU 클럭을 RAM의 클럭으로 그대로 사용한다 이러한 설계는 실제 현재 컴퓨터와 비교했을 때 훨씬 간단하게 구현이 가능하지만 현대 컴퓨터의 경우에는 다른 점이 여러가지가 있다 하지만 여기에서는 2가지 차이와 그로 인한 문제(?)에 대해 이야기 해본다</p>
+<ol>
+<li>data bit width 의 크기가 현대 RAM 의 경우는 8bit(1Byte)
+하지만 Logisim 으로 구현한 RAM 의 경우에는 32bit(4Byte)</li>
+<li>현대 컴퓨터의 경우에는 RAM 이 CPU의 클럭을 그대로 사용하지 않는다
+하지만 Logisim 으로 구현한 컴퓨터의 경우에는 RAM 이 CPU 의 클럭을 그대로 사용한다</li>
+<li>실제 cpu는 MMU 메모리 실제 주소 변경 유닛 과 같은 것이 있지만 이 cpu 에서는 없다</li>
+<li>현대 cpu 의 경우 주소 버스, 데이터 버스, 제어  버스와 같은 것들이 구분되어 있지만 여기서는 모든 버스를 구분해서 사용하지는 않는다</li>
+<li>초기에는 controll unit 에서 실제 어떠한 동작을 하는지 각각의 배선을 따로 만들었지만 지금은 ROM 을 이용해서 각 명령어 마다 행동해야할 행동을 ROM 에 저장할 수 있다 이를 전문 용어로 제어메트릭스에서 마이크로 코드 방식으로 변경한다 라고 이야기한다</li>
+<li></li>
+</ol>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

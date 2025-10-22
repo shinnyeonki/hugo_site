@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>http 분석 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="전문가를 대상으로 한 심층적인 HTTP 구성 요소 설명입니다. 각 항목의 기술적 특성과 실제 적용 시 고려사항을 중심으로 설명합니다:
+1. HTTP 메소드 (HTTP Methods) RFC 7231 표준에 정의된 동사(Verb)로, 리소스에 대한 의도를 명시 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/younghan-mvc1/http-%EB%B6%84%EC%84%9D/">
+
+    
+    
+    
+    <meta property="og:title" content="http 분석">
+    <meta property="og:description" content="전문가를 대상으로 한 심층적인 HTTP 구성 요소 설명입니다. 각 항목의 기술적 특성과 실제 적용 시 고려사항을 중심으로 설명합니다:
+1. HTTP 메소드 (HTTP Methods) RFC 7231 표준에 정의된 동사(Verb)로, 리소스에 대한 의도를 명시 …">
+    <meta property="og:url" content="http://localhost:1313/younghan-mvc1/http-%EB%B6%84%EC%84%9D/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="http 분석">
+    <meta name="twitter:description" content="전문가를 대상으로 한 심층적인 HTTP 구성 요소 설명입니다. 각 항목의 기술적 특성과 실제 적용 시 고려사항을 중심으로 설명합니다:
+1. HTTP 메소드 (HTTP Methods) RFC 7231 표준에 정의된 동사(Verb)로, 리소스에 대한 의도를 명시 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>http 분석 **page.html**</h1>
+    <p>전문가를 대상으로 한 심층적인 HTTP 구성 요소 설명입니다. 각 항목의 기술적 특성과 실제 적용 시 고려사항을 중심으로 설명합니다:</p>
+<hr>
+<h3 id="1-http-메소드-http-methods">1. <strong>HTTP 메소드 (HTTP Methods)</strong></h3>
+<ul>
+<li><strong>RFC 7231 표준</strong>에 정의된 동사(Verb)로, 리소스에 대한 의도를 명시
+<ul>
+<li><strong>Idempotency</strong>: PUT/DELETE는 멱등성 보장 (동일 요청 반복 시 결과 동일)</li>
+<li><strong>Safe Methods</strong>: GET/HEAD/OPTIONS는 서버 상태 변경 없음</li>
+<li><strong>확장 메소드</strong>: PATCH(부분 수정), LINK(리소스 연결) 등 RFC 5789</li>
+</ul>
+</li>
+<li><strong>API 설계 시 고려사항</strong>:
+<ul>
+<li>RESTful 원칙 준수 (리소스 중심 경로 + 메소드 조합)</li>
+<li>OPTIONS 메소드를 통한 CORS Preflight 처리</li>
+<li>TRACE 메소드의 보안 취약점 관리 (XST 공격 방어)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-url-uniform-resource-locator">2. <strong>URL (Uniform Resource Locator)</strong></h3>
+<ul>
+<li>
+<p><strong>URI의 하위 집합</strong>으로, 리소스 위치 및 접근 방법을 포함</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>scheme:[//authority][/path][?query][#fragment]
+</span></span></code></pre></div><ul>
+<li><strong>Authority</strong>: <code>user:pass@host:port</code> (인증정보는 RFC 7617에서 deprecated)</li>
+<li><strong>Path Parameter</strong>: <code>/users/123;version=2</code> (Matrix URIs, RFC 3986)</li>
+<li><strong>Encoding</strong>: 퍼센트 인코딩 (예: 한글 → <code>%ED%95%9C%EA%B8%80</code>)</li>
+</ul>
+</li>
+<li>
+<p><strong>REST API 설계</strong>:</p>
+<ul>
+<li>버저닝 전략 (<code>/v1/resource</code> vs <code>Accept: application/vnd.example.v1+json</code>)</li>
+<li>HATEOAS를 위한 링크 표현 (HAL, JSON-LD)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-쿼리-스트링-query-string">3. <strong>쿼리 스트링 (Query String)</strong></h3>
+<ul>
+<li><strong>RFC 3986</strong>에 정의된 비계층적 데이터 전달 방식
+<ul>
+<li><strong>중복 키 처리</strong>: <code>?q=1&amp;q=2</code> → 서버측 언어별 파싱 차이 (PHP: 배열, Node.js: 마지막 값)</li>
+<li><strong>보안 이슈</strong>:
+<ul>
+<li>SQLi/XSS 방지를 위한 입력 검증 필수</li>
+<li>민감 데이터 전송 금지 (로그에 노출 위험)</li>
+</ul>
+</li>
+<li><strong>성능 최적화</strong>:
+<ul>
+<li>캐시 키 생성 시 쿼리 파라미터 순서 무시 (예: <code>?a=1&amp;b=2</code> ≡ <code>?b=2&amp;a=1</code>)</li>
+<li>CDN 쿼리 스트링 캐싱 정책 관리</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-스키마프로토콜-schemeprotocol">4. <strong>스키마/프로토콜 (Scheme/Protocol)</strong></h3>
+<ul>
+<li><strong>HTTP/1.1</strong> (RFC 7230) vs <strong>HTTP/2</strong> (RFC 7540) vs <strong>HTTP/3</strong> (RFC 9114)
+<ul>
+<li><strong>HTTP/2</strong>:
+<ul>
+<li>Binary Framing, Header Compression (HPACK)</li>
+<li>Multiplexing (단일 연결에서 병렬 요청)</li>
+</ul>
+</li>
+<li><strong>HTTP/3</strong>: QUIC 프로토콜 기반 (UDP 사용, 연결 이동성)</li>
+<li><strong>TLS Handshake</strong>: ALPN 확장을 통한 프로토콜 협상</li>
+</ul>
+</li>
+<li><strong>보안</strong>:
+<ul>
+<li>HSTS (HTTP Strict Transport Security) 적용</li>
+<li>TLS 1.3 이상 강제화 (RFC 8446)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-헤더-headers">5. <strong>헤더 (Headers)</strong></h3>
+<ul>
+<li><strong>표준 헤더</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json; charset=utf-8</code></li>
+<li><code>Cache-Control</code>: <code>max-age=3600, public</code></li>
+<li><code>Authorization</code>: <code>Bearer &lt;token&gt;</code></li>
+</ul>
+</li>
+<li><strong>사용자 정의 헤더</strong>:
+<ul>
+<li><code>X-</code> Prefix는 더 이상 권장되지 않음 (RFC 6648)</li>
+<li><code>Sec-</code> Prefix는 브라우저 보안 헤더 예약</li>
+</ul>
+</li>
+<li><strong>성능 최적화</strong>:
+<ul>
+<li>Connection: <code>keep-alive</code> (HTTP/1.1 기본)</li>
+<li><code>Transfer-Encoding: chunked</code> 스트리밍 처리</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="6-헤더-조회-header-inspection">6. <strong>헤더 조회 (Header Inspection)</strong></h3>
+<ul>
+<li>
+<p><strong>네트워크 계층 분석</strong>:</p>
+<ul>
+<li>Wireshark/tcpdump로 Raw 패킷 캡처</li>
+<li>TLS 트래픽은 Session Key 로깅 후 복호화 (SSLKEYLOGFILE)</li>
+</ul>
+</li>
+<li>
+<p><strong>응용 계층 분석</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Python (Flask)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> request
+</span></span><span style="display:flex;"><span>print(request<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;X-Custom-Header&#39;</span>))
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Node.js (Express)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>((<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;User-Agent&#39;</span>));
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div></li>
+<li>
+<p><strong>CDN/Proxy 환경</strong>:</p>
+<ul>
+<li>X-Forwarded-For, X-Real-IP 헤더 검증</li>
+<li>CDN별 헤더 규격 차이 (Cloudflare vs AWS CloudFront)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="7-바디-body">7. <strong>바디 (Body)</strong></h3>
+<ul>
+<li>
+<p><strong>전송 형식</strong>:</p>
+<ul>
+<li><code>application/json</code>: UTF-8 인코딩 필수 (RFC 8259)</li>
+<li><code>multipart/form-data</code>: Boundary 구분자 무결성 검증</li>
+<li><code>application/octet-stream</code>: 바이너리 데이터 처리</li>
+</ul>
+</li>
+<li>
+<p><strong>스트리밍 처리</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Python (Requests)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> requests<span style="color:#f92672">.</span>post(url, data<span style="color:#f92672">=</span>generator()) <span style="color:#66d9ef">as</span> r:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> chunk <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>iter_content(<span style="color:#ae81ff">8192</span>):
+</span></span><span style="display:flex;"><span>        process(chunk)
+</span></span></code></pre></div></li>
+<li>
+<p><strong>보안</strong>:</p>
+<ul>
+<li>요청 크기 제한 (예: Nginx <code>client_max_body_size</code>)</li>
+<li>파일 업로드 시 MIME 타입 검증 + 바이러스 스캔</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="8-form-파라미터-형식-조회">8. <strong>Form 파라미터 형식 조회</strong></h3>
+<ul>
+<li><strong>인코딩 타입 비교</strong>:
+<table>
+  <thead>
+      <tr>
+          <th>Content-Type</th>
+          <th>용도</th>
+          <th>RFC</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>application/x-www-form-urlencoded</code></td>
+          <td>단순 텍스트 데이터</td>
+          <td>RFC 1866</td>
+      </tr>
+      <tr>
+          <td><code>multipart/form-data</code></td>
+          <td>파일 업로드</td>
+          <td>RFC 7578</td>
+      </tr>
+      <tr>
+          <td><code>application/json</code></td>
+          <td>구조화된 데이터</td>
+          <td>RFC 8259</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li><strong>구현 시 고려사항</strong>:
+<ul>
+<li><code>charset</code> 미지정 시 ISO-8859-1 기본 적용 (RFC 7231)</li>
+<li>파일 업로드 시 <code>filename*</code> 확장 문법 (RFC 5987)</li>
+<li>대용량 파일 처리를 위한 Memory Mapped I/O</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="9-message-body-데이터-직접-조회">9. <strong>Message Body 데이터 직접 조회</strong></h3>
+<ul>
+<li>
+<p><strong>Low-Level 접근</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Java Servlet API</span>
+</span></span><span style="display:flex;"><span>ServletInputStream inputStream <span style="color:#f92672">=</span> request.<span style="color:#a6e22e">getInputStream</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>8192<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> bytesRead;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> ((bytesRead <span style="color:#f92672">=</span> inputStream.<span style="color:#a6e22e">read</span>(buffer)) <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Process raw bytes</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Go</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">body</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Body</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+</span></span></code></pre></div></li>
+<li>
+<p><strong>성능 최적화</strong>:</p>
+<ul>
+<li>Zero-Copy 기법 (sendfile 시스템 호출)</li>
+<li>메모리 풀링 (Netty 등 비동기 프레임워크)</li>
+</ul>
+</li>
+<li>
+<p><strong>보안</strong>:</p>
+<ul>
+<li>Deserialization 취약점 방어 (JSON/XML External Entity)</li>
+<li>요청 크기 제한 및 타임아웃 설정</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>이 설명은 API 게이트웨이 개발, 고성능 서버 설계, 보안 오디팅 등 전문적인 시나리오에서의 적용을 고려한 내용입니다. 각 구성 요소는 RFC 표준, 성능 최적화, 보안 측면에서 종합적으로 관리되어야 합니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

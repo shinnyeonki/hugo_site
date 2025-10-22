@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>네트워크 3계층 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="먼거리(인터넷 통신) 간 통신
+용어 설명 IPv4: 현제 PC 에 할당된 ip 주소 서브넷 마스크 : ip 주소에 대한 네트워크 대역을 규정하는 것 게이트 웨이 : 외부와 통신할 때 사용하는 네트워크 출입구
+목차 ARP 프로토콜 : 동일 네트워크 대역 MAC 주소를 알 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EB%94%B0%EB%9D%BCit/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-3%EA%B3%84%EC%B8%B5/">
+
+    
+    
+    
+    <meta property="og:title" content="네트워크 3계층">
+    <meta property="og:description" content="먼거리(인터넷 통신) 간 통신
+용어 설명 IPv4: 현제 PC 에 할당된 ip 주소 서브넷 마스크 : ip 주소에 대한 네트워크 대역을 규정하는 것 게이트 웨이 : 외부와 통신할 때 사용하는 네트워크 출입구
+목차 ARP 프로토콜 : 동일 네트워크 대역 MAC 주소를 알 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EB%94%B0%EB%9D%BCit/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-3%EA%B3%84%EC%B8%B5/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="네트워크 3계층">
+    <meta name="twitter:description" content="먼거리(인터넷 통신) 간 통신
+용어 설명 IPv4: 현제 PC 에 할당된 ip 주소 서브넷 마스크 : ip 주소에 대한 네트워크 대역을 규정하는 것 게이트 웨이 : 외부와 통신할 때 사용하는 네트워크 출입구
+목차 ARP 프로토콜 : 동일 네트워크 대역 MAC 주소를 알 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>네트워크 3계층 **page.html**</h1>
+    <p><strong>먼거리(인터넷 통신) 간 통신</strong></p>
+<p>용어 설명
+IPv4: 현제 PC 에 할당된 ip 주소
+서브넷 마스크 : ip 주소에 대한 네트워크 대역을 규정하는 것
+게이트 웨이 : 외부와 통신할 때 사용하는 네트워크 출입구</p>
+<h2 id="목차">목차</h2>
+<ul>
+<li>ARP 프로토콜 : 동일 네트워크 대역 MAC 주소를 알기 위해 사용하는 프로토콜</li>
+<li>IPv4 프로토콜 :</li>
+<li>ICMP 프로토콜 : 연결 확인용 프로토콜</li>
+</ul>
+<p>
+        <img src="/08.media/20240205150757.png" alt="네트워크 3계층-20240205150757 (Image resource not found)" ></p>
+<h2 id="arp-protocol">ARP Protocol</h2>
+<p><strong>동일 네트워크 대역</strong>
+
+        <img src="/08.media/20240205150706.png" alt="네트워크 3계층-20240205150706 (Image resource not found)" >
+같은 네트워크 대역에서 통신을 하기 위해 MAC 주소를 ip 주소를 이용해서 알아오는 프로토콜</p>
+<ul>
+<li>hardware type : 2계층 프로토콜 type( 대부분 이더넷 0x0001)</li>
+<li>protocol type : 3계층 프로토콜 type( 대부분 ip 0x0800 )</li>
+<li>hardware address Length : MAC 주소의 길이 06</li>
+<li>Protocol address length : IP 주소의 길이 04</li>
+<li>opcode : 질문 0x0001 또는 대답 0x0002</li>
+<li>source hardware address : 출발지 MAC 주소</li>
+<li>source protocol address : 출발지 ip 주소</li>
+<li>destination hardware address : 도착지 MAC 주소 (알고 싶은 mac 주소)
+<ul>
+<li>질문시에는 모르니까 000000</li>
+</ul>
+</li>
+<li>destination protocol address : 도착지 ip 주소
+<a href="https://docs.google.com/presentation/d/1GParqmJVI3xwzFDk-FrOqGzFsAFbqUC5/edit#slide=id.p8" class="external-link" target="_blank" rel="noopener noreferrer" ></a></li>
+</ul>
+<blockquote>
+<p>mac 주소를 모르므로 00000&hellip; 으로 비워둔다</p>
+</blockquote>
+<blockquote>
+<p>동일 네트워크 대역에서 통신을 한다고 하더라도 데이터를 보내기 위해서는 7계층 부터 캡술화를 통해 데이터를 보내기 때문에 ip 주소와 MAC 주소 모두 필요하다 이때 IP 주소는 알고 MAC 주소를 도르더라도 ARP 를 통해 통신이 가능하다</p>
+</blockquote>
+<blockquote>
+<p>arp 는 3계층이지만 동일 네트워크 대역에서만 사용할 수 있다</p>
+</blockquote>
+<blockquote>
+<p>통신 이후 arp 캐시 테이블로 관리한다</p>
+</blockquote>
+<h2 id="ipv4--icmp-protocol">IPv4 &amp; ICMP Protocol</h2>
+<ul>
+<li>시대별 구분</li>
+<li>프로토콜 구조</li>
+<li>라우팅 테이블</li>
+<li>타 네트워크 통신과정</li>
+<li>조각화</li>
+</ul>
+<h3 id="시대별-구분">시대별 구분</h3>
+<ul>
+<li>classful</li>
+<li>classfulless</li>
+<li>공인 사설</li>
+</ul>
+<h4 id="classful-ip-1세대">classful IP 1세대</h4>
+<p>
+        <img src="/08.media/20240205151100.png" alt="네트워크 3계층-20240205151100 (Image resource not found)" >
+
+        <img src="/08.media/20240205151349.png" alt="네트워크 3계층-20240205151349 (Image resource not found)" ></p>
+<blockquote>
+<p>네트워크 클래스별로 대역을 구분</p>
+</blockquote>
+<h4 id="classfulless-ip-2세대">classfulless IP 2세대</h4>
+<p>
+        <img src="/08.media/20240205151941.png" alt="네트워크 3계층-20240205151941 (Image resource not found)" ></p>
+<blockquote>
+<p>서브넷 마스크 도입으로 임의로 대역을 구분 가능</p>
+</blockquote>
+<p>
+        <img src="/08.media/20240205152822.png" alt="네트워크 3계층-20240205152822 (Image resource not found)" ></p>
+<h4 id="현제-ip-3세대">현제 IP 3세대</h4>
+<p>
+        <img src="/08.media/20240205153208.png" alt="네트워크 3계층-20240205153208 (Image resource not found)" >
+NAT</p>
+<p>터널링</p>
+<h3 id="프로토콜-구조">프로토콜 구조</h3>
+<p>
+        <img src="/08.media/20240205150715.png" alt="네트워크 3계층-20240205150715 (Image resource not found)" ></p>
+<ul>
+<li>Version 버전 0x4 고정</li>
+<li>IHL(Header Length) (헤더 길이/4) : 0x5, 0x6 &hellip;</li>
+<li>type of Service (TOS) : 0 으로 비어있음 서비스 형식 과거에 사용</li>
+<li>Total Length : Packet 전체 크기 : 헤더와 페이로드 포함</li>
+<li>Identification, IP Flags, Fragment Offset :
+전송시 분리되서 보내지는데 이때 구별을 위한 정보
+<ul>
+<li>identification : 패킷 id, 조각화시 조각들은 동일 id</li>
+<li>IP Flags(x 사용하지 않음, D Dont Fragmentation:쪼개지 마라, More Fragmentation:조각화시 마지막 패킷만 0 )</li>
+<li>fragment Offset : 초기 위치에서 떨어진 만큼의 위치 8로 나눔</li>
+</ul>
+</li>
+<li>Time To Live : 패킷의 생존 시간 ( 순환 오류 발생 대비 노드 최대 방문 횟수 )
+<ul>
+<li>unix 는 64 설정, window 는 128 기본 설정</li>
+<li>이를 통해 운영체제 예측 가능</li>
+</ul>
+</li>
+<li>Protocol : ICMP(3계층 0x01=1), TCP(4계층 0x06=6), UDP(4계층 0x11=17 )</li>
+<li>Header Checksum : 헤더를 통해 생성 hash 알고리즘</li>
+<li>Source address : 출발지 ip</li>
+<li>Destination address : 목적지 ip</li>
+<li>IP Option : 추가적인 정보란( 0~12 바이트 정도)</li>
+</ul>
+<blockquote>
+<p>정확하게 전달될 것을 보장하지 않는다</p>
+</blockquote>
+<p>
+        <img src="/08.media/20240205150757.png" alt="네트워크 3계층-20240205150757 (Image resource not found)" ></p>
+<ul>
+<li>type : 카테고리</li>
+<li>Code : 소분류</li>
+<li>Checksum : 헤더 오류 검출용</li>
+<li>추가</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Code</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">응답 echo request</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">0</td>
+          <td style="text-align: left">요청 echo respond</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">3</td>
+          <td style="text-align: left">0~15</td>
+          <td style="text-align: left">목적지 도달 불가 Destination Unrechable</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">11</td>
+          <td style="text-align: left">0~1</td>
+          <td style="text-align: left">도착이후 반환 불가(방화벽, 응답x) Time Exceeded</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">5</td>
+          <td style="text-align: left">0 ~ 3</td>
+          <td style="text-align: left">원격지 라우팅 테이블 수정 Redirect Message</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>ICMP 메세지 타입 검색</p>
+</blockquote>
+<h3 id="라우팅-테이블">라우팅 테이블</h3>
+<p>netstat -r 명령어를 통해 확인</p>
+<h3 id="조각화">조각화</h3>
+<p>
+        <img src="/08.media/20240206005219.png" alt="네트워크 3계층-20240206005219 (Image resource not found)" >
+
+        <img src="/08.media/20240206005446.png" alt="네트워크 3계층-20240206005446 (Image resource not found)" ></p>
+<blockquote>
+<p>ip 자체 프로토콜 최소 20 바이트를 고려해서 분리해야한다</p>
+</blockquote>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

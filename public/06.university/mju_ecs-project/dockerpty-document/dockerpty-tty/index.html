@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title> | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="dockerpty: tty.py 모듈 문서 dockerpty: tty.py 모듈은 터미널(TTY) 장치와 상호 작용하기 위한 유틸리티를 제공하며, 특히 가상 터미널(PTY)과 관련된 작업에 유용합니다. 이 모듈은 TTY 크기를 확인하거나 터미널을 일시적으로 raw 모드 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/mju_ecs-project/dockerpty-document/dockerpty-tty/">
+
+    
+    
+    
+    <meta property="og:title" content="">
+    <meta property="og:description" content="dockerpty: tty.py 모듈 문서 dockerpty: tty.py 모듈은 터미널(TTY) 장치와 상호 작용하기 위한 유틸리티를 제공하며, 특히 가상 터미널(PTY)과 관련된 작업에 유용합니다. 이 모듈은 TTY 크기를 확인하거나 터미널을 일시적으로 raw 모드 …">
+    <meta property="og:url" content="http://localhost:1313/06.university/mju_ecs-project/dockerpty-document/dockerpty-tty/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="dockerpty: tty.py 모듈 문서 dockerpty: tty.py 모듈은 터미널(TTY) 장치와 상호 작용하기 위한 유틸리티를 제공하며, 특히 가상 터미널(PTY)과 관련된 작업에 유용합니다. 이 모듈은 TTY 크기를 확인하거나 터미널을 일시적으로 raw 모드 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1> **page.html**</h1>
+    <h1 id="dockerpty-ttypy-모듈-문서"><code>dockerpty: tty.py</code> 모듈 문서</h1>
+<p><code>dockerpty: tty.py</code> 모듈은 터미널(TTY) 장치와 상호 작용하기 위한 유틸리티를 제공하며, 특히 가상 터미널(PTY)과 관련된 작업에 유용합니다. 이 모듈은 TTY 크기를 확인하거나 터미널을 일시적으로 raw 모드로 전환하는 기능을 포함하고 있습니다. 이러한 기능은 Docker 컨테이너 또는 PTY와 TTY 간 데이터를 스트리밍해야 하는 환경에서 유용하게 사용됩니다.</p>
+<p>아래는 모듈의 구성 요소와 사용 방법에 대한 자세한 설명입니다.</p>
+<hr>
+<h2 id="함수">함수</h2>
+<h3 id="sizefd"><code>size(fd)</code></h3>
+<h4 id="설명">설명</h4>
+<p>제공된 파일 디스크립터와 연결된 TTY의 크기를 <code>(행, 열)</code> 형태의 튜플로 반환합니다. 파일 디스크립터는 일반적으로 TTY의 표준 출력 스트림(<code>stdout</code>)을 나타내야 합니다.</p>
+<p>TTY 크기를 확인할 수 없는 경우 (예: 파일 디스크립터가 TTY가 아닌 경우), 함수는 <code>None</code>을 반환합니다.</p>
+<h4 id="매개변수">매개변수</h4>
+<ul>
+<li><strong><code>fd</code></strong>: 유효한 파일 디스크립터를 가진 파일 객체 (예: <code>sys.stdout</code>). 파일 디스크립터는 TTY와 연결되어 있어야 합니다.</li>
+</ul>
+<h4 id="반환-값">반환 값</h4>
+<ul>
+<li><strong><code>(rows, cols)</code></strong>: TTY의 행과 열 수를 나타내는 튜플.</li>
+<li><strong><code>None</code></strong>: TTY 크기를 확인할 수 없는 경우.</li>
+</ul>
+<h4 id="예제-코드">예제 코드</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dockerpty.tty <span style="color:#f92672">import</span> size
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tty_size <span style="color:#f92672">=</span> size(sys<span style="color:#f92672">.</span>stdout)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> tty_size:
+</span></span><span style="display:flex;"><span>    rows, cols <span style="color:#f92672">=</span> tty_size
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;TTY 크기: 행=</span><span style="color:#e6db74">{</span>rows<span style="color:#e6db74">}</span><span style="color:#e6db74">, 열=</span><span style="color:#e6db74">{</span>cols<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;TTY가 아니거나 크기를 확인할 수 없습니다.&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="클래스">클래스</h2>
+<h3 id="terminal"><code>Terminal</code></h3>
+<h4 id="설명-1">설명</h4>
+<p><code>Terminal</code> 클래스는 터미널을 일시적으로 raw 모드로 전환하기 위한 컨텍스트 관리자 인터페이스를 제공합니다. Raw 모드에서는 줄 버퍼링 및 문자 처리가 비활성화되며, PTY에서 TTY로 데이터를 직접 스트리밍할 때 유용합니다.</p>
+<h4 id="생성자">생성자</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Terminal(fd, raw<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><ul>
+<li>
+<p><strong>매개변수</strong>:</p>
+<ul>
+<li><strong><code>fd</code></strong>: 유효한 파일 디스크립터를 가진 파일 객체 (예: <code>sys.stdin</code>). 이는 터미널의 입력 스트림을 나타냅니다.</li>
+<li><strong><code>raw</code></strong>: 터미널이 raw 모드로 동작할지 여부를 나타내는 플래그. 기본값은 <code>True</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>속성</strong>:</p>
+<ul>
+<li><strong><code>fd</code></strong>: 터미널과 연결된 파일 디스크립터.</li>
+<li><strong><code>raw</code></strong>: 터미널이 raw 모드로 동작할지 여부.</li>
+<li><strong><code>original_attributes</code></strong>: raw 모드로 전환하기 전의 원래 터미널 속성을 저장합니다. 초기값은 <code>None</code>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="메서드">메서드</h4>
+<h5 id="start"><code>start()</code></h5>
+<p>터미널이 TTY이고 <code>raw</code> 플래그가 <code>True</code>인 경우, 터미널을 raw 모드로 전환합니다. 원래의 터미널 속성을 나중에 복원하기 위해 저장합니다.</p>
+<ul>
+<li><strong>동작</strong>:
+<ul>
+<li>파일 디스크립터가 TTY가 아니거나 <code>raw</code>가 <code>False</code>인 경우 아무 작업도 수행하지 않습니다.</li>
+<li>그렇지 않으면 현재 터미널 속성을 저장하고 <code>tty.setraw()</code>를 사용하여 raw 모드로 전환합니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="stop"><code>stop()</code></h5>
+<p>터미널 속성을 raw 모드로 전환하기 전의 원래 상태로 복원합니다.</p>
+<ul>
+<li><strong>동작</strong>:
+<ul>
+<li><code>original_attributes</code>가 <code>None</code>이 아닌 경우, <code>termios.tcsetattr()</code>를 사용하여 <code>TCSADRAIN</code> 플래그와 함께 터미널 속성을 복원합니다.</li>
+<li>그렇지 않으면 아무 작업도 수행하지 않습니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="israw"><code>israw()</code></h5>
+<p>터미널이 raw 모드로 설정되어 있는 경우 <code>True</code>를 반환하고, 그렇지 않으면 <code>False</code>를 반환합니다.</p>
+<h5 id="__enter__"><code>__enter__()</code></h5>
+<p><code>with</code> 블록에 진입할 때 호출됩니다. <code>start()</code> 메서드를 호출하여 터미널을 raw 모드로 준비합니다.</p>
+<h5 id="__exit___args"><code>__exit__(*_args)</code></h5>
+<p><code>with</code> 블록을 종료할 때 호출됩니다. <code>stop()</code> 메서드를 호출하여 터미널을 원래 상태로 복원합니다.</p>
+<h5 id="__repr__"><code>__repr__()</code></h5>
+<p><code>Terminal</code> 객체의 문자열 표현을 반환합니다. 파일 디스크립터와 raw 모드 상태를 포함합니다.</p>
+<h4 id="예제-코드-1">예제 코드</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dockerpty.tty <span style="color:#f92672">import</span> Terminal
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Terminal 컨텍스트 관리자를 사용하여 stdin을 일시적으로 raw 모드로 전환</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> Terminal(sys<span style="color:#f92672">.</span>stdin, raw<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;터미널이 이제 raw 모드입니다. Ctrl+C를 눌러 종료하세요.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># raw 모드가 필요한 작업 수행</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 예: 입력을 한 문자씩 즉시 읽기</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        char <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>stdin<span style="color:#f92672">.</span>read(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> char <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x03</span><span style="color:#e6db74">&#39;</span>:  <span style="color:#75715e"># Ctrl+C</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;누른 키: </span><span style="color:#e6db74">{</span>char<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;터미널이 원래 상태로 복원되었습니다.&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="주요-개념">주요 개념</h2>
+<h3 id="raw-모드">Raw 모드</h3>
+<p>Raw 모드는 줄 버퍼링 및 문자 처리를 비활성화하여 터미널과 직접 상호 작용할 수 있도록 합니다. 이는 입력을 즉시 처리해야 하는 대화형 셸과 같은 애플리케이션에서 유용합니다.</p>
+<h3 id="tty-크기">TTY 크기</h3>
+<p>TTY 크기는 텍스트를 표시하기 위한 행과 열의 수로 표현됩니다. 이 정보는 출력을 올바르게 포맷하거나 터미널 기반 애플리케이션의 레이아웃을 조정하는 데 사용됩니다.</p>
+<h3 id="컨텍스트-관리자">컨텍스트 관리자</h3>
+<p><code>Terminal</code> 클래스는 Python의 컨텍스트 관리자 프로토콜(<code>__enter__</code> 및 <code>__exit__</code>)을 활용하여 사용 후 터미널 설정이 제대로 복원되도록 보장합니다. 예외가 발생하더라도 설정이 복원됩니다.</p>
+<hr>
+<h2 id="의존성">의존성</h2>
+<p><code>dockerpty: tty.py</code> 모듈은 다음 표준 라이브러리 모듈에 의존합니다:</p>
+<ul>
+<li><strong><code>os</code></strong>: 운영 체제와 상호 작용하기 위한 함수를 제공합니다 (예: 파일 디스크립터가 TTY인지 확인).</li>
+<li><strong><code>termios</code></strong>: POSIX 터미널 제어 함수에 접근하여 터미널 속성을 조작합니다.</li>
+<li><strong><code>tty</code></strong>: 터미널 모드를 설정하기 위한 도우미 함수를 제공합니다 (예: raw 모드로 전환).</li>
+<li><strong><code>fcntl</code></strong>: 파일 제어 작업에 접근하여 TTY 크기를 쿼리합니다.</li>
+<li><strong><code>struct</code></strong>: <code>fcntl.ioctl()</code>에서 반환된 바이너리 데이터를 해석합니다.</li>
+</ul>
+<hr>
+<h2 id="라이선스">라이선스</h2>
+<p>이 모듈은 Apache License, Version 2.0에 따라 배포됩니다. 전체 라이선스 텍스트는 <a href="http://www.apache.org/licenses/LICENSE-2.0" class="external-link" target="_blank" rel="noopener noreferrer" >http://www.apache.org/licenses/LICENSE-2.0</a>에서 확인할 수 있습니다.</p>
+<hr>
+<h2 id="작성자">작성자</h2>
+<ul>
+<li><strong>Chris Corbyn</strong> (<code>chris@w3style.co.uk</code>)</li>
+</ul>
+<hr>
+<p>이 문서는 <code>dockerpty: tty.py</code> 모듈의 구성 요소와 이를 효과적으로 사용하는 방법에 대한 종합적인 개요를 제공합니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

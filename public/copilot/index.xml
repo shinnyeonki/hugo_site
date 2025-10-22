@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Copilots on My Test Site</title>
+    <link>http://localhost:1313/copilot/</link>
+    <description>Recent content in Copilots on My Test Site</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 19 Oct 2025 16:12:05 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/copilot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Translate to Chinese</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/</link>
+      <pubDate>Sun, 19 Oct 2025 16:12:05 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/</guid>
+      <description>&lt;p&gt;Translate {} into Chinese:&#xA;1. Preserve the meaning and tone&#xA;2. Maintain appropriate cultural context&#xA;3. Keep formatting and structure&#xA;Return only the translated text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Summarize</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/summarize/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:43 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/summarize/</guid>
+      <description>&lt;p&gt;Create a bullet-point summary of {}. Each bullet point should capture a key point. Return only the bullet-point summary.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rewrite as tweet thread</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/rewrite-as-tweet-thread/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:42 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/rewrite-as-tweet-thread/</guid>
+      <description>&lt;p&gt;Convert {} into a Twitter thread following these rules:&#xA;1. Each tweet must be under 240 characters&#xA;2. Start with &amp;ldquo;THREAD START&amp;rdquo; on its own line&#xA;3. Separate tweets with &amp;quot;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&amp;quot;&#xA;4. End with &amp;ldquo;THREAD END&amp;rdquo; on its own line&#xA;5. Make content engaging and clear&#xA;Return only the formatted thread.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Simplify</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/simplify/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:42 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/simplify/</guid>
+      <description>&lt;p&gt;Simplify {} to a 6th-grade reading level (ages 11-12). Use simple sentences, common words, and clear explanations. Maintain the original key concepts. Return only the simplified text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rewrite as tweet</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/rewrite-as-tweet/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:40 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/rewrite-as-tweet/</guid>
+      <description>&lt;p&gt;Rewrite {} as a single tweet with these requirements:&#xA;1. Maximum 280 characters&#xA;2. Use concise, impactful language&#xA;3. Maintain the core message&#xA;Return only the tweet text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Remove URLs</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/remove-urls/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:39 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/remove-urls/</guid>
+      <description>&lt;p&gt;Remove all URLs from {}. Preserve all other content and formatting. URLs may be in various formats (http, https, www). Return only the text with URLs removed.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Make longer</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/make-longer/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:38 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/make-longer/</guid>
+      <description>&lt;p&gt;Expand {} to twice its length by:&#xA;1. Adding relevant details and examples&#xA;2. Elaborating on key points&#xA;3. Maintaining the original tone and style&#xA;Return only the expanded text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Generate table of contents</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/generate-table-of-contents/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:37 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/generate-table-of-contents/</guid>
+      <description>&lt;p&gt;Generate a hierarchical table of contents for {}. Use appropriate heading levels (H1, H2, H3, etc.). Include page numbers if present. Return only the table of contents.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Generate glossary</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/generate-glossary/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:36 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/generate-glossary/</guid>
+      <description>&lt;p&gt;Create a glossary of important terms, concepts, and phrases from {}. Format each entry as &amp;ldquo;Term: Definition&amp;rdquo;. Sort entries alphabetically. Return only the glossary.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Explain like I am 5</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/explain-like-i-am-5/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:29 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/explain-like-i-am-5/</guid>
+      <description>&lt;p&gt;Explain {} in simple terms that a 5-year-old would understand:&#xA;1. Use basic vocabulary&#xA;2. Include simple analogies&#xA;3. Break down complex concepts&#xA;Return only the simplified explanation.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Fix grammar and spelling</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/fix-grammar-and-spelling/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:29 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/fix-grammar-and-spelling/</guid>
+      <description>&lt;p&gt;Fix the grammar and spelling of {}. Preserve all formatting, line breaks, and special characters. Do not add or remove any content. Return only the corrected text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Emojify</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/emojify/</link>
+      <pubDate>Fri, 17 Oct 2025 22:46:26 +0900</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/emojify/</guid>
+      <description>&lt;p&gt;Add relevant emojis to enhance {}. Follow these rules:&#xA;1. Insert emojis at natural breaks in the text&#xA;2. Never place two emojis next to each other&#xA;3. Keep all original text unchanged&#xA;4. Choose emojis that match the context and tone&#xA;Return only the emojified text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Make shorter</title>
+      <link>http://localhost:1313/copilot/copilot-custom-prompts/make-shorter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/copilot/copilot-custom-prompts/make-shorter/</guid>
+      <description>&lt;p&gt;Reduce {} to half its length while preserving these elements:&#xA;1. Main ideas and key points&#xA;2. Essential details&#xA;3. Original tone and style&#xA;Return only the shortened text.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

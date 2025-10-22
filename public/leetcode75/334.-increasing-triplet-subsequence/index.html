@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>334. Increasing Triplet Subsequence | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="주어진 정수 배열 nums에 대해, 인덱스 (i, j, k)가 존재하여 i &lt; j &lt; k이고 nums[i] &lt; nums[j] &lt; nums[k]를 만족하는지 확인하여, 존재하면 true를 반환하고, 그렇지 않으면 false를 반환하는 문제입니다. 예 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/leetcode75/334.-increasing-triplet-subsequence/">
+
+    
+    
+    
+    <meta property="og:title" content="334. Increasing Triplet Subsequence">
+    <meta property="og:description" content="주어진 정수 배열 nums에 대해, 인덱스 (i, j, k)가 존재하여 i &lt; j &lt; k이고 nums[i] &lt; nums[j] &lt; nums[k]를 만족하는지 확인하여, 존재하면 true를 반환하고, 그렇지 않으면 false를 반환하는 문제입니다. 예 …">
+    <meta property="og:url" content="http://localhost:1313/leetcode75/334.-increasing-triplet-subsequence/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="334. Increasing Triplet Subsequence">
+    <meta name="twitter:description" content="주어진 정수 배열 nums에 대해, 인덱스 (i, j, k)가 존재하여 i &lt; j &lt; k이고 nums[i] &lt; nums[j] &lt; nums[k]를 만족하는지 확인하여, 존재하면 true를 반환하고, 그렇지 않으면 false를 반환하는 문제입니다. 예 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>334. Increasing Triplet Subsequence **page.html**</h1>
+    <pre tabindex="0"><code>주어진 정수 배열 nums에 대해, 인덱스 (i, j, k)가 존재하여 i &lt; j &lt; k이고 nums[i] &lt; nums[j] &lt; nums[k]를 만족하는지 확인하여, 존재하면 true를 반환하고, 그렇지 않으면 false를 반환하는 문제입니다.
+
+예시)
+입력: nums = [1,2,3,4,5]
+출력: true
+설명: i &lt; j &lt; k인 모든 조합이 유효합니다.
+
+입력: nums = [5,4,3,2,1]
+출력: false
+설명: 유효한 조합이 존재하지 않습니다.
+
+입력: nums = [2,1,5,0,4,6]
+출력: true
+설명: (3, 4, 5) 조합이 유효합니다. nums[3] == 0 &lt; nums[4] == 4 &lt; nums[5] == 6입니다.
+
+제약 조건
+1 &lt;= nums.length &lt;= 5 * 10^5
+-2^31 &lt;= nums[i] &lt;= 2^31 - 1
+후속 질문
+O(n) 시간 복잡도와 O(1) 공간 복잡도로 구현할 수 있는 방법이 있는지 확인해 보세요.
+</code></pre><p>greedy 알고리즘으로 풀 수 있는 문제이다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> increasingTriplet(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (nums.size() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">return</span> false; <span style="color:#75715e">// 제한 조건의 추가
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> first <span style="color:#f92672">=</span> INT_MAX;  <span style="color:#75715e">// 첫 번째 최소값
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> second <span style="color:#f92672">=</span> INT_MAX; <span style="color:#75715e">// 두 번째 최소값
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> num : nums)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (num <span style="color:#f92672">&lt;=</span> first) first <span style="color:#f92672">=</span> num; <span style="color:#75715e">// 첫 번째 최소값 업데이트
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (num <span style="color:#f92672">&lt;=</span> second) second <span style="color:#f92672">=</span> num; <span style="color:#75715e">// 두 번째 최소값 업데이트
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> true; <span style="color:#75715e">// 세 번째 값이 발견됨
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

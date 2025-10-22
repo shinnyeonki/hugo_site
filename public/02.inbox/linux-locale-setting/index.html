@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>linux locale setting | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="systemd 기반 리눅스 배포판 localectl 명령은 systemd 기반 리눅스 배포판 에서 사용할 수 있는 시스템 관리 도구로, 로케일(locale), 키보드 레이아웃, 가상 콘솔(Console) 설정 등을 관리하는 데 사용됩니다.
+1. 로케일 및 키보드 설정 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/linux-locale-setting/">
+
+    
+    
+    
+    <meta property="og:title" content="linux locale setting">
+    <meta property="og:description" content="systemd 기반 리눅스 배포판 localectl 명령은 systemd 기반 리눅스 배포판 에서 사용할 수 있는 시스템 관리 도구로, 로케일(locale), 키보드 레이아웃, 가상 콘솔(Console) 설정 등을 관리하는 데 사용됩니다.
+1. 로케일 및 키보드 설정 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/linux-locale-setting/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="linux locale setting">
+    <meta name="twitter:description" content="systemd 기반 리눅스 배포판 localectl 명령은 systemd 기반 리눅스 배포판 에서 사용할 수 있는 시스템 관리 도구로, 로케일(locale), 키보드 레이아웃, 가상 콘솔(Console) 설정 등을 관리하는 데 사용됩니다.
+1. 로케일 및 키보드 설정 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>linux locale setting **page.html**</h1>
+    <h3 id="systemd-기반-리눅스-배포판">systemd 기반 리눅스 배포판</h3>
+<p><code>localectl</code> 명령은 <strong>systemd 기반 리눅스 배포판</strong> 에서 사용할 수 있는 시스템 관리 도구로, 로케일(locale), 키보드 레이아웃, 가상 콘솔(Console) 설정 등을 관리하는 데 사용됩니다.</p>
+<p><strong>1. 로케일 및 키보드 설정 확인</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># localectl </span>
+</span></span><span style="display:flex;"><span>   System Locale: LANG<span style="color:#f92672">=</span>en_US.UTF-8
+</span></span><span style="display:flex;"><span>       VC Keymap: n/a
+</span></span><span style="display:flex;"><span>      X11 Layout: us
+</span></span><span style="display:flex;"><span>       X11 Model: pc105
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th><strong>형식</strong></th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>System Locale</strong></td>
+          <td>현재 설정되어 있는 로케일(Locale)을 표시합니다.</td>
+      </tr>
+      <tr>
+          <td><strong>VC Keymap</strong></td>
+          <td>가상콘솔에서 사용하는 키맵을 표시합니다.</td>
+      </tr>
+      <tr>
+          <td><strong>X11 Layout</strong></td>
+          <td>Xwindows에서 사용되는 키보드 레이아웃을 표시합니다.</td>
+      </tr>
+      <tr>
+          <td><strong>X11 Model</strong></td>
+          <td>키보드 모델을 표시 합니다.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>2. 설정 가능한 로케일(Locale) 확인</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># localectl list-locales </span>
+</span></span><span style="display:flex;"><span>C.UTF-8
+</span></span><span style="display:flex;"><span>en_US.UTF-8
+</span></span></code></pre></div><p>localectl 명령어로 list-locales 옵션을 사용하면 설정이 가능한 로케일(Locale) 목록을 출력합니다.</p>
+<p><strong>3. 로케일(Locale) 설정</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>사용법 : localectl set-locale <span style="color:#e6db74">&#34;[Locale]&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># localectl set-locale &#34;en_US.UTF-8&#34;</span>
+</span></span></code></pre></div><p>localectl 명령어에 set-locale 옵션을 사용하여 로케일(Locale)을 설정할 수 있습니다.</p>
+<p><strong>4. 시스템에 설정되어 있는 로케일 정보 확인</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span># locale
+</span></span><span style="display:flex;"><span>LANG=en_US.UTF-8
+</span></span><span style="display:flex;"><span>LANGUAGE=
+</span></span><span style="display:flex;"><span>LC_CTYPE=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_NUMERIC=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_TIME=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_COLLATE=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_MONETARY=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_MESSAGES=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_PAPER=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_NAME=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_ADDRESS=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_TELEPHONE=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_MEASUREMENT=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_IDENTIFICATION=&#34;en_US.UTF-8&#34;
+</span></span><span style="display:flex;"><span>LC_ALL=
+</span></span></code></pre></div><p>locale 명령어를 사용하면 LANG를 포함하여 설정되어 있는 전체 로케일(Locale) 정보를 확인할 수 있습니다.</p>
+<p><strong>5. 사용가능한 로케일 확인</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span># locale -a
+</span></span></code></pre></div><p>locale 명령어에서 -a 옵션을 사용하면 사용 가능한 로케일(Locale)를 확인하실 수 있으며, 원하시는 로케일(Locale) 이 없으신 경우 별도로 설치해야 됩니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

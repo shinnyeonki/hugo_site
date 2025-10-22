@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>05-PROCESS | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content=" qexec() 이후에 오는 문자에 의해 구별되는 표시는 다음의 의미가 있다 l -&gt; 인자 정보를 개개의 문자열 데이터를 가르키는 포인터 arg0, arg1……. argn으로 전달한다 v -&gt; 인자 정보를 개개의 문자열 데이터를 가리키는 포인터 배열의 선두주 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/system-programminguniversity/05-process/">
+
+    
+    
+    
+    <meta property="og:title" content="05-PROCESS">
+    <meta property="og:description" content=" qexec() 이후에 오는 문자에 의해 구별되는 표시는 다음의 의미가 있다 l -&gt; 인자 정보를 개개의 문자열 데이터를 가르키는 포인터 arg0, arg1……. argn으로 전달한다 v -&gt; 인자 정보를 개개의 문자열 데이터를 가리키는 포인터 배열의 선두주 …">
+    <meta property="og:url" content="http://localhost:1313/06.university/system-programminguniversity/05-process/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="05-PROCESS">
+    <meta name="twitter:description" content=" qexec() 이후에 오는 문자에 의해 구별되는 표시는 다음의 의미가 있다 l -&gt; 인자 정보를 개개의 문자열 데이터를 가르키는 포인터 arg0, arg1……. argn으로 전달한다 v -&gt; 인자 정보를 개개의 문자열 데이터를 가리키는 포인터 배열의 선두주 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>05-PROCESS **page.html**</h1>
+    <p>
+        <img src="/08.media/20241027180484.png" alt=" (Image resource not found)" >
+        <img src="/08.media/20241027181337.png" alt="Pasted image 20241027181337 (Image resource not found)" ></p>
+<p>qexec() 이후에 오는 문자에 의해 구별되는 표시는 다음의 의미가 있다
+  l -&gt; 인자 정보를 개개의 문자열 데이터를 가르키는 포인터 arg0,    
+       arg1……. argn으로 전달한다
+  v -&gt; 인자 정보를 개개의 문자열 데이터를 가리키는 포인터 배열의
+       선두주소 argv로 전달한다
+  e -&gt; envp 정보를 전달한다
+  p -&gt; p를 사용하는 경우, 실행할 파일이름을 환경 변수 PATH로 지정한 디렉토리 안에서 찾아내어 실행한다</p>
+<h2 id="1-execve">1. <code>execve()</code></h2>
+<ul>
+<li><strong>축약어</strong>: <code>exec</code> + <code>v</code> (vector) + <code>e</code> (environment)</li>
+<li><strong>설명</strong>:
+<ul>
+<li>&ldquo;exec&quot;는 실행을 의미하며, &ldquo;v&quot;는 인수를 배열 형태로 받고, &ldquo;e&quot;는 환경 변수를 배열 형태로 받는다는 것을 나타냅니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-execv">2. <code>execv()</code></h2>
+<ul>
+<li><strong>축약어</strong>: <code>exec</code> + <code>v</code> (vector)</li>
+<li><strong>설명</strong>:
+<ul>
+<li>&ldquo;exec&quot;는 실행을 의미하며, &ldquo;v&quot;는 인수를 배열 형태로 받는다는 것을 나타냅니다. 환경 변수를 설정할 수 없습니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-execvp">3. <code>execvp()</code></h2>
+<ul>
+<li><strong>축약어</strong>: <code>exec</code> + <code>v</code> (vector) + <code>p</code> (path)</li>
+<li><strong>설명</strong>:
+<ul>
+<li>&ldquo;exec&quot;는 실행을 의미하며, &ldquo;v&quot;는 인수를 배열 형태로 받고, &ldquo;p&quot;는 <code>PATH</code> 환경 변수를 통해 파일을 찾는다는 것을 나타냅니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-execle">4. <code>execle()</code></h2>
+<ul>
+<li><strong>축약어</strong>: <code>exec</code> + <code>l</code> (list) + <code>e</code> (environment)</li>
+<li><strong>설명</strong>:
+<ul>
+<li>&ldquo;exec&quot;는 실행을 의미하며, &ldquo;l&quot;은 인수를 개별적으로 받는다는 것을 나타내고, &ldquo;e&quot;는 환경 변수를 배열 형태로 받는다는 것을 나타냅니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-execl">5. <code>execl()</code></h2>
+<ul>
+<li><strong>축약어</strong>: <code>exec</code> + <code>l</code> (list)</li>
+<li><strong>설명</strong>:
+<ul>
+<li>&ldquo;exec&quot;는 실행을 의미하며, &ldquo;l&quot;은 인수를 개별적으로 받는다는 것을 나타냅니다. 환경 변수를 설정할 수 없습니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-execlp">6. <code>execlp()</code></h2>
+<ul>
+<li><strong>축약어</strong>: <code>exec</code> + <code>l</code> (list) + <code>p</code> (path)</li>
+<li><strong>설명</strong>:
+<ul>
+<li>&ldquo;exec&quot;는 실행을 의미하며, &ldquo;l&quot;은 인수를 개별적으로 받고, &ldquo;p&quot;는 <code>PATH</code> 환경 변수를 통해 파일을 찾는다는 것을 나타냅니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="정리">정리</h2>
+<table>
+  <thead>
+      <tr>
+          <th>함수 이름</th>
+          <th>축약어 설명</th>
+          <th>인수 형태</th>
+          <th>환경 변수 지원</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>execve</code></td>
+          <td>exec + v (vector) + e (environment)</td>
+          <td>파일 이름 + argv[] + envp[]</td>
+          <td>지원</td>
+      </tr>
+      <tr>
+          <td><code>execv</code></td>
+          <td>exec + v (vector)</td>
+          <td>파일 경로 + argv[]</td>
+          <td>지원하지 않음</td>
+      </tr>
+      <tr>
+          <td><code>execvp</code></td>
+          <td>exec + v (vector) + p (path)</td>
+          <td>파일 이름 + argv[]</td>
+          <td>지원하지 않음</td>
+      </tr>
+      <tr>
+          <td><code>execle</code></td>
+          <td>exec + l (list) + e (environment)</td>
+          <td>파일 이름 + arg1, arg2, &hellip; + NULL</td>
+          <td>지원</td>
+      </tr>
+      <tr>
+          <td><code>execl</code></td>
+          <td>exec + l (list)</td>
+          <td>파일 경로 + arg1, arg2, &hellip; + NULL</td>
+          <td>지원하지 않음</td>
+      </tr>
+      <tr>
+          <td><code>execlp</code></td>
+          <td>exec + l (list) + p (path)</td>
+          <td>파일 이름 + arg1, arg2, &hellip; + NULL</td>
+          <td>지원하지 않음</td>
+      </tr>
+  </tbody>
+</table>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

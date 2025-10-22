@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>2의 보수를 음수 표현법으로 정한 이유 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="첫자리 a0 부터 a3 이라고 가정 맨 앞자리를 음수를 나타내는 비트라고 정하는 방법과 2의 보수를 음수를 나타내는 비트라고 정하는 방법 2가지를 비교
+이진수 초기 구현 2의 보수로 구현한 음수 더하기 식 0000 0 0 0*a3 &#43; 0*a2 &#43; 0*a1 &#43; 0*a0 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/2%EC%9D%98-%EB%B3%B4%EC%88%98%EB%A5%BC-%EC%9D%8C%EC%88%98-%ED%91%9C%ED%98%84%EB%B2%95%EC%9C%BC%EB%A1%9C-%EC%A0%95%ED%95%9C-%EC%9D%B4%EC%9C%A0/">
+
+    
+    
+    
+    <meta property="og:title" content="2의 보수를 음수 표현법으로 정한 이유">
+    <meta property="og:description" content="첫자리 a0 부터 a3 이라고 가정 맨 앞자리를 음수를 나타내는 비트라고 정하는 방법과 2의 보수를 음수를 나타내는 비트라고 정하는 방법 2가지를 비교
+이진수 초기 구현 2의 보수로 구현한 음수 더하기 식 0000 0 0 0*a3 &#43; 0*a2 &#43; 0*a1 &#43; 0*a0 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/2%EC%9D%98-%EB%B3%B4%EC%88%98%EB%A5%BC-%EC%9D%8C%EC%88%98-%ED%91%9C%ED%98%84%EB%B2%95%EC%9C%BC%EB%A1%9C-%EC%A0%95%ED%95%9C-%EC%9D%B4%EC%9C%A0/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="2의 보수를 음수 표현법으로 정한 이유">
+    <meta name="twitter:description" content="첫자리 a0 부터 a3 이라고 가정 맨 앞자리를 음수를 나타내는 비트라고 정하는 방법과 2의 보수를 음수를 나타내는 비트라고 정하는 방법 2가지를 비교
+이진수 초기 구현 2의 보수로 구현한 음수 더하기 식 0000 0 0 0*a3 &#43; 0*a2 &#43; 0*a1 &#43; 0*a0 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>2의 보수를 음수 표현법으로 정한 이유 **page.html**</h1>
+    <p>첫자리 a0 부터 a3 이라고 가정
+맨 앞자리를 음수를 나타내는 비트라고 정하는 방법과
+2의 보수를 음수를 나타내는 비트라고 정하는 방법 2가지를 비교</p>
+<table>
+  <thead>
+      <tr>
+          <th>이진수</th>
+          <th>초기 구현</th>
+          <th>2의 보수로 구현한 음수</th>
+          <th>더하기 식</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0000</td>
+          <td>0</td>
+          <td>0</td>
+          <td><code>0*a3 + 0*a2 + 0*a1 + 0*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>0001</td>
+          <td>1</td>
+          <td>1</td>
+          <td><code>1*a3 + 0*a2 + 0*a1 + 1*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>0010</td>
+          <td>2</td>
+          <td>2</td>
+          <td><code>0*a3 + 0*a2 + 1*a1 + 0*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>0011</td>
+          <td>3</td>
+          <td>3</td>
+          <td><code>0*a3 + 0*a2 + 1*a1 + 1*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>0100</td>
+          <td>4</td>
+          <td>4</td>
+          <td><code>0*a3 + 1*a2 + 0*a1 + 0*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>0101</td>
+          <td>5</td>
+          <td>5</td>
+          <td><code>0*a3 + 1*a2 + 0*a1 + 1*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>0110</td>
+          <td>6</td>
+          <td>6</td>
+          <td><code>0*a3 + 1*a2 + 1*a1 + 0*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>0111</td>
+          <td>7</td>
+          <td>7</td>
+          <td><code>0*a3 + 1*a2 + 1*a1 + 1*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>1000</td>
+          <td>-0</td>
+          <td>-8</td>
+          <td><code>-1*a3 + 0*a2 + 0*a1 + 0*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>1001</td>
+          <td>-1</td>
+          <td>-7</td>
+          <td><code>-1*a3 + 0*a2 + 0*a1 + 1*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>1010</td>
+          <td>-2</td>
+          <td>-6</td>
+          <td><code>-1*a3 + 0*a2 + 1*a1 + 0*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>1011</td>
+          <td>-3</td>
+          <td>-5</td>
+          <td><code>-1*a3 + 0*a2 + 1*a1 + 1*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>1100</td>
+          <td>-4</td>
+          <td>-4</td>
+          <td><code>-1*a3 + 1*a2 + 0*a1 + 0*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>1101</td>
+          <td>-5</td>
+          <td>-3</td>
+          <td><code>-1*a3 + 1*a2 + 0*a1 + 1*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>1110</td>
+          <td>-6</td>
+          <td>-2</td>
+          <td><code>-1*a3 + 1*a2 + 1*a1 + 0*a0</code></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>1111</td>
+          <td>-7</td>
+          <td>-1</td>
+          <td><code>-1*a3 + 1*a2 + 1*a1 + 1*a0</code></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>이진수 덧셈 방식에 따를 때 (회로의 구현방식중 ) 2의 보수가 가장 적절한 음수 표현 방법이다</p>
+<p>2는 0으로 부터 아래로 2칸 -4는 0으로 부터 위로 4칸</p>
+<p>음수를 2의 보수로 표현 가능하다면 덧셈 회로 만으로도 뺄셈 방식이 구현 가능하다</p>
+<blockquote>
+<p>unsigned 와 signed 는 오버 플로우 발생 비트가 다르다
+(1000 에서 발생 vs 1111 에서  발생)</p>
+</blockquote>
+<p>결국 이러한 방식의 남은 마지막 문제는 0111 = 7 에서 양수가 더해질 때
+즉 7보다 큰 수 -8 보다 작은수를 표현하려고 할 때 오버플로가 일어나 의도하지 않은 숫자가 나오게 된다</p>
+<p>
+        <img src="/08.media/20240304161938.png" alt="Pasted image 20240304161938 (Image resource not found)" ></p>
+<p>위에는 일반적인 자료형의 음수 표현 비트 사용이다 하지만 unsigned 자료형의 경우 위의 것을 고민할 필요가 없다</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

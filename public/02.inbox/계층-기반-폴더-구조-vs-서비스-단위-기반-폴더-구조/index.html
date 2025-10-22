@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>계층 기반 폴더 구조 vs 서비스 단위 기반 폴더 구조 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="좋은 질문입니다. DTO, Repository, Domain, Service 와 같은 계층 기반 폴더 구조(Layered Architecture)와 서비스 단위 기반 폴더 구조(Vertical Slice / Feature-based Architecture) 중 어느 것 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EA%B3%84%EC%B8%B5-%EA%B8%B0%EB%B0%98-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0-vs-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%8B%A8%EC%9C%84-%EA%B8%B0%EB%B0%98-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0/">
+
+    
+    
+    
+    <meta property="og:title" content="계층 기반 폴더 구조 vs 서비스 단위 기반 폴더 구조">
+    <meta property="og:description" content="좋은 질문입니다. DTO, Repository, Domain, Service 와 같은 계층 기반 폴더 구조(Layered Architecture)와 서비스 단위 기반 폴더 구조(Vertical Slice / Feature-based Architecture) 중 어느 것 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EA%B3%84%EC%B8%B5-%EA%B8%B0%EB%B0%98-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0-vs-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%8B%A8%EC%9C%84-%EA%B8%B0%EB%B0%98-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="계층 기반 폴더 구조 vs 서비스 단위 기반 폴더 구조">
+    <meta name="twitter:description" content="좋은 질문입니다. DTO, Repository, Domain, Service 와 같은 계층 기반 폴더 구조(Layered Architecture)와 서비스 단위 기반 폴더 구조(Vertical Slice / Feature-based Architecture) 중 어느 것 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>계층 기반 폴더 구조 vs 서비스 단위 기반 폴더 구조 **page.html**</h1>
+    <p>좋은 질문입니다. <strong>DTO, Repository, Domain, Service</strong> 와 같은 <strong>계층 기반 폴더 구조</strong>(Layered Architecture)와 <strong>서비스 단위 기반 폴더 구조</strong>(Vertical Slice / Feature-based Architecture) 중 어느 것이 더 나은지는 <strong>프로젝트의 규모, 팀 구조, 유지보수성, 확장성</strong> 등에 따라 달라집니다.</p>
+<p>아래에서 두 방식의 특징과 장단점을 비교하고, 어떤 상황에서 어떤 방식이 적합한지 정리해 드릴게요.</p>
+<hr>
+<h3 id="-1-계층-기반-구조-layered--horizontal-architecture">✅ 1. <strong>계층 기반 구조 (Layered / Horizontal Architecture)</strong></h3>
+<pre tabindex="0"><code>src/
+├── dto/
+│   ├── UserRequestDto.java
+│   └── UserResponseDto.java
+├── domain/
+│   ├── User.java
+│   └── UserStatus.java
+├── repository/
+│   └── UserRepository.java
+├── service/
+│   └── UserService.java
+├── controller/
+│   └── UserController.java
+└── config/
+    └── DatabaseConfig.java
+</code></pre><h4 id="-장점">✅ 장점</h4>
+<ul>
+<li><strong>일관성 있는 구조</strong>: 모든 개발자가 동일한 위치에서 동일한 타입의 클래스를 찾을 수 있음.</li>
+<li><strong>초기 개발이 쉬움</strong>: 특히 작은 프로젝트나 학습용 프로젝트에 적합.</li>
+<li><strong>Spring Boot 등의 프레임워크와 자연스럽게 맞음</strong>: MVC 패턴과 잘 어울림.</li>
+</ul>
+<h4 id="-단점">❌ 단점</h4>
+<ul>
+<li><strong>변경이 어렵다</strong>: 하나의 기능을 수정할 때 여러 패키지를 왔다갔다 해야 함 (예: 유저 생성 기능 수정 시 controller → service → repository → dto 모두 확인).</li>
+<li><strong>결합도 증가</strong>: 모든 기능이 동일한 계층에 몰려 있어, 관련 없는 기능들끼리 묶임.</li>
+<li><strong>대규모 프로젝트에서 관리 어려움</strong>: 기능이 많아질수록 파일 수가 많아지고, 관련 코드를 찾기 어려워짐.</li>
+</ul>
+<hr>
+<h3 id="-2-서비스기능-단위-구조-vertical-slice--feature-based-architecture">✅ 2. <strong>서비스(기능) 단위 구조 (Vertical Slice / Feature-based Architecture)</strong></h3>
+<pre tabindex="0"><code>src/
+├── user/
+│   ├── User.java
+│   ├── UserRepository.java
+│   ├── UserService.java
+│   ├── UserController.java
+│   ├── UserRequestDto.java
+│   └── UserResponseDto.java
+├── order/
+│   ├── Order.java
+│   ├── OrderService.java
+│   └── OrderController.java
+└── common/
+    ├── config/
+    └── exception/
+</code></pre><h4 id="-장점-1">✅ 장점</h4>
+<ul>
+<li><strong>기능 단위로 코드가 묶여 있어 유지보수 용이</strong>: 유저 관련 기능은 <code>user/</code> 폴더 안에 모두 있음.</li>
+<li><strong>변경이 쉬움</strong>: 기능 하나를 수정할 때 관련된 모든 코드를 한 폴더에서 찾을 수 있음.</li>
+<li><strong>팀 기반 개발에 유리</strong>: 팀이 기능 단위로 분업하기 쉬움 (예: A팀은 user, B팀은 order 담당).</li>
+<li><strong>확장성 좋음</strong>: 새 기능 추가 시 폴더 하나 생성하면 됨.</li>
+</ul>
+<h4 id="-단점-1">❌ 단점</h4>
+<ul>
+<li><strong>중복 가능성</strong>: 공통 로직(예: DTO, 유틸)이 각 폴더에 중복될 수 있음 → <code>common</code> 또는 <code>shared</code> 패키지로 해결 필요.</li>
+<li><strong>초기 설계가 중요</strong>: 공통 모듈과 기능 모듈의 경계를 잘 설정해야 함.</li>
+<li><strong>익숙하지 않은 구조</strong>: 전통적인 계층 구조에 익숙한 개발자에게는 어색할 수 있음.</li>
+</ul>
+<hr>
+<h3 id="-결론-어떤-걸-선택해야-할까">✅ 결론: 어떤 걸 선택해야 할까?</h3>
+<table>
+  <thead>
+      <tr>
+          <th>프로젝트 유형</th>
+          <th>추천 구조</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>작은 프로젝트, 학습용, MVP</strong></td>
+          <td>✅ 계층 기반 구조 (간단하고 직관적)</td>
+      </tr>
+      <tr>
+          <td><strong>중대형 프로젝트, 장기 운영, 팀 개발</strong></td>
+          <td>✅ <strong>서비스/기능 단위 구조</strong> (유지보수성 ↑)</td>
+      </tr>
+      <tr>
+          <td><strong>도메인 중심 설계(DDD) 적용</strong></td>
+          <td>✅ 기능 단위 + bounded context 기반 구성</td>
+      </tr>
+      <tr>
+          <td><strong>마이크로서비스 아키텍처</strong></td>
+          <td>✅ 각 서비스 내부는 기능 단위 구조 권장</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-보완-전략-하이브리드-접근">🔁 보완 전략 (하이브리드 접근)</h3>
+<p>실제로는 <strong>하이브리드</strong>로 구성하는 경우도 많습니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>src/
+</span></span><span style="display:flex;"><span>├── user/
+</span></span><span style="display:flex;"><span>│   ├── controller/
+</span></span><span style="display:flex;"><span>│   ├── service/
+</span></span><span style="display:flex;"><span>│   ├── repository/
+</span></span><span style="display:flex;"><span>│   └── dto/
+</span></span><span style="display:flex;"><span>├── order/
+</span></span><span style="display:flex;"><span>│   ├── controller/
+</span></span><span style="display:flex;"><span>│   └── service/
+</span></span><span style="display:flex;"><span>├── common/
+</span></span><span style="display:flex;"><span>│   ├── dto/
+</span></span><span style="display:flex;"><span>│   ├── exception/
+</span></span><span style="display:flex;"><span>│   └── util/
+</span></span><span style="display:flex;"><span>└── config/
+</span></span></code></pre></div><p>→ <strong>기능 단위로 묶되</strong>, 내부는 계층 구조를 유지.<br>
+이 방식은 <strong>유지보수성과 일관성을 동시에 잡을 수 있어 실무에서 많이 사용</strong>됩니다.</p>
+<hr>
+<h3 id="-추천">✅ 추천</h3>
+<blockquote>
+<p>🔔 <strong>&ldquo;기능 단위 기반 구조 + 내부 계층 분리&rdquo;</strong> 를 추천합니다.</p>
+</blockquote>
+<p>예:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>com.<span style="color:#a6e22e">example</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">user</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">├──</span> User.<span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">├──</span> UserController.<span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">├──</span> UserService.<span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">├──</span> UserRepository.<span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">├──</span> UserCreateRequest.<span style="color:#a6e22e">java</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">└──</span> UserResponse.<span style="color:#a6e22e">java</span>
+</span></span></code></pre></div><p>이렇게 하면:</p>
+<ul>
+<li>기능 단위로 코드를 찾기 쉽고,</li>
+<li>각 기능 내부는 역할에 따라 분리되어 있어 체계적입니다.</li>
+</ul>
+<hr>
+<h3 id="-참고-아키텍처-패턴">📚 참고 아키텍처 패턴</h3>
+<ul>
+<li><a href="https://jimmybogard.com/vertical-slice-architecture/" class="external-link" target="_blank" rel="noopener noreferrer" >Vertical Slice Architecture</a></li>
+<li><a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" class="external-link" target="_blank" rel="noopener noreferrer" >Clean Architecture</a></li>
+<li><a href="https://domaindrivendesign.org/" class="external-link" target="_blank" rel="noopener noreferrer" >Domain-Driven Design (DDD)</a></li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

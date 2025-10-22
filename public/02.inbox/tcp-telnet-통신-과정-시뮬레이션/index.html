@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>TCP TELNET 통신 과정 시뮬레이션 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="Telnet (TCP 기반) 패킷 이동 시뮬레이션: Sender/Receiver 윈도우 및 패킷 내용 Telnet은 애플리케이션 계층 프로토콜이며, 전송 계층에서는 **TCP(Transmission Control Protocol)**를 사용합니다. TCP는 신뢰성 있는 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/tcp-telnet-%ED%86%B5%EC%8B%A0-%EA%B3%BC%EC%A0%95-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98/">
+
+    
+    
+    
+    <meta property="og:title" content="TCP TELNET 통신 과정 시뮬레이션">
+    <meta property="og:description" content="Telnet (TCP 기반) 패킷 이동 시뮬레이션: Sender/Receiver 윈도우 및 패킷 내용 Telnet은 애플리케이션 계층 프로토콜이며, 전송 계층에서는 **TCP(Transmission Control Protocol)**를 사용합니다. TCP는 신뢰성 있는 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/tcp-telnet-%ED%86%B5%EC%8B%A0-%EA%B3%BC%EC%A0%95-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="TCP TELNET 통신 과정 시뮬레이션">
+    <meta name="twitter:description" content="Telnet (TCP 기반) 패킷 이동 시뮬레이션: Sender/Receiver 윈도우 및 패킷 내용 Telnet은 애플리케이션 계층 프로토콜이며, 전송 계층에서는 **TCP(Transmission Control Protocol)**를 사용합니다. TCP는 신뢰성 있는 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>TCP TELNET 통신 과정 시뮬레이션 **page.html**</h1>
+    <h2 id="telnet-tcp-기반-패킷-이동-시뮬레이션-senderreceiver-윈도우-및-패킷-내용">Telnet (TCP 기반) 패킷 이동 시뮬레이션: Sender/Receiver 윈도우 및 패킷 내용</h2>
+<p>Telnet은 애플리케이션 계층 프로토콜이며, 전송 계층에서는 **TCP(Transmission Control Protocol)**를 사용합니다. TCP는 신뢰성 있는 데이터 전송을 보장하기 위해 <strong>연결 설정(3-way handshake)</strong>, <strong>데이터 전송(슬라이딩 윈도우, 확인 응답)</strong>, <strong>연결 해제(4-way handshake)</strong> 과정을 거칩니다.</p>
+<p>아래는 Telnet 클라이언트(Sender)가 Telnet 서버(Receiver)에 접속하여 간단한 데이터를 주고받는 과정을 가상으로 시뮬레이션한 결과입니다. 실제 환경에서는 윈도우 크기 변화, 패킷 손실 및 재전송 등 더 복잡한 상황이 발생할 수 있습니다.</p>
+<p><strong>용어 설명:</strong></p>
+<ul>
+<li><strong>Sender (송신자):</strong> Telnet 클라이언트 (사용자 측)</li>
+<li><strong>Receiver (수신자):</strong> Telnet 서버</li>
+<li><strong>Seq:</strong> Sequence Number (순서 번호). 보내는 데이터의 바이트 순서를 나타냅니다.</li>
+<li><strong>Ack:</strong> Acknowledgment Number (확인 응답 번호). 다음에 받아야 할 데이터의 시작 순서 번호를 나타냅니다. (즉, Ack-1 까지는 잘 받았다는 의미)</li>
+<li><strong>Win:</strong> Window Size (윈도우 크기). 수신 버퍼의 남은 공간 크기를 알려주어 흐름 제어(Flow Control)에 사용됩니다. 송신자는 이 크기만큼만 확인 응답 없이 데이터를 보낼 수 있습니다.</li>
+<li><strong>Flags:</strong> TCP 제어 플래그 (SYN, ACK, FIN, PSH 등)</li>
+<li><strong>Payload:</strong> 실제 전송되는 데이터 (Telnet 명령어, 서버 응답 등)</li>
+</ul>
+<p><strong>시뮬레이션 시작 (가정):</strong></p>
+<ul>
+<li>Sender의 초기 Sequence Number (ISN): <code>X</code></li>
+<li>Receiver의 초기 Sequence Number (ISN): <code>Y</code></li>
+<li>Sender의 초기 수신 윈도우 크기: <code>Win_C</code></li>
+<li>Receiver의 초기 수신 윈도우 크기: <code>Win_S</code></li>
+</ul>
+<hr>
+<p><strong>1. 연결 설정 (3-Way Handshake)</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>단계</strong></td>
+          <td><strong>방향</strong></td>
+          <td><strong>TCP Flags</strong></td>
+          <td><strong>Seq</strong></td>
+          <td><strong>Ack</strong></td>
+          <td><strong>Win</strong></td>
+          <td><strong>Payload</strong></td>
+          <td><strong>설명</strong></td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>Sender -&gt; Receiver</td>
+          <td><code>[SYN]</code></td>
+          <td><code>X</code></td>
+          <td><code>0</code></td>
+          <td><code>Win_C</code></td>
+          <td>-</td>
+          <td>연결 요청. 자신의 초기 순서 번호(X)와 수신 윈도우 크기(Win_C) 전송.</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Receiver -&gt; Sender</td>
+          <td><code>[SYN, ACK]</code></td>
+          <td><code>Y</code></td>
+          <td><code>X+1</code></td>
+          <td><code>Win_S</code></td>
+          <td>-</td>
+          <td>연결 수락 및 요청 확인. 자신의 초기 순서 번호(Y), Sender의 요청 확인(X+1), 자신의 수신 윈도우 크기(Win_S) 전송.</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Sender -&gt; Receiver</td>
+          <td><code>[ACK]</code></td>
+          <td><code>X+1</code></td>
+          <td><code>Y+1</code></td>
+          <td><code>Win_C</code></td>
+          <td>-</td>
+          <td>Receiver의 연결 수락 확인(Y+1). <strong>연결 성립 완료.</strong></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>2. 데이터 전송 (Telnet: 서버가 로그인 프롬프트 전송 -&gt; 클라이언트가 사용자 이름 입력)</strong></p>
+<ul>
+<li><strong>상황:</strong> 연결 후 Telnet 서버(Receiver)가 로그인 프롬프트를 보냅니다. (예: &ldquo;Login: &ldquo;)</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>단계</strong></td>
+          <td><strong>방향</strong></td>
+          <td><strong>TCP Flags</strong></td>
+          <td><strong>Seq</strong></td>
+          <td><strong>Ack</strong></td>
+          <td><strong>Win</strong></td>
+          <td><strong>Payload</strong></td>
+          <td><strong>설명</strong></td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Receiver -&gt; Sender</td>
+          <td><code>[PSH, ACK]</code></td>
+          <td><code>Y+1</code></td>
+          <td><code>X+1</code></td>
+          <td><code>Win_S</code></td>
+          <td>&ldquo;Login: &quot; (7 bytes)</td>
+          <td>서버가 데이터를 보냄 (Push 플래그 설정 가능). Seq=Y+1 (이전 ACK 다음 번호), Ack=X+1 (이전 Sender의 Seq+1). Payload 포함.</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>Sender -&gt; Receiver</td>
+          <td><code>[ACK]</code></td>
+          <td><code>X+1</code></td>
+          <td><code>Y+8</code></td>
+          <td><code>Win_C</code></td>
+          <td>-</td>
+          <td>Sender가 서버 데이터 수신 확인. Ack=Y+1+7 = Y+8 (다음 받을 번호). 윈도우 크기는 Sender의 현재 버퍼 상황에 따라 업데이트될 수 있음.</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li><strong>상황:</strong> Telnet 클라이언트(Sender)가 사용자 이름 &ldquo;user1\n&rdquo; (6 bytes)을 입력하여 서버로 전송합니다.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>단계</strong></td>
+          <td><strong>방향</strong></td>
+          <td><strong>TCP Flags</strong></td>
+          <td><strong>Seq</strong></td>
+          <td><strong>Ack</strong></td>
+          <td><strong>Win</strong></td>
+          <td><strong>Payload</strong></td>
+          <td><strong>설명</strong></td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>Sender -&gt; Receiver</td>
+          <td><code>[PSH, ACK]</code></td>
+          <td><code>X+1</code></td>
+          <td><code>Y+8</code></td>
+          <td><code>Win_C</code></td>
+          <td>&ldquo;user1\n&rdquo; (6 bytes)</td>
+          <td>클라이언트가 데이터를 보냄. Seq=X+1 (이전 ACK 이후 첫 데이터), Ack=Y+8 (이전 Receiver의 Seq+Payload 길이). Payload 포함.</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>Receiver -&gt; Sender</td>
+          <td><code>[ACK]</code></td>
+          <td><code>Y+8</code></td>
+          <td><code>X+7</code></td>
+          <td><code>Win_S</code></td>
+          <td>-</td>
+          <td>Receiver가 클라이언트 데이터 수신 확인. Ack=X+1+6 = X+7 (다음 받을 번호). 윈도우 크기는 Receiver의 현재 버퍼 상황에 따라 업데이트될 수 있음.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>3. 연결 해제 (4-Way Handshake - 클라이언트가 먼저 종료 요청)</strong></p>
+<ul>
+<li><strong>상황:</strong> Telnet 클라이언트(Sender)가 연결 종료를 원합니다.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>단계</strong></td>
+          <td><strong>방향</strong></td>
+          <td><strong>TCP Flags</strong></td>
+          <td><strong>Seq</strong></td>
+          <td><strong>Ack</strong></td>
+          <td><strong>Win</strong></td>
+          <td><strong>Payload</strong></td>
+          <td><strong>설명</strong></td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>Sender -&gt; Receiver</td>
+          <td><code>[FIN, ACK]</code></td>
+          <td><code>X+7</code></td>
+          <td><code>Y+8</code></td>
+          <td><code>Win_C</code></td>
+          <td>-</td>
+          <td>연결 종료 요청 (FIN). 마지막으로 보낸 데이터의 다음 Seq 번호(X+7). 마지막으로 받은 데이터의 다음 번호(Y+8)를 Ack.</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td>Receiver -&gt; Sender</td>
+          <td><code>[ACK]</code></td>
+          <td><code>Y+8</code></td>
+          <td><code>X+8</code></td>
+          <td><code>Win_S</code></td>
+          <td>-</td>
+          <td>Sender의 종료 요청(FIN) 확인. Ack=X+7+1 = X+8. (서버는 아직 데이터를 보낼 수 있는 상태 - Half-Close)</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li><strong>상황:</strong> Telnet 서버(Receiver)도 데이터를 모두 보냈고, 연결 종료를 원합니다.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>단계</strong></td>
+          <td><strong>방향</strong></td>
+          <td><strong>TCP Flags</strong></td>
+          <td><strong>Seq</strong></td>
+          <td><strong>Ack</strong></td>
+          <td><strong>Win</strong></td>
+          <td><strong>Payload</strong></td>
+          <td><strong>설명</strong></td>
+      </tr>
+      <tr>
+          <td>10</td>
+          <td>Receiver -&gt; Sender</td>
+          <td><code>[FIN, ACK]</code></td>
+          <td><code>Y+8</code></td>
+          <td><code>X+8</code></td>
+          <td><code>Win_S</code></td>
+          <td>-</td>
+          <td>서버 측 연결 종료 요청 (FIN). 마지막으로 보낸 데이터의 다음 Seq 번호(Y+8). 마지막으로 받은 데이터의 다음 번호(X+8)를 Ack.</td>
+      </tr>
+      <tr>
+          <td>11</td>
+          <td>Sender -&gt; Receiver</td>
+          <td><code>[ACK]</code></td>
+          <td><code>X+8</code></td>
+          <td><code>Y+9</code></td>
+          <td><code>Win_C</code></td>
+          <td>-</td>
+          <td>서버의 종료 요청(FIN) 확인. Ack=Y+8+1 = Y+9. <strong>연결 종료 완료.</strong> Sender는 TIME_WAIT 상태로 잠시 대기.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>핵심 요약:</strong></p>
+<ul>
+<li><strong>Seq/Ack 번호:</strong> 데이터의 순서를 맞추고, 빠진 데이터 없이 잘 받았는지 확인하는 데 사용됩니다. Ack 번호는 &lsquo;다음에 받을 것으로 예상되는 Seq 번호&rsquo;를 의미합니다.</li>
+<li><strong>윈도우 크기 (Win):</strong> 수신 측의 버퍼 여유 공간을 송신 측에 알려주어, 송신 측이 과도하게 많은 데이터를 보내지 않도록 조절합니다 (흐름 제어). 수신 측의 처리 속도나 버퍼 상태에 따라 동적으로 변할 수 있습니다.</li>
+<li><strong>TCP Flags:</strong> 연결 설정(SYN), 데이터 전송(PSH, URG), 확인 응답(ACK), 연결 종료(FIN, RST) 등 TCP 연결의 상태를 제어하는 데 사용됩니다.</li>
+</ul>
+<p>이 시뮬레이션은 Telnet 통신 중 TCP 레벨에서 패킷이 어떻게 교환되는지 기본적인 흐름을 보여줍니다. 실제 네트워크 환경에서는 지연, 혼잡 제어(Congestion Control) 알고리즘, 재전송 등으로 인해 윈도우 크기 변화나 패킷 교환 순서가 더 복잡해질 수 있습니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

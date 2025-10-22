@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>터미널 동작 원리 매우 상세하게2 (디버깅) | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="각 케이스별로 터미널의 동작을 디버깅하고 특히 PTY 마스터-슬레이브 간의 통신을 실시간으로 확인하는 방법
+디버깅을 위한 핵심 도구 (Toolbox) 우리가 사용할 주요 도구는 다음과 같습니다. 각 도구의 역할을 이해하면 어떤 상황에 무엇을 써야 할지 명확해집니다.
+도 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC-%EB%A7%A4%EC%9A%B0-%EC%83%81%EC%84%B8%ED%95%98%EA%B2%8C2-%EB%94%94%EB%B2%84%EA%B9%85/">
+
+    
+    
+    
+    <meta property="og:title" content="터미널 동작 원리 매우 상세하게2 (디버깅)">
+    <meta property="og:description" content="각 케이스별로 터미널의 동작을 디버깅하고 특히 PTY 마스터-슬레이브 간의 통신을 실시간으로 확인하는 방법
+디버깅을 위한 핵심 도구 (Toolbox) 우리가 사용할 주요 도구는 다음과 같습니다. 각 도구의 역할을 이해하면 어떤 상황에 무엇을 써야 할지 명확해집니다.
+도 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%ED%84%B0%EB%AF%B8%EB%84%90-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC-%EB%A7%A4%EC%9A%B0-%EC%83%81%EC%84%B8%ED%95%98%EA%B2%8C2-%EB%94%94%EB%B2%84%EA%B9%85/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="터미널 동작 원리 매우 상세하게2 (디버깅)">
+    <meta name="twitter:description" content="각 케이스별로 터미널의 동작을 디버깅하고 특히 PTY 마스터-슬레이브 간의 통신을 실시간으로 확인하는 방법
+디버깅을 위한 핵심 도구 (Toolbox) 우리가 사용할 주요 도구는 다음과 같습니다. 각 도구의 역할을 이해하면 어떤 상황에 무엇을 써야 할지 명확해집니다.
+도 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>터미널 동작 원리 매우 상세하게2 (디버깅) **page.html**</h1>
+    <p>각 케이스별로 터미널의 동작을 디버깅하고 특히 <strong>PTY 마스터-슬레이브 간의 통신을 실시간으로 확인하는 방법</strong></p>
+<h3 id="디버깅을-위한-핵심-도구-toolbox">디버깅을 위한 핵심 도구 (Toolbox)</h3>
+<p>우리가 사용할 주요 도구는 다음과 같습니다. 각 도구의 역할을 이해하면 어떤 상황에 무엇을 써야 할지 명확해집니다.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">도구</th>
+          <th style="text-align: left">핵심 기능</th>
+          <th style="text-align: left">무엇을 볼 수 있는가?</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong><code>strace</code></strong></td>
+          <td style="text-align: left"><strong>시스템 콜 추적</strong></td>
+          <td style="text-align: left">프로세스(셸, vim)가 커널과 어떤 상호작용을 하는지 (<code>read</code>, <code>write</code>, <code>ioctl</code> 호출 및 주고받는 데이터)를 정확히 보여줍니다. <strong>슬레이브 측 통신 확인에 최적화</strong>되어 있습니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>script</code></strong></td>
+          <td style="text-align: left"><strong>터미널 세션 기록</strong></td>
+          <td style="text-align: left">터미널 에뮬레이터와 PTY 마스터 사이의 **모든 바이트 스트림(입력/출력)**을 날것 그대로 파일에 기록합니다. <strong>마스터 측 통신 확인에 완벽</strong>합니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>socat</code></strong></td>
+          <td style="text-align: left"><strong>만능 데이터 중계기</strong></td>
+          <td style="text-align: left">두 개의 통신 채널을 엮고 그 사이를 흐르는 데이터를 엿볼 수 있습니다. PTY를 직접 생성하여 <strong>마스터-슬레이브 양단의 모든 트래픽을 실시간 Hex 덤프로 확인</strong>하는 궁극의 방법입니다.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong><code>lsof</code></strong></td>
+          <td style="text-align: left"><strong>열린 파일 목록 확인</strong></td>
+          <td style="text-align: left">특정 프로세스가 어떤 파일 디스크립터(PTY 슬레이브 포함)를 열고 있는지 확인하는 데 사용합니다.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="실전-디버깅-시나리오-strace로-셸slave-관찰하기">실전! 디버깅 시나리오: <code>strace</code>로 셸(Slave) 관찰하기</h3>
+<p>이 방법은 <strong>셸(bash)이 PTY 슬레이브와 어떻게 상호작용하는지</strong>를 가장 직접적으로 보여줍니다.</p>
+<h4 id="1단계-환경-준비">1단계: 환경 준비</h4>
+<p>두 개의 터미널 창을 엽니다.</p>
+<ul>
+<li><strong>터미널 1 (실행용):</strong> 우리가 <code>ls</code>, <code>Ctrl+C</code> 등을 입력할 터미널입니다.</li>
+<li><strong>터미널 2 (관찰용):</strong> <code>strace</code>를 실행하여 터미널 1의 셸을 감시할 터미널입니다.</li>
+</ul>
+<h4 id="2단계-추적-대상-찾기">2단계: 추적 대상 찾기</h4>
+<ol>
+<li>
+<p><strong>터미널 1</strong>에서 다음을 입력하여 현재 셸의 프로세스 ID(PID)와 PTY 슬레이브 장치 파일을 확인합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 현재 셸의 PID 확인</span>
+</span></span><span style="display:flex;"><span>echo $$
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 출력 예시: 24567</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 현재 터미널의 PTY 슬레이브 장치 파일 확인</span>
+</span></span><span style="display:flex;"><span>tty
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 출력 예시: /dev/pts/3</span>
+</span></span></code></pre></div></li>
+<li>
+<p>이제 우리는 PID <code>24567</code>를 가진 <code>bash</code> 프로세스가 <code>/dev/pts/3</code>을 통해 통신한다는 것을 알았습니다.</p>
+</li>
+</ol>
+<h4 id="3단계-strace-실행">3단계: <code>strace</code> 실행</h4>
+<p>**터미널 2 (관찰용)**에서 다음 명령을 실행하여 터미널 1의 셸에 <code>strace</code>를 붙입니다. <code>sudo</code>가 필요할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># -p [PID]: 특정 프로세스에 연결</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -e trace=read,write,ioctl: read, write, ioctl 시스템 콜만 추적</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -s 100: 문자열 데이터는 최대 100자까지 표시</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -xx: 문자열이 아닌 데이터는 Hex(16진수)로 표시</span>
+</span></span><span style="display:flex;"><span>sudo strace -p <span style="color:#ae81ff">24567</span> -e trace<span style="color:#f92672">=</span>read,write,ioctl -s <span style="color:#ae81ff">100</span> -xx
+</span></span></code></pre></div><p>이제 <code>strace</code>가 터미널 1의 셸을 감시하기 시작합니다. <code>strace</code>는 <code>read(0, ...)</code>와 같이 셸이 입력을 기다리며 멈춰있을 겁니다. (여기서 FD <code>0</code>은 셸의 표준 입력, 즉 <code>/dev/pts/3</code> 입니다.)</p>
+<h4 id="4단계-케이스별-관찰-터미널-1에서-입력">4단계: 케이스별 관찰 (터미널 1에서 입력)</h4>
+<p>이제 <strong>터미널 1</strong>에서 여러 가지 입력을 해보고 <strong>터미널 2</strong>에 나타나는 <code>strace</code> 출력을 관찰합시다.</p>
+<hr>
+<p><strong>▶️ Case 1: <code>ls</code>를 입력하고 Enter</strong></p>
+<ol>
+<li>
+<p><strong>터미널 1:</strong> <code>l</code>, <code>s</code>, <code>Enter</code>를 차례로 입력합니다.</p>
+</li>
+<li>
+<p><strong>터미널 2 (<code>strace</code> 출력):</strong></p>
+<pre tabindex="0"><code># 커널의 라인 버퍼링 때문에 &#39;ls&#39;와 &#39;\n&#39;이 한번에 전달됨
+read(0, &#34;ls\n&#34;, 100)                     = 3
+# ... fork, execve(&#34;ls&#34;) 등 ...
+# ls의 결과가 PTY 슬레이브를 통해 터미널 에뮬레이터로 출력됨
+write(1, &#34;Desktop    Downloads    Music\n&#34;, 28) = 28
+# 셸 프롬프트가 다시 출력됨
+write(2, &#34;$ &#34;, 2)                        = 2
+</code></pre><ul>
+<li><strong>핵심 관찰:</strong> <code>l</code>이나 <code>s</code>를 입력할 때는 <code>read</code>가 호출되지 않습니다. 커널(TTY 드라이버)이 <code>Enter</code>가 올 때까지 버퍼링하다가 <code>ls\n</code>을 한 번에 셸에게 전달합니다. <strong>이것이 <code>cooked</code> 모드의 증거입니다.</strong></li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>▶️ Case 2: 입력 중 <code>Backspace</code> 사용</strong></p>
+<ol>
+<li>
+<p><strong>터미널 1:</strong> <code>l</code>, <code>p</code>, <code>Backspace</code>, <code>s</code>, <code>Enter</code>를 입력합니다.</p>
+</li>
+<li>
+<p><strong>터미널 2 (<code>strace</code> 출력):</strong></p>
+<pre tabindex="0"><code>read(0, &#34;ls\n&#34;, 100)                     = 3
+</code></pre><ul>
+<li><strong>핵심 관찰:</strong> <code>strace</code> 결과는 Case 1과 <strong>완전히 동일</strong>합니다. 셸은 <code>p</code>를 입력했는지, <code>Backspace</code>로 지웠는지 전혀 모릅니다. 커널의 TTY 드라이버가 입력 편집을 모두 처리하고 최종 결과인 <code>ls\n</code>만 셸에게 전달했기 때문입니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>▶️ Case 3: <code>Ctrl+C</code> 누르기</strong></p>
+<ol>
+<li>
+<p><strong>터미널 1:</strong> <code>sleep 100</code>을 실행한 뒤, 바로 <code>Ctrl+C</code>를 누릅니다.</p>
+</li>
+<li>
+<p><strong>터미널 2 (<code>strace</code> 출력):</strong></p>
+<pre tabindex="0"><code># sleep 100 실행 부분 생략 ...
+# Ctrl+C를 누르면, 셸은 0x03 바이트를 read 하는 것이 아니라,
+# SIGINT 시그널을 받는다!
+--- SIGINT {si_signo=SIGINT, si_code=SI_KERNEL} ---
+# 시그널을 받은 후, 셸은 다시 프롬프트를 찍는다.
+write(2, &#34;\n&#34;, 1)                         = 1
+write(2, &#34;$ &#34;, 2)                         = 2
+read(0,
+</code></pre><ul>
+<li><strong>핵심 관찰:</strong> <code>read</code> 시스템 콜로 <code>0x03</code> 바이트가 들어오는 것이 아니라, <code>--- SIGINT ---</code> 라는 메시지가 뜹니다. 이는 커널이 <code>Ctrl+C</code>에 해당하는 바이트를 해석하여 셸 프로세스에 <strong><code>SIGINT</code> 시그널을 보냈음</strong>을 명확히 보여줍니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>▶️ Case 5: <code>vim</code> 실행 (Raw 모드)</strong></p>
+<ol>
+<li>
+<p><strong>터미널 1:</strong> <code>vim</code>을 실행합니다.</p>
+</li>
+<li>
+<p><strong>터미널 2 (<code>strace</code> 출력):</strong></p>
+<pre tabindex="0"><code># vim이 시작하자마자 터미널 설정을 바꾸기 위해 ioctl을 호출한다.
+# TCSETSW는 &#34;지금 바로 설정을 바꿔라&#34;는 의미.
+# c_lflag에서 ICANON(Canonical 모드), ECHO(에코) 등이 꺼진 것을 볼 수 있음.
+ioctl(0, TCSETSW, {c_iflag=ICRNL|IXON, c_oflag=OPOST|ONLCR, c_cflag=B38400|CS8|CREAD, c_lflag=ISIG|IEXTEN, ...})
+# 화면을 그리기 위해 수많은 이스케이프 시퀀스를 write 한다.
+write(1, &#34;\33[?2004h\33[?1049h\33[22;0;0t\33[1;24r\33[m\33[H\33[2J...&#34;, 200) = 200
+</code></pre></li>
+<li>
+<p><strong>터미널 1 (vim 내부):</strong> <code>j</code> 키를 한 번 눌러 커서를 아래로 이동합니다.</p>
+</li>
+<li>
+<p><strong>터미널 2 (<code>strace</code> 출력):</strong></p>
+<pre tabindex="0"><code># Raw 모드이므로 &#39;j&#39; 키를 누르자마자 read가 즉시 반환됨.
+read(0, &#34;j&#34;, 16)                        = 1
+# vim은 &#39;j&#39; 입력에 대한 반응으로, 커서를 이동시키는 이스케이프 시퀀스를 출력.
+write(1, &#34;\33[11;5H&#34;, 6)                     = 6
+</code></pre><ul>
+<li><strong>핵심 관찰:</strong>
+<ul>
+<li><code>ioctl</code> 호출로 터미널이 <code>raw</code> 모드로 변경되는 것을 확인했습니다.</li>
+<li><code>j</code> 키 하나를 누르자마자 <code>read</code>가 바로 반환됩니다. <strong>라인 버퍼링이 꺼졌다는 증거입니다.</strong></li>
+<li><code>vim</code>은 커서 이동 같은 간단한 동작조차 이스케이프 시퀀스를 <code>write</code>하여 직접 처리합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="심화-과정-script로-마스터-측-통신-훔쳐보기">심화 과정: <code>script</code>로 마스터 측 통신 훔쳐보기</h3>
+<p><code>strace</code>는 셸(슬레이브) 관점의 훌륭한 도구지만, 커널이 편집해주는 <code>Backspace</code>나 에뮬레이터가 보내는 화살표 키의 실제 바이트는 볼 수 없습니다. 이때 <code>script</code>를 사용합니다.</p>
+<ol>
+<li>
+<p><strong>터미널 1</strong>에서 다음을 실행합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># -t 옵션은 시간 정보를 timing.log에 기록</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># session.log 파일에 모든 바이트 스트림을 기록</span>
+</span></span><span style="display:flex;"><span>script -t timing.log session.log
+</span></span></code></pre></div></li>
+<li>
+<p>이제 <code>script</code>가 새로운 셸을 실행시키고, 이 세션에서 일어나는 모든 입출력을 기록하기 시작합니다. 여기서 다음을 순서대로 입력해보세요.</p>
+<ul>
+<li><code>l</code>, <code>p</code>, <code>Backspace</code>, <code>s</code>, <code>Enter</code></li>
+<li><code>위쪽 화살표(↑)</code> 키</li>
+<li><code>Ctrl+C</code></li>
+<li><code>exit</code> 를 입력하여 <code>script</code> 종료</li>
+</ul>
+</li>
+<li>
+<p>이제 <code>session.log</code> 파일을 <code>hexdump</code>로 열어보면 날것 그대로의 데이터가 보입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hexdump -C session.log
+</span></span></code></pre></div><p>아마 다음과 유사한 내용을 볼 수 있을 겁니다.</p>
+<pre tabindex="0"><code># ... 프롬프트 ...
+# &#39;l&#39;, &#39;p&#39;, &#39;Backspace&#39;, &#39;s&#39;, &#39;\r&#39; (Enter)
+6c 70 08 73 0d
+# &#39;Backspace&#39;에 대한 커널의 화면 수정 응답: \b \b
+08 20 08
+# ... ls 결과 ...
+# 위쪽 화살표 키 입력
+1b 5b 41
+# 셸이 히스토리를 찾아 화면에 그려주는 응답
+0d 1b 5b 4b 6c 73 ...
+# Ctrl+C 입력
+03
+# ... exit 입력 ...
+</code></pre><ul>
+<li><strong>핵심 관찰:</strong>
+<ul>
+<li>사용자가 누른 <code>Backspace</code>(<code>0x08</code>)와 화살표 키(<code>1b 5b 41</code>)가 PTY 마스터에 기록된 것을 볼 수 있습니다. <code>strace</code>로는 볼 수 없었던 정보입니다.</li>
+<li><code>scriptreplay timing.log session.log</code> 명령으로 당시 상황을 영상처럼 다시 재생해볼 수도 있습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="끝판왕-socat으로-실시간-양방향-트래픽-감시하기">끝판왕: <code>socat</code>으로 실시간 양방향 트래픽 감시하기</h3>
+<p>이 방법은 가장 복잡하지만 마스터와 슬레이브 사이를 오가는 모든 데이터를 실시간으로 보여줍니다.</p>
+<ol>
+<li>
+<p>**터미널 2 (관찰용)**에서 <code>socat</code>으로 가짜 PTY를 생성하고 중간에서 데이터를 감시합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 두 개의 PTY 쌍을 만들고, 그 사이를 오가는 모든 데이터를 hex(-x)로 출력</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 터미널 1은 /tmp/my-pty1에, 터미널 2의 셸은 /tmp/my-pty2에 연결될 것임</span>
+</span></span><span style="display:flex;"><span>socat -d -d -x PTY,link<span style="color:#f92672">=</span>/tmp/my-pty1,raw,echo<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> PTY,link<span style="color:#f92672">=</span>/tmp/my-pty2,raw,echo<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span></code></pre></div></li>
+<li>
+<p>이제 **새 터미널(터미널 3)**을 열고, 셸을 PTY 슬레이브 쪽에 연결합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># stty raw -echo: 이 터미널 자체의 cooked 모드를 꺼서 socat에 방해되지 않게 함</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># exec bash &lt; /tmp/my-pty2 &gt; /tmp/my-pty2 2&gt;&amp;1: bash의 입출력을 PTY 슬레이브로 리다이렉션</span>
+</span></span><span style="display:flex;"><span>stty raw -echo; exec bash &lt; /tmp/my-pty2 &gt; /tmp/my-pty2 2&gt;&amp;<span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>터미널 1</strong>에서는 터미널 에뮬레이터 역할을 할 프로그램을 PTY 마스터 쪽에 연결합니다. <code>socat</code>을 또 사용하면 편리합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>socat - <span style="color:#e6db74">&#34;file:/tmp/my-pty1,raw,echo=0&#34;</span>
+</span></span></code></pre></div></li>
+</ol>
+<p>이제 <strong>터미널 1</strong>에서 키보드를 입력하면, 그 데이터가 <strong>터미널 2</strong>의 <code>socat</code> 감시 화면에 보이고, 처리된 결과가 <strong>터미널 3</strong>의 <code>bash</code>로 전달됩니다. <code>bash</code>의 출력 역시 <strong>터미널 2</strong>를 거쳐 <strong>터미널 1</strong>에 보이게 됩니다. 이로써 완벽한 Man-in-the-middle 감시 환경이 구축되었습니다.</p>
+<p>이 방법을 통해 제공해주신 문서의 모든 데이터 흐름도를 눈으로 직접 확인할 수 있습니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

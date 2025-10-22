@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>메모리 최대 크기 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="문제 발생 이전 메모리의 최대 크기는 RAM 에 저장할 수 있는 bit 최대 개수를 의미한다 word 는 bus 의 크기를 이야기 한다 하지만 직접 CPU 를 만들다 보니(logisim) (그래서 컴퓨터는 어떻게 동작하나요 1) 지금까지 나는 byte 단위로 메모리에 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EB%8C%80-%ED%81%AC%EA%B8%B0/">
+
+    
+    
+    
+    <meta property="og:title" content="메모리 최대 크기">
+    <meta property="og:description" content="문제 발생 이전 메모리의 최대 크기는 RAM 에 저장할 수 있는 bit 최대 개수를 의미한다 word 는 bus 의 크기를 이야기 한다 하지만 직접 CPU 를 만들다 보니(logisim) (그래서 컴퓨터는 어떻게 동작하나요 1) 지금까지 나는 byte 단위로 메모리에 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EB%8C%80-%ED%81%AC%EA%B8%B0/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="메모리 최대 크기">
+    <meta name="twitter:description" content="문제 발생 이전 메모리의 최대 크기는 RAM 에 저장할 수 있는 bit 최대 개수를 의미한다 word 는 bus 의 크기를 이야기 한다 하지만 직접 CPU 를 만들다 보니(logisim) (그래서 컴퓨터는 어떻게 동작하나요 1) 지금까지 나는 byte 단위로 메모리에 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>메모리 최대 크기 **page.html**</h1>
+    <h2 id="문제-발생-이전">문제 발생 이전</h2>
+<p>메모리의 최대 크기는 RAM 에 저장할 수 있는 bit 최대 개수를 의미한다
+word 는 bus 의 크기를 이야기 한다
+하지만 직접 CPU 를 만들다 보니(logisim) (<a href="http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-1/" class="internal-link">그래서 컴퓨터는 어떻게 동작하나요 1</a>) 지금까지 나는 byte 단위로 메모리에 접근한 것이 아닌 word 단위로 접근 했었고 이것이 8비트 cpu 에서는 word 와 byte 가 운 좋게 8bit 로 일치되어 메모리 최대 크기를 계산 할 때 주소폭 크기 (data bit width = word) * 2^(address bit width) 즉 8 * 2^8 즉 2048b ~= 256B 라고 계산 했었다 답은 맞지만 16비트 32 비트로 cpu 를 개선해나가는 과정에서 문제가 발생했다</p>
+<h2 id="학교에서">학교에서</h2>
+<p>학교에서는 32 비트의 cpu가 가질 수 있는 메모리의 최대 크기가 4GiB 라고 했고 이유는 2^32 Byte 라고 했다
+왜 Byte 인지는 이번에 알게 되었다</p>
+<h2 id="문제-발생">문제 발생</h2>
+<p>나의 32 비트 cpu 의 경우 logisim 으로 구현 했는데 logisim 소프트웨어 자체의 한계로 인해 address bit width 의 크기는 24 비트로 제한 data bit width 는 32 비트로 제한되었다 나의 경우는 data bit width 의 크기를 word 로 맞추어 넣고 시작했기 때문에 정확하게 메모리의 크기는
+32 * 2^(24) = 64MiB 로 나오게 된다 만약 logsim 이 32 비트 address bit width 크기가 32 제한 이었다면 32 * 2^(32) = 64GiB 가 나오게 되고 내가 이미 알던 32비트 컴퓨터의 메모리 최대 4GiB 의 크기와 다르게 된다</p>
+<p>즉 이때 부터 궁금증이 시작되었고 여러가지를 찾아보니
+<a href="https://kldp.org/node/149091" class="external-link" target="_blank" rel="noopener noreferrer" >메모리 주소당 데이터 용량이 1바이트인 이유</a>
+<a href="https://kldp.org/node/161046" class="external-link" target="_blank" rel="noopener noreferrer" >주소지정단위와 주소비트수의 관계/워드와 명령어형식/pc의 증가폭</a>
+2개를 보고 많이 배워 다시 정리 해본다</p>
+<h2 id="이해-과정">이해 과정</h2>
+<p>위에서 말하는 것중 가장 정리되어 있는 글을 퍼온 것이다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>1 Word 는 CPU 가 한 클럭에 받아들일 수 있는 Data 의 너비 (Data bus width) 입니다. 보통 8 bit, 16 bit, 32 bit, 64 bit 컴퓨터라고 하면, Data Bus Width 를 의미하는 것입니다. 하지만, 정확하게는 외부의 데이터를 내부에 저장해두는 레지스터의 크기입니다. 외부에 핀이 4 pin 밖에 없지만, 내부 레지스터가 4 bit씩 2개 연결되어 2 클럭에 저장이 된다면, 실제 Word 크기는 8 bit 가 되는 것입니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>2. Data 는 피연산 대상인 수(Number)만을 의미하지는 않고, OP Code(Operator Code) Operand, ... 조합의 Instruction 일 수도 있으며, 여러개의 Operand 가 다음 Word 로 들어오는 경우도 있습니다. 즉, Inst. Operand 1 + Operand 2 + Operand 3 + ... 식으로 연결되어서 각 클럭마다 입력받을 수 있고 SIMD(Single Instruction Multi Data, 다중 피연산자처리 단일 명령어) 종류의 Instruction 에서 나타나는 형태입니다. 이 때, 이러한 종류의 명령어 길이에 따라 Program Counter 의 값이 2 Word 이상 늘어나게 됩니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>3. Word 는 1. 에서 말했듯이 8, 16, 32 bit 너비일 수 있습니다. 바이트로 환산하면 1,2,4 bytes가 됩니다. 메모리 주소는 1 byte 단위로 지정(Addressing)하기 때문에, 32 bit 컴퓨터에서는 한 클럭마다 4의 배수로 Program Counter 값이 바뀔 것입니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>4. PC(Program Counter) 레지스터는 실행할 명령어가 담겨있는 메모리주소를 저장하는 공간이기 때문에 Address Bus Width 와 같거나 더 큽니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>5. Address Bus Width 는 꼭 Data Bus Width 와 일치하지는 않습니다. 32 bit CPU 이지만, 24 bit 메모리 주소 버스를 갖는 i386 CPU 처럼, 대부분은 비대칭적인 경우가 많습니다. 현재 64 bit CPU 인 x86_64 는 물리적 메모리 주소 버스 폭이 48 bit 입니다. 그러나 PC 레지스터의 크기는 64 bit 입니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>A. 주소공간(Address Space) 이라는 개념에 대해 설명듣지 못하셨을 겁니다. 주 메모리의 한계용량을 의미하고, i686(IA32, x86) 구조에서는 32 bit, 즉 2^32 bytes 의 영역인 4 GB 가 주 메모리 한계공간입니다. i686은 Data Bus Width 가 32 bit, 즉 4 Bytes 이기 때문에, 32 bit 의 메모리 핀 중, 30 핀만 사용한다고 하더라도 충분히 4 GB 주소공간을 지정할 수 있었을 겁니다. 즉, 주소 지정 단위(Address Unit)가 어떻게 지정되느냐에 따라, Address Pin 의 갯수, 혹은 Address Bus Width 가 달라지는 셈입니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>64 bit 컴퓨터인 x86_64 구조에서는 주소지정단위가 64bit, 즉 8 bytes 이므로, 48 bit 로 나타낼 수 있는 2^48 = 64 TBytes 의 공간을 8 Bytes 씩 지정한다고 했을 때, 45 bit 의 Address Bus Width 를 갖게 되는 셈입니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>하지만, 최신 코어에서는 64 bit 컴퓨터라서 꼭 8 bytes 씩 단위를 쓰지는 않고, 16 bit (2 bytes), 32 bit (4 bytes) 단위로도 접근해서 쓰기 때문에, 동작하는 환경에 따라 주소공간이 각각 달라진다는 점을 알고 계시면 좋겠습니다.
+</span></span></code></pre></div><p>가장 잘 정리되어 있는 글이지만 내가 만든 cpu 의 경우 byte 단위로 메모리를 읽는 것이 아닌 data bit width 로 32 비트로 접근 하였고 총 4Byte 로 접근 한 것이다 그래서 PC 명령어를 클락 주기 마다 4 증가 한 것이 아닌 1만 증가 했던 것이다</p>
+<p>logisim 제한이 없는 가정에서 내가 만든 CPU 의 메모리 MAX 예상치와 학교에서 배운 메모리 MAX 예상치가 달랐던 것이다</p>
+<h2 id="결론">결론</h2>
+<p>결론적으로 메모리 MAX 계산은 메모리 접근은 1Byte 단위로 한다는 가정하에 계산한 것이다</p>
+<h2 id="추가">추가</h2>
+<p>최신 컴퓨터의 경우 (아니 최신도 아니지만&hellip; )  메모리 클럭이 따로 존재한다 cpu 클럭에 메모리 클럭이 따라가지 못한다 그러면 캐쉬메모리는 동일한 클럭을 사용하는 가?
+아니다 그러면 어떻게 그 사이를 중계하는 알고리즘을 어떻게 사용하는 걸까</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

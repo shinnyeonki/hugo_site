@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>cpp STL | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="Standard Template Library - STL 임의 타입의 객체를 보관할 수 있는 컨테이너 (container) 컨테이너에 보관된 원소에 접근할 수 있는 반복자 (iterator) 반복자들을 가지고 일련의 작업을 수행하는 알고리즘 (algorithm) cpp …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/leetcode75/cpp-stl/">
+
+    
+    
+    
+    <meta property="og:title" content="cpp STL">
+    <meta property="og:description" content="Standard Template Library - STL 임의 타입의 객체를 보관할 수 있는 컨테이너 (container) 컨테이너에 보관된 원소에 접근할 수 있는 반복자 (iterator) 반복자들을 가지고 일련의 작업을 수행하는 알고리즘 (algorithm) cpp …">
+    <meta property="og:url" content="http://localhost:1313/leetcode75/cpp-stl/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="cpp STL">
+    <meta name="twitter:description" content="Standard Template Library - STL 임의 타입의 객체를 보관할 수 있는 컨테이너 (container) 컨테이너에 보관된 원소에 접근할 수 있는 반복자 (iterator) 반복자들을 가지고 일련의 작업을 수행하는 알고리즘 (algorithm) cpp …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>cpp STL **page.html**</h1>
+    <h2 id="standard-template-library---stl">Standard Template Library - STL</h2>
+<ul>
+<li>임의 타입의 객체를 보관할 수 있는 컨테이너 (container)</li>
+<li>컨테이너에 보관된 원소에 접근할 수 있는 반복자 (iterator)</li>
+<li>반복자들을 가지고 일련의 작업을 수행하는 알고리즘 (algorithm)
+<a href="https://en.cppreference.com/w/cpp/container" class="external-link" target="_blank" rel="noopener noreferrer" >cpp reference</a>
+다음은 C++의 주요 컨테이너와 관련된 개념에 대한 간단한 설명입니다:</li>
+</ul>
+<h2 id="container">Container</h2>
+<ul>
+<li>
+<p>시퀀스 컨테이너 (Sequence Container)</p>
+<ul>
+<li><strong><code>array</code></strong> (C++11): 고정 길이 배열</li>
+<li><strong><code>vector</code></strong>: 동적 가변 길이 배열</li>
+<li><strong><code>inplace_vector</code></strong> (C++26): 동적으로 크기를 조정 가능하지만, 고정된 용량을 가지는 연속 배열로, 요소가 메모리 내에서 제자리에서 관리됨. 메모리 사용을 최적화하고 성능을 개선하기 위해 설계됨.</li>
+<li><strong><code>deque</code></strong>: 분할 가변 길이 배열 + 양방향 capacity</li>
+<li><strong><code>forward_list</code></strong> (C++11): 단방향 링크드 리스트</li>
+<li><strong><code>list</code></strong>: 양방향 링크드 리스트</li>
+</ul>
+</li>
+<li>
+<p>연관 컨테이너 (Associative Container)</p>
+<ul>
+<li><strong><code>set</code></strong>: 중복되지 않는 키를 저장하며, 키의 존재 여부를 빠르게 확인.</li>
+<li><strong><code>map</code></strong>: 키와 값을 쌍으로 저장하며 특정 키에 대한 값을 조회. <code>[]</code> 사용 가능하다</li>
+<li><strong><code>multiset</code></strong>: 중복된 키를 허용하는 set.</li>
+<li><strong><code>multimap</code></strong>: 중복된 키를 허용하는 map. <code>[]</code> 사용 불가능</li>
+<li><strong>커스텀 클래스 객체를 <code>set/map</code> 혹은 <code>unordered_set/map</code>에 추가하기</strong>: 사용자 정의 타입을 사용할 경우, 비교 연산자 또는 해시 함수를 정의해야 함.</li>
+</ul>
+</li>
+<li>
+<p>정렬되지 않는 연관 컨테이너 (unordered Associative Containers)</p>
+<ul>
+<li><strong><code>unordered_set</code></strong>: 해시 테이블을 기반 set</li>
+<li><strong><code>unordered_map</code></strong>: 해시 테이블을 기반 map</li>
+</ul>
+</li>
+<li>
+<p>Container Adaptors</p>
+<ul>
+<li>기본 컨테이너를 사용하여 특정 데이터 구조(예: 스택, 큐)로 동작하도록 변환하는 클래스 템플릿.</li>
+<li><strong><code>stack</code></strong>: LIFO(Last In First Out) 구조로, 마지막에 추가된 요소가 가장 먼저 제거됨.</li>
+<li><strong><code>queue</code></strong>: FIFO(First In First Out) 구조로, 먼저 추가된 요소가 먼저 제거됨.</li>
+<li><strong><code>priority_queue</code></strong>: 우선순위에 따라 요소가 제거되며, 가장 높은 우선순위의 요소가 먼저 처리됨.</li>
+<li><strong><code>flat_set</code></strong>, <strong><code>flat_map</code></strong>, <strong><code>flat_multiset</code></strong>, <strong><code>flat_multimap</code></strong>: 내부적으로 정렬된 벡터를 사용하여 빠른 탐색과 삽입을 제공하는 컨테이너.</li>
+</ul>
+</li>
+<li>
+<p>View</p>
+<ul>
+<li>데이터의 특정 부분이나 배열을 참조하여 효율적으로 접근하고 관리할 수 있도록 하는 객체</li>
+<li><strong><code>span</code></strong>: 연속적인 메모리 블록에 대한 뷰로, 크기와 포인터를 통해 부분 배열을 쉽게 다룰 수 있음.</li>
+<li><strong><code>mdspan</code></strong>: 다차원 배열에 대한 뷰로, 다양한 차원의 배열을 효과적으로 접근하고 관리할 수 있도록 설계됨.</li>
+</ul>
+</li>
+</ul>
+<h3 id="vector">vector</h3>
+<ul>
+<li>임의의 위치 원소 접근 (<code>[], at</code>) : $O(1)$</li>
+<li>맨 뒤에 원소 추가 및 제거 (<code>push_back</code>/<code>pop_back</code>) : amortized $O(1)$; (평균적으로 $O(1)$ 이지만 최악의 경우(공간을 새로 할당하고, 모두 복사) $O(n)$ )</li>
+<li>임의의 위치 원소 추가 및 제거(한칸씩 민다) (<code>insert, erase</code>) : $O(n)$</li>
+<li>벡터의 크기를 리턴하는 함수인 <code>size</code> 의 경우, 그리턴하는 값의 타입은 <code>size_type</code> 멤버 타입으로 정의</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator itr <span style="color:#f92672">=</span> vec.begin(); itr <span style="color:#f92672">!=</span> vec.end(); <span style="color:#f92672">++</span>itr) {
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>itr <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>반복자 사용
+
+        <img src="/08.media/20241221083329.png" alt=" (Image resource not found)" >%20image%2020241221083329.png)
+만일 <code>begin() == end()</code> 라면 원소가 없는 벡터
+<code>*, + 등 배열 포인터 그대로 사용 가능</code></p>
+<p>erase 실행 등 지우거나 추가할 경우 유효하지 않은 반복자 조심</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator itr <span style="color:#f92672">=</span> vec.begin();
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator end_itr <span style="color:#f92672">=</span> vec.end();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (; itr <span style="color:#f92672">!=</span> end_itr; <span style="color:#f92672">++</span>itr) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">*</span>itr <span style="color:#f92672">==</span> <span style="color:#ae81ff">20</span>) {
+</span></span><span style="display:flex;"><span>      vec.erase(itr);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>역반복자 사용이유
+아래 코드는 오류가 발생하는데 <code>vector</code> 의 <code>index</code> 를 담당하는 타입이 부호 없는 정수 이기 때문
+i 가 0 일때 -1 을 한다면 오버플로우 발생으로 가장 큰수가 되어버림 2^32 -1</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec;
+</span></span><span style="display:flex;"><span>  vec.push_back(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  vec.push_back(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>  vec.push_back(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 끝에서 부터 출력하기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>size_type i <span style="color:#f92672">=</span> vec.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; i<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> vec[i] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>범위기반 for 문 아래의 형태로 썼을 경우, <code>elem</code> 에 <code>vec</code> 의 원소들이 매 루프 마다 복사되서 들어가게 됩니다. 마치
+<code>elem = vec[i];</code> 와 동일</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> elem : vec) {
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;원소 : &#34;</span> <span style="color:#f92672">&lt;&lt;</span> elem <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>레퍼런스 범위 기반 for문
+만약에 복사 하기 보다는 레퍼런스를 받고 싶다면 어떨까요? 매우 간단합니다. 단순히 레퍼런스 타입으로 바꾼다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> print_vector(std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> vec) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 전체 벡터를 출력하기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">typename</span> std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;::</span>iterator itr <span style="color:#f92672">=</span> vec.begin(); itr <span style="color:#f92672">!=</span> vec.end();
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">++</span>itr) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>itr <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> print_vector_range_based(std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> vec) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 전체 벡터를 출력하기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> elem : vec) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> elem <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec;
+</span></span><span style="display:flex;"><span>  vec.push_back(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  vec.push_back(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>  vec.push_back(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>  vec.push_back(<span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;print_vector&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>  print_vector(vec);
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;print_vector_range_based&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>  print_vector_range_based(vec);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="list">list</h3>
+<blockquote>
+<p>양방향 링크드 리스트</p>
+</blockquote>
+<ul>
+<li>임의의 위치에 있는 원소에 접근을 바로 할 수 없다</li>
+<li><code>[]</code> 나 <code>at</code> 함수가 아예 정의되어 있지 않다</li>
+<li>임의의 위치에 원소를 추가하거나 제거하는 작업이 $O(n)$ 이였지만 리스트의 경우 $O(1)$ 으로 매우 빠르게 수행</li>
+<li>반복자의 타입이 <code>BidirectionalIterator</code> 타입 (벡터의 반복자는 <code>RandomAccessIterator</code> 이고 <code>RandomAccessIterator</code> 는 <code>BidirectionalIterator</code> 를 상속받고 있다)</li>
+<li><code>itr++    // itr ++</code></li>
+<li><code>itr--  // --itr</code> 도 됩니다.</li>
+<li><code>itr + 5  // 불가능!</code></li>
+</ul>
+<h3 id="deque">deque</h3>
+<p>
+        <img src="/08.media/20241226132530.png" alt="Pasted image 20241226132530 (Image resource not found)" ></p>
+<ul>
+<li>O(1) 으로 임의의 위치의 원소에 접근</li>
+<li>맨 뒤에 원소를 추가/제거 하는 작업도 O(1)</li>
+<li>맨 앞에 원소를 추가/제거 하는 작업 까지도 O(1)</li>
+<li>임의의 위치에 있는 원소를 제거/추가 하는 작업은 벡터와 마찬가지로 O(n) 으로 수행</li>
+<li> 이 때문에 원소들이 어디에 저장되어 있는지에 대한 정보를 보관하기 위해 추가적인 메모리가 더 필요로 합니다.</li>
+<li>기존의 벡터와는 조금 다르게, 새로 할당 시에 앞쪽 및 뒤쪽 모두에 공간을 남겨놓게 됩니다. (벡터의 경우 뒤쪽에만 공간이 남았지요)</li>
+<li> 덱 역시 벡터 처럼 임의의 위치에 원소에 접근할 수 있으므로 <code>[]</code> 와 <code>at</code> 함수를 제공하고 있고, 반복자 역시 <code>RandomAccessIterator</code> 타입 이고 벡터랑 정확히 동일한 방식으로 작동합니다.</li>
+</ul>
+<p>참고</p>
+<ul>
+<li>일반적인 상황에서는 그냥 벡터를 사용한다 (거의 만능이다!)</li>
+<li>만약에 맨 끝이 아닌 중간에 원소들을 추가하거나 제거하는 일을 많이 하고, 원소들을 순차적으로만 접근 한다면 리스트를 사용한다.</li>
+<li>만약에 맨 처음과 끝 모두에 원소들을 추가하는 작업을 많이하면 덱을 사용한다.</li>
+</ul>
+<h3 id="set">set</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> print_set(std<span style="color:#f92672">::</span>set<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&amp;</span> s) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 셋의 모든 원소들을 출력하기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;[ &#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">typename</span> std<span style="color:#f92672">::</span>set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator itr <span style="color:#f92672">=</span> s.begin(); itr <span style="color:#f92672">!=</span> s.end();
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">++</span>itr) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>itr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; ] &#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><code>10 -&gt; 50 -&gt; 20 -&gt; 40 -&gt; 30</code> 으로 넣었지만 실제로 반복자로 원소들을 모두 출력했을 때 나온 순서는 <code>10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50</code> 순으로 나왔다는 점</li>
+</ul>
+<p>set 의 경우 비교 연산자를 통해 비료를 진행한다 이때 <code>A&lt;B</code> 가 false &amp;&amp; <code>B&lt;A</code> false 인 경우 서로를 같다고 생각한다 만약 두 원소가 서로 다르다면, 반드시 A &lt; B 또는 B &lt; A 중 하나는 true여야 한다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Todo</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> priority;
+</span></span><span style="display:flex;"><span>  std<span style="color:#f92672">::</span>string job_desc;
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">const</span> Todo<span style="color:#f92672">&amp;</span> t) <span style="color:#66d9ef">const</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (priority <span style="color:#f92672">==</span> t.priority) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> job_desc <span style="color:#f92672">&lt;</span> t.job_desc;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> priority <span style="color:#f92672">&gt;</span> t.priority;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>이런식으로 정의 하지 않고 아래처럼 정의하면 동일 우선순위 다른 일을 같은 객체로 판단해서 추가 하지 않는다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">const</span> Todo<span style="color:#f92672">&amp;</span> t) <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> priority <span style="color:#f92672">&gt;</span> t.priority; }
+</span></span></code></pre></div><p><code>operator&lt;</code> 는 다음과 같은 조건들을 만족해야 합니다. (A 랑 B 가 다른 객체라면)</p>
+<ul>
+<li><code>A &lt; A</code> 는 거짓</li>
+<li><code>A &lt; B != B &lt; A</code></li>
+<li><code>A &lt; B</code> 이고 <code>B &lt; C</code> 이면 <code>A &lt; C</code></li>
+<li><code>A == B</code> 이면 <code>A &lt; B</code> 와 B <code>&lt; A</code> 둘 다 거짓</li>
+<li><code>A == B</code> 이고 <code>B == C</code> 이면 <code>A == C</code></li>
+<li>이것을 만족하면 strict weak ordering 을 만족한다고 말한다</li>
+</ul>
+<h2 id="iterator">iterator</h2>
+<p>아래는 C++ STL 컨테이너별 이터레이터 타입을 표로 정리한 것입니다:</p>
+<h2 id="algorithm">algorithm</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Iter<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> do_something(Iter begin, Iter end);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Iter, <span style="color:#66d9ef">typename</span> Pred<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> do_something(Iter begin, Iter end, Pred pred)
+</span></span></code></pre></div><p>와 같은 꼴을 따르고 있습니다. 전자의 경우, 알고리즘을 수행할 반복자의 시작점과 끝점 바로 뒤를 받고, 후자의 경우 반복자는 동일하게 받되, &lsquo;특정한 조건&rsquo; 을 추가 인자로 받게 됩니다. 이러한 &lsquo;특정한 조건&rsquo;을 서술자(Predicate) 이라고 부르며 저기 <code>Pred</code> 에는 보통 <code>bool</code> 을 리턴하는 함수 객체(Functor) 를 전달하게 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 12바이트 단위 할당
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> <span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">new</span>(std<span style="color:#f92672">::</span>size_t count) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> count <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; bytes 할당 &#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> malloc(count);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 벡터의 요소를 출력하는 함수
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printVector</span>(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> vec) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;현재 요소: &#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i : vec) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 벡터의 iterator를 얻습니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator it <span style="color:#f92672">=</span> vec.begin();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    printVector(vec); <span style="color:#75715e">// 벡터 출력
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 첫 번째 요소를 출력합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;첫 번째 요소 (iterator 사용): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>it <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 벡터에 요소 추가 (iterator 무효화 가능성)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    vec.push_back(<span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 이 시점에서 it는 무효화되었습니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// std::cout &lt;&lt; &#34;첫 번째 요소 (무효화된 iterator 사용): &#34; &lt;&lt; *it &lt;&lt; std::endl; // 이 줄은 주석 처리해야 합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 요소 삭제 (iterator 무효화)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    it <span style="color:#f92672">=</span> vec.erase(vec.begin()); <span style="color:#75715e">// 첫 번째 요소를 제거합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 이 시점에서 it은 제거된 요소의 다음 요소를 가리킵니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;제거 후 첫 번째 요소 (iterator 사용): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>it <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    printVector(vec); <span style="color:#75715e">// 벡터 출력
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">12</span> bytes <span style="color:#960050;background-color:#1e0010">할당</span> 
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">현재</span> <span style="color:#960050;background-color:#1e0010">요소</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> 
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">첫</span> <span style="color:#960050;background-color:#1e0010">번째</span> <span style="color:#960050;background-color:#1e0010">요소</span> (iterator <span style="color:#960050;background-color:#1e0010">사용</span>)<span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">24</span> bytes <span style="color:#960050;background-color:#1e0010">할당</span> 
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">제거</span> <span style="color:#960050;background-color:#1e0010">후</span> <span style="color:#960050;background-color:#1e0010">첫</span> <span style="color:#960050;background-color:#1e0010">번째</span> <span style="color:#960050;background-color:#1e0010">요소</span> (iterator <span style="color:#960050;background-color:#1e0010">사용</span>)<span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">현재</span> <span style="color:#960050;background-color:#1e0010">요소</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span> 
+</span></span></code></pre></div><p>백터는 12 -&gt; 24 -&gt; 48 단위로 할당이 되는 것 같다
+삽입되거나 지워질 때 할당되면 기존 반복자 무효
+vec.begin(), vec.end() 위치의 값이 지워지면 반복자 무효</p>
+<h2 id="transform">transform</h2>
+<blockquote>
+<p>transform (시작 반복자, 끝 반복자, 결과를 저장할 컨테이너의 시작 반복자, Pred)</p>
+</blockquote>
+<h3 id="find">find</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InputIt</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>InputIt find(InputIt first, InputIt last, <span style="color:#66d9ef">const</span> T<span style="color:#f92672">&amp;</span> value)
+</span></span></code></pre></div><p><code>first</code> 부터 <code>last</code> 까지 쭈르륵 순회하면서 <code>value</code> 와 같은 원소가 있는지 확인하고 있으면 이를 가리키는 반복자를 리턴
+O(n) : 순차 탐색
+<code>set</code> 에서 사용하는 <a href="https://modoocode.com/261" class="external-link" target="_blank" rel="noopener noreferrer" >find</a> 함수의 경우 $O(log⁡n)$ 으로 수행(정렬되어 있어서 이분 탐색 가능)
+<code>unordered_set</code> 의 경우 <a href="https://modoocode.com/261" class="external-link" target="_blank" rel="noopener noreferrer" >find</a> 함수가 $O(1)$ 로 수행될 수 있는데 그 이유는 <code>unordered_set</code> 내부에서 자체적으로 해시 테이블을 이용해서 원소들을 빠르게 탐색</p>
+<h3 id="lambda">lambda</h3>
+<blockquote>
+<p>[capture list] (받는 인자) -&gt; 리턴 타입 { 함수 본체 }
+[capture list] ( 받는 인자) {함수 본체}</p>
+</blockquote>
+<ul>
+<li><code>[]</code> : 아무것도 캡쳐 안함</li>
+<li><code>[&amp;a, b]</code> : <code>a</code> 는 레퍼런스로 캡쳐하고 <code>b</code> 는 (변경 불가능한) 복사본으로 캡쳐</li>
+<li><code>[&amp;]</code> : 외부의 모든 변수들을 레퍼런스로 캡쳐</li>
+<li><code>[=]</code> : 외부의 모든 변수들을 복사본으로 캡쳐</li>
+</ul>
+<h2 id="iterator-1">iterator</h2>
+<table>
+  <thead>
+      <tr>
+          <th>컨테이너</th>
+          <th>이터레이터 타입</th>
+          <th>비고</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>std::vector</code></td>
+          <td>Random Access Iterator</td>
+          <td>인덱스 접근 가능</td>
+      </tr>
+      <tr>
+          <td><code>std::deque</code></td>
+          <td>Random Access Iterator</td>
+          <td>양쪽 끝에서 삽입/삭제 가능</td>
+      </tr>
+      <tr>
+          <td><code>std::list</code></td>
+          <td>Bidirectional Iterator</td>
+          <td>앞뒤로 이동 가능, 임의 접근 불가</td>
+      </tr>
+      <tr>
+          <td><code>std::set</code></td>
+          <td>Bidirectional Iterator</td>
+          <td>정렬된 상태로 요소 저장</td>
+      </tr>
+      <tr>
+          <td><code>std::multiset</code></td>
+          <td>Bidirectional Iterator</td>
+          <td>정렬된 상태로 요소 저장</td>
+      </tr>
+      <tr>
+          <td><code>std::map</code></td>
+          <td>Bidirectional Iterator</td>
+          <td>키-값 쌍을 정렬된 상태로 저장</td>
+      </tr>
+      <tr>
+          <td><code>std::multimap</code></td>
+          <td>Bidirectional Iterator</td>
+          <td>키-값 쌍을 정렬된 상태로 저장</td>
+      </tr>
+      <tr>
+          <td><code>std::array</code></td>
+          <td>Random Access Iterator</td>
+          <td>고정 크기 배열, 인덱스 접근 가능</td>
+      </tr>
+      <tr>
+          <td><code>std::forward_list</code></td>
+          <td>Forward Iterator</td>
+          <td>앞 방향으로만 이동 가능</td>
+      </tr>
+  </tbody>
+</table>
+<p>BidirectionalIterator
+상속
+RandomAccessIterator</p>
+<p><a href="https://modoocode.com/266" class="external-link" target="_blank" rel="noopener noreferrer" >remove</a> 함수의 경우 반복자의 타입이 <code>ForwardIterator</code> 입니다.</p>
+<p><strong>1. 주요 반복자 종류</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>반복자 유형</th>
+          <th>정의 및 역할</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>iterator</code></strong></td>
+          <td>읽기와 쓰기 모두 가능한 일반 반복자입니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>const_iterator</code></strong></td>
+          <td>읽기 전용 반복자입니다. 값을 수정할 수 없도록 보장합니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>reverse_iterator</code></strong></td>
+          <td>컨테이너를 뒤에서 앞으로(iterate) 순회할 때 사용하는 반복자입니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>const_reverse_iterator</code></strong></td>
+          <td>읽기 전용의 역방향 반복자입니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>pointer</code></strong> 그냥 포인터</td>
+          <td>일반적으로 반복자는 내부적으로 포인터(<code>T*</code>)로 정의되므로, 반복자 타입이 포인터와 동일한 동작을 할 수 있습니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>const_pointer</code></strong> const 포인터</td>
+          <td>읽기 전용의 포인터입니다.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>주요 메서드</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>메서드</th>
+          <th>설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>begin()</code></strong></td>
+          <td>컨테이너의 첫 번째 요소를 가리키는 반복자를 반환합니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>end()</code></strong></td>
+          <td>컨테이너의 마지막 요소 <strong>다음</strong>을 가리키는 반복자를 반환합니다. (범위를 벗어난 포인터와 비슷)</td>
+      </tr>
+      <tr>
+          <td><strong><code>cbegin()</code></strong></td>
+          <td>첫 번째 요소를 가리키는 <code>const_iterator</code>를 반환합니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>cend()</code></strong></td>
+          <td>마지막 요소 다음을 가리키는 <code>const_iterator</code>를 반환합니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>rbegin()</code></strong></td>
+          <td>마지막 요소를 가리키는 <code>reverse_iterator</code>를 반환합니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>rend()</code></strong></td>
+          <td>첫 번째 요소 <strong>이전</strong>을 가리키는 <code>reverse_iterator</code>를 반환합니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>crbegin()</code></strong></td>
+          <td><code>const_reverse_iterator</code>로 마지막 요소를 가리킵니다.</td>
+      </tr>
+      <tr>
+          <td><strong><code>crend()</code></strong></td>
+          <td><code>const_reverse_iterator</code>로 첫 번째 요소 이전을 가리킵니다.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="vector-1">vector</h2>
+<p><strong>Vector의 초기화</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>vector&lt;자료형&gt; 변수명</code></td>
+          <td><strong>백터 생성</strong></td>
+      </tr>
+      <tr>
+          <td><code>vector&lt;자료형&gt; 변수명(숫자)</code></td>
+          <td><strong>숫자만큼 백터 생성 후 0으로 초기화</strong></td>
+      </tr>
+      <tr>
+          <td><code>vector&lt;자료형&gt; 변수명 = { 변수1, 변수2, ... }</code></td>
+          <td><strong>백터 생성 후 오른쪽 변수 값으로 초기화</strong></td>
+      </tr>
+      <tr>
+          <td><code>vector&lt;자료형&gt; 변수명[] = {, }</code></td>
+          <td><strong>백터 배열(2차원 백터) 선언 및 초기화</strong></td>
+      </tr>
+      <tr>
+          <td><code>vector&lt;vector&lt;자료형&gt;&gt; 변수명</code></td>
+          <td><strong>2차원 백터 생성</strong></td>
+      </tr>
+      <tr>
+          <td><code>vector&lt;자료형&gt; 변수명.assign(범위, 값)</code></td>
+          <td><strong>범위 내에서 값을 초기화</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Vector의 Iterators (시간복잡도와 반환값)</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>시간복잡도</strong></th>
+          <th><strong>반환값</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>v.begin()</code></td>
+          <td><strong>백터 시작점의 주소 값 반환</strong></td>
+          <td>O(1)</td>
+          <td><code>iterator</code></td>
+      </tr>
+      <tr>
+          <td><code>v.end()</code></td>
+          <td><strong>백터 (끝부분 + 1)의 주소값 반환</strong></td>
+          <td>O(1)</td>
+          <td><code>iterator</code></td>
+      </tr>
+      <tr>
+          <td><code>v.rbegin()</code></td>
+          <td><strong>백터의 끝 지점을 시작점으로 반환</strong></td>
+          <td>O(1)</td>
+          <td><code>reverse_iterator</code></td>
+      </tr>
+      <tr>
+          <td><code>v.rend()</code></td>
+          <td><strong>백터의 (시작 + 1) 지점을 끝 부분으로 반환</strong></td>
+          <td>O(1)</td>
+          <td><code>reverse_iterator</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Vector Element Access</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>시간복잡도</strong></th>
+          <th><strong>반환값</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>v.at(i)</code></td>
+          <td><strong>백터의 i번째 요소 접근 (범위 검사함)</strong></td>
+          <td>O(1)</td>
+          <td>요소 값</td>
+      </tr>
+      <tr>
+          <td><code>v[i]</code></td>
+          <td><strong>백터의 i번째 요소 접근 (범위 검사 안함)</strong></td>
+          <td>O(1)</td>
+          <td>요소 값</td>
+      </tr>
+      <tr>
+          <td><code>v.front()</code></td>
+          <td><strong>백터의 첫 번째 요소 접근</strong></td>
+          <td>O(1)</td>
+          <td>첫 번째 요소 값</td>
+      </tr>
+      <tr>
+          <td><code>v.back()</code></td>
+          <td><strong>백터의 마지막 요소 접근</strong></td>
+          <td>O(1)</td>
+          <td>마지막 요소 값</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Vector에 요소 삽입</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>시간복잡도</strong></th>
+          <th><strong>반환값</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>v.push_back(값)</code></td>
+          <td><strong>백터의 마지막 부분에 요소 추가</strong></td>
+          <td>평균 O(1), 최악 O(n)</td>
+          <td>없음</td>
+      </tr>
+      <tr>
+          <td><code>v.pop_back()</code></td>
+          <td><strong>백터의 마지막 부분 제거</strong></td>
+          <td>O(1)</td>
+          <td>없음</td>
+      </tr>
+      <tr>
+          <td><code>v.insert(삽입위치, 값)</code></td>
+          <td><strong>사용자가 원하는 위치에 요소 삽입</strong></td>
+          <td>평균 O(n)</td>
+          <td>삽입된 위치의 <code>iterator</code></td>
+      </tr>
+      <tr>
+          <td><code>v.emplace(삽입위치, 값)</code></td>
+          <td><strong>사용자가 원하는 위치에 요소 삽입 (복사생성자 없음)</strong></td>
+          <td>평균 O(n)</td>
+          <td>삽입된 위치의 <code>iterator</code></td>
+      </tr>
+      <tr>
+          <td><code>v.emplace_back(값)</code></td>
+          <td><strong>백터의 마지막 부분에 요소 추가 (복사생성자 없음)</strong></td>
+          <td>평균 O(1), 최악 O(n)</td>
+          <td>없음</td>
+      </tr>
+      <tr>
+          <td><code>v.erase(위치)</code></td>
+          <td><strong>지정한 위치의 요소를 제거</strong></td>
+          <td>평균 O(n)</td>
+          <td>삭제 후 위치의 <code>iterator</code></td>
+      </tr>
+      <tr>
+          <td><code>v.clear()</code></td>
+          <td><strong>백터의 모든 요소 제거</strong></td>
+          <td>O(n)</td>
+          <td>없음</td>
+      </tr>
+      <tr>
+          <td><code>v.resize(크기)</code></td>
+          <td><strong>백터 크기 조정</strong></td>
+          <td>O(n)</td>
+          <td>없음</td>
+      </tr>
+      <tr>
+          <td><code>v.swap(다른 백터)</code></td>
+          <td><strong>백터와 백터를 교환</strong></td>
+          <td>O(1)</td>
+          <td>없음</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Vector Capacity</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>시간복잡도</strong></th>
+          <th><strong>반환값</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>v.empty()</code></td>
+          <td><strong>백터가 비어있는지 확인</strong></td>
+          <td>O(1)</td>
+          <td><code>true</code> 또는 <code>false</code></td>
+      </tr>
+      <tr>
+          <td><code>v.size()</code></td>
+          <td><strong>백터의 크기 반환</strong></td>
+          <td>O(1)</td>
+          <td>크기 값</td>
+      </tr>
+      <tr>
+          <td><code>v.capacity()</code></td>
+          <td><strong>백터의 실제 할당된 크기 반환</strong></td>
+          <td>O(1)</td>
+          <td>크기 값</td>
+      </tr>
+      <tr>
+          <td><code>v.max_size()</code></td>
+          <td><strong>백터의 최대 크기 반환</strong></td>
+          <td>O(1)</td>
+          <td>최대 크기 값</td>
+      </tr>
+      <tr>
+          <td><code>v.reserve(크기)</code></td>
+          <td><strong>백터의 최소 크기 예약</strong></td>
+          <td>O(n)</td>
+          <td>없음</td>
+      </tr>
+      <tr>
+          <td><code>v.shrink_to_fit()</code></td>
+          <td><strong>백터의 capacity를 실제 크기에 맞춤</strong></td>
+          <td>O(n)</td>
+          <td>없음</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="set-1">set</h2>
+<p><strong>Member Functions</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>반환값</strong></th>
+          <th><strong>시간 복잡도</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>constructor</strong></td>
+          <td>셋을 생성합니다.</td>
+          <td>없음</td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>destructor</strong></td>
+          <td>셋을 소멸합니다.</td>
+          <td>없음</td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>operator=</strong></td>
+          <td>컨테이너에 값을 할당합니다.</td>
+          <td><code>set&amp;</code></td>
+          <td>O(n)</td>
+      </tr>
+      <tr>
+          <td><strong>get_allocator</strong></td>
+          <td>연관된 할당자를 반환합니다.</td>
+          <td><code>allocator_type</code></td>
+          <td>O(1)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Iterators</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>반환값</strong></th>
+          <th><strong>시간 복잡도</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>begin</strong></td>
+          <td>시작 위치의 반복자를 반환합니다.</td>
+          <td><code>iterator</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>cbegin</strong></td>
+          <td>시작 위치의 상수 반복자를 반환합니다.</td>
+          <td><code>const_iterator</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>end</strong></td>
+          <td>끝 위치의 반복자를 반환합니다.</td>
+          <td><code>iterator</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>cend</strong></td>
+          <td>끝 위치의 상수 반복자를 반환합니다.</td>
+          <td><code>const_iterator</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>rbegin</strong></td>
+          <td>역순으로 시작 위치의 반복자를 반환합니다.</td>
+          <td><code>reverse_iterator</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>crbegin</strong></td>
+          <td>역순으로 시작 위치의 상수 반복자를 반환합니다.</td>
+          <td><code>const_reverse_iterator</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>rend</strong></td>
+          <td>역순으로 끝 위치의 반복자를 반환합니다.</td>
+          <td><code>reverse_iterator</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>crend</strong></td>
+          <td>역순으로 끝 위치의 상수 반복자를 반환합니다.</td>
+          <td><code>const_reverse_iterator</code></td>
+          <td>O(1)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Capacity</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>반환값</strong></th>
+          <th><strong>시간 복잡도</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>empty</strong></td>
+          <td>컨테이너가 비어있는지 확인합니다.</td>
+          <td><code>bool</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>size</strong></td>
+          <td>원소의 개수를 반환합니다.</td>
+          <td><code>size_type</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>max_size</strong></td>
+          <td>최대 가능한 원소의 개수를 반환합니다.</td>
+          <td><code>size_type</code></td>
+          <td>O(1)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Modifiers</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>반환값</strong></th>
+          <th><strong>시간 복잡도</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>clear</strong></td>
+          <td>내용을 지웁니다.</td>
+          <td>없음</td>
+          <td>O(n)</td>
+      </tr>
+      <tr>
+          <td><strong>insert</strong></td>
+          <td>원소 또는 노드를 삽입합니다.</td>
+          <td><code>pair&lt;iterator, bool&gt;</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>insert_range</strong></td>
+          <td>원소의 범위를 삽입합니다. (C++23)</td>
+          <td><code>void</code></td>
+          <td>O(n)</td>
+      </tr>
+      <tr>
+          <td><strong>emplace</strong></td>
+          <td>인플레이스에서 원소를 생성합니다.</td>
+          <td><code>pair&lt;iterator, bool&gt;</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>emplace_hint</strong></td>
+          <td>힌트를 사용하여 인플레이스에서 원소를 생성합니다.</td>
+          <td><code>pair&lt;iterator, bool&gt;</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>erase</strong></td>
+          <td>원소를 삭제합니다.</td>
+          <td><code>size_type</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>swap</strong></td>
+          <td>내용을 교환합니다.</td>
+          <td>없음</td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>extract</strong></td>
+          <td>컨테이너에서 노드를 추출합니다. (C++17)</td>
+          <td><code>node_type</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>merge</strong></td>
+          <td>다른 컨테이너로부터 노드를 스파이스합니다. (C++17)</td>
+          <td><code>void</code></td>
+          <td>O(n)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Lookup</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>반환값</strong></th>
+          <th><strong>시간 복잡도</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>count</strong></td>
+          <td>특정 키와 일치하는 원소의 개수를 반환합니다.</td>
+          <td><code>size_type</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>find</strong></td>
+          <td>특정 키를 가진 원소를 찾습니다.</td>
+          <td><code>iterator</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>contains</strong></td>
+          <td>특정 키를 가진 원소가 있는지 확인합니다. (C++20)</td>
+          <td><code>bool</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>equal_range</strong></td>
+          <td>특정 키와 일치하는 원소의 범위를 반환합니다.</td>
+          <td><code>pair&lt;iterator, iterator&gt;</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>lower_bound</strong></td>
+          <td>주어진 키보다 작지 않은 첫 번째 원소의 반복자를 반환합니다.</td>
+          <td><code>iterator</code></td>
+          <td>O(log n)</td>
+      </tr>
+      <tr>
+          <td><strong>upper_bound</strong></td>
+          <td>주어진 키보다 큰 첫 번째 원소의 반복자를 반환합니다.</td>
+          <td><code>iterator</code></td>
+          <td>O(log n)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Observers</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>구문</strong></th>
+          <th><strong>설명</strong></th>
+          <th><strong>반환값</strong></th>
+          <th><strong>시간 복잡도</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>key_comp</strong></td>
+          <td>키를 비교하는 함수를 반환합니다.</td>
+          <td><code>key_compare</code></td>
+          <td>O(1)</td>
+      </tr>
+      <tr>
+          <td><strong>value_comp</strong></td>
+          <td>값 타입의 객체에서 키를 비교하는 함수를 반환합니다.</td>
+          <td><code>value_compare</code></td>
+          <td>O(1)</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="string">string</h2>
+<p>​</p>
+<p><strong>1. 특정 원소 접근 방법</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>str.at(idx)</strong></td>
+          <td>idx 위치 문자 반환, 범위 유효성 체크 O</td>
+      </tr>
+      <tr>
+          <td><strong>str[idx]</strong></td>
+          <td>idx 위치 문자 반환, 범위 유효성 체크 X</td>
+      </tr>
+      <tr>
+          <td><strong>str.front()</strong></td>
+          <td>문자열의 가장 앞의 문자 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.back()</strong></td>
+          <td>문자열의 가장 뒤의 문자 반환</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>2. 문자열의 크기</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>str.length()</strong></td>
+          <td>문자열 길이 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.size()</strong></td>
+          <td>문자열 길이 반환(length()와 동일)</td>
+      </tr>
+      <tr>
+          <td><strong>str.max_size()</strong></td>
+          <td>최대한 메모리 할당할 경우 저장할 수 있는 문자열 길이 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.capacity()</strong></td>
+          <td>문자열의 메모리 크기 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.resize(n)</strong></td>
+          <td>str을 n의 크기로 만듦. 삭제 또는 빈 공간으로 채움</td>
+      </tr>
+      <tr>
+          <td><strong>str.resize(n, &lsquo;a&rsquo;)</strong></td>
+          <td>n이 str 길이보다 크면 빈 공간을 &lsquo;a&rsquo;로 채움</td>
+      </tr>
+      <tr>
+          <td><strong>str.shrink_to_fit()</strong></td>
+          <td>capacity가 실제 사용하는 메모리보다 큰 경우 메모리 줄여 줌(메모리 낭비 제거)</td>
+      </tr>
+      <tr>
+          <td><strong>str.reserve(n)</strong></td>
+          <td>사이즈 n 만큼의 메모리 미리 할당</td>
+      </tr>
+      <tr>
+          <td><strong>str.empty()</strong></td>
+          <td>str이 빈 문자열인지 확인</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>3. 문자열 삽입/추가/삭제</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>str.append(str2)</td>
+          <td>str 뒤에 str2 문자열을 이어 붙여 줌(str + str2 와 같음)</td>
+      </tr>
+      <tr>
+          <td>str.append(str2, n ,m)</td>
+          <td>str 뒤에 &lsquo;str2의 n index 부터 m개의 문자&rsquo;를 이어 붙여 줌</td>
+      </tr>
+      <tr>
+          <td>str.append(n, &lsquo;a&rsquo;)</td>
+          <td>str 뒤에 n 개의 &lsquo;a&rsquo;를 붙여 줌</td>
+      </tr>
+      <tr>
+          <td>str.insert(n, str2)</td>
+          <td>n번째 index 앞에 str2 문자열을 삽입함</td>
+      </tr>
+      <tr>
+          <td>str.replace(n, k, str2)</td>
+          <td>n번째 index 부터 k개의 문자열을 str2로 대체함</td>
+      </tr>
+      <tr>
+          <td>str.clear()</td>
+          <td>저장된 문자열을 모두 지움</td>
+      </tr>
+      <tr>
+          <td>str.erase()</td>
+          <td>clear()와 같음</td>
+      </tr>
+      <tr>
+          <td>str.erase(n, m)</td>
+          <td>n번째 index부터 m개의 문자를 지움</td>
+      </tr>
+      <tr>
+          <td>str.erase(n, m) ← iterator</td>
+          <td>n~m index 문자열을 지움(n, m은 iterator임)</td>
+      </tr>
+      <tr>
+          <td>str.push_back(c)</td>
+          <td>str의 맨 뒤에 c를 붙여 줌</td>
+      </tr>
+      <tr>
+          <td>str.pop_back()</td>
+          <td>str의 맨 뒤의 문자를 제거</td>
+      </tr>
+      <tr>
+          <td>str.assign(str2)</td>
+          <td>str 에 str2 문자열을 할당함</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>4. 부분 문자/비교/복사/찾기</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>str.substr()</strong></td>
+          <td>str 전체를 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.substr(n)</strong></td>
+          <td>str의 n번째 index부터 끝까지 부분 문자열 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.substr(n, k)</strong></td>
+          <td>str의 n번째 index부터 k개의 부분 문자열 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.compare(str2)</strong></td>
+          <td>str과 str2가 같은지 비교, str&lt;str2인 경우 음수, str&gt;str2인 경우 양수 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.copy(str2, k, n)</strong></td>
+          <td>str의 n번째 index부터 k개의 문자열 복사</td>
+      </tr>
+      <tr>
+          <td><strong>str.find(&ldquo;abcd&rdquo;)</strong></td>
+          <td>&ldquo;abcd&quot;가 str에 포함되어 있는지 확인, 찾으면 해당 부분 첫 index 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.find(&ldquo;abcd&rdquo;, n)</strong></td>
+          <td>n번째 index부터 &ldquo;abcd&quot;를 찾음</td>
+      </tr>
+      <tr>
+          <td><strong>str.find_first_of(&rdquo;/&rdquo;)</strong></td>
+          <td>&ldquo;/&ldquo;가 처음 나타나는 index</td>
+      </tr>
+      <tr>
+          <td><strong>str.find_last_of(&rdquo;/&rdquo;)</strong></td>
+          <td>&ldquo;/&ldquo;가 마지막으로 나타나는 index</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>5. 기타 유용한 함수들</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>str.c_str()</strong></td>
+          <td>string을 c스타일의 문자열로 변경</td>
+      </tr>
+      <tr>
+          <td><strong>str.begin()</strong></td>
+          <td>string의 시작 iterator 반환</td>
+      </tr>
+      <tr>
+          <td><strong>str.end()</strong></td>
+          <td>string의 끝 iterator 반환</td>
+      </tr>
+      <tr>
+          <td><strong>swap(str, str2)</strong></td>
+          <td>str과 str2를 바꿔줌</td>
+      </tr>
+      <tr>
+          <td><strong>str = str2 + str3</strong></td>
+          <td>str2와 str3를 붙여서 str에 복사함</td>
+      </tr>
+      <tr>
+          <td><strong>str += str2</strong></td>
+          <td>str 뒤에 str2를 붙여줌</td>
+      </tr>
+      <tr>
+          <td><strong>str = str2</strong></td>
+          <td>str에 str2 복사 (Deep Copy)</td>
+      </tr>
+      <tr>
+          <td><strong>str == str2</strong></td>
+          <td>str과 str2가 같은지 확인</td>
+      </tr>
+      <tr>
+          <td><strong>str &gt; str2, str &lt; str2</strong></td>
+          <td>str이 str2보다 사전순으로 앞인지 뒤인지 확인</td>
+      </tr>
+      <tr>
+          <td><strong>isdigit(c)</strong></td>
+          <td><code>#include &lt;cctype&gt;</code>, c가 숫자인지 확인, 숫자이면 0이 아닌 숫자 반환</td>
+      </tr>
+      <tr>
+          <td><strong>isalpha(c)</strong></td>
+          <td><code>#include &lt;cctype&gt;</code>, 알파벳 확인, 대문자는 1 반환, 소문자는 2 반환, 알파벳이 아니면 0 반환</td>
+      </tr>
+      <tr>
+          <td><strong>toupper(c)</strong></td>
+          <td><code>#include &lt;cctype&gt;</code>, c를 대문자로 변환</td>
+      </tr>
+      <tr>
+          <td><strong>tolower(c)</strong></td>
+          <td><code>#include &lt;cctype&gt;</code>, c를 소문자로 변환</td>
+      </tr>
+      <tr>
+          <td><strong>stoi(), stof(), stol(), stod()</strong></td>
+          <td>문자열을 숫자로 변환(int, float, long, double)</td>
+      </tr>
+      <tr>
+          <td><strong>to_string(n)</strong></td>
+          <td>숫자 n을 문자열로 변환</td>
+      </tr>
+  </tbody>
+</table>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

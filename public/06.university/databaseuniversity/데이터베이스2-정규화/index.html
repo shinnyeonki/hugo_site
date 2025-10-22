@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>데이터베이스2 정규화 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="대학 수업 database 에서 배운 모든 내용 정리">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/databaseuniversity/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A42-%EC%A0%95%EA%B7%9C%ED%99%94/">
+
+    
+    
+    
+    <meta property="og:title" content="데이터베이스2 정규화">
+    <meta property="og:description" content="대학 수업 database 에서 배운 모든 내용 정리">
+    <meta property="og:url" content="http://localhost:1313/06.university/databaseuniversity/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A42-%EC%A0%95%EA%B7%9C%ED%99%94/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="데이터베이스2 정규화">
+    <meta name="twitter:description" content="대학 수업 database 에서 배운 모든 내용 정리">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>데이터베이스2 정규화 **page.html**</h1>
+    <p>정규화 시에 제대로 분해 되었는지 확인하는 2가지 개념</p>
+<ol>
+<li>손실분해가 일어나지 않게</li>
+<li>중복 data 가 존재하는가 (redundency)</li>
+<li>종속성이 보존되게</li>
+</ol>
+<h2 id="분해">분해</h2>
+<ul>
+<li>나쁜 디자인
+<ul>
+<li>특정 정보를 표현 불가 -&gt; 대출이 없는 지점은 오픈할 수 없다</li>
+<li>정보의 중복 -&gt; 동일 지점에서 빌린 여러개의 대출</li>
+<li>정보의 손실</li>
+<li>anomaly (update, insertion, deletion)
+<ul>
+<li>update : loan-number 없이 branch-name 등 insert 불가</li>
+<li>delete : 어떤 branch의 마지막 loan을 delete하면 branch 자체가 사라짐</li>
+<li>update : 어떤 특정한 branch의 정보(예: Downtown의assets)를 update하면 해당하는 튜플들을 모두 업데이트해야 함</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>좋은 디자인
+<ul>
+<li>정보의 중복을 피한다</li>
+<li>정보의 관계가 표현된다</li>
+<li>무결성 제약 조건</li>
+</ul>
+</li>
+</ul>
+<p>분해를 안하면 업데이트시 여러개의 동시에 업데이트해야하는 문제가 발생</p>
+<ul>
+<li>싱크시에 트래픽 발생, 싱크 실패 확율</li>
+</ul>
+<p>그렇다면 분해는 쉬운가? 그렇지 않다</p>
+<h3 id="손실분해lossy-decomposition">손실분해(lossy decomposition)</h3>
+<p>
+        <img src="/08.media/20241019172546.png" alt="Pasted image 20241019172546 (Image resource not found)" >
+손실 분해의 예시이다</p>
+<h3 id="무손실-분해lossless-decomposition">무손실 분해(lossless decomposition)</h3>
+<p>
+        <img src="/08.media/20241019172955.png" alt="Pasted image 20241019172955 (Image resource not found)" >
+무손실 분해의 예시이다</p>
+<p>이것을 보장하게 하는 것을 위해 아래의 함수 종속 개념을 사용하여 보장하게 된다</p>
+<h2 id="functional-dependencies">functional dependencies</h2>
+<p>
+        <img src="/08.media/20241019173166.png" alt="Pasted image 20241019173166 (Image resource not found)" ></p>
+<blockquote>
+<p>trivial functional dependencies
+{주민등록번호} =&gt;  {주민등록번호, 성별} // 당연한 이야기
+{주민등록번호} =&gt; {주민등록번호} // 당연한 이야기
+{주민등록번호} =&gt; 공집합 // 수학적으로 당연한 이야기</p>
+</blockquote>
+<h2 id="정규화">정규화</h2>
+<p>BCNF : 함수 종속 $\alpha -&gt; \beta$ 에서 $\alpha$는 슈퍼키이다</p>
+<ul>
+<li>r(R) relation을 BCNF 조건을 어긋나게 하는 함수종속 $\alpha\ \rightarrow\ \beta$ 의 각 속성조합인  $r_1 =\alpha\ \cup\ \beta$ 와 $r_2=R\ - (\beta\ -\ \alpha)$ 2개로 나눈다</li>
+<li>즉 알파를 볼모로 잡고 나머지를 다른 table 로 분리
+3정규형 : 함수 종속 $\alpha -&gt; \beta$ 에서 $\alpha$는 슈퍼키 이거나 $\beta-\alpha$ 는 후보키에 속한다</li>
+</ul>
+<p>정규화 과정</p>
+<p>BCNF 목표
+lossless join
+Dependency preservation</p>
+<pre tabindex="0"><code></code></pre><p>1차 정규화</p>
+<ol>
+<li>모든 entity 는 원자적이어야 한다</li>
+</ol>
+<p>2차 정규화</p>
+<ol>
+<li>1차 정규화 완료</li>
+<li>모든 key 가 아닌 attrivutes 는 완전하게 PK 종속되어야 한다</li>
+<li></li>
+</ol>
+<p>3차 정규화 쉬운 정의</p>
+<ol>
+<li>2차 정규화 완료</li>
+<li>transitively dependent(a -&gt; b &amp;&amp; b-&gt; c) 가 없어야 한다</li>
+</ol>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

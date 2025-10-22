@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>sql date 관련 정리 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="sql 에서 제공하는 date 에 관련한 정보를 기술한다
+자료형 1. DATE 타입 DATE 타입은 날짜는 포함하지만 시간은 포함하지 않을 때 사용하는 타입입니다. DATE 타입 YYYY-MM-DD 형식 입력가능하며, &lsquo;1000-01-01&rsquo; 부터 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/sql-date-%EA%B4%80%EB%A0%A8-%EC%A0%95%EB%A6%AC/">
+
+    
+    
+    
+    <meta property="og:title" content="sql date 관련 정리">
+    <meta property="og:description" content="sql 에서 제공하는 date 에 관련한 정보를 기술한다
+자료형 1. DATE 타입 DATE 타입은 날짜는 포함하지만 시간은 포함하지 않을 때 사용하는 타입입니다. DATE 타입 YYYY-MM-DD 형식 입력가능하며, &lsquo;1000-01-01&rsquo; 부터 …">
+    <meta property="og:url" content="http://localhost:1313/temp/sql-date-%EA%B4%80%EB%A0%A8-%EC%A0%95%EB%A6%AC/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="sql date 관련 정리">
+    <meta name="twitter:description" content="sql 에서 제공하는 date 에 관련한 정보를 기술한다
+자료형 1. DATE 타입 DATE 타입은 날짜는 포함하지만 시간은 포함하지 않을 때 사용하는 타입입니다. DATE 타입 YYYY-MM-DD 형식 입력가능하며, &lsquo;1000-01-01&rsquo; 부터 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>sql date 관련 정리 **page.html**</h1>
+    <p>sql 에서 제공하는 date 에 관련한 정보를 기술한다</p>
+<h2 id="자료형">자료형</h2>
+<h3 id="1-date-타입">1. DATE 타입</h3>
+<ul>
+<li>DATE 타입은 날짜는 포함하지만 시간은 포함하지 않을 때 사용하는 타입입니다.</li>
+<li>DATE 타입 YYYY-MM-DD 형식 입력가능하며, &lsquo;1000-01-01&rsquo; 부터 &lsquo;9999-12-31&rsquo; 까지만 입력가능합니다.</li>
+</ul>
+<h3 id="2-datetime-타입">2. DATETIME 타입</h3>
+<ul>
+<li>DATETIME 타입은 날짜와 시간을 모두 포함할 때 사용하는 타입입니다.</li>
+<li>YYYY-MM-DD HH:MM:SS의 형태로 사용되며 &lsquo;1001-01-01 00:00:00&rsquo;부터 &lsquo;9999-12-31 23:59:59&rsquo;까지 입력이 가능하다</li>
+</ul>
+<h3 id="3-time-타입">3. TIME 타입</h3>
+<ul>
+<li>TIME은 HH:MM:SS의 형태를 지닌다.(HHH:MM:SS의 형태를 띄기도 한다)</li>
+<li>-838:59:59 부터 838:59:59 까지의 범위를 가진다. 이때 TIME type의 시간이 크다고 느낄수도 있다.</li>
+<li>TIME은 현재의 시간을 표현할때만 쓰는것이 아니라 이미 지나버린 시간이나, 특정 이벤트끼리의 간극을 표현하는데 사용되기 때문에 이처럼 쓰인다.</li>
+</ul>
+<h3 id="4-timestamp-타입">4. TIMESTAMP 타입</h3>
+<ul>
+<li>TIMESTAMP 역시 날짜와 시간을 포함한다.</li>
+<li>TIMESTAMP는 1970-01-01 00:00:01 UTC 부터 2038-01-19 03:14:07UTC 까지가 그 범위이다.</li>
+</ul>
+<h2 id="관련-함수">관련 함수</h2>
+<p><strong>dayofweek(date)</strong>
+날짜를 한 주의 몇 번째 요일인지를 나타내는 숫자로 리턴한다.
+(1 = 일요일, 2 = 월요일, &hellip; 7 = 토요일)
+mysql&gt; select dayofweek(&lsquo;1998-02-03&rsquo;); -&gt; 3</p>
+<p><strong>weekday(date)</strong>
+날짜를 한 주의 몇 번째 요일인지를 나타내는 숫자로 리턴한다. (0 = 월요일, 1=화요일 &hellip; 6 = 일요일)
+mysql&gt; select weekday(&lsquo;1997-10-04 22:23:00&rsquo;); -&gt; 5
+mysql&gt; select weekday(&lsquo;1997-11-05&rsquo;); -&gt; 2</p>
+<p><strong>dayofmonth(date)</strong>
+그 달의 몇 번째 날인지를 알려준다. 리턴 값은 1에서 31 사이이다.
+mysql&gt; select dayofmonth(&lsquo;1998-02-03&rsquo;); -&gt; 3</p>
+<p><strong>dayofyear(date)</strong>
+한 해의 몇 번째 날인지를 알려준다. 리턴 값은 1에서 366 사이이다.
+mysql&gt; select dayofyear(&lsquo;1998-02-03&rsquo;); -&gt; 34</p>
+<p><strong>month(date)</strong>
+해당 날짜가 몇 월인지 알려준다. 리턴 값은 1에서 12 사이이다.
+mysql&gt; select month(&lsquo;1998-02-03&rsquo;); -&gt; 2</p>
+<p><strong>dayname(date)</strong>
+해당 날짜의 영어식 요일이름을 리턴한다.
+mysql&gt; select dayname(&ldquo;1998-02-05&rdquo;); -&gt; thursday</p>
+<p><strong>monthname(date)</strong>
+해당 날짜의 영어식 월 이름을 리턴한다.
+mysql&gt; select monthname(&ldquo;1998-02-05&rdquo;); -&gt; february</p>
+<p><strong>quarter(date)</strong>
+분기를 리턴한다 (1~ 4)
+mysql&gt; select quarter(&lsquo;98-04-01&rsquo;); -&gt; 2</p>
+<p><strong>week(date)</strong>
+<strong>week(date,first)</strong>
+인수가 하나일 때는 해달 날짜가 몇 번째 주일인지(0 ~ 52)를 리턴하고 2개일 때는 주어진 인수로 한 주의 시작일을 정해 줄 수 있다. 0이면 일요일을 1이면 월요일을 한 주의 시작일로 계산해 몇 번째 주인가 알려준다.
+mysql&gt; select week(&lsquo;1998-02-20&rsquo;); -&gt; 7
+mysql&gt; select week(&lsquo;1998-02-20&rsquo;,0); -&gt; 7
+mysql&gt; select week(&lsquo;1998-02-20&rsquo;,1); -&gt; 8</p>
+<p><strong>year(date)</strong>
+년도를 리턴한다.(1000 ~ 9999)
+mysql&gt; select year(&lsquo;98-02-03&rsquo;); -&gt; 1998</p>
+<p><strong>hour(time)</strong>
+시간을 알려준다.(0 ~ 23)
+mysql&gt; select hour(&lsquo;10:05:03&rsquo;); -&gt; 10</p>
+<p><strong>minute(time)</strong>
+분을 알려준다(0 ~ 59)
+mysql&gt; select minute(&lsquo;98-02-03 10:05:03&rsquo;); -&gt; 5</p>
+<p><strong>second(time)</strong>
+초를 알려준다(0 ~ 59)
+mysql&gt; select second(&lsquo;10:05:03&rsquo;); -&gt; 3</p>
+<p><strong>period_add(p,n)</strong>
+yymm 또는 yyyymm 형식으로 주어진 달에 n개월을 더한다. 리턴 값은 yyyymm의 형식이다.
+mysql&gt; select period_add(9801,2); -&gt; 199803</p>
+<p><strong>period_diff(p1,p2)</strong>
+yymm 또는 yyyymm 형식으로 주어진 두 기간사이의 개월을 구한다
+mysql&gt; select period_diff(9802,199703); -&gt; 11</p>
+<p><strong>date_add(date,interval expr type)</strong>
+<strong>date_sub(date,interval expr type)</strong>
+<strong>adddate(date,interval expr type)</strong>
+<strong>subdate(date,interval expr type)</strong></p>
+<p>위의 함수들은 날자 연산을 한다. 잘 만 사용하면 꽤나 편리한 함수 들이다. 모두 mysql 3.22 버전에서 새롭게 추가되었다. adddate() 과 subdate() 는 date_add() 와 date_sub()의 또 다른 이름이다.
+인수로 사용되는 date 는 시작일을 나타내는 datetime 또는date 타입이다. expr 는 시작일에 가감하는 일수 또는 시간을 나타내는 표현식이다.</p>
+<p><strong>type</strong> 값의 의미  사용 예
+<strong>second, seconds</strong>   초<br>
+<strong>minute, minutes</strong>  분
+<strong>hour, hours</strong>   시간<br>
+<strong>day, days</strong>  일<br>
+<strong>month, months</strong>  월<br>
+<strong>year, years</strong><br>
+년
+<strong>minute_second, &ldquo;minutes:seconds&rdquo;</strong>   분:초<br>
+<strong>hour_minute, &ldquo;hours:minutes&rdquo;</strong>   시:분<br>
+<strong>day_hour, &ldquo;days hours&rdquo;</strong>  일 시<br>
+<strong>year_month, &ldquo;years-months&rdquo;</strong>  년 월<br>
+<strong>hour_second, &ldquo;hours:minutes:seconds&rdquo;</strong>  시 분<br>
+<strong>day_minute, &ldquo;days hours:minutes&rdquo;</strong>  일, 시, 분<br>
+<strong>day_second, &ldquo;days hours:minutes:seconds&rdquo;</strong>  일, 시, 분, 초</p>
+<p><strong>[예제]</strong>
+mysql&gt; select date_add(&ldquo;1997-12-31 23:59:59&rdquo;,interval 1 second); -&gt; 1998-01-01 00:00:00
+mysql&gt; select date_add(&ldquo;1997-12-31 23:59:59&rdquo;,interval 1 day); -&gt; 1998-01-01 23:59:59
+mysql&gt; select date_add(&ldquo;1997-12-31 23:59:59&rdquo;,interval &ldquo;1:1&rdquo; minute_second); -&gt; 1998-01-01 00:01:00
+mysql&gt; select date_sub(&ldquo;1998-01-01 00:00:00&rdquo;,interval &ldquo;1 1:1:1&rdquo; day_second); -&gt; 1997-12-30 22:58:59
+mysql&gt; select date_add(&ldquo;1998-01-01 00:00:00&rdquo;,interval &ldquo;-1 10&rdquo; day_hour); -&gt; 1997-12-30 14:00:00
+mysql&gt; select date_sub(&ldquo;1998-01-02&rdquo;, interval 31 day); -&gt; 1997-12-02</p>
+<p><strong>to_days(date)</strong>
+주어진 날짜를 0000년부터의 일수로 바꾼다.
+mysql&gt; select to_days(950501); -&gt; 728779
+mysql&gt; select to_days(&lsquo;1997-10-07&rsquo;); -&gt; 729669</p>
+<p><strong>from_days(n)</strong>
+주어진 일수 n로부터 날짜를 구한다
+mysql&gt; select from_days(729669); -&gt; &lsquo;1997-10-07&rsquo;</p>
+<p><strong>date_format(date,format)</strong>
+format 의 정의에 따라 날자 혹은 시간을 출력한다. 매우 빈번히 쓰이는 함수 이다.
+format 에 사용되는 문자는 다음과 같다.
+**%m<br>
+월이름 (january..december)
+%w<br>
+**요일명 (sunday..saturday)
+<strong>%d</strong><br>
+영어식 접미사를 붙인 일(1st, 2nd, 3rd, etc.)
+<strong>%y</strong>   4자리 년도
+<strong>%y</strong><br>
+2자리 년도
+<strong>%a</strong><br>
+짧은 요일명(sun..sat)
+**%d<br>
+**일(00..31)
+<strong>%e</strong><br>
+일(0..31)
+**%m<br>
+**월(01..12)
+**%c<br>
+**월(1..12)
+<strong>%b</strong><br>
+짧은 월이름 (jan..dec)
+**%j<br>
+**한해의 몇 번째 요일인가 (001..366)
+**%h<br>
+**24시 형식의 시간 (00..23)
+**%k<br>
+**24시 형식의 시간 (0..23)
+**%h<br>
+**12시 형식의 시간 (01..12)
+<strong>%i</strong><br>
+12시 형식의 시간 (01..12)
+**%l<br>
+**시간 (1..12)
+**%i<br>
+**분 (00..59)
+<strong>%r</strong><br>
+시분초12시 형식 (hh:mm:ss [ap]m)
+**%t<br>
+**시분초 24시 형식 (hh:mm:ss)
+**%s<br>
+**초 (00..59)
+**%s<br>
+**초 (00..59)
+**%p<br>
+**am 또는 pm 문자
+<strong>%w</strong><br>
+일주일의 몇 번째 요일인가(0=sunday..6=saturday)
+**%U<br>
+**한해의 몇 번째 주인가(0..52). 일요일이 시작일
+<strong>%u</strong><br>
+한해의 몇 번째 주인가(0..52). 월요일이 시작일
+<strong>%%</strong><br>
+`%&rsquo; 문자를 나타냄
+위 표에 나와 있는 것들을 제외한 모든 문자는 그냥 그대로 출력된다.</p>
+<p>mysql&gt; select date_format(&lsquo;1997-10-04 22:23:00&rsquo;, &lsquo;%w %m %y&rsquo;); -&gt; &lsquo;saturday october 1997&rsquo;
+mysql&gt; select date_format(&lsquo;1997-10-04 22:23:00&rsquo;, &lsquo;%h:%i:%s&rsquo;); -&gt; &lsquo;22:23:00&rsquo;
+mysql&gt; select date_format(&lsquo;1997-10-04 22:23:00&rsquo;,&rsquo;%d %y %a %d %m %b %j&rsquo;); -&gt; &lsquo;4th 97 sat 04 10 oct 277&rsquo;
+mysql&gt; select date_format(&lsquo;1997-10-04 22:23:00&rsquo;,&rsquo;%h %k %i %r %t %s %w&rsquo;); -&gt; &lsquo;22 22 10 10:23:00 pm 22:23:00 00 6&rsquo;</p>
+<p>주의! : mysql 3.23 버전부터 % 기호가 각 형식문자 앞에 필요하게 되었다 그 이전 버전에서는 선택 사항이다.</p>
+<p><strong>time_format(time,format)</strong>
+이 함수는 date_format()와 비슷한 역할을 하지만 단지 시,분,초 만을 나타낼 수 있다는 점이다.
+<strong>curdate()</strong>
+<strong>current_date()</strong><br>
+오늘 날짜를 &lsquo;yyyy-mm-dd&rsquo; 또는 yyyymmdd 형식으로 리턴한다, 리턴 값은 이 함수가 문자열로 쓰이느냐 숫자로 쓰이느냐에 따라 달라진다.
+mysql&gt; select curdate(); -&gt; &lsquo;1997-12-15&rsquo;</p>
+<p>mysql&gt; select curdate() + 0; -&gt; 19971215</p>
+<p><strong>curtime()</strong>
+<strong>current_time()</strong>
+&lsquo;hh:mm:ss&rsquo; 또는 hhmmss 형식으로 현재시간을 나타낸다. 리턴 값은 이 함수가 문자열로 쓰이느냐 숫자로 쓰이느냐에 따라 달라진다.
+mysql&gt; select curtime(); -&gt; &lsquo;23:50:26&rsquo;
+mysql&gt; select curtime() + 0; -&gt; 235026</p>
+<p><strong>now()</strong>
+<strong>sysdate()</strong>
+<strong>current_timestamp()</strong>
+오늘 날자와 현재 시간을 &lsquo;yyyy-mm-dd hh:mm:ss&rsquo; 또는 yyyymmddhhmmss 형식으로 리턴 한다, 역시 리턴 값은 이 함수가 문자열로 쓰이느냐 숫자로 쓰이느냐에 따라 달라진다. 실제 개발 시 사용자의 등록일시 등을 나타낼 때 유용하게 쓰이는 함수다. 뒷부분의 실전예제에서 보게 될 것이다.
+mysql&gt; select now(); -&gt; &lsquo;1997-12-15 23:50:26&rsquo;
+mysql&gt; select now() + 0; -&gt; 19971215235026</p>
+<p><strong>unix_timestamp()</strong>
+<strong>unix_timestamp(date)</strong>
+인수가 없이 사용될 경우 현재 시간의 유닉스 타임스탬프를 리턴하고
+만일 날짜형식의 date 가 인수로 주어진 경우에는 주어진 날짜의 유닉스 타임스탬프를 리턴한다 유닉스 타임스탬프 란 그리니치 표준시로 1970 년 1월 1일 00:00:00 이 후의 시간경과를 초단위로 나타낸 것이다.
+mysql&gt; select unix_timestamp(); -&gt; 882226357
+mysql&gt; select unix_timestamp(&lsquo;1997-10-04 22:23:00&rsquo;); -&gt; 875996580</p>
+<p>주의 : 만일 unix_timestamp함수가 timestamp 컬럼 에서 사용될 경우에는 주어진 시간이 타임스탬프로 바뀌지 않고 그대로 저장된다.</p>
+<p><strong>from_unixtime(unix_timestamp)</strong>
+주어진 유닉스 타임스탬프 값으로부터 &lsquo;yyyy-mm-dd hh:mm:ss&rsquo; 또는 yyyymmddhhmmss 형식의 날짜를 리턴한다.
+mysql&gt; select from_unixtime(875996580); -&gt; &lsquo;1997-10-04 22:23:00&rsquo;
+mysql&gt; select from_unixtime(875996580) + 0; -&gt; 19971004222300</p>
+<p><strong>from_unixtime(unix_timestamp,format)</strong>
+주어진 유닉스 타임스탬프 값을 주어진 날짜 형식에 맞게 바꿔서 보여준다. 여기서 사용되는 형식문자는 date_format() 함수에서 사용된 것과 같다.
+아래 예에서 %x 는 형식문자가 아니므로 그냥 x 가 표시됨에 유의하기 바란다.
+mysql&gt; select from_unixtime(unix_timestamp(), &lsquo;%y %d %m %h:%i:%s %x&rsquo;); -&gt; &lsquo;1997 23rd december 03:43:30 x&rsquo;</p>
+<p><strong>sec_to_time(seconds)</strong>
+주어진 초를 &lsquo;hh:mm:ss&rsquo; 또는 hhmmss 형식의 시간단위로 바꿔준다.
+mysql&gt; select sec_to_time(2378); -&gt; &lsquo;00:39:38&rsquo;
+mysql&gt; select sec_to_time(2378) + 0; -&gt; 3938</p>
+<p><strong>time_to_sec(time)</strong>
+주어진 시간을 초 단위로 바꿔준다.</p>
+<p>mysql&gt; select time_to_sec(&lsquo;22:23:00&rsquo;); -&gt; 80580
+mysql&gt; select time_to_sec(&lsquo;00:39:38&rsquo;); -&gt; 2378</p>
+<p><strong>[예제]</strong></p>
+<p>쿼리문으로 날짜계산<br>
+$query = &ldquo;SELECT (now() - interval ′1 month′)::timestamp&rdquo;; // 현재 부터 한 달 전 날짜
+$query = &ldquo;SELECT (now() + interval ′6 month′)::timestamp&rdquo;; // 현재 부터 6 달 후 날짜 &hellip;
+<strong>[Q/A]</strong> mysql에서 타임스탬프값을 날짜값으로 바꿔주는 함수 있나요?<br>
+select from_unixtime(날짜필드) &hellip;
+하시면 우리가 보는 시간으로 보일거예요~
+<strong>[MySQL에서 제공하는 날자 관련 함수]</strong>
+<strong>DAYOFMONTH(date)</strong> : 날짜만 리턴해주는 함수. (1-31) 한달을 단위로.<br>
+<strong>DAYOFYEAR(date)</strong> : 이역시 날짜만 리턴. (1-366) 1년을 단위로.<br>
+<strong>TO_DAYS(date)</strong> : 연도와 달을 모두 날짜화 시켜서 리턴해줍니다.<br>
+                            (1999-01-01 = (1999 * 365) + (01 * 31) + 1)<br>
+<strong>MONTH(date)</strong> : 달을 리턴해주는 함수.<br>
+<strong>DAYNAME(date)</strong> : 요일을 문자로 리턴. (ex :&lsquo;Thursday&rsquo;)<br>
+<strong>MONTHNAME(date)</strong> : 달을 문자로 리턴. (ex :&lsquo;February&rsquo;)<br>
+<strong>WEEK(date)</strong> : 해당 연도에 몇번째 주인지를 리턴 (0-52)<br>
+<strong>YEAR(date)</strong> : 연도를 리턴 (1000-9999)<br>
+<strong>HOUR(time)</strong> : 시간 리턴 <br>
+<strong>MINUTE(time)</strong> : 분 리턴<br>
+<strong>SECOND(time)</strong> : 초 리턴</p>
+<p><strong>DATE_FORMAT(date,format)</strong></p>
+<p>     <code>%W'    Weekday name (</code>Sunday&rsquo;..<code>Saturday')        </code>%D&rsquo;    Day of the month with english suffix (<code>1st', </code>2nd&rsquo;, <code>3rd',                etc.)        </code>%Y&rsquo;    Year, numeric, 4 digits<br>
+     <code>%y'    Year, numeric, 2 digits        </code>%a&rsquo;    Abbreviated weekday name (<code>Sun'..</code>Sat&rsquo;)<br>
+     <code>%d'    Day of the month, numeric (</code>00&rsquo;..<code>31')        </code>%e&rsquo;    Day of the month, numeric (<code>0'..</code>31&rsquo;)<br>
+     <code>%m'    Month, numeric (</code>01&rsquo;..<code>12')        </code>%c&rsquo;    Month, numeric (<code>1'..</code>12&rsquo;)<br>
+     <code>%b'    Abbreviated month name (</code>Jan&rsquo;..<code>Dec')        </code>%j&rsquo;    Day of year (<code>001'..</code>366&rsquo;)<br>
+     <code>%H'    Hour (</code>00&rsquo;..<code>23')        </code>%k&rsquo;    Hour (<code>0'..</code>23&rsquo;)<br>
+     <code>%h'    Hour (</code>01&rsquo;..<code>12')        </code>%I&rsquo;    Hour (<code>01'..</code>12&rsquo;)<br>
+     <code>%l'    Hour (</code>1&rsquo;..<code>12')        </code>%i&rsquo;    Minutes, numeric (<code>00'..</code>59&rsquo;)<br>
+     <code>%r'    Time, 12-hour (</code>hh:mm:ss [AP]M&rsquo;)<br>
+     <code>%T'    Time, 24-hour (</code>hh:mm:ss&rsquo;)<br>
+     <code>%S'    Seconds (</code>00&rsquo;..<code>59')        </code>%s&rsquo;    Seconds (<code>00'..</code>59&rsquo;)<br>
+     <code>%p'    </code>AM&rsquo; or <code>PM'        </code>%w&rsquo;    Day of the week (<code>0'=Sunday..</code>6&rsquo;=Saturday)<br>
+     <code>%U'    Week (</code>0&rsquo;..<code>52'), Sunday is the first day of the week.        </code>%u&rsquo;    Week (<code>0'..</code>52&rsquo;), Monday is the first day of the week.<br>
+     <code>%%'    Single </code>%&rsquo; characters are ignored.  Use <code>%%' to produce a                literal </code>%&rsquo; (for future extensions).</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

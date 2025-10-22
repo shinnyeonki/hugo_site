@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>http는 stateless 한데 하위 스택의 tcp 는 stateful 이다 (HTTP1.1 기준) | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="질문 Persistent HTTP 에서 기본적으로 http 는 stateless 해 하지만 어떻게 Persistent하게 get 요청을 보낼 수 있는 거야 즉 서버 측에서 이미 3way handshake 했다는 것을 어떻게 인지하는 거야??
+답변 요약 Stateless …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/http%EB%8A%94-stateless-%ED%95%9C%EB%8D%B0-%ED%95%98%EC%9C%84-%EC%8A%A4%ED%83%9D%EC%9D%98-tcp-%EB%8A%94-stateful-%EC%9D%B4%EB%8B%A4-http1.1-%EA%B8%B0%EC%A4%80/">
+
+    
+    
+    
+    <meta property="og:title" content="http는 stateless 한데 하위 스택의 tcp 는 stateful 이다 (HTTP1.1 기준)">
+    <meta property="og:description" content="질문 Persistent HTTP 에서 기본적으로 http 는 stateless 해 하지만 어떻게 Persistent하게 get 요청을 보낼 수 있는 거야 즉 서버 측에서 이미 3way handshake 했다는 것을 어떻게 인지하는 거야??
+답변 요약 Stateless …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/http%EB%8A%94-stateless-%ED%95%9C%EB%8D%B0-%ED%95%98%EC%9C%84-%EC%8A%A4%ED%83%9D%EC%9D%98-tcp-%EB%8A%94-stateful-%EC%9D%B4%EB%8B%A4-http1.1-%EA%B8%B0%EC%A4%80/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="http는 stateless 한데 하위 스택의 tcp 는 stateful 이다 (HTTP1.1 기준)">
+    <meta name="twitter:description" content="질문 Persistent HTTP 에서 기본적으로 http 는 stateless 해 하지만 어떻게 Persistent하게 get 요청을 보낼 수 있는 거야 즉 서버 측에서 이미 3way handshake 했다는 것을 어떻게 인지하는 거야??
+답변 요약 Stateless …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>http는 stateless 한데 하위 스택의 tcp 는 stateful 이다 (HTTP1.1 기준) **page.html**</h1>
+    <h3 id="질문">질문</h3>
+<p>Persistent HTTP 에서 기본적으로 http 는 stateless 해 하지만 어떻게 Persistent하게 get 요청을 보낼 수 있는 거야 즉 서버 측에서 이미 3way handshake 했다는 것을 어떻게 인지하는 거야??</p>
+<h3 id="답변-요약">답변 요약</h3>
+<ul>
+<li><strong>Stateless</strong> 상태를 유지하지 않는 시스템의 특성의 의미 (HTTP)</li>
+<li><strong>Stateful</strong> 은 상태를 유지하며 동작하는 시스템의 특성을 나타냅니다. (TCP)</li>
+<li><strong>Persistent</strong> 는 연결을 재사용하여 네트워크 효율성을 높이는 방식을 의미합니다.</li>
+<li>따라서 HTTP는 <strong>stateless</strong> 지만, <strong>(일반적으로 사용하는)전송 계층에서 TCP의 stateful 특성을 활용</strong>(HTTP 헤더의 <code>Connection: keep-alive</code> 속성) 하여 persistent connection을 구현할 수 있다</li>
+</ul>
+<h3 id="핵심-개념-stateless-vs-stateful">**핵심 개념: Stateless vs Stateful</h3>
+<ol>
+<li>
+<p><strong>HTTP는 Stateless(무상태)이다</strong>:</p>
+<ul>
+<li>HTTP 프로토콜 자체는 이전 요청에 대한 정보를 유지하지 않습니다. 매 요청은 독립적으로 처리됩니다.</li>
+<li>즉, 서버는 클라이언트가 이전에 어떤 요청을 보냈는지 기억하지 않습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>TCP는 Stateful(상태 유지)이다</strong>:</p>
+<ul>
+<li>TCP는 연결 지향(connection-oriented) 프로토콜로, 연결 상태를 유지합니다.</li>
+<li>3-way handshake를 통해 연결이 설정된 후, 해당 연결은 특정 시간 동안 유지되며, 이 연결을 통해 여러 데이터 패킷을 주고받을 수 있습니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="persistent-http에서-get-요청이-가능한-이유"><strong>Persistent HTTP에서 GET 요청이 가능한 이유</strong></h3>
+<h4 id="1-tcp-연결-유지"><strong>1. TCP 연결 유지</strong></h4>
+<ul>
+<li>Persistent HTTP에서는 하나의 TCP 연결을 통해 여러 개의 HTTP 요청과 응답을 주고받을 수 있습니다.</li>
+<li>TCP 연결은 <strong>stateful</strong>이므로, 서버는 이미 설정된 TCP 연결을 통해 클라이언트로부터 들어오는 데이터를 인식하고 처리할 수 있습니다.</li>
+<li>즉, 서버는 &ldquo;이미 3-way handshake를 완료한 연결&quot;이라는 사실을 TCP 계층에서 관리하며, 이를 통해 추가적인 요청(GET 등)을 처리할 준비가 됩니다.</li>
+</ul>
+<h4 id="2-http-요청의-독립성"><strong>2. HTTP 요청의 독립성</strong></h4>
+<ul>
+<li>HTTP는 <strong>stateless</strong>이므로, 각 HTTP 요청은 독립적입니다.</li>
+<li>클라이언트는 동일한 TCP 연결을 통해 새로운 HTTP 요청을 보내더라도, 이전 요청과 관련된 정보를 포함하지 않습니다.</li>
+<li>서버는 매번 들어오는 HTTP 요청을 처음부터 해석하고 처리하며, 이전 요청에 의존하지 않습니다.</li>
+</ul>
+<hr>
+<h3 id="예시-persistent-http-동작-과정"><strong>예시: Persistent HTTP 동작 과정</strong></h3>
+<ol>
+<li>
+<p><strong>TCP 연결 설정 (3-way handshake)</strong>:</p>
+<ul>
+<li>클라이언트와 서버 간 TCP 연결이 설정됩니다.</li>
+<li>이 연결은 일정 시간 동안 유지됩니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>첫 번째 HTTP GET 요청</strong>:</p>
+<ul>
+<li>클라이언트는 TCP 연결을 통해 첫 번째 HTTP GET 요청을 보냅니다.</li>
+<li>서버는 이 요청을 처리하고 응답을 반환합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>두 번째 HTTP GET 요청</strong>:</p>
+<ul>
+<li>클라이언트는 동일한 TCP 연결을 통해 두 번째 HTTP GET 요청을 보냅니다.</li>
+<li>서버는 이 요청을 처리하고 응답을 반환합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>TCP 연결 종료</strong>:</p>
+<ul>
+<li>더 이상 요청이 없거나 타임아웃이 발생하면 TCP 연결이 종료됩니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="서버가-어떻게-tcp-연결을-인지하는가"><strong>서버가 어떻게 TCP 연결을 인지하는가?</strong></h3>
+<p>TCP는 <strong>연결 상태</strong>를 관리하는 프로토콜이므로, 서버는 다음과 같은 정보를 통해 연결을 인지합니다:</p>
+<ol>
+<li>
+<p><strong>소켓(Socket)</strong>:</p>
+<ul>
+<li>TCP 연결은 클라이언트와 서버 간의 소켓으로 표현됩니다.</li>
+<li>소켓은 IP 주소와 포트 번호 쌍으로 식별됩니다.</li>
+<li>서버는 각 클라이언트의 소켓 정보를 기반으로 연결 상태를 관리합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>연결 식별자(Connection Identifier)</strong>:</p>
+<ul>
+<li>서버는 각 TCP 연결을 고유한 식별자(예: 소켓 파일 디스크립터)로 관리합니다.</li>
+<li>이 식별자를 통해 특정 클라이언트와의 연결을 추적합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>데이터 스트림(Stream)</strong>:</p>
+<ul>
+<li>TCP는 데이터를 순차적으로 전송하는 스트림 기반 프로토콜입니다.</li>
+<li>서버는 동일한 연결을 통해 들어오는 데이터를 순차적으로 처리합니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="http의-stateless-특성과-persistent-http의-관계"><strong>HTTP의 Stateless 특성과 Persistent HTTP의 관계</strong></h3>
+<ul>
+<li>
+<p><strong>HTTP Stateless</strong>:</p>
+<ul>
+<li>각 HTTP 요청은 독립적이며, 서버는 이전 요청에 대한 정보를 유지하지 않습니다.</li>
+<li>예를 들어, 첫 번째 GET 요청과 두 번째 GET 요청 사이에는 아무런 연관성이 없습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>TCP Persistent</strong>:</p>
+<ul>
+<li>TCP 연결은 상태를 유지하므로, 동일한 연결을 통해 여러 개의 HTTP 요청을 보낼 수 있습니다.</li>
+<li>즉, HTTP 요청은 무상태이지만, 이를 전달하는 TCP 연결은 상태를 유지합니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="요약"><strong>요약</strong></h3>
+<ol>
+<li>
+<p><strong>HTTP는 Stateless</strong>:</p>
+<ul>
+<li>각 HTTP 요청은 독립적이며, 서버는 이전 요청에 대한 정보를 유지하지 않습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>TCP는 Stateful</strong>:</p>
+<ul>
+<li>TCP 연결은 상태를 유지하므로, 동일한 연결을 통해 여러 개의 HTTP 요청을 보낼 수 있습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>Persistent HTTP 동작 원리</strong>:</p>
+<ul>
+<li>TCP 연결이 설정된 후, 이 연결을 통해 여러 개의 HTTP 요청(GET 등)을 순차적으로 보낼 수 있습니다.</li>
+<li>서버는 TCP 연결 상태를 통해 클라이언트를 인지하며, 각 HTTP 요청은 독립적으로 처리됩니다.</li>
+</ul>
+</li>
+</ol>
+<p>따라서, <strong>HTTP의 Stateless 특성과 TCP의 Stateful 특성이 결합되어 Persistent HTTP가 가능</strong>하게 됩니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

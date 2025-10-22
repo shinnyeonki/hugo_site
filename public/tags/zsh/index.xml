@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zsh on My Test Site</title>
+    <link>http://localhost:1313/tags/zsh/</link>
+    <description>Recent content in Zsh on My Test Site</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 18 Nov 2024 05:09:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>zsh 성능 측정</title>
+      <link>http://localhost:1313/temp/zsh-%EC%84%B1%EB%8A%A5-%EC%B8%A1%EC%A0%95/</link>
+      <pubDate>Mon, 18 Nov 2024 05:09:00 +0900</pubDate>
+      <guid>http://localhost:1313/temp/zsh-%EC%84%B1%EB%8A%A5-%EC%B8%A1%EC%A0%95/</guid>
+      <description>&lt;p&gt;zsh는 측정용 프로파일링 모듈을 가지고 있다. &lt;a href=&#34;https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fzprof-Module&#34; class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; &gt;&lt;/a&gt;라는 모듈인데, &lt;code&gt;.zshrc&lt;/code&gt; 파일에 설정만 해두면 사용할 수 있다.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;~/.zshrc&lt;/code&gt; 파일 가장 상단에 &lt;code&gt;zmodload zsh/zprof&lt;/code&gt; 를 적는다. (import라고 생각하자)&lt;/li&gt;&#xA;&lt;li&gt;그리고 가장 하단에 &lt;code&gt;zprof&lt;/code&gt; 라고 적어두자. (이는 세션이 시작될 때 zprof 명령어를 실행한다는 의미와 같다.)&lt;/li&gt;&#xA;&lt;li&gt;세션 로드가 완료되면 &lt;code&gt;time zsh -i -c echo&lt;/code&gt; 명령어를 사용해 측정 결과를 얻자.&lt;/li&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
+  </channel>
+</rss>

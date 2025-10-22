@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>우분투 리눅스 환경 구성 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="각 언어별 환경구성 python ppa 를 통해 python 의 각 버전을 설치 기본적으로 full 버전을 설치, 제안인 dev 버전도 설치
+$ apt depends python3.12-full python3.12-full Depends: python3.12 (= …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EC%9A%B0%EB%B6%84%ED%88%AC-%EB%A6%AC%EB%88%85%EC%8A%A4-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%84%B1/">
+
+    
+    
+    
+    <meta property="og:title" content="우분투 리눅스 환경 구성">
+    <meta property="og:description" content="각 언어별 환경구성 python ppa 를 통해 python 의 각 버전을 설치 기본적으로 full 버전을 설치, 제안인 dev 버전도 설치
+$ apt depends python3.12-full python3.12-full Depends: python3.12 (= …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EC%9A%B0%EB%B6%84%ED%88%AC-%EB%A6%AC%EB%88%85%EC%8A%A4-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%84%B1/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="우분투 리눅스 환경 구성">
+    <meta name="twitter:description" content="각 언어별 환경구성 python ppa 를 통해 python 의 각 버전을 설치 기본적으로 full 버전을 설치, 제안인 dev 버전도 설치
+$ apt depends python3.12-full python3.12-full Depends: python3.12 (= …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>우분투 리눅스 환경 구성 **page.html**</h1>
+    <h2 id="각-언어별-환경구성">각 언어별 환경구성</h2>
+<h3 id="python">python</h3>
+<p>ppa 를 통해 python 의 각 버전을 설치
+기본적으로 full 버전을 설치, 제안인 dev 버전도 설치</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ apt depends python3.12-full
+</span></span><span style="display:flex;"><span>python3.12-full
+</span></span><span style="display:flex;"><span>  Depends: python3.12 <span style="color:#f92672">(=</span> 3.12.8-1+jammy1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Depends: libpython3.12-testsuite
+</span></span><span style="display:flex;"><span>  Depends: python3.12-venv <span style="color:#f92672">(=</span> 3.12.8-1+jammy1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Depends: idle-python3.12
+</span></span><span style="display:flex;"><span>  Depends: python3.12-gdbm
+</span></span><span style="display:flex;"><span>  Depends: python3.12-lib2to3
+</span></span><span style="display:flex;"><span>  Depends: python3.12-tk
+</span></span><span style="display:flex;"><span>  Depends: ca-certificates
+</span></span><span style="display:flex;"><span>  Recommends: python3.12-examples
+</span></span><span style="display:flex;"><span>  Suggests: python3.12-dev
+</span></span></code></pre></div><p>파이썬 인터브리터를 변경하는방법
+/bin 폴더를 ln 을 조작함</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lrwxrwxrwx <span style="color:#ae81ff">1</span> root root      <span style="color:#ae81ff">10</span> Nov <span style="color:#ae81ff">14</span> 19:51 python -&gt; python3.12*
+</span></span><span style="display:flex;"><span>lrwxrwxrwx <span style="color:#ae81ff">1</span> root root      <span style="color:#ae81ff">10</span> Sep <span style="color:#ae81ff">11</span> 21:06 python3 -&gt; python3.10*
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">5941832</span> Nov  <span style="color:#ae81ff">7</span> 05:22 python3.10*
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">7894408</span> Oct  <span style="color:#ae81ff">1</span> 17:52 python3.12*
+</span></span><span style="display:flex;"><span>lrwxrwxrwx <span style="color:#ae81ff">1</span> root root      <span style="color:#ae81ff">34</span> Oct  <span style="color:#ae81ff">1</span> 17:52 python3.12-config -&gt; x86_64-linux-gnu-python3.12-config*
+</span></span></code></pre></div><p>python3 의 경우 우분투가 사용하는 버전
+python 의 경우 내가 사용하는 버전
+<strong>패키지 관리자</strong>
+get-pip.py 를 통해 설치
+get-pip.py 의 경우 ~/.local 에 설치되며
+변경시 get-pip 를 다시 실행해서 설치한다</p>
+<h3 id="java">java</h3>
+<p>apt 로 설치 (open-jdk)
+update-java-alternatives java 버전 변경</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>shinnk@n100-server:/usr/lib/jvm$ java --version
+</span></span><span style="display:flex;"><span>openjdk 21.0.4 2024-07-16
+</span></span><span style="display:flex;"><span>OpenJDK Runtime Environment <span style="color:#f92672">(</span>build 21.0.4+7-Ubuntu-1ubuntu222.04<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>OpenJDK 64-Bit Server VM <span style="color:#f92672">(</span>build 21.0.4+7-Ubuntu-1ubuntu222.04, mixed mode, sharing<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>shinnk@n100-server:/usr/lib/jvm$ update-java-alternatives -l
+</span></span><span style="display:flex;"><span>java-1.17.0-openjdk-amd64      <span style="color:#ae81ff">1711</span>       /usr/lib/jvm/java-1.17.0-openjdk-amd64
+</span></span><span style="display:flex;"><span>java-1.21.0-openjdk-amd64      <span style="color:#ae81ff">2111</span>       /usr/lib/jvm/java-1.21.0-openjdk-amd64
+</span></span><span style="display:flex;"><span>shinnk@n100-server:/usr/lib/jvm$ java --version
+</span></span><span style="display:flex;"><span>openjdk 21.0.4 2024-07-16
+</span></span><span style="display:flex;"><span>OpenJDK Runtime Environment <span style="color:#f92672">(</span>build 21.0.4+7-Ubuntu-1ubuntu222.04<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>OpenJDK 64-Bit Server VM <span style="color:#f92672">(</span>build 21.0.4+7-Ubuntu-1ubuntu222.04, mixed mode, sharing<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>shinnk@n100-server:/usr/lib/jvm$ sudo update-java-alternatives -s java-1.17.0-openjdk-amd64
+</span></span><span style="display:flex;"><span>shinnk@n100-server:/usr/lib/jvm$ java --version
+</span></span><span style="display:flex;"><span>openjdk 17.0.12 2024-07-16
+</span></span><span style="display:flex;"><span>OpenJDK Runtime Environment <span style="color:#f92672">(</span>build 17.0.12+7-Ubuntu-1ubuntu222.04<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>OpenJDK 64-Bit Server VM <span style="color:#f92672">(</span>build 17.0.12+7-Ubuntu-1ubuntu222.04, mixed mode, sharing<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h3 id="javascript">javascript</h3>
+<p>node 를 말함
+fnm 을 사용하며 fnm 의 경우 ~/.local 에 존재,폴더를 지우면 완전히 사라진다</p>
+<h3 id="go">go</h3>
+<h3 id="rust">rust</h3>
+<h3 id="c샵">c샵</h3>
+<p>닷넷</p>
+<h2 id="도커">도커</h2>
+<p>공식 문서에 apt 를 통해 설치 또는 snap 패키지</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

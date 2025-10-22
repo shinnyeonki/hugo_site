@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>클컴 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="하둡은 2개자로
+hadoop HDFS hadoop file system
+hdfs 좋은점 일반적 하드웨어를 사용해서 비싸지 않다 노드 죽어도 계속된다
+hdfs 나쁜점 접근의 낮은시간 =&gt; 지연시간의 희생 높은 처리량 많은 작은 파일 =&gt; 데이터 수정, 많은 작 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/%ED%81%B4%EC%BB%B4/">
+
+    
+    
+    
+    <meta property="og:title" content="클컴">
+    <meta property="og:description" content="하둡은 2개자로
+hadoop HDFS hadoop file system
+hdfs 좋은점 일반적 하드웨어를 사용해서 비싸지 않다 노드 죽어도 계속된다
+hdfs 나쁜점 접근의 낮은시간 =&gt; 지연시간의 희생 높은 처리량 많은 작은 파일 =&gt; 데이터 수정, 많은 작 …">
+    <meta property="og:url" content="http://localhost:1313/temp/%ED%81%B4%EC%BB%B4/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="클컴">
+    <meta name="twitter:description" content="하둡은 2개자로
+hadoop HDFS hadoop file system
+hdfs 좋은점 일반적 하드웨어를 사용해서 비싸지 않다 노드 죽어도 계속된다
+hdfs 나쁜점 접근의 낮은시간 =&gt; 지연시간의 희생 높은 처리량 많은 작은 파일 =&gt; 데이터 수정, 많은 작 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>클컴 **page.html**</h1>
+    <p>하둡은 2개자로</p>
+<h2 id="hadoop-hdfs">hadoop HDFS</h2>
+<p>hadoop file system</p>
+<p>hdfs 좋은점
+일반적 하드웨어를 사용해서 비싸지 않다
+노드 죽어도 계속된다</p>
+<p>hdfs 나쁜점
+접근의 낮은시간 =&gt; 지연시간의 희생 높은 처리량
+많은 작은 파일 =&gt;
+데이터 수정, 많은 작성자</p>
+<p>64MB large block size =&gt; SEEK 상승
+RAID 금지</p>
+<p><strong>namenode (Master) :</strong>
+namespace, 파일시스템에 정보는 local disk 에도 저장
+블락 위치는 ram 에만 저장 켜질때 보고 받고 재구성
+3개의 복제</p>
+<p><strong>datanodes (Slave) :</strong>
+원본 data
+block’s metadata including checksums for the block data and
+the generation stamp</p>
+<ul>
+<li>Block report : 처음 block 는 바로 보내고 2번째 부터는 1시간 마다 보고</li>
+<li>heartbeats : 3초 마다 total storage capacity, fraction of storage in use, the number of data transfers currently in progress</li>
+<li>Piggybacking :
+<ul>
+<li>replicate blocks to other nodes</li>
+<li>remove local block replicas</li>
+<li>re-register or shut down the node</li>
+<li>send an immediate block report</li>
+</ul>
+</li>
+</ul>
+<p><strong>HDFS Client</strong>
+Reading a file</p>
+<ul>
+<li>asks the NameNode for the list of DataNodes that host replicas of blocks of the file</li>
+<li>contacts a DataNode directly and requests the transfer of the desired block
+Writing a file</li>
+<li>asks the NameNode to choose DataNodes to host replicas of the first block of the file</li>
+<li>organizes a pipeline from node-to-node and sends the data</li>
+<li>when the first block is filled, the client requests new DataNodes to be chosen to host replicas of the next block</li>
+</ul>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

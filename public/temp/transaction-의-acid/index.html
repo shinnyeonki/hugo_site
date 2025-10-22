@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>Transaction 의 ACID | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="ACID는 데이터베이스 트랜잭션의 신뢰성을 보장하는 네 가지 주요 속성입니다. 각각의 속성을 한 문장으로 요약하고 예시를 들어 설명하겠습니다.
+1. 원자성 (Atomicity) 요약: 트랜잭션 내의 모든 작업이 성공적으로 완료되거나, 전혀 수행되지 않아야 한다.
+예시: …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/transaction-%EC%9D%98-acid/">
+
+    
+    
+    
+    <meta property="og:title" content="Transaction 의 ACID">
+    <meta property="og:description" content="ACID는 데이터베이스 트랜잭션의 신뢰성을 보장하는 네 가지 주요 속성입니다. 각각의 속성을 한 문장으로 요약하고 예시를 들어 설명하겠습니다.
+1. 원자성 (Atomicity) 요약: 트랜잭션 내의 모든 작업이 성공적으로 완료되거나, 전혀 수행되지 않아야 한다.
+예시: …">
+    <meta property="og:url" content="http://localhost:1313/temp/transaction-%EC%9D%98-acid/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="Transaction 의 ACID">
+    <meta name="twitter:description" content="ACID는 데이터베이스 트랜잭션의 신뢰성을 보장하는 네 가지 주요 속성입니다. 각각의 속성을 한 문장으로 요약하고 예시를 들어 설명하겠습니다.
+1. 원자성 (Atomicity) 요약: 트랜잭션 내의 모든 작업이 성공적으로 완료되거나, 전혀 수행되지 않아야 한다.
+예시: …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>Transaction 의 ACID **page.html**</h1>
+    <p>ACID는 데이터베이스 트랜잭션의 신뢰성을 보장하는 네 가지 주요 속성입니다. 각각의 속성을 한 문장으로 요약하고 예시를 들어 설명하겠습니다.</p>
+<h2 id="1-원자성-atomicity">1. 원자성 (Atomicity)</h2>
+<p><strong>요약</strong>: 트랜잭션 내의 모든 작업이 성공적으로 완료되거나, 전혀 수행되지 않아야 한다.<br>
+<strong>예시</strong>: 은행에서 10,000원을 A 계좌에서 B 계좌로 이체하는 경우, 두 계좌의 잔액이 모두 변경되거나, 하나라도 실패하면 모든 변경이 취소된다.</p>
+<h2 id="2-일관성-consistency">2. 일관성 (Consistency)</h2>
+<p><strong>요약</strong>: 트랜잭션이 완료되면 데이터베이스는 항상 일관된 상태를 유지해야 한다.<br>
+<strong>예시</strong>: 학생 등록 시스템에서 학생의 성적을 업데이트할 때, 성적이 0 이상 100 이하의 범위를 벗어나지 않도록 보장해야 한다.</p>
+<p>ACID 중 C consistency 에는 2가지가 있다</p>
+<ul>
+<li>explicitly specified ingegrity constraint (pk, fk  조건들 )</li>
+<li>implicit ingegrity constraints (비즈니스 로직이나 수학적 관계에 의해서만 존재하는 개념)
+직원 table(employee_id, 입사일) 프로젝트 참여 table(project_id,employee_id, 참여일)
+일반적으로는 참여일이 입사일보다 빠를 수는 없다 &lt;- implicit ingegrity constraints</li>
+</ul>
+<h2 id="3-고립성-isolation">3. 고립성 (Isolation)</h2>
+<p><strong>요약</strong>: 동시에 실행되는 트랜잭션은 서로 영향을 주지 않도록 격리되어야 한다.<br>
+<strong>예시</strong>: 두 사용자가 동시에 같은 자원을 수정할 때, 한 사용자의 변경 사항이 다른 사용자에게 영향을 미치지 않도록 보장해야 한다.</p>
+<h2 id="4-지속성-durability">4. 지속성 (Durability)</h2>
+<p><strong>요약</strong>: 트랜잭션이 성공적으로 완료되면, 그 결과는 시스템 오류가 발생하더라도 영구적으로 유지되어야 한다.<br>
+<strong>예시</strong>: 고객이 온라인 쇼핑몰에서 주문을 완료한 후, 서버가 다운되더라도 주문 정보는 데이터베이스에 안전하게 저장되어야 한다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

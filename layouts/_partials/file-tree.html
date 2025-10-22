@@ -1,0 +1,58 @@
+
+{{- /*  이 Partial은 다음 인수를 받습니다:
+  - currentNode: 현재 탐색 중인 페이지 객체 (섹션 또는 홈페이지)
+  - mode: "regular" 또는 "all"
+*/ -}}
+{{- $currentNode := .currentNode -}}
+{{- $mode := .mode -}}
+
+{{- /* 1. 하위 요소들을 가져옵니다. 폴더(Sections)와 파일(Pages)로 분리하여 정렬합니다. */ -}}
+{{- $sections := $currentNode.Sections.ByTitle -}}
+{{- $pages := "" -}}
+{{- if eq $mode "all" -}}
+  {{- /* 'all' 모드: 현재 노드 아래의 모든 페이지 중 섹션이 아닌 것들을 가져와서 제목순으로 정렬 */ -}}
+  {{- $filteredPages := where $currentNode.Pages "IsSection" false -}}
+  {{- $pages = $filteredPages.ByTitle -}}
+{{- else -}}
+  {{- /* 'regular' 모드: 현재 노드 아래의 일반 콘텐츠 페이지만 */ -}}
+  {{- $pages = $currentNode.RegularPages.ByTitle -}}
+{{- end -}}
+
+{{- if or $sections $pages -}}
+<ul class="pl-4">
+  {{- /* 2. 폴더(섹션)를 먼저 순회하며 출력합니다. */ -}}
+  {{- range $sections -}}
+    <li class="mt-1">
+      {{- /* details/summary 태그로 접기/펴기 기능 구현 */ -}}
+      <details>
+        <summary class="flex items-center gap-x-2 cursor-pointer select-none">
+          <span class="folder-icon text-lg">📁</span>
+          <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title }}</a>
+        </summary>
+        {{- /* 자신을 다시 호출하여 재귀적으로 하위 구조를 그립니다. */ -}}
+        {{- partial "file-tree.html" (dict "currentNode" . "mode" $mode) -}}
+      </details>
+    </li>
+  {{- end -}}
+
+  {{- /* 3. 파일(페이지)을 순회하며 출력합니다. */ -}}
+  {{- range $pages -}}
+    <li class="mt-1 flex items-center gap-x-2">
+      <span class="text-lg">
+        {{- /* 페이지 종류(Kind)에 따라 아이콘 표시 */ -}}
+        {{- if .IsSection }}<span title="Section">📁</span>
+        {{- else if eq .Kind "page" }}<span title="Page">📄</span>
+        {{- else if eq .Kind "taxonomy" }}<span title="Taxonomy List">🏷️</span>
+        {{- else if eq .Kind "term" }}<span title="Taxonomy Term">🔖</span>
+        {{- else if eq .Kind "home" }}<span title="Home">🏠</span>
+        {{- else }}<span title="Other">🔗</span>
+        {{- end -}}
+      </span>
+      <a href="{{ .RelPermalink }}" class="text-gray-800 hover:underline">{{ .Title }}</a>
+      {{- if eq $.mode "all" -}}
+        <small class="text-gray-500"> (Kind: {{ .Kind }})</small>
+      {{- end -}}
+    </li>
+  {{- end -}}
+</ul>
+{{- end -}}

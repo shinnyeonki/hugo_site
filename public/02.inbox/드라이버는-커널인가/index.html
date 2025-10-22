@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>드라이버는 커널인가 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="&ldquo;모든 드라이버는 커널의 일부로 간주되는가?&rdquo;
+✅ 하드웨어 제어를 직접 하는 전통적인 장치 드라이버는 &lsquo;커널의 일부&rsquo;로 간주됩니다.
+❌ 하지만 모든 드라이버가 커널 코드 트리에 포함되거나, 커널 공간에서만 동작하는 것은 아닙니 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84%EB%8A%94-%EC%BB%A4%EB%84%90%EC%9D%B8%EA%B0%80/">
+
+    
+    
+    
+    <meta property="og:title" content="드라이버는 커널인가">
+    <meta property="og:description" content="&ldquo;모든 드라이버는 커널의 일부로 간주되는가?&rdquo;
+✅ 하드웨어 제어를 직접 하는 전통적인 장치 드라이버는 &lsquo;커널의 일부&rsquo;로 간주됩니다.
+❌ 하지만 모든 드라이버가 커널 코드 트리에 포함되거나, 커널 공간에서만 동작하는 것은 아닙니 …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84%EB%8A%94-%EC%BB%A4%EB%84%90%EC%9D%B8%EA%B0%80/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="드라이버는 커널인가">
+    <meta name="twitter:description" content="&ldquo;모든 드라이버는 커널의 일부로 간주되는가?&rdquo;
+✅ 하드웨어 제어를 직접 하는 전통적인 장치 드라이버는 &lsquo;커널의 일부&rsquo;로 간주됩니다.
+❌ 하지만 모든 드라이버가 커널 코드 트리에 포함되거나, 커널 공간에서만 동작하는 것은 아닙니 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>드라이버는 커널인가 **page.html**</h1>
+    <p>&ldquo;<strong>모든 드라이버는 커널의 일부로 간주되는가?</strong>&rdquo;</p>
+<blockquote>
+<p>✅ <strong>하드웨어 제어를 직접 하는 전통적인 장치 드라이버는 &lsquo;커널의 일부&rsquo;로 간주됩니다.</strong><br>
+❌ 하지만 <strong>모든 드라이버가 커널 코드 트리에 포함되거나, 커널 공간에서만 동작하는 것은 아닙니다.</strong></p>
+</blockquote>
+<h3 id="1-전통적인-장치-드라이버--커널의-일부-예-네트워크-카드-usb-디스크-tty-드라이버-등">1. 전통적인 장치 드라이버 → 커널의 일부 (예: 네트워크 카드, USB, 디스크, TTY 드라이버 등)</h3>
+<p>이들은 다음 조건을 충족하므로 <strong>커널의 일부</strong>로 간주됩니다:</p>
+<ul>
+<li><strong>커널 공간</strong>(kernel space)에서 실행됨</li>
+<li>하드웨어 레지스터, 인터럽트, DMA 등에 접근</li>
+<li>시스템 콜이나 VFS(가상 파일 시스템)와 통합됨</li>
+<li>커널의 메모리 관리, 스케줄러와 상호작용</li>
+</ul>
+<h3 id="예시">예시:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 커널 소스 트리에서 볼 수 있는 드라이버 코드 예
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>drivers<span style="color:#f92672">/</span>usb<span style="color:#f92672">/</span>core<span style="color:#f92672">/</span>hub.c
+</span></span><span style="display:flex;"><span>drivers<span style="color:#f92672">/</span>tty<span style="color:#f92672">/</span>pty.c
+</span></span><span style="display:flex;"><span>drivers<span style="color:#f92672">/</span>net<span style="color:#f92672">/</span>ethernet<span style="color:#f92672">/</span>intel<span style="color:#f92672">/</span>e1000<span style="color:#f92672">/</span>e1000_main.c
+</span></span></code></pre></div><p>→ 이 코드들은 리눅스 커널 소스 트리(<code>https://git.kernel.org</code>)에 포함되어 있고,<br>
+컴파일 시 <strong>커널의 일부</strong>가 되거나, <strong>로드 가능한 모듈</strong>로 분리됩니다.</p>
+<h3 id="2-로드-가능한-모듈도-커널의-일부인가--네-삽입된-순간부터는">2. 로드 가능한 모듈도 &ldquo;커널의 일부&quot;인가? =&gt; <strong>네, 삽입된 순간부터는 &lsquo;커널의 일부&rsquo;입니다.</strong></h3>
+<p>예를 들어:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo modprobe usbserial
+</span></span></code></pre></div><p>→ 이 모듈은 <code>.ko</code> 파일로 디스크에 있지만, 로드되면 <strong>커널 메모리에 적재되어 커널과 같은 권한으로 실행</strong>됩니다.</p>
+<h3 id="3-사용자-공간에서-동작하는-드라이버는">3. 사용자 공간에서 동작하는 드라이버는?</h3>
+<p>이 경우는 <strong>정의상 논란이 있지만</strong>, 일반적으로는 <strong>&ldquo;드라이버&quot;라고는 해도 커널의 일부는 아님</strong>.</p>
+<h4 id="예-1-fusefilesystem-in-userspace">예 1: <strong>FUSE</strong>(Filesystem in Userspace)</h4>
+<ul>
+<li>파일 시스템 드라이버처럼 동작하지만, 사용자 공간에서 실행</li>
+<li>커널의 <code>fuse.ko</code> 모듈이 중간에서 시스템 콜과 연결</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sshfs user@remote:/ ~/remote_folder
+</span></span></code></pre></div><p>→ 이건 사용자 공간에서 동작하는 <strong>FUSE 기반 드라이버</strong></p>
+<p>➡️ 하지만 <strong>진짜 하드웨어 제어는 커널이 함</strong>. FUSE는 &ldquo;인터페이스 제공 + 중계&rdquo; 역할.</p>
+<h4 id="예-2-uio--vfio">예 2: <strong>UIO / VFIO</strong></h4>
+<ul>
+<li>특정 PCI 장치를 사용자 공간에서 제어 (예: DPDK, SR-IOV)</li>
+<li>커널이 메모리 매핑만 해주고, 나머지는 앱이 처리</li>
+</ul>
+<p>➡️ 이 경우도 <strong>커널의 도움 없이는 불가능</strong>. 완전히 독립된 건 아님.</p>
+<h3 id="4-그럼-드라이버라는-말의-의미는">4. 그럼 &ldquo;드라이버&quot;라는 말의 의미는?</h3>
+<p>여기서 혼동이 생길 수 있어요. &ldquo;드라이버&quot;라는 단어는 <strong>맥락에 따라 다르게 쓰입니다</strong>:</p>
+<table>
+  <thead>
+      <tr>
+          <th>맥락</th>
+          <th>의미</th>
+          <th>커널의 일부?</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>전통적 의미 (리눅스 커널 개발자 관점)</td>
+          <td>커널 공간에서 하드웨어 제어</td>
+          <td>✅ 예</td>
+      </tr>
+      <tr>
+          <td>일반 사용자 관점</td>
+          <td>&ldquo;장치를 쓰게 해주는 소프트웨어&rdquo;</td>
+          <td>❌ 아닐 수 있음</td>
+      </tr>
+      <tr>
+          <td>임베디드/고성능 컴퓨팅</td>
+          <td>사용자 공간에서 동작하는 고속 드라이버</td>
+          <td>⚠️ 부분적으로만</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="5-ttypty-드라이버는">5. TTY/PTY 드라이버는?</h3>
+<ul>
+<li><strong>커널 내부 코드</strong> (<code>drivers/tty/*</code>)</li>
+<li><code>pty.c</code>, <code>n_tty.c</code>(line discipline) 등은 모두 커널 소스에 있음</li>
+<li><code>/dev/tty</code>, <code>/dev/pts/*</code> 장치 파일은 커널이 관리</li>
+</ul>
+<p>확실히 <strong>커널의 일부</strong>입니다.</p>
+<h3 id="결론-모든-드라이버는-커널의-일부인가">결론: &ldquo;모든 드라이버는 커널의 일부인가?&rdquo;</h3>
+<table>
+  <thead>
+      <tr>
+          <th>질문</th>
+          <th>답변</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>모든 드라이버가 커널 소스 트리에 포함되는가?</strong></td>
+          <td>❌ 아니요. FUSE, 외부 모듈 등은 별도</td>
+      </tr>
+      <tr>
+          <td><strong>모든 드라이버가 커널 공간에서 실행되는가?</strong></td>
+          <td>❌ 아니요. FUSE, UIO 등은 userspace</td>
+      </tr>
+      <tr>
+          <td><strong>전통적인 장치 드라이버는 커널의 일부인가?</strong></td>
+          <td>✅ <strong>예</strong> — 정의상 커널 공간에서 동작해야 함</td>
+      </tr>
+      <tr>
+          <td><strong>커널의 일부로 간주되는 기준은?</strong></td>
+          <td>✔️ 커널과 같은 공간에서 실행되고, 커널 API 사용, 시스템 리소스 제어</td>
+      </tr>
+  </tbody>
+</table>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

@@ -1,0 +1,20 @@
+baseURL = 'http://localhost:1313'
+languageCode = 'en-US'
+title = 'My Test Site'
+
+
+
+
+ignoreFiles = ['content/05.clipping/*']
+# canonifyURLs = true
+# 로그에서 'goldmark 원시 HTML(raw HTML) 경고'를 무시합니다.
+# ignoreLogs = ['content/05.clipping/*']
+
+# 마크업(Markup) 설정
+[markup]
+  # Goldmark 마크다운 렌더러 설정
+  [markup.goldmark]
+    # 렌더러(renderer) 관련 옵션
+    [markup.goldmark.renderer]
+      # 콘텐츠 내 원시 HTML 태그를 허용하여 렌더링합니다.
+      unsafe = true

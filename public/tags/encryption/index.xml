@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Encryption on My Test Site</title>
+    <link>http://localhost:1313/tags/encryption/</link>
+    <description>Recent content in Encryption on My Test Site</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 26 Jun 2025 23:03:48 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/encryption/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTTPS와 비대칭 키 초기 설정부터 데이터 전송까지의 모든 과정 simulation</title>
+      <link>http://localhost:1313/02.inbox/https%EC%99%80-%EB%B9%84%EB%8C%80%EC%B9%AD-%ED%82%A4-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95%EB%B6%80%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1%EA%B9%8C%EC%A7%80%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B3%BC%EC%A0%95-simulation/</link>
+      <pubDate>Thu, 26 Jun 2025 23:03:48 +0900</pubDate>
+      <guid>http://localhost:1313/02.inbox/https%EC%99%80-%EB%B9%84%EB%8C%80%EC%B9%AD-%ED%82%A4-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95%EB%B6%80%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EC%86%A1%EA%B9%8C%EC%A7%80%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B3%BC%EC%A0%95-simulation/</guid>
+      <description>&lt;p&gt;클라이언트가 서버로부터 HTTPS 프로토콜을 통해 &lt;code&gt;index.html&lt;/code&gt;을 요청하는 상황에서 TCP 핸드셰이크가 완료된 후 진행되는 TLS 과정은 크게 세 단계로 나눌 수 있습니다:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;핸드셰이크 (Handshake Phase)&lt;/li&gt;&#xA;&lt;li&gt;키 도출 (Key Derivation Phase)&lt;/li&gt;&#xA;&lt;li&gt;데이터 전송 (Data Transfer Phase)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;tls-과정-상세-설명&#34;&gt;TLS 과정 상세 설명&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. TLS 핸드셰이크 (Handshake Phase)&lt;/strong&gt; TLS 핸드셰이크 단계는 클라이언트와 서버가 안전한 통신을 위해 필요한 매개변수와 키를 설정하는 과정입니다. 이 단계에서는 다음의 중요한 과정들이 진행됩니다:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;클라이언트 &amp;ldquo;Hello&amp;rdquo; 메시지 전송&lt;/strong&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;클라이언트(Bob)는 서버(Alice)에게 &lt;strong&gt;지원하는 암호화 알고리즘 목록&lt;/strong&gt;을 보냅니다. 이 목록에는 대칭키 알고리즘 (예: AES), 공개키 알고리즘 (예: RSA), HMAC 알고리즘 (예: MD5 또는 SHA-1) 등이 포함될 수 있습니다.&lt;/li&gt;&#xA;&lt;li&gt;또한, **클라이언트 논스(Client Nonce)**를 함께 전송합니다. 논스는 프로토콜에서 한 번만 사용되는 고유한 숫자이며, 재생 공격(playback attack)을 방지하고 상대방이 &amp;lsquo;살아있는(live)&amp;rsquo; 상태임을 확인하는 데 사용됩니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;서버 &amp;ldquo;Hello&amp;rdquo; 및 인증서 응답&lt;/strong&gt;:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>대칭키 비대칭기 암호화</title>
+      <link>http://localhost:1313/02.inbox/%EB%8C%80%EC%B9%AD%ED%82%A4-%EB%B9%84%EB%8C%80%EC%B9%AD%EA%B8%B0-%EC%95%94%ED%98%B8%ED%99%94/</link>
+      <pubDate>Fri, 20 Jun 2025 19:29:29 +0900</pubDate>
+      <guid>http://localhost:1313/02.inbox/%EB%8C%80%EC%B9%AD%ED%82%A4-%EB%B9%84%EB%8C%80%EC%B9%AD%EA%B8%B0-%EC%95%94%ED%98%B8%ED%99%94/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;단방향 암호화 : 일종의 해시&#xA;&lt;ul&gt;&#xA;&lt;li&gt;단일문자 대응 암호&lt;/li&gt;&#xA;&lt;li&gt;블록 암호화&#xA;&lt;ul&gt;&#xA;&lt;li&gt;PGP TLS IPsec&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;, SHA-256, SHA-1, MD5 등&lt;/li&gt;&#xA;&lt;li&gt;db 에 비밀번호를 저장할 떄는 단방향 암호화&lt;/li&gt;&#xA;&lt;li&gt;데이터 무결성 검증 (예: 파일 해시 비교, TCP UDP 의 checksum)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;양방향 암호화&#xA;&lt;ul&gt;&#xA;&lt;li&gt;대칭키: 암호화와 복호화에 동일한 키를 사용하는 암호 방식이다. $K_{a} = K_{b}$&#xA;&lt;ul&gt;&#xA;&lt;li&gt;AES, DES&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;비대칭키: 개인키(비밀) 공개키(공개)로 키가 나뉘며 1개의 키로 암호화 1개의 키로 복호화 하는 방법 $K_{a} \neq K_{b}$&#xA;&lt;ul&gt;&#xA;&lt;li&gt;server or client: $A, B$&lt;/li&gt;&#xA;&lt;li&gt;공개키: $K^{+}&lt;em&gt;{A,B}$ , 개인키: $K^{-}&lt;/em&gt;{A,B}$&lt;/li&gt;&#xA;&lt;li&gt;public key 암호화 =&amp;gt; 종단간 암호화&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$K^{+}&lt;em&gt;{A}(K^{-}&lt;/em&gt;{A}(m)) = m$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;private key 암호화 =&amp;gt; 인증&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$K^{-}&lt;em&gt;{A}(K^{+}&lt;/em&gt;{A}(m)) = m$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;기밀성&lt;br&gt;&#xA;메세지 무결성&lt;br&gt;&#xA;종단점 인증&lt;br&gt;&#xA;운영보안&lt;br&gt;&#xA;운영보안&#xA;블럭 암호화&lt;br&gt;&#xA;k == 64 이면 64 비트블록으로 쪼개어 각 블록을 독립적으로 암호화 한다&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

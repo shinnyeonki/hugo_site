@@ -1,0 +1,22 @@
+{{/* 컨텍스트(.)로 특정 섹션 페이지를 받음 */}}
+{{ $currentPage := . }}
+{{/* 해당 섹션 바로 아래의 일반 페이지와 하위 섹션들만 가져옴 */}}
+{{ $pages := $currentPage.RegularPages }}
+{{ $sections := $currentPage.Sections }}
+
+{{ if or $pages $sections }}
+<ul>
+  {{/* 하위 폴더(섹션) 먼저 순회하며 재귀 호출 */}}
+  {{ range $sections }}
+    <li>
+      📁 <a href="{{ .RelPermalink }}">{{ .Title }}</a> (섹션)
+      {{ partial "tree_regular.html" . }}
+    </li>
+  {{ end }}
+
+  {{/* 현재 폴더의 파일(일반 페이지) 순회 */}}
+  {{ range $pages }}
+    <li>📄 <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  {{ end }}
+</ul>
+{{ end }}

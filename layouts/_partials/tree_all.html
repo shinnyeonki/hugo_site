@@ -1,0 +1,25 @@
+{{/* .Pages는 하위 섹션과 일반 페이지를 모두 포함하므로 코드가 더 간단해짐 */}}
+{{ with .Pages }}
+<ul>
+  {{ range . }}
+    <li>
+      {{/* 페이지 종류(Kind)에 따라 아이콘 표시 */}}
+      {{ if .IsSection }}📁
+      {{ else if eq .Kind "page" }}📄
+      {{ else if eq .Kind "taxonomy" }}🏷️
+      {{ else if eq .Kind "term" }}🔖
+      {{ else if eq .Kind "home" }}🏠
+      {{ else }}🔗
+      {{ end }}
+
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <small> (Kind: {{ .Kind }})</small>
+
+      {{/* 현재 페이지가 하위 페이지를 가질 수 있는 섹션일 경우에만 재귀 호출 */}}
+      {{ if .IsSection }}
+        {{ partial "tree_all.html" . }}
+      {{ end }}
+    </li>
+  {{ end }}
+</ul>
+{{ end }}

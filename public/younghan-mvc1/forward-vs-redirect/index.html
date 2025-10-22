@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>forward vs redirect | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="1. Forward 동작 원리 서버 내부에서만 처리:
+forward()는 클라이언트(브라우저)의 요청을 수신한 서블릿이 동일한 웹 컨테이너 내부에서 다른 자원(예: JSP, 다른 서블릿)으로 제어를 넘기는 동작입니다. HTTP 요청/응답 재사용: 원본 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/younghan-mvc1/forward-vs-redirect/">
+
+    
+    
+    
+    <meta property="og:title" content="forward vs redirect">
+    <meta property="og:description" content="1. Forward 동작 원리 서버 내부에서만 처리:
+forward()는 클라이언트(브라우저)의 요청을 수신한 서블릿이 동일한 웹 컨테이너 내부에서 다른 자원(예: JSP, 다른 서블릿)으로 제어를 넘기는 동작입니다. HTTP 요청/응답 재사용: 원본 …">
+    <meta property="og:url" content="http://localhost:1313/younghan-mvc1/forward-vs-redirect/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="forward vs redirect">
+    <meta name="twitter:description" content="1. Forward 동작 원리 서버 내부에서만 처리:
+forward()는 클라이언트(브라우저)의 요청을 수신한 서블릿이 동일한 웹 컨테이너 내부에서 다른 자원(예: JSP, 다른 서블릿)으로 제어를 넘기는 동작입니다. HTTP 요청/응답 재사용: 원본 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>forward vs redirect **page.html**</h1>
+    <h3 id="1-forward-동작-원리">1. <strong>Forward 동작 원리</strong></h3>
+<ul>
+<li><strong>서버 내부에서만 처리</strong>:<br>
+<code>forward()</code>는 클라이언트(브라우저)의 요청을 수신한 서블릿이 <strong>동일한 웹 컨테이너 내부</strong>에서 다른 자원(예: JSP, 다른 서블릿)으로 제어를 넘기는 동작입니다.
+<ul>
+<li><strong>HTTP 요청/응답 재사용</strong>: 원본 <code>ServletRequest</code>와 <code>ServletResponse</code> 객체를 그대로 전달하므로, 클라이언트는 이 과정을 인지하지 못합니다.</li>
+<li><strong>URL 변경 없음</strong>: 브라우저 주소창의 URL은 최초 요청 경로 그대로 유지됩니다. (예: <code>/original-servlet</code> → <code>/WEB-INF/views/new-form.jsp</code>로 전달되어도 URL 변경 없음)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-http-호출과의-차이">2. <strong>HTTP 호출과의 차이</strong></h3>
+<ul>
+<li>
+<p><strong>Redirect(리다이렉트)</strong>:<br>
+클라이언트에게 <code>302</code> 상태 코드와 새 URL을 응답으로 전송 → 클라이언트가 <strong>새로운 HTTP 요청</strong>을 발생시킵니다.</p>
+<ul>
+<li>URL 변경됨, 네트워크 비용 증가, 요청 데이터 유실 가능성 있음.</li>
+</ul>
+</li>
+<li>
+<p><strong>Forward(포워드)</strong>:<br>
+서버 내부에서 <strong>단일 HTTP 요청 생명주기</strong> 내에서 처리됩니다.</p>
+<ul>
+<li>네트워크 오버헤드 없음, 요청/세션 데이터 보존, 클라이언트 투명성 보장.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-기술적-특징">3. <strong>기술적 특징</strong></h3>
+<ul>
+<li>
+<p><strong>RequestDispatcher의 역할</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>RequestDispatcher dispatcher <span style="color:#f92672">=</span> request.<span style="color:#a6e22e">getRequestDispatcher</span>(viewPath);
+</span></span><span style="display:flex;"><span>dispatcher.<span style="color:#a6e22e">forward</span>(request, response);
+</span></span></code></pre></div><ul>
+<li><code>RequestDispatcher</code>는 Servlet API의 일부로, <strong>서버 내부 자원 접근</strong>을 추상화한 인터페이스입니다.</li>
+<li><code>forward()</code>는 <strong>동기식 제어 전달</strong>을 수행하며, 스레드는 동일한 요청 컨텍스트를 공유합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>보호된 자원 접근</strong>:<br>
+<code>WEB-INF</code> 디렉토리 아래의 JSP는 클라이언트 직접 접근이 불가능합니다.<br>
+→ 서버 내부에서만 <code>forward()</code>로 접근 가능 (보안 강화).</p>
+</li>
+</ul>
+<hr>
+<h3 id="4-사용-사례">4. <strong>사용 사례</strong></h3>
+<ul>
+<li><strong>MVC 패턴 구현</strong>:<br>
+컨트롤러(서블릿)에서 비즈니스 로직 처리 후 뷰(JSP)로 포워딩하여 화면 렌더링.</li>
+<li><strong>에러 페이지 처리</strong>:<br>
+<code>web.xml</code> 또는 <code>@WebServlet</code>에서 에러 코드/예외 매핑 후 포워딩.</li>
+<li><strong>다중 자원 조합</strong>:<br>
+하나의 요청에 여러 자원(예: 헤더, 본문, 푸터 JSP)을 조합하여 응답 생성.</li>
+</ul>
+<hr>
+<h3 id="5-주의-사항">5. <strong>주의 사항</strong></h3>
+<ul>
+<li><strong>응답 커밋 전에만 가능</strong>:<br>
+<code>response</code> 객체가 이미 클라이언트로 전송된 후(<code>flush()</code> 호출 후)에는 <code>forward()</code> 사용 불가 (예: <code>IllegalStateException</code> 발생).</li>
+<li><strong>속성 전달</strong>:<br>
+<code>request.setAttribute()</code>로 데이터를 전달해야 하며, <code>request.getParameter()</code>는 원본 요청 데이터를 유지합니다.</li>
+</ul>
+<hr>
+<h3 id="요약">요약</h3>
+<p><code>forward()</code>는 <strong>서버 내부 파이프라인 재구성</strong>으로, 클라이언트는 최초 요청에 대한 응답만 받는 것으로 인지합니다. 이는 HTTP 프로토콜의 요청-응답 사이클을 최소화하며, 보안 및 성능 최적화에 활용됩니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

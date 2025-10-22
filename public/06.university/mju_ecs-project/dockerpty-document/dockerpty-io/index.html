@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title> | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="문서: dockerpty/io.py 모듈 분석 1. 개요 이 문서는 dockerpty/io.py 파일의 주요 기능과 클래스에 대해 설명합니다. 이 파일은 Docker에서 사용되는 PTY(가상 터미널)와 관련된 입출력 작업을 관리하는 데 사용됩니다. 주요 기능은 파일 디 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/06.university/mju_ecs-project/dockerpty-document/dockerpty-io/">
+
+    
+    
+    
+    <meta property="og:title" content="">
+    <meta property="og:description" content="문서: dockerpty/io.py 모듈 분석 1. 개요 이 문서는 dockerpty/io.py 파일의 주요 기능과 클래스에 대해 설명합니다. 이 파일은 Docker에서 사용되는 PTY(가상 터미널)와 관련된 입출력 작업을 관리하는 데 사용됩니다. 주요 기능은 파일 디 …">
+    <meta property="og:url" content="http://localhost:1313/06.university/mju_ecs-project/dockerpty-document/dockerpty-io/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="문서: dockerpty/io.py 모듈 분석 1. 개요 이 문서는 dockerpty/io.py 파일의 주요 기능과 클래스에 대해 설명합니다. 이 파일은 Docker에서 사용되는 PTY(가상 터미널)와 관련된 입출력 작업을 관리하는 데 사용됩니다. 주요 기능은 파일 디 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1> **page.html**</h1>
+    <h3 id="문서-dockerptyiopy-모듈-분석">문서: <code>dockerpty/io.py</code> 모듈 분석</h3>
+<h4 id="1-개요">1. 개요</h4>
+<p>이 문서는 <code>dockerpty/io.py</code> 파일의 주요 기능과 클래스에 대해 설명합니다. 이 파일은 Docker에서 사용되는 PTY(가상 터미널)와 관련된 입출력 작업을 관리하는 데 사용됩니다. 주요 기능은 파일 디스크립터를 다루고, 데이터 스트림을 읽고 쓰며, 멀티플렉싱된 데이터를 처리하는 것입니다.</p>
+<hr>
+<h4 id="2-주요-함수-및-클래스">2. 주요 함수 및 클래스</h4>
+<h5 id="21-set_blockingfd-blockingtrue">2.1 <code>set_blocking(fd, blocking=True)</code></h5>
+<ul>
+<li><strong>기능</strong>: 파일 디스크립터(<code>fd</code>)의 블로킹 모드를 설정하거나 해제합니다.</li>
+<li><strong>매개변수</strong>:
+<ul>
+<li><code>fd</code>: 파일 디스크립터 객체.</li>
+<li><code>blocking</code>: 블로킹 모드를 활성화할지 여부 (기본값: <code>True</code>).</li>
+</ul>
+</li>
+<li><strong>반환값</strong>: 원래의 블로킹 상태를 반환합니다.</li>
+</ul>
+<h5 id="22-selectread_streams-write_streams-timeout0">2.2 <code>select(read_streams, write_streams, timeout=0)</code></h5>
+<ul>
+<li><strong>기능</strong>: 주어진 읽기 및 쓰기 스트림 중에서 준비된 스트림을 선택합니다.</li>
+<li><strong>매개변수</strong>:
+<ul>
+<li><code>read_streams</code>: 읽기 가능한 스트림 목록.</li>
+<li><code>write_streams</code>: 쓰기 가능한 스트림 목록.</li>
+<li><code>timeout</code>: 타임아웃 시간 (초 단위).</li>
+</ul>
+</li>
+<li><strong>반환값</strong>: 읽기 및 쓰기 가능한 스트림의 튜플을 반환합니다.</li>
+<li><strong>예외 처리</strong>: POSIX 시그널로 인해 <code>select()</code>가 중단될 경우 빈 리스트를 반환합니다.</li>
+</ul>
+<hr>
+<h4 id="3-클래스-상세-설명">3. 클래스 상세 설명</h4>
+<h5 id="31-stream">3.1 <code>Stream</code></h5>
+<ul>
+<li><strong>기능</strong>: 파일 디스크립터를 추상화한 클래스입니다. 소켓과 파일 모두 일관된 방식으로 읽고 쓸 수 있도록 지원합니다.</li>
+<li><strong>주요 메서드</strong>:
+<ul>
+<li><code>fileno()</code>: 파일 디스크립터 번호를 반환합니다.</li>
+<li><code>set_blocking(value)</code>: 블로킹 모드를 설정합니다.</li>
+<li><code>read(n=4096)</code>: 최대 <code>n</code> 바이트의 데이터를 읽습니다.</li>
+<li><code>write(data)</code>: 데이터를 버퍼에 저장하고 비동기적으로 씁니다.</li>
+<li><code>do_write()</code>: 버퍼에 있는 데이터를 가능한 만큼 씁니다.</li>
+<li><code>needs_write()</code>: 쓰기를 대기 중인 데이터가 있는지 확인합니다.</li>
+<li><code>close()</code>: 스트림을 닫습니다.</li>
+</ul>
+</li>
+<li><strong>특징</strong>:
+<ul>
+<li>복구 가능한 I/O 오류를 처리합니다 (<code>ERRNO_RECOVERABLE</code> 참조).</li>
+</ul>
+</li>
+</ul>
+<h5 id="32-demuxer">3.2 <code>Demuxer</code></h5>
+<ul>
+<li><strong>기능</strong>: Docker에서 사용되는 멀티플렉싱된 데이터를 디멀티플렉싱하여 읽습니다.</li>
+<li><strong>주요 메서드</strong>:
+<ul>
+<li><code>read(n=4096)</code>: 멀티플렉싱된 데이터를 디코딩하여 읽습니다.</li>
+<li><code>_next_packet_size(n)</code>: 다음 패킷의 크기를 계산합니다.</li>
+</ul>
+</li>
+<li><strong>특징</strong>:
+<ul>
+<li>Docker는 PTY가 없는 경우 8바이트 헤더를 사용하여 데이터를 멀티플렉싱합니다.</li>
+<li>첫 4바이트는 스트림 유형(예: stdout, stderr)을 나타내고, 다음 4바이트는 데이터 길이를 나타냅니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="33-pump">3.3 <code>Pump</code></h5>
+<ul>
+<li><strong>기능</strong>: 두 개의 스트림 간 데이터를 전달하는 &ldquo;펌프&rdquo; 역할을 합니다.</li>
+<li><strong>주요 메서드</strong>:
+<ul>
+<li><code>flush(n=4096)</code>: 읽기 스트림에서 데이터를 읽고 쓰기 스트림으로 전달합니다.</li>
+<li><code>is_done()</code>: 펌프 작업이 완료되었는지 확인합니다.</li>
+</ul>
+</li>
+<li><strong>특징</strong>:
+<ul>
+<li>읽기 스트림에서 EOF를 받으면 작업이 완료된 것으로 간주합니다.</li>
+<li>쓰기 스트림에 대기 중인 데이터가 없어야 작업이 완료됩니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="4-사용-예시">4. 사용 예시</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Stream 객체 생성</span>
+</span></span><span style="display:flex;"><span>fd <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>open(<span style="color:#e6db74">&#34;/path/to/file&#34;</span>, os<span style="color:#f92672">.</span>O_RDWR)
+</span></span><span style="display:flex;"><span>stream <span style="color:#f92672">=</span> Stream(fd)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 데이터 읽기</span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> stream<span style="color:#f92672">.</span>read(<span style="color:#ae81ff">1024</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 데이터 쓰기</span>
+</span></span><span style="display:flex;"><span>stream<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Hello, World!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Demuxer 객체 생성</span>
+</span></span><span style="display:flex;"><span>demuxer <span style="color:#f92672">=</span> Demuxer(stream)
+</span></span><span style="display:flex;"><span>decoded_data <span style="color:#f92672">=</span> demuxer<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pump 객체 생성</span>
+</span></span><span style="display:flex;"><span>from_stream <span style="color:#f92672">=</span> Stream(fd1)
+</span></span><span style="display:flex;"><span>to_stream <span style="color:#f92672">=</span> Stream(fd2)
+</span></span><span style="display:flex;"><span>pump <span style="color:#f92672">=</span> Pump(from_stream, to_stream)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 데이터 펌핑</span>
+</span></span><span style="display:flex;"><span>pump<span style="color:#f92672">.</span>flush()
+</span></span></code></pre></div><hr>
+<h4 id="5-라이선스">5. 라이선스</h4>
+<p>이 코드는 Apache License 2.0 하에 배포됩니다. 자세한 내용은 <a href="http://www.apache.org/licenses/LICENSE-2.0" class="external-link" target="_blank" rel="noopener noreferrer" >Apache License</a>를 참조하십시오.</p>
+<hr>
+<p>이 문서는 <code>dockerpty/io.py</code> 파일의 주요 기능과 클래스 구조를 한글로 설명하며, 사용자가 이를 이해하고 활용하는 데 도움을 주기 위해 작성되었습니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

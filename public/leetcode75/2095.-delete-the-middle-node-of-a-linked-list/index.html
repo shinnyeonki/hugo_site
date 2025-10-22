@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>2095. Delete the Middle Node of a Linked List | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="문제 주어진 연결 리스트의 헤드가 주어졌을 때, 중간 노드를 삭제하고 수정된 연결 리스트의 헤드를 반환하세요.
+크기가 $n$인 연결 리스트의 중간 노드는 0-based 인덱스를 사용하여 $\lfloor n / 2 \rfloor$번째 노드입니다. 여기서 $\lfloor …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/leetcode75/2095.-delete-the-middle-node-of-a-linked-list/">
+
+    
+    
+    
+    <meta property="og:title" content="2095. Delete the Middle Node of a Linked List">
+    <meta property="og:description" content="문제 주어진 연결 리스트의 헤드가 주어졌을 때, 중간 노드를 삭제하고 수정된 연결 리스트의 헤드를 반환하세요.
+크기가 $n$인 연결 리스트의 중간 노드는 0-based 인덱스를 사용하여 $\lfloor n / 2 \rfloor$번째 노드입니다. 여기서 $\lfloor …">
+    <meta property="og:url" content="http://localhost:1313/leetcode75/2095.-delete-the-middle-node-of-a-linked-list/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="2095. Delete the Middle Node of a Linked List">
+    <meta name="twitter:description" content="문제 주어진 연결 리스트의 헤드가 주어졌을 때, 중간 노드를 삭제하고 수정된 연결 리스트의 헤드를 반환하세요.
+크기가 $n$인 연결 리스트의 중간 노드는 0-based 인덱스를 사용하여 $\lfloor n / 2 \rfloor$번째 노드입니다. 여기서 $\lfloor …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>2095. Delete the Middle Node of a Linked List **page.html**</h1>
+    <h2 id="문제">문제</h2>
+<p>주어진 연결 리스트의 헤드가 주어졌을 때, 중간 노드를 삭제하고 수정된 연결 리스트의 헤드를 반환하세요.</p>
+<p>크기가 $n$인 연결 리스트의 중간 노드는 0-based 인덱스를 사용하여 $\lfloor n / 2 \rfloor$번째 노드입니다. 여기서 $\lfloor x \rfloor$는 $x$보다 작거나 같은 가장 큰 정수를 나타냅니다.</p>
+<p>예를 들어, $n = 1, 2, 3, 4, 5$일 때 중간 노드의 인덱스는 각각 $0, 1, 1, 2, 2$입니다.</p>
+<hr>
+<h3 id="예제"><strong>예제</strong></h3>
+<h4 id="예제-1">예제 1:</h4>
+<p>입력:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>head <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>]
+</span></span></code></pre></div><p>출력:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>]
+</span></span></code></pre></div><p>설명:
+위 그림은 주어진 연결 리스트를 나타냅니다. 노드의 인덱스는 아래에 표시되어 있습니다.<br>
+$ n = 7 $이므로, 값이 $ 7 $인 3번째 노드(0-based 인덱스)가 중간 노드입니다. 이 노드는 빨간색으로 표시되어 있습니다.<br>
+우리는 이 노드를 제거한 후 새로운 리스트를 반환합니다.</p>
+<hr>
+<h4 id="예제-2">예제 2:</h4>
+<p>입력:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>head <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]
+</span></span></code></pre></div><p>출력:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>]
+</span></span></code></pre></div><p>설명:
+위 그림은 주어진 연결 리스트를 나타냅니다.<br>
+$ n = 4 $이므로, 값이 $ 3 $인 2번째 노드(0-based 인덱스)가 중간 노드입니다. 이 노드는 빨간색으로 표시되어 있습니다.</p>
+<hr>
+<h4 id="예제-3">예제 3:</h4>
+<p>입력:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>head <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]
+</span></span></code></pre></div><p>출력:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>]
+</span></span></code></pre></div><p>설명:
+위 그림은 주어진 연결 리스트를 나타냅니다.<br>
+$ n = 2 $이므로, 값이 $ 1 $인 1번째 노드(0-based 인덱스)가 중간 노드입니다. 이 노드는 빨간색으로 표시되어 있습니다.<br>
+값이 $ 2 $인 0번째 노드만 남게 됩니다.</p>
+<hr>
+<h3 id="제약-조건"><strong>제약 조건</strong></h3>
+<ul>
+<li>연결 리스트의 노드 수는 $[1, 10^5]$ 범위에 있습니다.</li>
+<li>$1\leq \text{Node.val} \leq 10^5$</li>
+</ul>
+<h2 id="답">답</h2>
+<p>일반적 접근</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Definition for singly-linked list.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct ListNode {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     int val;          // 노드의 값
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     ListNode *next;   // 다음 노드를 가리키는 포인터
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     ListNode() : val(0), next(nullptr) {} // 기본 생성자
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     ListNode(int x) : val(x), next(nullptr) {} // 값만 초기화하는 생성자
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     ListNode(int x, ListNode *next) : val(x), next(next) {} // 값과 다음 노드를 초기화하는 생성자
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> deleteMiddle(ListNode<span style="color:#f92672">*</span> head) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Edge case: 리스트에 노드가 하나만 있는 경우 nullptr 반환
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (head <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>; <span style="color:#75715e">// 노드가 없거나 하나뿐이면 삭제 후 nullptr 반환
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 1: 연결 리스트의 길이 계산
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> length <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// 리스트 길이를 저장할 변수
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode<span style="color:#f92672">*</span> temp <span style="color:#f92672">=</span> head; <span style="color:#75715e">// 임시 포인터를 사용하여 리스트 순회
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (temp <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) { <span style="color:#75715e">// 리스트의 끝까지 이동
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            length<span style="color:#f92672">++</span>; <span style="color:#75715e">// 노드 수 카운트
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">-&gt;</span>next; <span style="color:#75715e">// 다음 노드로 이동
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 2: 중간 노드의 인덱스 계산 (0-based)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> length <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// 중간 노드의 인덱스 계산
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 3: 중간 노드 바로 전 노드까지 이동
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        temp <span style="color:#f92672">=</span> head; <span style="color:#75715e">// 다시 head부터 시작
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> mid <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">++</span>) { <span style="color:#75715e">// 중간 노드 바로 전까지 이동
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">-&gt;</span>next; <span style="color:#75715e">// 다음 노드로 이동
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 4: 중간 노드 삭제
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode<span style="color:#f92672">*</span> toDelete <span style="color:#f92672">=</span> temp<span style="color:#f92672">-&gt;</span>next; <span style="color:#75715e">// 삭제할 중간 노드를 저장
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        temp<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> temp<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next; <span style="color:#75715e">// 중간 노드를 건너뛰도록 연결 변경
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">delete</span> toDelete; <span style="color:#75715e">// 메모리 해제 (C++에서는 선택 사항)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head; <span style="color:#75715e">// 수정된 리스트의 head 반환
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>투포인터 접근</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Definition for singly-linked list.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct ListNode {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     int val;          // 노드의 값
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     ListNode *next;   // 다음 노드를 가리키는 포인터
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     ListNode() : val(0), next(nullptr) {} // 기본 생성자
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     ListNode(int x) : val(x), next(nullptr) {} // 값만 초기화하는 생성자
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     ListNode(int x, ListNode *next) : val(x), next(next) {} // 값과 다음 노드를 초기화하는 생성자
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> deleteMiddle(ListNode<span style="color:#f92672">*</span> head) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Edge case: 리스트에 노드가 하나만 있는 경우 nullptr 반환
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (head <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>; 
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 노드가 없거나 하나뿐이면 중간 노드를 삭제한 후 nullptr을 반환합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 더미 노드 생성
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode<span style="color:#f92672">*</span> prev <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">0</span>, head); 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 더미 노드(prev)를 생성하고, next를 head로 설정합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 이는 중간 노드를 삭제할 때 편리하게 처리하기 위함입니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode<span style="color:#f92672">*</span> slow <span style="color:#f92672">=</span> prev; 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// slow 포인터를 더미 노드로 초기화합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode<span style="color:#f92672">*</span> fast <span style="color:#f92672">=</span> head; 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// fast 포인터를 head로 초기화합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 투 포인터 기법으로 중간 노드 찾기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (fast <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> fast<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">-&gt;</span>next; 
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// slow는 한 칸씩 이동합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            fast <span style="color:#f92672">=</span> fast<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next; 
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// fast는 두 칸씩 이동합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 임시 보관
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode<span style="color:#f92672">*</span> toDelete <span style="color:#f92672">=</span> slow<span style="color:#f92672">-&gt;</span>next; 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 삭제할 중간 노드를 toDelete에 저장합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 실제 변경
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        slow<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> slow<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next; 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// slow의 next를 변경하여 중간 노드를 건너뜁니다(중간 노드 삭제).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 메모리 해제
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">delete</span> toDelete; <span style="color:#75715e">// 삭제된 중간 노드의 메모리 해제
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">delete</span> prev;     <span style="color:#75715e">// 더미 노드의 메모리 해제
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head; 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 수정된 리스트의 head를 반환합니다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

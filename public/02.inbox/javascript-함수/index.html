@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>javascript 함수 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content=" var let const 재선언 o x x 업데이트 o o x 호이스팅 o o o 자동 초기화 o x x 호이스팅: let, const 는 오류 발생(호이스팅은 되어도 자동 초기화 안해서 오류 발생)
+console.log(a) 변환 -&gt; var a …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/javascript-%ED%95%A8%EC%88%98/">
+
+    
+    
+    
+    <meta property="og:title" content="javascript 함수">
+    <meta property="og:description" content=" var let const 재선언 o x x 업데이트 o o x 호이스팅 o o o 자동 초기화 o x x 호이스팅: let, const 는 오류 발생(호이스팅은 되어도 자동 초기화 안해서 오류 발생)
+console.log(a) 변환 -&gt; var a …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/javascript-%ED%95%A8%EC%88%98/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="javascript 함수">
+    <meta name="twitter:description" content=" var let const 재선언 o x x 업데이트 o o x 호이스팅 o o o 자동 초기화 o x x 호이스팅: let, const 는 오류 발생(호이스팅은 되어도 자동 초기화 안해서 오류 발생)
+console.log(a) 변환 -&gt; var a …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>javascript 함수 **page.html**</h1>
+    <table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>var</th>
+          <th>let</th>
+          <th>const</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>재선언</td>
+          <td>o</td>
+          <td>x</td>
+          <td>x</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>업데이트</td>
+          <td>o</td>
+          <td>o</td>
+          <td>x</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>호이스팅</td>
+          <td>o</td>
+          <td>o</td>
+          <td>o</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>자동 초기화</td>
+          <td>o</td>
+          <td>x</td>
+          <td>x</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>호이스팅: let, const 는 오류 발생(호이스팅은 되어도 자동 초기화 안해서 오류 발생)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">변환</span> <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>) <span style="color:#75715e">// undefined
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>기준</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>원시(primitive)</td>
+          <td>number</td>
+          <td>boolean</td>
+          <td>null</td>
+          <td>undifined</td>
+      </tr>
+      <tr>
+          <td>참조(reference)</td>
+          <td>BigInt</td>
+          <td>object</td>
+          <td>array</td>
+          <td>function</td>
+      </tr>
+  </tbody>
+</table>
+<p>자바스크립트에서는 원시 타입(primitive type) 참조 타입(reference type)이라는 두 가지 자료형을 제공한다.</p>
+<p>숫자, 불린값, null과 undefined는 원시 타입이다. 객체, 배열, 함수는 참조 타입이다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

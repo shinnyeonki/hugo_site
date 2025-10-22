@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>java 쓰레드(thread) | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="java 메모리(memory)).md) 참고 ![Pasted image 2024 210440.png)
+java는 thread의
+쓰레드 구현 방법 Thread 상속 Runnable 인터페이스 구현 Thread thread = new Thread(){ // Thread 상 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/temp/java-%EC%93%B0%EB%A0%88%EB%93%9Cthread/">
+
+    
+    
+    
+    <meta property="og:title" content="java 쓰레드(thread)">
+    <meta property="og:description" content="java 메모리(memory)).md) 참고 ![Pasted image 2024 210440.png)
+java는 thread의
+쓰레드 구현 방법 Thread 상속 Runnable 인터페이스 구현 Thread thread = new Thread(){ // Thread 상 …">
+    <meta property="og:url" content="http://localhost:1313/temp/java-%EC%93%B0%EB%A0%88%EB%93%9Cthread/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="java 쓰레드(thread)">
+    <meta name="twitter:description" content="java 메모리(memory)).md) 참고 ![Pasted image 2024 210440.png)
+java는 thread의
+쓰레드 구현 방법 Thread 상속 Runnable 인터페이스 구현 Thread thread = new Thread(){ // Thread 상 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>java 쓰레드(thread) **page.html**</h1>
+    <p><a href="/memory" class="internal-file-link">java 메모리(memory)</a>).md) 참고
+![Pasted image 2024
+        <img src="/08.media/20240218210440.png" alt=" (Image resource not found)" >210440.png)</p>
+<p>java는 thread의</p>
+<h2 id="쓰레드-구현-방법">쓰레드 구현 방법</h2>
+<ul>
+<li>Thread 상속</li>
+<li>Runnable 인터페이스 구현</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Thread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(){ <span style="color:#75715e">// Thread 상속 및 익명 클래스로 사용</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() { 여기에 사용
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>thread.<span style="color:#a6e22e">start</span>();
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Thread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> Runnable(){ <span style="color:#75715e">// Runnable 구현 및 생성자의 인자</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() { 여기에 사용
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>thread.<span style="color:#a6e22e">start</span>();
+</span></span></code></pre></div><p>Thread 를 상속한 객체는 그 자체로 하나의 쓰레드 객체를 의미하지만
+Runnable 인터페이스를 구현한 객체는 쓰레드로 들어가 일거리라는 의미이다 그러므로 Thread 객체를 new Thread 할 때 생성자에 넣어주어야 한다</p>
+<h2 id="스레드-상태">스레드 상태</h2>
+<p>
+        <img src="/08.media/20240218213931.png" alt="Pasted image 20240218213931 (Image resource not found)" ></p>
+<ul>
+<li>NEW : Thread 객체만 생성된 상태</li>
+<li>RUNNABLE : thread.start() 이후 실행중인 상태 또는 cpu 스케줄링 순서에 따라 대기 상태</li>
+<li>일시정지
+<ul>
+<li>BLOCKED : 특정 조건시 풀린다 ex) Scanner 사용자 입력 기다림</li>
+<li>WAITING :</li>
+<li>TIMED_WAITING : 시간 지난후 풀린다 ex) sleep()</li>
+</ul>
+</li>
+</ul>
+<p>   TERMINATED;</p>
+<ol>
+<li><a href="https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/" class="external-link" target="_blank" rel="noopener noreferrer" ><strong>NEW</strong>: 쓰레드가 생성되었지만 아직 시작되지 않은 상태입니다</a><a href="https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/" class="external-link" target="_blank" rel="noopener noreferrer" >1</a>. <a href="https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/" class="external-link" target="_blank" rel="noopener noreferrer" >이 상태에서는 쓰레드가 아직 실행되지 않았으므로 시스템 자원이 할당되지 않습니다</a><a href="https://web.mit.edu/java_v1.0.2/www/tutorial/java/threads/states.html" class="external-link" target="_blank" rel="noopener noreferrer" >2</a>.</li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" ><strong>RUNNABLE</strong>: 쓰레드가 실행 중이거나 언제든지 실행할 준비가 된 상태입니다</a><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" >3</a>. <a href="https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/" class="external-link" target="_blank" rel="noopener noreferrer" >이 상태에서 쓰레드는 실제로 실행 중일 수도 있고, 운영 체제로부터 다른 리소스를 기다리고 있을 수도 있습니다</a><a href="https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/" class="external-link" target="_blank" rel="noopener noreferrer" >1</a>.</li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" ><strong>BLOCKED</strong>: 쓰레드가 모니터 잠금을 획득하려고 시도하지만 현재 다른 쓰레드가 잠금을 보유하고 있는 상태입니다</a><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" >3</a>. <a href="https://stackoverflow.com/questions/15680422/difference-between-wait-and-blocked-thread-states" class="external-link" target="_blank" rel="noopener noreferrer" >쓰레드는 잠금을 획득할 때까지 BLOCKED 상태에 머무릅니다</a><a href="https://stackoverflow.com/questions/15680422/difference-between-wait-and-blocked-thread-states" class="external-link" target="_blank" rel="noopener noreferrer" >4</a>.</li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" ><strong>WAITING</strong>: 쓰레드가 무기한으로 다른 쓰레드가 특정 작업을 수행하기를 기다리는 상태입니다</a><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" >3</a>. <a href="/" class="internal-file-link">이 상태는 쓰레드가 <code>Object.wait()</code> 또는 <code>Thread.join()</code> 메서드를 호출했을 때 발생합니다</a><code> 또는 </code>Thread.join()` 메서드를%20호출했을%20때%20발생합니다)<a href="https://www.baeldung.com/java-lang-thread-state-waiting-parking" class="external-link" target="_blank" rel="noopener noreferrer" >5</a>.</li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" ><strong>TIMED_WAITING</strong>: 쓰레드가 다른 쓰레드가 특정 작업을 수행하기를 지정된 시간 동안 기다리는 상태입니다</a><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" >3</a>. <a href="/" class="internal-file-link">이 상태는 쓰레드가 <code>Thread.sleep()</code>, <code>Object.wait(timeout)</code>, <code>Thread.join(timeout)</code> 등의 메서드를 호출했을 때 발생합니다</a><code>, </code>Object.wait(timeout)<code>, </code>Thread.join(timeout)` 등의%20메서드를%20호출했을%20때%20발생합니다)<a href="https://www.atatus.com/blog/jvm-thread-insights-spot-diagnose-waiting-threads/" class="external-link" target="_blank" rel="noopener noreferrer" >6</a>.</li>
+<li><a href="https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/" class="external-link" target="_blank" rel="noopener noreferrer" ><strong>TERMINATED</strong>: 쓰레드가 종료된 상태입니다</a><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html" class="external-link" target="_blank" rel="noopener noreferrer" >3</a>. <a href="https://howtodoinjava.com/java/multi-threading/java-thread-life-cycle-and-thread-states/" class="external-link" target="_blank" rel="noopener noreferrer" >쓰레드는 작업을 성공적으로 완료하거나 오류로 인해 종료되거나 강제로 종료될 때 이 상태에 들어갑니다</a><a href="https://howtodoinjava.com/java/multi-threading/java-thread-life-cycle-and-thread-states/" class="external-link" target="_blank" rel="noopener noreferrer" >7</a>.</li>
+</ol>
+<p>
+        <img src="/08.media/20240218220357.png" alt="Pasted image 20240218220357 (Image resource not found)" >
+wait(), notify(), notifyAll() 은 Object 메서드
+나머지는 Thread 메서드</p>
+<h2 id="쓰레드-그룹">쓰레드 그룹</h2>
+<p>실제로는 쓰레드는 계층이라는 것이 없지만 java 에서는 쓰레드를 계층 관계 그룹으로 관리 할 수 있다 prioity 우선순위 설정 기능을 활용 할 수 있다</p>
+<h2 id="쓰레드-풀">쓰레드 풀</h2>
+<p>쓰레드의 무한 증가를 막기위해 제한된 개수만큼 정해 놓고 작업 큐에 들어오는 작업들을 쓰레드가 하나씩 맡아 처리하는 방식</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en-US"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>db-book 답지 파일 다운받는 javascript | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="https://db-book.com/bib-dir/index.html 여기 위치에서 콘솔창은 연후 모든 pdf 파일을 다운받는다
+// 모든 PDF 링크와 이름을 선택 const rows = document.evaluate( …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/02.inbox/db-book-%EB%8B%B5%EC%A7%80-%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%B0%9B%EB%8A%94-javascript/">
+
+    
+    
+    
+    <meta property="og:title" content="db-book 답지 파일 다운받는 javascript">
+    <meta property="og:description" content="https://db-book.com/bib-dir/index.html 여기 위치에서 콘솔창은 연후 모든 pdf 파일을 다운받는다
+// 모든 PDF 링크와 이름을 선택 const rows = document.evaluate( …">
+    <meta property="og:url" content="http://localhost:1313/02.inbox/db-book-%EB%8B%B5%EC%A7%80-%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%B0%9B%EB%8A%94-javascript/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="db-book 답지 파일 다운받는 javascript">
+    <meta name="twitter:description" content="https://db-book.com/bib-dir/index.html 여기 위치에서 콘솔창은 연후 모든 pdf 파일을 다운받는다
+// 모든 PDF 링크와 이름을 선택 const rows = document.evaluate( …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>db-book 답지 파일 다운받는 javascript **page.html**</h1>
+    <p><a href="https://db-book.com/bib-dir/index.html" class="external-link" target="_blank" rel="noopener noreferrer" >https://db-book.com/bib-dir/index.html</a>
+여기 위치에서 콘솔창은 연후 모든 pdf 파일을 다운받는다</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// 모든 PDF 링크와 이름을 선택
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rows</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">evaluate</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;/html/body/center/table/tbody/tr&#39;</span>,
+</span></span><span style="display:flex;"><span>    document,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">XPathResult</span>.<span style="color:#a6e22e">ORDERED_NODE_SNAPSHOT_TYPE</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 링크 배열 생성
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pdfData</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">rows</span>.<span style="color:#a6e22e">snapshotLength</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">row</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">rows</span>.<span style="color:#a6e22e">snapshotItem</span>(<span style="color:#a6e22e">i</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nameElement</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">row</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;td:nth-child(1)&#39;</span>); <span style="color:#75715e">// 파일 이름
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">linkElement</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">row</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;td:nth-child(2) a&#39;</span>); <span style="color:#75715e">// PDF 링크
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 요소가 존재하는지 확인
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">nameElement</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">linkElement</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nameElement</span>.<span style="color:#a6e22e">textContent</span>.<span style="color:#a6e22e">trim</span>(); <span style="color:#75715e">// 파일 이름
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">linkElement</span>.<span style="color:#a6e22e">href</span>; <span style="color:#75715e">// PDF 링크
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">pdfData</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">url</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">name</span>
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">warn</span>(<span style="color:#e6db74">`Row </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> does not contain the expected elements.`</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// PDF 다운로드 함수
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">downloadFiles</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">pdfData</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">name</span> } <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">pdfData</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;a&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">url</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">download</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.pdf&#39;</span>; <span style="color:#75715e">// 파일 이름 지정
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">a</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">click</span>();
+</span></span><span style="display:flex;"><span>        document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">removeChild</span>(<span style="color:#a6e22e">a</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 오류발생 가능성 때문에 다운로드 사이에 잠시 대기 오류발생 가능성 때문에
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> Promise(<span style="color:#a6e22e">resolve</span> =&gt; <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">resolve</span>, <span style="color:#ae81ff">100</span>)); <span style="color:#75715e">// 0.1초 대기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// PDF 다운로드 수행
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">downloadFiles</span>(<span style="color:#a6e22e">pdfData</span>);
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/signal-%EC%B0%A8%EC%9D%B4-unixmacos-vs-linux/">signal 차이 unix(macos) vs linux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/%EB%B0%B1%EC%97%94%EB%93%9C-%EA%B5%AC%EC%A1%B0-%EB%B3%80%ED%99%94-%EC%97%AD%EC%82%AC/">백엔드 구조 변화 역사</a></li>
+            
+            <li><a href="http://localhost:1313/%EC%BD%94%EC%96%B4-%EB%8D%A4%ED%94%84core-dump/">코어 덤프(Core Dump)</a></li>
+            
+            <li><a href="http://localhost:1313/copilot/copilot-custom-prompts/translate-to-chinese/">Translate to Chinese</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>
