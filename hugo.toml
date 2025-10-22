@@ -1,11 +1,17 @@
 baseURL = 'http://localhost:1313'
-languageCode = 'en-US'
+languageCode = 'ko-KR'
 title = 'My Test Site'
 
 
 
 
-ignoreFiles = ['content/05.clipping/*']
+ignoreFiles = [
+  'content/05.clipping/*',
+  'content/89.Obsidian/',
+  'content/index.html',
+  'content/02.inbox/Notion/'
+]
+
 # canonifyURLs = true
 # 로그에서 'goldmark 원시 HTML(raw HTML) 경고'를 무시합니다.
 # ignoreLogs = ['content/05.clipping/*']

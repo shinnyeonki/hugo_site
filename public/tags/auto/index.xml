@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Auto on My Test Site</title>
+    <link>http://localhost:1313/tags/auto/</link>
+    <description>Recent content in Auto on My Test Site</description>
+    <generator>Hugo</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Thu, 16 Oct 2025 10:03:19 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/auto/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>무제 9</title>
+      <link>http://localhost:1313/%EB%AC%B4%EC%A0%9C-9/</link>
+      <pubDate>Thu, 04 Sep 2025 14:42:47 +0900</pubDate>
+      <guid>http://localhost:1313/%EB%AC%B4%EC%A0%9C-9/</guid>
+      <description>&lt;p&gt;generate_file_structure.py 로 파일 구조를 만들었어&#xA;클라이언트 사이드 렌더링 방식으로 github page 에 정적파일을 호스팅 하고 싶어 md 들이 잘 보이도록&#xA;index.html&#xA;style.css&#xA;script.js&#xA;generate_file_structure.py&#xA;file_structure.json (파이썬으로 만들어짐)&#xA;이렇게 4개의 파일을 만들어줘&lt;/p&gt;&#xA;&lt;p&gt;디자인 :&#xA;tailwind 를 사용해&#xA;디자인은 너가 알아서 정해 멋진데 가독성이 좋도록&#xA;단 좌측은&lt;/p&gt;&#xA;&lt;p&gt;마크다운 렌더링 : 라이브러리는 자율롭게 사용하되 현재 모든 마크다운은 상단에 frontmatter 가 위치하고 있어&lt;/p&gt;&#xA;&lt;p&gt;기능 : 검색기능&lt;/p&gt;&#xA;&lt;p&gt;&#xA;        &lt;img src=&#34;http://localhost:1313/08.media/20250904205237-1756986757479-54440603450_63aa8ff4b7_o.jpg&#34; alt=&#34; (Image resource not found)&#34; &gt;&lt;/p&gt;&#xA;&lt;p&gt;sprin&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

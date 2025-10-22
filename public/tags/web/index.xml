@@ -5,9 +5,16 @@
     <link>http://localhost:1313/tags/web/</link>
     <description>Recent content in Web on My Test Site</description>
     <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Mon, 26 May 2025 14:09:00 +0900</lastBuildDate>
+    <language>ko-KR</language>
+    <lastBuildDate>Mon, 13 Oct 2025 13:36:25 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>html 화면 z 축</title>
+      <link>http://localhost:1313/html-%ED%99%94%EB%A9%B4-z-%EC%B6%95/</link>
+      <pubDate>Thu, 11 Sep 2025 13:46:07 +0900</pubDate>
+      <guid>http://localhost:1313/html-%ED%99%94%EB%A9%B4-z-%EC%B6%95/</guid>
+      <description>&lt;p&gt;✦ 네, 더 자세히 설명해 드리겠습니다. 이 현상은 웹 브라우저가 요소를 화면에 그리는 방식, 특히 **스태킹 컨텍스트(Stacking Context)**와 &lt;code&gt;z-index&lt;/code&gt;라는 개념 때문에 발생합니다. 그리고 검색 결과가 가리지 않는 이유는 검색창과 검색 결과 항목의 CSS &lt;code&gt;position&lt;/code&gt; 속성 차이 때문입니다.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;현상이-발생하는-원리---왜-검색창만-가리는가&#34;&gt;현상이 발생하는 원리 - 왜 검색창만 가리는가?&lt;/h3&gt;&#xA;&lt;p&gt;웹 페이지의 요소들은 단순히 2차원 평면에 있는 것이 아니라, 3차원 공간처럼 서로 겹쳐질 수 있는 &amp;lsquo;레이어(layer)&amp;rsquo; 구조를 가집니다. 어떤 요소가 다른 요소의 위나 아래에 그려질지 결정하는 규칙이 바로 &amp;lsquo;스태킹(쌓임) 순서&amp;rsquo;입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>sse (server sent event)</title>
       <link>http://localhost:1313/02.inbox/sse-server-sent-event/</link>

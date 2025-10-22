@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="ko-KR"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>무제 3 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content=" ┌───────────────────────────┐ │ CPU │ │ (Intel SoC / Host Bridge) │ │ [00:00.0] │ └───────┬─────┬─────────────┘ │ │ │ │ ┌───────────────────┴─┐ …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/%EB%AC%B4%EC%A0%9C-3/">
+
+    
+    
+    
+    <meta property="og:title" content="무제 3">
+    <meta property="og:description" content=" ┌───────────────────────────┐ │ CPU │ │ (Intel SoC / Host Bridge) │ │ [00:00.0] │ └───────┬─────┬─────────────┘ │ │ │ │ ┌───────────────────┴─┐ …">
+    <meta property="og:url" content="http://localhost:1313/%EB%AC%B4%EC%A0%9C-3/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="무제 3">
+    <meta name="twitter:description" content=" ┌───────────────────────────┐ │ CPU │ │ (Intel SoC / Host Bridge) │ │ [00:00.0] │ └───────┬─────┬─────────────┘ │ │ │ │ ┌───────────────────┴─┐ …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>무제 3 **page.html**</h1>
+    <pre tabindex="0"><code>            ┌───────────────────────────┐
+            │            CPU            │
+            │ (Intel SoC / Host Bridge) │
+            │         [00:00.0]         │
+            └───────┬─────┬─────────────┘
+                    │     │
+                    │     │
+┌───────────────────┴─┐ ┌─┴────────────────────────┐
+│ Integrated Memory   │ │ Integrated Devices (On-chip) │
+│ Controller (IMC)    │ └─┬────────────────────────┘
+└─────────┬───────────┘   │
+          │               ├─ Integrated Graphics (iGPU) [00:02.0]
+          ↓               │
+        ┌───┐             ├─ RAM Memory (Management) [00:14.2]
+        │RAM│             │
+        └───┘             └─ PCIe Root Complex (CPU의 PCIe 레인 관리자)
+                                │
+                                │
+          ┌─────────────────────┴────────────────────────────────┐
+          │ DMI/OPI Link (CPU와 칩셋을 연결하는 전용 고속도로)     │
+          └─────────────────────┬────────────────────────────────┘
+                                │
+                                ↓
+            ┌───────────────────────────────────┐
+            │   PCH (Platform Controller Hub)   │
+            │            (메인보드 칩셋)            │
+            └─────────────────┬─────────────────┘
+                              │
+    ┌─────────────────────────┴──────────────────────────┐
+    │ PCH 내장 기능 (Relatively Slower I/O)                │
+    ├─ SATA Controller (HDD/SSD) [00:17.0]                │
+    ├─ USB Controller [00:14.0]                           │
+    ├─ Audio Device (HD Audio) [00:1f]                  │
+    ├─ SMBus Controller [00:1f]                         │
+    ├─ Communication Controller (Intel ME) [00:16.0]      │
+    ├─ ISA Bridge (Legacy) [00:1f]                      │
+    ├─ Serial Bus Controllers [00:19.0, 00:19.1, 00:1f] │
+    │                                                    │
+    │  PCH 자체의 PCIe 레인을 통한 확장                  │
+    └─┬──────────────────────────────────────────────────┘
+      │
+      ├─ PCI Bridge [00:1c] ───▶ Bus 01 ─▶ Ethernet Controller #1 [01:00.0] (Realtek RTL8111)
+      │                                       (첫 번째 유선 랜카드)
+      │
+      ├─ PCI Bridge [00:1d] ───▶ Bus 02 ─▶ Network Controller [02:00.0] (Realtek RTL8821CE Wi-Fi)
+      │                                       (무선 랜카드)
+      │
+      └─ PCI Bridge [00:1d] ───▶ Bus 03 ─▶ Ethernet Controller #2 [03:00.0] (Realtek RTL8111)
+                                              (두 번째 유선 랜카드)
+</code></pre><pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
+    subgraph CPU 와 직접 연결
+        CPU[&#34;CPU&lt;br/&gt;(Intel SoC / Host Bridge)&lt;br/&gt;[00:00.0]&#34;]
+        IMC[&#34;Integrated Memory Controller&#34;]
+        RAM[&#34;RAM&#34;]
+        iGPU[&#34;Integrated Graphics (iGPU)&lt;br/&gt;[00:02.0]&#34;]
+        RAM_Mgmt[&#34;RAM Memory (Management)&lt;br/&gt;[00:14.2]&#34;]
+        RootComplex[&#34;PCIe Root Complex&#34;]
+
+        CPU --&gt; IMC --&gt; RAM
+        CPU --&gt; iGPU
+        CPU --&gt; RAM_Mgmt
+        CPU --&gt; RootComplex
+    end
+    
+    DMI[&#34;DMI/OPI Link&lt;br/&gt;(CPU-칩셋 연결 버스)&#34;]
+    PCH[&#34;PCH&lt;br/&gt;(Platform Controller Hub)&lt;br/&gt;메인보드 칩셋&#34;]
+
+    RootComplex --&gt; DMI --&gt; PCH
+
+    subgraph PCH 내장 기능
+        direction LR
+        SATA[&#34;SATA Controller&lt;br/&gt;[00:17.0]&#34;]
+        USB[&#34;USB Controller&lt;br/&gt;[00:14.0]&#34;]
+        Audio[&#34;Audio Device&lt;br/&gt;[00:1f]&#34;]
+        SMBus[&#34;SMBus Controller&lt;br/&gt;[00:1f]&#34;]
+        Comm[&#34;Communication Controller&lt;br/&gt;[00:16.0]&#34;]
+        ISA[&#34;ISA Bridge&lt;br/&gt;[00:1f]&#34;]
+        Serial[&#34;Serial Bus Controllers&lt;br/&gt;[00:19.0, 00:19.1, 00:1f]&#34;]
+    end
+
+    subgraph PCH PCIe 확장
+        Bridge1[&#34;PCI Bridge&lt;br/&gt;[00:1c]&#34;]
+        LAN1[&#34;Ethernet Controller #1&lt;br/&gt;Realtek RTL8111&lt;br/&gt;[01:00.0]&#34;]
+        
+        Bridge2[&#34;PCI Bridge&lt;br/&gt;[00:1d]&#34;]
+        WiFi[&#34;Network Controller (Wi-Fi)&lt;br/&gt;Realtek RTL8821CE&lt;br/&gt;[02:00.0]&#34;]
+
+        Bridge3[&#34;PCI Bridge&lt;br/&gt;[00:1d]&#34;]
+        LAN2[&#34;Ethernet Controller #2&lt;br/&gt;Realtek RTL8111&lt;br/&gt;[03:00.0]&#34;]
+
+        Bridge1 --&gt; LAN1
+        Bridge2 --&gt; WiFi
+        Bridge3 --&gt; LAN2
+    end
+
+    %% PCH에서 각 하위 장치로의 연결을 명확하게 정의
+    PCH --&gt; SATA
+    PCH --&gt; USB
+    PCH --&gt; Audio
+    PCH --&gt; SMBus
+    PCH --&gt; Comm
+    PCH --&gt; ISA
+    PCH --&gt; Serial
+    
+    PCH --&gt; Bridge1
+    PCH --&gt; Bridge2
+    PCH --&gt; Bridge3
+
+    %% 스타일링
+    classDef cpu fill:#cde4ff,stroke:#555,stroke-width:2px;
+    classDef pch fill:#d5e8d4,stroke:#555,stroke-width:2px;
+    classDef device fill:#f8cecc,stroke:#555,stroke-width:1px;
+    classDef bridge fill:#fff2cc,stroke:#555,stroke-width:1px;
+    
+    class CPU cpu;
+    class PCH pch;
+    class LAN1,WiFi,LAN2,SATA,USB,Audio,SMBus,Comm,ISA,Serial,iGPU,RAM,RAM_Mgmt device;
+    class Bridge1,Bridge2,Bridge3 bridge;
+</code></pre>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/02.inbox/di-%EC%9D%98%EC%A1%B4%EC%84%B1-%EC%A3%BC%EC%9E%85-%EC%9D%98-%ED%83%80-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC-%EC%A0%91%EA%B7%BC-%EC%9C%A0%ED%8A%9C%EB%B8%8C-%EB%8C%93%EA%B8%80/">di (의존성 주입) 의 타 프레임워크 접근 유튜브 댓글</a></li>
+            
+            <li><a href="http://localhost:1313/%EB%AC%B4%EC%A0%9C-12/">무제 12</a></li>
+            
+            <li><a href="http://localhost:1313/temp/tmux/">tmux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/university-algorizm/">university algorizm</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

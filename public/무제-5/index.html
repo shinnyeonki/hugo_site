@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="ko-KR"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>무제 5 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="shinnyeonki: 파일에서 사용자가 마우스로 클릭을 했을때 기존 타이머를 정지시키는 코드가 뭐야?
+GitHub Copilot: 사용자가 마우스로 클릭했을 때 기존 타이머를 정지시키는 코드를 찾기 위해 관련 파일들을 살펴보겠습니다. 이제 content.js 파일에서 …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/%EB%AC%B4%EC%A0%9C-5/">
+
+    
+    
+    
+    <meta property="og:title" content="무제 5">
+    <meta property="og:description" content="shinnyeonki: 파일에서 사용자가 마우스로 클릭을 했을때 기존 타이머를 정지시키는 코드가 뭐야?
+GitHub Copilot: 사용자가 마우스로 클릭했을 때 기존 타이머를 정지시키는 코드를 찾기 위해 관련 파일들을 살펴보겠습니다. 이제 content.js 파일에서 …">
+    <meta property="og:url" content="http://localhost:1313/%EB%AC%B4%EC%A0%9C-5/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="무제 5">
+    <meta name="twitter:description" content="shinnyeonki: 파일에서 사용자가 마우스로 클릭을 했을때 기존 타이머를 정지시키는 코드가 뭐야?
+GitHub Copilot: 사용자가 마우스로 클릭했을 때 기존 타이머를 정지시키는 코드를 찾기 위해 관련 파일들을 살펴보겠습니다. 이제 content.js 파일에서 …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>무제 5 **page.html**</h1>
+    <p>shinnyeonki: 파일에서 사용자가 마우스로 클릭을 했을때 기존 타이머를 정지시키는 코드가 뭐야?</p>
+<p>GitHub Copilot: 사용자가 마우스로 클릭했을 때 기존 타이머를 정지시키는 코드를 찾기 위해 관련 파일들을 살펴보겠습니다. 이제 content.js 파일에서 클릭 이벤트 처리 코드를 더 자세히 살펴보겠습니다: 찾았습니다! content.js 파일에서 사용자가 마우스로 클릭했을 때 기존 타이머를 정지시키는 코드는 다음과 같습니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">click</span>((<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">storage</span>.<span style="color:#a6e22e">local</span>.<span style="color:#a6e22e">get</span>({<span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>[]},(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span><span style="color:#f92672">=</span><span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span>[<span style="color:#a6e22e">e</span>,<span style="color:#a6e22e">r</span>]<span style="color:#66d9ef">of</span> Object.<span style="color:#a6e22e">entries</span>(<span style="color:#a6e22e">t</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">null</span><span style="color:#f92672">!=</span><span style="color:#a6e22e">t</span>[<span style="color:#a6e22e">e</span>]<span style="color:#f92672">&amp;&amp;</span>(<span style="color:#66d9ef">null</span><span style="color:#f92672">!=</span><span style="color:#a6e22e">t</span>[<span style="color:#a6e22e">e</span>]<span style="color:#f92672">&amp;&amp;!</span><span style="color:#ae81ff">0</span><span style="color:#f92672">===</span><span style="color:#a6e22e">t</span>[<span style="color:#a6e22e">e</span>].<span style="color:#a6e22e">stop_refresh_check</span><span style="color:#f92672">||</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">===</span><span style="color:#a6e22e">t</span>[<span style="color:#a6e22e">e</span>].<span style="color:#a6e22e">stop_refresh_check</span>)<span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">sendMessage</span>({
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">tabId</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">action</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;pause_refresh_active_tab&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">tab_url</span><span style="color:#f92672">:</span><span style="color:#a6e22e">t</span>[<span style="color:#a6e22e">e</span>].<span style="color:#a6e22e">tab_url</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">from</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;content_script&#34;</span>
+</span></span><span style="display:flex;"><span>            },(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">null</span><span style="color:#f92672">!=</span><span style="color:#a6e22e">e</span><span style="color:#f92672">&amp;&amp;</span><span style="color:#e6db74">&#34;YES&#34;</span><span style="color:#f92672">==</span><span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">status</span><span style="color:#f92672">&amp;&amp;</span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#show_visual_timer&#34;</span>).<span style="color:#a6e22e">remove</span>()
+</span></span><span style="display:flex;"><span>            }))
+</span></span><span style="display:flex;"><span>    }))
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div><p>이 코드의 동작 방식:</p>
+<ol>
+<li>
+<p><strong><code>$(document).click</code></strong>: 문서 전체에서 클릭 이벤트를 감지합니다.</p>
+</li>
+<li>
+<p><strong>스토리지 확인</strong>: <code>chrome.storage.local.get</code>을 통해 저장된 데이터를 가져옵니다.</p>
+</li>
+<li>
+<p><strong>조건 확인</strong>: 저장된 데이터에서 <code>stop_refresh_check</code> 옵션이 <code>true</code>로 설정된 항목들을 찾습니다.</p>
+</li>
+<li>
+<p><strong>메시지 전송</strong>: 조건에 맞는 경우 백그라운드 스크립트(worker.js)에 <code>pause_refresh_active_tab</code> 액션을 보냅니다.</p>
+</li>
+<li>
+<p><strong>타이머 제거</strong>: 응답이 &ldquo;YES&quot;인 경우 화면에서 시각적 타이머(<code>#show_visual_timer</code>)를 제거합니다.</p>
+</li>
+</ol>
+<p>즉, 이 코드는 사용자가 웹페이지의 아무 곳이나 클릭했을 때, 만약 &ldquo;클릭 시 새로고침 정지&rdquo; 옵션이 활성화되어 있다면 자동 새로고침 타이머를 일시정지시키는 기능을 담당합니다.</p>
+<p>shinnyeonki: 타이머 변수는 어디에 저장되어 있는지 알려줘
+일반 javascirpt 변수 인지 extension strage 에 저장되어 있는지</p>
+<p>GitHub Copilot: 코드를 분석해보니 타이머와 관련된 데이터는 여러 곳에 저장되어 있습니다:</p>
+<h2 id="1-extension-storage-chromestoragelocal">1. Extension Storage (chrome.storage.local)</h2>
+<p><strong>주요 타이머 설정 데이터</strong>가 여기에 저장됩니다: 이제 worker.js에서 실제 타이머 인터벌을 찾아보겠습니다: 이제 sessionStorage 관련 코드도 확인해보겠습니다: 이제 전체적인 타이머 변수 저장 위치를 정리해드리겠습니다:</p>
+<h2 id="타이머-변수-저장-위치-분석">타이머 변수 저장 위치 분석</h2>
+<h3 id="1-extension-storage-chromestoragelocal-1">1. <strong>Extension Storage (chrome.storage.local)</strong></h3>
+<ul>
+<li><strong>주요 타이머 설정 데이터</strong>가 여기에 <strong>영구적으로</strong> 저장됩니다</li>
+<li>저장되는 데이터:
+<ul>
+<li><code>mili_seconds</code>: 새로고침 간격 (밀리초)</li>
+<li><code>btn_start</code>: 타이머 시작/정지 상태</li>
+<li><code>custom_refresh</code>: 커스텀 새로고침 여부</li>
+<li><code>dynamic_limit_input</code>: 동적 제한 입력값</li>
+<li><code>show_visual_timer_check</code>: 시각적 타이머 표시 여부</li>
+<li><code>stop_refresh_check</code>: 클릭 시 정지 옵션</li>
+<li><code>hard_refresh_check</code>: 하드 새로고침 여부</li>
+<li><code>tab_url</code>, <code>tabId</code> 등</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-javascript-변수-workerjs">2. <strong>JavaScript 변수 (worker.js)</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">htvg</span> <span style="color:#f92672">=</span> [];  <span style="color:#75715e">// 실제 setInterval 타이머들을 저장하는 배열
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">vgb</span> <span style="color:#f92672">=</span> [];   <span style="color:#75715e">// 타이머 설정 데이터를 임시 저장하는 배열
+</span></span></span></code></pre></div><ul>
+<li>
+<p><strong><code>htvg</code> 배열</strong>: 실제 <code>setInterval</code> 객체들이 저장됨</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setInterval</span>((<span style="color:#66d9ef">function</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">sendMessage</span>(<span style="color:#a6e22e">e</span>, {<span style="color:#a6e22e">action</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;refresh&#34;</span>, ...})
+</span></span><span style="display:flex;"><span>}), <span style="color:#a6e22e">s</span>);  <span style="color:#75715e">// s는 밀리초 간격
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">intervals</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">v</span>,  <span style="color:#75715e">// 실제 타이머 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">mili_seconds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">s</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 기타 설정들
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="3-session-storage">3. <strong>Session Storage</strong></h3>
+<ul>
+<li>
+<p><strong>카운터 정보</strong>만 임시 저장:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">sessionStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;counterObj&#34;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">counter</span><span style="color:#f92672">:</span> <span style="color:#f92672">++</span><span style="color:#a6e22e">n</span>,  <span style="color:#75715e">// 새로고침 횟수
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">tabId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">tabId</span>
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="4-dom-요소">4. <strong>DOM 요소</strong></h3>
+<ul>
+<li>
+<p><strong>시각적 타이머 UI</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#timer_iframe_arte&#34;</span>).<span style="color:#a6e22e">contents</span>().<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;body&#34;</span>).<span style="color:#a6e22e">append</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&lt;span id=&#34;timer&#34; data-seconds-left=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">e</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&gt;&lt;/span&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="요약">요약</h2>
+<p><strong>실제 타이머 변수는 여러 곳에 분산 저장됩니다:</strong></p>
+<ol>
+<li><strong>실제 타이머 인터벌</strong>: worker.js의 <code>htvg</code> 배열 (JavaScript 변수)</li>
+<li><strong>타이머 설정</strong>: <code>chrome.storage.local</code> (Extension Storage)</li>
+<li><strong>새로고침 카운터</strong>: <code>sessionStorage</code> (브라우저 세션 스토리지)</li>
+<li><strong>UI 타이머</strong>: DOM 요소</li>
+</ol>
+<p>클릭 시 타이머를 정지시키는 코드는 Extension Storage에서 설정을 확인한 후, JavaScript 변수에 저장된 실제 <code>setInterval</code> ID를 사용하여 <code>clearInterval()</code>로 타이머를 정지시킵니다.</p>
+
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/02.inbox/di-%EC%9D%98%EC%A1%B4%EC%84%B1-%EC%A3%BC%EC%9E%85-%EC%9D%98-%ED%83%80-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC-%EC%A0%91%EA%B7%BC-%EC%9C%A0%ED%8A%9C%EB%B8%8C-%EB%8C%93%EA%B8%80/">di (의존성 주입) 의 타 프레임워크 접근 유튜브 댓글</a></li>
+            
+            <li><a href="http://localhost:1313/%EB%AC%B4%EC%A0%9C-12/">무제 12</a></li>
+            
+            <li><a href="http://localhost:1313/temp/tmux/">tmux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/university-algorizm/">university algorizm</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

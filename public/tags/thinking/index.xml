@@ -5,13 +5,20 @@
     <link>http://localhost:1313/tags/thinking/</link>
     <description>Recent content in Thinking on My Test Site</description>
     <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Mon, 23 Jun 2025 21:01:15 +0900</lastBuildDate>
+    <language>ko-KR</language>
+    <lastBuildDate>Mon, 13 Oct 2025 13:22:04 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/thinking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>바이브 코딩</title>
+      <link>http://localhost:1313/%EB%B0%94%EC%9D%B4%EB%B8%8C-%EC%BD%94%EB%94%A9/</link>
+      <pubDate>Wed, 08 Oct 2025 04:59:51 +0900</pubDate>
+      <guid>http://localhost:1313/%EB%B0%94%EC%9D%B4%EB%B8%8C-%EC%BD%94%EB%94%A9/</guid>
+      <description>&lt;p&gt;본 글은 바이브 코딩뿐만 아니라 모든 ai가 코드에 개입하는 상황과 여러 프로젝트를 경험해보고 느낀 글이다&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;소프트웨어 물리적 개입 분류&#xA;&lt;ol&gt;&#xA;&lt;li&gt;실시간 ai 자동완성&lt;/li&gt;&#xA;&lt;li&gt;ex) cursor&lt;/li&gt;&#xA;&lt;li&gt;ex) gemini cli, claude code&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;개입 정도 따른 분류&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;초창기 ai 는 autocomplete 형태로 개입되었다(초창기 copliot, TabNine) 2023년 정도 시점&lt;br&gt;&#xA;하지만 시간이 지나면서 cursor 가 나오게 되고 claude code 과 같은 터미널 베이스 로 개입이 되고 있다&lt;br&gt;&#xA;각각 autocomplete,&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;소프트-웨어-공학-용어들&#34;&gt;소프트 웨어 공학 용어들&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;SSoT&lt;/strong&gt; (Single Source of Truth, 단일 진실 공급원)&lt;br&gt;&#xA;&lt;strong&gt;정의&lt;/strong&gt;: 시스템 내 특정 데이터는 오직 하나의 권위 있는 출처에서만 관리되고 갱신된다.&lt;br&gt;&#xA;&lt;strong&gt;목적&lt;/strong&gt;: 데이터 중복, 불일치, 오류를 방지하고 일관성과 신뢰성을 확보한다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>인사이트, 제안, 주장의 차이점</title>
       <link>http://localhost:1313/02.inbox/%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%A0%9C%EC%95%88-%EC%A3%BC%EC%9E%A5%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/</link>
-      <pubDate>Mon, 23 Jun 2025 21:01:15 +0900</pubDate>
+      <pubDate>Mon, 23 Jun 2025 21:01:14 +0900</pubDate>
       <guid>http://localhost:1313/02.inbox/%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%A0%9C%EC%95%88-%EC%A3%BC%EC%9E%A5%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/</guid>
       <description>&lt;h3 id=&#34;인사이트-제안-주장의-차이점&#34;&gt;인사이트, 제안, 주장의 차이점&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;인사이트(Insight): 관찰·분석을 통해 얻은 흥미로운 사실이나 트렌드 공유&lt;br&gt;&#xA;예) “최근에 이런 현상이 있더라.”&lt;/li&gt;&#xA;&lt;li&gt;제안(Suggestion): 문제 해결을 위한 여러 옵션을 제시&lt;br&gt;&#xA;예) “이렇게 해보는 건 어떨까요?”&lt;/li&gt;&#xA;&lt;li&gt;주장(Assertion): 구체적이고 명확한 방향성과 행동을 제시하며, 그에 대한 책임을 본인이 짐&lt;br&gt;&#xA;예) “이렇게 해야 합니다. 제가 책임지고 추진하겠습니다.”&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;왜-주장이-중요한가&#34;&gt;왜 ‘주장’이 중요한가?&lt;/h3&gt;&#xA;&lt;p&gt;인사이트와 제안만으로는 실제 변화나 실행이 일어나지 않음&lt;br&gt;&#xA;주장은 행동과 결과에 대한 책임을 동반, 실제로 무언가를 ‘움직이게’ 만듦&lt;br&gt;&#xA;조직 내에서 영향력을 가지려면, 단순히 정보 전달이 아니라 본인만의 관점과 실행 의지가 필요&lt;/p&gt;</description>
     </item>

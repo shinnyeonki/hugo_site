@@ -5,7 +5,7 @@
     <link>http://localhost:1313/tags/command/</link>
     <description>Recent content in Command on My Test Site</description>
     <generator>Hugo</generator>
-    <language>en-US</language>
+    <language>ko-KR</language>
     <lastBuildDate>Sun, 22 Dec 2024 12:04:00 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/command/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -16,7 +16,7 @@
       <description>&lt;p&gt;&#xA;        &lt;img src=&#34;http://localhost:1313/08.media/20241207204591.png&#34; alt=&#34; (Image resource not found)&#34; &gt;%20image%2020241207204591.png)&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;2910149: ./a.out&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;프로세스 ID 2910149의 실행 파일 &lt;code&gt;./a.out&lt;/code&gt;에 대한 메모리 맵입니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Address Kbytes RSS Dirty Mode Mapping&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;각 열의 의미:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Address&lt;/strong&gt;: 메모리 주소&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Kbytes&lt;/strong&gt;: 해당 영역의 크기(KB)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;RSS&lt;/strong&gt;: 실제 메모리에 올라간 크기(KB)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Dirty&lt;/strong&gt;: 수정된 페이지 수(KB)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Mode&lt;/strong&gt;: 메모리 접근 권한&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Mapping&lt;/strong&gt;: 매핑된 파일이나 영역의 설명&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;0000561ff3b48000 4 4 4 r---- a.out&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;실행 파일의 읽기 전용 영역입니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;0000561ff3b49000 4 4 4 r-x-- a.out&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;실행 권한이 있는 코드 영역입니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;0000561ff3b4a000 4 4 4 r---- a.out&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;추가적인 읽기 전용 데이터 영역입니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;0000561ff3b4b000 4 4 4 r---- a.out&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;또 다른 읽기 전용 영역입니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;0000561ff3b4c000 4 4 4 rw--- a.out&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;쓰기 및 읽기 가능한 데이터 영역입니다(예: 전역 변수).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;0000561ff4380000 132 4 4 rw--- [ anon ]&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;익명 메모리 매핑 영역으로 힙(heap) 영역일 수 있습니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;00007f79538e0000 4 0 0 ----- [ anon ]&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;보호된 메모리 영역입니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;00007f79538e1000 8192 8 8 rw--- [ anon ]&lt;/code&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;스레드 스택 영역으로 8MB의 크기를 갖습니다.&#xA;그 이후 줄들은 각 스레드별 스택 영역을 나타냅니다(스레드마다 약 8MB씩 할당):&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;00007f79547fa000&lt;/code&gt;부터 &lt;code&gt;00007f7956fff000&lt;/code&gt;까지 반복적으로 나타나는 8MB 크기의 &lt;code&gt;rw--- [ anon ]&lt;/code&gt; 영역들은 각 스레드의 스택입니다.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;마지막 부분:&lt;/p&gt;</description>
     </item>
     <item>
-      <title>yt-dlp 명령어 모음</title>
+      <title>yt dlp 명령어 모음</title>
       <link>http://localhost:1313/02.inbox/yt-dlp-%EB%AA%85%EB%A0%B9%EC%96%B4-%EB%AA%A8%EC%9D%8C/</link>
       <pubDate>Sun, 02 Jun 2024 01:03:00 +0900</pubDate>
       <guid>http://localhost:1313/02.inbox/yt-dlp-%EB%AA%85%EB%A0%B9%EC%96%B4-%EB%AA%A8%EC%9D%8C/</guid>

@@ -5,20 +5,20 @@
     <link>http://localhost:1313/tags/shell/</link>
     <description>Recent content in Shell on My Test Site</description>
     <generator>Hugo</generator>
-    <language>en-US</language>
+    <language>ko-KR</language>
     <lastBuildDate>Mon, 11 Aug 2025 00:49:10 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/shell/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>wsl 에서 폴더가 초록색 배경으로 보이는 이유</title>
       <link>http://localhost:1313/02.inbox/wsl-%EC%97%90%EC%84%9C-%ED%8F%B4%EB%8D%94%EA%B0%80-%EC%B4%88%EB%A1%9D%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EC%9D%B4%EB%8A%94-%EC%9D%B4%EC%9C%A0/</link>
-      <pubDate>Mon, 11 Aug 2025 00:49:10 +0900</pubDate>
+      <pubDate>Mon, 10 Jun 2024 21:31:00 +0900</pubDate>
       <guid>http://localhost:1313/02.inbox/wsl-%EC%97%90%EC%84%9C-%ED%8F%B4%EB%8D%94%EA%B0%80-%EC%B4%88%EB%A1%9D%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%9C%BC%EB%A1%9C-%EB%B3%B4%EC%9D%B4%EB%8A%94-%EC%9D%B4%EC%9C%A0/</guid>
       <description>&lt;ul&gt;&#xA;&lt;li&gt;전제조건&lt;/li&gt;&#xA;&lt;li&gt;초록색 이유&lt;/li&gt;&#xA;&lt;li&gt;선택 전제 조건&lt;/li&gt;&#xA;&lt;li&gt;윈도우 파일과 유닉스 파일의 파일 시스템 차이&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;전제조건&#34;&gt;전제조건&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;wsl 우분투 배포판을 기준 debian 계열은 거이 비슷&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;wsl 측에서 바라본 윈도우 파일 시스템(ntfs) 를 wsl 환경에서 윈도우측 파일시스템을 &lt;code&gt;/mnt&lt;/code&gt; 폴더 아래에 보조메모리 디바이스 장치 이름  으로 마운트 되어있다&#xA;#ModificationRequired&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;shinnk@DESKTOP-KRSG68U:/mnt$ mount&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\ &lt;/span&gt;on /mnt/c type 9p &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;rw,noatime,dirsync,aname&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;drvfs;path&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;C:&lt;span style=&#34;color:#ae81ff&#34;&gt;\;&lt;/span&gt;uid&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1000;gid&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1000;symlinkroot&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/mnt/,mmap,access&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;client,msize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;65536,trans&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;fd,rfd&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;5,wfd&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;5&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;ls, dir, grep, 등등의 명령은 화면에 적절한 색깔을 입혀서 표시할 필요가 있는데 이때 LS_COLORS 라는 환경변수를 참조해서 적절히 색깔을 입혀서 출력한다&lt;/p&gt;</description>
     </item>
     <item>
       <title>터미널 command line shell</title>
       <link>http://localhost:1313/temp/%ED%84%B0%EB%AF%B8%EB%84%90-command-line-shell/</link>
-      <pubDate>Mon, 11 Aug 2025 00:45:47 +0900</pubDate>
+      <pubDate>Sun, 28 Apr 2024 08:46:00 +0900</pubDate>
       <guid>http://localhost:1313/temp/%ED%84%B0%EB%AF%B8%EB%84%90-command-line-shell/</guid>
       <description>&lt;p&gt;터미널 command line 이라고 한정하여 shell 이라고 말한다면&#xA;일반적으로 /dev 파일 내부에 터미널 드라이브 장치를 통해 사용되는 shell 을 말한다 즉![[../08.media/20231223130204.png|login shell vs non-login shell-20231223130204]]2020231223130204.png)&lt;/p&gt;&#xA;&lt;h2 id=&#34;분류&#34;&gt;분류&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;login vs non-login : shell 이 다른 셸의 하위 프로세스로 실행되는가&lt;/li&gt;&#xA;&lt;li&gt;interactive vs non-interactive : 사용자와 상호작용하는가&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;login-shell-vs-non-login-shell&#34;&gt;login shell vs non-login shell&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;[!요약]&#xA;Login Shell : userid passwd 입력해서 들어가는 방법&#xA;Non Longin Shell : 이미 다른 로그인 된 shell 에서 shell 을 fork 형태로 불러내는 방법&lt;/p&gt;</description>
     </item>
@@ -44,7 +44,7 @@
       <description>&lt;p&gt;이둘의 차이를 알려면 먼저 셀변수라는 것을 알아야 한다&#xA;터미널에 들어가면 보이는 창 이것이 바로 interactive 하게 작용하는 shell 이 실행중이다&lt;/p&gt;</description>
     </item>
     <item>
-      <title>interactive shell vs non-interactive shell</title>
+      <title>interactive shell vs non interactive shell</title>
       <link>http://localhost:1313/temp/interactive-shell-vs-non-interactive-shell/</link>
       <pubDate>Wed, 21 Feb 2024 17:21:00 +0900</pubDate>
       <guid>http://localhost:1313/temp/interactive-shell-vs-non-interactive-shell/</guid>

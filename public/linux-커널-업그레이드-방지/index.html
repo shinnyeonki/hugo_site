@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="ko-KR"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    <title>linux 커널 업그레이드 방지 | My Test Site</title>
+    
+
+    
+    
+    <meta name="description" content="1. kernel-headers 설치 (없을 경우) sudo apt install raspberrypi-kernel-headers
+2. 핵심 패키지 hold sudo apt-mark hold \ raspberrypi-kernel \ …">
+
+    
+    
+    <meta name="robots" content="index, follow">
+    
+
+    
+    <link rel="canonical" href="http://localhost:1313/linux-%EC%BB%A4%EB%84%90-%EC%97%85%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%93%9C-%EB%B0%A9%EC%A7%80/">
+
+    
+    
+    
+    <meta property="og:title" content="linux 커널 업그레이드 방지">
+    <meta property="og:description" content="1. kernel-headers 설치 (없을 경우) sudo apt install raspberrypi-kernel-headers
+2. 핵심 패키지 hold sudo apt-mark hold \ raspberrypi-kernel \ …">
+    <meta property="og:url" content="http://localhost:1313/linux-%EC%BB%A4%EB%84%90-%EC%97%85%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%93%9C-%EB%B0%A9%EC%A7%80/">
+    <meta property="og:site_name" content="My Test Site">
+    
+    <meta property="og:type" content="blog">
+    
+
+    
+    
+    
+
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:title" content="linux 커널 업그레이드 방지">
+    <meta name="twitter:description" content="1. kernel-headers 설치 (없을 경우) sudo apt install raspberrypi-kernel-headers
+2. 핵심 패키지 hold sudo apt-mark hold \ raspberrypi-kernel \ …">
+    
+
+    
+    
+    
+
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+</head><body>
+    
+     
+    <header class="site-header">
+        <div class="site-title">
+            <a href="http://localhost:1313/">My Test Site</a>
+        </div>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            
+        </ul>
+    </nav>
+    
+    <main>
+        
+        
+<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
+    <h1>linux 커널 업그레이드 방지 **page.html**</h1>
+    <h3 id="1-kernel-headers-설치-없을-경우">1. kernel-headers 설치 (없을 경우)</h3>
+<p><code>sudo apt install raspberrypi-kernel-headers</code></p>
+<h3 id="2-핵심-패키지-hold">2. 핵심 패키지 hold</h3>
+<pre tabindex="0"><code>sudo apt-mark hold \
+    raspberrypi-kernel \
+    raspberrypi-kernel-headers \
+    raspberrypi-bootloader \
+    libraspberrypi0 \
+    libraspberrypi-bin
+</code></pre><h3 id="3-hold-상태-확인">3. hold 상태 확인</h3>
+<p><code>sudo apt-mark showhold</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 1. kernel-headers 설치 (없을 경우)</span>
+</span></span><span style="display:flex;"><span>sudo apt install raspberrypi-kernel-headers
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. 핵심 패키지 hold</span>
+</span></span><span style="display:flex;"><span>sudo apt-mark hold <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    raspberrypi-kernel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    raspberrypi-kernel-headers <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    raspberrypi-bootloader <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libraspberrypi0 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libraspberrypi-bin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. hold 상태 확인</span>
+</span></span><span style="display:flex;"><span>sudo apt-mark showhold
+</span></span></code></pre></div>
+</article>
+
+
+        
+        <footer class="site-footer">
+            
+            <address>
+                
+            </address>
+            <p>&copy; 2025 My Test Site. All rights reserved.</p>
+        </footer>
+    </main>
+
+    
+    <aside class="sidebar">
+        <h3>최근 글</h3>
+        <ul>
+            
+            <li><a href="http://localhost:1313/02.inbox/di-%EC%9D%98%EC%A1%B4%EC%84%B1-%EC%A3%BC%EC%9E%85-%EC%9D%98-%ED%83%80-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC-%EC%A0%91%EA%B7%BC-%EC%9C%A0%ED%8A%9C%EB%B8%8C-%EB%8C%93%EA%B8%80/">di (의존성 주입) 의 타 프레임워크 접근 유튜브 댓글</a></li>
+            
+            <li><a href="http://localhost:1313/%EB%AC%B4%EC%A0%9C-12/">무제 12</a></li>
+            
+            <li><a href="http://localhost:1313/temp/tmux/">tmux</a></li>
+            
+            <li><a href="http://localhost:1313/02.inbox/doxyzen-%ED%82%A4%EC%9B%8C%EB%93%9C/">Doxyzen 키워드</a></li>
+            
+            <li><a href="http://localhost:1313/university-algorizm/">university algorizm</a></li>
+            
+        </ul>
+
+        <h3>태그</h3>
+        
+        
+    </aside>
+</body>
+</html>

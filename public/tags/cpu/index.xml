@@ -5,25 +5,11 @@
     <link>http://localhost:1313/tags/cpu/</link>
     <description>Recent content in Cpu on My Test Site</description>
     <generator>Hugo</generator>
-    <language>en-US</language>
+    <language>ko-KR</language>
     <lastBuildDate>Sun, 12 Oct 2025 15:43:22 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/cpu/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>그래서 컴퓨터는 어떻게 동작하나요 1</title>
-      <link>http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-1/</link>
-      <pubDate>Sun, 12 Oct 2025 15:43:22 +0900</pubDate>
-      <guid>http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-1/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;WORD : CPU 에 의해 한번에 처리될 수 있는 비트 수&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;sr-latch&#34;&gt;SR latch&lt;/h2&gt;&#xA;&lt;p&gt;NOR 게이트를 사용한 SR 래치는 기본적인 SR 래치로, 아래와 같이 작동합니다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;두 개의 NOR 게이트를 교차 연결합니다.&lt;/li&gt;&#xA;&lt;li&gt;입력은 S(Set)와 R(Reset)입니다&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;S&lt;/th&gt;&#xA;          &lt;th&gt;R&lt;/th&gt;&#xA;          &lt;th&gt;Q (다음 상태)&lt;/th&gt;&#xA;          &lt;th&gt;¬Q (다음 상태)&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;Q (이전 상태)&lt;/td&gt;&#xA;          &lt;td&gt;¬Q (이전 상태)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;불안정&lt;/td&gt;&#xA;          &lt;td&gt;불안정&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;NAND 게이트를 사용한 SR 래치는 약간 다르게 동작합니다. 이 경우에는 입력을 보통 S&amp;rsquo;와 R&amp;rsquo;으로 표기합니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>메모리 최대 크기</title>
-      <link>http://localhost:1313/02.inbox/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EB%8C%80-%ED%81%AC%EA%B8%B0/</link>
-      <pubDate>Mon, 22 Sep 2025 13:58:18 +0900</pubDate>
-      <guid>http://localhost:1313/02.inbox/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EB%8C%80-%ED%81%AC%EA%B8%B0/</guid>
-      <description>&lt;h2 id=&#34;문제-발생-이전&#34;&gt;문제 발생 이전&lt;/h2&gt;&#xA;&lt;p&gt;메모리의 최대 크기는 RAM 에 저장할 수 있는 bit 최대 개수를 의미한다&#xA;word 는 bus 의 크기를 이야기 한다&#xA;하지만 직접 CPU 를 만들다 보니(logisim) (&lt;a href=&#34;http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-1/&#34; class=&#34;internal-link&#34;&gt;그래서 컴퓨터는 어떻게 동작하나요 1&lt;/a&gt;) 지금까지 나는 byte 단위로 메모리에 접근한 것이 아닌 word 단위로 접근 했었고 이것이 8비트 cpu 에서는 word 와 byte 가 운 좋게 8bit 로 일치되어 메모리 최대 크기를 계산 할 때 주소폭 크기 (data bit width = word) * 2^(address bit width) 즉 8 * 2^8 즉 2048b ~= 256B 라고 계산 했었다 답은 맞지만 16비트 32 비트로 cpu 를 개선해나가는 과정에서 문제가 발생했다&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>RISC-V 명령어 구조</title>
+      <title>RISC V 명령어 구조</title>
       <link>http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/risc-v-%EB%AA%85%EB%A0%B9%EC%96%B4-%EA%B5%AC%EC%A1%B0/</link>
       <pubDate>Sat, 31 Aug 2024 09:44:00 +0900</pubDate>
       <guid>http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/risc-v-%EB%AA%85%EB%A0%B9%EC%96%B4-%EA%B5%AC%EC%A1%B0/</guid>
@@ -37,6 +23,13 @@
       <description></description>
     </item>
     <item>
+      <title>메모리 최대 크기</title>
+      <link>http://localhost:1313/02.inbox/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EB%8C%80-%ED%81%AC%EA%B8%B0/</link>
+      <pubDate>Sat, 10 Aug 2024 17:45:00 +0900</pubDate>
+      <guid>http://localhost:1313/02.inbox/%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%B5%9C%EB%8C%80-%ED%81%AC%EA%B8%B0/</guid>
+      <description>&lt;h2 id=&#34;문제-발생-이전&#34;&gt;문제 발생 이전&lt;/h2&gt;&#xA;&lt;p&gt;메모리의 최대 크기는 RAM 에 저장할 수 있는 bit 최대 개수를 의미한다&#xA;word 는 bus 의 크기를 이야기 한다&#xA;하지만 직접 CPU 를 만들다 보니(logisim) (&lt;a href=&#34;http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-1/&#34; class=&#34;internal-link&#34;&gt;그래서 컴퓨터는 어떻게 동작하나요 1&lt;/a&gt;) 지금까지 나는 byte 단위로 메모리에 접근한 것이 아닌 word 단위로 접근 했었고 이것이 8비트 cpu 에서는 word 와 byte 가 운 좋게 8bit 로 일치되어 메모리 최대 크기를 계산 할 때 주소폭 크기 (data bit width = word) * 2^(address bit width) 즉 8 * 2^8 즉 2048b ~= 256B 라고 계산 했었다 답은 맞지만 16비트 32 비트로 cpu 를 개선해나가는 과정에서 문제가 발생했다&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>그래서 컴퓨터는 어떻게 동작하나요 2</title>
       <link>http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-2/</link>
       <pubDate>Sat, 10 Aug 2024 16:37:00 +0900</pubDate>
@@ -44,7 +37,14 @@
       <description>&lt;p&gt;여기서 부터는 32 비트로 설계하게 된다&#xA;즉 word 가 32 비트 이다&lt;/p&gt;&#xA;&lt;h2 id=&#34;변경점&#34;&gt;변경점&lt;/h2&gt;&#xA;&lt;h3 id=&#34;ram&#34;&gt;RAM&lt;/h3&gt;&#xA;&lt;p&gt;RAM 의 경우 data bit size 는 32가 가능하지만 address bit width 의 경우 32 비트가 가능하지 않다(logisim 의 한계 4기가의 메모리는 감당하지 못한다) 그러므로 address bit width 의 경우 24 비트로 한다&lt;/p&gt;&#xA;&lt;p&gt;현대 컴퓨터에 사용하는 RAM 과 ㄱ&lt;/p&gt;&#xA;&lt;h3 id=&#34;register&#34;&gt;Register&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;IAR INSTRUCTION ADDRESS REGISTER 을 PC PROGRAM COUTER 로 표기한다&lt;/li&gt;&#xA;&lt;li&gt;레지스터의 경우 7비트에서는 2개가 존재했다&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;instruction-set&#34;&gt;Instruction set&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;8비트&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>x86-64 CPU 레지스터(Register)의 개념 및 종류</title>
+      <title>그래서 컴퓨터는 어떻게 동작하나요 1</title>
+      <link>http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-1/</link>
+      <pubDate>Wed, 10 Jul 2024 00:41:00 +0900</pubDate>
+      <guid>http://localhost:1313/02.inbox/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94/%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%BB%B4%ED%93%A8%ED%84%B0%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EB%82%98%EC%9A%94-1/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;WORD : CPU 에 의해 한번에 처리될 수 있는 비트 수&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;sr-latch&#34;&gt;SR latch&lt;/h2&gt;&#xA;&lt;p&gt;NOR 게이트를 사용한 SR 래치는 기본적인 SR 래치로, 아래와 같이 작동합니다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;두 개의 NOR 게이트를 교차 연결합니다.&lt;/li&gt;&#xA;&lt;li&gt;입력은 S(Set)와 R(Reset)입니다&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;S&lt;/th&gt;&#xA;          &lt;th&gt;R&lt;/th&gt;&#xA;          &lt;th&gt;Q (다음 상태)&lt;/th&gt;&#xA;          &lt;th&gt;¬Q (다음 상태)&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;Q (이전 상태)&lt;/td&gt;&#xA;          &lt;td&gt;¬Q (이전 상태)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;0&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;불안정&lt;/td&gt;&#xA;          &lt;td&gt;불안정&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;NAND 게이트를 사용한 SR 래치는 약간 다르게 동작합니다. 이 경우에는 입력을 보통 S&amp;rsquo;와 R&amp;rsquo;으로 표기합니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>x86 64 CPU 레지스터(Register)의 개념 및 종류</title>
       <link>http://localhost:1313/temp/x86-64-cpu-%EB%A0%88%EC%A7%80%EC%8A%A4%ED%84%B0register%EC%9D%98-%EA%B0%9C%EB%85%90-%EB%B0%8F-%EC%A2%85%EB%A5%98/</link>
       <pubDate>Wed, 20 Mar 2024 14:24:00 +0900</pubDate>
       <guid>http://localhost:1313/temp/x86-64-cpu-%EB%A0%88%EC%A7%80%EC%8A%A4%ED%84%B0register%EC%9D%98-%EA%B0%9C%EB%85%90-%EB%B0%8F-%EC%A2%85%EB%A5%98/</guid>
