@@ -1,0 +1,93 @@
+<details class="group" open>
+    <summary
+        class="flex items-center justify-between w-full p-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer list-none">
+        <span class="flex items-center text-sm font-semibold">
+            <!-- Main Tag Icon -->
+            <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6 6h.008v.008H6V6Z" />
+            </svg>
+            <span>태그별</span>
+        </span>
+        <!-- Chevron Icon -->
+        <svg class="h-5 w-5 transform transition-transform duration-200 group-open:rotate-180"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+    </summary>
+    
+    <!-- Tag Tree Structure Starts Here -->
+    <div class="pl-4 mt-1">
+        <ul class="space-y-1">
+            <!-- Tag 1 (Initially Open) -->
+            <li>
+                <details class="group" open>
+                    <summary
+                        class="flex items-center justify-between w-full p-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer list-none">
+                        <span class="flex items-center text-sm">
+                            <span class="mr-2 text-neutral-500">#</span>
+                            <span>Hugo</span>
+                            <span class="ml-2 text-xs text-neutral-400 dark:text-neutral-500">(2)</span>
+                        </span>
+                        <svg class="h-4 w-4 transform transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </summary>
+                    <ul class="pl-5 mt-1 space-y-1 border-l border-neutral-200 dark:border-neutral-800 ml-2.5">
+                        <!-- File 1.1 -->
+                        <li>
+                            <a href="#" class="flex items-center p-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md">
+                                <svg class="h-5 w-5 mr-2 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+                                <span>기획서.md</span>
+                            </a>
+                        </li>
+                         <!-- File 1.2 -->
+                        <li>
+                            <a href="#" class="flex items-center p-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md">
+                                <svg class="h-5 w-5 mr-2 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+                                <span>개발.md</span>
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+
+            <!-- Tag 2 (Initially Closed) -->
+            <li>
+                <details class="group">
+                    <summary
+                        class="flex items-center justify-between w-full p-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer list-none">
+                        <span class="flex items-center text-sm">
+                            <span class="mr-2 text-neutral-500">#</span>
+                            <span>JavaScript</span>
+                            <span class="ml-2 text-xs text-neutral-400 dark:text-neutral-500">(1)</span>
+                        </span>
+                        <svg class="h-4 w-4 transform transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </summary>
+                     <ul class="pl-5 mt-1 space-y-1 border-l border-neutral-200 dark:border-neutral-800 ml-2.5">
+                        <!-- File 2.1 -->
+                        <li>
+                            <a href="#" class="flex items-center p-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md">
+                                <svg class="h-5 w-5 mr-2 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                </svg>
+                                <span>index.html</span>
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </div>
+</details>
