@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class=""> <!-- 다크 모드 테스트 시 'dark' 클래스 추가 -->
+<html lang="ko" class="dark"> <!-- 다크 모드 테스트 시 'dark' 클래스 추가 -->
 
 <head>
     <meta charset="UTF-8">
@@ -7,10 +7,18 @@
     <title>Refined Minimalist Layout</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 
 <body class="bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-300 overflow-x-hidden antialiased">
-    <div id="page-container" class="relative min-h-screen">
+    <div id="root-container" class="relative min-h-screen">
         <input type="checkbox" id="leftNavToggleCheckbox" class="hidden peer">
 
         <!-- Left Navigation Sidebar -->
@@ -364,16 +372,7 @@
                             </svg>
                         </button>
 
-                        <!-- (추가) 다크모드 토글 버튼 -->
-                        <button id="themeToggleBtn" aria-label="테마 전환"
-                            class="flex p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
-                            <!-- 아이콘은 JS로 제어: sun, moon, computer-desktop 등 -->
-                            <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 3v1m0 16v1m8.66-15.66l-.7.7M4.04 19.96l-.7.7M21 12h-1M4 12H3m15.66 8.66l-.7-.7M4.04 4.04l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                            </svg>
-                        </button>
+
 
                         <!-- (추가) 공유 버튼 -->
                         <button id="shareBtn" aria-label="페이지 공유"
@@ -446,21 +445,51 @@
 
                             <footer
                                 class="bg-neutral-100 dark:bg-neutral-900 p-4 border-t border-neutral-200 dark:border-neutral-800 mt-8">
-                                <p class="text-center text-sm text-neutral-600 dark:text-neutral-400">
-                                    © 2024 Your Company. All rights reserved.
-                                </p>
+                                <div class="max-w-[76ch] mx-auto flex justify-center items-center gap-4">
+                                    <div class="relative" id="theme-switcher-container">
+                                        <button title="Change theme" id="footer-theme-toggle" class="cursor-pointer rounded-md text-left font-medium h-7 px-2 text-xs text-neutral-600 transition-colors dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-800" type="button" aria-label="Change theme">
+                                            <div class="flex items-center gap-2 capitalize">
+                                                <span id="theme-light-indicator" class="hidden items-center gap-2">
+                                                    <svg height="12" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364-.707-.707M6.343 6.343l-.707-.707m12.728.0-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                                                    <span>Light</span>
+                                                </span>
+                                                <span id="theme-dark-indicator" class="hidden items-center gap-2">
+                                                    <svg height="12" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003.0 0012 21a9.003 9.003.0 008.354-5.646z"/></svg>
+                                                    <span>Dark</span>
+                                                </span>
+                                                <span id="theme-system-indicator" class="hidden items-center gap-2">
+                                                    <svg height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M11.996094 2C6.4986225 2.0192368 2.03125 6.5024993 2.03125 12c0 5.497501 4.4673725 9.980763 9.964844 10H12 12.0039c5.497471-.01924 9.964844-4.502499 9.964844-10 0-5.4975007-4.467373-9.9807632-9.964844-10H12zM12 4c4.417218.017598 7.96875 3.5822356 7.96875 8 0 4.417764-3.551532 7.982402-7.96875 8z"/></svg>
+                                                    <span>System</span>
+                                                </span>
+                                            </div>
+                                        </button>
+                                        <ul id="footer-theme-options" class="hidden absolute bottom-8 right-0 z-20 max-h-64 overflow-auto rounded-md ring-1 ring-black/5 bg-white py-1 text-sm shadow-lg dark:ring-white/20 dark:bg-neutral-800">
+                                            <li>
+                                                <p data-theme-value="light" class="theme-option-button text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 relative cursor-pointer whitespace-nowrap py-1.5 transition-colors px-3">Light</p>
+                                            </li>
+                                            <li>
+                                                <p data-theme-value="dark" class="theme-option-button text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 relative cursor-pointer whitespace-nowrap py-1.5 transition-colors px-3">Dark</p>
+                                            </li>
+                                            <li>
+                                                <p data-theme-value="system" class="theme-option-button text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 relative cursor-pointer whitespace-nowrap py-1.5 transition-colors px-3">System</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                                        © 2024 Your Company. All rights reserved.
+                                    </p>
+                                    
+                                </div>
                             </footer>
                         </div>
                     </div>
                 </main>
 
-                <!-- 우측 사이드바  -->
+                <!-- 우측 사이드바 -->
                 <aside id="right-sidebar-container" class="fixed top-14 right-0 z-40 h-[calc(100vh-3.5rem)] bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-in-out translate-x-full
-                                md:sticky md:top-14 md:h-[calc(100vh-3.5rem)] md:translate-x-0 md:bg-transparent dark:md:bg-transparent md:border-none
-                                flex flex-col flex-shrink-0">
-                    <div
-                        class="min-w-[16rem] md:border-l md:border-neutral-200 dark:md:border-neutral-800 flex flex-col h-full">
-
+    md:sticky md:top-14 md:h-[calc(100vh-3.5rem)] md:w-0 md:translate-x-0 md:bg-transparent dark:md:bg-transparent md:border-none
+    flex flex-col flex-shrink-0 overflow-hidden">
+                    <div class="w-80 md:border-l md:border-neutral-200 dark:md:border-neutral-800 flex flex-col h-full">
                         <!-- 탭 네비게이션 -->
                         <div role="tablist" aria-label="사이드바 컨텐츠" class="flex-shrink-0">
                             <nav class="flex -mb-px" aria-label="Tabs">
@@ -481,26 +510,38 @@
                             </nav>
                         </div>
 
-                        <!-- 탭 컨텐츠 -->
+                        <!-- 탭 컨텐츠 (이하 동일) -->
                         <div class="flex-grow overflow-hidden mt-2">
                             <div id="right-sidebar-track"
                                 class="flex h-full transition-transform duration-300 ease-in-out">
                                 <div id="panel-toc" role="tabpanel" aria-labelledby="tab-toc" tabindex="0"
                                     class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-2 text-sm text-slate-600 dark:text-neutral-300">
-                                    <!-- 목차 내용이 여기에 동적으로 추가됩니다 -->
+                                    <!-- 목차 내용 -->
+                                    <ul>
+                                        <li><a href="#"
+                                                class="block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">1.
+                                                소개</a></li>
+                                        <li><a href="#"
+                                                class="block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">2.
+                                                주요 기능</a></li>
+                                        <li><a href="#"
+                                                class="block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">3.
+                                                설치 방법</a></li>
+                                        <li><a href="#"
+                                                class="block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">4.
+                                                결론</a></li>
+                                    </ul>
                                 </div>
                                 <div id="panel-metadata" role="tabpanel" aria-labelledby="tab-metadata" tabindex="0"
-                                    hidden
                                     class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-2 text-sm text-slate-600 dark:text-neutral-300">
                                     메타 데이터 (구현 예정)
                                 </div>
-                                <div id="panel-links" role="tabpanel" aria-labelledby="tab-links" tabindex="0" hidden
+                                <div id="panel-links" role="tabpanel" aria-labelledby="tab-links" tabindex="0"
                                     class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-2 text-sm text-slate-600 dark:text-neutral-300">
                                     참조된 링크, 참조하는 링크 (구현 예정)
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </aside>
             </div>
@@ -508,21 +549,134 @@
     </div>
 
     <script>
-        // JavaScript logic remains unchanged.
-        const rightSidebar = document.getElementById('right-sidebar-container');
-        const rightSidebarToggle = document.getElementById('rightSidebarToggle');
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Theme switcher logic ---
+            const themeToggleBtn = document.getElementById('footer-theme-toggle');
+            const themeOptions = document.getElementById('footer-theme-options');
+            const themeOptionButtons = document.querySelectorAll('.theme-option-button');
+            const lightIndicator = document.getElementById('theme-light-indicator');
+            const darkIndicator = document.getElementById('theme-dark-indicator');
+            const systemIndicator = document.getElementById('theme-system-indicator');
 
-        const isTabletOrLarger = () => window.innerWidth >= 768;
+            function updateIndicator(theme) {
+                [lightIndicator, darkIndicator, systemIndicator].forEach(el => {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                });
 
-        rightSidebarToggle.addEventListener('click', () => {
-            if (isTabletOrLarger()) {
-                // On desktop, toggle width for a push effect.
-                rightSidebar.classList.toggle('w-72');
-                rightSidebar.classList.toggle('md:w-0');
-            } else {
-                // On mobile, translate to overlay the content.
-                rightSidebar.classList.toggle('translate-x-full');
+                if (theme === 'light') {
+                    lightIndicator.classList.remove('hidden');
+                    lightIndicator.classList.add('flex');
+                } else if (theme === 'dark') {
+                    darkIndicator.classList.remove('hidden');
+                    darkIndicator.classList.add('flex');
+                } else { // system
+                    systemIndicator.classList.remove('hidden');
+                    systemIndicator.classList.add('flex');
+                }
             }
+
+            function applyAndSaveTheme(theme) {
+                if (theme === 'system') {
+                    localStorage.removeItem('theme');
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                } else if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else { // light
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+                updateIndicator(theme);
+            }
+
+            themeToggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                themeOptions.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!themeToggleBtn.contains(e.target) && !themeOptions.contains(e.target)) {
+                    themeOptions.classList.add('hidden');
+                }
+            });
+
+            themeOptionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.getAttribute('data-theme-value');
+                    applyAndSaveTheme(theme);
+                    themeOptions.classList.add('hidden');
+                });
+            });
+
+            // Initial indicator state
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            updateIndicator(savedTheme);
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!('theme' in localStorage)) { // only if theme is 'system'
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                }
+            });
+
+            // --- 우측 사이드바 토글 로직 ---
+            const rightSidebar = document.getElementById('right-sidebar-container');
+            const rightSidebarToggle = document.getElementById('rightSidebarToggle');
+
+            const isTabletOrLarger = () => window.innerWidth >= 768;
+
+            rightSidebarToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (isTabletOrLarger()) {
+                    // 데스크톱: 너비를 조절하여 push 효과를 줍니다.
+                    rightSidebar.classList.toggle('md:w-80'); // 너비를 0에서 64로 또는 그 반대로 변경
+                } else {
+                    // 모바일: translate 속성을 변경하여 오버레이 효과를 줍니다.
+                    rightSidebar.classList.toggle('translate-x-full');
+                }
+            });
+
+
+            // --- 탭 전환 로직 ---
+            const tabs = document.querySelectorAll('.right-tab-btn');
+            const track = document.getElementById('right-sidebar-track');
+            const panels = document.querySelectorAll('.right-tab-content');
+            const tabNameToIndex = {
+                'tab-toc': 0,
+                'tab-metadata': 1,
+                'tab-links': 2,
+            };
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 모든 탭의 활성 스타일 제거
+                    tabs.forEach(t => {
+                        t.setAttribute('aria-selected', 'false');
+                        t.classList.remove('border-neutral-800', 'dark:border-neutral-100', 'text-neutral-800', 'dark:text-neutral-100');
+                        t.classList.add('border-transparent', 'text-slate-500', 'hover:text-slate-700', 'hover:border-slate-300', 'dark:text-neutral-400', 'dark:hover:text-neutral-200', 'dark:hover:border-neutral-400');
+                    });
+
+                    // 클릭된 탭에 활성 스타일 적용
+                    tab.setAttribute('aria-selected', 'true');
+                    tab.classList.add('border-neutral-800', 'dark:border-neutral-100', 'text-neutral-800', 'dark:text-neutral-100');
+                    tab.classList.remove('border-transparent', 'text-slate-500', 'hover:text-slate-700', 'hover:border-slate-300', 'dark:text-neutral-400', 'dark:hover:text-neutral-200', 'dark:hover:border-neutral-400');
+
+                    // 콘텐츠 트랙을 해당 위치로 슬라이드
+                    const tabIndex = tabNameToIndex[tab.id];
+                    if (tabIndex !== undefined) {
+                        track.style.transform = `translateX(-${tabIndex * 100}%)`;
+                    }
+                });
+            });
         });
     </script>
 </body>
