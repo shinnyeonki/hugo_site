@@ -1,0 +1,119 @@
+이 글을 쓰게 된 이유는 간단합니다. vscode에서 빌드를 하기 위해서는 tasks.json 작성해야 하는데, 복붙해서 쓰기는 싫고 검색해도 정보가 잘 안나와서 vscode를 안쓰고 계셨던 저같은 분들을 위해서입니다. 다만 저도 이제 vscode를 사용해보기 시작하는 단계이므로 부족하거나 이상한 내용이 있을 수 있습니다. 코멘트 달아주시면 찾아보고 추가 및 수정 하겠습니다.
+
+그리고 시작하기 전에 minjakim님게 감사의 말씀 드리고 싶습니다. minjakim님의 도움이 아니였다면 .json들에 대한 이해를 포기하고 그냥 복붙해서 사용 했거나, 혹은 여전히 vim만 사용하고 있었을 것입니다.
+
+.vscode파일은 vscode에 의해 관리 받는 workspace(작업공간)의 root에 위치한 숨겨진 폴더 입니다. 내부의tasks.json, launch.json등은 사용자 지정 task들을 저장할 파일들이 있는 폴더 입니다. 직접 만드셔도 상관 없지만, vscode에서 워크스페이스를 열고 편집 이상의 행동을 하게 된다면 자동으로 vscode가 생성해 줍니다.
+
+JSON : JavaScript Objection Notaion 자바스크립트에서 객체를 만들 때 사용하는 표현식을 모아놓은 스크립트 입니다. 경량의 파일이라는 장점 때문에 vscode에서는 사용자 지정 데이터를 저장하고 전송하기 위해 사용합니다.
+
+스크립트를 실행하고 프로세스를 시작하게 사용자가 구성 하는 명령 단위(?) 입니다. task를 통해 외부 도구 사용 및 복잡한 명령 입력을 간단한 단축키 만으로 사용할 수 있습니다(alias와 비슷하다).
+
+작업환경 내의 빌드 등의 명령을 위해 task들을 모아놓은 파일입니다. 기본적으로 빌드작업을 하기 위해서 사용할 task와 기타 task들이 들어가 있습니다.
+
+알고 계시겠지만, vscode 자체로는 사실 그냥 텍스트 편집기입니다. 플러그인 몇개 깔려있는 vim과 다를게 없습니다. vscode를 이용해 빌드, 디버깅같은 작업을 하기 위해서는 vscode외부의 gcc나 lldb등을 불러와야 합니다.
+
+이러한 빌드 및 디버깅 작업은 굉장히 자주 수행하는 작업이기 때문에, vscode를 만든 위대한 개발자분들은 이것들과의 연동을 json파일에 몇가지 정보만 입력하면 가능하게 만들어 주셨습니다.
+
+우선 빌드를 위해 vscode가 추천해주는 방식으로 task를 만드는 방법부터 시작하겠습니다.
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc134b60b-852b-4918-8105-5b58341cb719%2FUntitled.png&blockId=a2818d37-a2e0-4437-b6dd-b17c78e38975)
+
+작업 팔레트에서 >tasks를 입력한 결과
+
+vscode에서 프로젝트 폴더를 열고, 작업 팔레트(⇧ + ⌘ + p)에서 tasks를 검색하면 tasks와 관련된 다양한 명령들을 볼 수 있습니다.
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcf04c182-5875-4615-8fd9-b4c3f4cb0587%2FUntitled.png&blockId=92e9a3a7-c344-4da2-80c4-bb23c3af48fb)
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb67e7f56-8119-4a92-99b6-c5818c082e15%2FUntitled.png&blockId=3d0f67a5-c58a-4388-8b55-ad21a8c03d01)
+
+이 중 Configure Default Build Task는 작업환경에 맞는 기본 빌드 task 양식을 추천해주고(이 경우는 c언어라서 gcc 및 clang) 이 중 gcc를 클릭하면 위와 같이 자동으로 .vscode폴더와 tasks.json파일 그리고 양식을 만들어줍니다.
+
+해당 task 서식을 자동완성 없이 쓰실 수 있다면 당연히 터미널에서 수동 생성해도 됩니다.
+
+$ mkdir .vscode $ vim .vdcode/tasks.json (이후 내용 입력)
+
+다만 자동이던 수동이던 이렇게 만든 task는 해당 파일이 속한 각 워크스페이에서만 사용할 수 있습니다. 좀 더 일반적인 영역에서 사용할 수 있는 task를 만들기 위해서는 다음 처럼 user task를 만들면 됩니다.
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6c8b2d9e-567f-4de2-abd4-6e02112ea04b%2FUntitled.png&blockId=5834ccbc-2f72-4991-8106-8db1355423d6)
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F848f5b8b-e282-4cfd-a09c-ff9e864823e4%2FUntitled.png&blockId=800a99f7-d15d-4161-a230-8a38fa8c61c5)
+
+작업팔레트에서 Task:Open User Tasks를 선택하면 아래와 같이 "Hello Wrold"느낌이 물씬 나는 task가 생성됩니다. 다만 이 task의 위치는 워크스페이스가 아니라 사용자의 Library에 있습니다. 해당 task는 특정 워크스페이스에 국한되지 않는 task라고 생각하시면 될 것 같습니다.
+
+이렇게 만든 task를 찾아서 실행해보겠습니다.
+
+\[1st\] 작업 팔레트에서 Run Task 선택 후 → \[2nd\] 실행하고 싶은 task를 선택합니다 ("label"다음에 오는 내용이 task명.) → \[3rd\] task를 실행할 옵션을 선택합니다.
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffcc2e180-2881-4afb-8371-a00fd2efd938%2FUntitled.png&blockId=fa0feccf-ca4c-46af-abbf-4a86b3ff57a0)
+
+\[4th\]
+
+\[4th\]하단에 터미널이 뜨면서 해당 task를 실행합니다. 밑에서 자세하게 설명 드리겠지만 셸을 할 줄 아신다면 어떻게 동작하시는지 어럼풋이 이해하실 수 있을겁니다.
+
+다음 항목에서는 gcc 빌드 기반 task를 통해 task 내부의 각 항목을 설명드리고, 살짝 응용해서 Makefile로 빌드하는 task도 보여드리겠습니다.
+
+위에서 말 한것처럼, tasks.json은 task'들'을 저장하는 파일이며, 각 task에는 다양한 정보가 저장됩니다. 예시로 작성해본 tasks.json파일을 바탕으로 설명 드리겠습니다.(예시를 위해 별도의 task 둘 을 합쳤습니다.)
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb3f9f26c-d320-4a4c-84eb-4ad9080de894%2FUntitled.png&blockId=eecd621c-4300-4c7d-88f1-3600844a7720)
+
+"tasks": 내부의 task들은 \[\]내부에 포함되며, {}와 ,를 바탕으로 구분이 됩니다. 위의 경우 ,를 기준으로 gcc를 이용해 빌드하는 보라색 task와 Makefile의 make명령으로 빌드 하는 파란색 task로 구분됩니다.
+
+gcc를 이용해 빌드하는 보라색 task를 이해하면 아래의 것도 쉽게 이해하실 수 있을 것 이므로, 해당 부분만 설명드리겠습니다.
+
+1.
+
+"type" : 작업 유형. "shell", "process", "cppbuild" 등 지정된 작업유형을 설정합니다. 작업 유형 별로 정해진 내용이 있으므로 임의의 내용을 작성할 수 없습니다.
+
+2.
+
+"label" : 작업 레이블. 해당 작업의 이름입니다. run task명령에서 각 task를 구분할 수 있으며, 이후 vscode로 디버깅할 때도 launch.json과 연결되는 중요한 역할을 합니다. 또한 붙이고 싶은 이름을 지정할 수 있습니다.
+
+3.
+
+"command" : 빌드에 혹은 task 수행에 필요한 핵심 명령어. 이 경우 gcc를 이용해 빌드하므로 "usr/bin/gcc"을 사용합니다.
+
+4.
+
+"args" : command에 옵션으로 사용될 인자들. 터미널에서 gcc를 사용할 수 있다면 어떤 내용인지는 설명 하지 않아도 잘 알 것입니다. (추가) -o 옵션을 통해 빌드된 파일을 특정해 주어야 합니다. 이를 하지 않는 경우 아래의 에러가 발생합니다.
+
+![](data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==)
+
+ld: can’t open output file for writing ‘a.out.ld\_Tn3nU5’, errno=1 for architecture x86\_64 clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+5.
+
+"options" : task를 실행할 옵션들을 설정.
+
+"cwd" : \- 해당 tasks를 실행할 위치
+
+7.
+
+"problemMatcher" 사용자 인터페이스에서 작업 출력이 처리되는 방식을 정의 합니다.
+
+컴파일러들이 마다 Warning, Error 출력하는 규칙이 다르다. 정규식 표현 등을 이용하여 벹어내는 Warning, Error 들을 파싱하여 “출력”창에 뿌려주게끔 설정한다. 하지만 C/C++ Extention을 쓰기 때문에 자동으로 처리 해 준다. problemMatcher는 추가설정 없이 “$gcc”만 냅두면, Extention에게 맡겨지게된다. 출처 : [민선생코딩이야기](https://m.blog.naver.com/PostView.naver?blogId=mincoding&logNo=221733289320&proxyReferer=https:%2F%2Fwww.google.com%2F)
+
+8.
+
+"group" 해당 task의 그룹을 지정합니다. "kind" 뒤에 "build"나 "test" 속성이 옵니다. 해당 task가 빌드를 위한 것인지, 혹은 테스트를 위한 것인지 속성을 정할 수 있습니다. "isDefault" 뒤에 "true"나 "false" 속성이 올 수 있습니다. "true"로 속성을 지정한 경우 기본 task로 지정한다는 뜻이며, 특별한 task지정 없이 바로 빌드나 테스트를 실행한 경우 기본적으로 실행되는 task라는 뜻 입니다. 예로 들면 group의 값이 "kind":"build", "isDefault":"true" 인 task는 빌드 단축키(⌃ + ⌘ + B)를 입력 했을 때 기본적로 실행되는 task 입니다..
+
+9.
+
+"detail" >tasks : run task를 했을 때 설명으로 보일 내용. 컴파일러 : /usr/bin/gcc가 이 것 입니다.
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7c7b5986-3ff4-4d43-8391-22f796d8b6aa%2FUntitled.png&blockId=df9c5f65-4d89-492f-a1d6-0b683bec2177)
+
+이 내용들을 파악하셨다면 밑의 Makefile의 make명령으로 빌드 하는 task를 쉽게 이해하실 수 있을 것 입니다.
+
+실제로 각각 빌드를 해보겠습니다. (위 예시 이미지의 각 task들은 별도인데, 합쳐서 올린겁니다.)
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7ac71792-7641-4028-a89b-0855fb66b16c%2FUntitled.png&blockId=78b4285a-a9c1-4d75-b425-efb74b1fc323)
+
+빌드 단축키 ⌃ + ⌘ + B를 사용하여 빌드한 모습.
+
+![](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4ff56a55-5d97-4ca3-b374-1df941e62dfd%2FUntitled.png&blockId=55592eed-76e9-4650-8960-c2ad91f255c4)
+
+빌드 단축키 ⌃ + ⌘ + B를 사용하면 기본 빌드 task가 아니므로(isDefault:false), 선택을 하여야 make가 된다.
+
+이렇게 tasks.json을 통해서 빌드작업을 수행 할 수 있게 되었습니다. 하지만, 사실 vim이나 터미널의 lldb 대신 vscode를 쓰는 가장 큰 이유중 하나는 디버깅 때문이라고 생각한다. 이 다음 글에는 launch.json에 대해 적어보고자 합니다.
+
+PS. 두개 이상의 이미지를 예쁘게 넣고 싶은데 방법이 없을까요. 그냥 수직으로 넣으면 스크롤 압박 때문에 별로고. 가로로 정렬하면 잘 안보이고... ㅠ

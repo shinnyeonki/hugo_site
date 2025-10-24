@@ -6,10 +6,11 @@ title = 'My Test Site'
 
 
 ignoreFiles = [
+  'content/02.inbox/Notion/',
   'content/05.clipping/*',
+  'content/07.Daliy Note/',
   'content/89.Obsidian/',
-  'content/index.html',
-  'content/02.inbox/Notion/'
+  'content/index.html'
 ]
 
 # canonifyURLs = true
