@@ -1,0 +1,25 @@
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+        content: ["./*.html"],
+        theme: {
+            extend: {
+                colors: {
+                    primary: {
+                        blue: {
+                            light: "#00ccdd"
+                        }
+                    }
+                }
+            }
+        },
+        darkMode: "class"
+    };
+    
+    // 다크 모드 초기 설정
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+</script>
