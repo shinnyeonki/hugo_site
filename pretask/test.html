@@ -5,17 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Refined Minimalist Layout</title>
-    <!-- Fonts: 궁서체(한글) 느낌 + 로마자(serif) 느낌 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* .latin-font: Nanum Myeongjo for Korean glyphs (궁서체 느낌), Playfair Display for Latin (로마자 느낌) */
-        .latin-font {
-            font-family: 'Nanum Myeongjo', serif, 'Playfair Display';
-        }
+        .latin-font { font-family: 'Nanum Myeongjo', serif, 'Playfair Display'; }
     </style>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script>
@@ -34,7 +29,8 @@
             },
             darkMode: "class"
         };
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        
+        // 다크 모드 초기 설정
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
         } else {
@@ -526,9 +522,10 @@
                 </main>
 
                 <!-- 우측 사이드바 -->
-                <aside id="right-sidebar-container" class="fixed top-14 right-0 z-40 h-[calc(100vh-3.5rem)] bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-in-out translate-x-full
-    md:sticky md:top-14 md:h-[calc(100vh-3.5rem)] md:w-0 md:translate-x-0 md:bg-transparent dark:md:bg-transparent md:border-none
-    flex flex-col flex-shrink-0 overflow-hidden">
+                <aside id="right-sidebar-container" 
+                        class="fixed top-14 right-0 z-40 h-[calc(100vh-3.5rem)] bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-in-out translate-x-full
+                            md:sticky md:top-14 md:h-[calc(100vh-3.5rem)] md:w-0 md:translate-x-0 md:bg-transparent dark:md:bg-transparent md:border-none
+                            flex flex-col flex-shrink-0 overflow-hidden">
                     <div class="w-80 flex flex-col">
                         <!-- 탭 네비게이션 -->
                         <div role="tablist" aria-label="사이드바 컨텐츠" class="flex-shrink-0">

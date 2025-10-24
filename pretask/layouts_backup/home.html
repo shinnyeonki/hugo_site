@@ -1,0 +1,168 @@
+{{ define "main" }}
+<h1>홈페이지 **home.html** {{ .Kind }}</h1>
+    <h3>=== 분류 ===</h3>
+    <ul>
+        <li><a href="/tags/">모든 태그</a></li>
+        <li><a href="/categories/">모든 카테고리</a></li>
+        <li><a href="/archives/">모든 아카이브</a></li>
+        <li><a href="/about/">사이트 소개</a></li>
+        <li><a href="/contact/">연락처</a></li>
+        <li><a href="/sitemap.xml">사이트맵</a></li>
+        <li><a href="/search/">검색</a></li>
+        <li><a href="/privacy/">개인정보 처리방침</a></li>
+        <li><a href="/terms/">이용약관</a></li>
+    </ul>
+
+    <hr> {{/* 섹션 구분선 */}}
+
+    {{/* 최신순 10개 글 섹션 */}}
+    <h3>=== 최신 글 ===</h3>
+    <ul>
+        {{- range first 10 .Site.RegularPages.ByDate.Reverse -}}
+            {{- if not .Params.hidden -}} {{/* hidden: true인 글은 제외 */}}
+                <li>
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    <br>
+                    <small>{{ .Date.Format "2006-01-02" }}</small>
+                </li>
+            {{- end -}}
+        {{- else -}}
+            <li>최신 글이 없습니다.</li>
+        {{- end -}}
+    </ul>
+
+    <hr> {{/* 섹션 구분선 */}}
+
+    {{/* 파일 트리 섹션 */}}
+    <h3>=== 파일 트리 ===</h3>
+    {{/* file-tree.html partial을 호출합니다. 이 partial은 위에서 중복 제거 및 개선된 버전입니다. */}}
+    {{ partial "file-tree.html" (dict "context" .) }}
+
+
+    <hr> {{/* 섹션 구분선 */}}
+
+    {{/* 태그별 정렬 (인기 태그 또는 모든 태그 목록) 섹션 */}}
+    <h3>=== 인기 태그 ===</h3>
+    {{- if .Site.Taxonomies.tags -}}
+        <ul>
+            {{- range $name, $taxonomy := .Site.Taxonomies.tags -}}
+                <li>
+                    <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}/">{{ $name }}</a>
+                    ({{ $taxonomy.Count }})
+                </li>
+            {{- end -}}
+        </ul>
+    {{- else -}}
+        <p>태그가 없습니다.</p>
+    {{- end -}}
+
+
+    {{- /* 컴포넌트에 필요한 JavaScript를 페이지에 추가합니다. 
+         페이지당 한 번만 포함되도록 Scratch를 사용합니다. */ -}}
+    {{- if not (.Scratch.Get "fileTreeScriptLoaded") -}}
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileTrees = document.querySelectorAll('.file-tree');
+            fileTrees.forEach(tree => {
+                const detailsElements = tree.querySelectorAll('details');
+                detailsElements.forEach(details => {
+                    const summary = details.querySelector('summary');
+                    const icon = summary.querySelector('.folder-icon');
+                    
+                    if (details.hasAttribute('open')) {
+                        icon.textContent = '📂';
+                    }
+
+                    details.addEventListener('toggle', () => {
+                        if (details.open) {
+                            icon.textContent = '📂';
+                        } else {
+                            icon.textContent = '📁';
+                        }
+                    });
+                });
+            });
+        });
+        </script>
+        {{- .Scratch.Set "fileTreeScriptLoaded" true -}}
+    {{- end -}}
+
+
+    <!-- 예제 1: 기본 (전체 구조, regular 모드) -->
+    <div class="file-tree p-4 mb-5 border border-gray-200 rounded-lg bg-gray-50 text-sm">
+        <h4 class="text-base font-semibold text-gray-700 mb-2">기본: 콘텐츠 파일 전체 구조 (regular)</h4>
+        <ul class="list-none p-0">
+            {{- /* 최상위 폴더(섹션) 먼저 순회 */ -}}
+            {{- range .Site.Sections.ByTitle -}}
+                <li class="mt-1">
+                    <details>
+                        <summary class="flex items-center gap-x-2 cursor-pointer select-none">
+                            <span class="folder-icon text-lg">📁</span>
+                            <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title }}</a>
+                        </summary>
+                        {{- partial "file-tree.html" (dict "currentNode" . "mode" "regular") -}}
+                    </details>
+                </li>
+            {{- end -}}
+            {{- /* --- 최상위 파일(페이지) 순회 --- */ -}}
+            {{- $rootPages := where .Site.RegularPages "Section" "" -}}
+            {{- if $rootPages -}}
+                {{- range $rootPages.ByTitle -}}
+                    <li class="mt-1 flex items-center gap-x-2">
+                        <span class="text-lg">📄</span>
+                        <a href="{{ .RelPermalink }}" class="text-gray-800 hover:underline">{{ .Title }}</a>
+                    </li>
+                {{- end -}}
+            {{- end -}}
+        </ul>
+    </div>
+
+
+    <!-- 예제 2: All 모드 (전체 구조) -->
+    <div class="file-tree p-4 mb-5 border border-gray-200 rounded-lg bg-gray-50 text-sm">
+        <h4 class="text-base font-semibold text-gray-700 mb-2">All 모드: Hugo가 생성한 모든 페이지 포함</h4>
+        {{- partial "file-tree.html" (dict "currentNode" .Site.Home "mode" "all") -}}
+    </div>
+
+
+    <!-- 예제 3: 경로 지정 ('/blog' 하위, regular 모드) -->
+    <div class="file-tree p-4 mb-5 border border-gray-200 rounded-lg bg-gray-50 text-sm">
+        {{- with .Site.GetPage "/blog" -}}
+            <h4 class="text-base font-semibold text-gray-700 mb-2">'/blog' 하위 구조 (regular)</h4>
+            <ul>
+                <li>
+                    <details open>
+                        <summary class="flex items-center gap-x-2 cursor-pointer select-none">
+                            <span class="folder-icon text-lg">📂</span>
+                            <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title }}</a>
+                        </summary>
+                        {{- partial "file-tree.html" (dict "currentNode" . "mode" "regular") -}}
+                    </details>
+                </li>
+            </ul>
+        {{- else -}}
+            <p class="text-red-600">오류: 경로 '/blog'를 찾을 수 없습니다.</p>
+        {{- end -}}
+    </div>
+
+
+    <!-- 예제 4: 경로 및 모드 지정 ('/projects' 하위, all 모드) -->
+    <div class="file-tree p-4 mb-5 border border-gray-200 rounded-lg bg-gray-50 text-sm">
+        {{- with .Site.GetPage "/projects" -}}
+            <h4 class="text-base font-semibold text-gray-700 mb-2">'/projects' 하위 구조 (all)</h4>
+            <ul>
+                <li>
+                    <details open>
+                        <summary class="flex items-center gap-x-2 cursor-pointer select-none">
+                            <span class="folder-icon text-lg">📂</span>
+                            <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title }}</a>
+                        </summary>
+                        {{- partial "file-tree.html" (dict "currentNode" . "mode" "all") -}}
+                    </details>
+                </li>
+            </ul>
+        {{- else -}}
+            <p class="text-red-600">오류: 경로 '/projects'를 찾을 수 없습니다.</p>
+        {{- end -}}
+    </div>
+{{ end }}
