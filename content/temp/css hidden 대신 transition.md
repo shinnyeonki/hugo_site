@@ -1,11 +1,11 @@
 ---
 title: css hidden 대신 transition
-date: 2025-09-27T06:18:15+09:00
-lastmod: 2025-09-27T06:18:29+09:00
 resource-path: temp/css hidden 대신 transition.md
 aliases:
 tags:
   - ai-content
+date: 2025-09-27T06:18:15+09:00
+lastmod: 2025-09-27T06:18:29+09:00
 ---
 Tailwind CSS를 사용한다고 가정하고, 좌우 사이드바(왼쪽 사이드바와 오른쪽 사이드바)가 각각 화면 왼쪽/오른쪽 밖에 숨어 있다가, 필요할 때 애니메이션과 함께 나타나도록 설정하는 과정입니다.
 

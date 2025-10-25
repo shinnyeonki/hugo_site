@@ -1,13 +1,13 @@
 ---
 title: find 명확하게 이해하자
-date: 2024-03-02T14:44:00+09:00
-lastmod: 2024-03-02T14:44:00+09:00
 resource-path: temp/find 명확하게 이해하자.md
 aliases:
   - find
 tags:
   - shell
   - command
+date: 2024-03-02T14:44:00+09:00
+lastmod: 2024-03-02T14:44:00+09:00
 ---
 어떤 폴더를 제외하고 파일을 찾고자 -not -path 옵션을 사용했지만 접근 불가능한 파일(proc 내부의 파일들)에 접근하려고 해서 오류(Permission denied)를 뿜어내서 찾아보게 되었다
 하지만 생각보다 조금 내용이 복잡한 것 같아 완벽하게 정리해 보고자 한다

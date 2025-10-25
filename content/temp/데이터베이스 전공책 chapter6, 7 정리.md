@@ -1,14 +1,14 @@
 ---
 title: 데이터베이스 전공책 chapter6, 7 정리
+resource-path: temp/데이터베이스 전공책 chapter6, 7 정리.md
+aliases:
+tags:
+description:
+series: "Database System Concepts\r Book by Abraham Silberschatz, Henry F. Korth, and S. Sudarshan"
+series_weight: 6
+finish:
 date: 2024-10-11T04:31:00+09:00
 lastmod: 2024-10-11T04:31:00+09:00
-resource-path: temp/데이터베이스 전공책 chapter6, 7 정리.md
-aliases: 
-tags: 
-description: 
-source: "Database System Concepts\r Book by Abraham Silberschatz, Henry F. Korth, and S. Sudarshan"
-sequence: 6
-finish: 
 ---
 ER diagram 설명 및 스키마 변경
 스키마의 좋은 나쁜 설계 판별

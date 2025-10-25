@@ -1,9 +1,6 @@
 ---
 title: shell script
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/이것이 우분투 리눅스다 기록/shell script.md
-draft: true
 ---
 ![08.media/Pasted image 20240428060401.png](../../../08.media/20240428060401.png)
 

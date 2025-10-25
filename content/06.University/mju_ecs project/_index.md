@@ -1,3 +1,3 @@
 ---
-title: Mju_Ecs Project 
+title: Mju Ecs Project
 ---

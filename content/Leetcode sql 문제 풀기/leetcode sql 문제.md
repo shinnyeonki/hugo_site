@@ -1,10 +1,10 @@
 ---
 title: leetcode sql 문제
+resource-path: Leetcode sql 문제 풀기/leetcode sql 문제.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-09-04T20:49:28+09:00
-resource-path: Leetcode sql 문제 풀기/leetcode sql 문제.md
-aliases: 
-tags: 
 ---
 ## 1581 문제
 not in 으로 풀기

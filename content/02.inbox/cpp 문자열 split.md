@@ -1,13 +1,13 @@
 ---
 title: cpp 문자열 split
-date: 2024-12-17T06:46:00+09:00
-lastmod: 2024-12-17T06:46:00+09:00
 resource-path: 02.inbox/cpp 문자열 split.md
 aliases:
   - string split
   - delimiter
 tags:
   - algorithm
+date: 2024-12-17T06:46:00+09:00
+lastmod: 2024-12-17T06:46:00+09:00
 ---
 ```c++
 vector<string> split(const string& input, const string& delimiter) {

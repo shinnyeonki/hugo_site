@@ -1,9 +1,6 @@
 ---
 title: rooting
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/OneNote/html and css/리눅스/rooting.md
-draft: true
 ---
 **All comments before this are misleading.**
 

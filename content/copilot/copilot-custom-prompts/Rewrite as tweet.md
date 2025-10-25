@@ -1,10 +1,10 @@
 ---
 title: Rewrite as tweet
-date: 2025-10-17T22:42:39+09:00
-lastmod: 2025-10-17T22:46:40+09:00
 resource-path: copilot/copilot-custom-prompts/Rewrite as tweet.md
 aliases:
 tags:
+date: 2025-10-17T22:42:39+09:00
+lastmod: 2025-10-17T22:46:40+09:00
 copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: false
 copilot-command-context-menu-order: 1110

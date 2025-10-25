@@ -1,9 +1,6 @@
 ---
 title: Run level
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/이것이 우분투 리눅스다 기록/Run level.md
-draft: true
 ---
 ![](../../../08.media/20231231210201-1.png)
 default 런레벨을 GUI → CLI 로 변경

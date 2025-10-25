@@ -1,10 +1,10 @@
 ---
 title: mjuecs 2
+resource-path: 06.University/mju_ecs project/mjuecs 2.md
+aliases:
+tags:
 date: 2025-06-04T06:29:24+09:00
 lastmod: 2025-06-04T16:11:54+09:00
-resource-path: 06.University/mju_ecs project/mjuecs 2.md
-aliases: 
-tags: 
 share_link: https://share.note.sx/v4psgxdd#Y5O2qjdKYsrASdE/rxbiWrMGN9Q/BipEsTZ5Dln3e3s
 share_updated: 2025-06-10T04:59:34+09:00
 ---

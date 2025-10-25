@@ -1,9 +1,6 @@
 ---
 title: locale
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/locale.md
-draft: true
 ---
 `**locale**` 출력 결과에서 각 환경 변수의 의미를 이해하고, 이를 `**en_US.UTF-8**`에서 `**ko_KR.UTF-8**`로 변경하는 방법을 알아보겠습니다. `**locale**` 출력에서 각 환경 변수의 의미는 다음과 같습니다:
 

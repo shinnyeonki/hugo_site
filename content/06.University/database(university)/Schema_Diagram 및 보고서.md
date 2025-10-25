@@ -1,14 +1,14 @@
 ---
 title: Schema Diagram 및 보고서
+resource-path: 06.University/database(university)/Schema_Diagram 및 보고서.md
+aliases:
+tags:
+description: 대학 수업 database 에서 배운 모든 내용 정리
+series: database(university)
+series_weight:
+finish:
 date: 2024-05-21T18:51:00+09:00
 lastmod: 2024-05-21T18:51:00+09:00
-resource-path: 06.University/database(university)/Schema_Diagram 및 보고서.md
-aliases: 
-tags: 
-description: 대학 수업 database 에서 배운 모든 내용 정리
-source: database(university)
-sequence: 
-finish: 
 ---
 ![Pasted image 20240522033715](../../08.media/20240522033715.png)
 > 열쇠표시 : primary key

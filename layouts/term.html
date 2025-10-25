@@ -1,33 +1,76 @@
 {{ define "main" }}
-    <!-- term.html이 스스로 꽉 찬 너비의 컨테이너를 생성합니다. -->
-    <div id="content-container" class="w-full max-w-none">
-        <header class="mb-8 pb-4 border-b border-neutral-200 dark:border-neutral-800">
-            <!-- "Tag" 또는 "Category"와 같은 분류 이름을 동적으로 표시합니다. -->
+    <!-- 1. Breadcrumb 영역 -->
+    <div class="w-full mb-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+                <a href="/" class="hover:text-primary-blue-light transition-colors">🏠 Home</a>
+                <span>/</span>
+                <a href="/{{ .Data.Plural }}" class="hover:text-primary-blue-light transition-colors">{{ .Data.Plural | humanize | title }}</a>
+                <span>/</span>
+                <span class="text-neutral-700 dark:text-neutral-300 font-semibold">{{ .Title }}</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 2. Header 영역 -->
+    <div class="w-full mb-8">
+        <div class="max-w-7xl mx-auto px-4 border-b pb-4">
             <p class="text-center text-base font-semibold text-primary-blue-light latin-font">
                 {{ .Data.Singular | humanize | title }}
             </p>
-            <h1 class="text-4xl font-extrabold text-center text-neutral-900 dark:text-neutral-100 latin-font mt-1">
+            <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font mt-1">
                 {{ .Title }}
             </h1>
             <p class="text-center text-neutral-500 dark:text-neutral-400 mt-2">
                 A collection of {{ len .Pages }} posts.
             </p>
-        </header>
-
-        <!-- 글 목록 (list.html과 동일한 grid 구조) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
-            {{ range .Pages }}
-                <a href="{{ .Permalink }}" class="block p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg transition-all duration-300 hover:shadow-xl hover:border-primary-blue-light dark:hover:border-primary-blue-light">
-                    <h2 class="text-xl font-bold mb-2 latin-font">{{ .Title }}</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400 text-sm break-words">{{ .Summary | plainify | truncate 300 }}</p>
-                </a>
-            {{ end }}
         </div>
-        
-        <!-- 페이지네이션 컨트롤 -->
-        {{/*  {{ partial "pagination.html" . }}  */}}
+    </div>
 
-        <!-- 푸터를 직접 포함시킵니다. -->
-        {{ partial "footer.html" . }}
+    <!-- 3. Content 영역 -->
+    <div id="content-container" class="w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- 글 목록 (list.html과 동일한 grid 구조) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
+                {{ range .Pages }}
+                    <!-- 페이지(파일) 카드 -->
+                    <div class="flex flex-col p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg transition-all duration-300 hover:shadow-xl hover:border-primary-blue-light dark:hover:border-primary-blue-light">
+                        <a href="{{ .Permalink }}" class="flex-grow">
+                            <h2 class="text-xl font-bold mb-2 latin-font">{{ .Title }}</h2>
+                            <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-3">{{ .Summary | plainify | truncate 150 }}</p>
+                        </a>
+                        <div class="mt-auto pt-3 border-t border-neutral-200 dark:border-neutral-700">
+                            {{ if .Params.tags }}
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    {{ range .Params.tags }}
+                                        <a href="/tags/{{ . | urlize }}" class="px-2 py-1 text-xs bg-primary-blue-light/10 text-primary-blue-light dark:bg-primary-blue-light/20 rounded hover:bg-primary-blue-light/20 dark:hover:bg-primary-blue-light/30 transition-colors" onclick="event.stopPropagation()">
+                                            {{ . }}
+                                        </a>
+                                    {{ end }}
+                                </div>
+                            {{ end }}
+                            <div class="text-xs text-neutral-500 dark:text-neutral-500 flex items-center gap-4">
+                                {{ if .Date }}
+                                    <span>📅 {{ .Date.Format "2006-01-02 15:04" }}</span>
+                                {{ end }}
+                                {{ if .Lastmod }}
+                                    <span>✏️ {{ .Lastmod.Format "2006-01-02 15:04" }}</span>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
+            
+            <!-- 페이지네이션 컨트롤 -->
+            {{/*  {{ partial "pagination.html" . }}  */}}
+        </div>
+    </div>
+
+    <!-- 4. Footer 영역 -->
+    <div class="w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            {{ partial "footer.html" . }}
+        </div>
     </div>
 {{ end }}

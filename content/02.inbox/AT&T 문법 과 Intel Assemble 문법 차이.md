@@ -1,11 +1,11 @@
 ---
 title: AT&T 문법 과 Intel Assemble 문법 차이
-date: 2024-08-26T07:37:00+09:00
-lastmod: 2024-08-26T07:37:00+09:00
 resource-path: 02.inbox/AT&T 문법 과 Intel Assemble 문법 차이.md
-aliases: 
+aliases:
 tags:
   - assembler
+date: 2024-08-26T07:37:00+09:00
+lastmod: 2024-08-26T07:37:00+09:00
 ---
 x86 아키텍처에서 어셈블리 언어는 주로 Intel과 AT&T 두 가지 구문 형식으로 나뉘어 사용된다 이 두 형식은 문법과 명령어의 표현 방식에서 차이가 있다
 

@@ -1,3 +1,3 @@
 ---
-title: Leetcode75 
+title: Leetcode75
 ---

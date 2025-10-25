@@ -1,10 +1,10 @@
 ---
 title: c++ 입력함수
+resource-path: temp/c++ 입력함수.md
+aliases:
+tags:
 date: 2023-12-24T08:43:00+09:00
 lastmod: 2025-06-05T06:16:41+09:00
-resource-path: temp/c++ 입력함수.md
-aliases: 
-tags: 
 ---
 ```cpp
 // 정수  

@@ -1,11 +1,11 @@
 ---
 title: Spec Driven Development
-date: 2025-10-13T13:36:25+09:00
-lastmod: 2025-10-13T13:45:24+09:00
 resource-path: Spec-Driven Development.md
 aliases:
 tags:
   - ai-content
+date: 2025-10-13T13:36:25+09:00
+lastmod: 2025-10-13T13:45:24+09:00
 ---
 ## 권력의 역전
 

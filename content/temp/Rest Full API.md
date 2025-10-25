@@ -1,10 +1,10 @@
 ---
 title: Rest Full API
+resource-path: temp/Rest Full API.md
+aliases:
+tags:
 date: 2025-03-14T03:00:00+09:00
 lastmod: 2025-10-23T02:44:19+09:00
-resource-path: temp/Rest Full API.md
-aliases: 
-tags: 
 ---
 ![](../08.media/20250314030577.png)
 

@@ -1,11 +1,11 @@
 ---
 title: TCP TELNET 통신 과정 시뮬레이션
-date: 2025-05-21T09:08:00+09:00
-lastmod: 2025-05-21T09:08:00+09:00
 resource-path: 02.inbox/TCP TELNET 통신 과정 시뮬레이션.md
-aliases: 
+aliases:
 tags:
   - network
+date: 2025-05-21T09:08:00+09:00
+lastmod: 2025-05-21T09:08:00+09:00
 ---
 ## Telnet (TCP 기반) 패킷 이동 시뮬레이션: Sender/Receiver 윈도우 및 패킷 내용
 

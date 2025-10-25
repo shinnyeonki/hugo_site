@@ -1,12 +1,12 @@
 ---
 title: c, cpp 연산자 우선순위
-date: 2023-12-22T10:31:00+09:00
-lastmod: 2023-12-22T10:31:00+09:00
 resource-path: 02.inbox/c, cpp 연산자 우선순위.md
-aliases: 
+aliases:
 tags:
   - c
   - reference
+date: 2023-12-22T10:31:00+09:00
+lastmod: 2023-12-22T10:31:00+09:00
 ---
 ![c 연산자 우선순위-20231222103216](../08.media/20231222103216.png)
 

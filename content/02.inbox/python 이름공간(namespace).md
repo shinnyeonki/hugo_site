@@ -1,13 +1,13 @@
 ---
 title: python 이름공간(namespace)
-date: 2023-12-24T09:14:00+09:00
-lastmod: 2023-12-24T09:14:00+09:00
 resource-path: 02.inbox/python 이름공간(namespace).md
 aliases:
   - namepace
 tags:
   - python
   - language
+date: 2023-12-24T09:14:00+09:00
+lastmod: 2023-12-24T09:14:00+09:00
 ---
 이름공간과 스코프 두가지 개념을 인지
 ![](../08.media/20240428050441.png)%20image%2020240428050441.png)

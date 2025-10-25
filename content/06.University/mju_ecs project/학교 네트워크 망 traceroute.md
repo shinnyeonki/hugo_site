@@ -1,10 +1,10 @@
 ---
 title: 학교 네트워크 망 traceroute
+resource-path: 06.University/mju_ecs project/학교 네트워크 망 traceroute.md
+aliases:
+tags:
 date: 2025-06-20T02:31:54+09:00
 lastmod: 2025-06-27T19:51:49+09:00
-resource-path: 06.University/mju_ecs project/학교 네트워크 망 traceroute.md
-aliases: 
-tags: 
 ---
 학교 강의실별 와이파이 접속시
 

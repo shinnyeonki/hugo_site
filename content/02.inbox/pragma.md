@@ -1,13 +1,13 @@
 ---
 title: pragma
-date: 2024-01-04T12:18:00+09:00
-lastmod: 2024-01-04T12:18:00+09:00
 resource-path: 02.inbox/pragma.md
-aliases: 
+aliases:
 tags:
   - c
   - cpp
   - language
+date: 2024-01-04T12:18:00+09:00
+lastmod: 2024-01-04T12:18:00+09:00
 ---
 사용할 일은 잦은데~ 너무 무관심한 척 한 것 같다~ 
 

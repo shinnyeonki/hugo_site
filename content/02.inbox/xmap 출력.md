@@ -1,14 +1,14 @@
 ---
 title: xmap 출력
-date: 2024-12-22T12:04:00+09:00
-lastmod: 2024-12-22T12:04:00+09:00
 resource-path: 02.inbox/xmap 출력.md
-aliases: 
+aliases:
 tags:
   - command
   - linux
   - system-programing
   - 잡지식
+date: 2024-12-22T12:04:00+09:00
+lastmod: 2024-12-22T12:04:00+09:00
 ---
 ![](../08.media/20241207204591.png)%20image%2020241207204591.png)
 1. `2910149: ./a.out`

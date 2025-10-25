@@ -1,15 +1,15 @@
 ---
 title: 서버 db 사용하기
-date: 2024-11-14T13:13:00+09:00
-lastmod: 2024-11-14T13:13:00+09:00
 resource-path: 02.inbox/서버 db 사용하기.md
-aliases: 
+aliases:
 tags:
   - database
 description: database design 서버 구성용
-source: 
-sequence: 
-finish: 
+series:
+series_weight:
+finish:
+date: 2024-11-14T13:13:00+09:00
+lastmod: 2024-11-14T13:13:00+09:00
 ---
 미리 data 를 담아놓은 db 입니다
 환경구성이 잘 안되시는 분은 여기서 이것을 사용하시면 됩니다

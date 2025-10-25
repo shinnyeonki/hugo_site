@@ -1,9 +1,6 @@
 ---
 title: 리눅스에서의 PID, PPID, PGID, SID
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/리눅스에서의 PID, PPID, PGID, SID.md
-draft: true
 ---
 1. PID (Process ID):  
     PID는 각 프로세스에 할당된 고유한 식별자로, 숫자로 표현됩니다. 시스템 내에서 실행 중인 모든 프로세스는 고유한 PID를 가지며, 이를 통해 각 프로세스를 구분합니다. PID 0은 스케줄러를 위한 idle 프로세스를 나타내고, PID 1은 시스템 초기화를 담당하는 프로세스를 보통 나타냅니다.  

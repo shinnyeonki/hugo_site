@@ -1,11 +1,11 @@
 ---
 title: 일반 함수 호출 (User level Function Call) vs 시스템 콜 (System Call) 호출 방식의 차이
-date: 2025-03-11T11:39:00+09:00
-lastmod: 2025-03-11T11:39:00+09:00
 resource-path: 02.inbox/일반 함수 호출 (User-level Function Call) vs 시스템 콜 (System Call) 호출 방식의 차이.md
-aliases: 
+aliases:
 tags:
   - operating-system
+date: 2025-03-11T11:39:00+09:00
+lastmod: 2025-03-11T11:39:00+09:00
 ---
 시스템 콜(system call)은 사용자 프로그램이 커널의 기능을 간접적으로 호출하는 메커니즘이며, **매핑 테이블(시스템 콜 테이블)**을 통해 실제 커널 함수로 연결됩니다. 일반 함수 호출과 시스템 콜의 동작 방식을 인텔 어셈블리 문법과 함께 비교 설명합니다.
 

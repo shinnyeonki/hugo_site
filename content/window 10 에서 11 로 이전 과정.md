@@ -1,10 +1,10 @@
 ---
 title: window 10 에서 11 로 이전 과정
+resource-path: window 10 에서 11 로 이전 과정.md
+aliases:
+tags:
 date: 2025-10-16T18:36:49+09:00
 lastmod: 2025-10-17T19:54:00+09:00
-resource-path: window 10 에서 11 로 이전 과정.md
-aliases: 
-tags: 
 ---
 ## window 측
 - chrome

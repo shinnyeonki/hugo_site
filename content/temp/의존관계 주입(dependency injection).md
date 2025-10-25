@@ -1,7 +1,5 @@
 ---
 title: 의존관계 주입(dependency injection)
-date: 2024-01-31T20:25:00+09:00
-lastmod: 2025-08-19T22:14:39+09:00
 resource-path: temp/의존관계 주입(dependency injection).md
 aliases:
   - 의존성 주입
@@ -11,6 +9,8 @@ tags:
   - java
   - spring
   - oop
+date: 2024-01-31T20:25:00+09:00
+lastmod: 2025-08-19T22:14:39+09:00
 ---
 - 생성자 주입
 - 설정자 수정자 주입(setter)

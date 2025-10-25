@@ -1,9 +1,6 @@
 ---
 title: mkfs
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/mkfs.md
-draft: true
 ---
 파일 시스템 결정 명령어
 

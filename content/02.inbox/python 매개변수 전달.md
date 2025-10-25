@@ -1,13 +1,13 @@
 ---
 title: python 매개변수 전달
-date: 2024-01-08T07:12:00+09:00
-lastmod: 2025-10-21T20:46:46+09:00
 resource-path: 02.inbox/python 매개변수 전달.md
 aliases:
   - parametor
 tags:
   - python
   - language
+date: 2024-01-08T07:12:00+09:00
+lastmod: 2025-10-21T20:46:46+09:00
 ---
 파이썬의 매개변수 전달 방식 : 혼합 방식
 - 파이썬은 모든 것이 객체이며 다음 2 종류가 있음

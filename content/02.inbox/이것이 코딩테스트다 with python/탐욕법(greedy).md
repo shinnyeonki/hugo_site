@@ -1,7 +1,5 @@
 ---
 title: 탐욕법(greedy)
-date: 2023-12-20T07:12:00+09:00
-lastmod: 2025-09-05T03:50:44+09:00
 resource-path: 02.inbox/이것이 코딩테스트다 with python/탐욕법(greedy).md
 aliases:
   - 그리디
@@ -10,10 +8,12 @@ aliases:
 tags:
   - cs
   - algorithm
-description: 
-source: 이것이 코딩테스트다 with python
-sequence: 11
-finish: 
+description:
+series: 이것이 코딩테스트다 with python
+series_weight: 11
+finish:
+date: 2023-12-20T07:12:00+09:00
+lastmod: 2025-09-05T03:50:44+09:00
 ---
 현재 상황에서 지금 당장 가장 좋은 것만 고르는 방법
 

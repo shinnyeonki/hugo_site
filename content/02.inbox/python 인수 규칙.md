@@ -1,15 +1,15 @@
 ---
 title: python 인수 규칙
-date: 2023-12-22T07:18:00+09:00
-lastmod: 2025-10-21T20:45:21+09:00
 resource-path: 02.inbox/python 인수 규칙.md
-aliases: 
+aliases:
 tags:
   - python
   - language
-description: 
-source: 
-sequence: 
+description:
+series:
+series_weight:
+date: 2023-12-22T07:18:00+09:00
+lastmod: 2025-10-21T20:45:21+09:00
 ---
 ```python
 def print(  

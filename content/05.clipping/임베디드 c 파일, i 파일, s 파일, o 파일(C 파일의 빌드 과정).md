@@ -1,15 +1,14 @@
 ---
 title: [임베디드] c 파일, i 파일, s 파일, o 파일(C 파일의 빌드 과정)
-date: 2025-10-01
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/임베디드 c 파일, i 파일, s 파일, o 파일(C 파일의 빌드 과정).md
-source: "https://clearwater92.tistory.com/39"
+series: https://clearwater92.tistory.com/39
 author:
   - "[[clearwater]]"
 published: 2021-03-22
+date: 2025-10-01
 description: "GCC(GNU Compiler Collection)는 C 컴파일러입니다. C언어를 컴퓨터가 읽을 수 있도록 번역해야 하는데 리눅스에서는 Visual Studio C++과 같이 윈도우에서 쓰이는 프로그램이 사용 불가합니다. 그래서 리눅스용의 대표 C컴파일러가 GCC인 것입니다. C 파일을 컴파일 할 경우의 단계는 아래와 같습니다. 전처리 단계 : c 파일을 gcc 컴파일러로 컴파일 할 경우 전처리 단계가 진행되는데 결과로 i 파일을 만들어냅니다. 이 단계에서는 헤더파일을 포함하고 매크로 확장을 합니다. #include 와 같은 헤더파일 처리 #define HUNDRED = 100 과 같은 매크로 처리 gcc는 cpp라는 전처리기를 사용하는데 gcc -E hello.c -o hello.i 를 입력하면 전처리.."
 tags:
-  - "clippings"
+  - clippings
 ---
 [본문 바로가기](https://clearwater92.tistory.com/#dkBody)
 

@@ -1,11 +1,11 @@
 ---
 title: java 쓰레드(thread)
-date: 2024-02-18T19:19:00+09:00
-lastmod: 2024-02-18T19:19:00+09:00
 resource-path: temp/java 쓰레드(thread).md
-aliases: 
+aliases:
 tags:
   - java
+date: 2024-02-18T19:19:00+09:00
+lastmod: 2024-02-18T19:19:00+09:00
 ---
 [java 메모리(memory)](memory)).md) 참고
 ![Pasted image 2024![](../08.media/20240218210440.png)210440.png)

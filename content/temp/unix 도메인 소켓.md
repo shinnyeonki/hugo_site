@@ -1,9 +1,6 @@
 ---
 title: unix 도메인 소켓
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: temp/unix 도메인 소켓.md
-draft: true
 ---
 `PF_UNIX` (또는 `AF_UNIX`)는 로컬 시스템 내에서 프로세스 간 통신(IPC)을 위한 프로토콜로, 네트워크를 거치지 않고 소켓을 사용해 데이터를 교환합니다. 아래는 `PF_UNIX`와 `datagram socket`을 사용한 클라이언트와 서버 예제입니다.
 

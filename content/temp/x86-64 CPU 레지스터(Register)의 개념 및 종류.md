@@ -1,12 +1,12 @@
 ---
 title: x86 64 CPU 레지스터(Register)의 개념 및 종류
-date: 2024-03-20T14:24:00+09:00
-lastmod: 2024-03-20T14:24:00+09:00
 resource-path: temp/x86-64 CPU 레지스터(Register)의 개념 및 종류.md
-aliases: 
+aliases:
 tags:
   - cpu
   - register
+date: 2024-03-20T14:24:00+09:00
+lastmod: 2024-03-20T14:24:00+09:00
 ---
 32bit, 64bit 운영체제에서 32bit, 64bit 는 레지스터 및 데이터 경로의 크기 를 의미한다.  
 위 예시에서 AH 는 8bit 운영체제와 호환되는 레지스터라고 이해하면 된다. 

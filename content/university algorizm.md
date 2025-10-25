@@ -1,12 +1,12 @@
 ---
 title: university algorizm
-date: 2025-10-19T18:41:43+09:00
-lastmod: 2025-10-21T20:40:22+09:00
 resource-path: university algorizm.md
 aliases:
 tags:
   - ai-content
   - university
+date: 2025-10-19T18:41:43+09:00
+lastmod: 2025-10-21T20:40:22+09:00
 ---
 ### 제3장: 정렬
 

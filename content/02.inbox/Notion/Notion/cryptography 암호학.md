@@ -1,9 +1,6 @@
 ---
 title: cryptography 암호학
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/Notion/cryptography 암호학.md
-draft: true
 ---
 ```
 crypto = 비밀

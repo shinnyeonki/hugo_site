@@ -1,9 +1,6 @@
 ---
 title: scp 명령어
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/Notion/파일 시스템/scp 명령어.md
-draft: true
 ---
 `**scp**` (Secure Copy Protocol) 명령어는 로컬 시스템과 원격 시스템 간에 파일 및 디렉토리를 안전하게 복사하는 데 사용됩니다. 아래는 몇 가지 `**scp**` 명령어 예제입니다.
 

@@ -1,11 +1,11 @@
 ---
 title: AOP
-date: 2025-10-19T16:27:14+09:00
-lastmod: 2025-10-19T16:27:21+09:00
 resource-path: AOP.md
 aliases:
 tags:
   - ai-content
+date: 2025-10-19T16:27:14+09:00
+lastmod: 2025-10-19T16:27:21+09:00
 ---
 **AOP**(Aspect-Oriented Programming, **관점 지향 프로그래밍**)는 소프트웨어 설계에서 **횡단 관심사**(Cross-cutting Concerns)를 효과적으로 분리하고 모듈화하기 위한 프로그래밍 패러다임입니다.
 

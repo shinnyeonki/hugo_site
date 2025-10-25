@@ -1,12 +1,12 @@
 ---
 title: obsidian callout
-date: 2023-12-21T03:05:00+09:00
-lastmod: 2023-12-21T03:05:00+09:00
 resource-path: 89.Obsidian/obsidian callout.md
-aliases: 
+aliases:
 tags:
   - obsidian
-source:
+date: 2023-12-21T03:05:00+09:00
+lastmod: 2023-12-21T03:05:00+09:00
+series:
 ---
 [!abstract]
 >[!abstract]

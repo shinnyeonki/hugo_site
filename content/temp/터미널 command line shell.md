@@ -1,16 +1,16 @@
 ---
 title: 터미널 command line shell
-date: 2024-04-28T08:46:00+09:00
-lastmod: 2025-08-11T00:45:47+09:00
 resource-path: temp/터미널 command line shell.md
-aliases: 
+aliases:
 tags:
   - shell
   - linux
 description: 리눅스 콘솔 환경에서 shell 의 관한 정보
-source: 
-sequence: 
-finish: 
+series:
+series_weight:
+finish:
+date: 2024-04-28T08:46:00+09:00
+lastmod: 2025-08-11T00:45:47+09:00
 ---
 터미널 command line 이라고 한정하여 shell 이라고 말한다면
 일반적으로 /dev 파일 내부에 터미널 드라이브 장치를 통해 사용되는 shell 을 말한다 즉![[../08.media/20231223130204.png|login shell vs non-login shell-20231223130204]]2020231223130204.png)

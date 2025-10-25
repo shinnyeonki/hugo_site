@@ -1,11 +1,11 @@
 ---
 title: composite pattern
-date: 2024-02-06T04:27:00+09:00
-lastmod: 2024-02-06T04:27:00+09:00
 resource-path: temp/composite pattern.md
-aliases: 
+aliases:
 tags:
   - design_patterns
+date: 2024-02-06T04:27:00+09:00
+lastmod: 2024-02-06T04:27:00+09:00
 ---
 복합 객체와 단일 객체를 동일하게 취급하고 싶다
 과일과 과일박스를 동일한 과일박스 안에 넣고 싶다

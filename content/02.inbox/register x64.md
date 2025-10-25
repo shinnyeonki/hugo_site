@@ -1,11 +1,11 @@
 ---
 title: register x64
-date: 2025-05-25T23:35:00+09:00
-lastmod: 2025-05-25T23:35:00+09:00
 resource-path: 02.inbox/register x64.md
-aliases: 
+aliases:
 tags:
   - assembler
+date: 2025-05-25T23:35:00+09:00
+lastmod: 2025-05-25T23:35:00+09:00
 ---
 ![](../08.media/20240417101228.png)%20image%2020240417101228.png)
 

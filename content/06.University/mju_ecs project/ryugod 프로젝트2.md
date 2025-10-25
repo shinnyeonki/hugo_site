@@ -1,10 +1,10 @@
 ---
 title: ryugod 프로젝트2
+resource-path: 06.University/mju_ecs project/ryugod 프로젝트2.md
+aliases:
+tags:
 date: 2025-03-15T10:30:00+09:00
 lastmod: 2025-03-15T10:30:00+09:00
-resource-path: 06.University/mju_ecs project/ryugod 프로젝트2.md
-aliases: 
-tags: 
 ---
 mysql template 자료 : https://hub.docker.com/_/mysql
 postgres template 자료 : https://hub.docker.com/_/postgres

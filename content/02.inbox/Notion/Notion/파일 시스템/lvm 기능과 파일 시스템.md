@@ -1,9 +1,6 @@
 ---
 title: lvm 기능과 파일 시스템
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/Notion/파일 시스템/lvm 기능과 파일 시스템.md
-draft: true
 ---
 lvm 기능의 lvresize 명령어를 사용하여 “/” 마운트 되어 있는 /dev/mapper/rl-root 의 장치를 확장하였다
 

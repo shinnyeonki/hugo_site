@@ -1,10 +1,10 @@
 ---
 title: cpp STL2
+resource-path: leetcode75/cpp STL2.md
+aliases:
+tags:
 date: 2024-12-23T09:42:00+09:00
 lastmod: 2024-12-23T09:42:00+09:00
-resource-path: leetcode75/cpp STL2.md
-aliases: 
-tags: 
 ---
 템플릿 인수로 타입과 비타입(정수) 둘다 올수 있다
 

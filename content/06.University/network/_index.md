@@ -1,3 +1,3 @@
 ---
-title: Network 
+title: Network
 ---

@@ -1,11 +1,11 @@
 ---
 title: 싱글톤 내부 의존관계로 프로토타입 스코프의 bean 을 가질때
-date: 2024-02-02T15:27:00+09:00
-lastmod: 2025-08-19T22:14:19+09:00
 resource-path: 02.inbox/싱글톤 내부 의존관계로 프로토타입 스코프의 bean 을 가질때.md
-aliases: 
+aliases:
 tags:
   - spring
+date: 2024-02-02T15:27:00+09:00
+lastmod: 2025-08-19T22:14:19+09:00
 ---
 ```java
 @Scope("singleton")

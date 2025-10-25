@@ -1,16 +1,16 @@
 ---
 title: 데이터베이스 sql
-date: 2024-04-19T00:30:00+09:00
-lastmod: 2024-04-19T00:30:00+09:00
 resource-path: 06.University/database(university)/데이터베이스 sql.md
-aliases: 
+aliases:
 tags:
   - database
   - sql
 description: 대학 수업 database 에서 배운 모든 내용 정리
-source: database(university)
-sequence: 2
-finish: 
+series: database(university)
+series_weight: 2
+finish:
+date: 2024-04-19T00:30:00+09:00
+lastmod: 2024-04-19T00:30:00+09:00
 ---
 ## SQL
 

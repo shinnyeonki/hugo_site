@@ -1,10 +1,10 @@
 ---
 title: spring 외부설정
+resource-path: spring 외부설정.md
+aliases:
+tags:
 date: 2025-08-09T16:26:56+09:00
 lastmod: 2025-10-22T03:20:38+09:00
-resource-path: spring 외부설정.md
-aliases: 
-tags: 
 ---
 1. application.properties
 설정 우선순위 (가장 높음 → 낮음)

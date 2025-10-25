@@ -1,11 +1,11 @@
 ---
 title: ios 터미널 접근
-date: 2024-05-15T14:30:00+09:00
-lastmod: 2024-05-15T14:30:00+09:00
 resource-path: 02.inbox/ios 터미널 접근.md
-aliases: 
+aliases:
 tags:
   - ios
+date: 2024-05-15T14:30:00+09:00
+lastmod: 2024-05-15T14:30:00+09:00
 ---
 ## 외부 접근
 ios 는 모바일 운영체제로서 샌드박스 형태의 아키텍쳐를 취하고 있다

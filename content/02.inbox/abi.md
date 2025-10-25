@@ -1,12 +1,12 @@
 ---
 title: abi
-date: 2025-01-22T18:31:00+09:00
-lastmod: 2025-01-22T18:31:00+09:00
 resource-path: 02.inbox/abi.md
-aliases: 
+aliases:
 tags:
   - operating-system
   - c
+date: 2025-01-22T18:31:00+09:00
+lastmod: 2025-01-22T18:31:00+09:00
 ---
 ```
 gcc-arm-[플렛폼]-[ABI 타입]

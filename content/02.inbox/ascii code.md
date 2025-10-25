@@ -1,7 +1,5 @@
 ---
 title: ascii code
-date: 2023-12-20T07:12:00+09:00
-lastmod: 2023-12-20T07:12:00+09:00
 resource-path: 02.inbox/ascii code.md
 aliases:
   - 아식스
@@ -10,6 +8,8 @@ tags:
   - 잡지식
   - reference
   - cs
+date: 2023-12-20T07:12:00+09:00
+lastmod: 2023-12-20T07:12:00+09:00
 ---
 ![Untitled](../08.media/20231213153502.png)
 

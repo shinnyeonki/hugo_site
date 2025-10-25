@@ -1,12 +1,12 @@
 ---
 title: 문서 객체 모델 (DOM)
-date: 2023-12-20T07:12:00+09:00
-lastmod: 2023-12-20T07:12:00+09:00
 resource-path: 02.inbox/문서 객체 모델 (DOM).md
-aliases: 
+aliases:
 tags:
   - javascript
   - language
+date: 2023-12-20T07:12:00+09:00
+lastmod: 2023-12-20T07:12:00+09:00
 ---
 ___
 

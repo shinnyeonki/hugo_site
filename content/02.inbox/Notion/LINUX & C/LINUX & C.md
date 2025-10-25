@@ -1,10 +1,10 @@
 ---
 title: LINUX & C
+resource-path: 02.inbox/Notion/LINUX & C/LINUX & C.md
+aliases:
+tags:
 date: 2025-06-03T06:05:15+09:00
 lastmod: 2025-06-08T19:43:54+09:00
-resource-path: 02.inbox/Notion/LINUX & C/LINUX & C.md
-aliases: 
-tags: 
 ---
 ```dataviewjs
 var currentFolder = dv.current().file.folder;

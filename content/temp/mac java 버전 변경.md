@@ -1,9 +1,6 @@
 ---
 title: mac java 버전 변경
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: temp/mac java 버전 변경.md
-draft: true
 ---
 ```bash
 

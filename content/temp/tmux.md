@@ -1,11 +1,11 @@
 ---
 title: tmux
-date: 2025-10-22T11:37:30+09:00
-lastmod: 2025-10-23T02:43:19+09:00
 resource-path: temp/tmux.md
-aliases: 
+aliases:
 tags:
   - 잡지식
+date: 2025-10-22T11:37:30+09:00
+lastmod: 2025-10-23T02:43:19+09:00
 ---
 ![Pasted image 20250117105337](../08.media/20250117105337.png)
 ![Pasted image 20250117105406](../08.media/20250117105406.png)

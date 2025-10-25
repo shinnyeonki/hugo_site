@@ -1,7 +1,5 @@
 ---
 title: java 제네릭(generic)
-date: 2024-01-29T05:00:00+09:00
-lastmod: 2024-01-29T05:00:00+09:00
 resource-path: 02.inbox/java 제네릭(generic).md
 aliases:
   - non-feifiable
@@ -12,6 +10,8 @@ aliases:
   - invariant
 tags:
   - java
+date: 2024-01-29T05:00:00+09:00
+lastmod: 2024-01-29T05:00:00+09:00
 ---
 java 는 제네릭 배열을 생성하지 못한다
 

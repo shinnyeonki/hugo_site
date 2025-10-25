@@ -1,14 +1,14 @@
 ---
 title: 3장 트랜스포트 계층 (transport)
-date: 2025-04-08T11:00:00+09:00
-lastmod: 2025-06-03T06:14:08+09:00
 resource-path: 06.University/network/3장 트랜스포트 계층 (transport).md
 aliases:
   - 전송 계층
 tags:
   - network
-source: 네트워크 하향식 접근 책
-sequence: 3
+series: 네트워크 하향식 접근 책
+series_weight: 3
+date: 2025-04-08T11:00:00+09:00
+lastmod: 2025-06-03T06:14:08+09:00
 ---
 packet 이름 : segment
 

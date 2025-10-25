@@ -1,7 +1,5 @@
 ---
 title: c 선언부 문법 읽기
-date: 2023-12-22T10:21:00+09:00
-lastmod: 2025-10-06T04:30:41+09:00
 resource-path: 01.publish/c 선언부 문법 읽기.md
 aliases:
 tags:
@@ -9,6 +7,8 @@ tags:
   - cpp
   - language
   - explanation
+date: 2023-12-22T10:21:00+09:00
+lastmod: 2025-10-06T04:30:41+09:00
 share_link: https://share.note.sx/mjzeq6xi#5sX5dVRXnx4vHvMWNFtDh5m1Eg3GPJXOebapYaDOzFs
 share_updated: 2025-07-01T23:01:11+09:00
 ---

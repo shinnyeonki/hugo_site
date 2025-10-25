@@ -1,12 +1,12 @@
 ---
 title: spring RequestMapping 구현체
-date: 2025-03-10T00:09:00+09:00
-lastmod: 2025-08-19T22:16:22+09:00
 resource-path: 02.inbox/spring RequestMapping 구현체.md
-aliases: 
+aliases:
 tags:
   - spring
   - reference
+date: 2025-03-10T00:09:00+09:00
+lastmod: 2025-08-19T22:16:22+09:00
 ---
 스프링 MVC의 **`HandlerMapping` 구현체**는 다양한 방식으로 요청을 핸들러(컨트롤러)에 매핑합니다. 각 클래스의 역할과 특징을 체계적으로 정리했습니다:
 

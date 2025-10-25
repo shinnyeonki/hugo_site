@@ -1,12 +1,12 @@
 ---
 title: form 태그의 http 패킷(massage) 전송
-date: 2024-02-13T15:15:00+09:00
-lastmod: 2024-02-13T15:15:00+09:00
 resource-path: 02.inbox/form 태그의 http 패킷(massage) 전송.md
-aliases: 
+aliases:
 tags:
   - network
   - html
+date: 2024-02-13T15:15:00+09:00
+lastmod: 2024-02-13T15:15:00+09:00
 ---
 클라이언트측 post 메서드 전송 예시
 ```html

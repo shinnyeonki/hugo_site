@@ -15,7 +15,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
         </svg>
     </summary>
-    <div class="pl-6 mt-1 space-y-1">
-        {{ partial "left-nav/tree-view.html" (dict "currentSection" .Site.Home "currentPage" .) }}
+    <div class="pl-6 mt-1">
+        <ul id="ln-file-tree" class="space-y-1">
+            {{ partial "left-nav/tree-view.html" (dict "currentSection" .Site.Home "currentPage" .) }}
+        </ul>
     </div>
 </details>

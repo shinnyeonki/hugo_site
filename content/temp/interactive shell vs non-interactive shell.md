@@ -1,11 +1,11 @@
 ---
 title: interactive shell vs non interactive shell
-date: 2024-02-21T17:21:00+09:00
-lastmod: 2024-02-21T17:21:00+09:00
 resource-path: temp/interactive shell vs non-interactive shell.md
-aliases: 
+aliases:
 tags:
   - shell
+date: 2024-02-21T17:21:00+09:00
+lastmod: 2024-02-21T17:21:00+09:00
 ---
 ex) 터미널 vs #!/bin/bash 로 시작하는 파일
 

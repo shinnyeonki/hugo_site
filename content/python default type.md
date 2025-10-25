@@ -1,11 +1,11 @@
 ---
 title: python default type
-date: 2025-07-01T06:52:17+09:00
-lastmod: 2025-07-01T23:01:01+09:00
 resource-path: python default type.md
-aliases: 
+aliases:
 tags:
   - python
+date: 2025-07-01T06:52:17+09:00
+lastmod: 2025-07-01T23:01:01+09:00
 ---
 ## default type
 

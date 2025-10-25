@@ -1,10 +1,10 @@
 ---
 title: spring controller 반환(return)
+resource-path: youngHan mvc1/spring controller 반환(return).md
+aliases:
+tags:
 date: 2025-03-15T20:36:00+09:00
 lastmod: 2025-06-27T19:54:43+09:00
-resource-path: youngHan mvc1/spring controller 반환(return).md
-aliases: 
-tags: 
 ---
 Spring MVC에서 `@Controller` 클래스의 `@RequestMapping` 메서드는 다양한 반환 타입을 지원합니다.  
 반환 타입에 따라 **HTTP 응답 생성 방식**이 달라지며, 주요 반환 타입은 다음과 같습니다.

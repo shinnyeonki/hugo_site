@@ -1,9 +1,6 @@
 ---
 title: 학교 database 강의
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 00.Data View and Bases/학교 database 강의.md
-draft: true
 ---
 ```dataview
 table sequence

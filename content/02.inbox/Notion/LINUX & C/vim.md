@@ -1,9 +1,6 @@
 ---
 title: vim
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/vim.md
-draft: true
 ---
 [https://github.com/johngrib/simple_vim_guide/tree/master](https://github.com/johngrib/simple_vim_guide/tree/master)
 

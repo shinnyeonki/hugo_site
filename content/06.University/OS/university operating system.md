@@ -1,12 +1,12 @@
 ---
 title: university operating system
-date: 2025-03-18T09:29:00+09:00
-lastmod: 2025-06-05T17:41:23+09:00
 resource-path: 06.University/OS/university operating system.md
-aliases: 
+aliases:
 tags:
   - university
   - operating-system
+date: 2025-03-18T09:29:00+09:00
+lastmod: 2025-06-05T17:41:23+09:00
 ---
 ## Computer Organization
 ### 폰 노이만 구조

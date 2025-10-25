@@ -1,9 +1,6 @@
 ---
 title: vimrc 파일
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/OneNote/html and css/리눅스/vimrc 파일.md
-draft: true
 ---
 " 번들 선언부
 

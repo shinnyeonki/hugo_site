@@ -1,10 +1,10 @@
 ---
 title: long vs float
+resource-path: long vs float.md
+aliases:
+tags:
 date: 2025-09-12T21:00:27+09:00
 lastmod: 2025-09-12T21:22:48+09:00
-resource-path: long vs float.md
-aliases: 
-tags: 
 share_link: https://share.note.sx/x7492ke9#d7PBhWhl51Qa3i5gN1bXPqb1wav1i5spTjc9M6M5A4k
 share_updated: 2025-09-12T21:00:42+09:00
 ---

@@ -1,10 +1,10 @@
 ---
 title: HTTP 요청 3가지 방법
+resource-path: youngHan mvc1/HTTP 요청 3가지 방법.md
+aliases:
+tags:
 date: 2025-02-28T05:24:00+09:00
 lastmod: 2025-06-27T19:52:08+09:00
-resource-path: youngHan mvc1/HTTP 요청 3가지 방법.md
-aliases: 
-tags: 
 ---
 ### 1. **GET - 쿼리 파라미터**
 - **데이터 전송 방식**: URL 끝에 `?key1=value1&key2=value2` 형식으로 데이터를 포함합니다.

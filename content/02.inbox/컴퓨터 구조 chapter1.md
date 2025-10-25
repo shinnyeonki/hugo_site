@@ -1,10 +1,10 @@
 ---
 title: 컴퓨터 구조 chapter1
+resource-path: 02.inbox/컴퓨터 구조 chapter1.md
+aliases:
+tags:
 date: 2024-06-18T11:30:00+09:00
 lastmod: 2024-06-18T11:30:00+09:00
-resource-path: 02.inbox/컴퓨터 구조 chapter1.md
-aliases: 
-tags: 
 ---
 ## A Tour of Computer Systems
 - 1.1 Information Is Bits + Context 39 정보는 비트 + 문맥이다

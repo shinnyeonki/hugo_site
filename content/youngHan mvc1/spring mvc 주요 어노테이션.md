@@ -1,12 +1,12 @@
 ---
 title: spring mvc 주요 어노테이션
-date: 2025-03-11T12:57:00+09:00
-lastmod: 2025-06-27T19:54:53+09:00
 resource-path: youngHan mvc1/spring mvc 주요 어노테이션.md
-aliases: 
+aliases:
 tags:
   - young_han
   - spring
+date: 2025-03-11T12:57:00+09:00
+lastmod: 2025-06-27T19:54:53+09:00
 ---
 - 클래스 단위
 	- @Controller : 이 클래스가 컨트롤러임을 명시

@@ -1,12 +1,12 @@
 ---
 title: youngHan mvc1 프로젝트 변화 과정
-date: 2025-03-04T23:58:00+09:00
-lastmod: 2025-03-04T23:58:00+09:00
 resource-path: youngHan mvc1/youngHan mvc1 프로젝트 변화 과정.md
-aliases: 
+aliases:
 tags:
   - spring
   - young_han
+date: 2025-03-04T23:58:00+09:00
+lastmod: 2025-03-04T23:58:00+09:00
 ---
 ### 개발 순서
 

@@ -1,12 +1,12 @@
 ---
 title: android sdk tool list
-date: 2025-09-08T14:54:08+09:00
-lastmod: 2025-09-08T14:56:26+09:00
 resource-path: 02.inbox/android sdk tool list.md
 aliases:
 tags:
   - android
   - 잡지식
+date: 2025-09-08T14:54:08+09:00
+lastmod: 2025-09-08T14:56:26+09:00
 share_link: https://share.note.sx/69ay5h9s#00f5E3CyCrcG6NrV20fPP1D7UjkUvERu7w63RqY5TEQ
 share_updated: 2025-09-08T15:07:46+09:00
 ---

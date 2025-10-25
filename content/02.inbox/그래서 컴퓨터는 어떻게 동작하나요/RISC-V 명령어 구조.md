@@ -1,12 +1,12 @@
 ---
 title: RISC V 명령어 구조
-date: 2024-08-31T09:44:00+09:00
-lastmod: 2024-08-31T09:44:00+09:00
 resource-path: 02.inbox/그래서 컴퓨터는 어떻게 동작하나요/RISC-V 명령어 구조.md
-aliases: 
+aliases:
 tags:
   - cs
   - cpu
+date: 2024-08-31T09:44:00+09:00
+lastmod: 2024-08-31T09:44:00+09:00
 ---
 RISC-V emulator RV32I 를 코드로 구현하기 위해 먼저 RISC-V 공식 문서를 확인하여 
 구현할 명령의 구조를 공부한다

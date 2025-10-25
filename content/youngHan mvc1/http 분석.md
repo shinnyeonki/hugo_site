@@ -1,10 +1,10 @@
 ---
 title: http 분석
+resource-path: youngHan mvc1/http 분석.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-27T19:52:11+09:00
-resource-path: youngHan mvc1/http 분석.md
-aliases: 
-tags: 
 ---
 전문가를 대상으로 한 심층적인 HTTP 구성 요소 설명입니다. 각 항목의 기술적 특성과 실제 적용 시 고려사항을 중심으로 설명합니다:
 

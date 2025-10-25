@@ -1,15 +1,14 @@
 ---
 title: Linux - 로케일(Locale) 설정 알아보기
-date: 2025-05-20
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/Linux - 로케일(Locale) 설정 알아보기.md
-source: "https://server-talk.tistory.com/426"
+series: https://server-talk.tistory.com/426
 author:
   - "[서버구축이야기!!](서버구축이야기!!)"
 published: 2022-07-25
-description: "Linux - 로케일(Locale) 설정 알아보기 이번 포스팅에서는 로케일(Locale) 설정에 대해서 알아보도록 하겠습니다. Linux 로케일(Locale) 이란? 전 세계의 나라들은 각기 다른 언어, 날짜, 시간, 화폐 등등 다르게 갖고 있습니다 리눅스에서도 마찬가지입니다 그래서 국제화(Internationalization = i18n)를 통해 사용자가 어떻게 표시할지 환경을 선택하는 기능이 로케일(Locale) 입니다. 또한, 언어뿐만 아니라 숫자, 날짜 등등 사용이 가능하고 로케일(Locale) 설정에 따라 다른 결과의 언어로 표시할 수도 있습니다. Linux 로케일(Locale) 설정 및 사용법 리눅스에서는 localectl 명령어를 통해 설정되어 로케일(Locale)를 확인 및 설정할 수 있고.."
+date: 2025-05-20
+description: Linux - 로케일(Locale) 설정 알아보기 이번 포스팅에서는 로케일(Locale) 설정에 대해서 알아보도록 하겠습니다. Linux 로케일(Locale) 이란? 전 세계의 나라들은 각기 다른 언어, 날짜, 시간, 화폐 등등 다르게 갖고 있습니다 리눅스에서도 마찬가지입니다 그래서 국제화(Internationalization = i18n)를 통해 사용자가 어떻게 표시할지 환경을 선택하는 기능이 로케일(Locale) 입니다. 또한, 언어뿐만 아니라 숫자, 날짜 등등 사용이 가능하고 로케일(Locale) 설정에 따라 다른 결과의 언어로 표시할 수도 있습니다. Linux 로케일(Locale) 설정 및 사용법 리눅스에서는 localectl 명령어를 통해 설정되어 로케일(Locale)를 확인 및 설정할 수 있고..
 tags:
-  - "clippings"
+  - clippings
 ---
 `localectl` 명령은 **systemd 기반 리눅스 배포판** 에서 사용할 수 있는 시스템 관리 도구로, 로케일(locale), 키보드 레이아웃, 가상 콘솔(Console) 설정 등을 관리하는 데 사용됩니다.
 

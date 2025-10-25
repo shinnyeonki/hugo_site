@@ -1,14 +1,14 @@
 ---
 title: 03 FILE IO
-date: 2024-09-05T23:00:00+09:00
-lastmod: 2025-06-03T09:59:32+09:00
 resource-path: 06.University/system programming(university)/03-FILE IO.md
-aliases: 
+aliases:
 tags:
   - system-programing
   - system-call
-source: system programming(university)
-sequence: 3
+series: system programming(university)
+series_weight: 3
+date: 2024-09-05T23:00:00+09:00
+lastmod: 2025-06-03T09:59:32+09:00
 ---
 1. open()
 2. creat()

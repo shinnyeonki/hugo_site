@@ -1,11 +1,9 @@
 baseURL = 'http://localhost:1313'
 languageCode = 'ko-KR'
-title = 'My Test Site'
+title = 'Obsidian Vault'
 # theme = "hextra"
 
-
-
-
+# 빌드 시 무시할 파일 및 디렉토리 설정
 ignoreFiles = [
   'content/02.inbox/Notion/',
   'content/05.clipping/*',
@@ -13,6 +11,11 @@ ignoreFiles = [
   'content/89.Obsidian/',
   'content/index.html'
 ]
+
+[taxonomies]
+  tags = "tags"
+  categorys = "categories"
+  series = "series"
 
 # canonifyURLs = true
 # 로그에서 'goldmark 원시 HTML(raw HTML) 경고'를 무시합니다.
@@ -26,3 +29,4 @@ ignoreFiles = [
     [markup.goldmark.renderer]
       # 콘텐츠 내 원시 HTML 태그를 허용하여 렌더링합니다.
       unsafe = true
+  

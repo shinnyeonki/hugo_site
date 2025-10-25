@@ -1,9 +1,6 @@
 ---
 title: dnf 설정 파일
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/Dnf/dnf 설정 파일.md
-draft: true
 ---
 ```
 설정파일은 기본적으로 전역구성파일 /etc/dnf/dnf.conf 파일을 따르지만

@@ -1,12 +1,12 @@
 ---
 title: Spring MVC 주요 처리 과정
-date: 2025-03-09T18:39:00+09:00
-lastmod: 2025-06-27T19:54:41+09:00
 resource-path: youngHan mvc1/Spring MVC 주요 처리 과정.md
-aliases: 
+aliases:
 tags:
   - spring
   - young_han
+date: 2025-03-09T18:39:00+09:00
+lastmod: 2025-06-27T19:54:41+09:00
 ---
 ### 메인 흐름
 1. 사용자 요청

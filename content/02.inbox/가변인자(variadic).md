@@ -1,12 +1,12 @@
 ---
 title: 가변인자(variadic)
-date: 2023-12-20T07:12:00+09:00
-lastmod: 2025-10-21T20:40:27+09:00
 resource-path: 02.inbox/가변인자(variadic).md
-aliases: 
+aliases:
 tags:
   - python
   - language
+date: 2023-12-20T07:12:00+09:00
+lastmod: 2025-10-21T20:40:27+09:00
 ---
 - [가변 인자 매크로의 모든 것 - 개론](http://blog.woong.org/v/59aa5b8cd845cbff6d76d418)
 - [가변 인자 매크로의 모든 것 - 과거](http://blog.woong.org/v/59aa6080d845cbff6d76d421)

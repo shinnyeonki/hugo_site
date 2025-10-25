@@ -1,11 +1,11 @@
 ---
 title: servlet
-date: 2024-02-14T04:16:00+09:00
-lastmod: 2024-02-14T04:16:00+09:00
 resource-path: temp/servlet.md
-aliases: 
+aliases:
 tags:
   - java
+date: 2024-02-14T04:16:00+09:00
+lastmod: 2024-02-14T04:16:00+09:00
 ---
 ![](../08.media/20240214041835.png)%20image%2020240214041835.png)
 일반적으로 java 진영에서 많이 사용됨

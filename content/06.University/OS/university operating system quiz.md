@@ -1,12 +1,12 @@
 ---
 title: university operating system quiz
-date: 2025-04-22T11:00:00+09:00
-lastmod: 2025-06-03T06:40:43+09:00
 resource-path: 06.University/OS/university operating system quiz.md
-aliases: 
+aliases:
 tags:
   - university
   - operating-system
+date: 2025-04-22T11:00:00+09:00
+lastmod: 2025-06-03T06:40:43+09:00
 ---
 - pcb(process control block) 에 포함된 정보
 	- process state

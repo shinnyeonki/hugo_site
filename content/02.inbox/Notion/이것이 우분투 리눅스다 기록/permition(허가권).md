@@ -1,9 +1,6 @@
 ---
 title: permition(허가권)
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/이것이 우분투 리눅스다 기록/permition(허가권).md
-draft: true
 ---
 허가권(permition)
 ![](../../../08.media/20231231210201.png)

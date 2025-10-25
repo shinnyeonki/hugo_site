@@ -1,11 +1,11 @@
 ---
 title: zsh 성능 측정
-date: 2024-11-18T05:09:00+09:00
-lastmod: 2024-11-18T05:09:00+09:00
 resource-path: temp/zsh 성능 측정.md
-aliases: 
+aliases:
 tags:
   - zsh
+date: 2024-11-18T05:09:00+09:00
+lastmod: 2024-11-18T05:09:00+09:00
 ---
 zsh는 측정용 프로파일링 모듈을 가지고 있다. [](https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fzprof-Module)라는 모듈인데, `.zshrc` 파일에 설정만 해두면 사용할 수 있다.
 

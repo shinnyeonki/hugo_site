@@ -1,15 +1,15 @@
 ---
 title: 리스트 컴프리헨션(List Comprehension)
-date: 2023-12-23T11:09:00+09:00
-lastmod: 2023-12-23T11:09:00+09:00
 resource-path: 02.inbox/리스트 컴프리헨션(List Comprehension).md
-aliases: 
+aliases:
 tags:
   - python
   - language
-description: 
-source: 
-sequence: 
+description:
+series:
+series_weight:
+date: 2023-12-23T11:09:00+09:00
+lastmod: 2023-12-23T11:09:00+09:00
 ---
 ![](../08.media/20231223111957.png)%20image%2020231223111957.png)
 

@@ -1,12 +1,12 @@
 ---
 title: db book 답지 파일 다운받는 javascript
-date: 2024-11-05T17:05:00+09:00
-lastmod: 2024-11-05T17:05:00+09:00
 resource-path: 02.inbox/db-book 답지 파일 다운받는 javascript.md
-aliases: 
+aliases:
 tags:
   - javascript
   - 잡지식
+date: 2024-11-05T17:05:00+09:00
+lastmod: 2024-11-05T17:05:00+09:00
 ---
 https://db-book.com/bib-dir/index.html
 여기 위치에서 콘솔창은 연후 모든 pdf 파일을 다운받는다

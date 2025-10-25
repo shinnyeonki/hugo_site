@@ -1,7 +1,5 @@
 ---
 title: disk
-date: 2023-12-20T07:12:00+09:00
-lastmod: 2023-12-20T07:12:00+09:00
 resource-path: 02.inbox/disk.md
 aliases:
   - 디스크
@@ -9,9 +7,11 @@ tags:
   - linux
   - command
 description: 디스크 관리
-source: 
-sequence: 
-finish: 
+series:
+series_weight:
+finish:
+date: 2023-12-20T07:12:00+09:00
+lastmod: 2023-12-20T07:12:00+09:00
 ---
 mount 인수 없음
 findmnt 추천2

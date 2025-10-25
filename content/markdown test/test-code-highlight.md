@@ -1,10 +1,10 @@
 ---
 title: test code highlight
+resource-path: markdown test/test-code-highlight.md
+aliases:
+tags:
 date: 2025-09-10T12:34:37+09:00
 lastmod: 2025-09-11T07:14:15+09:00
-resource-path: markdown test/test-code-highlight.md
-aliases: 
-tags: 
 ---
 # 코드 구문 강조 테스트
 

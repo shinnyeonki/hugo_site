@@ -1,11 +1,11 @@
 ---
 title: obsidian 데이터 바인딩 처리
-date: 2025-03-31T20:09:00+09:00
-lastmod: 2025-03-31T20:09:00+09:00
 resource-path: youngHan mvc1/obsidian 데이터 바인딩 처리.md
-aliases: 
+aliases:
 tags:
   - spring
+date: 2025-03-31T20:09:00+09:00
+lastmod: 2025-03-31T20:09:00+09:00
 ---
 Spring MVC의 데이터 바인딩과 관련된 주요 처리 과정을 순서대로 정리해드리겠습니다:
 

@@ -1,15 +1,15 @@
 ---
 title: 데이터베이스 용어 정의 및 relation algebra
-date: 2024-03-12T15:50:00+09:00
-lastmod: 2025-09-05T21:00:03+09:00
 resource-path: 06.University/database(university)/데이터베이스 용어 정의 및 relation algebra.md
 aliases:
 tags:
   - database
 description: 대학 수업 database 에서 배운 모든 내용 정리
-source: database(university)
-sequence: "01"
+series: database(university)
+series_weight: "01"
 finish:
+date: 2024-03-12T15:50:00+09:00
+lastmod: 2025-09-05T21:00:03+09:00
 ---
 ## 기본 용어 정의
 - attribute : culume(열)의 이름 rable(레이블)

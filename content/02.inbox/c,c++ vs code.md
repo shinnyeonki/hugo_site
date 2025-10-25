@@ -1,7 +1,5 @@
 ---
 title: c,c++ vs code
-date: 2023-12-28T19:11:00+09:00
-lastmod: 2025-10-11T07:35:42+09:00
 resource-path: 02.inbox/c,c++ vs code.md
 aliases:
   - tasks.json
@@ -9,6 +7,8 @@ aliases:
 tags:
   - setting
   - vscode
+date: 2023-12-28T19:11:00+09:00
+lastmod: 2025-10-11T07:35:42+09:00
 ---
 컴파일 시에 다음과 같은 3가지 환경 설정이 필요하다(project 내부에서만 작동)
 

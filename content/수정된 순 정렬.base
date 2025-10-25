@@ -6,15 +6,13 @@ views:
     name: 표
     order:
       - file.name
-      - created
-      - modified
+      - date
+      - lastmod
     sort:
-      - property: modified
-        direction: DESC
-      - property: created
-        direction: DESC
+      - property: lastmod
+        direction: ASC
     columnSize:
       file.name: 354
-      note.created: 258
+      note.date: 255
   - type: table
     name: 뷰

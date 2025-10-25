@@ -1,11 +1,11 @@
 ---
 title: docker 없이 컨테이너
-date: 2024-04-10T03:21:00+09:00
-lastmod: 2024-04-10T03:21:00+09:00
 resource-path: temp/docker 없이 컨테이너.md
-aliases: 
+aliases:
 tags:
   - linux
+date: 2024-04-10T03:21:00+09:00
+lastmod: 2024-04-10T03:21:00+09:00
 ---
 [관련 리포지토리](https://github.com/sam0kim/container-internal)
 [유튜브 영상](https://www.youtube.com/watch?v=mSD88FuST80&t=650s)

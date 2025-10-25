@@ -1,12 +1,12 @@
 ---
 title: spring bean scope
-date: 2024-02-02T09:26:00+09:00
-lastmod: 2024-02-02T09:26:00+09:00
 resource-path: temp/spring bean scope.md
 aliases:
   - 범위
 tags:
   - spring
+date: 2024-02-02T09:26:00+09:00
+lastmod: 2024-02-02T09:26:00+09:00
 ---
 스프링은 다음과 같은 다양한 스코프를 지원한다.
 - 싱글톤: 기본 스코프, 스프링 컨테이너의 시작과 종료까지 유지되는 가장 넓은 범위의 스코프이다.

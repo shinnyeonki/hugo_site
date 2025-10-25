@@ -1,13 +1,13 @@
 ---
 title: linux locale setting
-date: 2025-05-20T18:55:00+09:00
-lastmod: 2025-05-20T18:55:00+09:00
 resource-path: 02.inbox/linux locale setting.md
-aliases: 
+aliases:
 tags:
   - setting
   - linux
   - 잡지식
+date: 2025-05-20T18:55:00+09:00
+lastmod: 2025-05-20T18:55:00+09:00
 ---
 ### systemd 기반 리눅스 배포판
 

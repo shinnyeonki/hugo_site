@@ -1,3 +1,4 @@
+{{ if eq .Kind "page" }}
 <div class="w-80 flex flex-col">
     <!-- 탭 네비게이션 -->
     <div role="tablist" aria-label="사이드바 컨텐츠" class="flex-shrink-0">
@@ -101,3 +102,4 @@
         });
     });
 </script>
+{{ end }}

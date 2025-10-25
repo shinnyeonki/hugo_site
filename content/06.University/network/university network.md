@@ -1,11 +1,11 @@
 ---
 title: university network
-date: 2025-03-18T16:00:00+09:00
-lastmod: 2025-06-03T06:40:40+09:00
 resource-path: 06.University/network/university network.md
-aliases: 
+aliases:
 tags:
   - university
+date: 2025-03-18T16:00:00+09:00
+lastmod: 2025-06-03T06:40:40+09:00
 ---
 ![](../../08.media/20250318161430.png)
 

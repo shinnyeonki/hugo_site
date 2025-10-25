@@ -1,9 +1,6 @@
 ---
 title: netstat
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/netstat.md
-draft: true
 ---
 - a : 모든 소켓 정보 출력
 - n : 호스트명이나 포트명 대신 숫자로 표시 (예를 들어 www는 80으로 출력)

@@ -1,9 +1,6 @@
 ---
 title: wordpress 과제
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: temp/wordpress 과제.md
-draft: true
 ---
 wordpress docker 이미지를 사용하되 컴포즈를 통해 내부 네트워크에서 db 컨테이너와 함께 사용하자
 

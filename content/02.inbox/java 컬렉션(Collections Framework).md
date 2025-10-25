@@ -1,11 +1,11 @@
 ---
 title: java 컬렉션(Collections Framework)
-date: 2024-01-22T18:17:00+09:00
-lastmod: 2024-01-22T18:17:00+09:00
 resource-path: 02.inbox/java 컬렉션(Collections Framework).md
-aliases: 
+aliases:
 tags:
   - java
+date: 2024-01-22T18:17:00+09:00
+lastmod: 2024-01-22T18:17:00+09:00
 ---
 ![Pasted image 20240122181734](../08.media/20240122181734.jpeg)
 ![Pasted image 20240206060503](../08.media/20240206060503.svg)

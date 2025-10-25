@@ -1,12 +1,12 @@
 ---
 title: IPC (massage passing)
-date: 2025-05-01T13:03:00+09:00
-lastmod: 2025-05-01T13:03:00+09:00
 resource-path: 02.inbox/IPC (massage passing).md
-aliases: 
+aliases:
 tags:
   - system-programing
   - operating-system
+date: 2025-05-01T13:03:00+09:00
+lastmod: 2025-05-01T13:03:00+09:00
 ---
 아래는 **Unix에서 사용되는 다양한 프로세스 간 통신**(Inter-Process Communication, IPC) 방식들에 대한 **자세한 설명**입니다.  
 주요 내용은 다음과 같은 IPC 기법들을 포함합니다:

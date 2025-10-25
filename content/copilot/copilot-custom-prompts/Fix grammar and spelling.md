@@ -1,10 +1,10 @@
 ---
 title: Fix grammar and spelling
-date: 2025-10-17T22:42:39+09:00
-lastmod: 2025-10-17T22:46:29+09:00
 resource-path: copilot/copilot-custom-prompts/Fix grammar and spelling.md
 aliases:
 tags:
+date: 2025-10-17T22:42:39+09:00
+lastmod: 2025-10-17T22:46:29+09:00
 copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 1000

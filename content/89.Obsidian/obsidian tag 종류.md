@@ -1,12 +1,12 @@
 ---
 title: obsidian tag 종류
-date: 2023-12-21T03:20:00+09:00
-lastmod: 2023-12-21T03:20:00+09:00
 resource-path: 89.Obsidian/obsidian tag 종류.md
 aliases:
   - tag 정하는 기준
 tags:
   - obsidian
+date: 2023-12-21T03:20:00+09:00
+lastmod: 2023-12-21T03:20:00+09:00
 ---
 언어계열 -> language
 > c,cpp,c＃,java,python,javascript,html,css,php,go,shell,rust, design

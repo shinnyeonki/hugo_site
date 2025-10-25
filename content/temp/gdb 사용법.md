@@ -1,13 +1,13 @@
 ---
 title: gdb 사용법
-date: 2024-12-30T23:48:00+09:00
-lastmod: 2024-12-30T23:48:00+09:00
 resource-path: temp/gdb 사용법.md
-aliases: 
+aliases:
 tags:
   - c
   - cpp
   - gdb
+date: 2024-12-30T23:48:00+09:00
+lastmod: 2024-12-30T23:48:00+09:00
 ---
 ## 기본 명령어
 

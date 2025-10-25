@@ -1,10 +1,10 @@
 ---
 title: gcc
+resource-path: 02.inbox/Notion/LINUX & C/gcc.md
+aliases:
+tags:
 date: 2025-06-03T06:05:15+09:00
 lastmod: 2025-10-01T19:17:13+09:00
-resource-path: 02.inbox/Notion/LINUX & C/gcc.md
-aliases: 
-tags: 
 ---
 GCC(GNU Compiler Collection)는 C 컴파일러입니다. C언어를 컴퓨터가 읽을 수 있도록 번역해야 하는데 리눅스에서는 Visual Studio C++과 같이 윈도우에서 쓰이는 프로그램이 사용 불가합니다. 그래서 리눅스용의 대표 C컴파일러가 GCC인 것입니다.
 

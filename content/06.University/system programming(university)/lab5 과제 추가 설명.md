@@ -1,15 +1,15 @@
 ---
 title: lab5 과제 추가 설명
-date: 2024-10-06T03:47:00+09:00
-lastmod: 2024-10-06T03:47:00+09:00
 resource-path: 06.University/system programming(university)/lab5 과제 추가 설명.md
-aliases: 
+aliases:
 tags:
   - system-programing
-description: 
-source: system programming(university)
-sequence: 
-finish: 
+description:
+series: system programming(university)
+series_weight:
+finish:
+date: 2024-10-06T03:47:00+09:00
+lastmod: 2024-10-06T03:47:00+09:00
 ---
 ```
 파일의 이름을 바꾸는 프로그램을 작성하는데, 

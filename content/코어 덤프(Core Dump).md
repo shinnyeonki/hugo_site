@@ -1,12 +1,12 @@
 ---
 title: 코어 덤프(Core Dump)
-date: 2025-09-09T23:13:33+09:00
-lastmod: 2025-10-19T16:12:19+09:00
 resource-path: 코어 덤프(Core Dump).md
 aliases:
 tags:
   - ai-content
   - system-programing
+date: 2025-09-09T23:13:33+09:00
+lastmod: 2025-10-19T16:12:19+09:00
 ---
 ## 코어 덤프(Core Dump)란 무엇인가? - "프로세스의 마지막 순간을 담은 사진"
 

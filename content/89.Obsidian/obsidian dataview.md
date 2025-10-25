@@ -1,11 +1,11 @@
 ---
 title: obsidian dataview
-date: 2023-12-21T07:59:00+09:00
-lastmod: 2023-12-21T07:59:00+09:00
 resource-path: 89.Obsidian/obsidian dataview.md
-aliases: 
+aliases:
 tags:
   - obsidian
+date: 2023-12-21T07:59:00+09:00
+lastmod: 2023-12-21T07:59:00+09:00
 ---
 1. 어떤 형태로 DB를 표현할꺼니? (WITHOUT ID : )
 	1. TABLE

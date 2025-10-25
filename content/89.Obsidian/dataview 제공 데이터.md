@@ -1,15 +1,15 @@
 ---
 title: dataview 제공 데이터
-date: 2023-12-22T04:26:00+09:00
-lastmod: 2023-12-22T04:26:00+09:00
 resource-path: 89.Obsidian/dataview 제공 데이터.md
-aliases: 
+aliases:
 tags:
   - obsidian
   - reference
-description: 
-source: 
-sequence: 
+description:
+series:
+series_weight:
+date: 2023-12-22T04:26:00+09:00
+lastmod: 2023-12-22T04:26:00+09:00
 ---
 |                    |        |                                                                                            |
 | ------------------ | ------ | ------------------------------------------------------------------------------------------ |

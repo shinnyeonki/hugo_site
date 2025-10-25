@@ -1,12 +1,12 @@
 ---
 title: two pointer 알고리즘
-date: 2024-12-31T13:09:00+09:00
-lastmod: 2024-12-31T13:09:00+09:00
 resource-path: leetcode75/two pointer 알고리즘.md
 aliases:
   - 투 포인터
 tags:
   - algorithm
+date: 2024-12-31T13:09:00+09:00
+lastmod: 2024-12-31T13:09:00+09:00
 ---
 # two pointer 알고리즘
 1차원 배열에서 각자 다른 원소를 가리키는 2개의 포인터를 사용하여 목표값을 구한다

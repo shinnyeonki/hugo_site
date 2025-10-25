@@ -1,9 +1,6 @@
 ---
 title: test
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: temp/test.md
-draft: true
 ---
 파일 테이블
 - 파일 포인터

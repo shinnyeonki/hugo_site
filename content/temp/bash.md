@@ -1,11 +1,11 @@
 ---
 title: bash
-date: 2024-02-21T16:50:00+09:00
-lastmod: 2024-02-21T16:50:00+09:00
 resource-path: temp/bash.md
-aliases: 
+aliases:
 tags:
   - shell
+date: 2024-02-21T16:50:00+09:00
+lastmod: 2024-02-21T16:50:00+09:00
 ---
 ## \.\/ vs source \=\= \.
 

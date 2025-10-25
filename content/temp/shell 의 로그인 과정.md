@@ -1,11 +1,11 @@
 ---
 title: shell 의 로그인 과정
-date: 2024-02-21T16:53:00+09:00
-lastmod: 2024-02-21T16:53:00+09:00
 resource-path: temp/shell 의 로그인 과정.md
-aliases: 
+aliases:
 tags:
   - shell
+date: 2024-02-21T16:53:00+09:00
+lastmod: 2024-02-21T16:53:00+09:00
 ---
 linux bash 기준으로 설명
 

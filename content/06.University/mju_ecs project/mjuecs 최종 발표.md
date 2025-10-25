@@ -1,10 +1,10 @@
 ---
 title: mjuecs 최종 발표
+resource-path: 06.University/mju_ecs project/mjuecs 최종 발표.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-03T06:40:30+09:00
-resource-path: 06.University/mju_ecs project/mjuecs 최종 발표.md
-aliases: 
-tags: 
 ---
 1. 실제 시연 => oracle database 연결, 김직수 교수 클라우드 등등
 2. 기술적 검토

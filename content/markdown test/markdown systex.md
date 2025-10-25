@@ -1,10 +1,10 @@
 ---
 title: markdown systex
+resource-path: markdown test/markdown systex.md
+aliases:
+tags:
 date: 2025-09-05T00:38:30+09:00
 lastmod: 2025-10-07T23:35:38+09:00
-resource-path: markdown test/markdown systex.md
-aliases: 
-tags: 
 ---
 아래는 **Markdown 기본 구문**(Basic Syntax)과 **확장 구문**(Extended Syntax)을 모두 포함한 테스트용 Markdown 파일입니다. 이 파일을 `.md` 확장자로 저장한 후, 다양한 Markdown 렌더러(예: VS Code, Obsidian, Typora, GitHub 등)에서 열어 각 기능이 제대로 작동하는지 확인할 수 있습니다.
 

@@ -1,10 +1,10 @@
 ---
 title: university 딥러닝(기술 동향)
+resource-path: university 딥러닝(기술 동향).md
+aliases:
+tags:
 date: 2025-10-23T06:07:26+09:00
 lastmod: 2025-10-23T06:08:38+09:00
-resource-path: university 딥러닝(기술 동향).md
-aliases: 
-tags: 
 ---
 - 제1주 강의 소개, 인공지능 개요(정의, 유형, 역사, 동향 분석)
 - 제2주 머신러닝 시스템 정의, 머신러닝 학습 과정, 학습 유형(지도학습, 비지도학습, 강화학습 등)

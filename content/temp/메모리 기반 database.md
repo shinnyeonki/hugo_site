@@ -1,11 +1,11 @@
 ---
 title: 메모리 기반 database
-date: 2024-09-08T21:32:00+09:00
-lastmod: 2024-09-08T21:32:00+09:00
 resource-path: temp/메모리 기반 database.md
-aliases: 
+aliases:
 tags:
   - database
+date: 2024-09-08T21:32:00+09:00
+lastmod: 2024-09-08T21:32:00+09:00
 ---
 in-memory database 종류
 radis

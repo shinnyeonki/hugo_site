@@ -1,3 +1,3 @@
 ---
-title: 따라It 
+title: 따라It
 ---

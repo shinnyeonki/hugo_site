@@ -1,10 +1,10 @@
 ---
 title: linux 커널 업그레이드 방지
+resource-path: linux 커널 업그레이드 방지.md
+aliases:
+tags:
 date: 2025-09-02T15:56:20+09:00
 lastmod: 2025-10-23T04:34:06+09:00
-resource-path: linux 커널 업그레이드 방지.md
-aliases: 
-tags: 
 ---
 ### 1. kernel-headers 설치 (없을 경우)
 

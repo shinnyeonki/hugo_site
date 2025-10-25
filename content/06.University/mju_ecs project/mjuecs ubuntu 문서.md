@@ -1,10 +1,10 @@
 ---
 title: mjuecs ubuntu 문서
+resource-path: 06.University/mju_ecs project/mjuecs ubuntu 문서.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-04T06:11:18+09:00
-resource-path: 06.University/mju_ecs project/mjuecs ubuntu 문서.md
-aliases: 
-tags: 
 ---
 # 🐧 mjuecs ubuntu (Ubuntu 22.04 기반) Docker 컨테이너 가이드
 

@@ -1,12 +1,12 @@
 ---
 title: HTTPS와 비대칭 키 초기 설정부터 데이터 전송까지의 모든 과정 simulation
-date: 2025-06-20T09:02:36+09:00
-lastmod: 2025-06-26T23:03:48+09:00
 resource-path: 02.inbox/HTTPS와 비대칭 키 초기 설정부터 데이터 전송까지의 모든 과정 simulation.md
-aliases: 
+aliases:
 tags:
   - simulation
   - encryption
+date: 2025-06-20T09:02:36+09:00
+lastmod: 2025-06-26T23:03:48+09:00
 ---
 클라이언트가 서버로부터 HTTPS 프로토콜을 통해 `index.html`을 요청하는 상황에서 TCP 핸드셰이크가 완료된 후 진행되는 TLS 과정은 크게 세 단계로 나눌 수 있습니다: 
 

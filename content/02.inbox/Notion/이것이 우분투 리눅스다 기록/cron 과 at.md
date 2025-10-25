@@ -1,9 +1,6 @@
 ---
 title: cron 과 at
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/이것이 우분투 리눅스다 기록/cron 과 at.md
-draft: true
 ---
 주기적 반복 자동 실행 cron
 

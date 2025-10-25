@@ -1,11 +1,11 @@
 ---
 title: git merge
-date: 2024-11-09T13:23:00+09:00
-lastmod: 2024-11-09T13:23:00+09:00
 resource-path: 02.inbox/git merge.md
-aliases: 
+aliases:
 tags:
   - git
+date: 2024-11-09T13:23:00+09:00
+lastmod: 2024-11-09T13:23:00+09:00
 ---
 ```mermaid
 gitGraph

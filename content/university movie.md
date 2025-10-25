@@ -1,10 +1,10 @@
 ---
 title: university movie
+resource-path: university movie.md
+aliases:
+tags:
 date: 2025-10-23T06:26:47+09:00
 lastmod: 2025-10-23T06:48:34+09:00
-resource-path: university movie.md
-aliases: 
-tags: 
 ---
 I. 영화를 구성하는 기본적인 시각 요소
 

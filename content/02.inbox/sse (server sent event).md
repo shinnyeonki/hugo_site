@@ -1,11 +1,11 @@
 ---
 title: sse (server sent event)
-date: 2025-05-26T14:09:00+09:00
-lastmod: 2025-05-26T14:09:00+09:00
 resource-path: 02.inbox/sse (server sent event).md
-aliases: 
+aliases:
 tags:
   - web
+date: 2025-05-26T14:09:00+09:00
+lastmod: 2025-05-26T14:09:00+09:00
 ---
 ### Back
 ```java

@@ -1,11 +1,11 @@
 ---
 title: Regrex 예제
-date: 2025-06-20T09:10:01+09:00
-lastmod: 2025-06-20T09:15:37+09:00
 resource-path: 89.Obsidian/Regrex 예제.md
-aliases: 
+aliases:
 tags:
   - regrex
+date: 2025-06-20T09:10:01+09:00
+lastmod: 2025-06-20T09:15:37+09:00
 ---
 ### Markdown 헤딩을 1단계 업그레이드
 

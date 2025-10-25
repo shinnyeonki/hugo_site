@@ -1,12 +1,12 @@
 ---
 title: sudo vs su
-date: 2024-02-28T09:13:00+09:00
-lastmod: 2024-02-28T09:13:00+09:00
 resource-path: temp/sudo vs su.md
-aliases: 
+aliases:
 tags:
   - command
   - shell
+date: 2024-02-28T09:13:00+09:00
+lastmod: 2024-02-28T09:13:00+09:00
 ---
 sudo, sudoedit — 명령을 다른 사용자로 실행합니다  
 su - 대체 사용자 및 그룹 ID를 사용하여 명령을 실행합니다

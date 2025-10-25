@@ -1,10 +1,10 @@
 ---
 title: mju ecs 해야할 것
+resource-path: 06.University/mju_ecs project/mju ecs 해야할 것.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-04T06:11:13+09:00
-resource-path: 06.University/mju_ecs project/mju ecs 해야할 것.md
-aliases: 
-tags: 
 ---
 ### 수정사항
 1. PortAllocator (포트 배정 서비스 추가)

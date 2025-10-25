@@ -1,11 +1,11 @@
 ---
 title: 계층 기반 폴더 구조 vs 서비스 단위 기반 폴더 구조
-date: 2025-07-31T09:15:00+09:00
-lastmod: 2025-10-21T20:40:31+09:00
 resource-path: 02.inbox/계층 기반 폴더 구조 vs 서비스 단위 기반 폴더 구조.md
-aliases: 
+aliases:
 tags:
   - design
+date: 2025-07-31T09:15:00+09:00
+lastmod: 2025-10-21T20:40:31+09:00
 ---
 좋은 질문입니다. **DTO, Repository, Domain, Service** 와 같은 **계층 기반 폴더 구조**(Layered Architecture)와 **서비스 단위 기반 폴더 구조**(Vertical Slice / Feature-based Architecture) 중 어느 것이 더 나은지는 **프로젝트의 규모, 팀 구조, 유지보수성, 확장성** 등에 따라 달라집니다.
 

@@ -1,12 +1,12 @@
 ---
 title: 디버거 cli 명령어 모음
-date: 2025-10-11T13:27:45+09:00
-lastmod: 2025-10-11T13:27:52+09:00
 resource-path: 02.inbox/디버거 cli 명령어 모음.md
 aliases:
 tags:
   - reference
   - ai-content
+date: 2025-10-11T13:27:45+09:00
+lastmod: 2025-10-11T13:27:52+09:00
 ---
 ## GDB
 

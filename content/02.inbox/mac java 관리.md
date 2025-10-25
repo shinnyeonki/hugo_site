@@ -1,12 +1,12 @@
 ---
 title: mac java 관리
-date: 2024-05-20T11:00:00+09:00
-lastmod: 2025-06-20T02:16:33+09:00
 resource-path: 02.inbox/mac java 관리.md
-aliases: 
+aliases:
 tags:
   - mac
   - java
+date: 2024-05-20T11:00:00+09:00
+lastmod: 2025-06-20T02:16:33+09:00
 ---
 apple 에서 관리되는 방식이므로 brew 패키지 관리자를 통해 하는 방법이 아니다
 

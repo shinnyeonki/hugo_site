@@ -1,11 +1,11 @@
 ---
 title: vscode 설정
-date: 2024-10-06T03:00:00+09:00
-lastmod: 2024-10-06T03:00:00+09:00
 resource-path: temp/vscode 설정.md
-aliases: 
+aliases:
 tags:
   - vscode
+date: 2024-10-06T03:00:00+09:00
+lastmod: 2024-10-06T03:00:00+09:00
 ---
 keybindings.json
 ```json

@@ -1,10 +1,10 @@
 ---
 title: universal clipboard
+resource-path: universal clipboard.md
+aliases:
+tags:
 date: 2025-04-17T00:43:00+09:00
 lastmod: 2025-06-03T10:17:57+09:00
-resource-path: universal clipboard.md
-aliases: 
-tags: 
 ---
 #### **2.1. 중앙 서버 설계**
 

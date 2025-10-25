@@ -1,10 +1,10 @@
 ---
 title: 주석 유형 docstring
+resource-path: 02.inbox/주석 유형 docstring.md
+aliases:
+tags:
 date: 2025-07-01T06:43:42+09:00
 lastmod: 2025-07-01T06:44:14+09:00
-resource-path: 02.inbox/주석 유형 docstring.md
-aliases: 
-tags: 
 ---
 ### docstring 유형 라벨 (분류)
 

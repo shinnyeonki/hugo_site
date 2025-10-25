@@ -1,10 +1,10 @@
 ---
 title: Transaction 의 ACID
+resource-path: temp/Transaction 의 ACID.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-09-27T15:04:00+09:00
-resource-path: temp/Transaction 의 ACID.md
-aliases: 
-tags: 
 ---
 ACID는 데이터베이스 트랜잭션의 신뢰성을 보장하는 네 가지 주요 속성입니다. 각각의 속성을 한 문장으로 요약하고 예시를 들어 설명하겠습니다.
 

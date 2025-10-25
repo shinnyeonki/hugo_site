@@ -1,12 +1,12 @@
 ---
 title: python 입력함수
-date: 2023-12-25T04:06:00+09:00
-lastmod: 2023-12-25T04:06:00+09:00
 resource-path: temp/python 입력함수.md
-aliases: 
+aliases:
 tags:
   - python
   - language
+date: 2023-12-25T04:06:00+09:00
+lastmod: 2023-12-25T04:06:00+09:00
 ---
 ```python
 (function) def input(  

@@ -1,10 +1,10 @@
 ---
 title: ps 공부
+resource-path: leetcode75/ps 공부.md
+aliases:
+tags:
 date: 2025-02-07T04:19:00+09:00
 lastmod: 2025-02-07T04:19:00+09:00
-resource-path: leetcode75/ps 공부.md
-aliases: 
-tags: 
 ---
 PS를 열심히 공부하겠다고 생각하였으나, 정작 무엇부터 시작해야하는지 감이 쉽게 잡히지 않았습니다.
 

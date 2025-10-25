@@ -1,15 +1,15 @@
 ---
 title: 데이터베이스2 ER model
-date: 2024-09-23T13:20:00+09:00
-lastmod: 2024-09-23T13:20:00+09:00
 resource-path: 06.University/database(university)/데이터베이스2 ER model.md
-aliases: 
+aliases:
 tags:
   - database
 description: 대학 수업 database 에서 배운 모든 내용 정리
-source: database(university)
-sequence: "11"
-finish: 
+series: database(university)
+series_weight: "11"
+finish:
+date: 2024-09-23T13:20:00+09:00
+lastmod: 2024-09-23T13:20:00+09:00
 ---
 27, 51, 52page
 

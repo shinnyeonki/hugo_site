@@ -1,9 +1,6 @@
 ---
 title: python login
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: temp/python login.md
-draft: true
 ---
 `refresh_token`은 JWT 인증 시스템에서 중요한 역할을 합니다. 일반적으로 `access_token`은 짧은 유효 기간을 가지며, 클라이언트가 보호된 리소스에 접근할 때 사용됩니다. 반면, `refresh_token`은 긴 유효 기간을 가지며, 만료된 `access_token`을 갱신하는 데 사용됩니다. 이를 통해 사용자는 매번 로그인하지 않고도 안전하게 세션을 유지할 수 있습니다.
 

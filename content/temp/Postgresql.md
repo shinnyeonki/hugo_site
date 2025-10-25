@@ -1,10 +1,10 @@
 ---
 title: Postgresql
+resource-path: temp/Postgresql.md
+aliases:
+tags:
 date: 2024-09-16T04:11:00+09:00
 lastmod: 2024-09-16T04:11:00+09:00
-resource-path: temp/Postgresql.md
-aliases: 
-tags: 
 ---
 ## Postgresql binary
 1. **clusterdb**: 데이터베이스 클러스터의 모든 데이터베이스를 클러스터화합니다.

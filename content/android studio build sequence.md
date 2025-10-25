@@ -1,11 +1,11 @@
 ---
 title: android studio build sequence
-date: 2025-09-08T15:10:44+09:00
-lastmod: 2025-10-13T13:22:05+09:00
 resource-path: android studio build sequence.md
 aliases:
 tags:
   - ai-content
+date: 2025-09-08T15:10:44+09:00
+lastmod: 2025-10-13T13:22:05+09:00
 ---
 네, 제공해주신 Android Gradle 빌드 로그의 각 단계를 매우 자세하게 설명해 드리겠습니다. 이 로그는 Android Studio에서 'Run' 버튼을 누르거나 터미널에서 `./gradlew assembleDebug` 명령을 실행했을 때 나타나는 과정입니다.
 

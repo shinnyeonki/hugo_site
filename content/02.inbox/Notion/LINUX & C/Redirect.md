@@ -1,9 +1,6 @@
 ---
 title: Redirect
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/Redirect.md
-draft: true
 ---
 redirection 기본 구조
 

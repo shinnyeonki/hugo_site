@@ -1,3 +1,3 @@
 ---
-title: Notion 
+title: Notion
 ---

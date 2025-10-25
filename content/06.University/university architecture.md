@@ -1,11 +1,11 @@
 ---
 title: university architecture
-date: 2025-04-17T03:26:00+09:00
-lastmod: 2025-06-08T19:19:34+09:00
 resource-path: 06.University/university architecture.md
-aliases: 
+aliases:
 tags:
   - university
+date: 2025-04-17T03:26:00+09:00
+lastmod: 2025-06-08T19:19:34+09:00
 ---
 - PC : 다음에 인출될 명령어의 주소
 - AC : 임시저장

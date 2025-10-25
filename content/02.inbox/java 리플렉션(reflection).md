@@ -1,11 +1,11 @@
 ---
 title: java 리플렉션(reflection)
-date: 2024-01-27T11:29:00+09:00
-lastmod: 2024-01-27T11:29:00+09:00
 resource-path: 02.inbox/java 리플렉션(reflection).md
-aliases: 
+aliases:
 tags:
   - java
+date: 2024-01-27T11:29:00+09:00
+lastmod: 2024-01-27T11:29:00+09:00
 ---
 클래스 인터페이스의 메타 정보를 java.lang.Class 클래스 객체에서 관리한다
 이를 통해 런타임 시점에 클래스의 정보를 확인할 수 있다

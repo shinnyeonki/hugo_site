@@ -1,10 +1,10 @@
 ---
 title: android 이벤트 처리 코드 분리
+resource-path: android 이벤트 처리 코드 분리.md
+aliases:
+tags:
 date: 2025-10-16T16:04:39+09:00
 lastmod: 2025-10-16T16:09:26+09:00
-resource-path: android 이벤트 처리 코드 분리.md
-aliases: 
-tags: 
 ---
 네, 말씀하신 내용이 바로 **'관심사의 분리(Separation of Concerns)'** 원칙을 UI 계층에 적용하는 아주 훌륭한 접근 방식입니다. Activity/Fragment는 오케스트라의 지휘자처럼 어떤 뷰와 어떤 로직 핸들러(ViewModel)를 연결할지 '조율'만 하고, 실제 이벤트 처리 로직은 모두 ViewModel에, UI 내부의 세부 이벤트 감지는 커스텀 뷰 자체에 위임하는 구조입니다.
 

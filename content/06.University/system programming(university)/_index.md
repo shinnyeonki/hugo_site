@@ -1,3 +1,3 @@
 ---
-title: System Programming(University) 
+title: System Programming(University)
 ---

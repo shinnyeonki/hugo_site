@@ -1,9 +1,6 @@
 ---
 title: Untitled 4
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: temp/Untitled 4.md
-draft: true
 ---
 SQL 표준에서는
 - dirty read: commit 되지 않은 데이터를 읽었을 때 발생하며, 데이터를 읽은 이후에 이 데이터를 rollback하게 되는 경우 문제가 발생하는 현상

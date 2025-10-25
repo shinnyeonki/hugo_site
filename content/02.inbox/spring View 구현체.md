@@ -1,12 +1,12 @@
 ---
 title: spring View 구현체
-date: 2025-03-10T00:27:00+09:00
-lastmod: 2025-03-10T00:27:00+09:00
 resource-path: 02.inbox/spring View 구현체.md
-aliases: 
+aliases:
 tags:
   - spring
   - reference
+date: 2025-03-10T00:27:00+09:00
+lastmod: 2025-03-10T00:27:00+09:00
 ---
 스프링 MVC의 **`View`**는 **모델 데이터를 클라이언트에게 렌더링하는 최종 형식**을 결정하는 인터페이스입니다.  
 아래에서 언급된 21개의 `View` 구현체를 **목적별로 체계적으로 정리**했습니다:

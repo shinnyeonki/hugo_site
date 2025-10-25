@@ -1,16 +1,16 @@
 ---
 title: 구현(Implementation)
-date: 2023-12-23T12:43:00+09:00
-lastmod: 2025-10-21T20:45:20+09:00
 resource-path: 02.inbox/이것이 코딩테스트다 with python/구현(Implementation).md
-aliases: 
+aliases:
 tags:
   - algorithm
   - cs
-description: 
-source: 이것이 코딩테스트다 with python
-sequence: 14
-finish: 
+description:
+series: 이것이 코딩테스트다 with python
+series_weight: 14
+finish:
+date: 2023-12-23T12:43:00+09:00
+lastmod: 2025-10-21T20:45:20+09:00
 ---
 **머릿속에 있는 알고리즘을 소스코드로 바꾸는 과정**
 - 알고리즘은 간단한데 코드가 지나칠 만큼 길어지는 문제

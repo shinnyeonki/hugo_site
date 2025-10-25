@@ -1,11 +1,11 @@
 ---
 title: obsidian 포멧 관리
-date: 2025-06-27T19:49:36+09:00
-lastmod: 2025-06-27T19:49:46+09:00
 resource-path: 89.Obsidian/obsidian 포멧 관리.md
-aliases: 
+aliases:
 tags:
   - obsidian
+date: 2025-06-27T19:49:36+09:00
+lastmod: 2025-06-27T19:49:46+09:00
 ---
 좋습니다!  
 지금까지 만든 `process_text` 함수를 사용해서 **특정 폴더 아래의 모든 `.md` 파일을 검사하고**,  

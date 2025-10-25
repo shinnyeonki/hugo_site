@@ -1,10 +1,10 @@
 ---
 title: network 2차 과제
+resource-path: 06.University/network/network 2차 과제.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-03T06:40:34+09:00
-resource-path: 06.University/network/network 2차 과제.md
-aliases: 
-tags: 
 ---
 # 🌐 HTTP 0.9 ~ HTTP 1.1 까지 알아보는 통신 기술
 ![http-protocol-history](https://blog.kakaocdn.net/dn/I329S/btrRAEMQ1Dz/IuWfVfCOB3YfS3p4fdKffK/img.webp)

@@ -1,12 +1,12 @@
 ---
 title: python 람다(lambda)
-date: 2023-12-28T07:20:00+09:00
-lastmod: 2023-12-28T07:20:00+09:00
 resource-path: 02.inbox/python 람다(lambda).md
-aliases: 
+aliases:
 tags:
   - python
   - language
+date: 2023-12-28T07:20:00+09:00
+lastmod: 2023-12-28T07:20:00+09:00
 ---
 > 익명함수로도 불리운다
 

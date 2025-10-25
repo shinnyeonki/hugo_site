@@ -1,17 +1,17 @@
 ---
 title: 그래프(graph)
-date: 2023-12-26T08:11:00+09:00
-lastmod: 2025-10-11T05:12:07+09:00
 resource-path: 02.inbox/이것이 코딩테스트다 with python/그래프(graph).md
 aliases:
   - graph
 tags:
   - algorithm
   - cs
-description: 
-source: 이것이 코딩테스트다 with python
-sequence: 17
-finish: 
+description:
+series: 이것이 코딩테스트다 with python
+series_weight: 17
+finish:
+date: 2023-12-26T08:11:00+09:00
+lastmod: 2025-10-11T05:12:07+09:00
 ---
 📖 그래프의 종류와 개념
 ----------

@@ -1,10 +1,10 @@
 ---
 title: spring bean 조회
+resource-path: temp/spring bean 조회.md
+aliases:
+tags:
 date: 2025-06-27T19:39:35+09:00
 lastmod: 2025-09-05T17:38:41+09:00
-resource-path: temp/spring bean 조회.md
-aliases: 
-tags: 
 ---
 ![](../08.media/20240202105604.png|spring bean 조회-20240202105604)
 

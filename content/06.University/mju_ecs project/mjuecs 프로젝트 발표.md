@@ -1,10 +1,10 @@
 ---
 title: mjuecs 프로젝트 발표
+resource-path: 06.University/mju_ecs project/mjuecs 프로젝트 발표.md
+aliases:
+tags:
 date: 2025-06-08T06:31:36+09:00
 lastmod: 2025-06-10T08:56:43+09:00
-resource-path: 06.University/mju_ecs project/mjuecs 프로젝트 발표.md
-aliases: 
-tags: 
 share_link: https://share.note.sx/40dcqfcd#WJgwu/w+tND+y5yf+3CeNUsc4IeeJO9zEFKy8VG77N0
 share_updated: 2025-06-10T10:22:45+09:00
 ---

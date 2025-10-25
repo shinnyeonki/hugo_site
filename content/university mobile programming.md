@@ -1,12 +1,12 @@
 ---
 title: university mobile programming
-date: 2025-09-24T07:16:39+09:00
-lastmod: 2025-10-16T16:04:40+09:00
 resource-path: university mobile programming.md
 aliases:
 tags:
   - android
   - university
+date: 2025-09-24T07:16:39+09:00
+lastmod: 2025-10-16T16:04:40+09:00
 ---
 ## kotlin 기본 문법
 

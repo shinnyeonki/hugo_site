@@ -1,11 +1,11 @@
 ---
 title: yt dlp 명령어 모음
-date: 2024-06-02T01:03:00+09:00
-lastmod: 2024-06-02T01:03:00+09:00
 resource-path: 02.inbox/yt-dlp 명령어 모음.md
-aliases: 
+aliases:
 tags:
   - command
+date: 2024-06-02T01:03:00+09:00
+lastmod: 2024-06-02T01:03:00+09:00
 ---
 ```shell
 yt-dlp -F # 다운받을 수 있는 모든 포멧종류

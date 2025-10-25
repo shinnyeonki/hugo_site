@@ -5,17 +5,22 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.getElementById('contentWidthSlider');
-    const contentContainer = document.getElementById('content-container');
+    const content = document.getElementById('content');
     
-    if (!slider || !contentContainer) {
+    if (!slider || !content) {
         return;
     }
 
     // 저장된 너비 값 불러오기 (로컬 스토리지)
     const savedWidth = localStorage.getItem('contentWidth');
+    const defaultWidth = slider.value; // 슬라이더의 기본값 (72)
+    
     if (savedWidth) {
         slider.value = savedWidth;
         updateContentWidth(savedWidth);
+    } else {
+        // 저장된 값이 없으면 기본값으로 초기화
+        updateContentWidth(defaultWidth);
     }
 
     // 슬라이더 값 변경 시 너비 업데이트
@@ -30,12 +35,15 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {string|number} width - ch 단위로 적용할 너비 값
      */
     function updateContentWidth(width) {
-        // 기존 max-w 클래스 제거
-        const classes = contentContainer.className.split(' ');
-        const filteredClasses = classes.filter(cls => !cls.startsWith('max-w-'));
+        // 모든 max-w 관련 클래스 제거 (Tailwind의 임의 값 포함)
+        const classes = content.className.split(' ');
+        const filteredClasses = classes.filter(cls => {
+            // max-w-로 시작하거나 max-w-[로 시작하는 모든 클래스 제거
+            return !cls.startsWith('max-w-') && !cls.includes('max-w-[');
+        });
         
-        // 새로운 너비 적용
-        contentContainer.className = filteredClasses.join(' ');
-        contentContainer.style.maxWidth = `${width}ch`;
+        // 새로운 클래스 적용 및 인라인 스타일로 너비 설정
+        content.className = filteredClasses.join(' ');
+        content.style.maxWidth = `${width}ch`;
     }
 });

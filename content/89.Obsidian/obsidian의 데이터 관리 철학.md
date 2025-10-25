@@ -1,9 +1,6 @@
 ---
 title: obsidian의 데이터 관리 철학
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 89.Obsidian/obsidian의 데이터 관리 철학.md
-draft: true
 ---
 - 필자가 생각하는 노트 관리의 의미
 - obsidian 을 프론트 엔드로 활용하자

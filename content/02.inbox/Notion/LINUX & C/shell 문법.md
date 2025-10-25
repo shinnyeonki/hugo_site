@@ -1,9 +1,6 @@
 ---
 title: shell 문법
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/shell 문법.md
-draft: true
 ---
 ```
 위치 매개 변수

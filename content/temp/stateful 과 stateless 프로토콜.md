@@ -1,11 +1,11 @@
 ---
 title: stateful 과 stateless 프로토콜
-date: 2024-02-13T02:02:00+09:00
-lastmod: 2024-02-13T02:02:00+09:00
 resource-path: temp/stateful 과 stateless 프로토콜.md
-aliases: 
+aliases:
 tags:
   - network
+date: 2024-02-13T02:02:00+09:00
+lastmod: 2024-02-13T02:02:00+09:00
 ---
 - stateful : TCP, FTP
 - stateless : udp http ...

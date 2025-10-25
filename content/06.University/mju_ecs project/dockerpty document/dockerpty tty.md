@@ -1,9 +1,6 @@
 ---
 title: dockerpty tty
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 06.University/mju_ecs project/dockerpty document/dockerpty tty.md
-draft: true
 ---
 # `dockerpty: tty.py` 모듈 문서
 

@@ -1,12 +1,12 @@
 ---
 title: mysql 명령 모음
-date: 2024-03-05T16:15:00+09:00
-lastmod: 2024-03-05T16:15:00+09:00
 resource-path: 02.inbox/mysql 명령 모음.md
-aliases: 
+aliases:
 tags:
   - database
   - command
+date: 2024-03-05T16:15:00+09:00
+lastmod: 2024-03-05T16:15:00+09:00
 ---
 mysql 로그인
 ```shell

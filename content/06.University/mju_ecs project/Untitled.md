@@ -1,10 +1,10 @@
 ---
 title: Untitled
+resource-path: 06.University/mju_ecs project/Untitled.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-04T06:11:20+09:00
-resource-path: 06.University/mju_ecs project/Untitled.md
-aliases: 
-tags: 
 ---
 ![](../../08.media/20250513062286.png)%20image%2020250513062286.png)
 

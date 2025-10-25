@@ -1,12 +1,12 @@
 ---
 title: thymeleaf 기본
-date: 2025-03-17T04:39:00+09:00
-lastmod: 2025-03-17T04:39:00+09:00
 resource-path: youngHan mvc1/thymeleaf 기본.md
-aliases: 
+aliases:
 tags:
   - spring
   - young_han
+date: 2025-03-17T04:39:00+09:00
+lastmod: 2025-03-17T04:39:00+09:00
 ---
 ### 타임리프 간단히 알아보기
 

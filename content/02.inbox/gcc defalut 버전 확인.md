@@ -1,13 +1,13 @@
 ---
 title: gcc defalut 버전 확인
-date: 2024-12-23T13:30:00+09:00
-lastmod: 2024-12-23T13:30:00+09:00
 resource-path: 02.inbox/gcc defalut 버전 확인.md
-aliases: 
+aliases:
 tags:
   - 잡지식
   - c
   - cpp
+date: 2024-12-23T13:30:00+09:00
+lastmod: 2024-12-23T13:30:00+09:00
 ---
 ```bash
 gcc -dM -E -x c - < /dev/null | grep __STDC_VERSION__

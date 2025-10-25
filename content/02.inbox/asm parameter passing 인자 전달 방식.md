@@ -1,12 +1,12 @@
 ---
 title: asm parameter passing 인자 전달 방식
-date: 2025-03-11T11:35:00+09:00
-lastmod: 2025-03-11T11:35:00+09:00
 resource-path: 02.inbox/asm parameter passing 인자 전달 방식.md
-aliases: 
+aliases:
 tags:
   - operating-system
   - assembler
+date: 2025-03-11T11:35:00+09:00
+lastmod: 2025-03-11T11:35:00+09:00
 ---
 다음은 인텔 어셈블리 문법으로 각 파라미터 전달 방식을 구현한 예시
 

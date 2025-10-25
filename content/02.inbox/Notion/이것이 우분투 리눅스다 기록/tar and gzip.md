@@ -1,9 +1,6 @@
 ---
 title: tar and gzip
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/이것이 우분투 리눅스다 기록/tar and gzip.md
-draft: true
 ---
 아카이브 묶기 명령
 

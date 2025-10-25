@@ -1,10 +1,10 @@
 ---
 title: obsidian prontmatter 규칙
+resource-path: 89.Obsidian/obsidian prontmatter 규칙.md
+aliases:
+tags:
 date: 2023-12-23T08:05:00+09:00
 lastmod: 2023-12-23T08:05:00+09:00
-resource-path: 89.Obsidian/obsidian prontmatter 규칙.md
-aliases: 
-tags: 
 ---
 > [!NOTE] alias
 > 노트를 한단어로 요약합니다

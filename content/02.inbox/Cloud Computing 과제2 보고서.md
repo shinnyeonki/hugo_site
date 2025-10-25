@@ -1,15 +1,15 @@
 ---
 title: Cloud Computing 과제2 보고서
-date: 2024-11-24T05:40:00+09:00
-lastmod: 2024-11-24T05:40:00+09:00
 resource-path: 02.inbox/Cloud Computing 과제2 보고서.md
-aliases: 
+aliases:
 tags:
   - university
 description: 대학 수업 cloud computing 보고서
-source: 
-sequence: 
-finish: 
+series:
+series_weight:
+finish:
+date: 2024-11-24T05:40:00+09:00
+lastmod: 2024-11-24T05:40:00+09:00
 ---
 ![Pasted image 20241124053028](../08.media/20241124053028.png)
 

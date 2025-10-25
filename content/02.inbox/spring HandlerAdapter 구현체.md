@@ -1,12 +1,12 @@
 ---
 title: spring HandlerAdapter 구현체
-date: 2025-03-10T00:14:00+09:00
-lastmod: 2025-03-10T00:14:00+09:00
 resource-path: 02.inbox/spring HandlerAdapter 구현체.md
-aliases: 
+aliases:
 tags:
   - spring
   - reference
+date: 2025-03-10T00:14:00+09:00
+lastmod: 2025-03-10T00:14:00+09:00
 ---
 스프링 MVC의 **`HandlerAdapter`**는 다양한 유형의 핸들러(컨트롤러)를 실행하는 인터페이스입니다.  
 각 `HandlerAdapter` 구현체는 특정 유형의 핸들러를 지원합니다.  

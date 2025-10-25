@@ -1,15 +1,14 @@
 ---
 title: 단일-버스 다중프로세서 시스템(2) - 캐쉬 일관성 유지를 위한 버스 감시 매커니즘 (MESI protocol), 디렉토리 기반 캐쉬 프로토콜
-date: 2025-06-10
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/단일-버스 다중프로세서 시스템(2) - 캐쉬 일관성 유지를 위한 버스 감시 매커니즘 (MESI protocol), 디렉토리 기반 캐쉬 프로토콜.md
-source: "https://butter-shower.tistory.com/40"
+series: https://butter-shower.tistory.com/40
 author:
   - "[[_rian]]"
 published: 2019-06-18
+date: 2025-06-10
 description: "캐시 일관성 유지 방법 중 가장 많이 사용하는 버스 감시 메커니즘에 대한 소개이다. 버스 감시 매커니즘을 이용하는 방법 데이터 일관성 유지를 위하여 버스 감시 기능을 가진 H/W 모듈인 스누프 제어기(snoop controller : 버스 감시기 (bus watcher))를 추가하는 방법 스누프 제어기(Snoop controller) 다른 프로세서에 의한 버스 상의 주기억장치 액세스의 주소를 감시하여, 그 결과에 따라 자신의 캐시 블록 상태를 조정하는 HW 모듈 각 캐쉬 블록들은 상태 비트들을 가지며, 상태의 수와 종류는 쓰기 방식 및 일관성 유지 프로토콜에 따라 달라짐. - Write-through coherence protocol - Write-back coherence protocol 1. Writ.."
 tags:
-  - "clippings"
+  - clippings
 ---
 글 작성자: \_rian
 

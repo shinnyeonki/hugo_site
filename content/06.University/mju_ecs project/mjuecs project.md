@@ -1,10 +1,10 @@
 ---
 title: mjuecs project
+resource-path: 06.University/mju_ecs project/mjuecs project.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-11T15:06:32+09:00
-resource-path: 06.University/mju_ecs project/mjuecs project.md
-aliases: 
-tags: 
 ---
 ### 물리 환경
 db,backend,frontend 컴퓨터 1대

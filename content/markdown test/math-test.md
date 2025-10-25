@@ -1,9 +1,6 @@
 ---
 title: math test
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: markdown test/math-test.md
-draft: true
 ---
 # 수학 표현식 테스트
 

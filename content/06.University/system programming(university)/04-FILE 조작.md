@@ -1,15 +1,15 @@
 ---
 title: 04 FILE 조작
-date: 2024-10-05T22:52:00+09:00
-lastmod: 2025-06-27T19:57:04+09:00
 resource-path: 06.University/system programming(university)/04-FILE 조작.md
-aliases: 
+aliases:
 tags:
   - system-programing
   - system-call
-description: 
-source: system programming(university)
-sequence: 4
+description:
+series: system programming(university)
+series_weight: 4
+date: 2024-10-05T22:52:00+09:00
+lastmod: 2025-06-27T19:57:04+09:00
 ---
 1. 1.link() / unlink() / remove() / rename()
 2. umask()

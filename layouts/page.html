@@ -1,23 +1,50 @@
 {{ define "main" }}
-    <!-- 스스로 너비가 제한된 컨테이너를 생성합니다. -->
-    <div id="content-container" class="max-w-[72ch] mx-auto">
-        <article id="main-content-container">
-            <header>
-                <h1 class="text-3xl font-bold mb-4 text-neutral-900 dark:text-neutral-100 latin-font break-words">
-                    {{ .Title }}
-                </h1>
-            </header>
+    <!-- 1. Breadcrumb 영역 -->
+    <div class="w-full mb-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+                <a href="/" class="hover:text-primary-blue-light transition-colors">🏠 Home</a>
+                {{ $currentPage := . }}
+                {{ range $index, $item := .Ancestors.Reverse }}
+                    {{ if ne $item.Kind "home" }}
+                        <span>/</span>
+                        <a href="{{ $item.Permalink }}" class="hover:text-primary-blue-light transition-colors">{{ $item.Title }}</a>
+                    {{ end }}
+                {{ end }}
+                <span>/</span>
+                <span class="text-neutral-700 dark:text-neutral-300 font-semibold">{{ .Title }}</span>
+            </nav>
+        </div>
+    </div>
 
-            <!-- prose: tailwindcss typography 플러그인 클래스로 마크다운 콘텐츠 스타일링 -->
-            <section id="markdown-content" class="prose prose-sm dark:prose-invert max-w-none break-words overflow-wrap-anywhere">
-                {{ .Content }}
-            </section>
-        </article>
+    <!-- 2. Header 영역 -->
+    <div class="w-full mb-8">
+        <div class="max-w-7xl mx-auto px-4 border-b pb-4">
+            <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font break-words">
+                {{ .Title }}
+            </h1>
+        </div>
+    </div>
 
-        <!-- 댓글을 직접 포함시킵니다. -->
-        {{ partial "comment.html" . }}
+    <!-- 3. Content 영역 -->
+    <div id="content-container" class="w-full mx-auto">
+        <div id="content" class="max-w-[72ch] mx-auto">
+            <article id="main-content-container">
+                <!-- prose: tailwindcss typography 플러그인 클래스로 마크다운 콘텐츠 스타일링 -->
+                <section id="markdown-content" class="prose prose-sm dark:prose-invert max-w-none break-words overflow-wrap-anywhere">
+                    {{ .Content }}
+                </section>
+            </article>
 
-        <!-- 푸터를 직접 포함시킵니다. -->
-        {{ partial "footer.html" . }}
+            <!-- 댓글을 직접 포함시킵니다. -->
+            {{ partial "comment.html" . }}
+        </div>
+    </div>
+
+    <!-- 4. Footer 영역 -->
+    <div class="w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            {{ partial "footer.html" . }}
+        </div>
     </div>
 {{ end }}

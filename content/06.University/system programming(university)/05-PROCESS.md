@@ -1,15 +1,15 @@
 ---
 title: 05 PROCESS
-date: 2024-10-27T18:04:00+09:00
-lastmod: 2024-10-27T18:04:00+09:00
 resource-path: 06.University/system programming(university)/05-PROCESS.md
-aliases: 
+aliases:
 tags:
   - system-programing
-description: 
-source: system programming(university)
-sequence: 5
-finish: 
+description:
+series: system programming(university)
+series_weight: 5
+finish:
+date: 2024-10-27T18:04:00+09:00
+lastmod: 2024-10-27T18:04:00+09:00
 ---
 ![](../../08.media/20241027180484.png)![Pasted image 20241027181337](../../08.media/20241027181337.png)
 

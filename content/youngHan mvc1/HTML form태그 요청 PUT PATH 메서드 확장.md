@@ -1,12 +1,12 @@
 ---
 title: HTML form태그 요청 PUT PATH 메서드 확장
-date: 2025-02-28T14:56:00+09:00
-lastmod: 2025-06-27T19:52:13+09:00
 resource-path: youngHan mvc1/HTML form태그 요청 PUT PATH 메서드 확장.md
-aliases: 
+aliases:
 tags:
   - html
   - young_han
+date: 2025-02-28T14:56:00+09:00
+lastmod: 2025-06-27T19:52:13+09:00
 ---
 HTML 표준  **Form** 태그에서 기본적으로 지원하는 메서드는 `GET`과 `POST`뿐이지만, 현대 웹 개발에서는 **PUT**, **PATCH**, 또는 **DELETE** 같은 HTTP 메서드를 사용할 수 있도록 확장할 수 있습니다. 이를 구현하기 위해 몇 가지 방법이 있습니다.
 

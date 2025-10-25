@@ -1,11 +1,11 @@
 ---
 title: sql date 관련 정리
-date: 2024-04-12T09:58:00+09:00
-lastmod: 2024-04-12T09:58:00+09:00
 resource-path: temp/sql date 관련 정리.md
-aliases: 
+aliases:
 tags:
   - sql
+date: 2024-04-12T09:58:00+09:00
+lastmod: 2024-04-12T09:58:00+09:00
 ---
 sql 에서 제공하는 date 에 관련한 정보를 기술한다
 

@@ -1,29 +1,38 @@
 {{/* layouts/partials/left-nav/tree-view.html */}}
 {{ $currentSection := .currentSection }}
 {{ $currentPage := .currentPage }}
+
 {{ range $currentSection.Sections }}
     {{ if .IsSection }}
-        <details class="group pl-2 {{ if $currentPage.IsAncestor . }}open{{ end }}">
-            <summary class="flex items-center w-full p-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer list-none text-sm font-semibold">
-                <svg class="h-4 w-4 mr-2 text-neutral-400 group-open:text-blue-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.75v6m-4.5-6a2.25 2.25 0 0 1 2.25-2.25h15A2.25 2.25 0 0 1 21.75 9.75v6a2.25 2.25 0 0 1-2.25 2.25H3.75a2.25 2.25 0 0 1-2.25-2.25v-6ZM17.25 9L12 14.25l-5.25-5.25" />
-                </svg>
-                <span>{{ .Title }}</span>
-            </summary>
-            <div class="ml-4 space-y-1">
-                {{ partial "left-nav/tree-view.html" (dict "currentSection" . "currentPage" $currentPage) }}
-            </div>
-        </details>
-    {{ else }}
-        <a href="{{ .Permalink }}"
-            class="block p-2 text-sm {{ if eq $currentPage.Permalink .Permalink }}text-blue-600 font-bold{{ else }}hover:bg-neutral-100 dark:hover:bg-neutral-800{{ end }} rounded-md">
-            {{ .Title }}
-        </a>
+        <li class="ln-folder">
+            <details class="group" {{ if $currentPage.IsAncestor . }}open{{ end }}>
+                <summary class="flex items-center p-2 text-left rounded-md cursor-pointer list-none text-sm">
+                    <span class="ln-toggle-icon flex items-center justify-center w-5 h-5 mr-1">
+                        <span class="ln-chevron"></span>
+                    </span>
+                    <span class="ln-folder-icon mr-2">
+                        <span class="ln-icon"></span>
+                    </span>
+                    <a href="{{ .Permalink }}" class="ln-folder-name hover:underline flex-grow" onclick="event.stopPropagation();">
+                        {{ .Title }}
+                    </a>
+                </summary>
+                <ul class="ml-6 mt-1 space-y-1">
+                    {{ partial "left-nav/tree-view.html" (dict "currentSection" . "currentPage" $currentPage) }}
+                </ul>
+            </details>
+        </li>
     {{ end }}
 {{ end }}
+
 {{ range $currentSection.RegularPages.ByTitle }}
-    <a href="{{ .Permalink }}"
-        class="block p-2 text-sm {{ if eq $currentPage.Permalink .Permalink }}text-blue-600 font-bold{{ else }}hover:bg-neutral-100 dark:hover:bg-neutral-800{{ end }} rounded-md">
-        {{ .Title }}
-    </a>
+    <li class="ln-file">
+        <a href="{{ .Permalink }}"
+            class="flex items-center p-2 text-sm rounded-md {{ if eq $currentPage.Permalink .Permalink }}text-blue-600 font-bold bg-blue-50 dark:bg-blue-900/20{{ else }}hover:bg-neutral-50 dark:hover:bg-neutral-800/50 hover:border-primary-blue-light dark:hover:border-primary-blue-light{{ end }}">
+            <span class="ln-file-icon mr-2">
+                <span class="ln-icon"></span>
+            </span>
+            <span class="ln-file-name">{{ .Title }}</span>
+        </a>
+    </li>
 {{ end }}

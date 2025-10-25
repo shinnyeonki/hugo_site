@@ -1,13 +1,13 @@
 ---
 title: time 명령어
-date: 2023-12-21T04:32:00+09:00
-lastmod: 2023-12-21T04:32:00+09:00
 resource-path: 02.inbox/time 명령어.md
-aliases: 
+aliases:
 tags:
   - command
   - linux
   - 잡지식
+date: 2023-12-21T04:32:00+09:00
+lastmod: 2023-12-21T04:32:00+09:00
 ---
 실제 경과 시간을 나타내는 "Real", 프로세스에서 사용된 CPU 시간만을 나타내는 "User" 및 "Sys"는 커널 내에서 실행되는 코드에서 사용된 CPU 시간을 나타냅니다.
 

@@ -1,9 +1,6 @@
 ---
 title: docker
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/Notion/docker.md
-draft: true
 ---
 image → container → 사용
 

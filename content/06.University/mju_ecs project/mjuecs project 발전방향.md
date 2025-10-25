@@ -1,10 +1,10 @@
 ---
 title: mjuecs project 발전방향
+resource-path: 06.University/mju_ecs project/mjuecs project 발전방향.md
+aliases:
+tags:
 date: 2025-06-04T06:11:20+09:00
 lastmod: 2025-06-04T06:29:24+09:00
-resource-path: 06.University/mju_ecs project/mjuecs project 발전방향.md
-aliases: 
-tags: 
 ---
 > aws 의 ecs 서비스와 같이 컴퓨팅 을 제공
 

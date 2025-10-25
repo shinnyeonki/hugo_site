@@ -1,12 +1,12 @@
 ---
 title: university machine leaning
-date: 2025-03-10T15:00:00+09:00
-lastmod: 2025-06-03T06:40:37+09:00
 resource-path: 06.University/university machine leaning.md
-aliases: 
+aliases:
 tags:
   - machine_leaning
   - university
+date: 2025-03-10T15:00:00+09:00
+lastmod: 2025-06-03T06:40:37+09:00
 ---
 ![Pasted image 20250314104746](../08.media/20250314104746.png)
 ![Pasted image 20250314104833](../08.media/20250314104833.png)

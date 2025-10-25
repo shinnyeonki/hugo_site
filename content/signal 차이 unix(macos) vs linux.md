@@ -1,12 +1,12 @@
 ---
 title: signal 차이 unix(macos) vs linux
-date: 2025-09-09T23:07:14+09:00
-lastmod: 2025-10-23T04:34:07+09:00
 resource-path: signal 차이 unix(macos) vs linux.md
 aliases:
 tags:
   - ai-content
   - system-programing
+date: 2025-09-09T23:07:14+09:00
+lastmod: 2025-10-23T04:34:07+09:00
 ---
 ## macOS와 Linux의 신호(Signal) 상세 분석
 

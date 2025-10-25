@@ -1,11 +1,11 @@
 ---
 title: 익명 클래스(Anonymous Class)
-date: 2023-12-20T07:12:00+09:00
-lastmod: 2023-12-20T07:12:00+09:00
 resource-path: temp/익명 클래스(Anonymous Class).md
-aliases: 
+aliases:
 tags:
   - language
+date: 2023-12-20T07:12:00+09:00
+lastmod: 2023-12-20T07:12:00+09:00
 ---
 내부 클래스의 일종으로 이름이 없는 클래스
 

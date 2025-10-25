@@ -1,11 +1,11 @@
 ---
 title: terminal auto logging
-date: 2025-09-09T17:16:26+09:00
-lastmod: 2025-09-09T17:17:45+09:00
 resource-path: 02.inbox/terminal auto logging.md
 aliases:
 tags:
   - project
+date: 2025-09-09T17:16:26+09:00
+lastmod: 2025-09-09T17:17:45+09:00
 ---
 ## Terminal Auto Logger
 

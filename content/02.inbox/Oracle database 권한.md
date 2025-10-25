@@ -1,11 +1,11 @@
 ---
 title: Oracle database 권한
-date: 2024-11-29T13:13:00+09:00
-lastmod: 2024-11-29T13:13:00+09:00
 resource-path: 02.inbox/Oracle database 권한.md
-aliases: 
+aliases:
 tags:
   - database
+date: 2024-11-29T13:13:00+09:00
+lastmod: 2024-11-29T13:13:00+09:00
 ---
 Oracle 데이터베이스에서 사용자의 권한을 설정할 때 사용할 수 있는 다양한 **권한**(privileges)과 **역할**(roles)의 예시는 아래와 같습니다. 권한은 크게 **시스템 권한**과 **객체 권한**으로 나뉩니다. 아래는 그 주요 예들입니다.
 

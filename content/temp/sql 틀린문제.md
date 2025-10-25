@@ -1,12 +1,12 @@
 ---
 title: sql 틀린문제
-date: 2024-04-11T13:04:00+09:00
-lastmod: 2024-04-11T13:04:00+09:00
 resource-path: temp/sql 틀린문제.md
-aliases: 
+aliases:
 tags:
   - sql
   - 문제풀이
+date: 2024-04-11T13:04:00+09:00
+lastmod: 2024-04-11T13:04:00+09:00
 ---
 ## null 의 비교연산
 null

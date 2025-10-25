@@ -1,9 +1,6 @@
 ---
 title: sizeof
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: temp/sizeof.md
-draft: true
 ---
 `sizeof` 연산자는 C 언어에서 객체나 데이터 타입의 크기를 바이트 단위로 반환하는 데 사용됩니다. `sizeof`의 사용법과 규칙은 다음과 같습니다.
 

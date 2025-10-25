@@ -1,11 +1,11 @@
 ---
 title: http는 stateless 한데 하위 스택의 tcp 는 stateful 이다 (HTTP1.1 기준)
-date: 2025-03-25T15:09:00+09:00
-lastmod: 2025-03-25T15:09:00+09:00
 resource-path: 02.inbox/http는 stateless 한데 하위 스택의 tcp 는 stateful 이다 (HTTP1.1 기준).md
-aliases: 
+aliases:
 tags:
   - network
+date: 2025-03-25T15:09:00+09:00
+lastmod: 2025-03-25T15:09:00+09:00
 ---
 ### 질문
 Persistent HTTP 에서 기본적으로 http 는 stateless 해 하지만 어떻게 Persistent하게 get 요청을 보낼 수 있는 거야 즉 서버 측에서 이미 3way handshake 했다는 것을 어떻게 인지하는 거야??

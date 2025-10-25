@@ -1,12 +1,12 @@
 ---
 title: Greedy 알고리즘
-date: 2024-12-30T14:32:00+09:00
-lastmod: 2024-12-30T14:32:00+09:00
 resource-path: leetcode75/Greedy 알고리즘.md
 aliases:
   - 그리디
 tags:
   - algorithm
+date: 2024-12-30T14:32:00+09:00
+lastmod: 2024-12-30T14:32:00+09:00
 ---
 그리디 알고리즘을 적용하여 최적해를 구할 수 있는 문제는 다음 두 조건을 만족한다.
 1. **greedy choice property**: 현재 선택이 이 후의 선택에 영향을 주지 않음

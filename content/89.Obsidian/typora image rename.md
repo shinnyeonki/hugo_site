@@ -1,10 +1,10 @@
 ---
 title: typora image rename
+resource-path: 89.Obsidian/typora image rename.md
+aliases:
+tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-03T09:42:49+09:00
-resource-path: 89.Obsidian/typora image rename.md
-aliases: 
-tags: 
 ---
 ```python
 import os

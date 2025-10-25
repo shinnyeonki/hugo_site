@@ -1,30 +1,50 @@
 {{ define "main" }}
-    <!-- taxonomy.html이 스스로 꽉 찬 너비의 컨테이너를 생성합니다. -->
-    <div id="content-container" class="max-w-[72ch] mx-auto">
-        <header class="mb-10 pb-4 border-b border-neutral-200 dark:border-neutral-800">
-            <h1 class="text-4xl font-extrabold text-center text-neutral-900 dark:text-neutral-100 latin-font">
+    <!-- 1. Breadcrumb 영역 -->
+    <div class="w-full mb-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+                <a href="/" class="hover:text-primary-blue-light transition-colors">🏠 Home</a>
+                <span>/</span>
+                <span class="text-neutral-700 dark:text-neutral-300 font-semibold">{{ .Title }}</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 2. Header 영역 -->
+    <div class="w-full mb-8">
+        <div class="max-w-7xl mx-auto px-4 border-b pb-4">
+            <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font">
                 {{ .Title }}
             </h1>
             <p class="text-center text-neutral-500 dark:text-neutral-400 mt-2">
                 All available {{ .Data.Plural }}.
             </p>
-        </header>
-
-        <!-- 태그 클라우드와 같은 형태로 모든 텀(term)을 표시합니다. -->
-        <div class="flex flex-wrap justify-center gap-3">
-            {{/* .Data.Terms를 사용해 모든 텀을 가져옵니다. 글 개수 순으로 정렬합니다. */}}
-            {{ range .Data.Terms.ByCount }}
-                <a href="{{ .Page.Permalink }}" 
-                   class="flex items-center bg-neutral-100 dark:bg-neutral-800 rounded-full px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 transition-colors hover:bg-primary-blue-light/20 hover:text-neutral-900 dark:hover:text-neutral-100">
-                    <span>{{ .Page.Title }}</span>
-                    <span class="ml-2 text-xs bg-white dark:bg-neutral-700 rounded-full px-2 py-0.5">
-                        {{ .Count }}
-                    </span>
-                </a>
-            {{ end }}
         </div>
+    </div>
 
-        <!-- 푸터를 직접 포함시킵니다. -->
-        {{ partial "footer.html" . }}
+    <!-- 3. Content 영역 -->
+    <div id="content-container" class="w-full mx-auto">
+        <div class="max-w-[72ch] mx-auto px-4">
+            <!-- 태그 클라우드와 같은 형태로 모든 텀(term)을 표시합니다. -->
+            <div class="flex flex-wrap justify-center gap-3">
+                {{/* .Data.Terms를 사용해 모든 텀을 가져옵니다. 글 개수 순으로 정렬합니다. */}}
+                {{ range .Data.Terms.ByCount }}
+                    <a href="{{ .Page.Permalink }}" 
+                       class="flex items-center bg-neutral-100 dark:bg-neutral-800 rounded-full px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 transition-colors hover:bg-primary-blue-light/20 hover:text-neutral-900 dark:hover:text-neutral-100">
+                        <span>{{ .Page.Title }}</span>
+                        <span class="ml-2 text-xs bg-white dark:bg-neutral-700 rounded-full px-2 py-0.5">
+                            {{ .Count }}
+                        </span>
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Footer 영역 -->
+    <div class="w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            {{ partial "footer.html" . }}
+        </div>
     </div>
 {{ end }}

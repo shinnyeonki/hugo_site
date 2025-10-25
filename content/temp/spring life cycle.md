@@ -1,13 +1,13 @@
 ---
 title: spring life cycle
-date: 2024-02-01T14:18:00+09:00
-lastmod: 2024-02-01T14:18:00+09:00
 resource-path: temp/spring life cycle.md
 aliases:
   - 주기
 tags:
   - spring
   - java
+date: 2024-02-01T14:18:00+09:00
+lastmod: 2024-02-01T14:18:00+09:00
 ---
 **스프링 빈의 이벤트 라이프사이클**
 스프링 컨테이너 생성

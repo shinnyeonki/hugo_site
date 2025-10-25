@@ -1,10 +1,10 @@
 ---
 title: java type 확인법
+resource-path: java type 확인법.md
+aliases:
+tags:
 date: 2025-09-12T20:51:17+09:00
 lastmod: 2025-09-12T21:00:28+09:00
-resource-path: java type 확인법.md
-aliases: 
-tags: 
 share_link: https://share.note.sx/tj6qxwcw#PRwNTJvX39gW2hDdS96kHdqOnAc+chVkWGF/HET2ofY
 share_updated: 2025-09-12T20:53:26+09:00
 ---

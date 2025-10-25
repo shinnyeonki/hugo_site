@@ -1,12 +1,12 @@
 ---
 title: spring ViewResolver 구현체
-date: 2025-03-10T00:23:00+09:00
-lastmod: 2025-03-10T00:23:00+09:00
 resource-path: 02.inbox/spring ViewResolver 구현체.md
-aliases: 
+aliases:
 tags:
   - spring
   - reference
+date: 2025-03-10T00:23:00+09:00
+lastmod: 2025-03-10T00:23:00+09:00
 ---
 스프링 MVC의 **`ViewResolver`** 는 **뷰 이름을 실제 `View` 객체로 변환**하는 역할을 합니다.  
 다양한 구현체가 있으며, 각각의 특징과 사용 사례를 체계적으로 정리했습니다:

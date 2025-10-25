@@ -1,12 +1,12 @@
 ---
 title: UDP와 TCP Demultiplexing 의 이해
-date: 2025-03-28T09:53:00+09:00
-lastmod: 2025-03-28T09:53:00+09:00
 resource-path: 02.inbox/UDP와 TCP Demultiplexing 의 이해.md
-aliases: 
+aliases:
 tags:
   - network
   - university
+date: 2025-03-28T09:53:00+09:00
+lastmod: 2025-03-28T09:53:00+09:00
 ---
 > 디멀티플렉싱은 수신된 네트워크 패킷을 분석하여 해당 패킷이 어떤 소켓으로 전달되어야 하는지를 결정하는 과정
 

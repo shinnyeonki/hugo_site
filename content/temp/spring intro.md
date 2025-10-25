@@ -1,9 +1,6 @@
 ---
 title: spring intro
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: temp/spring intro.md
-draft: true
 ---
 ## [Spring Boot Devtools 사용법](https://barbera.tistory.com/47)
 

@@ -1,12 +1,12 @@
 ---
 title: gitstatus 프롬프트
-date: 2024-02-24T08:39:00+09:00
-lastmod: 2024-02-24T08:39:00+09:00
 resource-path: 02.inbox/gitstatus 프롬프트.md
-aliases: 
+aliases:
 tags:
   - reference
   - 잡지식
+date: 2024-02-24T08:39:00+09:00
+lastmod: 2024-02-24T08:39:00+09:00
 ---
 | segment     | meaning                                 |
 | ----------- | --------------------------------------- |

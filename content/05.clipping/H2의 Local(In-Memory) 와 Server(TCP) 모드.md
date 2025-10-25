@@ -1,15 +1,14 @@
 ---
 title: H2의 Local(In-Memory) 와 Server(TCP) 모드
-date: 2025-05-26
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/H2의 Local(In-Memory) 와 Server(TCP) 모드.md
-source: "https://lob-dev.tistory.com/13"
+series: https://lob-dev.tistory.com/13
 author:
   - "[[Junior Lob!]]"
 published: 2020-12-11
-description: "H2의 Local, Server 개념 Embedded 모드 H2 DB를 시스템의 메인 메모리에서 (JVM 위에서) 구동시키는 방식으로 application이 종료된다면 저장, 수정된 Data가 손실(휘발) 된다. 즉 기본적으로는 영속적이지 않은 방식이다. → 데이터에 대한 영속성을 제공하는 방법은 존재한다. 메인 메모리에 DB를 띄워놓고 해당 DB를 사용하는 Application의 스레드로 데이터에 바로 접근함으로써 데이터 읽기, 쓰기에 대한 성능을 향상할 수 있으므로 유용하게 사용할 수 있으며, 데이터 캐싱 DB에 대해서도 H2를 고려할 수 있다고 한다. 하지만 JVM에서 데이터 연산에 사용되는 쓰레드를 인터럽트 하지 않을 수 있기에, IO 수행 시에 I/O Handler가 닫힘으로써 데이터베이스의 손.."
+date: 2025-05-26
+description: H2의 Local, Server 개념 Embedded 모드 H2 DB를 시스템의 메인 메모리에서 (JVM 위에서) 구동시키는 방식으로 application이 종료된다면 저장, 수정된 Data가 손실(휘발) 된다. 즉 기본적으로는 영속적이지 않은 방식이다. → 데이터에 대한 영속성을 제공하는 방법은 존재한다. 메인 메모리에 DB를 띄워놓고 해당 DB를 사용하는 Application의 스레드로 데이터에 바로 접근함으로써 데이터 읽기, 쓰기에 대한 성능을 향상할 수 있으므로 유용하게 사용할 수 있으며, 데이터 캐싱 DB에 대해서도 H2를 고려할 수 있다고 한다. 하지만 JVM에서 데이터 연산에 사용되는 쓰레드를 인터럽트 하지 않을 수 있기에, IO 수행 시에 I/O Handler가 닫힘으로써 데이터베이스의 손..
 tags:
-  - "clippings"
+  - clippings
 ---
 [본문 바로가기](https://lob-dev.tistory.com/#dkBody) [메뉴 바로가기](https://lob-dev.tistory.com/#dkGnb)
 

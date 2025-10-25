@@ -1,10 +1,10 @@
 ---
 title: SRG(그래픽 랜더링 선택) escape sequence
+resource-path: temp/SRG(그래픽 랜더링 선택) escape sequence.md
+aliases:
+tags:
 date: 2024-07-30T19:36:00+09:00
 lastmod: 2025-08-11T00:45:48+09:00
-resource-path: temp/SRG(그래픽 랜더링 선택) escape sequence.md
-aliases: 
-tags: 
 ---
 SGR(Select Graphic Rendition)
 

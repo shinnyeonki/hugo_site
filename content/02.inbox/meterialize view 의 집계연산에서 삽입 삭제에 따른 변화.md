@@ -1,11 +1,11 @@
 ---
 title: meterialize view 의 집계연산에서 삽입 삭제에 따른 변화
-date: 2024-12-04T15:56:00+09:00
-lastmod: 2024-12-04T15:56:00+09:00
 resource-path: 02.inbox/meterialize view 의 집계연산에서 삽입 삭제에 따른 변화.md
-aliases: 
+aliases:
 tags:
   - dbms
+date: 2024-12-04T15:56:00+09:00
+lastmod: 2024-12-04T15:56:00+09:00
 ---
 아래는 집계 연산에서 `count`, `sum`, `avg`, `min`, `max`의 삽입 및 삭제에 따른 변화를 중심으로 설명하겠습니다.
 

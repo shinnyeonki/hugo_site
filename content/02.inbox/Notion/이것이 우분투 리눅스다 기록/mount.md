@@ -1,9 +1,6 @@
 ---
 title: mount
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/이것이 우분투 리눅스다 기록/mount.md
-draft: true
 ---
 EX) CD ROM mount /dev/cdrom  
 mount {마운트할 장치 이름} { 마운트 위치 }  

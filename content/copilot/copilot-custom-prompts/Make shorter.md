@@ -1,9 +1,6 @@
 ---
 title: Make shorter
-date: 2025-10-26T01:27:29+09:00
-lastmod: 2025-10-26T01:27:29+09:00
 resource-path: copilot/copilot-custom-prompts/Make shorter.md
-draft: true
 copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 1060

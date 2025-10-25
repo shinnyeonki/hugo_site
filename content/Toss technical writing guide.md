@@ -1,10 +1,10 @@
 ---
 title: Toss technical writing guide
+resource-path: Toss technical writing guide.md
+aliases:
+tags:
 date: 2025-07-02T04:32:34+09:00
 lastmod: 2025-08-21T13:24:32+09:00
-resource-path: Toss technical writing guide.md
-aliases: 
-tags: 
 ---
 1. [학습 문서](#학습을%20위한%20문서%20작성%20가이드%20📚) (`learning`)
     1. 시작하기 문서 : 처음 접하는 기술의 주요 흐름과 개념을 이해하도록 돕는 문서

@@ -1,16 +1,16 @@
 ---
 title: BFS 알고리즘
-date: 2023-12-29T11:29:00+09:00
-lastmod: 2023-12-29T11:29:00+09:00
 resource-path: 02.inbox/이것이 코딩테스트다 with python/BFS 알고리즘.md
-aliases: 
+aliases:
 tags:
   - python
   - algorithm
-description: 
-source: 이것이 코딩테스트다 with python
-sequence: 19
-finish: 
+description:
+series: 이것이 코딩테스트다 with python
+series_weight: 19
+finish:
+date: 2023-12-29T11:29:00+09:00
+lastmod: 2023-12-29T11:29:00+09:00
 ---
 ![](../../08.media/20250203205355.png)
 

@@ -1,16 +1,16 @@
 ---
 title: DFS 알고리즘
-date: 2023-12-26T07:59:00+09:00
-lastmod: 2023-12-26T07:59:00+09:00
 resource-path: 02.inbox/이것이 코딩테스트다 with python/DFS 알고리즘.md
-aliases: 
+aliases:
 tags:
   - algorithm
   - cs
-description: 
-source: 이것이 코딩테스트다 with python
-sequence: 18
-finish: 
+description:
+series: 이것이 코딩테스트다 with python
+series_weight: 18
+finish:
+date: 2023-12-26T07:59:00+09:00
+lastmod: 2023-12-26T07:59:00+09:00
 ---
 ![1_GT9oSo0agIeIj6nTg3jFEA](../../08.media/20231228191101.gif)1.gif)
 > stack vs recursion 풀이 2개로 나뉘며

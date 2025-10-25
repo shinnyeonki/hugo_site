@@ -1,12 +1,12 @@
 ---
 title: javascript 자료형
-date: 2023-12-20T07:12:00+09:00
-lastmod: 2023-12-20T07:12:00+09:00
 resource-path: 02.inbox/javascript 자료형.md
-aliases: 
+aliases:
 tags:
   - javascript
   - language
+date: 2023-12-20T07:12:00+09:00
+lastmod: 2023-12-20T07:12:00+09:00
 ---
 |             | var | let | const |
 | ----------- | --- | --- | ----- |

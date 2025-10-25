@@ -1,12 +1,12 @@
 ---
 title: h2 database 사용법
-date: 2025-05-26T14:22:00+09:00
-lastmod: 2025-05-26T14:22:00+09:00
 resource-path: 02.inbox/h2 database 사용법.md
-aliases: 
+aliases:
 tags:
   - database
   - 잡지식
+date: 2025-05-26T14:22:00+09:00
+lastmod: 2025-05-26T14:22:00+09:00
 ---
 > 다운로드 링크  
 > [h2 homepage link](https://www.h2database.com/html/download.html)

@@ -1,11 +1,11 @@
 ---
 title: nextInt vs nextLine
-date: 2025-09-19T16:08:18+09:00
-lastmod: 2025-09-19T16:09:18+09:00
 resource-path: temp/nextInt vs nextLine.md
 aliases:
 tags:
   - ai-content
+date: 2025-09-19T16:08:18+09:00
+lastmod: 2025-09-19T16:09:18+09:00
 share_link: https://share.note.sx/5qh8oyi0#jWUxnNYJuELWLPrXroZeBBPL8TUMvHS+yYMx3QmSFjo
 share_updated: 2025-09-19T17:49:56+09:00
 ---
