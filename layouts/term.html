@@ -1,6 +1,6 @@
 {{ define "main" }}
     <!-- term.html이 스스로 꽉 찬 너비의 컨테이너를 생성합니다. -->
-    <div id="content-container" class="max-w-[72ch] mx-auto">
+    <div id="content-container" class="w-full max-w-none">
         <header class="mb-8 pb-4 border-b border-neutral-200 dark:border-neutral-800">
             <!-- "Tag" 또는 "Category"와 같은 분류 이름을 동적으로 표시합니다. -->
             <p class="text-center text-base font-semibold text-primary-blue-light latin-font">
@@ -14,22 +14,12 @@
             </p>
         </header>
 
-        <!-- 글 목록 (section.html과 동일한 구조를 재사용하여 일관성 유지) -->
-        <div class="space-y-6">
-            {{ $paginator := .Paginate .Pages.ByDate.Reverse }}
-            {{ range $paginator.Pages }}
+        <!-- 글 목록 (list.html과 동일한 grid 구조) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
+            {{ range .Pages }}
                 <a href="{{ .Permalink }}" class="block p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg transition-all duration-300 hover:shadow-xl hover:border-primary-blue-light dark:hover:border-primary-blue-light">
-                    <article>
-                        <h2 class="text-2xl font-bold mb-2 text-neutral-900 dark:text-neutral-100 latin-font">{{ .Title }}</h2>
-                        <div class="text-sm text-neutral-500 dark:text-neutral-400 mb-3">
-                            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
-                            <span class="mx-2">&middot;</span>
-                            <span>{{ .ReadingTime }} min read</span>
-                        </div>
-                        <p class="text-neutral-600 dark:text-neutral-400">
-                            {{ .Summary }}
-                        </p>
-                    </article>
+                    <h2 class="text-xl font-bold mb-2 latin-font">{{ .Title }}</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm break-words">{{ .Summary | plainify | truncate 300 }}</p>
                 </a>
             {{ end }}
         </div>

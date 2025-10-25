@@ -11,8 +11,8 @@
     
 </head>
 
-<body class="bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-300 overflow-x-hidden antialiased">
-    <div id="root-container" class="relative min-h-screen">
+<body class="bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-300 overflow-x-hidden antialiased break-words">
+    <div id="root-container" class="relative min-h-screen break-words">
         <input type="checkbox" id="leftNavToggleCheckbox" class="hidden peer">
 
         <!-- Left Navigation Sidebar 틀 -->
@@ -30,8 +30,8 @@
 
             <div class="flex flex-1 items-start">
                 <!-- Main Content Area -->
-                <main class="flex-1 transition-all duration-300 ease-in-out">
-                    <div id="page-wrapper" class="w-full pt-6 pl-4 pr-4 md:pt-8 md:pl-8 md:pt-8 md:pr-8">
+                <main class="flex-1 transition-all duration-300 ease-in-out min-w-0 break-words">
+                    <div id="page-wrapper" class="w-full pt-6 px-2 md:pt-8 md:px-8 break-words">
                         
                         <!-- home, page, section, taxonomy, term -->
                         {{ block "main" . }}{{ end }}
@@ -50,9 +50,8 @@
         </div>
     </div>
 
-    <!-- UI 동작 스크립트 -->
-    <script>
-        
-    </script>
+    <!-- main.js 부르기 -->
+    <script src="{{ .Site.BaseURL }}js/main.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/util/content_width.js" defer></script>
 </body>
 </html>

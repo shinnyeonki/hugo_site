@@ -12,25 +12,26 @@
             </label>
             <a href="{{ .Site.BaseURL }}"
                 class="block text-xl font-bold latin-font text-neutral-900 dark:text-neutral-100">
-                {{ .Site.Title }}
+                {{ .Site.Title }} | {{ .Kind }}
             </a>
         </div>
 
-        <!-- 오른쪽 아이콘 버튼 영역 -->
+        <!-- 오른쪽 아이콘 버튼 영역 (page일 때만 표시) -->
+        {{ if eq .Kind "page" }}
         <div class="flex items-center gap-1 md:gap-2">
-            <!-- 본문 글자 크기 조절 슬라이더 -->
+            <!-- 본문 너비 조절 슬라이더 -->
             <div class="hidden md:flex items-center p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
                 <input type="range" min="40" max="200" value="76"
                     class="w-20 accent-neutral-900 dark:accent-neutral-100" />
             </div>
-            <!-- 본문 너비 조절 버튼 (태블릿/데스크탑 전용) -->
+            {{/*  <!-- 본문 너비 조절 버튼 (태블릿/데스크탑 전용) -->
             <button id="widthToggleBtn" aria-label="본문 너비 전환"
                 class="hidden md:flex p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 12H4m16 0l-4-4m4 4l-4 4M4 12l4-4M4 12l4 4" />
                 </svg>
-            </button>
+            </button>  */}}
 
 
 
@@ -55,5 +56,6 @@
                 </svg>
             </button>
         </div>
+        {{ end }}
     </div>
 </header>

@@ -10,11 +10,11 @@
             {{ end }}
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
             {{ range .Pages }}
-                <a href="{{ .Permalink }}" class="block p-6 border rounded-lg hover:shadow-md transition-shadow">
+                <a href="{{ .Permalink }}" class="block p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg transition-all duration-300 hover:shadow-xl hover:border-primary-blue-light dark:hover:border-primary-blue-light">
                     <h2 class="text-xl font-bold mb-2 latin-font">{{ .Title }}</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400 text-sm">{{ .Summary | truncate 100 }}</p>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm">{{ .Summary | plainify | truncate 300 }}</p>
                 </a>
             {{ end }}
         </div>
