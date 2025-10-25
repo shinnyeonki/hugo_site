@@ -1,0 +1,32 @@
+{{/* layouts/partials/left-nav/tag-tree.html */}}
+{{ $context := . }}
+<details class="group">
+    <summary
+        class="flex items-center justify-between w-full p-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer list-none">
+        <span class="flex items-center text-sm font-semibold">
+            <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+            </svg>
+            <span>태그별</span>
+        </span>
+        <svg class="h-5 w-5 transform transition-transform duration-200 group-open:rotate-180"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+    </summary>
+    <div class="pl-6 mt-1 space-y-1">
+        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+        {{ $tagName := urls.URLize $name }} {{/* 태그 이름을 URL 친화적인 형태로 변환 */}}
+        {{ $tagPagePath := printf "/%s/%s" "tags" $tagName }} {{/* 예: /tags/ai-content/ */}}
+        {{ $tagPage := $context.Site.GetPage $tagPagePath }}
+        {{ if $tagPage }} {{/* Ensure the tag page actually exists */}}
+            <a href="{{ $tagPage.Permalink }}"
+                class="block p-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md">#{{ $name }} ({{ $taxonomy.Count }})</a>
+        {{ end }}
+        {{ end }}
+    </div>
+</details>

@@ -1,0 +1,60 @@
+{{/* 페이지 제목(Title) 설정 */}}
+{{ $title := .Title }}
+{{ $siteTitle := .Site.Title }}
+{{ if .IsHome }}
+<title>{{ $siteTitle }} | {{ .Site.Params.description }}</title>
+{{ else }}
+<title>{{ $title }} | {{ $siteTitle }}</title>
+{{ end }}
+
+{{/* 페이지 설명(Description) 설정 */}}
+{{ $description := .Description | default (.Summary | plainify | truncate 150) | default .Site.Params.description }}
+<meta name="description" content="{{ $description }}">
+
+{{/* 검색 엔진 제어(Robots) 설정: front matter에 noindex: true가 있으면 수집 거부 */}}
+{{ if .Params.noindex }}
+<meta name="robots" content="noindex, nofollow">
+{{ else }}
+<meta name="robots" content="index, follow">
+{{ end }}
+
+{{/* Canonical URL 설정 */}}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{/* ---------------------------------- */}}
+{{/* 소셜 공유 (Open Graph) */}}
+{{/* ---------------------------------- */}}
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+{{ if .IsPage }}
+<meta property="og:type" content="blog">
+{{ else }}
+<meta property="og:type" content="blog.site">
+{{ end }}
+
+{{/* Open Graph 이미지 설정: front matter > site params > 기본값 순으로 찾음 */}}
+{{ $ogImage := .Params.image | default .Site.Params.defaultImage }}
+{{ with $ogImage }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{ end }}
+
+{{/* ---------------------------------- */}}
+{{/* 소셜 공유 (Twitter Cards) */}}
+{{/* ---------------------------------- */}}
+<meta name="twitter:card" content="summary_large_image">
+{{ with .Site.Params.twitter }}
+<meta name="twitter:site" content="@{{ . }}">
+{{ end }}
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{ with $ogImage }}
+<meta name="twitter:image" content="{{ . | absURL }}">
+{{ end }}
+
+{{/* CSS, Favicon 등 기타 head 요소들 */}}
+{{/*
+<link rel="stylesheet" href="/css/style.css"> */}}
+{{/*
+<link rel="icon" href="/favicon.ico"> */}}

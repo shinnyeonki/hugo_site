@@ -1,64 +1,25 @@
-{{/* 
-  이 템플릿은 'baseof.html' 파일의 'main' 블록을 채우는 것을 가정합니다.
-  'baseof.html'이 없다면 <html>, <body> 등의 전체 구조를 여기에 작성해야 합니다.
-*/}}
 {{ define "main" }}
-<main class="container">
-    <article>
-        <header>
-            {{/* 현재 접속한 섹션의 제목 (_index.md의 title) */}}
-            <h1>{{ .Title }}</h1>
-        </header>
+    <!-- 스스로 꽉 찬 너비의 컨테이너를 생성합니다. -->
+    <div id="content-container" class="w-full max-w-none">
+        <div class="mb-8 border-b pb-4">
+            <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font">
+                {{ .Title }}
+            </h1>
+            {{ with .Content }}
+                <div class="prose dark:prose-invert mx-auto mt-4 text-center">{{ . }}</div>
+            {{ end }}
+        </div>
 
-        {{/* 현재 접속한 섹션의 본문 내용 (_index.md의 내용) */}}
-        <section>
-            {{ .Content }}
-        </section>
-    </article>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {{ range .Pages }}
+                <a href="{{ .Permalink }}" class="block p-6 border rounded-lg hover:shadow-md transition-shadow">
+                    <h2 class="text-xl font-bold mb-2 latin-font">{{ .Title }}</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm">{{ .Summary | truncate 100 }}</p>
+                </a>
+            {{ end }}
+        </div>
 
-    <hr>
-
-    {{/* 
-      1. 하위 섹션 (디렉터리) 목록
-      .Sections는 현재 섹션 바로 아래에 있는 하위 섹션들의 목록입니다.
-      'with'를 사용해 하위 섹션이 하나라도 있을 때만 이 블록을 렌더링합니다.
-    */}}
-    {{ with .Sections }}
-    <h2>하위 디렉터리</h2>
-    <ul>
-        {{/* .ByTitle로 섹션들을 제목순으로 정렬합니다. */}}
-        {{ range .ByTitle }}
-        <li>
-            {{/* 📂 아이콘으로 디렉터리임을 시각적으로 표시 */}}
-            <span>📂</span>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-            {{/* (선택사항) 각 하위 섹션에 포함된 페이지의 개수를 표시 */}}
-            <span>({{ len .Pages }})</span>
-        </li>
-        {{ end }}
-    </ul>
-    {{ end }}
-
-
-    {{/* 
-      2. 하위 페이지 (파일) 목록
-      .Pages는 현재 섹션 바로 아래에 있는 일반 페이지( .md 파일)들의 목록입니다.
-      'with'를 사용해 페이지가 하나라도 있을 때만 이 블록을 렌더링합니다.
-    */}}
-    {{ $regularPages := where .Pages "Kind" "page" }}
-    {{ with $regularPages }}
-    <h2>파일</h2>
-    <ul>
-        {{/* .ByTitle로 페이지들을 제목순으로 정렬합니다. */}}
-        {{ range .ByTitle }}
-        <li>
-            {{/* 📄 아이콘으로 파일임을 시각적으로 표시 */}}
-            <span>📄</span>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-    </ul>
-    {{ end }}
-
-</main>
+        <!-- 푸터를 직접 포함시킵니다. -->
+        {{ partial "footer.html" . }}
+    </div>
 {{ end }}

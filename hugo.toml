@@ -1,6 +1,7 @@
 baseURL = 'http://localhost:1313'
 languageCode = 'ko-KR'
 title = 'My Test Site'
+# theme = "hextra"
 
 
 

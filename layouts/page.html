@@ -1,6 +1,23 @@
 {{ define "main" }}
-<article class="prose prose-sm lg:prose-base max-w-3xl mx-auto dk:prose-stone">
-    <h1>{{ .Title }} **page.html**</h1>
-    {{ .Content }}
-</article>
+    <!-- 스스로 너비가 제한된 컨테이너를 생성합니다. -->
+    <div id="content-container" class="max-w-[72ch] mx-auto">
+        <article id="main-content-container">
+            <header>
+                <h1 class="text-3xl font-bold mb-4 text-neutral-900 dark:text-neutral-100 latin-font">
+                    {{ .Title }}
+                </h1>
+            </header>
+
+            <!-- prose: tailwindcss typography 플러그인 클래스로 마크다운 콘텐츠 스타일링 -->
+            <section class="prose dark:prose-invert max-w-none">
+                {{ .Content }}
+            </section>
+        </article>
+
+        <!-- 댓글을 직접 포함시킵니다. -->
+        {{ partial "comment.html" . }}
+
+        <!-- 푸터를 직접 포함시킵니다. -->
+        {{ partial "footer.html" . }}
+    </div>
 {{ end }}

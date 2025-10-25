@@ -1,70 +1,58 @@
 <!DOCTYPE html>
-<!-- .Site.LanguageCode는 config.toml에 설정된 언어를 가져옵니다. -->
-<html lang="{{ .Site.LanguageCode }}">
-{{- partial "head.html" . -}}
-<body>
-    <!-- 1. 상단바 (플로팅) -->
-    {{/*  <header> {{- partial "header.html" . -}} </header>   */}} {{/* 길어지면 분리 */}}
-    <header class="site-header">
-        <div class="site-title">
-            <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+<html lang="ko" class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{- partial "head/meta.html" . -}}
+    {{- partial "head/library.html" . -}}
+    {{- partial "head/font.html" . -}}
+    {{- partial "head/dark.html" . -}}
+    
+</head>
+
+<body class="bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-300 overflow-x-hidden antialiased">
+    <div id="root-container" class="relative min-h-screen">
+        <input type="checkbox" id="leftNavToggleCheckbox" class="hidden peer">
+
+        <!-- Left Navigation Sidebar 틀 -->
+        <nav id="left-nav-container"
+            class="fixed top-0 left-0 h-screen z-30 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 transition-transform duration-300 ease-in-out w-[calc(100%-4rem)] -translate-x-full peer-checked:translate-x-0 overflow-y-hidden">
+            {{ partial "left-nav.html" . }}
+        </nav>
+
+        <!-- Main Content Wrapper -->
+        <div id="main-content-wrapper"
+            class="w-full flex flex-col relative transition-transform duration-300 ease-in-out min-w-0 peer-checked:translate-x-[calc(100%-4rem)] z-20">
+
+            <!-- Header -->
+            {{ partial "header.html" . }}
+
+            <div class="flex flex-1 items-start">
+                <!-- Main Content Area -->
+                <main class="flex-1 transition-all duration-300 ease-in-out">
+                    <div id="page-wrapper" class="w-full pt-6 pl-4 pr-4 md:pt-8 md:pl-8 md:pt-8 md:pr-8">
+                        
+                        <!-- home, page, section, taxonomy, term -->
+                        {{ block "main" . }}{{ end }}
+
+                    </div>
+                </main>
+
+                <!-- Right Sidebar 틀 -->
+                <!-- 우측 사이드바 -->
+                <aside id="right-sidebar-container" class="fixed top-14 right-0 z-40 h-[calc(100vh-3.5rem)] bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-in-out translate-x-full
+                            md:sticky md:top-14 md:h-[calc(100vh-3.5rem)] md:w-0 md:translate-x-0 md:bg-transparent dark:md:bg-transparent md:border-none
+                            flex flex-col flex-shrink-0 overflow-hidden">
+                    {{ partial "right-sidebar.html" . }}
+                </aside>
+            </div>
         </div>
-    </header>
-    <!-- 좌측 사이드바 네비게이션 -->
-    <nav class="site-nav">
-        <ul>
-            {{ range .Site.Menus.main }}
-            <li>
-                <a href="{{ .URL }}">{{ .Name }}</a>
-            </li>
-            {{ end }}
-        </ul>
-    </nav>
-    <!-- 
-      <main>: 문서의 핵심이자 유일한 주요 콘텐츠 영역입니다.
-      이곳에 각 페이지(글, 목록 등)의 실제 내용이 채워집니다.
-    -->
-    <main>
-        {{/*
-        이 block이 핵심입니다.
-        single.html, list.html 등의 템플릿이 "main" 블록을 정의하면
-        그 내용이 이 자리에 삽입됩니다.
-        */}}
-        {{ block "main" . }}{{ end }}
+    </div>
 
-        <!-- 
-      <footer>: 사이트 전체의 꼬리말 영역입니다.
-      저작권 정보, 연락처, 관련 사이트 링크 등이 위치합니다.
-    -->
-        <footer class="site-footer">
-            <!-- 
-          <address>: 문서나 글의 저자/소유자에 대한 연락처 정보입니다.
-          여기서는 사이트 전체의 소유자 정보를 나타냅니다.
-        -->
-            <address>
-                {{ with .Site.Author.name }}
-                <p>Created by {{ . }}</p>
-                {{ end }}
-            </address>
-            <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
-        </footer>
-    </main>
-
-    <!-- 
-      <aside>: 본문 콘텐츠와 직접적인 관련이 적은 보조 콘텐츠 영역입니다.
-      태그 클라우드, 최근 글 목록, 프로필 등이 위치하기에 적합합니다.
-    -->
-    <aside class="sidebar">
-        <h3>최근 글</h3>
-        <ul>
-            {{ range first 5 .Site.RegularPages }}
-            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-            {{ end }}
-        </ul>
-
-        <h3>태그</h3>
-        <!-- 태그 목록은 partial로 분리하는 것이 좋습니다. -->
-        {{/* {{ partial "tags.html" . }} */}}
-    </aside>
+    <!-- UI 동작 스크립트 -->
+    <script>
+        
+    </script>
 </body>
 </html>

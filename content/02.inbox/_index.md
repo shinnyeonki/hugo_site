@@ -1,3 +1,3 @@
 ---
-title: 02.Inbox
+title: 📁 02.Inbox 
 ---

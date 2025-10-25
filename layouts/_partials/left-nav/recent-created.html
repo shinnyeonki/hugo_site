@@ -1,0 +1,25 @@
+<details class="group">
+    <summary
+        class="flex items-center justify-between w-full p-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer list-none">
+        <span class="flex items-center text-sm font-semibold">
+            <!-- calendar icon for 생성순 -->
+            <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.25 6.75V4.5M15.75 6.75V4.5M3 9.75h18M5.25 21h13.5A2.25 2.25 0 0021 18.75V7.5A2.25 2.25 0 0018.75 5.25H5.25A2.25 2.25 0 003 7.5v11.25A2.25 2.25 0 005.25 21z" />
+            </svg>
+            <span>생성순</span>
+        </span>
+        <svg class="h-5 w-5 transform transition-transform duration-200 group-open:rotate-180"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+    </summary>
+    <div class="pl-6 mt-1 space-y-1">
+        {{ range first 5 (sort .Site.RegularPages "Date" "desc") }}
+        <a href="{{ .Permalink }}"
+            class="block p-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md">{{ .Title }}</a>
+        {{ end }}
+    </div>
+</details>

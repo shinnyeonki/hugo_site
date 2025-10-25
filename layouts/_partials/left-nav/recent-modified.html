@@ -1,0 +1,33 @@
+{{/* layouts/partials/left-nav/recent-modified.html */}}
+{{ $context := . }}
+{{ $isOpen := false }}
+{{ if (and (reflect.IsMap . ) (.isOpen)) }}
+    {{ $isOpen = .isOpen }}
+    {{ $context = .context }}
+{{ end }}
+
+<details class="group" {{ if $isOpen }}open{{ end }}>
+    <summary
+        class="flex items-center justify-between w-full p-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer list-none">
+        <span class="flex items-center text-sm font-semibold">
+            <!-- clock icon for 수정순 -->
+            <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 8v4l2 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>수정순</span>
+        </span>
+        <svg class="h-5 w-5 transform transition-transform duration-200 group-open:rotate-180"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+    </summary>
+    <div class="pl-6 mt-1 space-y-1">
+        {{ range first 5 ($context.Site.RegularPages.ByLastmod.Reverse) }}
+        <a href="{{ .Permalink }}"
+            class="block p-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md">{{ .Title }}</a>
+        {{ end }}
+    </div>
+</details>

@@ -1,3 +1,3 @@
 ---
-title: Leetcode Sql 문제 풀기
+title: 📁 Leetcode Sql 문제 풀기 
 ---

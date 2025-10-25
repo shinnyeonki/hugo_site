@@ -1,0 +1,90 @@
+<script>
+    // 다크 모드 초기 설정
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+            // ----------------------------
+            // ------- 테마 전환기 로직 -------
+            // ----------------------------
+            const themeToggleBtn = document.getElementById('footer-theme-toggle');
+            const themeOptions = document.getElementById('footer-theme-options');
+            const themeOptionButtons = document.querySelectorAll('.theme-option-button');
+            const lightIndicator = document.getElementById('theme-light-indicator');
+            const darkIndicator = document.getElementById('theme-dark-indicator');
+            const systemIndicator = document.getElementById('theme-system-indicator');
+
+            function updateIndicator(theme) {
+                [lightIndicator, darkIndicator, systemIndicator].forEach(el => {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                });
+
+                if (theme === 'light') {
+                    lightIndicator.classList.remove('hidden');
+                    lightIndicator.classList.add('flex');
+                } else if (theme === 'dark') {
+                    darkIndicator.classList.remove('hidden');
+                    darkIndicator.classList.add('flex');
+                } else { // system
+                    systemIndicator.classList.remove('hidden');
+                    systemIndicator.classList.add('flex');
+                }
+            }
+
+            function applyAndSaveTheme(theme) {
+                if (theme === 'system') {
+                    localStorage.removeItem('theme');
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                } else if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else { // light
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+                updateIndicator(theme);
+            }
+
+            themeToggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                themeOptions.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!themeToggleBtn.contains(e.target) && !themeOptions.contains(e.target)) {
+                    themeOptions.classList.add('hidden');
+                }
+            });
+
+            themeOptionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.getAttribute('data-theme-value');
+                    applyAndSaveTheme(theme);
+                    themeOptions.classList.add('hidden');
+                });
+            });
+
+            // Initial indicator state
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            updateIndicator(savedTheme);
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!('theme' in localStorage)) { // only if theme is 'system'
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                }
+            });
+        });
+</script>

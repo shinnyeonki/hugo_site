@@ -1,0 +1,59 @@
+<header id="header"
+    class="w-full sticky top-0 z-50 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md backdrop-saturate-150 border-b border-neutral-200/50 dark:border-neutral-800/50 shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] print:bg-white dark:print:bg-neutral-900 print:shadow-none">
+    <div class="flex items-center justify-between p-2 h-14">
+        <!-- 왼쪽 영역 -->
+        <div class="flex items-center gap-2">
+            <label for="leftNavToggleCheckbox" aria-label="왼쪽 네비게이션 열기/닫기"
+                class="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </label>
+            <a href="{{ .Site.BaseURL }}"
+                class="block text-xl font-bold latin-font text-neutral-900 dark:text-neutral-100">
+                {{ .Site.Title }}
+            </a>
+        </div>
+
+        <!-- 오른쪽 아이콘 버튼 영역 -->
+        <div class="flex items-center gap-1 md:gap-2">
+            <!-- 본문 글자 크기 조절 슬라이더 -->
+            <div class="hidden md:flex items-center p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                <input type="range" min="40" max="200" value="76"
+                    class="w-20 accent-neutral-900 dark:accent-neutral-100" />
+            </div>
+            <!-- 본문 너비 조절 버튼 (태블릿/데스크탑 전용) -->
+            <button id="widthToggleBtn" aria-label="본문 너비 전환"
+                class="hidden md:flex p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20 12H4m16 0l-4-4m4 4l-4 4M4 12l4-4M4 12l4 4" />
+                </svg>
+            </button>
+
+
+
+            <!-- 공유 버튼 -->
+            <button id="shareBtn" aria-label="페이지 공유"
+                class="flex p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8m-4-6l-4-4-4 4m4-4v13" />
+                </svg>
+            </button>
+
+            <!-- 우측 사이드바 토글 버튼 -->
+            <button id="rightSidebarToggle" aria-label="오른쪽 사이드바 열기/닫기"
+                class="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>

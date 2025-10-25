@@ -12,15 +12,55 @@
     <li><a href="/privacy/">개인정보 처리방침</a></li>
     <li><a href="/terms/">이용약관</a></li>
 </ul>
-<h3>=== 기타 ===</h3>
-{{/* {{ .Site.Menus.main }}: 'main' 메뉴 */}}
+<h3>=== 메서드 예시들 ===</h3>
+{{/* .Site 객체 관련 메서드들 예시 */}}
+<hr>
+<h3> === (.KIND = .Site) 객체 메서드 예시 === </h3>
+{{/* .Site 객체는 사이트 전체에 대한 정보를 담고 있습니다. */}}
+{{/* 아래는 .Site 객체의 몇 가지 유용한 메서드와 속성들을 보여줍니다. */}}
+{{/* .Site.Menus: 사이트의 메뉴들에 접근합니다. */}}   
+.Site.Menus.main: {{ .Site.Menus.main }} <br> 
+.Site.Params.description: {{ .Site.Params.description }} <br>
+.Site.Title: {{ .Site.Title }} <br>
+.Site.BaseURL: {{ .Site.BaseURL }} <br>
+{{/*  .Site.Taxonomies.tags: {{ .Site.Taxonomies.tags }} <br>  */}}
+.Site.Taxonomies.categories: {{ .Site.Taxonomies.categories }} <br>
+.Site.Language.Lang: {{ .Site.Language.Lang }} <br>
+.Site.RegularPages: {{ .Site.RegularPages }} <br>
+.Site.Pages: {{ .Site.Pages }} <br>
+.Site.Home: {{ .Site.Home }} <br>
+.Site.Sections: {{ .Site.Sections }} <br>
+.Site.Data.mydata: {{ .Site.Data.mydata }} <br>
+
+<h3> === (.KIND = .Page) 객체 메서드 예시 === </h3>
+{{/* .Page 객체는 현재 페이지에 대한 정보를 담고 있습니다. */}}
+{{/* 아래는 .Page 객체의 몇 가지 유용한 메서드와 속성들을 보여줍니다. */}}
+.Page.Title: {{ .Title }} <br>
+.Page.Permalink: {{ .Permalink }} <br>
+.Page.RelPermalink: {{ .RelPermalink }} <br>
+.Page.Date: {{ .Date }} <br>
+.Page.Lastmod: {{ .Lastmod }} <br>
+.Page.Summary: {{ .Summary }} <br>
+.Page.Content: {{ .Content | plainify | truncate 100 }}... <br>
+.Page.Params: {{ .Params }} <br>
+.Page.IsHome: {{ .IsHome }} <br>
+.Page.IsPage: {{ .IsPage }} <br>
+.Page.IsSection: {{ .IsSection }} <br>
+.Page.Section: {{ .Section }} <br>
+.Page.Categories: {{ .Params.categories }} <br>
+.Page.Tags: {{ .Params.tags }} <br>
+.Page.WordCount: {{ .WordCount }} <br>
+{{/*  .Page.ReadingTime: {{ .ReadingTime }} 분 <br>  */}}
+{{/*  .Page.Languages: {{ .Languages }} <br>  */}}
+.Page.Translations: {{ .Translations }} <br>
 <br>
 {{/* {{ .Site.Taxonomies.tags }}: 모든 '태그' 목록 */}}
 <br>
 {{/* {{ .Site.Taxonomies.categories }}: 모든 '카테고리' 목록 */}}
 <br>
-{{ .Site.Data }}: 데이터 파일
+{{/*  {{ .Site.Data }}: 데이터 파일  */}}
 <br>
+
 <hr>
 
 <hr>
@@ -60,7 +100,7 @@
 {{/* 파일 트리 섹션 */}}
 <h3>=== 파일 트리 ===</h3>
 {{/* file-tree.html partial을 호출합니다. 이 partial은 위에서 중복 제거 및 개선된 버전입니다. */}}
-{{ partial "file-tree.html" (dict "context" .) }}
+{{/*  {{ partial "file-tree.html" (dict "context" .) }}  */}}
 
 
 <hr>
@@ -140,7 +180,7 @@
                     <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title
                         }}</a>
                 </summary>
-                {{- partial "file-tree.html" (dict "currentNode" . "mode" "regular") -}}
+                {{/*  {{- partial "file-tree.html" (dict "currentNode" . "mode" "regular") -}}  */}}
             </details>
         </li>
         {{- end -}}
@@ -161,7 +201,7 @@
 <!-- 예제 2: All 모드 (전체 구조) -->
 <div class="file-tree p-4 mb-5 border border-gray-200 rounded-lg bg-gray-50 text-sm">
     <h4 class="text-base font-semibold text-gray-700 mb-2">All 모드: Hugo가 생성한 모든 페이지 포함</h4>
-    {{- partial "file-tree.html" (dict "currentNode" .Site.Home "mode" "all") -}}
+    {{/*  {{- partial "file-tree.html" (dict "currentNode" .Site.Home "mode" "all") -}}  */}}
 </div>
 
 
@@ -177,7 +217,7 @@
                     <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title
                         }}</a>
                 </summary>
-                {{- partial "file-tree.html" (dict "currentNode" . "mode" "regular") -}}
+                {{/*  {{- partial "file-tree.html" (dict "currentNode" . "mode" "regular") -}}  */}}
             </details>
         </li>
     </ul>
@@ -199,7 +239,7 @@
                     <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline hover:text-blue-800">{{ .Title
                         }}</a>
                 </summary>
-                {{- partial "file-tree.html" (dict "currentNode" . "mode" "all") -}}
+                {{/*  {{- partial "file-tree.html" (dict "currentNode" . "mode" "all") -}}  */}}
             </details>
         </li>
     </ul>
