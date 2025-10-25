@@ -1,3 +1,3 @@
 ---
-title: 📁 Database(University) 
+title: Database(University) 
 ---

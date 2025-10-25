@@ -1,3 +1,3 @@
 ---
-title: 📁 Template 
+title: Template 
 ---

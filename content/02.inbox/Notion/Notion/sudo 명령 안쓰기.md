@@ -1,7 +1,7 @@
 ---
 title: sudo 명령 안쓰기
-date: 2025-10-24T20:53:41+09:00
-lastmod: 2025-10-24T20:53:41+09:00
+date: 2025-10-26T01:27:29+09:00
+lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/Notion/sudo 명령 안쓰기.md
 draft: true
 ---

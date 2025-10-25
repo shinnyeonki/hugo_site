@@ -64,7 +64,7 @@ def main():
             # 4. _index.md 파일에 쓸 새로운 내용 생성
             dir_name = current_dir.name
             title = dir_name.title()
-            new_content = f"---\ntitle: 📁 {title} \n---\n"
+            new_content = f"---\ntitle: {title} \n---\n"
 
             # 5. _index.md 파일 존재 여부 확인 및 처리
             if index_file_path.exists():

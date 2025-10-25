@@ -1,6 +1,6 @@
 {{ define "main" }}
     <!-- 스스로 너비가 제한된 컨테이너를 생성합니다. -->
-    <div id="content-container" class="mx-auto break-words" style="max-width: 72vw;">
+    <div id="content-container" class="max-w-[72ch] mx-auto">
         <article id="main-content-container">
             <header>
                 <h1 class="text-3xl font-bold mb-4 text-neutral-900 dark:text-neutral-100 latin-font break-words">
@@ -9,7 +9,7 @@
             </header>
 
             <!-- prose: tailwindcss typography 플러그인 클래스로 마크다운 콘텐츠 스타일링 -->
-            <section class="prose prose-sm dark:prose-invert max-w-none break-words overflow-wrap-anywhere">
+            <section id="markdown-content" class="prose prose-sm dark:prose-invert max-w-none break-words overflow-wrap-anywhere">
                 {{ .Content }}
             </section>
         </article>

@@ -1,7 +1,7 @@
 ---
 title: 리눅스에서의 PID, PPID, PGID, SID
-date: 2025-10-24T20:53:41+09:00
-lastmod: 2025-10-24T20:53:41+09:00
+date: 2025-10-26T01:27:29+09:00
+lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 02.inbox/Notion/LINUX & C/리눅스에서의 PID, PPID, PGID, SID.md
 draft: true
 ---

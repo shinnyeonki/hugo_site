@@ -21,8 +21,9 @@
         <div class="flex items-center gap-1 md:gap-2">
             <!-- 본문 너비 조절 슬라이더 -->
             <div class="hidden md:flex items-center p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
-                <input type="range" min="40" max="200" value="76"
-                    class="w-20 accent-neutral-900 dark:accent-neutral-100" />
+                <input id="contentWidthSlider" type="range" min="50" max="120" value="72" step="2"
+                    class="w-20 accent-neutral-900 dark:accent-neutral-100" 
+                    aria-label="본문 너비 조절" />
             </div>
             {{/*  <!-- 본문 너비 조절 버튼 (태블릿/데스크탑 전용) -->
             <button id="widthToggleBtn" aria-label="본문 너비 전환"

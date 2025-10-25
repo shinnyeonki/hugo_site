@@ -1,3 +1,3 @@
 ---
-title: 📁 Content 
+title: Content 
 ---

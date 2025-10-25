@@ -1,3 +1,3 @@
 ---
-title: 📁 05.Clipping 
+title: 05.Clipping 
 ---

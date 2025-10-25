@@ -1,7 +1,7 @@
 ---
 title: 단일-버스 다중프로세서 시스템(2) - 캐쉬 일관성 유지를 위한 버스 감시 매커니즘 (MESI protocol), 디렉토리 기반 캐쉬 프로토콜
 date: 2025-06-10
-lastmod: 2025-10-24T20:53:41+09:00
+lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/단일-버스 다중프로세서 시스템(2) - 캐쉬 일관성 유지를 위한 버스 감시 매커니즘 (MESI protocol), 디렉토리 기반 캐쉬 프로토콜.md
 source: "https://butter-shower.tistory.com/40"
 author:

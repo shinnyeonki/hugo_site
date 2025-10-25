@@ -1,3 +1,3 @@
 ---
-title: 📁 01.Publish 
+title: 01.Publish 
 ---

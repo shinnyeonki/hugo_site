@@ -1,7 +1,7 @@
 ---
 title: (4) 비개발자도 가능한 브라우저 기반 AI 코딩(Browser-based AI Coding) 방법 | LinkedIn
 date: 2025-06-09
-lastmod: 2025-10-24T20:53:41+09:00
+lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/(4) 비개발자도 가능한 브라우저 기반 AI 코딩(Browser-based AI Coding) 방법  LinkedIn.md
 source: https://www.linkedin.com/pulse/%EB%B9%84%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B8%B0%EB%B0%98-ai-%EC%BD%94%EB%94%A9browser-based-coding-%EB%B0%A9%EB%B2%95-kije-park-qijrc/
 author: 

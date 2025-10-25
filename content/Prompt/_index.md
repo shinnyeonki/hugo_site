@@ -1,3 +1,3 @@
 ---
-title: 📁 Prompt 
+title: Prompt 
 ---

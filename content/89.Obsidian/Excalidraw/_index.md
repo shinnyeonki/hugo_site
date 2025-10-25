@@ -1,3 +1,3 @@
 ---
-title: 📁 Excalidraw 
+title: Excalidraw 
 ---

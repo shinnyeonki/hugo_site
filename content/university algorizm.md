@@ -6,6 +6,7 @@ resource-path: university algorizm.md
 aliases:
 tags:
   - ai-content
+  - university
 ---
 ### 제3장: 정렬
 

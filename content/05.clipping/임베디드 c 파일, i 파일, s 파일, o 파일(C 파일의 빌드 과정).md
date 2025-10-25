@@ -1,7 +1,7 @@
 ---
 title: [임베디드] c 파일, i 파일, s 파일, o 파일(C 파일의 빌드 과정)
 date: 2025-10-01
-lastmod: 2025-10-24T20:53:41+09:00
+lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/임베디드 c 파일, i 파일, s 파일, o 파일(C 파일의 빌드 과정).md
 source: "https://clearwater92.tistory.com/39"
 author:

@@ -1,7 +1,7 @@
 ---
 title: H2의 Local(In-Memory) 와 Server(TCP) 모드
 date: 2025-05-26
-lastmod: 2025-10-24T20:53:41+09:00
+lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/H2의 Local(In-Memory) 와 Server(TCP) 모드.md
 source: "https://lob-dev.tistory.com/13"
 author:

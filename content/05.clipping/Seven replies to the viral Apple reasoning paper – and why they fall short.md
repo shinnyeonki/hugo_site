@@ -1,7 +1,7 @@
 ---
 title: Seven replies to the viral Apple reasoning paper – and why they fall short
 date: 2025-06-15
-lastmod: 2025-10-24T20:53:41+09:00
+lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/Seven replies to the viral Apple reasoning paper – and why they fall short.md
 source: "https://garymarcus.substack.com/p/seven-replies-to-the-viral-apple"
 author:

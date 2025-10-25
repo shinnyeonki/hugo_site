@@ -1,3 +1,3 @@
 ---
-title: 📁 Onenote 
+title: Onenote 
 ---

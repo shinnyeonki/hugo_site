@@ -1,3 +1,3 @@
 ---
-title: 📁 06.University 
+title: 06.University 
 ---

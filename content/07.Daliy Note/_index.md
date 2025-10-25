@@ -1,3 +1,3 @@
 ---
-title: 📁 07.Daliy Note 
+title: 07.Daliy Note 
 ---

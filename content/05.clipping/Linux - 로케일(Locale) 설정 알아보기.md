@@ -1,7 +1,7 @@
 ---
 title: Linux - 로케일(Locale) 설정 알아보기
 date: 2025-05-20
-lastmod: 2025-10-24T20:53:41+09:00
+lastmod: 2025-10-26T01:27:29+09:00
 resource-path: 05.clipping/Linux - 로케일(Locale) 설정 알아보기.md
 source: "https://server-talk.tistory.com/426"
 author:

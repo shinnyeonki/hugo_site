@@ -1,3 +1,3 @@
 ---
-title: 📁 Younghan Mvc2 
+title: Younghan Mvc2 
 ---
