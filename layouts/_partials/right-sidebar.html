@@ -1,101 +1,4 @@
 {{ if eq .Kind "page" }}
-<style>
-    /* toc 스타일 커스텀 */
-    #panel-toc nav {
-        line-height: 1.6;
-    }
-    
-    #panel-toc nav ul {
-        list-style: none;
-        padding-left: 0;
-        margin: 0;
-    }
-    
-    #panel-toc nav > ul {
-        border-left: 2px solid #e5e7eb;
-    }
-    
-    .dark #panel-toc nav > ul {
-        border-left-color: #374151;
-    }
-    
-    #panel-toc nav ul ul {
-        padding-left: 1rem;
-        margin-top: 0.25rem;
-        margin-bottom: 0.25rem;
-    }
-    
-    #panel-toc nav li {
-        margin: 0;
-        padding: 0;
-    }
-    
-    #panel-toc nav a {
-        display: block;
-        padding: 0.375rem 0.75rem;
-        color: #6b7280;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        border-left: 2px solid transparent;
-        margin-left: -2px;
-        font-size: 0.875rem;
-    }
-    
-    .dark #panel-toc nav a {
-        color: #9ca3af;
-    }
-    
-    #panel-toc nav a:hover {
-        color: #1f2937;
-        background-color: #f3f4f6;
-        border-left-color: #3b82f6;
-    }
-    
-    .dark #panel-toc nav a:hover {
-        color: #f9fafb;
-        background-color: #1f2937;
-        border-left-color: #60a5fa;
-    }
-    
-    #panel-toc nav a.active {
-        color: #3b82f6;
-        font-weight: 500;
-        border-left-color: #3b82f6;
-        background-color: #eff6ff;
-    }
-    
-    .dark #panel-toc nav a.active {
-        color: #60a5fa;
-        border-left-color: #60a5fa;
-        background-color: #1e293b;
-    }
-    
-    /* 스크롤바 스타일 */
-    #panel-toc::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    #panel-toc::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    
-    #panel-toc::-webkit-scrollbar-thumb {
-        background: #d1d5db;
-        border-radius: 3px;
-    }
-    
-    .dark #panel-toc::-webkit-scrollbar-thumb {
-        background: #4b5563;
-    }
-    
-    #panel-toc::-webkit-scrollbar-thumb:hover {
-        background: #9ca3af;
-    }
-    
-    .dark #panel-toc::-webkit-scrollbar-thumb:hover {
-        background: #6b7280;
-    }
-</style>
 <div class="w-80 flex flex-col">
     <!-- 탭 네비게이션 -->
     <div role="tablist" aria-label="사이드바 컨텐츠" class="flex-shrink-0">
@@ -120,7 +23,7 @@
         <div id="right-sidebar-track" class="flex h-full transition-transform duration-300 ease-in-out">
             <!-- TOC 패널 -->
             <div id="panel-toc" role="tabpanel" aria-labelledby="tab-toc" tabindex="0"
-                class="right-tab-content w-full flex-shrink-0 overflow-y-auto overflow-x-hidden px-2 py-4 text-sm">
+                class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto overflow-x-hidden px-2 py-4 text-sm">
                 {{ with .TableOfContents }}
                     {{ . }}
                 {{ else }}
