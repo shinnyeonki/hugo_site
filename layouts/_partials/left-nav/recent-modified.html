@@ -21,15 +21,14 @@
     </summary>
     <div class="pl-6 mt-1 space-y-1">
         {{ range ($context.Site.RegularPages.ByLastmod.Reverse) }}
-        <a href="{{ .Permalink }}"
-            class="flex items-center justify-between p-2 text-sm rounded-md group transition-all duration-300 {{ if eq $context.Permalink .Permalink }}text-primary-blue-light font-bold border-primary-blue-light{{ else }}hover:bg-neutral-100 dark:hover:bg-neutral-800{{ end }}">
+        <a href="{{ .Permalink }}" class="{{ if eq $context.Permalink .Permalink }}text-primary-blue-light font-bold border-primary-blue-light{{ else }}hover:bg-neutral-100 dark:hover:bg-neutral-800{{ end }}">
             <span class="flex items-center min-w-0 flex-1">
-                <span class="mr-2 shrink-0 {{ if eq $context.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
+                <span class="shrink-0 {{ if eq $context.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
                     <span class="ln-icon w-5 h-5 block"></span>
                 </span>
                 <span class="truncate">{{ .Title }}</span>
             </span>
-            <span class="ml-2 text-xs shrink-0 {{ if eq $context.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
+            <span class="text-xs shrink-0 {{ if eq $context.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
                 {{ .Lastmod.Format "01/02 15:04" }}
             </span>
         </a>

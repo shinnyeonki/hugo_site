@@ -15,20 +15,20 @@
 
 {{ range $currentSection.Sections.ByTitle }}
     {{ if .IsSection }}
-        <li class="list-none">
+        <li>
             <details class="group" {{ if .IsAncestor $currentPage }}open{{ end }}>
-                <summary class="flex items-center p-2 text-left rounded-md cursor-pointer list-none text-sm transition-all duration-300 {{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light font-bold border-primary-blue-light{{ else }}hover:bg-neutral-50 dark:hover:bg-neutral-800/50{{ end }}">
-                    <span class="ln-folder-icon mr-2 {{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
+                <summary class="{{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light font-bold border-primary-blue-light{{ else }}hover:bg-neutral-50 dark:hover:bg-neutral-800/50{{ end }}">
+                    <span class="ln-folder-icon {{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
                         <span class="ln-icon w-5 h-5 block"></span>
                     </span>
-                    <a href="{{ .Permalink }}" class="text-inherit no-underline font-semibold hover:underline" onclick="event.stopPropagation();">
+                    <a href="{{ .Permalink }}" onclick="event.stopPropagation();">
                         {{ .Title }}
                     </a>
-                    <span class="flex items-center justify-center w-5 h-5 ml-auto shrink-0 {{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
+                    <span class="{{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
                         <span class="ln-chevron w-4 h-4 block"></span>
                     </span>
                 </summary>
-                <ul class="ml-6 mt-1 space-y-1 list-none">
+                <ul>
                     {{ partial "left-nav/tree-view.html" (dict "currentSection" . "currentPage" $currentPage) }}
                 </ul>
             </details>
@@ -37,10 +37,9 @@
 {{ end }}
 
 {{ range $currentSection.RegularPages.ByTitle }}
-    <li class="list-none">
-        <a href="{{ .Permalink }}"
-            class="flex items-center p-2 text-sm rounded-md transition-all duration-300 {{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light font-bold border-primary-blue-light{{ else }}text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/50{{ end }}">
-            <span class="mr-2 {{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
+    <li>
+        <a href="{{ .Permalink }}" class="{{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light font-bold border-primary-blue-light{{ else }}text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/50{{ end }}">
+            <span class="{{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
                 <span class="ln-icon w-5 h-5 block"></span>
             </span>
             <span>{{ .Title }}</span>

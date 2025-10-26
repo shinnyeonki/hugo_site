@@ -58,7 +58,50 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 파일 트리 관련 tailwindcss 삽입
+    // 파일 트리 관련 tailwindcss 동적 삽입
+    // File tree summary 스타일링
+    document.querySelectorAll('#ln-file-tree details > summary').forEach(el => {
+        el.classList.add('flex', 'items-center', 'p-2', 'text-left', 'rounded-md', 'cursor-pointer', 'list-none', 'text-sm', 'transition-all', 'duration-300');
+    });
+
+    // File tree folder links 스타일링
+    document.querySelectorAll('#ln-file-tree details > summary a').forEach(el => {
+        el.classList.add('text-inherit', 'no-underline', 'font-semibold', 'hover:underline');
+    });
+
+    // File tree nested lists 스타일링
+    document.querySelectorAll('#ln-file-tree details > ul').forEach(el => {
+        el.classList.add('ml-6', 'mt-1', 'space-y-1', 'list-none');
+    });
+
+    // File tree list items 스타일링 (재귀적으로 모든 li 찾기)
+    document.querySelectorAll('#ln-file-tree li').forEach(el => {
+        el.classList.add('list-none');
+    });
+
+    // File tree folder icons 스타일링
+    document.querySelectorAll('#ln-file-tree .ln-folder-icon').forEach(el => {
+        el.classList.add('mr-2');
+    });
+
+    // File tree chevron container 스타일링
+    document.querySelectorAll('#ln-file-tree details > summary > span:last-child').forEach(el => {
+        if (el.querySelector('.ln-chevron')) {
+            el.classList.add('flex', 'items-center', 'justify-center', 'w-5', 'h-5', 'ml-auto', 'shrink-0');
+        }
+    });
+
+    // File tree file links 스타일링 (재귀적으로 모든 li > a 찾기)
+    document.querySelectorAll('#ln-file-tree li > a').forEach(el => {
+        el.classList.add('flex', 'items-center', 'p-2', 'text-sm', 'rounded-md', 'transition-all', 'duration-300');
+    });
+
+    // File tree file icons 스타일링
+    document.querySelectorAll('#ln-file-tree li > a > span:first-child').forEach(el => {
+        if (el.querySelector('.ln-icon')) {
+            el.classList.add('mr-2');
+        }
+    });
 
     // chevron 아이콘 삽입
     document.querySelectorAll('#ln-file-tree .ln-chevron').forEach(el => {
@@ -93,7 +136,57 @@ document.addEventListener('DOMContentLoaded', function () {
         el.innerHTML = icons.chevronDown;
     });
 
-    // tag 트리 관련 tailwindcss 삽입
+    // tag 트리 관련 tailwindcss 동적 삽입
+    // Tag tree summary 스타일링
+    document.querySelectorAll('#ln-tag-tree details > summary').forEach(el => {
+        el.classList.add('flex', 'items-center', 'p-2', 'text-left', 'rounded-md', 'cursor-pointer', 'list-none', 'text-sm', 'transition-all', 'duration-300');
+    });
+
+    // Tag tree tag links 스타일링
+    document.querySelectorAll('#ln-tag-tree details > summary a').forEach(el => {
+        el.classList.add('text-inherit', 'no-underline', 'font-semibold', 'hover:underline');
+    });
+
+    // Tag tree nested lists 스타일링
+    document.querySelectorAll('#ln-tag-tree details > ul').forEach(el => {
+        el.classList.add('ml-6', 'mt-1', 'space-y-1', 'list-none');
+    });
+
+    // Tag tree list items 스타일링 (재귀적으로 모든 li 찾기)
+    document.querySelectorAll('#ln-tag-tree li').forEach(el => {
+        el.classList.add('list-none');
+    });
+
+    // Tag tree tag icons 스타일링
+    document.querySelectorAll('#ln-tag-tree .ln-tag-icon').forEach(el => {
+        el.classList.add('mr-2');
+    });
+
+    // Tag count 스타일링
+    document.querySelectorAll('#ln-tag-tree details > summary > span.text-xs').forEach(el => {
+        el.classList.add('ml-2', 'text-neutral-400', 'dark:text-neutral-500');
+    });
+
+    // Tag tree chevron container 스타일링
+    document.querySelectorAll('#ln-tag-tree details > summary > span:last-child').forEach(el => {
+        if (el.querySelector('.ln-chevron')) {
+            el.classList.add('flex', 'items-center', 'justify-center', 'w-5', 'h-5', 'ml-auto', 'shrink-0');
+        }
+    });
+
+    // Tag tree file links 스타일링
+    document.querySelectorAll('#ln-tag-tree li > a').forEach(el => {
+        if (!el.closest('summary')) {
+            el.classList.add('flex', 'items-center', 'p-2', 'text-sm', 'rounded-md', 'transition-all', 'duration-300');
+        }
+    });
+
+    // Tag tree file icons 스타일링
+    document.querySelectorAll('#ln-tag-tree li > a > span:first-child').forEach(el => {
+        if (el.querySelector('.ln-icon')) {
+            el.classList.add('mr-2');
+        }
+    });
 
     // 수정순 아이콘 삽입
     document.querySelectorAll('.ln-recent-modified-icon .ln-icon').forEach(el => {
@@ -128,6 +221,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 최근 수정된 파일 및 생성된 파일 트리 관련 tailwindcss 삽입
+    // 최근 수정된 파일 및 생성된 파일 트리 관련 tailwindcss 동적 삽입
+    // Recent modified/created list items 스타일링
+    document.querySelectorAll('.ln-recent-modified-icon, .ln-recent-created-icon').forEach(container => {
+        const parent = container.closest('details');
+        if (parent) {
+            // 링크 스타일링
+            parent.querySelectorAll('div.space-y-1 > a').forEach(el => {
+                el.classList.add('flex', 'items-center', 'justify-between', 'p-2', 'text-sm', 'rounded-md', 'group', 'transition-all', 'duration-300');
+            });
+            
+            // 아이콘 여백 스타일링
+            parent.querySelectorAll('div.space-y-1 > a > span:first-child > span:first-child').forEach(el => {
+                if (el.querySelector('.ln-icon')) {
+                    el.classList.add('mr-2');
+                }
+            });
+
+            // 날짜 여백 스타일링
+            parent.querySelectorAll('div.space-y-1 > a > span.text-xs').forEach(el => {
+                el.classList.add('ml-2');
+            });
+        }
+    });
 
 });
