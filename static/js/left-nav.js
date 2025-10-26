@@ -57,8 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
             el.innerHTML = icons.file;
         }
     });
-
+    // ============================================
     // 파일 트리 관련 tailwindcss 동적 삽입
+    // ============================================
     // File tree summary 스타일링
     document.querySelectorAll('#ln-file-tree details > summary').forEach(el => {
         el.classList.add('flex', 'items-center', 'p-2', 'text-left', 'rounded-md', 'cursor-pointer', 'list-none', 'text-sm', 'transition-all', 'duration-300');
