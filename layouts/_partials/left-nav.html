@@ -14,14 +14,14 @@
 
             <!-- 2열: 파일 & 태그 트리. -->
             <div class="w-full lg:w-1/2 flex-shrink-0 lg:border-r lg:border-neutral-200 lg:dark:border-neutral-800 md:overflow-y-auto">
-                    {{ partial "left-nav/file-tree.html" . }}
-                    {{ partial "left-nav/tag-tree.html" . }}
+                {{ partial "left-nav/file-tree.html" . }}
+                {{ partial "left-nav/tag-tree.html" . }}
             </div>
 
             <!-- 3열: 최신 문서. -->
             <div class="w-full lg:w-1/2 flex-shrink-0 md:overflow-y-auto">
-                    {{ partial "left-nav/recent-modified.html" . }}
-                    {{ partial "left-nav/recent-created.html" . }}
+                {{ partial "left-nav/recent-modified.html" . }}
+                {{ partial "left-nav/recent-created.html" . }}
             </div>
         </div>
     </div>
