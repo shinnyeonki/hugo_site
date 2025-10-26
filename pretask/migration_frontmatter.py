@@ -41,7 +41,18 @@ SECTION_CREATE_ENABLED = True
 INDEX_FILENAME = "_index.md"  # 섹션 인덱스 파일명
 
 # ------------------------------------------------------------------------------
-# --- 3. 파일 시스템 및 경로 설정 (전역) ---
+# --- 3. 사이트 정보 파일 생성 설정 ---
+# 기능: 사이트의 주요 정보 페이지(about, contact 등)를 생성합니다.
+# ------------------------------------------------------------------------------
+SITE_INFO_CREATE_ENABLED = True
+# 생성할 사이트 정보 페이지 목록
+SITE_INFO_PAGES = ["about", "privacy", "terms"]
+# 사이트 정보 페이지의 레이아웃 경로 (예: "site" -> "site/about.md")
+# 비워두면 페이지 이름과 동일한 레이아웃을 사용합니다. (예: "" -> "about.md")
+SITE_INFO_TYPE = ""
+
+# ------------------------------------------------------------------------------
+# --- 4. 파일 시스템 및 경로 설정 (전역) ---
 # ------------------------------------------------------------------------------
 # Hugo 프로젝트의 content 디렉터리 경로 (스크립트 파일 위치 기준)
 CONTENT_DIRECTORY = '../content'
@@ -220,6 +231,70 @@ def section_create(content_dir):
     except Exception as e:
         print(f"\nAn error occurred during section creation: {e}")
 
+def siteinfo_create(content_dir):
+    """사이트 정보 페이지(about.md, contact.md 등)를 생성하거나 업데이트합니다."""
+    if not SITE_INFO_CREATE_ENABLED:
+        print("Skipping site info page creation: SITE_INFO_CREATE_ENABLED is set to False.")
+        return
+
+    print("\n--- Starting site info page creation/update ---")
+    try:
+        for page in SITE_INFO_PAGES:
+            file_path = content_dir / f"{page}.md"
+            # title은 파일명을 기반으로 첫 글자를 대문자로 만듭니다.
+            title = page.capitalize()
+            
+            # --- Frontmatter 내용 생성 ---
+            # 1. title 과 layout 은 항상 포함됩니다.
+            frontmatter_lines = [
+                f'title: "{title}"'
+            ]
+
+            # 2. SITE_INFO_TYPE 변수에 값이 있을 경우에만 type 필드를 추가합니다.
+            if SITE_INFO_TYPE:
+                frontmatter_lines.append(f'type: "{SITE_INFO_TYPE}"')
+            
+            # 3. layout 필드를 마지막에 추가합니다.
+            frontmatter_lines.append(f'layout: "{page}"')
+
+            # 최종 frontmatter 문자열을 조립합니다.
+            new_frontmatter_content = "\n".join(frontmatter_lines)
+            new_frontmatter = f"---\n{new_frontmatter_content}\n---"
+
+            # --- 파일 처리 로직 ---
+            if not file_path.exists():
+                # 파일이 없으면 frontmatter만 있는 새 파일을 생성합니다.
+                file_path.write_text(new_frontmatter + '\n', encoding='utf-8')
+                print(f"  [Created] {file_path.relative_to(content_dir.parent)}")
+            else:
+                # 파일이 존재하면 내용을 읽어 frontmatter를 업데이트합니다.
+                original_content = file_path.read_text(encoding='utf-8')
+                
+                # 정규식을 사용하여 기존 frontmatter를 찾습니다.
+                fm_regex = r'^(?P<frontmatter>---\s*\n[\s\S]*?\n---\s*\n?)'
+                fm_match = re.match(fm_regex, original_content)
+                
+                if fm_match:
+                    # 기존 frontmatter가 있으면
+                    existing_frontmatter = fm_match.group('frontmatter')
+                    # 생성될 내용과 다를 경우에만 업데이트합니다.
+                    if existing_frontmatter.strip() != new_frontmatter.strip():
+                        body_content = original_content[fm_match.end():]
+                        new_content = new_frontmatter + '\n' + body_content.lstrip()
+                        file_path.write_text(new_content, encoding='utf-8')
+                        print(f"  [Updated] {file_path.relative_to(content_dir.parent)}")
+                    else:
+                        print(f"  [Checked] No changes needed for {file_path.relative_to(content_dir.parent)}")
+                else:
+                    # frontmatter가 없으면 파일 맨 앞에 추가합니다.
+                    new_content = new_frontmatter + '\n' + original_content
+                    file_path.write_text(new_content, encoding='utf-8')
+                    print(f"  [Updated] Added frontmatter to {file_path.relative_to(content_dir.parent)}")
+
+        print("--- Site info page creation/update finished ---")
+    except Exception as e:
+        print(f"\nAn error occurred during site info page creation/update: {e}")
+
 def process_all_files(directory):
     """지정된 디렉터리의 모든 마크다운 파일을 처리하고, 섹션 파일을 생성합니다."""
     if not ENTIRE_SCRIPT_ENABLED:
@@ -250,8 +325,10 @@ def process_all_files(directory):
         print("Skipping frontmatter processing: FRONTMATTER_MANAGE_ENABLED is set to False.")
 
     # --- 2. 섹션 파일 생성 ---
-    # update_frontmatter 작업이 모두 끝난 후 section_create 호출
     section_create(target_dir)
+
+    # --- 3. 사이트 정보 파일 생성 ---
+    siteinfo_create(target_dir)
 
     print("\n--- All processes finished ---")
 

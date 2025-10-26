@@ -1,32 +1,69 @@
 {{/* layouts/partials/left-nav/tag-tree.html */}}
+<style>
+    /* Chevron 회전 애니메이션 */
+    #ln-tag-tree .ln-chevron {
+        transition: transform 0.2s ease-in-out;
+        transform: rotate(90deg);
+    }
+    #ln-tag-tree details[open] > summary .ln-chevron {
+        transform: rotate(270deg);
+    }
+</style>
+
 {{ $context := . }}
+{{ $currentPage := . }}
+
 <details class="group space-y-2">
     <summary
         class="flex items-center justify-between w-full p-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer list-none">
         <span class="flex items-center text-sm font-semibold">
-            <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
-            </svg>
+            <span class="ln-tag-group-icon mr-3 text-neutral-400 dark:text-neutral-500">
+                <span class="ln-icon w-5 h-5 block"></span>
+            </span>
             <span>태그별</span>
         </span>
-        <svg class="h-5 w-5 transform transition-transform duration-200 group-open:rotate-180"
-            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-        </svg>
+        <span class="flex items-center justify-center w-5 h-5 text-neutral-400 dark:text-neutral-500">
+            <span class="ln-chevron-main w-4 h-4 block transform transition-transform duration-200 group-open:rotate-180"></span>
+        </span>
     </summary>
-    <div class="pl-6 mt-1 space-y-1">
-        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-        {{ $tagName := urls.URLize $name }} {{/* 태그 이름을 URL 친화적인 형태로 변환 */}}
-        {{ $tagPagePath := printf "/%s/%s" "tags" $tagName }} {{/* 예: /tags/ai-content/ */}}
-        {{ $tagPage := $context.Site.GetPage $tagPagePath }}
-        {{ if $tagPage }} {{/* Ensure the tag page actually exists */}}
-            <a href="{{ $tagPage.Permalink }}"
-                class="block p-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md">#{{ $name }} ({{ $taxonomy.Count }})</a>
-        {{ end }}
-        {{ end }}
+    <div class="pl-6 mt-1">
+        <ul id="ln-tag-tree" class="space-y-1 list-none">
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags.ByCount }}
+                {{ $tagName := urls.URLize $name }}
+                {{ $tagPagePath := printf "/%s/%s" "tags" $tagName }}
+                {{ $tagPage := $context.Site.GetPage $tagPagePath }}
+                {{ if $tagPage }}
+                    <li class="list-none">
+                        <details class="group">
+                            <summary class="flex items-center p-2 text-left rounded-md cursor-pointer list-none text-sm transition-all duration-300 {{ if eq $currentPage.Permalink $tagPage.Permalink }}text-primary-blue-light font-bold border-primary-blue-light{{ else }}hover:bg-neutral-50 dark:hover:bg-neutral-800/50{{ end }}">
+                                <span class="ln-tag-icon mr-2 {{ if eq $currentPage.Permalink $tagPage.Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
+                                    <span class="ln-icon w-5 h-5 block"></span>
+                                </span>
+                                <a href="{{ $tagPage.Permalink }}" class="text-inherit no-underline font-semibold hover:underline" onclick="event.stopPropagation();">
+                                    #{{ $name }}
+                                </a>
+                                <span class="ml-2 text-xs text-neutral-400 dark:text-neutral-500">({{ $taxonomy.Count }})</span>
+                                <span class="flex items-center justify-center w-5 h-5 ml-auto shrink-0 {{ if eq $currentPage.Permalink $tagPage.Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
+                                    <span class="ln-chevron w-4 h-4 block"></span>
+                                </span>
+                            </summary>
+                            <ul class="ml-6 mt-1 space-y-1 list-none">
+                                {{ range $taxonomy.Pages.ByTitle }}
+                                    <li class="list-none">
+                                        <a href="{{ .Permalink }}"
+                                            class="flex items-center p-2 text-sm rounded-md transition-all duration-300 {{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light font-bold border-primary-blue-light{{ else }}text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/50{{ end }}">
+                                            <span class="mr-2 {{ if eq $currentPage.Permalink .Permalink }}text-primary-blue-light{{ else }}text-neutral-400 dark:text-neutral-500{{ end }}">
+                                                <span class="ln-icon w-5 h-5 block"></span>
+                                            </span>
+                                            <span>{{ .Title }}</span>
+                                        </a>
+                                    </li>
+                                {{ end }}
+                            </ul>
+                        </details>
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
     </div>
 </details>
