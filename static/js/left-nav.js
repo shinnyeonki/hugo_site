@@ -48,6 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll(selector).forEach(el => el.innerHTML = icon);
     };
 
+    // ============================================
+    // 전체 공통 스타일링
+    // ============================================
+    
+    
+    // ============================================
+    // 파일 트리 관련
+    // ============================================
+
     // 파일 트리 아이콘 삽입
     setIcon('.ln-file-tree-folder-icon .ln-icon, #ln-file-tree .ln-folder-icon .ln-icon', icons.folder);
     document.querySelectorAll('#ln-file-tree .ln-icon').forEach(el => {
@@ -57,9 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     setIcon('#ln-file-tree .ln-chevron', icons.chevron);
 
-    // ============================================
-    // 파일 트리 관련 tailwindcss 동적 삽입
-    // ============================================
+    // 파일 트리 관련 tailwindcss 삽입
     applyStyling('#ln-file-tree details > summary', ['flex', 'items-center', 'p-2', 'text-left', 'rounded-md', 'cursor-pointer', 'list-none', 'text-sm', 'transition-all', 'duration-300']);
     applyStyling('#ln-file-tree details > summary a', ['text-inherit', 'no-underline', 'font-semibold', 'hover:underline']);
     applyStyling('#ln-file-tree details > ul', ['ml-3', 'mt-1', 'space-y-1', 'list-none']);
@@ -73,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
         el.classList.add('mr-2');
     });
 
+    // ============================================
+    // 태그 트리 관련
+    // ============================================
+
     // 태그 트리 아이콘 삽입
     setIcon('.ln-tag-group-icon .ln-icon, #ln-tag-tree .ln-tag-icon .ln-icon', icons.tag);
     document.querySelectorAll('#ln-tag-tree .ln-icon').forEach(el => {
@@ -82,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     setIcon('#ln-tag-tree .ln-chevron', icons.chevron);
 
-    // tag 트리 관련 tailwindcss 동적 삽입
+    // 태그 트리 관련 tailwindcss 삽입
     applyStyling('#ln-tag-tree details > summary', ['flex', 'items-center', 'p-2', 'text-left', 'rounded-md', 'cursor-pointer', 'list-none', 'text-sm', 'transition-all', 'duration-300']);
     applyStyling('#ln-tag-tree details > summary a', ['text-inherit', 'no-underline', 'font-semibold', 'hover:underline']);
     applyStyling('#ln-tag-tree details > ul', ['ml-3', 'mt-1', 'space-y-1', 'list-none']);
@@ -96,6 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('#ln-tag-tree li > a > span:first-child:has(.ln-icon)').forEach(el => {
         el.classList.add('mr-2');
     });
+
+    // ============================================
+    // 최근 수정된 파일 및 생성된 파일 트리 관련
+    // ============================================
 
     // 메인 chevron 아이콘 삽입 (하향)
     setIcon('.ln-chevron-main', icons.chevronDown);
