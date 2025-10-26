@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // 파일 트리 관련 tailwindcss 삽입
+
     // chevron 아이콘 삽입
     document.querySelectorAll('#ln-file-tree .ln-chevron').forEach(el => {
         el.innerHTML = icons.chevron;
@@ -91,6 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
         el.innerHTML = icons.chevronDown;
     });
 
+    // tag 트리 관련 tailwindcss 삽입
+
     // 수정순 아이콘 삽입
     document.querySelectorAll('.ln-recent-modified-icon .ln-icon').forEach(el => {
         el.innerHTML = icons.clock;
@@ -123,4 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+
+    // 최근 수정된 파일 및 생성된 파일 트리 관련 tailwindcss 삽입
+
 });

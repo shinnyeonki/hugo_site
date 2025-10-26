@@ -1,4 +1,101 @@
 {{ if eq .Kind "page" }}
+<style>
+    /* toc 스타일 커스텀 */
+    #panel-toc nav {
+        line-height: 1.6;
+    }
+    
+    #panel-toc nav ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+    
+    #panel-toc nav > ul {
+        border-left: 2px solid #e5e7eb;
+    }
+    
+    .dark #panel-toc nav > ul {
+        border-left-color: #374151;
+    }
+    
+    #panel-toc nav ul ul {
+        padding-left: 1rem;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    #panel-toc nav li {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #panel-toc nav a {
+        display: block;
+        padding: 0.375rem 0.75rem;
+        color: #6b7280;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-left: 2px solid transparent;
+        margin-left: -2px;
+        font-size: 0.875rem;
+    }
+    
+    .dark #panel-toc nav a {
+        color: #9ca3af;
+    }
+    
+    #panel-toc nav a:hover {
+        color: #1f2937;
+        background-color: #f3f4f6;
+        border-left-color: #3b82f6;
+    }
+    
+    .dark #panel-toc nav a:hover {
+        color: #f9fafb;
+        background-color: #1f2937;
+        border-left-color: #60a5fa;
+    }
+    
+    #panel-toc nav a.active {
+        color: #3b82f6;
+        font-weight: 500;
+        border-left-color: #3b82f6;
+        background-color: #eff6ff;
+    }
+    
+    .dark #panel-toc nav a.active {
+        color: #60a5fa;
+        border-left-color: #60a5fa;
+        background-color: #1e293b;
+    }
+    
+    /* 스크롤바 스타일 */
+    #panel-toc::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    #panel-toc::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    #panel-toc::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 3px;
+    }
+    
+    .dark #panel-toc::-webkit-scrollbar-thumb {
+        background: #4b5563;
+    }
+    
+    #panel-toc::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
+    }
+    
+    .dark #panel-toc::-webkit-scrollbar-thumb:hover {
+        background: #6b7280;
+    }
+</style>
 <div class="w-80 flex flex-col">
     <!-- 탭 네비게이션 -->
     <div role="tablist" aria-label="사이드바 컨텐츠" class="flex-shrink-0">
@@ -18,29 +115,58 @@
         </nav>
     </div>
 
-    <!-- 탭 컨텐츠 (이하 동일) -->
-    <div class="flex-grow overflow-hidden mt-2 md:border-l md:border-neutral-200 dark:md:border-neutral-800">
+    <!-- 탭 컨텐츠 -->
+    <div class="flex-grow overflow-hidden mt-2 md:border-l md:border-neutral-200 dark:md:border-neutral-800 min-h-0">
         <div id="right-sidebar-track" class="flex h-full transition-transform duration-300 ease-in-out">
+            <!-- TOC 패널 -->
             <div id="panel-toc" role="tabpanel" aria-labelledby="tab-toc" tabindex="0"
-                class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-2 text-sm text-slate-600 dark:text-neutral-300">
-                <!-- 목차 내용 -->
-                <ul>
-                    <li><a href="#" class="block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">1.
-                            소개</a></li>
-                    <li><a href="#" class="block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">2.
-                            주요 기능</a></li>
-                    <li><a href="#" class="block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">3.
-                            설치 방법</a></li>
-                    <li><a href="#" class="block p-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">4.
-                            결론</a></li>
-                </ul>
+                class="right-tab-content w-full flex-shrink-0 overflow-y-auto overflow-x-hidden px-2 py-4 text-sm">
+                {{ with .TableOfContents }}
+                    {{ . }}
+                {{ else }}
+                    <div class="text-gray-500 dark:text-gray-400 text-center py-8">
+                        <p>목차가 없습니다</p>
+                        <p class="text-xs mt-2">제목(heading)이 있는 경우 여기에 표시됩니다</p>
+                    </div>
+                {{ end }}
             </div>
+
+            <!-- Metadata 패널 -->
             <div id="panel-metadata" role="tabpanel" aria-labelledby="tab-metadata" tabindex="0"
-                class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-2 text-sm text-slate-600 dark:text-neutral-300">
-                메타 데이터 (구현 예정)
+                class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-4 text-sm">
+                <div class="space-y-4">
+                    {{ range $key, $value := .Params }}
+                        <div class="metadata-item">
+                            <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 capitalize">{{ $key }}</div>
+                            {{ if eq $key "tags" }}
+                                <div class="flex flex-wrap gap-2">
+                                    {{ range $value }}
+                                        <a href="/tags/{{ . | urlize }}" 
+                                           class="px-2 py-1 text-xs bg-primary-blue-light/10 text-primary-blue-light dark:bg-primary-blue-light/20 rounded hover:bg-primary-blue-light/20 dark:hover:bg-primary-blue-light/30 transition-colors"
+                                           onclick="event.stopPropagation()">
+                                            {{ . }}
+                                        </a>
+                                    {{ end }}
+                                </div>
+                            {{ else if eq $key "iscjklanguage" }}
+                            {{ else if eq $key "draft" }}    
+                            {{ else }}
+                                <div class="text-sm text-gray-700 dark:text-gray-300">
+                                    {{ if reflect.IsSlice $value }}
+                                        {{ delimit $value ", " }}
+                                    {{ else }}
+                                        {{ $value }}
+                                    {{ end }}
+                                </div>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
             </div>
+
+            <!-- Links 패널 -->
             <div id="panel-links" role="tabpanel" aria-labelledby="tab-links" tabindex="0"
-                class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-2 text-sm text-slate-600 dark:text-neutral-300">
+                class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-4 text-sm text-slate-600 dark:text-neutral-300">
                 참조된 링크, 참조하는 링크 (구현 예정)
             </div>
         </div>

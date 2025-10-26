@@ -2,6 +2,7 @@ baseURL = 'http://localhost:1313'
 languageCode = 'ko-KR'
 title = 'Obsidian Vault'
 # theme = "hextra"
+hasCJKLanguage = true
 
 # 빌드 시 무시할 파일 및 디렉토리 설정
 ignoreFiles = [
@@ -29,4 +30,8 @@ ignoreFiles = [
     [markup.goldmark.renderer]
       # 콘텐츠 내 원시 HTML 태그를 허용하여 렌더링합니다.
       unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 6
+    ordered = false
   
