@@ -20,7 +20,7 @@
             <span class="ln-tag-group-icon mr-3 text-neutral-400 dark:text-neutral-500">
                 <span class="ln-icon w-5 h-5 block"></span>
             </span>
-            <span>태그별</span>
+            <a href="{{ .Site.Home.Permalink }}/tags" class="hover:underline" onclick="event.stopPropagation();">태그별</a>
         </span>
         <span class="flex items-center justify-center w-5 h-5 text-neutral-400 dark:text-neutral-500">
             <span class="ln-chevron-main w-4 h-4 block transform transition-transform duration-200 group-open:rotate-180"></span>
@@ -28,7 +28,13 @@
     </summary>
     <div class="pl-6 mt-1">
         <ul id="ln-tag-tree" class="space-y-1 list-none">
-            {{ range $name, $taxonomy := .Site.Taxonomies.tags.ByCount }}
+            {{ $tags := slice }}
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                {{ $tags = $tags | append (dict "name" $name "taxonomy" $taxonomy "count" $taxonomy.Count) }}
+            {{ end }}
+            {{ range sort $tags "count" "desc" }}
+                {{ $name := .name }}
+                {{ $taxonomy := .taxonomy }}
                 {{ $tagName := urls.URLize $name }}
                 {{ $tagPagePath := printf "/%s/%s" "tags" $tagName }}
                 {{ $tagPage := $context.Site.GetPage $tagPagePath }}

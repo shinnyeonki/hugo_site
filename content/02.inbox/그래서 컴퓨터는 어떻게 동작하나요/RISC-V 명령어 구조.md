@@ -32,7 +32,8 @@ non privilige 의 확장 명령 종류
 - V : Vector Operations 벡터 확장
 - N : Standard Extension for User-Level Interrupts 유저 레벨 인터럽트
 
-![PDF file riscv-spec-v2.2  20240831124214](../../08.media/PDF%20file%20riscv-spec-v2.2%20%2020240831124214.pdf)
+- embed ![PDF file riscv-spec-v2.2  20240831124214](../../08.media/PDF%20file%20riscv-spec-v2.2%20%2020240831124214.pdf)
+- link [PDF file riscv-spec-v2.2  20240831124214](../../08.media/PDF%20file%20riscv-spec-v2.2%20%2020240831124214.pdf)
 
 
 
