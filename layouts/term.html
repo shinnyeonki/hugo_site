@@ -7,7 +7,7 @@
                 <span>/</span>
                 <a href="/{{ .Data.Plural }}" class="hover:text-primary-blue-light transition-colors">{{ .Data.Plural | humanize | title }}</a>
                 <span>/</span>
-                <span class="text-neutral-700 dark:text-neutral-300 font-semibold">{{ .Title }}</span>
+                <span class="text-neutral-700 dark:text-neutral-300 font-semibold"><a href="{{ .Permalink }}">{{ .Title }}</a></span>
             </nav>
         </div>
     </div>

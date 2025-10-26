@@ -1,5 +1,5 @@
 {{ if eq .Kind "page" }}
-<div class="w-80 flex flex-col">
+<div class="w-80 h-full flex flex-col">
     <!-- 탭 네비게이션 -->
     <div role="tablist" aria-label="사이드바 컨텐츠" class="flex-shrink-0">
         <nav class="flex -mb-px" aria-label="Tabs">
@@ -24,14 +24,7 @@
             <!-- TOC 패널 -->
             <div id="panel-toc" role="tabpanel" aria-labelledby="tab-toc" tabindex="0"
                 class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto overflow-x-hidden px-2 py-4 text-sm">
-                {{ with .TableOfContents }}
-                    {{ . }}
-                {{ else }}
-                    <div class="text-gray-500 dark:text-gray-400 text-center py-8">
-                        <p>목차가 없습니다</p>
-                        <p class="text-xs mt-2">제목(heading)이 있는 경우 여기에 표시됩니다</p>
-                    </div>
-                {{ end }}
+                {{ .TableOfContents }}
             </div>
 
             <!-- Metadata 패널 -->

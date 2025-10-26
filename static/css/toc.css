@@ -1,1 +1,201 @@
 /* toc 의 경우 id 가 TableOfContents 인 div 에만 적용됩니다. */
+
+#TableOfContents {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+/* 최상위 ul - 숨김 처리 (구조적 래퍼) */
+#TableOfContents > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2단계 li - 메인 섹션 (# 헤더 시작) */
+#TableOfContents > ul > li {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgb(229 229 229);
+}
+
+:root.dark #TableOfContents > ul > li {
+    border-bottom-color: rgb(64 64 64);
+}
+
+#TableOfContents > ul > li:last-child {
+    border-bottom: 0;
+}
+
+/* 2단계 ul */
+#TableOfContents > ul > li > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 3단계 li - 서브섹션 (## 헤더) */
+#TableOfContents > ul > li > ul > li {
+    margin-bottom: 1rem;
+}
+
+/* 3단계 링크 - 서브섹션 제목 */
+#TableOfContents > ul > li > ul > li > a {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: rgb(38 38 38);
+    margin-bottom: 0.5rem;
+    transition: color 200ms;
+}
+
+:root.dark #TableOfContents > ul > li > ul > li > a {
+    color: rgb(229 229 229);
+}
+
+#TableOfContents > ul > li > ul > li > a:hover {
+    color: rgb(59 130 246);
+}
+
+/* 3단계 ul */
+#TableOfContents > ul > li > ul > li > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 4단계 li - ### 헤더 */
+#TableOfContents > ul > li > ul > li > ul > li {
+    margin-bottom: 0.5rem;
+}
+
+/* 4단계 링크 - ### 헤더 제목 */
+#TableOfContents > ul > li > ul > li > ul > li > a {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1.375rem;
+    color: rgb(64 64 64);
+    padding-left: 0.75rem;
+    border-left: 2px solid rgb(229 229 229);
+    transition: all 200ms;
+}
+
+:root.dark #TableOfContents > ul > li > ul > li > ul > li > a {
+    color: rgb(212 212 212);
+    border-left-color: rgb(64 64 64);
+}
+
+#TableOfContents > ul > li > ul > li > ul > li > a:hover {
+    color: rgb(59 130 246);
+    border-left-color: rgb(59 130 246);
+}
+
+/* 4단계 ul */
+#TableOfContents > ul > li > ul > li > ul > li > ul {
+    list-style: none;
+    margin-left: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+/* 5단계 li - #### 헤더 */
+#TableOfContents > ul > li > ul > li > ul > li > ul > li {
+    margin-bottom: 0.25rem;
+}
+
+/* 5단계 링크 - #### 헤더 제목 */
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > a {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: rgb(82 82 82);
+    padding: 0.125rem 0;
+    padding-left: 0.5rem;
+    border-left: 1px solid rgb(229 229 229);
+    transition: all 200ms;
+}
+
+:root.dark #TableOfContents > ul > li > ul > li > ul > li > ul > li > a {
+    color: rgb(163 163 163);
+    border-left-color: rgb(82 82 82);
+}
+
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > a:hover {
+    color: rgb(59 130 246);
+    border-left-color: rgb(59 130 246);
+}
+
+/* 5단계 ul */
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul {
+    list-style: none;
+    margin-left: 0.5rem;
+    margin-top: 0.125rem;
+}
+
+/* 6단계 li - ##### 헤더 */
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li {
+    margin-bottom: 0.125rem;
+}
+
+/* 6단계 링크 - ##### 헤더 제목 */
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgb(115 115 115);
+    padding: 0.125rem 0;
+    padding-left: 0.5rem;
+    transition: color 200ms;
+}
+
+:root.dark #TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+    color: rgb(115 115 115);
+}
+
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > a:hover {
+    color: rgb(59 130 246);
+}
+
+/* 6단계 ul */
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul {
+    list-style: none;
+    margin-left: 0.5rem;
+    margin-top: 0.125rem;
+}
+
+/* 7단계 li - ###### 헤더 */
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li {
+    padding-left: 0.5rem;
+    margin-bottom: 0.125rem;
+}
+
+/* 7단계 링크 - ###### 헤더 제목 */
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgb(115 115 115);
+    padding: 0.125rem 0;
+    transition: color 200ms;
+}
+
+:root.dark #TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+    color: rgb(115 115 115);
+}
+
+#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a:hover {
+    color: rgb(59 130 246);
+}
+
+/* 호버 효과 강화 */
+#TableOfContents a:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* 현재 활성화된 링크 스타일 (옵션) */
+#TableOfContents a.active {
+    color: rgb(59 130 246);
+    font-weight: 600;
+}
