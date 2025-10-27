@@ -3,7 +3,7 @@
 {{- $isMarkdown := strings.HasSuffix $url ".md" -}}
 
 {{- if and (not $isRemote) $isMarkdown -}}
-    {{- /* 1. 내부 .md 링크 - ref 함수가 baseURL 서브패스를 자동 처리 */ -}}
+    {{- /* 1. 내부 .md 링크 */ -}}
     {{- $path := strings.TrimSuffix ".md" $url -}}
     <a href="{{ (ref .Page $path) | safeURL }}" class="internal-link">{{ .Text | safeHTML }}</a>
 
@@ -13,37 +13,6 @@
 
 {{- else -}}
     {{- /* 3. 그 외 로컬 링크 (pdf, zip 등 content 내의 파일) */ -}}
-    {{- $finalURL := "" -}}
-    {{- $resource := "" -}}
-    
-    {{- if strings.HasPrefix $url "/" -}}
-        {{- /* 3a. 절대 경로 */ -}}
-        {{- $path := strings.TrimPrefix "/" $url -}}
-        {{- $resource = resources.Get $path -}}
-        {{- if not $resource -}}
-            {{- $resource = site.GetPage $path -}}
-        {{- end -}}
-    {{- else -}}
-        {{- /* 3b. 상대 경로 */ -}}
-        {{- $resource = .Page.Resources.GetMatch $url -}}
-        
-        {{- if not $resource -}}
-            {{- $currentPageDir := .Page.File.Dir -}}
-            {{- $targetPath := path.Join $currentPageDir $url | path.Clean -}}
-            {{- $resource = resources.Get $targetPath -}}
-            {{- if not $resource -}}
-                {{- $resource = site.GetPage $targetPath -}}
-            {{- end -}}
-        {{- end -}}
-    {{- end -}}
-    
-    {{- if $resource -}}
-        {{- /* 리소스를 찾은 경우 RelPermalink 사용 (baseURL 서브패스 포함) */ -}}
-        {{- $finalURL = $resource.RelPermalink -}}
-    {{- else -}}
-        {{- /* 리소스를 못 찾은 경우 relURL 사용 (baseURL 서브패스 자동 처리) */ -}}
-        {{- $finalURL = $url | relURL -}}
-    {{- end -}}
-    
-    <a href="{{ $finalURL | safeURL }}" class="internal-file-link">{{ .Text | safeHTML }}</a>
+    {{- /* content 내의 다른 파일을 링크할 수도 있으므로 relURL 처리를 추가하여 서브디렉토리 호스팅 지원 */ -}}
+    <a href="{{ .Page.Site.BaseURL }}/{{ $url | relURL }}" class="internal-file-link">{{ .Text | safeHTML }}</a>
 {{- end -}}
