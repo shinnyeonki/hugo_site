@@ -1,3 +1,0 @@
----
-title: LINUX & C
----

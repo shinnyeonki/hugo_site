@@ -1,3 +1,0 @@
----
-title: mju ecs project
----

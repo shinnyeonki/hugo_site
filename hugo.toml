@@ -34,4 +34,25 @@ ignoreFiles = [
     startLevel = 1
     endLevel = 6
     ordered = false
-  
+
+# # 1. 새로운 미디어 타입 정의
+# [mediaTypes]
+#   [mediaTypes."text/markdown"]
+#     suffixes = ["md"]
+
+# # 2. 새로운 출력 형식 정의
+# [outputFormats]
+#   [outputFormats.rawmd] # "rawmd"는 원하는 이름으로 지정 가능
+#     mediaType = "text/markdown"
+#     baseName = "index"      # 출력 파일명을 index.md로 설정
+#     isPlainText = true      # Hugo의 템플릿 엔진을 거치지 않음
+#     path = "raw"            # /public/raw/ 디렉토리에 결과물을 저장
+
+# [outputs]
+#   page = ["HTML", "rawmd"] # 모든 일반 페이지에 HTML과 rawmd 출력을 모두 생성
+#   home = ["HTML", "RSS"] # 홈페이지는 기존 설정 유지 (필요시 "rawmd" 추가)
+
+# [permalinks]
+#   # 'page' 종류의 콘텐츠가 'rawmd' 형식으로 출력될 때의 URL 규칙
+#   # "/:slug"는 "/무제-1" 과 같은 경로를 생성하고, Hugo는 여기에 확장자(.md)를 붙여줍니다.
+#   page.rawmd = "/:slug"

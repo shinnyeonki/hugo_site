@@ -32,6 +32,7 @@ FRONTMATTER_TITLE_CONVERT_SYMBOLS_TO_SPACES = False  # (신규 생성 시) 하�
 # [1-3. Resource Path 관리 설정]
 FRONTMATTER_RESOURCE_PATH_MANAGE = True  # 리소스 경로 관리 활성화/비활성화
 FRONTMATTER_RESOURCE_PATH_QUOTE_STYLE = 'none'  # 'double', 'single', 'none'
+FRONTMATTER_RESOURCE_PATH_REPLACE_SPACES_WITH_HYPHENS = False  # resource-path 생성 시 공백을 하이픈(-)으로 대체
 
 # [1-4. Aliases(별칭) 관리 설정]
 FRONTMATTER_RENAME_ALIASES_TO_KEYWORDS_MANAGE = True # aliases 속성명을 keywords로 변경
@@ -135,6 +136,9 @@ def update_frontmatter(file_path, content_root):
 
             if FRONTMATTER_RESOURCE_PATH_MANAGE:
                 path_str = str(p.relative_to(content_root)).replace(os.sep, '/')
+
+                if FRONTMATTER_RESOURCE_PATH_REPLACE_SPACES_WITH_HYPHENS:
+                    path_str = path_str.replace(' ', '-')
 
                 if FRONTMATTER_RESOURCE_PATH_QUOTE_STYLE == 'double': path_value = '"' + path_str.replace('"', '\\"') + '"'
                 elif FRONTMATTER_RESOURCE_PATH_QUOTE_STYLE == 'single': path_value = "'" + path_str.replace("'", "\\'") + "'"
