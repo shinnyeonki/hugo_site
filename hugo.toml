@@ -1,4 +1,5 @@
 baseURL = 'https://shinnyeonki.github.io/obsidian_repo'
+# baseURL = 'http://shinnk.iptime.org/memo'
 # baseURL = 'http://localhost:1313'
 languageCode = 'ko-KR'
 title = 'Obsidian Vault'
