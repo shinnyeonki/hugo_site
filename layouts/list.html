@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto px-4">
             {{ if ne .Kind "home" }}
                 <nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
-                    <a href="{{ .Page.Site.BaseURL }}" class="hover:text-primary-blue-light transition-colors">🏠 Home</a>
+                    <a href="{{ .Page.Site.BaseURL }}" class="hover:text-primary-blue-light transition-colors">Home</a>
                     {{ $currentPage := . }}
                     {{ range $index, $item := .Ancestors.Reverse }}
                         {{ if ne $item.Kind "home" }}
@@ -17,7 +17,7 @@
                 </nav>
             {{ else }}
                 <nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
-                    <span class="text-neutral-700 dark:text-neutral-300 font-semibold">🏠 Home</span>
+                    <span class="text-neutral-700 dark:text-neutral-300 font-semibold">Home</span>
                 </nav>
             {{ end }}
         </div>
