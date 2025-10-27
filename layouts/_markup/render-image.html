@@ -9,21 +9,32 @@
     {{/* 2. 로컬 이미지 처리 */}}
     {{- $imageResource := "" -}}
     {{- if strings.HasPrefix $url "/" -}}
-        {{- /* 2a. /로 시작하는 경로: content 폴더 기준 절대 경로로 간주 */}}
+        {{- /* 2a. /로 시작하는 경로: static 폴더나 content 폴더 기준 절대 경로 */}}
         {{- $path := strings.TrimPrefix "/" $url -}}
-        {{- $imageResource = site.GetPage $path -}}
+        {{- $imageResource = resources.Get $path -}}
+        {{- if not $imageResource -}}
+            {{- $imageResource = site.GetPage $path -}}
+        {{- end -}}
     {{- else -}}
         {{- /* 2b. 상대 경로 (e.g., ../../image.png, image.png) 처리 */}}
-        {{- $currentPageDir := .Page.File.Dir -}}
-        {{- $targetPath := path.Join $currentPageDir $url | path.Clean -}}
-        {{- $imageResource = site.GetPage $targetPath -}}
+        {{- /* 먼저 페이지 리소스에서 찾기 */}}
+        {{- $imageResource = .Page.Resources.Get $url -}}
+        {{- if not $imageResource -}}
+            {{- /* 페이지 리소스에서 못 찾으면 전역 리소스에서 찾기 */}}
+            {{- $currentPageDir := .Page.File.Dir -}}
+            {{- $targetPath := path.Join $currentPageDir $url | path.Clean -}}
+            {{- $imageResource = resources.Get $targetPath -}}
+            {{- if not $imageResource -}}
+                {{- $imageResource = site.GetPage $targetPath -}}
+            {{- end -}}
+        {{- end -}}
     {{- end -}}
 
     {{- if $imageResource -}}
-        {{/* 3. 리소스를 찾은 경우, 올바른 URL로 <img> 태그 생성 */}}
-        <img src="{{ $imageResource.RelPermalink }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }}>
+        {{/* 3. 리소스를 찾은 경우, relURL 함수를 사용하여 baseURL을 고려한 URL 생성 */}}
+        <img src="{{ $imageResource.RelPermalink | relURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }}>
     {{- else -}}
-        {{/* 4. 리소스를 못 찾은 경우, 디버깅을 위해 원래 경로 출력 (깨질 가능성 높음) */}}
+        {{/* 4. 리소스를 못 찾은 경우, relURL 함수로 baseURL을 고려한 경로 생성 */}}
         <img src="{{ $url | relURL }}" alt="{{ .Text }} (Image resource not found)" {{ with .Title}} title="{{ . }}"{{ end }}>
     {{- end -}}
 
