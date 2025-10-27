@@ -1,7 +1,7 @@
 ---
 title: mysql 명령 모음
 resource-path: 02.inbox/mysql 명령 모음.md
-aliases:
+keywords:
 tags:
   - database
   - command

@@ -1,7 +1,7 @@
 ---
 title: 데이터베이스 sql
 resource-path: 06.University/database(university)/데이터베이스 sql.md
-aliases:
+keywords:
 tags:
   - database
   - sql

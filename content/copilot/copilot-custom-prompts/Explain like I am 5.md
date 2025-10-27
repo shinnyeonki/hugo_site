@@ -1,7 +1,7 @@
 ---
 title: Explain like I am 5
 resource-path: copilot/copilot-custom-prompts/Explain like I am 5.md
-aliases:
+keywords:
 tags:
 date: 2025-10-17T22:42:39+09:00
 lastmod: 2025-10-17T22:46:29+09:00

@@ -1,7 +1,7 @@
 ---
-title: 03 FILE IO
+title: 03-FILE IO
 resource-path: 06.University/system programming(university)/03-FILE IO.md
-aliases:
+keywords:
 tags:
   - system-programing
   - system-call

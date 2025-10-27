@@ -1,7 +1,7 @@
 ---
 title: spring controller 추상화 단계별 어노테이션 파라미터
 resource-path: 02.inbox/spring controller 추상화 단계별 어노테이션 파라미터.md
-aliases:
+keywords:
 tags:
   - spring
 date: 2025-07-09T07:40:09+09:00

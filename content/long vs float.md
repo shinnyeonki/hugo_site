@@ -1,7 +1,7 @@
 ---
 title: long vs float
 resource-path: long vs float.md
-aliases:
+keywords:
 tags:
 date: 2025-09-12T21:00:27+09:00
 lastmod: 2025-09-12T21:22:48+09:00

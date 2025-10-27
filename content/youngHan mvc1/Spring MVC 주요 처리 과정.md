@@ -1,7 +1,7 @@
 ---
 title: Spring MVC 주요 처리 과정
 resource-path: youngHan mvc1/Spring MVC 주요 처리 과정.md
-aliases:
+keywords:
 tags:
   - spring
   - young_han

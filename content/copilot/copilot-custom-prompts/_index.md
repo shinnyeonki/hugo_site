@@ -1,3 +1,3 @@
 ---
-title: Copilot Custom Prompts
+title: copilot custom prompts
 ---

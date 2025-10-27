@@ -1,7 +1,7 @@
 ---
 title: Make longer
 resource-path: copilot/copilot-custom-prompts/Make longer.md
-aliases:
+keywords:
 tags:
 date: 2025-10-17T22:42:39+09:00
 lastmod: 2025-10-17T22:46:38+09:00

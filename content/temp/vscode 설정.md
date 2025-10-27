@@ -1,7 +1,7 @@
 ---
 title: vscode 설정
 resource-path: temp/vscode 설정.md
-aliases:
+keywords:
 tags:
   - vscode
 date: 2024-10-06T03:00:00+09:00

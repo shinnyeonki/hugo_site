@@ -1,7 +1,7 @@
 ---
 title: HTTPS와 비대칭 키 초기 설정부터 데이터 전송까지의 모든 과정 simulation
 resource-path: 02.inbox/HTTPS와 비대칭 키 초기 설정부터 데이터 전송까지의 모든 과정 simulation.md
-aliases:
+keywords:
 tags:
   - simulation
   - encryption

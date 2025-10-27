@@ -1,7 +1,7 @@
 ---
 title: obsidian 데이터 바인딩 처리
 resource-path: youngHan mvc1/obsidian 데이터 바인딩 처리.md
-aliases:
+keywords:
 tags:
   - spring
 date: 2025-03-31T20:09:00+09:00

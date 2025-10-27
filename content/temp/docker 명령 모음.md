@@ -1,7 +1,7 @@
 ---
 title: docker 명령 모음
 resource-path: temp/docker 명령 모음.md
-aliases:
+keywords:
 tags:
   - command
 date: 2024-04-08T13:33:00+09:00

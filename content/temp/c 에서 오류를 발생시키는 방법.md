@@ -1,7 +1,7 @@
 ---
 title: c 에서 오류를 발생시키는 방법
 resource-path: temp/c 에서 오류를 발생시키는 방법.md
-aliases:
+keywords:
 tags:
   - c
 date: 2024-09-27T13:07:00+09:00

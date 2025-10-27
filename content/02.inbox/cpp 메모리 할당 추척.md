@@ -1,7 +1,7 @@
 ---
 title: cpp 메모리 할당 추척
 resource-path: 02.inbox/cpp 메모리 할당 추척.md
-aliases:
+keywords:
   - new 재정의
 tags:
   - cpp

@@ -1,7 +1,7 @@
 ---
 title: abi
 resource-path: 02.inbox/abi.md
-aliases:
+keywords:
 tags:
   - operating-system
   - c

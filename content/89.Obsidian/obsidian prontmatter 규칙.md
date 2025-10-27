@@ -1,7 +1,7 @@
 ---
 title: obsidian prontmatter 규칙
 resource-path: 89.Obsidian/obsidian prontmatter 규칙.md
-aliases:
+keywords:
 tags:
 date: 2023-12-23T08:05:00+09:00
 lastmod: 2023-12-23T08:05:00+09:00

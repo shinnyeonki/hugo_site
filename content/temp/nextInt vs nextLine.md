@@ -1,7 +1,7 @@
 ---
 title: nextInt vs nextLine
 resource-path: temp/nextInt vs nextLine.md
-aliases:
+keywords:
 tags:
   - ai-content
 date: 2025-09-19T16:08:18+09:00

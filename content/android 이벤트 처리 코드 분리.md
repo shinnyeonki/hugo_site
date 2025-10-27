@@ -1,7 +1,7 @@
 ---
 title: android 이벤트 처리 코드 분리
 resource-path: android 이벤트 처리 코드 분리.md
-aliases:
+keywords:
 tags:
 date: 2025-10-16T16:04:39+09:00
 lastmod: 2025-10-16T16:09:26+09:00

@@ -1,7 +1,7 @@
 ---
 title: 문서 객체 모델 (DOM)
 resource-path: 02.inbox/문서 객체 모델 (DOM).md
-aliases:
+keywords:
 tags:
   - javascript
   - language

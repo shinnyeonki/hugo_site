@@ -1,7 +1,7 @@
 ---
 title: python 인수 규칙
 resource-path: 02.inbox/python 인수 규칙.md
-aliases:
+keywords:
 tags:
   - python
   - language

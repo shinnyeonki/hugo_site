@@ -1,7 +1,7 @@
 ---
 title: 터미널 command line shell
 resource-path: temp/터미널 command line shell.md
-aliases:
+keywords:
 tags:
   - shell
   - linux

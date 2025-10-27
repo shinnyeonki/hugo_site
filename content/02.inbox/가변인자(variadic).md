@@ -1,7 +1,7 @@
 ---
 title: 가변인자(variadic)
 resource-path: 02.inbox/가변인자(variadic).md
-aliases:
+keywords:
 tags:
   - python
   - language

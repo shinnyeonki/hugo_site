@@ -1,7 +1,7 @@
 ---
 title: ios 터미널 접근
 resource-path: 02.inbox/ios 터미널 접근.md
-aliases:
+keywords:
 tags:
   - ios
 date: 2024-05-15T14:30:00+09:00

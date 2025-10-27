@@ -1,7 +1,7 @@
 ---
 title: python 입력함수
 resource-path: temp/python 입력함수.md
-aliases:
+keywords:
 tags:
   - python
   - language

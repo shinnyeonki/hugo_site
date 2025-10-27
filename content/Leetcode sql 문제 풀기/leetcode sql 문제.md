@@ -1,7 +1,7 @@
 ---
 title: leetcode sql 문제
 resource-path: Leetcode sql 문제 풀기/leetcode sql 문제.md
-aliases:
+keywords:
 tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-09-04T20:49:28+09:00

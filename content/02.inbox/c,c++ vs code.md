@@ -1,7 +1,7 @@
 ---
 title: c,c++ vs code
 resource-path: 02.inbox/c,c++ vs code.md
-aliases:
+keywords:
   - tasks.json
   - launch.json
 tags:

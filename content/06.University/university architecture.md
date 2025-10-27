@@ -1,7 +1,7 @@
 ---
 title: university architecture
 resource-path: 06.University/university architecture.md
-aliases:
+keywords:
 tags:
   - university
 date: 2025-04-17T03:26:00+09:00

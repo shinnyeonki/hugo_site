@@ -1,7 +1,7 @@
 ---
 title: spring mvc 주요 어노테이션
 resource-path: youngHan mvc1/spring mvc 주요 어노테이션.md
-aliases:
+keywords:
 tags:
   - young_han
   - spring

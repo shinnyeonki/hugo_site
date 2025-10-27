@@ -1,7 +1,7 @@
 ---
 title: gcc
 resource-path: 02.inbox/Notion/LINUX & C/gcc.md
-aliases:
+keywords:
 tags:
 date: 2025-06-03T06:05:15+09:00
 lastmod: 2025-10-01T19:17:13+09:00

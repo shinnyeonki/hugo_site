@@ -1,7 +1,7 @@
 ---
 title: wsl 에서 폴더가 초록색 배경으로 보이는 이유
 resource-path: 02.inbox/wsl 에서 폴더가 초록색 배경으로 보이는 이유.md
-aliases:
+keywords:
 tags:
   - 잡지식
   - shell

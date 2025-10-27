@@ -1,7 +1,7 @@
 ---
 title: java 어노테이션(anotation)
 resource-path: 02.inbox/java 어노테이션(anotation).md
-aliases:
+keywords:
 tags:
   - java
   - language

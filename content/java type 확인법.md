@@ -1,7 +1,7 @@
 ---
 title: java type 확인법
 resource-path: java type 확인법.md
-aliases:
+keywords:
 tags:
 date: 2025-09-12T20:51:17+09:00
 lastmod: 2025-09-12T21:00:28+09:00

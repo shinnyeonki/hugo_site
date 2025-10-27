@@ -1,7 +1,7 @@
 ---
 title: mjuecs project 발전방향
 resource-path: 06.University/mju_ecs project/mjuecs project 발전방향.md
-aliases:
+keywords:
 tags:
 date: 2025-06-04T06:11:20+09:00
 lastmod: 2025-06-04T06:29:24+09:00

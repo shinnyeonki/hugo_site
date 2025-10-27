@@ -1,7 +1,7 @@
 ---
 title: Toss technical writing guide
 resource-path: Toss technical writing guide.md
-aliases:
+keywords:
 tags:
 date: 2025-07-02T04:32:34+09:00
 lastmod: 2025-08-21T13:24:32+09:00

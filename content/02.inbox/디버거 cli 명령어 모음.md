@@ -1,7 +1,7 @@
 ---
 title: 디버거 cli 명령어 모음
 resource-path: 02.inbox/디버거 cli 명령어 모음.md
-aliases:
+keywords:
 tags:
   - reference
   - ai-content

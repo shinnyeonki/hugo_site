@@ -1,7 +1,7 @@
 ---
 title: Transaction 의 ACID
 resource-path: temp/Transaction 의 ACID.md
-aliases:
+keywords:
 tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-09-27T15:04:00+09:00

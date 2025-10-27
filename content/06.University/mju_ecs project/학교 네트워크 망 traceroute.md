@@ -1,7 +1,7 @@
 ---
 title: 학교 네트워크 망 traceroute
 resource-path: 06.University/mju_ecs project/학교 네트워크 망 traceroute.md
-aliases:
+keywords:
 tags:
 date: 2025-06-20T02:31:54+09:00
 lastmod: 2025-06-27T19:51:49+09:00

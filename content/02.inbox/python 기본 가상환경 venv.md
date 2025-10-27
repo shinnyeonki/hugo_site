@@ -1,7 +1,7 @@
 ---
 title: python 기본 가상환경 venv
 resource-path: 02.inbox/python 기본 가상환경 venv.md
-aliases:
+keywords:
 tags:
   - python
 date: 2023-12-20T07:12:00+09:00

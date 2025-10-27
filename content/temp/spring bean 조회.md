@@ -1,7 +1,7 @@
 ---
 title: spring bean 조회
 resource-path: temp/spring bean 조회.md
-aliases:
+keywords:
 tags:
 date: 2025-06-27T19:39:35+09:00
 lastmod: 2025-09-05T17:38:41+09:00

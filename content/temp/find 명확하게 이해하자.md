@@ -1,7 +1,7 @@
 ---
 title: find 명확하게 이해하자
 resource-path: temp/find 명확하게 이해하자.md
-aliases:
+keywords:
   - find
 tags:
   - shell

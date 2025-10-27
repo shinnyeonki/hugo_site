@@ -1,7 +1,7 @@
 ---
 title: RAID
 resource-path: 02.inbox/RAID.md
-aliases:
+keywords:
   - 레이드
   - mdadm
 tags:

@@ -1,7 +1,7 @@
 ---
 title: frontmatter series
 resource-path: 89.Obsidian/Template/frontmatter series.md
-aliases: 
+keywords: 
 tags: 
 source: 
 sequence: 

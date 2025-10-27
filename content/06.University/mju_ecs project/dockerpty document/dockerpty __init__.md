@@ -1,5 +1,5 @@
 ---
-title: dockerpty   init  
+title: dockerpty __init__
 resource-path: 06.University/mju_ecs project/dockerpty document/dockerpty __init__.md
 ---
 아래는 제공된 코드를 기반으로 한 `dockerpty` 모듈의 구조화된 문서입니다. 이 문서에는 개요, 사용 방법 및 함수에 대한 자세한 설명이 포함되어 있습니다.

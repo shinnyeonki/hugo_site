@@ -1,7 +1,7 @@
 ---
 title: android studio build sequence
 resource-path: android studio build sequence.md
-aliases:
+keywords:
 tags:
   - ai-content
 date: 2025-09-08T15:10:44+09:00

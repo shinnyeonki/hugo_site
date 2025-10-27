@@ -1,7 +1,7 @@
 ---
 title: http는 stateless 한데 하위 스택의 tcp 는 stateful 이다 (HTTP1.1 기준)
 resource-path: 02.inbox/http는 stateless 한데 하위 스택의 tcp 는 stateful 이다 (HTTP1.1 기준).md
-aliases:
+keywords:
 tags:
   - network
 date: 2025-03-25T15:09:00+09:00

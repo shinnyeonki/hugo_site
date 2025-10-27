@@ -1,7 +1,7 @@
 ---
-title: db book 답지 파일 다운받는 javascript
+title: db-book 답지 파일 다운받는 javascript
 resource-path: 02.inbox/db-book 답지 파일 다운받는 javascript.md
-aliases:
+keywords:
 tags:
   - javascript
   - 잡지식

@@ -1,7 +1,7 @@
 ---
 title: thymeleaf 정리
 resource-path: youngHan mvc2/thymeleaf 정리.md
-aliases:
+keywords:
 tags:
 date: 2025-03-18T13:26:00+09:00
 lastmod: 2025-03-18T13:26:00+09:00

@@ -1,7 +1,7 @@
 ---
 title: python default type
 resource-path: python default type.md
-aliases:
+keywords:
 tags:
   - python
 date: 2025-07-01T06:52:17+09:00

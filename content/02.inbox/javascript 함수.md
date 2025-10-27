@@ -1,7 +1,7 @@
 ---
 title: javascript 함수
 resource-path: 02.inbox/javascript 함수.md
-aliases:
+keywords:
 tags:
   - javascript
   - language

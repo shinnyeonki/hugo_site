@@ -1,7 +1,7 @@
 ---
 title: java 메모리(memory)
 resource-path: 02.inbox/java 메모리(memory).md
-aliases:
+keywords:
 tags:
   - java
   - cs

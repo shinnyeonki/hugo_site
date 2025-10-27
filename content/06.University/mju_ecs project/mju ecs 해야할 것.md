@@ -1,7 +1,7 @@
 ---
 title: mju ecs 해야할 것
 resource-path: 06.University/mju_ecs project/mju ecs 해야할 것.md
-aliases:
+keywords:
 tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-04T06:11:13+09:00

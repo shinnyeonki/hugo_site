@@ -1,7 +1,7 @@
 ---
 title: cpp 문자열 split
 resource-path: 02.inbox/cpp 문자열 split.md
-aliases:
+keywords:
   - string split
   - delimiter
 tags:

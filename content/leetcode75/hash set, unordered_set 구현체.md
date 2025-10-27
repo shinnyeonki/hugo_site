@@ -1,7 +1,7 @@
 ---
-title: hash set, unordered set 구현체
+title: hash set, unordered_set 구현체
 resource-path: leetcode75/hash set, unordered_set 구현체.md
-aliases:
+keywords:
 tags:
   - algorithm
   - cpp

@@ -1,7 +1,7 @@
 ---
 title: two pointer 알고리즘
 resource-path: leetcode75/two pointer 알고리즘.md
-aliases:
+keywords:
   - 투 포인터
 tags:
   - algorithm

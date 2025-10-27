@@ -1,7 +1,7 @@
 ---
 title: 계층 기반 폴더 구조 vs 서비스 단위 기반 폴더 구조
 resource-path: 02.inbox/계층 기반 폴더 구조 vs 서비스 단위 기반 폴더 구조.md
-aliases:
+keywords:
 tags:
   - design
 date: 2025-07-31T09:15:00+09:00

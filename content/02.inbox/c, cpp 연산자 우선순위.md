@@ -1,7 +1,7 @@
 ---
 title: c, cpp 연산자 우선순위
 resource-path: 02.inbox/c, cpp 연산자 우선순위.md
-aliases:
+keywords:
 tags:
   - c
   - reference

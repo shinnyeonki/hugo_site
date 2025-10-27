@@ -1,7 +1,7 @@
 ---
-title: 05 PROCESS
+title: 05-PROCESS
 resource-path: 06.University/system programming(university)/05-PROCESS.md
-aliases:
+keywords:
 tags:
   - system-programing
 description:

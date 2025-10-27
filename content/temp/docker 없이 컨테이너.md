@@ -1,7 +1,7 @@
 ---
 title: docker 없이 컨테이너
 resource-path: temp/docker 없이 컨테이너.md
-aliases:
+keywords:
 tags:
   - linux
 date: 2024-04-10T03:21:00+09:00

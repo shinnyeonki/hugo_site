@@ -1,7 +1,7 @@
 ---
 title: spring controller 반환(return)
 resource-path: youngHan mvc1/spring controller 반환(return).md
-aliases:
+keywords:
 tags:
 date: 2025-03-15T20:36:00+09:00
 lastmod: 2025-06-27T19:54:43+09:00

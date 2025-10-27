@@ -1,7 +1,7 @@
 ---
 title: ps 공부
 resource-path: leetcode75/ps 공부.md
-aliases:
+keywords:
 tags:
 date: 2025-02-07T04:19:00+09:00
 lastmod: 2025-02-07T04:19:00+09:00

@@ -1,7 +1,7 @@
 ---
-title: 04 FILE 조작
+title: 04-FILE 조작
 resource-path: 06.University/system programming(university)/04-FILE 조작.md
-aliases:
+keywords:
 tags:
   - system-programing
   - system-call

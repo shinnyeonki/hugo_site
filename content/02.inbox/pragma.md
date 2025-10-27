@@ -1,7 +1,7 @@
 ---
 title: pragma
 resource-path: 02.inbox/pragma.md
-aliases:
+keywords:
 tags:
   - c
   - cpp

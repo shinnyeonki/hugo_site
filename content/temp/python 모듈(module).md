@@ -1,7 +1,7 @@
 ---
 title: python 모듈(module)
 resource-path: temp/python 모듈(module).md
-aliases:
+keywords:
 tags:
   - python
   - language

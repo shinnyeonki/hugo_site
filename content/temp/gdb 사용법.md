@@ -1,7 +1,7 @@
 ---
 title: gdb 사용법
 resource-path: temp/gdb 사용법.md
-aliases:
+keywords:
 tags:
   - c
   - cpp

@@ -1,7 +1,7 @@
 ---
 title: 메모리 기반 database
 resource-path: temp/메모리 기반 database.md
-aliases:
+keywords:
 tags:
   - database
 date: 2024-09-08T21:32:00+09:00

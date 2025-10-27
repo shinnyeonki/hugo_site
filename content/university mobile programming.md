@@ -1,7 +1,7 @@
 ---
 title: university mobile programming
 resource-path: university mobile programming.md
-aliases:
+keywords:
 tags:
   - android
   - university

@@ -1,7 +1,7 @@
 ---
-title: 일반 함수 호출 (User level Function Call) vs 시스템 콜 (System Call) 호출 방식의 차이
+title: 일반 함수 호출 (User-level Function Call) vs 시스템 콜 (System Call) 호출 방식의 차이
 resource-path: 02.inbox/일반 함수 호출 (User-level Function Call) vs 시스템 콜 (System Call) 호출 방식의 차이.md
-aliases:
+keywords:
 tags:
   - operating-system
 date: 2025-03-11T11:39:00+09:00

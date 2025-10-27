@@ -1,7 +1,7 @@
 ---
 title: obsidian callout
 resource-path: 89.Obsidian/obsidian callout.md
-aliases:
+keywords:
 tags:
   - obsidian
 date: 2023-12-21T03:05:00+09:00

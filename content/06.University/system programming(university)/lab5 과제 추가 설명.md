@@ -1,7 +1,7 @@
 ---
 title: lab5 과제 추가 설명
 resource-path: 06.University/system programming(university)/lab5 과제 추가 설명.md
-aliases:
+keywords:
 tags:
   - system-programing
 description:

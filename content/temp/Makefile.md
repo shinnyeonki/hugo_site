@@ -1,7 +1,7 @@
 ---
 title: Makefile
 resource-path: temp/Makefile.md
-aliases:
+keywords:
 tags:
   - c
 date: 2024-01-22T03:36:00+09:00

@@ -1,7 +1,7 @@
 ---
 title: network 2차 과제
 resource-path: 06.University/network/network 2차 과제.md
-aliases:
+keywords:
 tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-03T06:40:34+09:00

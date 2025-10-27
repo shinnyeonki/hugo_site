@@ -1,7 +1,7 @@
 ---
 title: hugo 기본 전제
 resource-path: hugo 기본 전제.md
-aliases:
+keywords:
 tags:
   - hugo
 series: hugo

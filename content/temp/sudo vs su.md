@@ -1,7 +1,7 @@
 ---
 title: sudo vs su
 resource-path: temp/sudo vs su.md
-aliases:
+keywords:
 tags:
   - command
   - shell

@@ -1,7 +1,7 @@
 ---
 title: Doxyzen 키워드
 resource-path: 02.inbox/Doxyzen 키워드.md
-aliases:
+keywords:
   - 주석 키워드
 tags:
   - reference

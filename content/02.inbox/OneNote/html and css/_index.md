@@ -1,3 +1,3 @@
 ---
-title: Html And Css
+title: html and css
 ---

@@ -1,7 +1,7 @@
 ---
 title: mjuecs project
 resource-path: 06.University/mju_ecs project/mjuecs project.md
-aliases:
+keywords:
 tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-11T15:06:32+09:00

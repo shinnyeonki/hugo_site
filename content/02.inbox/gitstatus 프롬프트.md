@@ -1,7 +1,7 @@
 ---
 title: gitstatus 프롬프트
 resource-path: 02.inbox/gitstatus 프롬프트.md
-aliases:
+keywords:
 tags:
   - reference
   - 잡지식

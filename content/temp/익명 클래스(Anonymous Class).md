@@ -1,7 +1,7 @@
 ---
 title: 익명 클래스(Anonymous Class)
 resource-path: temp/익명 클래스(Anonymous Class).md
-aliases:
+keywords:
 tags:
   - language
 date: 2023-12-20T07:12:00+09:00

@@ -1,7 +1,7 @@
 ---
 title: university network quiz
 resource-path: 06.University/network/university network quiz.md
-aliases:
+keywords:
 tags:
   - university
 date: 2025-06-03T06:05:16+09:00

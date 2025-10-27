@@ -1,7 +1,7 @@
 ---
 title: python 이름공간(namespace)
 resource-path: 02.inbox/python 이름공간(namespace).md
-aliases:
+keywords:
   - namepace
 tags:
   - python

@@ -1,7 +1,7 @@
 ---
 title: spring bean scope
 resource-path: temp/spring bean scope.md
-aliases:
+keywords:
   - 범위
 tags:
   - spring

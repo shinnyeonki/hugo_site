@@ -1,7 +1,7 @@
 ---
 title: cpp 초기화 방식
 resource-path: leetcode75/cpp 초기화 방식.md
-aliases:
+keywords:
 tags:
 date: 2025-02-02T02:18:00+09:00
 lastmod: 2025-09-29T12:44:58+09:00

@@ -1,7 +1,7 @@
 ---
 title: spring life cycle
 resource-path: temp/spring life cycle.md
-aliases:
+keywords:
   - 주기
 tags:
   - spring

@@ -1,7 +1,7 @@
 ---
 title: stateful 과 stateless 프로토콜
 resource-path: temp/stateful 과 stateless 프로토콜.md
-aliases:
+keywords:
 tags:
   - network
 date: 2024-02-13T02:02:00+09:00

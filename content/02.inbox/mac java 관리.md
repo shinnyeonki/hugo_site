@@ -1,7 +1,7 @@
 ---
 title: mac java 관리
 resource-path: 02.inbox/mac java 관리.md
-aliases:
+keywords:
 tags:
   - mac
   - java

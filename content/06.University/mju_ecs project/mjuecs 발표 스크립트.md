@@ -1,7 +1,7 @@
 ---
 title: mjuecs 발표 스크립트
 resource-path: 06.University/mju_ecs project/mjuecs 발표 스크립트.md
-aliases:
+keywords:
 tags:
 date: 2025-06-11T15:04:45+09:00
 lastmod: 2025-06-11T15:05:01+09:00

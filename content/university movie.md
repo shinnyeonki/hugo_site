@@ -1,7 +1,7 @@
 ---
 title: university movie
 resource-path: university movie.md
-aliases:
+keywords:
 tags:
 date: 2025-10-23T06:26:47+09:00
 lastmod: 2025-10-23T06:48:34+09:00

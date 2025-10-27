@@ -1,7 +1,7 @@
 ---
 title: di (의존성 주입) 의 타 프레임워크 접근 유튜브 댓글
 resource-path: 02.inbox/di (의존성 주입) 의 타 프레임워크 접근 유튜브 댓글.md
-aliases:
+keywords:
 tags:
   - 잡지식
 date:

@@ -1,7 +1,7 @@
 ---
 title: Postgresql
 resource-path: temp/Postgresql.md
-aliases:
+keywords:
 tags:
 date: 2024-09-16T04:11:00+09:00
 lastmod: 2024-09-16T04:11:00+09:00

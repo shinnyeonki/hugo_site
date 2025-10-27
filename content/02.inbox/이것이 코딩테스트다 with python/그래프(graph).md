@@ -1,7 +1,7 @@
 ---
 title: 그래프(graph)
 resource-path: 02.inbox/이것이 코딩테스트다 with python/그래프(graph).md
-aliases:
+keywords:
   - graph
 tags:
   - algorithm

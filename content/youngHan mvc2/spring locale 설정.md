@@ -1,7 +1,7 @@
 ---
 title: spring locale 설정
 resource-path: youngHan mvc2/spring locale 설정.md
-aliases:
+keywords:
 tags:
 date: 2025-03-30T20:50:00+09:00
 lastmod: 2025-03-30T20:50:00+09:00

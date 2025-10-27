@@ -1,7 +1,7 @@
 ---
 title: Rewrite as tweet
 resource-path: copilot/copilot-custom-prompts/Rewrite as tweet.md
-aliases:
+keywords:
 tags:
 date: 2025-10-17T22:42:39+09:00
 lastmod: 2025-10-17T22:46:40+09:00

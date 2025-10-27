@@ -1,7 +1,7 @@
 ---
 title: 리스트 컴프리헨션(List Comprehension)
 resource-path: 02.inbox/리스트 컴프리헨션(List Comprehension).md
-aliases:
+keywords:
 tags:
   - python
   - language

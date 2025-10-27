@@ -1,7 +1,7 @@
 ---
 title: 데이터베이스 전공책 chapter6, 7 정리
 resource-path: temp/데이터베이스 전공책 chapter6, 7 정리.md
-aliases:
+keywords:
 tags:
 description:
 series: "Database System Concepts\r Book by Abraham Silberschatz, Henry F. Korth, and S. Sudarshan"

@@ -1,7 +1,7 @@
 ---
 title: sql 틀린문제
 resource-path: temp/sql 틀린문제.md
-aliases:
+keywords:
 tags:
   - sql
   - 문제풀이

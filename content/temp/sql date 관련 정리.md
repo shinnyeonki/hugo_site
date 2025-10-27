@@ -1,7 +1,7 @@
 ---
 title: sql date 관련 정리
 resource-path: temp/sql date 관련 정리.md
-aliases:
+keywords:
 tags:
   - sql
 date: 2024-04-12T09:58:00+09:00

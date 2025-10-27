@@ -1,7 +1,7 @@
 ---
 title: python 매개변수 전달
 resource-path: 02.inbox/python 매개변수 전달.md
-aliases:
+keywords:
   - parametor
 tags:
   - python

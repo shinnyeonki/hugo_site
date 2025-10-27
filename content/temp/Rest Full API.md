@@ -1,7 +1,7 @@
 ---
 title: Rest Full API
 resource-path: temp/Rest Full API.md
-aliases:
+keywords:
 tags:
 date: 2025-03-14T03:00:00+09:00
 lastmod: 2025-10-23T02:44:19+09:00

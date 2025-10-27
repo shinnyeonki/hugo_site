@@ -1,7 +1,7 @@
 ---
 title: java 리플렉션(reflection)
 resource-path: 02.inbox/java 리플렉션(reflection).md
-aliases:
+keywords:
 tags:
   - java
 date: 2024-01-27T11:29:00+09:00

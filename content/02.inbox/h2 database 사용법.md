@@ -1,7 +1,7 @@
 ---
 title: h2 database 사용법
 resource-path: 02.inbox/h2 database 사용법.md
-aliases:
+keywords:
 tags:
   - database
   - 잡지식

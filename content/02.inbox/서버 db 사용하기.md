@@ -1,7 +1,7 @@
 ---
 title: 서버 db 사용하기
 resource-path: 02.inbox/서버 db 사용하기.md
-aliases:
+keywords:
 tags:
   - database
 description: database design 서버 구성용

@@ -1,7 +1,7 @@
 ---
-title: 07 SIGNAL
+title: 07-SIGNAL
 resource-path: 06.University/system programming(university)/07-SIGNAL.md
-aliases:
+keywords:
 tags:
   - system-programing
 description:

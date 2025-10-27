@@ -1,7 +1,7 @@
 ---
 title: university network
 resource-path: 06.University/network/university network.md
-aliases:
+keywords:
 tags:
   - university
 date: 2025-03-18T16:00:00+09:00

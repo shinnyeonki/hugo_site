@@ -1,7 +1,7 @@
 ---
 title: oracle database
 resource-path: 06.University/mju_ecs project/oracle database.md
-aliases:
+keywords:
 tags:
 date: 2025-04-02T22:00:00+09:00
 lastmod: 2025-06-04T06:11:19+09:00

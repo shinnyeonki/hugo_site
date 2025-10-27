@@ -1,7 +1,7 @@
 ---
 title: frontmatter past default
 resource-path: 89.Obsidian/Template/frontmatter past default.md
-aliases: 
+keywords: 
 tags: 
 creation: {{date}} {{time}}
 ---

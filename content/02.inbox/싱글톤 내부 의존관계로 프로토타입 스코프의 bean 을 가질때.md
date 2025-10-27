@@ -1,7 +1,7 @@
 ---
 title: 싱글톤 내부 의존관계로 프로토타입 스코프의 bean 을 가질때
 resource-path: 02.inbox/싱글톤 내부 의존관계로 프로토타입 스코프의 bean 을 가질때.md
-aliases:
+keywords:
 tags:
   - spring
 date: 2024-02-02T15:27:00+09:00

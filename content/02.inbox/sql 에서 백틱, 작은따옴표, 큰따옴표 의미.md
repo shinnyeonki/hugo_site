@@ -1,7 +1,7 @@
 ---
 title: sql 에서 백틱, 작은따옴표, 큰따옴표 의미
 resource-path: 02.inbox/sql 에서 백틱, 작은따옴표, 큰따옴표 의미.md
-aliases:
+keywords:
 tags:
   - database
   - 잡지식

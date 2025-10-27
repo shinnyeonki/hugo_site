@@ -1,7 +1,7 @@
 ---
 title: Generate table of contents
 resource-path: copilot/copilot-custom-prompts/Generate table of contents.md
-aliases:
+keywords:
 tags:
 date: 2025-10-17T22:42:39+09:00
 lastmod: 2025-10-17T22:46:37+09:00

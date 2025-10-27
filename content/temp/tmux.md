@@ -1,7 +1,7 @@
 ---
 title: tmux
 resource-path: temp/tmux.md
-aliases:
+keywords:
 tags:
   - 잡지식
 date: 2025-10-22T11:37:30+09:00

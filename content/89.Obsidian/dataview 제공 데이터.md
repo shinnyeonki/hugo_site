@@ -1,7 +1,7 @@
 ---
 title: dataview 제공 데이터
 resource-path: 89.Obsidian/dataview 제공 데이터.md
-aliases:
+keywords:
 tags:
   - obsidian
   - reference

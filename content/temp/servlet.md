@@ -1,7 +1,7 @@
 ---
 title: servlet
 resource-path: temp/servlet.md
-aliases:
+keywords:
 tags:
   - java
 date: 2024-02-14T04:16:00+09:00

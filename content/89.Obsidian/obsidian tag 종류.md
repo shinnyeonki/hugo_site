@@ -1,7 +1,7 @@
 ---
 title: obsidian tag 종류
 resource-path: 89.Obsidian/obsidian tag 종류.md
-aliases:
+keywords:
   - tag 정하는 기준
 tags:
   - obsidian

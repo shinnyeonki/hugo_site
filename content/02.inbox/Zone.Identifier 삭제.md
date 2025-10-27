@@ -1,7 +1,7 @@
 ---
 title: Zone.Identifier 삭제
 resource-path: 02.inbox/Zone.Identifier 삭제.md
-aliases:
+keywords:
 tags:
   - 잡지식
 date: 2025-07-24T00:00:18+09:00

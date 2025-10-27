@@ -1,7 +1,7 @@
 ---
 title: 프로젝트 sample data 통계
 resource-path: 06.University/database(university)/프로젝트 sample data 통계.md
-aliases:
+keywords:
 tags:
   - sql
   - database

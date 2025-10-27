@@ -1,7 +1,7 @@
 ---
 title: terminal auto logging
 resource-path: 02.inbox/terminal auto logging.md
-aliases:
+keywords:
 tags:
   - project
 date: 2025-09-09T17:16:26+09:00

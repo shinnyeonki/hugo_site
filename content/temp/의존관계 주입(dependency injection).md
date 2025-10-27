@@ -1,7 +1,7 @@
 ---
 title: 의존관계 주입(dependency injection)
 resource-path: temp/의존관계 주입(dependency injection).md
-aliases:
+keywords:
   - 의존성 주입
   - DI
   - di

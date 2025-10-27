@@ -1,7 +1,7 @@
 ---
 title: linux locale setting
 resource-path: 02.inbox/linux locale setting.md
-aliases:
+keywords:
 tags:
   - setting
   - linux

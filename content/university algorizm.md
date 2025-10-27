@@ -1,7 +1,7 @@
 ---
 title: university algorizm
 resource-path: university algorizm.md
-aliases:
+keywords:
 tags:
   - ai-content
   - university

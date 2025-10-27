@@ -1,7 +1,7 @@
 ---
 title: java 제네릭(generic)
 resource-path: 02.inbox/java 제네릭(generic).md
-aliases:
+keywords:
   - non-feifiable
   - reifiable
   - supertype

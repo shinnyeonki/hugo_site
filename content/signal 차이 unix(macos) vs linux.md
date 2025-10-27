@@ -1,7 +1,7 @@
 ---
 title: signal 차이 unix(macos) vs linux
 resource-path: signal 차이 unix(macos) vs linux.md
-aliases:
+keywords:
 tags:
   - ai-content
   - system-programing

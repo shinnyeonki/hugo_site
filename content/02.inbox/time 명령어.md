@@ -1,7 +1,7 @@
 ---
 title: time 명령어
 resource-path: 02.inbox/time 명령어.md
-aliases:
+keywords:
 tags:
   - command
   - linux

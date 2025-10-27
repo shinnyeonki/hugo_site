@@ -1,7 +1,7 @@
 ---
 title: c 선언부 문법 읽기
 resource-path: 01.publish/c 선언부 문법 읽기.md
-aliases:
+keywords:
 tags:
   - c
   - cpp

@@ -1,7 +1,7 @@
 ---
 title: university machine leaning
 resource-path: 06.University/university machine leaning.md
-aliases:
+keywords:
 tags:
   - machine_leaning
   - university

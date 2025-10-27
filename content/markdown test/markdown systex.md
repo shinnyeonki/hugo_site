@@ -1,7 +1,7 @@
 ---
 title: markdown systex
 resource-path: markdown test/markdown systex.md
-aliases:
+keywords:
 tags:
 date: 2025-09-05T00:38:30+09:00
 lastmod: 2025-10-07T23:35:38+09:00

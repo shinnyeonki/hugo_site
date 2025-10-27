@@ -1,7 +1,7 @@
 ---
 title: IPC (massage passing)
 resource-path: 02.inbox/IPC (massage passing).md
-aliases:
+keywords:
 tags:
   - system-programing
   - operating-system

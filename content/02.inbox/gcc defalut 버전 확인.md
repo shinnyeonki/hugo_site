@@ -1,7 +1,7 @@
 ---
 title: gcc defalut 버전 확인
 resource-path: 02.inbox/gcc defalut 버전 확인.md
-aliases:
+keywords:
 tags:
   - 잡지식
   - c

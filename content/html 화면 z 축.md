@@ -1,7 +1,7 @@
 ---
 title: html 화면 z 축
 resource-path: html 화면 z 축.md
-aliases:
+keywords:
 tags:
   - web
 date: 2025-09-11T13:46:07+09:00

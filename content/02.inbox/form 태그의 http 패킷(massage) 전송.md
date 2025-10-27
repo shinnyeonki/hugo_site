@@ -1,7 +1,7 @@
 ---
 title: form 태그의 http 패킷(massage) 전송
 resource-path: 02.inbox/form 태그의 http 패킷(massage) 전송.md
-aliases:
+keywords:
 tags:
   - network
   - html

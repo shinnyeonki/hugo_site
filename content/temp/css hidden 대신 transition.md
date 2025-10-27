@@ -1,7 +1,7 @@
 ---
 title: css hidden 대신 transition
 resource-path: temp/css hidden 대신 transition.md
-aliases:
+keywords:
 tags:
   - ai-content
 date: 2025-09-27T06:18:15+09:00

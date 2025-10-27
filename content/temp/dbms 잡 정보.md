@@ -1,7 +1,7 @@
 ---
 title: dbms 잡 정보
 resource-path: temp/dbms 잡 정보.md
-aliases:
+keywords:
 tags:
   - database
   - 잡지식

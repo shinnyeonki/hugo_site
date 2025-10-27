@@ -1,7 +1,7 @@
 ---
 title: obsidian 플러그인
 resource-path: 89.Obsidian/obsidian 플러그인.md
-aliases:
+keywords:
 tags:
 date: 2025-05-26T00:14:00+09:00
 lastmod: 2025-05-26T00:14:00+09:00

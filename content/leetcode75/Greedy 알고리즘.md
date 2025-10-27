@@ -1,7 +1,7 @@
 ---
 title: Greedy 알고리즘
 resource-path: leetcode75/Greedy 알고리즘.md
-aliases:
+keywords:
   - 그리디
 tags:
   - algorithm

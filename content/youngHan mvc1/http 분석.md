@@ -1,7 +1,7 @@
 ---
 title: http 분석
 resource-path: youngHan mvc1/http 분석.md
-aliases:
+keywords:
 tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-27T19:52:11+09:00

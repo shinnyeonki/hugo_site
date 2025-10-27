@@ -1,7 +1,7 @@
 ---
 title: spring @Autowired 의존관계 주입시 중복 문제
 resource-path: temp/spring @Autowired 의존관계 주입시 중복 문제.md
-aliases:
+keywords:
 tags:
   - spring
 date: 2024-02-01T08:31:00+09:00

@@ -1,7 +1,7 @@
 ---
 title: java cli compile
 resource-path: temp/java cli compile.md
-aliases:
+keywords:
 tags:
   - java
   - language

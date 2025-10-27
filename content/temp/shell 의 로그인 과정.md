@@ -1,7 +1,7 @@
 ---
 title: shell 의 로그인 과정
 resource-path: temp/shell 의 로그인 과정.md
-aliases:
+keywords:
 tags:
   - shell
 date: 2024-02-21T16:53:00+09:00

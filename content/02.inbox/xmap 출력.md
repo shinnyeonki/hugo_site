@@ -1,7 +1,7 @@
 ---
 title: xmap 출력
 resource-path: 02.inbox/xmap 출력.md
-aliases:
+keywords:
 tags:
   - command
   - linux

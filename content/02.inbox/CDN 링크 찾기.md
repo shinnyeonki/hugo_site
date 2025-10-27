@@ -1,7 +1,7 @@
 ---
 title: CDN 링크 찾기
 resource-path: 02.inbox/CDN 링크 찾기.md
-aliases:
+keywords:
 tags:
   - 잡지식
 date: 2025-09-08T17:23:17+09:00

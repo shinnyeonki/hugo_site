@@ -1,7 +1,7 @@
 ---
 title: cpp STL
 resource-path: leetcode75/cpp STL.md
-aliases:
+keywords:
 tags:
   - cpp
   - language

@@ -1,7 +1,7 @@
 ---
 title: Regrex 예제
 resource-path: 89.Obsidian/Regrex 예제.md
-aliases:
+keywords:
 tags:
   - regrex
 date: 2025-06-20T09:10:01+09:00

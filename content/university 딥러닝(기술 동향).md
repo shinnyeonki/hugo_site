@@ -1,7 +1,7 @@
 ---
 title: university 딥러닝(기술 동향)
 resource-path: university 딥러닝(기술 동향).md
-aliases:
+keywords:
 tags:
 date: 2025-10-23T06:07:26+09:00
 lastmod: 2025-10-23T06:08:38+09:00

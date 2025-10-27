@@ -1,7 +1,7 @@
 ---
 title: 구현(Implementation)
 resource-path: 02.inbox/이것이 코딩테스트다 with python/구현(Implementation).md
-aliases:
+keywords:
 tags:
   - algorithm
   - cs

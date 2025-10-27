@@ -1,7 +1,7 @@
 ---
 title: python 클래스(class)
 resource-path: temp/python 클래스(class).md
-aliases:
+keywords:
   - class
 tags:
   - python

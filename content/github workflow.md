@@ -1,7 +1,7 @@
 ---
 title: github workflow
 resource-path: github workflow.md
-aliases: 
+keywords: 
 tags: 
 date: 2025-10-27T07:17:22+09:00
 lastmod: 2025-10-27T07:17:38+09:00

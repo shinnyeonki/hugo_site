@@ -1,7 +1,7 @@
 ---
 title: ELF 구조
 resource-path: temp/ELF 구조.md
-aliases:
+keywords:
   - object file
 tags:
 date: 2025-01-23T10:56:00+09:00

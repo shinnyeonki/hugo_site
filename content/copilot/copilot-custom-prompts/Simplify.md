@@ -1,7 +1,7 @@
 ---
 title: Simplify
 resource-path: copilot/copilot-custom-prompts/Simplify.md
-aliases:
+keywords:
 tags:
 date: 2025-10-17T22:42:39+09:00
 lastmod: 2025-10-17T22:46:42+09:00

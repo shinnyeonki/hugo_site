@@ -1,7 +1,7 @@
 ---
-title: Spec Driven Development
+title: Spec-Driven Development
 resource-path: Spec-Driven Development.md
-aliases:
+keywords:
 tags:
   - ai-content
 date: 2025-10-13T13:36:25+09:00

@@ -1,7 +1,7 @@
 ---
 title: 임베디드 os 개발 프로젝트
 resource-path: temp/임베디드 os 개발 프로젝트.md
-aliases:
+keywords:
 tags:
 date: 2025-01-23T08:42:00+09:00
 lastmod: 2025-01-23T08:42:00+09:00

@@ -1,7 +1,7 @@
 ---
 title: mjuecs ubuntu 문서
 resource-path: 06.University/mju_ecs project/mjuecs ubuntu 문서.md
-aliases:
+keywords:
 tags:
 date: 2025-06-03T06:05:16+09:00
 lastmod: 2025-06-04T06:11:18+09:00

@@ -1,7 +1,7 @@
 ---
 title: HTTP 요청 3가지 방법
 resource-path: youngHan mvc1/HTTP 요청 3가지 방법.md
-aliases:
+keywords:
 tags:
 date: 2025-02-28T05:24:00+09:00
 lastmod: 2025-06-27T19:52:08+09:00

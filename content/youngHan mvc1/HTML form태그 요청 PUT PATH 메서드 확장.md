@@ -1,7 +1,7 @@
 ---
 title: HTML form태그 요청 PUT PATH 메서드 확장
 resource-path: youngHan mvc1/HTML form태그 요청 PUT PATH 메서드 확장.md
-aliases:
+keywords:
 tags:
   - html
   - young_han

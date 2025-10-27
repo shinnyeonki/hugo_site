@@ -1,7 +1,7 @@
 ---
 title: Cloud Computing 과제2 보고서
 resource-path: 02.inbox/Cloud Computing 과제2 보고서.md
-aliases:
+keywords:
 tags:
   - university
 description: 대학 수업 cloud computing 보고서

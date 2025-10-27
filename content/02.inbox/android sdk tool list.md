@@ -1,7 +1,7 @@
 ---
 title: android sdk tool list
 resource-path: 02.inbox/android sdk tool list.md
-aliases:
+keywords:
 tags:
   - android
   - 잡지식

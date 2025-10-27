@@ -1,7 +1,7 @@
 ---
 title: 순수 UI 디자인 용어
 resource-path: 02.inbox/순수 UI 디자인 용어.md
-aliases:
+keywords:
 tags:
   - 잡지식
 date: 2025-09-08T01:49:22+09:00

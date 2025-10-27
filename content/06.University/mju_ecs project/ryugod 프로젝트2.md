@@ -1,7 +1,7 @@
 ---
 title: ryugod 프로젝트2
 resource-path: 06.University/mju_ecs project/ryugod 프로젝트2.md
-aliases:
+keywords:
 tags:
 date: 2025-03-15T10:30:00+09:00
 lastmod: 2025-03-15T10:30:00+09:00

@@ -1,7 +1,7 @@
 ---
 title: thymeleaf 기본
 resource-path: youngHan mvc1/thymeleaf 기본.md
-aliases:
+keywords:
 tags:
   - spring
   - young_han

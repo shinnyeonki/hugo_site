@@ -1,7 +1,7 @@
 ---
 title: DFS 알고리즘
 resource-path: 02.inbox/이것이 코딩테스트다 with python/DFS 알고리즘.md
-aliases:
+keywords:
 tags:
   - algorithm
   - cs

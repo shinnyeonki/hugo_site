@@ -1,7 +1,7 @@
 ---
 title: UDP와 TCP Demultiplexing 의 이해
 resource-path: 02.inbox/UDP와 TCP Demultiplexing 의 이해.md
-aliases:
+keywords:
 tags:
   - network
   - university

@@ -1,7 +1,7 @@
 ---
 title: cpp 생성자 소멸자 규칙
 resource-path: leetcode75/cpp 생성자 소멸자 규칙.md
-aliases:
+keywords:
 tags:
 date: 2025-01-30T22:58:00+09:00
 lastmod: 2025-01-30T22:58:00+09:00

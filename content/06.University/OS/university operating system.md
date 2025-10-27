@@ -1,7 +1,7 @@
 ---
 title: university operating system
 resource-path: 06.University/OS/university operating system.md
-aliases:
+keywords:
 tags:
   - university
   - operating-system

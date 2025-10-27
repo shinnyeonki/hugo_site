@@ -1,7 +1,7 @@
 ---
-title: yt dlp 명령어 모음
+title: yt-dlp 명령어 모음
 resource-path: 02.inbox/yt-dlp 명령어 모음.md
-aliases:
+keywords:
 tags:
   - command
 date: 2024-06-02T01:03:00+09:00

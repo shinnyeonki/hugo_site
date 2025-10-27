@@ -1,7 +1,7 @@
 ---
-title: interactive shell vs non interactive shell
+title: interactive shell vs non-interactive shell
 resource-path: temp/interactive shell vs non-interactive shell.md
-aliases:
+keywords:
 tags:
   - shell
 date: 2024-02-21T17:21:00+09:00

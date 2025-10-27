@@ -1,7 +1,7 @@
 ---
 title: 4계층 네트워크 계층 (network)
 resource-path: 06.University/network/4계층 네트워크 계층 (network).md
-aliases:
+keywords:
 tags:
   - network
 description:

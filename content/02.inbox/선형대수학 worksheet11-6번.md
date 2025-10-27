@@ -1,7 +1,7 @@
 ---
-title: 선형대수학 worksheet11 6번
+title: 선형대수학 worksheet11-6번
 resource-path: 02.inbox/선형대수학 worksheet11-6번.md
-aliases:
+keywords:
 tags:
   - math
 date: 2024-06-03T19:20:00+09:00

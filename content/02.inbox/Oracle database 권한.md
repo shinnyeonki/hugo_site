@@ -1,7 +1,7 @@
 ---
 title: Oracle database 권한
 resource-path: 02.inbox/Oracle database 권한.md
-aliases:
+keywords:
 tags:
   - database
 date: 2024-11-29T13:13:00+09:00

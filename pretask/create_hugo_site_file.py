@@ -18,19 +18,22 @@ ENTIRE_SCRIPT_ENABLED = True
 # --- 2. Hugo 섹션 파일(_index.md) 관리 설정 ---
 # 기능: 모든 하위 디렉터리에 '_index.md' 파일을 생성/업데이트하여 섹션으로 만듭니다.
 # ------------------------------------------------------------------------------
-SECTION_CREATE_ENABLED = True
-INDEX_FILENAME = "_index.md"  # 섹션 인덱스 파일명
+SECTION_MANAGE_ENABLED = True
+SECTION_MANAGE_INDEX_FILENAME = "_index.md"  # 섹션 인덱스 파일명
+SECTION_MANAGE_CAPITALIZE = False  # 제목의 첫 글자를 대문자로 변환
+SECTION_MANAGE_QUOTE_STYLE = 'none'  # 'double', 'single', 'none'
 
 # ------------------------------------------------------------------------------
 # --- 3. 사이트 정보 파일 생성 설정 ---
 # 기능: 사이트의 주요 정보 페이지(about, contact 등)를 생성합니다.
 # ------------------------------------------------------------------------------
-SITE_INFO_CREATE_ENABLED = True
-# 생성할 사이트 정보 페이지 목록
-SITE_INFO_PAGES = ["about", "privacy", "terms"]
-# 사이트 정보 페이지의 레이아웃 경로 (예: "site" -> "site/about.md")
-# 비워두면 페이지 이름과 동일한 레이아웃을 사용합니다. (예: "" -> "about.md")
-SITE_INFO_TYPE = ""
+SITE_INFO_MANAGE_ENABLED = True
+SITE_INFO_MANAGE_PAGES = ["about", "privacy", "terms"] # 생성할 사이트 정보 페이지 목록 (확장자 제외)
+# 사이트 정보 페이지의 생성 위치 및 type 지정
+# "" (빈 문자열): content 최상위 폴더에 파일 생성, frontmatter에 type 필드 없음
+# "site-info": content/site-info 폴더에 파일 생성, frontmatter에 type: "site-info" 추가
+SITE_INFO_MANAGE_LOCATION = "site-info"
+SITE_INFO_MANAGE_PATH_QUOTE_STYLE = 'none' # Frontmatter 값에 사용할 따옴표 스타일 'double', 'single', 'none'
 
 # ------------------------------------------------------------------------------
 # --- 4. 파일 시스템 및 경로 설정 (전역) ---
@@ -43,10 +46,19 @@ CONTENT_DIRECTORY = '../content'
 # --- 함수 정의 영역 ---
 # ==============================================================================
 
+def _get_quoted_string(value, style):
+    """지정된 스타일(double, single, none)에 따라 문자열에 따옴표를 적용합니다."""
+    if style == 'double':
+        return f'"{value}"'
+    elif style == 'single':
+        return f"'{value}'"
+    else:
+        return value
+
 def section_create(content_dir):
     """콘텐츠 디렉터리를 순회하며 모든 하위 디렉터리에 _index.md 파일을 생성/갱신합니다."""
-    if not SECTION_CREATE_ENABLED:
-        print("Skipping section creation: SECTION_CREATE_ENABLED is set to False.")
+    if not SECTION_MANAGE_ENABLED:
+        print("Skipping section creation: SECTION_MANAGE_ENABLED is set to False.")
         return
 
     print("\n--- Starting section file (_index.md) creation ---")
@@ -54,13 +66,20 @@ def section_create(content_dir):
         # 모든 하위 디렉터리 순회
         for dirpath, _, _ in os.walk(content_dir):
             current_dir = Path(dirpath)
-            index_file_path = current_dir / INDEX_FILENAME
+            index_file_path = current_dir / SECTION_MANAGE_INDEX_FILENAME
 
             # _index.md 파일에 쓸 새로운 내용 생성
             dir_name = current_dir.name
-            # title 생성 시 하이픈과 언더스코어를 공백으로 변환하고 각 단어의 첫 글자를 대문자로
-            title = dir_name.replace('-', ' ').replace('_', ' ').title()
-            new_content = f"---\ntitle: {title}\n---\n"
+            # title 생성 시 하이픈과 언더스코어를 공백으로 변환
+            title = dir_name.replace('-', ' ').replace('_', ' ')
+            
+            # SECTION_MANAGE_CAPITALIZE 설정에 따라 각 단어의 첫 글자를 대문자로 변환
+            if SECTION_MANAGE_CAPITALIZE:
+                title = title.title()
+
+            # SECTION_MANAGE_QUOTE_STYLE 설정에 따라 따옴표 적용
+            quoted_title = _get_quoted_string(title, SECTION_MANAGE_QUOTE_STYLE)
+            new_content = f"---\ntitle: {quoted_title}\n---\n"
 
             # _index.md 파일 존재 여부 확인 및 처리
             if index_file_path.exists():
@@ -79,29 +98,37 @@ def section_create(content_dir):
 
 def siteinfo_create(content_dir):
     """사이트 정보 페이지(about.md, contact.md 등)를 생성하거나 업데이트합니다."""
-    if not SITE_INFO_CREATE_ENABLED:
-        print("Skipping site info page creation: SITE_INFO_CREATE_ENABLED is set to False.")
+    if not SITE_INFO_MANAGE_ENABLED:
+        print("Skipping site info page creation: SITE_INFO_MANAGE_ENABLED is set to False.")
         return
 
     print("\n--- Starting site info page creation/update ---")
     try:
-        for page in SITE_INFO_PAGES:
-            file_path = content_dir / f"{page}.md"
+        # SITE_INFO_MANAGE_LOCATION 값에 따라 파일 생성 위치 결정
+        output_dir = content_dir
+        if SITE_INFO_MANAGE_LOCATION:
+            output_dir = content_dir / SITE_INFO_MANAGE_LOCATION
+            output_dir.mkdir(parents=True, exist_ok=True) # 폴더가 없으면 생성
+
+        for page in SITE_INFO_MANAGE_PAGES:
+            file_path = output_dir / f"{page}.md"
             # title은 파일명을 기반으로 첫 글자를 대문자로 만듭니다.
             title = page.capitalize()
             
             # --- Frontmatter 내용 생성 ---
             # 1. title 과 layout 은 항상 포함됩니다.
             frontmatter_lines = [
-                f'title: "{title}"'
+                f'title: {_get_quoted_string(title, SITE_INFO_MANAGE_PATH_QUOTE_STYLE)}'
             ]
 
-            # 2. SITE_INFO_TYPE 변수에 값이 있을 경우에만 type 필드를 추가합니다.
-            if SITE_INFO_TYPE:
-                frontmatter_lines.append(f'type: "{SITE_INFO_TYPE}"')
+            # 2. SITE_INFO_MANAGE_LOCATION 변수에 값이 있을 경우에만 type 필드를 추가합니다.
+            if SITE_INFO_MANAGE_LOCATION:
+                type_value = _get_quoted_string(SITE_INFO_MANAGE_LOCATION, SITE_INFO_MANAGE_PATH_QUOTE_STYLE)
+                frontmatter_lines.append(f'type: {type_value}')
             
             # 3. layout 필드를 마지막에 추가합니다.
-            frontmatter_lines.append(f'layout: "{page}"')
+            layout_value = _get_quoted_string(page, SITE_INFO_MANAGE_PATH_QUOTE_STYLE)
+            frontmatter_lines.append(f'layout: {layout_value}')
 
             # 최종 frontmatter 문자열을 조립합니다.
             new_frontmatter_content = "\n".join(frontmatter_lines)

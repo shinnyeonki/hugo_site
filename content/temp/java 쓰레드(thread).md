@@ -1,7 +1,7 @@
 ---
 title: java 쓰레드(thread)
 resource-path: temp/java 쓰레드(thread).md
-aliases:
+keywords:
 tags:
   - java
 date: 2024-02-18T19:19:00+09:00

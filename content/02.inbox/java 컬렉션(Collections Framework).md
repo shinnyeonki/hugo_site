@@ -1,7 +1,7 @@
 ---
 title: java 컬렉션(Collections Framework)
 resource-path: 02.inbox/java 컬렉션(Collections Framework).md
-aliases:
+keywords:
 tags:
   - java
 date: 2024-01-22T18:17:00+09:00

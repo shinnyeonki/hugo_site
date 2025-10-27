@@ -1,7 +1,7 @@
 ---
 title: dockerpty pty
 resource-path: 06.University/mju_ecs project/dockerpty document/dockerpty pty.md
-aliases:
+keywords:
 tags:
 date: 2025-06-20T02:31:54+09:00
 lastmod: 2025-09-09T23:10:58+09:00

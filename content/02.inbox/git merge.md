@@ -1,7 +1,7 @@
 ---
 title: git merge
 resource-path: 02.inbox/git merge.md
-aliases:
+keywords:
 tags:
   - git
 date: 2024-11-09T13:23:00+09:00

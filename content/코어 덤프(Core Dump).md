@@ -1,7 +1,7 @@
 ---
 title: 코어 덤프(Core Dump)
 resource-path: 코어 덤프(Core Dump).md
-aliases:
+keywords:
 tags:
   - ai-content
   - system-programing

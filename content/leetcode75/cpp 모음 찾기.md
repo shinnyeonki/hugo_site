@@ -1,7 +1,7 @@
 ---
 title: cpp 모음 찾기
 resource-path: leetcode75/cpp 모음 찾기.md
-aliases:
+keywords:
   - vowels
 tags:
   - algorithm

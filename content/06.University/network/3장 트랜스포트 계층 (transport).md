@@ -1,7 +1,7 @@
 ---
 title: 3장 트랜스포트 계층 (transport)
 resource-path: 06.University/network/3장 트랜스포트 계층 (transport).md
-aliases:
+keywords:
   - 전송 계층
 tags:
   - network

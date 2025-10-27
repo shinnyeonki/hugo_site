@@ -1,7 +1,7 @@
 ---
 title: meterialize view 의 집계연산에서 삽입 삭제에 따른 변화
 resource-path: 02.inbox/meterialize view 의 집계연산에서 삽입 삭제에 따른 변화.md
-aliases:
+keywords:
 tags:
   - dbms
 date: 2024-12-04T15:56:00+09:00

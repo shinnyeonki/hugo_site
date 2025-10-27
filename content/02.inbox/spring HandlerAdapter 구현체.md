@@ -1,7 +1,7 @@
 ---
 title: spring HandlerAdapter 구현체
 resource-path: 02.inbox/spring HandlerAdapter 구현체.md
-aliases:
+keywords:
 tags:
   - spring
   - reference

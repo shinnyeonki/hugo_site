@@ -1,7 +1,7 @@
 ---
 title: ANSI escape code
 resource-path: temp/ANSI escape code.md
-aliases:
+keywords:
 tags:
 date: 2024-07-31T00:56:00+09:00
 lastmod: 2025-08-11T01:10:26+09:00

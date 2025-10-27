@@ -1,7 +1,7 @@
 ---
 title: ascii code
 resource-path: 02.inbox/ascii code.md
-aliases:
+keywords:
   - 아식스
 tags:
   - operating-system

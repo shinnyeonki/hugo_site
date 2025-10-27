@@ -1,7 +1,7 @@
 ---
 title: university operating system quiz
 resource-path: 06.University/OS/university operating system quiz.md
-aliases:
+keywords:
 tags:
   - university
   - operating-system

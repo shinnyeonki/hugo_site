@@ -1,7 +1,7 @@
 ---
 title: disk
 resource-path: 02.inbox/disk.md
-aliases:
+keywords:
   - 디스크
 tags:
   - linux

@@ -1,7 +1,7 @@
 ---
 title: register x64
 resource-path: 02.inbox/register x64.md
-aliases:
+keywords:
 tags:
   - assembler
 date: 2025-05-25T23:35:00+09:00

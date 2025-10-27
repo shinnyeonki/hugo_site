@@ -1,7 +1,7 @@
 ---
 title: zsh 성능 측정
 resource-path: temp/zsh 성능 측정.md
-aliases:
+keywords:
 tags:
   - zsh
 date: 2024-11-18T05:09:00+09:00

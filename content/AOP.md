@@ -1,7 +1,7 @@
 ---
 title: AOP
 resource-path: AOP.md
-aliases:
+keywords:
 tags:
   - ai-content
 date: 2025-10-19T16:27:14+09:00

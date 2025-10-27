@@ -1,7 +1,7 @@
 ---
 title: sse (server sent event)
 resource-path: 02.inbox/sse (server sent event).md
-aliases:
+keywords:
 tags:
   - web
 date: 2025-05-26T14:09:00+09:00

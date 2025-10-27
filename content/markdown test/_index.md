@@ -1,3 +1,3 @@
 ---
-title: Markdown Test
+title: markdown test
 ---

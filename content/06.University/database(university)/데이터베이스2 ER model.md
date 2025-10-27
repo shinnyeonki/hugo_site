@@ -1,7 +1,7 @@
 ---
 title: 데이터베이스2 ER model
 resource-path: 06.University/database(university)/데이터베이스2 ER model.md
-aliases:
+keywords:
 tags:
   - database
 description: 대학 수업 database 에서 배운 모든 내용 정리

@@ -1,7 +1,7 @@
 ---
 title: youngHan mvc1 프로젝트 변화 과정
 resource-path: youngHan mvc1/youngHan mvc1 프로젝트 변화 과정.md
-aliases:
+keywords:
 tags:
   - spring
   - young_han

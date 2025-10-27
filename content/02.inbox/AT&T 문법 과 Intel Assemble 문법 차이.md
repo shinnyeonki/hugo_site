@@ -1,7 +1,7 @@
 ---
 title: AT&T 문법 과 Intel Assemble 문법 차이
 resource-path: 02.inbox/AT&T 문법 과 Intel Assemble 문법 차이.md
-aliases:
+keywords:
 tags:
   - assembler
 date: 2024-08-26T07:37:00+09:00

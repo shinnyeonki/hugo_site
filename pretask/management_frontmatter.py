@@ -21,18 +21,20 @@ ENTIRE_SCRIPT_ENABLED = True
 FRONTMATTER_MANAGE_ENABLED = True
 
 # [1-1. Title 관리 설정]
-TITLE_MANAGE = True  # 제목 관리 활성화/비활성화
-TITLE_CAPITALIZE = False  # (신규 생성 및 기존 제목 정규화 시) 제목의 첫 글자를 대문자로 변환
-TITLE_QUOTE_STYLE = 'none'  # (신규 생성 및 기존 제목 정규화 시) 'double', 'single', 'none'
-TITLE_CONVERT_SYMBOLS_TO_SPACES = True  # (신규 생성 시) 하이픈/언더스코어를 공백으로 변환
+FRONTMATTER_TITLE_MANAGE = True  # 제목 관리 활성화/비활성화
+FRONTMATTER_TITLE_CAPITALIZE = False  # (신규 생성 및 기존 제목 정규화 시) 제목의 첫 글자를 대문자로 변환
+FRONTMATTER_TITLE_QUOTE_STYLE = 'none'  # (신규 생성 및 기존 제목 정규화 시) 'double', 'single', 'none'
+FRONTMATTER_TITLE_CONVERT_SYMBOLS_TO_SPACES = False  # (신규 생성 시) 하이픈/언더스코어를 공백으로 변환
 
 # [1-2. Draft(초안) 상태 관리 설정]
 # DRAFT_MANAGE = True # 현재는 기능이 구현되지 않아 주석 처리
 
 # [1-3. Resource Path 관리 설정]
-RESOURCE_PATH_MANAGE = True  # 리소스 경로 관리 활성화/비활성화
-RESOURCE_PATH_QUOTE_STYLE = 'none'  # 'double', 'single', 'none'
+FRONTMATTER_RESOURCE_PATH_MANAGE = True  # 리소스 경로 관리 활성화/비활성화
+FRONTMATTER_RESOURCE_PATH_QUOTE_STYLE = 'none'  # 'double', 'single', 'none'
 
+# [1-4. Aliases(별칭) 관리 설정]
+FRONTMATTER_RENAME_ALIASES_TO_KEYWORDS_MANAGE = True # aliases 속성명을 keywords로 변경
 
 # ------------------------------------------------------------------------------
 # --- 4. 파일 시스템 및 경로 설정 (전역) ---
@@ -105,13 +107,13 @@ def update_frontmatter(file_path, content_root):
 
         # 3. 설정에 따라 Frontmatter 데이터 수정
         if FRONTMATTER_MANAGE_ENABLED:
-            if TITLE_MANAGE and 'title' not in fm_data:
+            if FRONTMATTER_TITLE_MANAGE and 'title' not in fm_data:
                 derived_title = p.stem
-                if TITLE_CONVERT_SYMBOLS_TO_SPACES: derived_title = derived_title.replace('-', ' ').replace('_', ' ')
+                if FRONTMATTER_TITLE_CONVERT_SYMBOLS_TO_SPACES: derived_title = derived_title.replace('-', ' ').replace('_', ' ')
                 fm_data['title'] = derived_title
                 changes_made.append("added 'title' from filename")
 
-            if TITLE_MANAGE and 'title' in fm_data:
+            if FRONTMATTER_TITLE_MANAGE and 'title' in fm_data:
                 original_title_value = fm_data['title']
                 title_text = original_title_value
                 if title_text.startswith('"') and title_text.endswith('"'):
@@ -119,11 +121,11 @@ def update_frontmatter(file_path, content_root):
                 elif title_text.startswith("'") and title_text.endswith("'"):
                     title_text = title_text[1:-1].replace("\\'", "'")
 
-                if TITLE_CAPITALIZE:
+                if FRONTMATTER_TITLE_CAPITALIZE:
                     title_text = title_text.capitalize()
 
-                if TITLE_QUOTE_STYLE == 'double': new_title_value = '"' + title_text.replace('"', '\\"') + '"'
-                elif TITLE_QUOTE_STYLE == 'single': new_title_value = "'" + title_text.replace("'", "\\'") + "'"
+                if FRONTMATTER_TITLE_QUOTE_STYLE == 'double': new_title_value = '"' + title_text.replace('"', '\\"') + '"'
+                elif FRONTMATTER_TITLE_QUOTE_STYLE == 'single': new_title_value = "'" + title_text.replace("'", "\\'") + "'"
                 else: new_title_value = title_text
 
                 if new_title_value != original_title_value:
@@ -131,16 +133,33 @@ def update_frontmatter(file_path, content_root):
                     if not any("added 'title'" in change for change in changes_made):
                         changes_made.append("normalized 'title' style")
 
-            if RESOURCE_PATH_MANAGE:
+            if FRONTMATTER_RESOURCE_PATH_MANAGE:
                 path_str = str(p.relative_to(content_root)).replace(os.sep, '/')
 
-                if RESOURCE_PATH_QUOTE_STYLE == 'double': path_value = '"' + path_str.replace('"', '\\"') + '"'
-                elif RESOURCE_PATH_QUOTE_STYLE == 'single': path_value = "'" + path_str.replace("'", "\\'") + "'"
+                if FRONTMATTER_RESOURCE_PATH_QUOTE_STYLE == 'double': path_value = '"' + path_str.replace('"', '\\"') + '"'
+                elif FRONTMATTER_RESOURCE_PATH_QUOTE_STYLE == 'single': path_value = "'" + path_str.replace("'", "\\'") + "'"
                 else: path_value = path_str
 
                 if fm_data.get('resource-path') != path_value:
                     fm_data['resource-path'] = path_value
                     changes_made.append("added/updated 'resource-path'")
+
+            # aliases를 keywords로 이름 변경
+            if FRONTMATTER_RENAME_ALIASES_TO_KEYWORDS_MANAGE:
+                new_unmanaged_lines = []
+                renamed_aliases = False
+                for line in unmanaged_lines:
+                    # 'aliases:'로 시작하는 라인을 찾아 'keywords:'로 변경
+                    if re.match(r'^\s*aliases\s*:', line):
+                        new_line = line.replace('aliases', 'keywords', 1)
+                        new_unmanaged_lines.append(new_line)
+                        renamed_aliases = True
+                    else:
+                        new_unmanaged_lines.append(line)
+                
+                if renamed_aliases:
+                    unmanaged_lines = new_unmanaged_lines
+                    changes_made.append("renamed 'aliases' to 'keywords'")
 
         # 4. 변경사항 최종 확인
         if not changes_made:

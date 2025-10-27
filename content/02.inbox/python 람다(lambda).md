@@ -1,7 +1,7 @@
 ---
 title: python 람다(lambda)
 resource-path: 02.inbox/python 람다(lambda).md
-aliases:
+keywords:
 tags:
   - python
   - language

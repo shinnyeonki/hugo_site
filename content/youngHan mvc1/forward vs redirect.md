@@ -1,7 +1,7 @@
 ---
 title: forward vs redirect
 resource-path: youngHan mvc1/forward vs redirect.md
-aliases:
+keywords:
 tags:
 date: 2025-03-05T13:38:00+09:00
 lastmod: 2025-06-27T19:53:53+09:00

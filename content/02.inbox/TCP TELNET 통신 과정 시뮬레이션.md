@@ -1,7 +1,7 @@
 ---
 title: TCP TELNET 통신 과정 시뮬레이션
 resource-path: 02.inbox/TCP TELNET 통신 과정 시뮬레이션.md
-aliases:
+keywords:
 tags:
   - network
 date: 2025-05-21T09:08:00+09:00

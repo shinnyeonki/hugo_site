@@ -1,7 +1,7 @@
 ---
 title: asm parameter passing 인자 전달 방식
 resource-path: 02.inbox/asm parameter passing 인자 전달 방식.md
-aliases:
+keywords:
 tags:
   - operating-system
   - assembler

@@ -1,7 +1,7 @@
 ---
 title: cpp STL2
 resource-path: leetcode75/cpp STL2.md
-aliases:
+keywords:
 tags:
 date: 2024-12-23T09:42:00+09:00
 lastmod: 2024-12-23T09:42:00+09:00

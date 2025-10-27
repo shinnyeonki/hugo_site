@@ -1,7 +1,7 @@
 ---
 title: MVC 1 강의 질문 사항
 resource-path: youngHan mvc1/MVC 1 강의 질문 사항.md
-aliases:
+keywords:
 tags:
 date: 2025-02-28T11:57:00+09:00
 lastmod: 2025-02-28T11:57:00+09:00

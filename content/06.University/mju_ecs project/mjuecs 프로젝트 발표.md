@@ -1,7 +1,7 @@
 ---
 title: mjuecs 프로젝트 발표
 resource-path: 06.University/mju_ecs project/mjuecs 프로젝트 발표.md
-aliases:
+keywords:
 tags:
 date: 2025-06-08T06:31:36+09:00
 lastmod: 2025-06-10T08:56:43+09:00

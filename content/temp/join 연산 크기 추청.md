@@ -1,7 +1,7 @@
 ---
 title: join 연산 크기 추청
 resource-path: temp/join 연산 크기 추청.md
-aliases:
+keywords:
 tags:
   - database
 date: 2024-12-04T14:29:00+09:00

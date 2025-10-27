@@ -1,7 +1,7 @@
 ---
 title: python 연산자 우선순위
 resource-path: 02.inbox/python 연산자 우선순위.md
-aliases:
+keywords:
 tags:
   - python
   - language

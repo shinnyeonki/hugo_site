@@ -1,7 +1,7 @@
 ---
 title: composite pattern
 resource-path: temp/composite pattern.md
-aliases:
+keywords:
 tags:
   - design_patterns
 date: 2024-02-06T04:27:00+09:00

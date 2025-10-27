@@ -1,7 +1,7 @@
 ---
-title: x86 64 CPU 레지스터(Register)의 개념 및 종류
+title: x86-64 CPU 레지스터(Register)의 개념 및 종류
 resource-path: temp/x86-64 CPU 레지스터(Register)의 개념 및 종류.md
-aliases:
+keywords:
 tags:
   - cpu
   - register

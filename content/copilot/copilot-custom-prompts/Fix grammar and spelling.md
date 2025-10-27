@@ -1,7 +1,7 @@
 ---
 title: Fix grammar and spelling
 resource-path: copilot/copilot-custom-prompts/Fix grammar and spelling.md
-aliases:
+keywords:
 tags:
 date: 2025-10-17T22:42:39+09:00
 lastmod: 2025-10-17T22:46:29+09:00

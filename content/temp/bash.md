@@ -1,7 +1,7 @@
 ---
 title: bash
 resource-path: temp/bash.md
-aliases:
+keywords:
 tags:
   - shell
 date: 2024-02-21T16:50:00+09:00

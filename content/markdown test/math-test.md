@@ -1,5 +1,5 @@
 ---
-title: math test
+title: math-test
 resource-path: markdown test/math-test.md
 ---
 # 수학 표현식 테스트

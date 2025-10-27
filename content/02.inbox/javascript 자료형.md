@@ -1,7 +1,7 @@
 ---
 title: javascript 자료형
 resource-path: 02.inbox/javascript 자료형.md
-aliases:
+keywords:
 tags:
   - javascript
   - language

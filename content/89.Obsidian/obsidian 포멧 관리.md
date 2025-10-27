@@ -1,7 +1,7 @@
 ---
 title: obsidian 포멧 관리
 resource-path: 89.Obsidian/obsidian 포멧 관리.md
-aliases:
+keywords:
 tags:
   - obsidian
 date: 2025-06-27T19:49:36+09:00

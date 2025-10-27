@@ -1,7 +1,7 @@
 ---
 title: ipv4 vs ipv6
 resource-path: 02.inbox/ipv4 vs ipv6.md
-aliases:
+keywords:
 tags:
   - network
 date: 2025-05-07T21:26:00+09:00

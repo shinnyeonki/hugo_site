@@ -1,7 +1,7 @@
 ---
 title: obsidian dataview
 resource-path: 89.Obsidian/obsidian dataview.md
-aliases:
+keywords:
 tags:
   - obsidian
 date: 2023-12-21T07:59:00+09:00
