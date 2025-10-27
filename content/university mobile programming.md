@@ -1201,7 +1201,6 @@ RelativeLayout의 속성은 크게 3가지 그룹으로 나눌 수 있습니다.
 | **현대적 대안** | **`ConstraintLayout`**. `RelativeLayout`의 모든 기능과 그 이상을 제공하면서 성능이 더 뛰어나고, 강력한 편집기(Layout Editor)를 지원합니다. **새로운 레이아웃을 작성할 때는 `ConstraintLayout` 사용이 적극 권장됩니다.** |
 
 
-
 #### FrameLayout
 프레임 레이아웃
 

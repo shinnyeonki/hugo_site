@@ -1,0 +1,131 @@
+{{ define "main" }}
+    <!-- 1. Breadcrumb 영역 -->
+    <div class="w-full mb-4">
+        <div class="max-w-7xl mx-auto px-4">
+            {{ if ne .Kind "home" }}
+                <nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+                    <a href="/" class="hover:text-primary-blue-light transition-colors">🏠 Home</a>
+                    {{ $currentPage := . }}
+                    {{ range $index, $item := .Ancestors.Reverse }}
+                        {{ if ne $item.Kind "home" }}
+                            <span>/</span>
+                            <a href="{{ $item.Permalink }}" class="hover:text-primary-blue-light transition-colors">{{ $item.Title }}</a>
+                        {{ end }}
+                    {{ end }}
+                    <span>/</span>
+                    <span class="text-neutral-700 dark:text-neutral-300 font-semibold"><a href="{{ .Permalink }}">{{ .Title }}</a></span>
+                </nav>
+            {{ else }}
+                <nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+                    <span class="text-neutral-700 dark:text-neutral-300 font-semibold">🏠 Home</span>
+                </nav>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- 2. Header 영역 -->
+    <div class="w-full mb-8">
+        <div class="max-w-7xl mx-auto px-4 border-b pb-4">
+            <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font">
+                {{ .Title }} | home.html
+            </h1>
+            {{/*  {{ with .Content }}
+                <div class="prose dark:prose-invert mx-auto mt-4 text-center">{{ . }}</div>
+            {{ end }}  */}}
+        </div>
+    </div>
+
+    <!-- 3. Content 영역 -->
+    <div id="content-container" class="w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
+            {{ range .Pages.ByLastmod.Reverse }}
+                {{ if eq .Kind "section" }}
+                    <!-- 섹션(폴더) 카드 -->
+                    <a href="{{ .Permalink }}" class="flex flex-col p-6 border-2 border-neutral-300 dark:border-neutral-700 rounded-lg transition-all duration-300 hover:shadow-xl hover:border-primary-blue-light dark:hover:border-primary-blue-light bg-neutral-50 dark:bg-neutral-800/50">
+                        <div class="flex items-center mb-3">
+                            <svg class="h-6 w-6 mr-2 text-primary-blue-light" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                            </svg>
+                            <h2 class="text-xl font-bold latin-font">{{ .Title }}</h2>
+                        </div>
+                        
+                        <!-- 최근 업데이트 정보 -->
+                        <div class="flex-grow">
+                            {{ with (first 1 .Pages.ByLastmod.Reverse) }}
+                                {{ range . }}
+                                    <div class="mb-2 text-sm text-neutral-600 dark:text-neutral-400">
+                                        <div class="flex items-start gap-2">
+                                            <span class="text-xs">🕒</span>
+                                            <div class="flex-1 min-w-0">
+                                                <div class="font-medium truncate">{{ .Title | truncate 40 }}</div>
+                                                <div class="text-xs text-neutral-500 dark:text-neutral-500">✏️ {{ .Lastmod.Format "2006-01-02 15:04" }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{ end }}
+                            {{ end }}
+                        </div>
+                        
+                        <!-- 폴더/파일 개수 -->
+                        <div class="mt-auto pt-3 border-t border-neutral-300 dark:border-neutral-600 text-xs text-neutral-500 dark:text-neutral-500 flex items-center gap-3">
+                            {{ $sections := 0 }}
+                            {{ $pages := 0 }}
+                            {{ range .Pages }}
+                                {{ if eq .Kind "section" }}
+                                    {{ $sections = add $sections 1 }}
+                                {{ else }}
+                                    {{ $pages = add $pages 1 }}
+                                {{ end }}
+                            {{ end }}
+                            {{ if gt $sections 0 }}
+                                <span>📁 {{ $sections }}개</span>
+                            {{ end }}
+                            {{ if gt $pages 0 }}
+                                <span>📄 {{ $pages }}개</span>
+                            {{ end }}
+                            {{ if and (eq $sections 0) (eq $pages 0) }}
+                                <span>📁 빈 폴더</span>
+                            {{ end }}
+                        </div>
+                    </a>
+                {{ else }}
+                    <!-- 페이지(파일) 카드 -->
+                    <div class="flex flex-col p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg transition-all duration-300 hover:shadow-xl hover:border-primary-blue-light dark:hover:border-primary-blue-light">
+                        <a href="{{ .Permalink }}" class="flex-grow">
+                            <h2 class="text-xl font-bold mb-2 latin-font">{{ .Title }}</h2>
+                            <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-3">{{ .Summary | plainify | truncate 150 }}</p>
+                        </a>
+                        <div class="mt-auto pt-3 border-t border-neutral-200 dark:border-neutral-700">
+                            {{ if .Params.tags }}
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    {{ range .Params.tags }}
+                                        <a href="/tags/{{ . | urlize }}" class="px-2 py-1 text-xs bg-primary-blue-light/10 text-primary-blue-light dark:bg-primary-blue-light/20 rounded hover:bg-primary-blue-light/20 dark:hover:bg-primary-blue-light/30 transition-colors" onclick="event.stopPropagation()">
+                                            {{ . }}
+                                        </a>
+                                    {{ end }}
+                                </div>
+                            {{ end }}
+                            <div class="text-xs text-neutral-500 dark:text-neutral-500 flex items-center gap-4">
+                                {{ if .Date }}
+                                    <span>📅 {{ .Date.Format "2006-01-02 15:04" }}</span>
+                                {{ end }}
+                                {{ if .Lastmod }}
+                                    <span>✏️ {{ .Lastmod.Format "2006-01-02 15:04" }}</span>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                {{ end }}
+            {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Footer 영역 -->
+    <div class="w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            {{ partial "footer.html" . }}
+        </div>
+    </div>
+{{ end }}
