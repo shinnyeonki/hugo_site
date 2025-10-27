@@ -9,10 +9,10 @@ description = "obsidian 으로 편집하고 hugo 로 빌드하는 개인 블로�
 
 # 빌드 시 무시할 파일 및 디렉토리 설정
 ignoreFiles = [
-  'content/02.inbox/Notion/',
-  'content/05.clipping/*',
-  'content/07.Daliy Note/',
-  'content/89.Obsidian/',
+  'content/02.inbox/Notion/*',
+  'content/05.clipping/**',
+  'content/07.Daliy Note/**',
+  'content/89.Obsidian/**',
   'content/index.html'
 ]
 
