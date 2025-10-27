@@ -1,8 +1,11 @@
-baseURL = 'http://localhost:1313'
+baseURL = 'https://shinnyeonki.github.io/obisdian_repo/'
 languageCode = 'ko-KR'
 title = 'Obsidian Vault'
 # theme = "hextra"
 hasCJKLanguage = true
+
+[params]
+description = "obsidian 으로 편집하고 hugo 로 빌드하는 개인 블로그 및 노트 저장소입니다. 폴더별, tag별, 시리즈별 등 다양한 분류 체계를 지원합니다."
 
 # 빌드 시 무시할 파일 및 디렉토리 설정
 ignoreFiles = [
