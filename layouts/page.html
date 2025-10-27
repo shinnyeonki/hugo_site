@@ -3,7 +3,7 @@
     <div class="w-full mb-4">
         <div class="max-w-7xl mx-auto px-4">
             <nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
-                <a href="/" class="hover:text-primary-blue-light transition-colors">🏠 Home</a>
+                <a href="{{ .Page.Site.BaseURL }}" class="hover:text-primary-blue-light transition-colors">🏠 Home</a>
                 {{ $currentPage := . }}
                 {{ range $index, $item := .Ancestors.Reverse }}
                     {{ if ne $item.Kind "home" }}
