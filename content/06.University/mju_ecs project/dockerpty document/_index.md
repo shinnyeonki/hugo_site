@@ -1,3 +1,0 @@
----
-title: Dockerpty Document
----

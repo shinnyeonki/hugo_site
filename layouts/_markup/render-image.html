@@ -11,12 +11,12 @@
     {{- if strings.HasPrefix $url "/" -}}
         {{- /* 2a. /로 시작하는 경로: content 폴더 기준 절대 경로로 간주 */}}
         {{- $path := strings.TrimPrefix "/" $url -}}
-        {{- $imageResource = site.GetPage $path -}}
+        {{- $imageResource = .Page.Site.GetPage $path -}}
     {{- else -}}
         {{- /* 2b. 상대 경로 (e.g., ../../image.png, image.png) 처리 */}}
         {{- $currentPageDir := .Page.File.Dir -}}
         {{- $targetPath := path.Join $currentPageDir $url | path.Clean -}}
-        {{- $imageResource = site.GetPage $targetPath -}}
+        {{- $imageResource = .Page.Site.GetPage $targetPath -}}
     {{- end -}}
 
     {{- if $imageResource -}}
@@ -24,7 +24,7 @@
         <img src="{{ $imageResource.RelPermalink }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }}>
     {{- else -}}
         {{/* 4. 리소스를 못 찾은 경우, 디버깅을 위해 원래 경로 출력 (깨질 가능성 높음) */}}
-        <img src="{{ $url | relURL }}" alt="{{ .Text }} (Image resource not found)" {{ with .Title}} title="{{ . }}"{{ end }}>
+        <img src="{{ .Page.Site.BaseURL }}/{{ $url | relURL }}" alt="{{ .Text }} (Image resource not found)" {{ with .Title}} title="{{ . }}"{{ end }}>
     {{- end -}}
 
 {{- end -}}

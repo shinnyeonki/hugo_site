@@ -32,30 +32,30 @@
                 class="right-tab-content w-full flex-shrink-0 h-full overflow-y-auto p-4 text-sm">
                 <div class="space-y-4">
                     {{ range $key, $value := .Params }}
+                    {{ if not (or (eq $key "iscjklanguage") (eq $key "draft") (eq $key "resource-path")) }}
                         <div class="metadata-item">
-                            <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 capitalize">{{ $key }}</div>
-                            {{ if eq $key "tags" }}
-                                <div class="flex flex-wrap gap-2">
-                                    {{ range $value }}
-                                        <a href="/tags/{{ . | urlize }}" 
-                                           class="px-2 py-1 text-xs bg-primary-blue-light/10 text-primary-blue-light dark:bg-primary-blue-light/20 rounded hover:bg-primary-blue-light/20 dark:hover:bg-primary-blue-light/30 transition-colors"
-                                           onclick="event.stopPropagation()">
-                                            {{ . }}
-                                        </a>
-                                    {{ end }}
-                                </div>
-                            {{ else if eq $key "iscjklanguage" }}
-                            {{ else if eq $key "draft" }}    
-                            {{ else }}
-                                <div class="text-sm text-gray-700 dark:text-gray-300">
-                                    {{ if reflect.IsSlice $value }}
-                                        {{ delimit $value ", " }}
-                                    {{ else }}
-                                        {{ $value }}
-                                    {{ end }}
-                                </div>
-                            {{ end }}
+                                <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 capitalize">{{ $key }}</div>
+                                {{ if eq $key "tags" }}
+                                    <div class="flex flex-wrap gap-2">
+                                        {{ range $value }}
+                                            <a href="/tags/{{ . | urlize }}" 
+                                               class="px-2 py-1 text-xs bg-primary-blue-light/10 text-primary-blue-light dark:bg-primary-blue-light/20 rounded hover:bg-primary-blue-light/20 dark:hover:bg-primary-blue-light/30 transition-colors"
+                                               onclick="event.stopPropagation()">
+                                                {{ . }}
+                                            </a>
+                                        {{ end }}
+                                    </div>
+                                {{ else }}
+                                    <div class="text-sm text-gray-700 dark:text-gray-300">
+                                        {{ if reflect.IsSlice $value }}
+                                            {{ delimit $value ", " }}
+                                        {{ else }}
+                                            {{ $value }}
+                                        {{ end }}
+                                    </div>
+                                {{ end }}
                         </div>
+                    {{ end }}
                     {{ end }}
                 </div>
             </div>
