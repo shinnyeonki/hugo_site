@@ -19,8 +19,6 @@ ignoreFiles = [
   tags = "tags"
   categorys = "categories"
   series = "series"
-  date = "date"
-  lastmod = "lastmod"
 
 # canonifyURLs = true
 # 로그에서 'goldmark 원시 HTML(raw HTML) 경고'를 무시합니다.
