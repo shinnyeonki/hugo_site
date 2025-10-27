@@ -1,4 +1,4 @@
-baseURL = 'https://shinnyeonki.github.io/obisdian_repo/'
+baseURL = 'https://shinnyeonki.github.io/obsidian_repo/'
 # baseURL = 'http://localhost:8000/test/'
 languageCode = 'ko-KR'
 title = 'Obsidian Vault'
