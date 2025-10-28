@@ -1,3 +1,7 @@
+{{/* Google Site Verification 메타 태그 추가 */}}
+<meta name="google-site-verification" content="dgzU9P3Yws7Sp4-pv0kyngDbe8JLaFAoQ84B9Hktrko" />
+
+
 {{/* 페이지 제목(Title) 설정 */}}
 {{ $title := .Title }}
 {{ $siteTitle := .Site.Title }}
@@ -7,8 +11,6 @@
 <title>{{ $title }} | {{ $siteTitle }}</title>
 {{ end }}
 
-{{/* Google Site Verification 메타 태그 추가 */}}
-<meta name="google-site-verification" content="dgzU9P3Yws7Sp4-pv0kyngDbe8JLaFAoQ84B9Hktrko" />
 {{/* 페이지 설명(Description) 설정 */}}
 {{ $description := .Description | default (.Summary | plainify | truncate 150) | default .Site.Params.description }}
 <meta name="description" content="{{ $description }}">

@@ -8,7 +8,6 @@ languageCode = 'ko-KR'
 title = 'Obsidian Vault'
 # theme = "hextra"
 hasCJKLanguage = true
-description = "obsidian 으로 편집하고 hugo 로 빌드하는 개인 블로그 및 노트 저장소입니다. 폴더별, tag별, 시리즈별 등 다양한 분류 체계를 지원합니다."
 
 # 빌드 시 무시할 파일 및 디렉토리 설정
 ignoreFiles = [
@@ -28,6 +27,10 @@ ignoreFiles = [
 # 로그에서 'goldmark 원시 HTML(raw HTML) 경고'를 무시합니다.
 # ignoreLogs = ['content/05.clipping/*']
 
+[params]
+  copyright = "© 2024 Shinnk. All rights reserved."
+  description = "obsidian 으로 편집하고 hugo 로 빌드하는 개인 블로그 및 노트 저장소입니다. 폴더별, tag별, 시리즈별 등 다양한 분류 체계를 지원합니다."
+
 # 마크업(Markup) 설정
 [markup]
   # Goldmark 마크다운 렌더러 설정
@@ -40,7 +43,6 @@ ignoreFiles = [
     startLevel = 1
     endLevel = 6
     ordered = false
-
 # # 1. 새로운 미디어 타입 정의
 # [mediaTypes]
 #   [mediaTypes."text/markdown"]
