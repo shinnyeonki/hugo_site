@@ -1,8 +1,8 @@
 {{- $url := .Destination -}}
 {{- $isRemote := strings.HasPrefix $url "http" -}}
 
-{{- if $isRemote -}}
-    {{/* 1. 외부 이미지는 그대로 렌더링 */}}
+{{- if $isRemote -}}{{/* 1. 외부 리소스는 그대로 렌더링 */}}
+
     <img src="{{ $url }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }}>
 
 {{- else -}}
@@ -24,7 +24,7 @@
         <img src="{{ $imageResource.RelPermalink }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }}>
     {{- else -}}
         {{/* 4. 리소스를 못 찾은 경우, 디버깅을 위해 원래 경로 출력 (깨질 가능성 높음) */}}
-        <img src="{{ .Page.Site.BaseURL }}/{{ $url | relURL }}" alt="{{ .Text }} (Image resource not found)" {{ with .Title}} title="{{ . }}"{{ end }}>
+        <img src="{{ .Page.Site.BaseURL }}{{ $url | relURL }}" alt="{{ .Text }} (Image resource not found)" {{ with .Title}} title="{{ . }}"{{ end }}>
     {{- end -}}
 
 {{- end -}}

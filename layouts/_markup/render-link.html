@@ -14,5 +14,5 @@
 {{- else -}}
     {{- /* 3. 그 외 로컬 링크 (pdf, zip 등 content 내의 파일) */ -}}
     {{- /* content 내의 다른 파일을 링크할 수도 있으므로 relURL 처리를 추가하여 서브디렉토리 호스팅 지원 */ -}}
-    <a href="{{ .Page.Site.BaseURL }}/{{ $url | relURL }}" class="internal-file-link">{{ .Text | safeHTML }}</a>
+    <a href="{{ .Page.Site.BaseURL }}/{{ $url | relURL }}" class="internal-file-link" target="_blank">{{ .Text | safeHTML }}</a>
 {{- end -}}

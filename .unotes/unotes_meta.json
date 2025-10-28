@@ -1,0 +1,108 @@
+{
+  "name": "",
+  "isOrdered": true,
+  "folders": {
+    "archetypes": {
+      "name": "archetypes",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "assets": {
+      "name": "assets",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "backup": {
+      "name": "backup",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "content": {
+      "name": "content",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "data": {
+      "name": "data",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "docs": {
+      "name": "docs",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "i18n": {
+      "name": "i18n",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "layouts": {
+      "name": "layouts",
+      "isOrdered": true,
+      "folders": {
+        "_markup": {
+          "name": "_markup",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "_partials": {
+          "name": "_partials",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "_shortcodes": {
+          "name": "_shortcodes",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "site-info": {
+          "name": "site-info",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
+      "files": {
+        "page.rawmd": 0
+      }
+    },
+    "pretask": {
+      "name": "pretask",
+      "isOrdered": true,
+      "folders": {},
+      "files": {
+        "test": 0
+      }
+    },
+    "public": {
+      "name": "public",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "static": {
+      "name": "static",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "themes": {
+      "name": "themes",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    }
+  },
+  "files": {}
+}
