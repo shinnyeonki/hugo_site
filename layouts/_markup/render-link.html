@@ -19,7 +19,7 @@
     {{- /* .md로 끝나는 '페이지' 링크 
         (Hugo의 'relref' 함수는 앵커(#)를 포함한 경로를 받아
          정확한 경로로 변환해 주므로, URL을 분리할 필요가 없습니다.) */}}
-    <a href="{{ relref .Page $url | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+    <a href="{{ ref .Page $url | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
   {{- else -}}
     {{- /* 
       Case B, C: 앵커 전용 링크 또는 기타 '리소스' 링크 (PDF, ZIP 등)
@@ -29,6 +29,6 @@
     {{- $finalURL = $url | relURL -}}
   {{- end -}}
 
-  <a href="{{ .Site.BaseURL }}{{ $finalURL | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+  <a href="{{ .Site.BaseURL }}/{{ $finalURL | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
 
 {{- end -}}
