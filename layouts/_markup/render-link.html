@@ -12,27 +12,39 @@
   <a href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
 
 {{- else -}}
-  {{- /* --------------------------------------------------------------------- */}}
-  {{- /*  2. 내부 링크: Scheme이 없는 모든 경우                             */}}
-  {{- /* --------------------------------------------------------------------- */}}
-  {{- if strings.HasSuffix $parsedURL.Path ".md" -}}
-    {{- /* .md로 끝나는 '페이지' 링크 
-        (Hugo의 'relref' 함수는 앵커(#)를 포함한 경로를 받아
-         정확한 경로로 변환해 주므로, URL을 분리할 필요가 없습니다.) */}}
-    <a href="{{ ref .Page $url | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+  {{- /* ===================================================================== */}}
+  {{- /*  2. 내부 링크: Scheme이 없는 모든 경우                               */}}
+  {{- /* ===================================================================== */}}
+  {{- $finalURL := "" -}}
+
+  {{- if strings.HasPrefix $url "#" -}}
+    {{- /* --------------------------------------------------------------------- */}}
+    {{- /*  Case A: 앵커 전용 링크 (예: '#heading')                           */}}
+    {{- /*  단순 앵커 링크는 그대로 사용합니다.                                 */}}
+    {{- /* --------------------------------------------------------------------- */}}
+    {{- $finalURL = $url -}}
+
+  {{- else if strings.HasSuffix $parsedURL.Path ".md" -}}
+    {{- /* --------------------------------------------------------------------- */}}
+    {{- /*  Case B: .md로 끝나는 '페이지' 링크 (예: '/c.md#anchor')         */}}
+    {{- /*  'ref' 함수는 앵커(#)를 포함한 경로도 정확히 변환해 줍니다.        */}}
+    {{- /* --------------------------------------------------------------------- */}}
+    {{- $finalURL = ref .Page $url -}}
+
   {{- else -}}
-    {{- /* 
-      Case B, C: 앵커 전용 링크 또는 기타 '리소스' 링크 (PDF, ZIP 등)
-      'relURL' 함수는 주어진 경로를 사이트 루트 기준의 상대 경로로 만들어 줍니다.
-      앵커만 있는 링크('#heading')는 그대로 유지되므로 별도 처리가 필요 없습니다.
-    */}}
-    {{- /* 리소스 링크: 수동으로 baseURL + path 결합 */}}
-  {{- $cleanPath := strings.TrimPrefix "/" $url -}}
-  {{- $finalURL := printf "%s/%s" (strings.TrimSuffix "/" .Page.Site.BaseURL) $cleanPath | safeURL -}}
-  <a href="{{ $finalURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
-    {{/*  {{- $finalURL = $url | relURL -}}  */}}
+    {{- /* --------------------------------------------------------------------- */}}
+    {{- /*  Case C: 기타 '리소스' 링크 (PDF, ZIP, 이미지 등)                 */}}
+    {{- /*  'relURL' 함수와 <baseURL>를 사용해 사이트 루트 기준의 올바른 절대 경로로 변환합니다.*/}}
+    {{- /* --------------------------------------------------------------------- */}}
+    {{/*  {{- $finalURL = relURL $url -}}  */}} {{- /* 이 방법은 현재 baseURL 을 반영하지 못하고 있음 */}}
+    {{/*  {{- $finalURL = printf "%s%s" .Site.Home.Permalink (strings.TrimPrefix "/" $url) -}}  */}}
+    {{/*  {{- $base := .Page.Site.BaseURL -}}
+    {{- $path := relURL $url -}}
+    {{- $finalURL = printf "%s%s" (strings.TrimSuffix "/" $base) $path -}}
+    {{- warnf "DEBUG: internal_link url=%q base=%q path=%q final=%q" $url $base $path $finalURL -}}  */}}
+    {{- $finalURL = printf "../%s" $src -}}
   {{- end -}}
 
-  {{/*  <a href="{{ .Site.BaseURL }}/{{ $finalURL | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>  */}}
+  <a href="{{ $finalURL | safeURL }}"{{ with $title }} title="{{ . }}"{{ end }}>{{ $text }}</a>
 
 {{- end -}}
