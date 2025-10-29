@@ -36,9 +36,9 @@
     {{- $src = .Permalink -}}
   {{- else -}}
     {{- /* Page Resource가 아니면, 리소스로 간주하고 절대 URL 생성 */}}
-    {{- warnf "DEBUG: internal_image src(before relURL)=%q" $src -}}
+    {{/*  {{- warnf "DEBUG: internal_image src(before relURL)=%q" $src -}}  */}}
     {{- $src = printf "../%s" $src -}}
-    {{- warnf "DEBUG: internal_image src(after relURL)=%q" $src -}}
+    {{/*  {{- warnf "DEBUG: internal_image src(after relURL)=%q" $src -}}  */}}
     {{/*  {{- $base := .Page.Site.BaseURL -}}
     {{- $path := relURL $src -}}
     {{- $src = printf "%s%s" (strings.TrimSuffix "/" $base) $path -}}

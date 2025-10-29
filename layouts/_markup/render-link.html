@@ -42,7 +42,7 @@
     {{- $path := relURL $url -}}
     {{- $finalURL = printf "%s%s" (strings.TrimSuffix "/" $base) $path -}}
     {{- warnf "DEBUG: internal_link url=%q base=%q path=%q final=%q" $url $base $path $finalURL -}}  */}}
-    {{- $finalURL = printf "../%s" $src -}}
+    {{- $finalURL = printf "../%s" $url -}}
   {{- end -}}
 
   <a href="{{ $finalURL | safeURL }}"{{ with $title }} title="{{ . }}"{{ end }}>{{ $text }}</a>
