@@ -29,6 +29,6 @@
     {{- $finalURL = $url | relURL -}}
   {{- end -}}
 
-  <a href="{{ .Site.Home.Permalink }}{{ $finalURL | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+  <a href="{{ .Site.BaseURL }}{{ $finalURL | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
 
 {{- end -}}
