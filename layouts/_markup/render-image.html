@@ -36,11 +36,12 @@
     {{- $src = .Permalink -}}
   {{- else -}}
     {{- /* Page Resource가 아니면, 리소스로 간주하고 절대 URL 생성 */}}
-    {{- $src = $src | absURL -}}
+    {{- $src = $src | relURL -}}
   {{- end -}}
 {{- end -}}
 
 {{- $ext := path.Ext $src | strings.TrimLeft "." | lower -}}
+
 
 
 {{- if in (slice "mp4" "webm" "mov") $ext -}}

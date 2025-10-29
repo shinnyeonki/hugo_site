@@ -26,7 +26,10 @@
       'relURL' 함수는 주어진 경로를 사이트 루트 기준의 상대 경로로 만들어 줍니다.
       앵커만 있는 링크('#heading')는 그대로 유지되므로 별도 처리가 필요 없습니다.
     */}}
-    <a href="{{ .Site.Home.Permalink }}{{ $url | relURL | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+    {{- /* 리소스 링크: 수동으로 baseURL + path 결합 */}}
+  {{- $cleanPath := strings.TrimPrefix "/" $url -}}
+  {{- $finalURL := printf "%s/%s" (strings.TrimSuffix "/" .Page.Site.BaseURL) $cleanPath | safeURL -}}
+  <a href="{{ $finalURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
     {{/*  {{- $finalURL = $url | relURL -}}  */}}
   {{- end -}}
 
