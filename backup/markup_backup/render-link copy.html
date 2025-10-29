@@ -1,0 +1,18 @@
+{{- $url := .Destination -}}
+{{- $isRemote := strings.HasPrefix $url "http" -}}
+{{- $isMarkdown := strings.HasSuffix $url ".md" -}}
+
+{{- if and (not $isRemote) $isMarkdown -}}
+    {{- /* 1. 내부 .md 링크 */ -}}
+    {{- $path := strings.TrimSuffix ".md" $url -}}
+    <a href="{{ (ref .Page $path) | safeURL }}" class="internal-link">{{ .Text | safeHTML }}</a>
+
+{{- else if $isRemote -}}
+    {{- /* 2. 외부 http/https 링크 */ -}}
+    <a href="{{ $url | safeURL }}" class="external-link" target="_blank" rel="noopener noreferrer" {{ with .Title}} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+
+{{- else -}}
+    {{- /* 3. 그 외 로컬 링크 (pdf, zip 등 content 내의 파일) */ -}}
+    {{- /* content 내의 다른 파일을 링크할 수도 있으므로 relURL 처리를 추가하여 서브디렉토리 호스팅 지원 */ -}}
+    <a href="{{ $url | relURL }}" class="internal-file-link" target="_blank">{{ .Text | safeHTML }}</a>
+{{- end -}}

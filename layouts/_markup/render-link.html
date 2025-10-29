@@ -1,18 +1,35 @@
+<!-- layouts/_default/_markup/render-link.html -->
 {{- $url := .Destination -}}
-{{- $isRemote := strings.HasPrefix $url "http" -}}
-{{- $isMarkdown := strings.HasSuffix $url ".md" -}}
+{{- $text := .Text | safeHTML -}}
+{{- $title := .Title -}}
 
-{{- if and (not $isRemote) $isMarkdown -}}
-    {{- /* 1. 내부 .md 링크 */ -}}
-    {{- $path := strings.TrimSuffix ".md" $url -}}
-    <a href="{{ (ref .Page $path) | safeURL }}" class="internal-link">{{ .Text | safeHTML }}</a>
+{{- $parsedURL := urls.Parse $url -}}
 
-{{- else if $isRemote -}}
-    {{- /* 2. 외부 http/https 링크 */ -}}
-    <a href="{{ $url | safeURL }}" class="external-link" target="_blank" rel="noopener noreferrer" {{ with .Title}} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- if $parsedURL.Scheme -}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- /*  1. 외부 링크: URL Scheme(http, mailto 등)이 있는 경우            */}}
+  {{- /* --------------------------------------------------------------------- */}}
+  <a href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
 
 {{- else -}}
-    {{- /* 3. 그 외 로컬 링크 (pdf, zip 등 content 내의 파일) */ -}}
-    {{- /* content 내의 다른 파일을 링크할 수도 있으므로 relURL 처리를 추가하여 서브디렉토리 호스팅 지원 */ -}}
-    <a href="{{ .Page.Site.BaseURL }}/{{ $url | relURL }}" class="internal-file-link" target="_blank">{{ .Text | safeHTML }}</a>
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- /*  2. 내부 링크: Scheme이 없는 모든 경우                             */}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- $finalURL := "" -}}
+  {{- if strings.HasSuffix $parsedURL.Path ".md" -}}
+    {{- /* .md로 끝나는 '페이지' 링크 
+        (Hugo의 'ref' 함수는 앵커(#)를 포함한 경로를 받아
+         정확한 경로로 변환해 주므로, URL을 분리할 필요가 없습니다.) */}}
+    {{- $finalURL = ref .Page $url -}}
+  {{- else -}}
+    {{- /* 
+      Case B, C: 앵커 전용 링크 또는 기타 '리소스' 링크 (PDF, ZIP 등)
+      'relURL' 함수는 주어진 경로를 사이트 루트 기준의 상대 경로로 만들어 줍니다.
+      앵커만 있는 링크('#heading')는 그대로 유지되므로 별도 처리가 필요 없습니다.
+    */}}
+    {{- $finalURL = $url | relURL -}}
+  {{- end -}}
+
+  <a href="{{ $finalURL | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+
 {{- end -}}

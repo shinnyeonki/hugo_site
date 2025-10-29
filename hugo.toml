@@ -1,7 +1,8 @@
 # baseURL = 'https://shinnyeonki.github.io/obsidian_repo'
 # baseURL = 'http://shinnk.iptime.org/memo'
 # baseURL = 'http://memo.shinnk.kro.kr/'
-baseURL = 'http://localhost:1313'
+# baseURL = 'http://localhost:1313'
+baseURL = 'http://localhost:5500/public/test'
 
 
 languageCode = 'ko-KR'

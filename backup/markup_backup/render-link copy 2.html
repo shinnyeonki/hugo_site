@@ -1,0 +1,47 @@
+<!-- layouts/_default/_markup/render-link.html -->
+{{- $url := .Destination -}}
+{{- $text := .Text | safeHTML -}}
+{{- $title := .Title -}}
+{{- $isExternal := strings.HasPrefix $url "http" -}}
+
+{{- if $isExternal -}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- /*  1. 외부 링크: target="_blank" 추가 후 그대로 렌더링                 */}}
+  {{- /* --------------------------------------------------------------------- */}}
+  <a href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+
+{{- else -}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- /*  2. 내부 링크: 앵커(#)를 분리하여 경로와 앵커를 별도로 처리          */}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- $urlParts := split $url "#" -}}
+  {{- $path := index $urlParts 0 -}}
+  {{- $anchor := "" -}}
+  {{- if gt (len $urlParts) 1 -}}
+    {{- $anchor = printf "#%s" (index $urlParts 1) -}}
+  {{- end -}}
+
+  {{- $resolvedURL := "" -}}
+  {{- if strings.HasSuffix $path ".md" -}}
+    {{- /* 
+      Case A: .md로 끝나는 '페이지' 링크 
+      Hugo의 'ref' 함수를 사용하여 슬러그화, Pretty URL 등을 모두 고려한 정확한 경로를 찾음
+    */}}
+    {{- $resolvedURL = ref .Page $path -}}
+  {{- else if eq $path "" -}}
+    {{- /* Case B: 링크가 앵커로만 이루어진 경우 (예: [#heading]) */}}
+    {{- /* 경로는 비어있으므로 아무것도 하지 않음 (앵커만 남게 됨) */}}
+  {{- else -}}
+    {{- /* 
+      Case C: 그 외 모든 내부 '리소스' 링크 (PDF, ZIP 등)
+      전처리된 절대경로(/media/file.pdf)에 relURL을 적용하여 루트 상대경로로 만듦
+    */}}
+    {{- $resolvedURL = $path | relURL -}}
+  {{- end -}}
+
+  {{- /* 최종 URL = 해석된 경로 + 분리해둔 앵커 */}}
+  {{- $finalURL := printf "%s%s" $resolvedURL $anchor -}}
+
+  <a href="{{ $finalURL | safeURL }}" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+
+{{- end -}}

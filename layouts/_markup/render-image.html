@@ -1,30 +1,67 @@
-{{- $url := .Destination -}}
-{{- $isRemote := strings.HasPrefix $url "http" -}}
+<!-- layouts/_default/_markup/render-image.html -->
+{{- $src := .Destination -}}
+{{- $alt := .Text | plainify -}}
+{{- $isExternal := strings.HasPrefix $src "http" -}}
 
-{{- if $isRemote -}}{{/* 1. 외부 리소스는 그대로 렌더링 */}}
+{{- if $isExternal -}}
+  {{- /* 외부 URL은 일반적으로는 그대로 사용*/}}
 
-    <img src="{{ $url }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }}>
+  {{/*  도메인 경로가 youtube 인 경우 는 특별하게 처리 */}}
+  {{- $isYouTubeWatch := strings.HasPrefix $src "https://www.youtube.com/watch?v=" -}}
+  {{- if $isYouTubeWatch -}}
+    {{- $videoID := strings.TrimPrefix "https://www.youtube.com/watch?v=" $src -}}
+    {{- /* 쿼리 문자열이 붙어 있을 수 있으므로 첫 번째 & 전까지만 사용 */}}
+    {{- if strings.Contains $videoID "&" -}}
+      {{- $videoID = index (split $videoID "&") 0 -}}
+    {{- end -}}
+
+    {{- if $videoID -}}
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:8px;">
+        <iframe
+          src="https://www.youtube.com/embed/{{ $videoID }}"
+          frameborder="0"
+          allowfullscreen
+          title="{{ $alt }}"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"
+        ></iframe>
+      </div>
+    {{- end -}}
+  {{- end -}}
 
 {{- else -}}
-    {{/* 2. 로컬 이미지 처리 */}}
-    {{- $imageResource := "" -}}
-    {{- if strings.HasPrefix $url "/" -}}
-        {{- /* 2a. /로 시작하는 경로: content 폴더 기준 절대 경로로 간주 */}}
-        {{- $path := strings.TrimPrefix "/" $url -}}
-        {{- $imageResource = .Page.Site.GetPage $path -}}
-    {{- else -}}
-        {{- /* 2b. 상대 경로 (e.g., ../../image.png, image.png) 처리 */}}
-        {{- $currentPageDir := .Page.File.Dir -}}
-        {{- $targetPath := path.Join $currentPageDir $url | path.Clean -}}
-        {{- $imageResource = .Page.Site.GetPage $targetPath -}}
-    {{- end -}}
+  {{- /* 내부 리소스는 absURL을 사용하여 baseURL만 정확히 붙여줌 */}}
+  {{- /* 먼저 Page Resource (페이지와 함께 저장된 파일)인지 확인 */}}
+  {{- with .Page.Resources.GetMatch $src -}}
+    {{- /* Page Resource인 경우, .Permalink을 사용해 절대 경로를 가져옴 */}}
+    {{- $src = .Permalink -}}
+  {{- else -}}
+    {{- /* Page Resource가 아니면, 리소스로 간주하고 절대 URL 생성 */}}
+    {{- $src = $src | absURL -}}
+  {{- end -}}
+{{- end -}}
 
-    {{- if $imageResource -}}
-        {{/* 3. 리소스를 찾은 경우, 올바른 URL로 <img> 태그 생성 */}}
-        <img src="{{ $imageResource.RelPermalink }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }}>
-    {{- else -}}
-        {{/* 4. 리소스를 못 찾은 경우, 디버깅을 위해 원래 경로 출력 (깨질 가능성 높음) */}}
-        <img src="{{ .Page.Site.BaseURL }}{{ $url | relURL }}" alt="{{ .Text }} (Image resource not found)" {{ with .Title}} title="{{ . }}"{{ end }}>
-    {{- end -}}
+{{- $ext := path.Ext $src | strings.TrimLeft "." | lower -}}
 
+
+{{- if in (slice "mp4" "webm" "mov") $ext -}}
+<div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+  <video controls src="{{ $src }}" title="{{ $alt }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;"></video>
+</div>
+{{- else if in (slice "mp3" "ogg" "wav") $ext -}}
+<audio controls src="{{ $src }}" title="{{ $alt }}" style="width: 100%;"></audio>
+{{- else if eq $ext "cast" -}}
+  <asciinema-player src="{{ $src }}" theme="solarized-dark" autoplay loop></asciinema-player>
+{{- else if eq $ext "excalidraw" -}}
+  <object data="{{ $src }}" type="image/svg+xml" style="width: 100%; border: 1px solid #ddd; border-radius: 8px;"></object>
+{{- else if eq $ext "pdf" -}}
+  <div style="max-width:100%; overflow:hidden; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <iframe
+      src="{{ $src }}"
+      title="{{ $alt }}"
+      style="width:100%; height:600px; border:none;"
+      loading="lazy"
+    ></iframe>
+  </div>
+{{- else -}}
+  <img src="{{ $src }}" alt="{{ $alt }}" {{ with .Title }}title="{{ . }}"{{ end }} loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px;" />
 {{- end -}}
