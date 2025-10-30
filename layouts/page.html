@@ -21,7 +21,7 @@
     <div class="w-full mb-8">
         <div class="max-w-7xl mx-auto px-4 border-b pb-4">
             <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font break-words">
-                {{ .Title }}
+                {{ .Title }}{{- if eq hugo.Environment "development" }}<span class="text-sm text-neutral-500 dark:text-neutral-400"> | page.html</span>{{ end }}
             </h1>
         </div>
     </div>
@@ -35,7 +35,7 @@
                     {{ .Content }}
                 </section>
             </article>
-
+            
             <!-- 댓글을 직접 포함시킵니다. -->
             {{ partial "comment.html" . }}
         </div>

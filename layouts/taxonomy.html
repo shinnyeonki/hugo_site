@@ -14,7 +14,7 @@
     <div class="w-full mb-8">
         <div class="max-w-7xl mx-auto px-4 border-b pb-4">
             <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font">
-                {{ .Title }}
+                {{ .Title }}{{- if eq hugo.Environment "development" }}<span class="text-sm text-neutral-500 dark:text-neutral-400"> | taxonomy.html</span>{{ end }}
             </h1>
             <p class="text-center text-neutral-500 dark:text-neutral-400 mt-2">
                 All available {{ .Data.Plural }}.

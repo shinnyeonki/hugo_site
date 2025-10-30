@@ -14,8 +14,9 @@
                 class="block text-xl font-bold latin-font text-neutral-900 dark:text-neutral-100">
                 {{ .Site.Title }}
             </a>
-            <span class="text-sm text-neutral-600 dark:text-neutral-400">{{ .Kind }}/{{ .Type }}</span>
+            <span class="text-sm text-neutral-600 dark:text-neutral-400">{{ .Kind }}</span>
             {{- if eq hugo.Environment "development" }} 
+                <span class="text-sm text-neutral-500 dark:text-neutral-400">| {{ .Type }}</span>
                 <span class="text-xs text-neutral-500 dark:text-neutral-400">🔗 {{ .Site.BaseURL }}</span> 
                 <span class="text-xs text-neutral-500 dark:text-neutral-400">⚙️ Hugo v{{ hugo.Version }} @ {{ now.Format "15:04:05" }}</span>
             {{ end -}}

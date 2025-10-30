@@ -1,0 +1,34 @@
+{{/*  <section
+  class="comments"
+  id="comments-for-post-{{ .File.UniqueID }}"
+  data-post-id="{{ .File.UniqueID }}"
+  data-post-path="{{ .RelPermalink }}"
+  aria-labelledby="comments-heading-{{ .File.UniqueID }}"
+>
+  <h2 id="comments-heading-{{ .File.UniqueID }}">댓글</h2>
+  <!-- 댓글은 JS로 비동기 삽입 -->
+</section>  */}}
+{{- $rawDate := .Params.date -}}
+{{- if $rawDate }}
+<script>
+  // 원본 문자열 (그대로)
+  console.log("DEBUG: Raw date string =", {{ $rawDate | jsonify }});
+
+  // URL 인코딩
+  console.log("DEBUG: URL-encoded =", encodeURIComponent({{ $rawDate | jsonify }}));
+
+  // URL-safe 식별자 (slugify 스타일)
+  const urlSafe = {{ $rawDate | jsonify }}.toLowerCase()
+    .replace(/[:+]/g, '-')      // ':'와 '+'를 '-'로
+    .replace(/[^a-z0-9\-]/g, '-'); // 나머지 특수문자도 하이픈으로
+  console.log("DEBUG: URL-safe ID =", urlSafe);
+
+  // Base64 인코딩
+  const base64 = btoa({{ $rawDate | jsonify }});
+  console.log("DEBUG: Base64 =", base64);
+
+  // 페이지별 댓글 섹션 ID로 사용 예시
+  const commentSectionId = "comments-" + urlSafe;
+  console.log("DEBUG: Comment section ID =", commentSectionId);
+</script>
+{{- end }}
