@@ -1,5 +1,6 @@
 <!-- layouts/_default/_markup/render-image.html -->
 {{- $src := .Destination -}}
+{{- $originalSrc := $src -}}
 {{- $alt := .Text | plainify -}}
 {{- $isExternal := strings.HasPrefix $src "http" -}}
 
@@ -55,20 +56,18 @@
 
 
 {{- if in (slice "mp4" "webm" "mov") $ext -}}
-  <div class="video-container" style="position: relative; overflow: hidden; padding-top: 56.25%; /* 16:9 */ width: 100%; max-width: 100%;">
-    <video
-      controls
-      src="{{ $src }}"
-      title="{{ $alt }}"
-      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
-    ></video>
-  </div>
+  <video
+    controls
+    src="{{ $src }}"
+    title="{{ $alt }}"
+    style="width: 100%; height: auto; max-width: 100%; border-radius: 8px; display: block;"
+  ></video>
 {{- else if in (slice "mp3" "ogg" "wav") $ext -}}
 <audio controls src="{{ $src }}" title="{{ $alt }}" style="width: 100%;"></audio>
 {{/*  {{- else if eq $ext "cast" -}}
   <asciinema-player src="{{ $src }}" theme="solarized-dark" autoplay loop></asciinema-player>  */}}
-{{- else if eq $ext "excalidraw" -}}
-  <object data="{{ $src }}" type="image/svg+xml" style="width: 100%; border: 1px solid #ddd; border-radius: 8px;"></object>
+{{/*  {{- else if eq $ext "excalidraw" -}}
+  <object data="{{ $src }}" type="image/svg+xml" style="width: 100%; border: 1px solid #ddd; border-radius: 8px;"></object>  */}}
 {{- else if eq $ext "pdf" -}}
   <div style="max-width:100%; overflow:hidden; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
     <iframe
@@ -79,12 +78,13 @@
     ></iframe>
   </div>
 {{- else if in (slice "avi" "mkv" "flv" "m4v" "flac" "aac" "m4a") $ext -}} {{/* 브라우저에서 직접 재생이 지원되지 않는 포맷은 다운로드 링크 제공 */}}
-  <a href="{{ $src }}" download>{{ $alt | default "Download file" }}</a>
-{{- else if in (slice "txt" "md" "csv" "json" "xml" "log") $ext -}} {{/* 텍스트 파일은 내용 미리보기와 다운로드 링크 제공 */}}
+  <a href="{{ $src }}" download>Download Video File : {{ $alt | default "Download file" }}</a>
+{{/* 텍스트 파일은 내용 미리보기와 다운로드 링크 제공 */}}
+{{/*  {{- else if in (slice "txt" "md" "csv" "json" "xml" "log") $ext -}} 
   <div>
-    <a href="{{ $src }}" download style="display: inline-block; margin-bottom: 0.5em; font-weight: bold;">Download {{ $alt | default "file" }}</a>
-    <pre style="white-space: pre-wrap; word-break: break-word; background: #f5f5f5; padding: 1em; border-radius: 8px;">{{ readFile $src | safeHTML }}</pre>
-  </div>  
+    <a href="{{ $src }}" download style="display: inline-block; margin-bottom: 0.5em; font-weight: bold;">Download Text File : {{ $alt | default "file" }}</a>
+    <a href="{{ $src }}" target="_blank" rel="noopener" style="display: inline-block; margin-bottom: 0.5em; margin-left: 1em; color: #007bff; text-decoration: underline;">Open in new tab</a>
+  </div>    */}}
 {{- else -}}
   <img src="{{ $src }}" alt="{{ $alt }}" {{ with .Title }}title="{{ . }}"{{ end }} loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px;" />
 {{- end -}}

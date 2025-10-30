@@ -9,42 +9,59 @@
   {{- /* --------------------------------------------------------------------- */}}
   {{- /*  1. 외부 링크: URL Scheme(http, mailto 등)이 있는 경우            */}}
   {{- /* --------------------------------------------------------------------- */}}
-  <a href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>
+  {{/*  <a href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer" {{ with $title }}title="{{ . }}"{{ end }}>{{ $text }}</a>  */}}
+  <a href="{{ $url | safeURL }}"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="text-blue-700 hover:text-primary-blue-light underline decoration-neutral-400/50 hover:decoration-solid transition-colors"
+     {{ with $title }}title="{{ . }}"{{ end }}>
+    {{- $text -}}
+  </a>
 
-{{- else -}}
-  {{- /* ===================================================================== */}}
-  {{- /*  2. 내부 링크: Scheme이 없는 모든 경우                               */}}
-  {{- /* ===================================================================== */}}
-  {{- $finalURL := "" -}}
 
-  {{- if strings.HasPrefix $url "#" -}}
-    {{- /* --------------------------------------------------------------------- */}}
-    {{- /*  Case A: 앵커 전용 링크 (예: '#heading')                           */}}
-    {{- /*  단순 앵커 링크는 그대로 사용합니다.                                 */}}
-    {{- /* --------------------------------------------------------------------- */}}
-    {{- $finalURL = $url -}}
+  {{/*  {{- $finalURL := "" -}}  */}}
+  {{/*  {{- $finalURL = $url -}}  */}}
+{{- else if strings.HasPrefix $url "#" -}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- /*  2 앵커 전용 링크 (예: '#heading')                                 */}}
+  {{- /*  단순 앵커 링크는 그대로 사용합니다.                                 */}}
+  {{- /* --------------------------------------------------------------------- */}}
+  <a href="{{ $url }}"
+     class="text-emerald-700 dark:text-emerald-300 hover:text-primary-blue-light underline decoration-neutral-400/40 hover:decoration-primary-blue-light/60 transition-colors"
+     {{ with $title }}title="{{ . }}"{{ end }}>
+    {{- $text -}}
+  </a>
 
-  {{- else if strings.HasSuffix $parsedURL.Path ".md" -}}
-    {{- /* --------------------------------------------------------------------- */}}
-    {{- /*  Case B: .md로 끝나는 '페이지' 링크 (예: '/c.md#anchor')         */}}
-    {{- /*  'ref' 함수는 앵커(#)를 포함한 경로도 정확히 변환해 줍니다.        */}}
-    {{- /* --------------------------------------------------------------------- */}}
-    {{- $finalURL = ref .Page $url -}}
+{{- else if strings.HasSuffix $parsedURL.Path ".md" -}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- /*  3 .md로 끝나는 '페이지' 링크 (예: '/c.md#anchor')         */}}
+  {{- /*  'ref' 함수는 앵커(#)를 포함한 경로도 정확히 변환해 줍니다.        */}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{/*  {{- $finalURL = ref .Page $url -}}  */}}
+  <a href="{{ ref .Page $url | safeURL }}"
+     class="text-emerald-700 dark:text-emerald-300 hover:text-primary-blue-light underline decoration-neutral-400/40 hover:decoration-primary-blue-light/60 transition-colors"
+     {{ with $title }}title="{{ . }}"{{ end }}>
+    {{- $text -}}
+  </a>
 
   {{- else -}}
-    {{- /* --------------------------------------------------------------------- */}}
-    {{- /*  Case C: 기타 '리소스' 링크 (PDF, ZIP, 이미지 등)                 */}}
-    {{- /*  'relURL' 함수와 <baseURL>를 사용해 사이트 루트 기준의 올바른 절대 경로로 변환합니다.*/}}
-    {{- /* --------------------------------------------------------------------- */}}
-    {{/*  {{- $finalURL = relURL $url -}}  */}} {{- /* 이 방법은 현재 baseURL 을 반영하지 못하고 있음 */}}
-    {{/*  {{- $finalURL = printf "%s%s" .Site.Home.Permalink (strings.TrimPrefix "/" $url) -}}  */}}
-    {{/*  {{- $base := .Page.Site.BaseURL -}}
-    {{- $path := relURL $url -}}
-    {{- $finalURL = printf "%s%s" (strings.TrimSuffix "/" $base) $path -}}
-    {{- warnf "DEBUG: internal_link url=%q base=%q path=%q final=%q" $url $base $path $finalURL -}}  */}}
-    {{- $finalURL = printf "../%s" $url -}}
-  {{- end -}}
-
-  <a href="{{ $finalURL | safeURL }}"{{ with $title }} title="{{ . }}"{{ end }}>{{ $text }}</a>
+  {{- /* --------------------------------------------------------------------- */}}
+  {{- /*  4 기타 '리소스' 링크 (PDF, ZIP, 이미지 등)                 */}}
+  {{- /*  'relURL' 함수와 <baseURL>를 사용해 사이트 루트 기준의 올바른 절대 경로로 변환합니다.*/}}
+  {{- /* --------------------------------------------------------------------- */}}
+  {{/*  {{- $finalURL = relURL $url -}}  */}} {{- /* 이 방법은 현재 baseURL 을 반영하지 못하고 있음 */}}
+  {{/*  {{- $finalURL = printf "%s%s" .Site.Home.Permalink (strings.TrimPrefix "/" $url) -}}  */}}
+  {{/*  {{- $base := .Page.Site.BaseURL -}}
+  {{- $path := relURL $url -}}
+  {{- $finalURL = printf "%s%s" (strings.TrimSuffix "/" $base) $path -}}
+  {{- warnf "DEBUG: internal_link url=%q base=%q path=%q final=%q" $url $base $path $finalURL -}}  */}}
+  {{- $finalURL := "" -}}
+  {{- $finalURL = printf "../%s" $url -}}
+  <a href="{{ $finalURL | safeURL }}"
+     class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 underline decoration-neutral-400/30 hover:decoration-neutral-500 transition-colors"
+     {{ with $title }}title="{{ . }}"{{ end }}>
+    {{- $text -}}
+  </a>
+  {{/*  <a href="{{ $finalURL | safeURL }}"{{ with $title }} title="{{ . }}"{{ end }}>{{ $text }}</a>  */}}
 
 {{- end -}}

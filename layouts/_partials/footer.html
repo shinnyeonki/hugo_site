@@ -19,53 +19,14 @@
             <p class="text-sm text-neutral-600 dark:text-neutral-400">
                 © 2024 Your Company. All rights reserved.
             </p>
-            <div class="relative" id="theme-switcher-container">
-                <button title="Change theme" id="footer-theme-toggle"
-                    class="cursor-pointer rounded-md text-left font-medium h-7 px-2 text-xs text-neutral-600 transition-colors dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-800"
-                    type="button" aria-label="Change theme">
-                    <div class="flex items-center gap-2 capitalize">
-                        <span id="theme-light-indicator" class="hidden items-center gap-2">
-                            <svg height="12" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364-.707-.707M6.343 6.343l-.707-.707m12.728.0-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                            <span>Light</span>
-                        </span>
-                        <span id="theme-dark-indicator" class="hidden items-center gap-2">
-                            <svg height="12" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003.0 0012 21a9.003 9.003.0 008.354-5.646z" />
-                            </svg>
-                            <span>Dark</span>
-                        </span>
-                        <span id="theme-system-indicator" class="hidden items-center gap-2">
-                            <svg height="12" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M11.996094 2C6.4986225 2.0192368 2.03125 6.5024993 2.03125 12c0 5.497501 4.4673725 9.980763 9.964844 10H12 12.0039c5.497471-.01924 9.964844-4.502499 9.964844-10 0-5.4975007-4.467373-9.9807632-9.964844-10H12zM12 4c4.417218.017598 7.96875 3.5822356 7.96875 8 0 4.417764-3.551532 7.982402-7.96875 8z" />
-                            </svg>
-                            <span>System</span>
-                        </span>
-                    </div>
-                </button>
-                <ul id="footer-theme-options"
-                    class="hidden absolute bottom-8 right-0 z-20 max-h-64 overflow-auto rounded-md ring-1 ring-black/5 bg-white py-1 text-sm shadow-lg dark:ring-white/20 dark:bg-neutral-800">
-                    <li>
-                        <p data-theme-value="light"
-                            class="theme-option-button text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 relative cursor-pointer whitespace-nowrap py-1.5 transition-colors px-3">
-                            Light</p>
-                    </li>
-                    <li>
-                        <p data-theme-value="dark"
-                            class="theme-option-button text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 relative cursor-pointer whitespace-nowrap py-1.5 transition-colors px-3">
-                            Dark</p>
-                    </li>
-                    <li>
-                        <p data-theme-value="system"
-                            class="theme-option-button text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-700 relative cursor-pointer whitespace-nowrap py-1.5 transition-colors px-3">
-                            System</p>
-                    </li>
-                </ul>
-            </div>
+            {{ partial "theme_switcher.html" . }}
+        </div>
+
+        <!-- Third row: Build info -->
+        <div>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400">
+                Built with Hugo {{ hugo.Version }} | Last build: {{ now.Format "2006-01-02 15:04:05" }}
+            </p>
         </div>
     </div>
 </footer>
