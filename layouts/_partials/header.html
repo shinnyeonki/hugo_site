@@ -21,9 +21,9 @@
             {{ end -}}
         </div>
 
-        <!-- 오른쪽 아이콘 버튼 영역 (page일 때만 표시) -->
+        <!-- 오른쪽 아이콘 버튼 영역 -->
         <div class="flex items-center gap-1 md:gap-2">
-            <!-- 본문 너비 조절 슬라이더 -->
+            <!-- 본문 너비 조절 슬라이더 (page일 때만 표시) -->
             {{ if eq .Kind "page" }}
             <div class="hidden md:flex items-center p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
                 <input id="contentWidthSlider" type="range" min="40" max="120" value="72" step="4"
