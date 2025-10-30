@@ -55,9 +55,14 @@
 
 
 {{- if in (slice "mp4" "webm" "mov") $ext -}}
-<div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-  <video controls src="{{ $src }}" title="{{ $alt }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;"></video>
-</div>
+  <div class="video-container" style="position: relative; overflow: hidden; padding-top: 56.25%; /* 16:9 */ width: 100%; max-width: 100%;">
+    <video
+      controls
+      src="{{ $src }}"
+      title="{{ $alt }}"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+    ></video>
+  </div>
 {{- else if in (slice "mp3" "ogg" "wav") $ext -}}
 <audio controls src="{{ $src }}" title="{{ $alt }}" style="width: 100%;"></audio>
 {{/*  {{- else if eq $ext "cast" -}}
