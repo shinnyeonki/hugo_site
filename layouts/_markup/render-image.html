@@ -60,8 +60,8 @@
 </div>
 {{- else if in (slice "mp3" "ogg" "wav") $ext -}}
 <audio controls src="{{ $src }}" title="{{ $alt }}" style="width: 100%;"></audio>
-{{- else if eq $ext "cast" -}}
-  <asciinema-player src="{{ $src }}" theme="solarized-dark" autoplay loop></asciinema-player>
+{{/*  {{- else if eq $ext "cast" -}}
+  <asciinema-player src="{{ $src }}" theme="solarized-dark" autoplay loop></asciinema-player>  */}}
 {{- else if eq $ext "excalidraw" -}}
   <object data="{{ $src }}" type="image/svg+xml" style="width: 100%; border: 1px solid #ddd; border-radius: 8px;"></object>
 {{- else if eq $ext "pdf" -}}
@@ -73,6 +73,10 @@
       loading="lazy"
     ></iframe>
   </div>
+{{- else if in (slice "avi" "mkv" "flv" "m4v" "flac" "aac" "m4a") $ext -}} {{/* 브라우저에서 직접 재생이 지원되지 않는 포맷은 다운로드 링크 제공 */}}
+  <a href="{{ $src }}" download>{{ $alt | default "Download file" }}</a>
+{{- else if in (slice "txt" "md" "csv" "json" "xml" "log") $ext -}} {{/* 텍스트 파일은 내용 미리보기 */}}
+  <pre style="white-space: pre-wrap; word-break: break-word; background: #f5f5f5; padding: 1em; border-radius: 8px;">{{ readFile $src | safeHTML }}</pre>
 {{- else -}}
   <img src="{{ $src }}" alt="{{ $alt }}" {{ with .Title }}title="{{ . }}"{{ end }} loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px;" />
 {{- end -}}
