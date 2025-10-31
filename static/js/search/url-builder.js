@@ -65,7 +65,10 @@ class URLBuilder {
         if (index && index.files && index.files[fileName]) {
             const path = index.files[fileName].path;
             if (path) {
-                return path;
+                // baseURL 가져오기 (trailing slash 제거)
+                const baseURL = (window.HUGO_CONFIG?.baseURL || '/').replace(/\/$/, '');
+                // baseURL과 path 결합
+                return `${baseURL}${path}`;
             }
         }
         

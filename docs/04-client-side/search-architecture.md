@@ -68,9 +68,13 @@ class SearchIndexManager {
     async fetchVersion()         // 서버 버전 확인
     async fetchAndCacheIndex()   // 인덱스 다운로드 및 캐싱
     loadFromCache()              // 캐시에서 로드
+    clearCache()                 // 캐시 강제 삭제
     getIndex()                   // 인덱스 반환
     ready()                      // 준비 상태 확인
     onReady(callback)            // 준비 완료 콜백 등록
+    triggerReadyCallbacks()      // 준비 완료 콜백 실행
+    search(query)                // 파일 검색 (레거시, SearchEngine 사용 권장)
+    getCacheInfo()               // 캐시 정보 반환 (디버깅용)
 }
 ```
 
@@ -109,6 +113,8 @@ class SearchQueryParser {
     extractScopes(query)      // scope 추출
     parseScope(part)          // 단일 scope 파싱
     parseMetadataScope(part)  // 메타데이터 scope 파싱
+    isSingleScope(parsedQuery)     // 단일 scope 쿼리 확인
+    isMultipleScopes(parsedQuery)  // 복합 scope 쿼리 확인
 }
 ```
 
@@ -159,16 +165,16 @@ class SearchQueryParser {
 ```javascript
 PRIORITY_SCORES = {
     // 정확한 일치 (Exact Match)
-    EXACT_FILE: 1000,       // 1순위
-    EXACT_TAG: 900,         // 2순위
-    EXACT_METADATA: 800,    // 3순위
-    EXACT_CONTENT: 700,     // 4순위
+    EXACT_FILE: 400,       // 1순위
+    EXACT_TAG: 300,        // 2순위
+    EXACT_METADATA: 200,   // 3순위
+    EXACT_CONTENT: 100,    // 4순위
     
     // 부분 일치 (Substring Match)
-    PARTIAL_FILE: 600,      // 5순위
-    PARTIAL_TAG: 500,       // 6순위
-    PARTIAL_METADATA: 400,  // 7순위
-    PARTIAL_CONTENT: 300    // 8순위
+    PARTIAL_FILE: 40,      // 5순위
+    PARTIAL_TAG: 30,       // 6순위
+    PARTIAL_METADATA: 20,  // 7순위
+    PARTIAL_CONTENT: 10    // 8순위
 }
 ```
 
@@ -186,13 +192,20 @@ class SearchEngine {
     searchInTags(tags, query, matches, partialOnly)
     searchInMetadata(frontmatter, query, matches, targetKey, partialOnly)
     searchInContent(content, query, matches, partialOnly)
+    
+    // 유틸리티
+    escapeRegex(str)                       // 정규식 이스케이프
+    isExactWordMatch(text, query)          // 정확한 단어 일치 확인
 }
 ```
 
 **검색 알고리즘 세부사항**:
 
 **파일명 검색 (searchInFile)**:
-- 정확한 일치: 확장자 제외한 파일명과 비교 또는 단어 경계(`\b`) 확인
+- 정확한 일치: 
+  - 확장자 제외한 파일명과 완전 일치 비교
+  - 공백이나 특수문자로 구분된 정확한 단어 일치 (한글/영문 지원)
+  - `isExactWordMatch` 메서드 활용
 - 부분 일치: 파일명에 검색어 포함 여부
 
 **태그 검색 (searchInTags)**:
@@ -210,7 +223,9 @@ class SearchEngine {
 - 부분 일치: 키 또는 값에 검색어 포함
 
 **본문 검색 (searchInContent)**:
-- 정확한 일치: 단어 경계(`\b`)를 고려한 완전 단어 일치
+- 정확한 일치: `isExactWordMatch`를 활용한 완전 단어 일치
+  - 공백/특수문자로 구분된 단어 단위 검색
+  - 한글, 영문 모두 지원
 - 부분 일치: 본문에 검색어 포함
 
 **검색 결과 구조**:
@@ -246,10 +261,11 @@ class SearchEngine {
 **핵심 메서드**:
 ```javascript
 class TextHighlighter {
-    highlightFileName(fileName, matches)  // 파일명 하이라이트
-    highlightText(text, term)             // 일반 텍스트 하이라이트
-    escapeHtml(text)                      // HTML 이스케이프
-    escapeRegex(str)                      // 정규식 이스케이프
+    highlightFileName(fileName, matches)       // 파일명 하이라이트
+    highlightText(text, term)                  // 일반 텍스트 하이라이트
+    highlightMultipleTerms(text, terms)        // 여러 검색어 하이라이트
+    escapeHtml(text)                           // HTML 이스케이프
+    escapeRegex(str)                           // 정규식 이스케이프
 }
 ```
 
@@ -305,7 +321,9 @@ class SearchResultRenderer {
     renderResults(results, searchType)         // 전체 결과 렌더링 (배너 포함)
     renderBanner(searchType)                   // 검색 타입 배너 생성
     renderResultItem(result)                   // 단일 결과 아이템
-    renderScopeIndicator(matches)              // 범위 지정 검색 조건 아이콘
+    renderFileName(fileName, matches)          // 파일명 렌더링 (매치 타입 아이콘 포함)
+    renderMatchTypeIcon(matchType)             // 매치 타입 아이콘 반환
+    renderMatchTypeBadge(matchType)            // 매치 타입 배지 생성 (레거시)
     renderTags(tags, matches)                  // 태그 렌더링
     renderMetadata(matches, frontmatter)       // 메타데이터 렌더링
     renderSnippet(content, matches)            // 본문 스니펫 렌더링 (범위 지정 검색용)
@@ -317,25 +335,33 @@ class SearchResultRenderer {
 **렌더링 규칙**:
 
 **통합 검색 (Integrated Search)**:
-1. **파일명**: 항상 표시, 매치 시 하이라이트
-2. **태그**: 검색어가 태그에 매치된 경우만 표시 (최대 3개)
-3. **메타데이터**: 검색어가 메타데이터에 매치된 경우만 표시 (tags 제외, 최대 2개)
+1. **파일명**: 항상 표시, 매치 시 하이라이트 및 매치 타입 아이콘 (🎯 정확한 일치, ≈ 부분 일치)
+   - 형식: `파일명: {파일명} 🎯` 또는 `파일명: {파일명} ≈`
+2. **태그**: 검색어가 태그에 매치된 경우만 표시 (최대 3개), 매치된 태그에 하이라이트 및 매치 타입 아이콘
+   - 형식: `태그: {태그1} 🎯, {태그2} ≈`
+3. **메타데이터**: 검색어가 메타데이터에 매치된 경우만 표시 (tags 제외, 최대 2개), 동일 키는 한 번만 표시하고 모든 매치된 term 하이라이팅
+   - 형식: `메타데이터: {key: value} 🎯, {key2: value2} ≈`
 4. **본문 스니펫**: 항상 표시
-   - 본문에 매치된 경우: 해당 부분 포함한 앞뒤 문장 (검색어 하이라이트)
-   - 매치 안된 경우: 본문 앞부분 표시 (80자)
+   - 본문에 매치된 경우: 해당 부분 포함한 앞뒤 문장 (검색어 하이라이트, 매치 타입 아이콘 추가)
+     - 형식: `본문: {...내용...} 🎯` 또는 `본문: {...내용...} ≈`
+   - 매치 안된 경우: 본문 앞부분 표시 (80자, 아이콘 없음)
+     - 형식: `본문: {...내용...}`
 5. **배너**: "🔍 통합 검색 결과" 표시
 
 **범위 지정 검색 (Scoped Search)**:
-1. **파일명**: 항상 표시, 매치 시 하이라이트
-2. **태그**: 태그 범위 지정 검색 시에만 표시 (최대 3개)
-3. **메타데이터**: 메타데이터 범위 지정 검색 시에만 표시 (tags 제외, 최대 2개)
-4. **본문 스니펫**: 본문 범위 지정 검색 시에만 표시 (검색어 중심 80자)
-5. **조건 일치 아이콘**: 우측 정렬로 매치된 범위 표시
-   - 📄 파일명
-   - 🏷️ 태그
-   - 📋 메타데이터
-   - 📝 본문
-6. **배너**: "🎯 범위 지정 검색 결과" 표시
+1. **파일명**: 항상 표시, 매치 시 하이라이트 및 매치 타입 아이콘
+   - 형식: `파일명: {파일명} 🎯` 또는 `파일명: {파일명} ≈`
+2. **태그**: 태그 범위 지정 검색 시에만 표시 (최대 3개), 매치된 태그에 하이라이트 및 매치 타입 아이콘
+   - 형식: `태그: {태그1} 🎯, {태그2} ≈`
+3. **메타데이터**: 메타데이터 범위 지정 검색 시에만 표시 (tags 제외, 최대 2개), 동일 키는 한 번만 표시하고 모든 매치된 term 하이라이팅
+   - 형식: `메타데이터: {key: value} 🎯, {key2: value2} ≈`
+4. **본문 스니펫**: 본문 범위 지정 검색 시에만 표시 (검색어 중심 80자, 매치 타입 아이콘 추가)
+   - 형식: `본문: {...내용...} �` 또는 `본문: {...내용...} ≈`
+5. **배너**: "🔭 범위 지정 검색 결과" 표시
+
+**매치 타입 아이콘**:
+- 🎯: 정확한 일치 (exact match)
+- ≈: 부분 일치 (partial match)
 
 **HTML 구조 (통합 검색)**:
 ```html
@@ -344,20 +370,18 @@ class SearchResultRenderer {
 </div>
 
 <a href="/path/to/file/#:~:text=term" class="search-result-item">
-    <div class="flex items-start justify-between gap-2">
-        <div class="flex-1 min-w-0">
-            <div class="text-sm font-medium">
-                파일명 <mark>하이라이트</mark>
-            </div>
-            <div class="text-xs text-neutral-500 mt-1">
-                tag1, <mark>tag2</mark>, tag3
-            </div>
-            <div class="text-xs text-neutral-400 mt-1">
-                🏷️ author: <mark>shinnk</mark>
-            </div>
-            <div class="text-xs text-neutral-500 mt-1 line-clamp-2">
-                본문 앞부분 표시... 또는 <mark>검색어</mark> 포함 스니펫
-            </div>
+    <div class="flex-1 min-w-0">
+        <div class="text-sm font-medium">
+            <span>파일명: 파일명 <mark>하이라이트</mark> 🎯</span>
+        </div>
+        <div class="text-xs text-neutral-500 mt-1">
+            태그: tag1 🎯, <mark>tag2</mark> ≈
+        </div>
+        <div class="text-xs text-neutral-400 mt-1">
+            메타데이터: author: <mark>shinnk</mark> 🎯
+        </div>
+        <div class="text-xs text-neutral-500 mt-1 line-clamp-2">
+            본문: 본문 앞부분 표시... 또는 본문 내용 <mark>검색어</mark> 본문 🎯
         </div>
     </div>
 </a>
@@ -366,31 +390,25 @@ class SearchResultRenderer {
 **HTML 구조 (범위 지정 검색)**:
 ```html
 <div class="bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 px-3 py-2 mb-2 rounded-md text-xs font-medium">
-    🎯 범위 지정 검색 결과
+    🔭 범위 지정 검색 결과
 </div>
 
 <a href="/path/to/file/#:~:text=term" class="search-result-item">
-    <div class="flex items-start justify-between gap-2">
-        <div class="flex-1 min-w-0">
-            <div class="text-sm font-medium">
-                파일명 <mark>하이라이트</mark>
-            </div>
-            <!-- 태그 범위 검색 시에만 -->
-            <div class="text-xs text-neutral-500 mt-1">
-                tag1, <mark>tag2</mark>, tag3
-            </div>
-            <!-- 메타데이터 범위 검색 시에만 -->
-            <div class="text-xs text-neutral-400 mt-1">
-                🏷️ author: <mark>shinnk</mark>
-            </div>
-            <!-- 본문 범위 검색 시에만 -->
-            <div class="text-xs text-neutral-500 mt-1 line-clamp-2">
-                ...본문 내용 <mark>검색어</mark> 본문...
-            </div>
+    <div class="flex-1 min-w-0">
+        <div class="text-sm font-medium">
+            <span>파일명: 파일명 <mark>하이라이트</mark> 🎯</span>
         </div>
-        <!-- 조건 일치 아이콘 (우측 정렬) -->
-        <div class="text-xs text-neutral-400 flex-shrink-0 ml-2">
-            🏷️ 📝
+        <!-- 태그 범위 검색 시에만 -->
+        <div class="text-xs text-neutral-500 mt-1">
+            태그: tag1, <mark>tag2</mark> 🎯
+        </div>
+        <!-- 메타데이터 범위 검색 시에만 -->
+        <div class="text-xs text-neutral-400 mt-1">
+            메타데이터: author: <mark>shinnk</mark> 🎯
+        </div>
+        <!-- 본문 범위 검색 시에만 -->
+        <div class="text-xs text-neutral-500 mt-1 line-clamp-2">
+            본문: ...본문 내용 <mark>검색어</mark> 본문... �
         </div>
     </div>
 </a>
@@ -416,6 +434,12 @@ class SearchUI {
     performSearch(query)             // 검색 실행
     displaySearchResults(results)    // 결과 표시 (검색 타입 자동 감지)
     attachClickHandlers()            // 클릭 이벤트 등록
+    handleKeyDown(e)                 // 키보드 입력 처리
+    selectNext()                     // 다음 항목 선택
+    selectPrevious()                 // 이전 항목 선택
+    updateSelection()                // 선택 상태 시각적 업데이트
+    navigateToSelected()             // 선택된 항목으로 이동
+    resetSelection()                 // 선택 초기화
     
     // 상태 표시
     showLoading()
@@ -435,6 +459,14 @@ const html = this.resultRenderer.renderResults(results, searchType);
 ```javascript
 debounceDelay = 150 // ms
 ```
+
+**키보드 네비게이션**:
+- **ArrowDown**: 다음 항목 선택
+- **ArrowUp**: 이전 항목 선택
+- **Enter**: 선택된 항목으로 이동
+- **Escape**: 결과 숨기기 및 포커스 해제
+- 선택된 항목은 파란색 배경과 링 스타일로 강조
+- 자동 스크롤로 선택된 항목이 항상 화면에 보이도록 처리
 
 ## 의존성 주입 및 초기화
 
@@ -696,13 +728,24 @@ escapeRegex(str) {
 
 ## 최근 업데이트 (2025-11-01)
 
-### 검색 규칙 세부 구현
-- ✅ 통합 검색과 범위 지정 검색의 배너 추가
-- ✅ 범위 지정 검색의 조건 일치 아이콘 표시
+### 검색 규칙 세부 구현 및 UI 개선
+- ✅ 통합 검색과 범위 지정 검색의 배너 추가 (🔍 통합 검색, 🔭 범위 지정 검색)
+- ✅ 매치 타입 아이콘 시스템 도입 (🎯 정확한 일치, ≈ 부분 일치)
+- ✅ 파일명, 태그, 메타데이터, 본문 스니펫에 매치 타입 아이콘 표시
+- ✅ 범위 지정 검색 배너 아이콘 변경 (🎯 → 🔭)
 - ✅ 본문 스니펫 표시 조건 개선 (통합 검색: 항상, 범위 지정: 본문 검색 시만)
 - ✅ 태그/메타데이터 표시 조건 개선
 - ✅ 메타데이터 검색 로직 개선 (meta:key:value, meta:value, meta:key 모두 지원)
 - ✅ 정확한 일치 알고리즘 개선 (파일명, 태그, 본문)
+  - 파일명: 공백/특수문자로 구분된 정확한 단어 일치
+  - 본문: `isExactWordMatch` 메서드로 한글/영문 단어 단위 검색
+- ✅ 키보드 네비게이션 기능 추가
+  - ArrowDown/ArrowUp으로 항목 선택
+  - Enter로 선택된 항목 이동
+  - Escape로 결과 닫기
+  - 선택된 항목 시각적 강조 및 자동 스크롤
+- ✅ 메타데이터 렌더링 개선 (동일 키는 한 번만 표시, 모든 매치된 term 하이라이팅)
+- ✅ `highlightMultipleTerms` 메서드 추가 (여러 검색어 한 번에 하이라이팅)
 
 ## 결론
 
