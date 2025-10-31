@@ -54,10 +54,22 @@
     <script src="{{ .Site.BaseURL }}js/main.js" defer></script>
     <script src="{{ .Site.BaseURL }}js/left-nav.js" defer></script>
     <script src="{{ .Site.BaseURL }}js/util/content_width.js" defer></script>
+    
+    <!-- 검색 시스템 (순서 중요: manager -> parser -> engine -> ui) -->
+    <script src="{{ .Site.BaseURL }}js/search/search-index-manager.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/search/search-query-parser.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/search/search-engine.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/search/search-ui.js" defer></script>
+    
     {{ if eq .Kind "page" }}
     <script src="{{ .Site.BaseURL }}js/util/pre_katex_copy_button.js" defer></script>
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/toc.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/prose.css">
+    {{ end }}
+    
+    <!-- 검색 디버그 도구 (개발 환경에서만 로드) -->
+    {{ if eq hugo.Environment "development" }}
+    <script src="{{ .Site.BaseURL }}js/search-debug.js" defer></script>
     {{ end }}
 </body>
 </html>

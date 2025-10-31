@@ -8,6 +8,8 @@
 -   **이식성 (Portability)**: `content` 폴더만 백업하거나 다른 시스템으로 이전해도 모든 콘텐츠와 미디어 관계가 그대로 유지됩니다.
 -   **직관성**: 콘텐츠를 작성하는 사람은 복잡한 Hugo의 폴더 구조(예: `static`, `assets`)를 신경 쓸 필요 없이, 마크다운 표준 상대 경로 문법에만 집중할 수 있습니다.
 -   **단일 진실 공급원 (SSOT)**: 콘텐츠와 관련된 모든 것은 `content` 폴더에 있습니다.
+-   **seo 최적화를 위한 pretty url 사용**: hugo 의 기본 pretty url 방식을 사용하여 SEO에 최적화된 URL 구조를 유지합니다.
+-   **pretty url 사용시 미디어 경로 문제 해결**: pretty url 사용으로 인해 발생하는 미디어 경로 문제를 render hook을 통해 해결합니다.
 
 ### 2. 핵심 원칙 (Key Principles)
 

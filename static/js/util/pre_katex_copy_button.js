@@ -1,16 +1,3 @@
-// /**
-//  * 페이지 로드 시 코드 블록 향상 초기화
-//  */
-// export function initCodeBlockEnhancer() {
-//     // DOM 로드 완료 후 실행
-//     if (document.readyState === 'loading') {
-        
-//     } else {
-//         // 이미 로드된 경우 즉시 실행
-//         enhanceCodeBlocks(document.body);
-//     }
-// }
-
 document.addEventListener('DOMContentLoaded', () => {
     enhanceCodeBlocks(document.body);
 });
