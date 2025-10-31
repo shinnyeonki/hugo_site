@@ -140,12 +140,12 @@ class SearchResultRenderer {
             const snippet = this.createSnippet(content, term, 80);
             const highlightedSnippet = this.textHighlighter.highlightText(snippet, term);
             const icon = this.renderMatchTypeIcon(contentMatches[0].matchType);
-            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">${highlightedSnippet} ${icon}</div>`;
+            return `<div class="text-xs text-neutral-500 mt-1 break-words">${highlightedSnippet} ${icon}</div>`;
         } else if (content) {
             // 본문에 매치 안된 경우: 앞부분만 표시 (아이콘 없음)
             const snippet = content.substring(0, 80) + (content.length > 80 ? '...' : '');
             const escapedSnippet = this.textHighlighter.escapeHtml(snippet);
-            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">${escapedSnippet}</div>`;
+            return `<div class="text-xs text-neutral-500 mt-1 break-words">${escapedSnippet}</div>`;
         }
         
         return '';
@@ -262,7 +262,7 @@ class SearchResultRenderer {
         const highlightedSnippet = this.textHighlighter.highlightText(snippet, term);
         const icon = this.renderMatchTypeIcon(contentMatches[0].matchType);
         
-        return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">본문: ${highlightedSnippet} ${icon}</div>`;
+        return `<div class="text-xs text-neutral-500 mt-1 break-words">본문: ${highlightedSnippet} ${icon}</div>`;
     }
 
     /**

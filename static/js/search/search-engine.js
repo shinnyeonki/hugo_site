@@ -401,15 +401,25 @@ class SearchEngine {
     /**
      * 공백이나 특수문자로 구분된 정확한 단어 일치 확인
      * 한글, 영문 모두 지원
+     * - 단일 단어: 구분자로 분리된 단어 중 정확히 일치하는 것이 있는지 확인
+     * - 여러 단어 구문: 전체 구문이 텍스트에 정확히 포함되어 있는지 확인
      * @param {string} text - 검색 대상 텍스트
      * @param {string} query - 검색어
      * @returns {boolean}
      */
     isExactWordMatch(text, query) {
-        // 파일명을 공백과 특수문자로 분리
-        const words = text.split(/[\s\-_.,;:!?@#$%^&*()[\]{}<>/"'`~+=|\\]+/);
+        // 여러 단어로 구성된 구문인지 확인 (공백 포함)
+        if (/\s/.test(query)) {
+            // 구문 전체가 텍스트에 정확히 포함되어 있는지 확인
+            // 단, 구문의 앞뒤가 단어 경계여야 함
+            const escapedQuery = this.escapeRegex(query);
+            // 단어 경계: 문자열 시작, 끝, 또는 공백/특수문자
+            const regex = new RegExp(`(^|[\\s\\-_.,;:!?@#$%^&*()[\\]{}<>/"'\`~+=|\\\\])${escapedQuery}($|[\\s\\-_.,;:!?@#$%^&*()[\\]{}<>/"'\`~+=|\\\\])`, 'i');
+            return regex.test(text);
+        }
         
-        // 분리된 단어 중 정확히 일치하는 것이 있는지 확인
+        // 단일 단어: 공백과 특수문자로 분리하여 정확히 일치하는 단어가 있는지 확인
+        const words = text.split(/[\s\-_.,;:!?@#$%^&*()[\]{}<>/"'`~+=|\\]+/);
         return words.some(word => word === query);
     }
 }
