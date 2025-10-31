@@ -34,11 +34,11 @@ class SearchIndexManager {
             // 3. 버전 비교
             if (cachedVersion && cachedVersion === serverVersion) {
                 // 캐시가 유효한 경우 - 로컬 스토리지에서 로드
-                // console.log('Using cached search index (version:', serverVersion + ')');
+                console.log('Using cached search index (version:', serverVersion + ')');
                 this.loadFromCache();
             } else {
                 // 캐시가 없거나 버전이 다른 경우 - 서버에서 새로 로드
-                // console.log('Fetching new search index (version:', serverVersion + ')');
+                console.log('Fetching new search index (version:', serverVersion + ')');
                 await this.fetchAndCacheIndex(serverVersion);
             }
             

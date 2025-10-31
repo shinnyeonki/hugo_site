@@ -13,7 +13,7 @@ class SearchUI {
         
         // SearchConfig에서 UI 설정 가져오기 (없으면 기본값)
         const config = window.SearchConfig?.UI || {};
-        this.debounceDelay = config.DEBOUNCE_DELAY || 150; // ms
+        this.debounceDelay = config.DEBOUNCE_DELAY; // ms
         
         this.debounceTimer = null;
         
