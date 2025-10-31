@@ -51,7 +51,7 @@
 
 #TableOfContents > ul > li > a {
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: 1.25rem;
     line-height: 1.75rem;
     color: rgb(75 85 99);
     margin-bottom: 0.75rem;
@@ -68,8 +68,9 @@
 
 #TableOfContents > ul > li > ul > li > a {
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: rgb(75 85 99);
+    margin-bottom: 0.5rem;
 }
 
 :root.dark #TableOfContents > ul > li > ul > li > a {

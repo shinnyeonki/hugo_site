@@ -91,7 +91,7 @@ class SearchResultRenderer {
 
     /**
      * 파일명 렌더링 (매치 타입 아이콘 포함)
-     * 형식: 파일명: {파일명} 🎯 또는 ≈
+     * 형식: {파일명} 🎯 또는 ≈
      * @param {string} fileName 
      * @param {Array} matches 
      * @returns {string}
@@ -105,9 +105,9 @@ class SearchResultRenderer {
         const matchIcon = fileMatch ? this.renderMatchTypeIcon(fileMatch.matchType) : '';
         
         if (matchIcon) {
-            return `<span>파일명: ${highlightedName} ${matchIcon}</span>`;
+            return `<span>${highlightedName} ${matchIcon}</span>`;
         } else {
-            return `<span>파일명: ${highlightedName}</span>`;
+            return `<span>${highlightedName}</span>`;
         }
     }
 
@@ -126,7 +126,7 @@ class SearchResultRenderer {
 
     /**
      * 통합 검색용 스니펫 (항상 표시, 매치 타입 아이콘 포함)
-     * 형식: 본문: {...내용...} 🎯 또는 ≈
+     * 형식: {...내용...} 🎯 또는 ≈
      * @param {string} content 
      * @param {Array} matches 
      * @returns {string}
@@ -140,12 +140,12 @@ class SearchResultRenderer {
             const snippet = this.createSnippet(content, term, 80);
             const highlightedSnippet = this.textHighlighter.highlightText(snippet, term);
             const icon = this.renderMatchTypeIcon(contentMatches[0].matchType);
-            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">본문: ${highlightedSnippet} ${icon}</div>`;
+            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">${highlightedSnippet} ${icon}</div>`;
         } else if (content) {
             // 본문에 매치 안된 경우: 앞부분만 표시 (아이콘 없음)
             const snippet = content.substring(0, 80) + (content.length > 80 ? '...' : '');
             const escapedSnippet = this.textHighlighter.escapeHtml(snippet);
-            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">본문: ${escapedSnippet}</div>`;
+            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">${escapedSnippet}</div>`;
         }
         
         return '';
