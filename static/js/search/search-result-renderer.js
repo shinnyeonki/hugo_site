@@ -17,10 +17,10 @@ class SearchResultRenderer {
     renderResultItem(result) {
         const { fileName, fileData, matches, searchType, scopeType } = result;
         
-        // 1. 파일명 하이라이팅 (항상 표시)
-        const displayNameHTML = this.textHighlighter.highlightFileName(fileName, matches);
+        // 1. 파일명 하이라이팅 (항상 표시) + 매치 타입 아이콘
+        const displayNameHTML = this.renderFileName(fileName, matches);
         
-        // 2. 태그 표시
+        // 2. 태그 표시 + 매치 타입 아이콘
         let tagsHTML = '';
         if (searchType === 'integrated') {
             // 통합 검색: 태그에 매치된 경우만
@@ -32,7 +32,7 @@ class SearchResultRenderer {
             tagsHTML = hasTagScope ? this.renderTags(fileData.frontmatter?.tags, matches) : '';
         }
         
-        // 3. 메타데이터 표시
+        // 3. 메타데이터 표시 + 매치 타입 아이콘
         let contextHTML = '';
         if (searchType === 'integrated') {
             // 통합 검색: 메타데이터에 매치된 경우만
@@ -44,7 +44,7 @@ class SearchResultRenderer {
             contextHTML = hasMetaScope ? this.renderMetadata(matches, fileData.frontmatter) : '';
         }
         
-        // 4. 본문 스니펫
+        // 4. 본문 스니펫 + 매치 타입 아이콘
         let snippetHTML = '';
         if (searchType === 'integrated') {
             // 통합 검색: 항상 표시 (매치된 경우 해당 부분 포함, 아니면 앞부분)
@@ -55,12 +55,6 @@ class SearchResultRenderer {
             snippetHTML = hasContentScope ? this.renderSnippet(fileData.content, matches) : '';
         }
         
-        // 5. 범위 지정 검색 조건 일치 표시 (우측 정렬)
-        let scopeIndicatorHTML = '';
-        if (searchType === 'scoped') {
-            scopeIndicatorHTML = this.renderScopeIndicator(matches);
-        }
-        
         // URL 생성
         const url = this.urlBuilder.buildURL(fileName, matches);
         
@@ -69,44 +63,67 @@ class SearchResultRenderer {
                class="search-result-item block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md"
                data-filename="${this.textHighlighter.escapeHtml(fileName)}"
                data-matches='${JSON.stringify(matches)}'>
-                <div class="flex items-start justify-between gap-2">
-                    <div class="flex-1 min-w-0">
-                        <div class="text-sm font-medium">${displayNameHTML}</div>
-                        ${tagsHTML}
-                        ${contextHTML}
-                        ${snippetHTML}
-                    </div>
-                    ${scopeIndicatorHTML}
+                <div class="flex-1 min-w-0">
+                    <div class="text-sm font-medium">${displayNameHTML}</div>
+                    ${tagsHTML}
+                    ${contextHTML}
+                    ${snippetHTML}
                 </div>
             </a>
         `;
     }
 
     /**
-     * 범위 지정 검색 조건 일치 표시
-     * @param {Array} matches 
+     * 매치 타입 아이콘만 반환 (배지 없이)
+     * @param {string} matchType - 'exact' or 'partial'
      * @returns {string}
      */
-    renderScopeIndicator(matches) {
-        const scopes = new Set();
-        matches.forEach(m => scopes.add(m.scope));
-        
-        const scopeLabels = {
-            'file': '📄',
-            'tag': '🏷️',
-            'metadata': '📋',
-            'content': '📝'
-        };
-        
-        const indicators = Array.from(scopes)
-            .map(scope => scopeLabels[scope] || scope)
-            .join(' ');
-        
-        return `<div class="text-xs text-neutral-400 flex-shrink-0 ml-2">${indicators}</div>`;
+    renderMatchTypeIcon(matchType) {
+        if (matchType === 'exact') {
+            return '🎯';
+        } else {
+            return '≈';
+        }
     }
 
     /**
-     * 통합 검색용 스니펫 (항상 표시)
+     * 파일명 렌더링 (매치 타입 아이콘 포함)
+     * 형식: 파일명: {파일명} 🎯 또는 ≈
+     * @param {string} fileName 
+     * @param {Array} matches 
+     * @returns {string}
+     */
+    renderFileName(fileName, matches) {
+        // 파일명 하이라이팅
+        const highlightedName = this.textHighlighter.highlightFileName(fileName, matches);
+        
+        // 파일명 매치 찾기
+        const fileMatch = matches.find(m => m.scope === 'file');
+        const matchIcon = fileMatch ? this.renderMatchTypeIcon(fileMatch.matchType) : '';
+        
+        if (matchIcon) {
+            return `<span>파일명: ${highlightedName} ${matchIcon}</span>`;
+        } else {
+            return `<span>파일명: ${highlightedName}</span>`;
+        }
+    }
+
+    /**
+     * 매치 타입 배지 생성 (정확한 일치/부분 일치)
+     * @param {string} matchType - 'exact' or 'partial'
+     * @returns {string}
+     */
+    renderMatchTypeBadge(matchType) {
+        if (matchType === 'exact') {
+            return '<span class="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" title="정확히 일치">🎯</span>';
+        } else {
+            return '<span class="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-neutral-100 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300" title="부분 일치">≈</span>';
+        }
+    }
+
+    /**
+     * 통합 검색용 스니펫 (항상 표시, 매치 타입 아이콘 포함)
+     * 형식: 본문: {...내용...} 🎯 또는 ≈
      * @param {string} content 
      * @param {Array} matches 
      * @returns {string}
@@ -119,19 +136,21 @@ class SearchResultRenderer {
             const term = contentMatches[0].term;
             const snippet = this.createSnippet(content, term, 80);
             const highlightedSnippet = this.textHighlighter.highlightText(snippet, term);
-            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">${highlightedSnippet}</div>`;
+            const icon = this.renderMatchTypeIcon(contentMatches[0].matchType);
+            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">본문: ${highlightedSnippet} ${icon}</div>`;
         } else if (content) {
-            // 본문에 매치 안된 경우: 앞부분만 표시
+            // 본문에 매치 안된 경우: 앞부분만 표시 (아이콘 없음)
             const snippet = content.substring(0, 80) + (content.length > 80 ? '...' : '');
             const escapedSnippet = this.textHighlighter.escapeHtml(snippet);
-            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">${escapedSnippet}</div>`;
+            return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">본문: ${escapedSnippet}</div>`;
         }
         
         return '';
     }
 
     /**
-     * 태그 HTML 생성
+     * 태그 HTML 생성 (매치 타입 아이콘 포함)
+     * 형식: 태그: {태그1} 🎯, {태그2} ≈
      * @param {Array} tags 
      * @param {Array} matches 
      * @returns {string}
@@ -153,17 +172,21 @@ class SearchResultRenderer {
             );
             
             if (matchedTerm) {
-                // 검색어(term)만 부분 하이라이팅
-                return this.textHighlighter.highlightText(tagStr, matchedTerm.term);
+                // 하이라이팅 + 매치 타입 아이콘
+                const highlighted = this.textHighlighter.highlightText(tagStr, matchedTerm.term);
+                const icon = this.renderMatchTypeIcon(matchedTerm.matchType);
+                return `${highlighted} ${icon}`;
             }
             return this.textHighlighter.escapeHtml(tagStr);
         }).join(', ');
         
-        return `<div class="text-xs text-neutral-500 mt-1">${tagsHtml}</div>`;
+        return `<div class="text-xs text-neutral-500 mt-1">태그: ${tagsHtml}</div>`;
     }
 
     /**
-     * 메타데이터 HTML 생성 (tags 제외)
+     * 메타데이터 HTML 생성 (매치 타입 아이콘 포함)
+     * 형식: 메타데이터: {key: value} 🎯, {key2: value2} ≈
+     * 동일한 키는 한 번만 표시하고 모든 매치된 term을 하이라이팅
      * @param {Array} matches 
      * @param {Object} frontmatter 
      * @returns {string}
@@ -181,17 +204,41 @@ class SearchResultRenderer {
             return '';
         }
 
-        const contexts = metaMatches.slice(0, 2).map(m => {
-            const keyHtml = this.textHighlighter.highlightText(m.key, m.term);
-            const valueHtml = this.textHighlighter.highlightText(String(m.value), m.term);
-            return `${keyHtml}: ${valueHtml}`;
-        }).join(' · ');
+        // 동일한 키끼리 그룹화
+        const groupedByKey = {};
+        metaMatches.forEach(m => {
+            if (!groupedByKey[m.key]) {
+                groupedByKey[m.key] = {
+                    key: m.key,
+                    value: m.value,
+                    terms: [],
+                    matchTypes: []
+                };
+            }
+            groupedByKey[m.key].terms.push(m.term);
+            groupedByKey[m.key].matchTypes.push(m.matchType);
+        });
 
-        return `<div class="text-xs text-neutral-400 mt-1">🏷️ ${contexts}</div>`;
+        // 각 키별로 렌더링
+        const contexts = Object.values(groupedByKey).map(group => {
+            const keyHtml = this.textHighlighter.escapeHtml(group.key);
+            
+            // 모든 term을 한 번에 하이라이팅 (highlightMultipleTerms 사용)
+            const valueHtml = this.textHighlighter.highlightMultipleTerms(String(group.value), group.terms);
+            
+            // 가장 높은 우선순위 matchType 선택 (exact > partial)
+            const hasExact = group.matchTypes.includes('exact');
+            const icon = this.renderMatchTypeIcon(hasExact ? 'exact' : 'partial');
+            
+            return `${keyHtml}: ${valueHtml} ${icon}`;
+        }).join(', ');
+
+        return `<div class="text-xs text-neutral-400 mt-1">메타데이터: ${contexts}</div>`;
     }
 
     /**
-     * 본문 스니펫 HTML 생성
+     * 본문 스니펫 HTML 생성 (매치 타입 아이콘 포함)
+     * 형식: 본문: {...내용...} 🎯 또는 ≈
      * @param {string} content 
      * @param {Array} matches 
      * @returns {string}
@@ -206,8 +253,9 @@ class SearchResultRenderer {
         const term = contentMatches[0].term;
         const snippet = this.createSnippet(content, term, 80);
         const highlightedSnippet = this.textHighlighter.highlightText(snippet, term);
+        const icon = this.renderMatchTypeIcon(contentMatches[0].matchType);
         
-        return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">${highlightedSnippet}</div>`;
+        return `<div class="text-xs text-neutral-500 mt-1 line-clamp-2">본문: ${highlightedSnippet} ${icon}</div>`;
     }
 
     /**
@@ -275,7 +323,7 @@ class SearchResultRenderer {
                 className: 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
             },
             'scoped': {
-                text: '🎯 범위 지정 검색 결과',
+                text: '🔭 범위 지정 검색 결과',
                 className: 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
             }
         };

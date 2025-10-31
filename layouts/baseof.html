@@ -51,6 +51,13 @@
         </div>
     </div>
 
+    <!-- Hugo 설정을 JavaScript 전역 변수로 전달 -->
+    <script>
+        window.HUGO_CONFIG = {
+            baseURL: "{{ .Site.BaseURL }}"
+        };
+    </script>
+
     <!-- main.js 부르기 -->
     <script src="{{ .Site.BaseURL }}js/main.js" defer></script>
     <script src="{{ .Site.BaseURL }}js/left-nav.js" defer></script>

@@ -5,8 +5,10 @@
 
 class SearchIndexManager {
     constructor() {
-        this.versionUrl = '/indexing/version.json';
-        this.indexUrl = '/indexing/search_index.json';
+        // Hugo의 baseURL을 가져옵니다 (trailing slash 제거)
+        const baseURL = (window.HUGO_CONFIG?.baseURL || '/').replace(/\/$/, '');
+        this.versionUrl = `${baseURL}/indexing/version.json`;
+        this.indexUrl = `${baseURL}/indexing/search_index.json`;
         this.cacheKey = 'search_index_cache';
         this.versionKey = 'search_index_version';
         this.searchIndex = null;

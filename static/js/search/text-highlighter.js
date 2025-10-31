@@ -47,6 +47,32 @@ class TextHighlighter {
     }
 
     /**
+     * 여러 검색어를 한 번에 하이라이팅
+     * @param {string} text 
+     * @param {Array<string>} terms - 검색어 배열
+     * @returns {string} HTML 문자열
+     */
+    highlightMultipleTerms(text, terms) {
+        if (!text || !terms || terms.length === 0) {
+            return this.escapeHtml(text);
+        }
+
+        // 먼저 HTML 이스케이프
+        let result = this.escapeHtml(text);
+        
+        // 긴 term부터 하이라이팅 (중복 방지)
+        const sortedTerms = [...terms].sort((a, b) => b.length - a.length);
+        
+        for (const term of sortedTerms) {
+            if (!term) continue;
+            const regex = new RegExp(`(${this.escapeRegex(term)})`, 'gi');
+            result = result.replace(regex, `<mark class="${this.highlightClass}">$1</mark>`);
+        }
+        
+        return result;
+    }
+
+    /**
      * HTML 이스케이프
      * @param {string} text 
      * @returns {string}

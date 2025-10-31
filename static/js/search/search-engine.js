@@ -190,16 +190,16 @@ class SearchEngine {
 
                 switch (scope) {
                     case 'file':
-                        score = this.searchInFile(fileName, lowerTerm, matches, true); // 부분 일치만
+                        score = this.searchInFile(fileName, lowerTerm, matches); // 정확한 일치도 확인
                         break;
                     case 'tag':
-                        score = this.searchInTags(fileData.frontmatter?.tags, lowerTerm, matches, true);
+                        score = this.searchInTags(fileData.frontmatter?.tags, lowerTerm, matches);
                         break;
                     case 'metadata':
-                        score = this.searchInMetadata(fileData.frontmatter, lowerTerm, matches, metaKey, true);
+                        score = this.searchInMetadata(fileData.frontmatter, lowerTerm, matches, metaKey);
                         break;
                     case 'content':
-                        score = this.searchInContent(fileData.content, lowerTerm, matches, true);
+                        score = this.searchInContent(fileData.content, lowerTerm, matches);
                         break;
                 }
 
@@ -248,9 +248,9 @@ class SearchEngine {
                 return this.PRIORITY_SCORES.EXACT_FILE;
             }
             
-            // 단어 경계로 정확한 단어 일치
-            const wordRegex = new RegExp(`\\b${this.escapeRegex(query)}\\b`, 'i');
-            if (wordRegex.test(fileName)) {
+            // 공백이나 특수문자로 구분된 정확한 단어 일치
+            // 한글, 영문 모두 지원하도록 개선
+            if (this.isExactWordMatch(lowerFileName, query)) {
                 matches.push({ scope: 'file', term: query, matchType: 'exact' });
                 return this.PRIORITY_SCORES.EXACT_FILE;
             }
@@ -373,10 +373,9 @@ class SearchEngine {
 
         const lowerContent = content.toLowerCase();
 
-        // 정확한 단어 일치 (단어 경계)
+        // 정확한 단어 일치 (공백/특수문자로 구분된 단어)
         if (!partialOnly) {
-            const wordRegex = new RegExp(`\\b${this.escapeRegex(query)}\\b`, 'i');
-            if (wordRegex.test(content)) {
+            if (this.isExactWordMatch(lowerContent, query)) {
                 matches.push({ scope: 'content', term: query, matchType: 'exact' });
                 return this.PRIORITY_SCORES.EXACT_CONTENT;
             }
@@ -396,6 +395,21 @@ class SearchEngine {
      */
     escapeRegex(str) {
         return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    /**
+     * 공백이나 특수문자로 구분된 정확한 단어 일치 확인
+     * 한글, 영문 모두 지원
+     * @param {string} text - 검색 대상 텍스트
+     * @param {string} query - 검색어
+     * @returns {boolean}
+     */
+    isExactWordMatch(text, query) {
+        // 파일명을 공백과 특수문자로 분리
+        const words = text.split(/[\s\-_.,;:!?@#$%^&*()[\]{}<>/"'`~+=|\\]+/);
+        
+        // 분리된 단어 중 정확히 일치하는 것이 있는지 확인
+        return words.some(word => word === query);
     }
 }
 
