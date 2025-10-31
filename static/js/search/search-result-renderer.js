@@ -60,7 +60,7 @@ class SearchResultRenderer {
         
         return `
             <a href="${url}" 
-               class="search-result-item block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md"
+               class="search-result-item block p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md border-b border-neutral-200 dark:border-neutral-700"
                data-filename="${this.textHighlighter.escapeHtml(fileName)}"
                data-matches='${JSON.stringify(matches)}'>
                 <div class="flex-1 min-w-0">

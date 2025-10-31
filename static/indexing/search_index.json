@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-01T05:29:44.104068",
+  "generated_at": "2025-11-01T06:06:44.510460",
   "files": {
     "00.Home": {
       "path": "/00.home/",
@@ -318,10 +318,10 @@
     "무제 12": {
       "path": "/무제-12/",
       "filename": "무제 12",
-      "content": "제목입니다 이것은 굵은 글씨와 기울임체 그리고 취소선입니다. inline_code 도 있고, 아래는 코드 블록입니다: ```python def hello(): print(\"hello world\") 리스트 항목 1 리스트 항목 2 인용문입니다. 이미지 링크: OpenAI 헤더1 헤더2 값1 값2 수식 예시: $E=mc^2$ print(clean_markdown_for_search(sample_md)) `` --- ### 안드로이드 리소스 식별자 종류 및 사용 사례 종합표 | 리소스 유형<br>(Resource Type) | 정의 위치<br>(Resource Directory / File) | 주요 목적 | XML에서 사용 예 | 코드에서 참조 방식 | 실제 사용 사례 | |-------------------------------|----------------------------------------|----------|------------------|---------------------|----------------| | ** id ** | 레이아웃 XML 내부 ( android:id ) | 뷰를 코드에서 식별 | android:id=\"@+id/submit_button\" | R.id.submit_button | findViewById(R.id.submit_button) 로 버튼 제어 | | ** string ** | res/values/strings.xml | 텍스트 내용 관리, 다국어 지원 | android:text=\"@string/app_name\" | R.string.app_name | getString(R.string.welcome) 로 메시지 표시 | | ** color ** | res/values/colors.xml | 색상 값 정의 및 재사용 | android:textColor=\"@color/primary\" | R.color.primary | ContextCompat.getColor(context, R.color.error) | | ** dimen ** | res/values/dimens.xml | 여백, 크기, 글자 크기 정의 | android:padding=\"@dimen/activity_margin\" | R.dimen.activity_margin | resources.getDimension(R.dimen.text_size) | | ** style ** | res/values/styles.xml | 뷰 또는 앱 전체의 디자인 규칙 정의 | style=\"@style/CustomButton\" | R.style.CustomButton | 액티비티 테마: android:theme=\"@style/Theme.MyApp\" | | ** layout ** | res/layout/ 폴더 내 XML 파일 | 화면 UI 구조 정의 | — (파일 자체가 리소스) | R.layout.activity_main | setContentView(R.layout.activity_main)`",
+      "content": "",
       "frontmatter": {
         "date": "2025-10-31T21:25:09+09:00",
-        "lastmod": "2025-10-31T21:25:38+09:00"
+        "lastmod": "2025-11-01T05:31:58+09:00"
       }
     },
     "무제 2": {
@@ -1373,7 +1373,7 @@
       }
     },
     "c++ 입력함수": {
-      "path": "/temp/c-입력함수/",
+      "path": "/temp/c++-입력함수/",
       "filename": "c++ 입력함수",
       "content": "```cpp // 정수 int n; cin >> n; // 문자열 string str; cin >> str; <iostrem> 에 포함 표준 입력 버퍼에서 개행문자를 제외한 값을 가져옴 공백이나 개행입력시 공백 이전까지의 값만 결과로 받아드린다 개행문자를 입력 버퍼에 남겨둔다 getline()함수는 두 가지가 존재하는데 각가 다른 라이브러리에 존재한다. istream 라이브러리에 속한 cin.getline()함수와 string 라이브러리에 속하는 getline()함수가 있다. istream 라이브러리의 cin.getline() 문자 배열이며 마지막 글자가 ‘\\0’(terminator)인 c-string을 입력 받는데 사용 n-1개의 문자 개수만큼 읽어와 str에 저장 (n번째 문자는 NULL(‘\\0’)로 바꾼다.) 세 번째 인자인 delim은 별도로 지정해주지 않으면 엔터(‘\\n’)로 인식 delim을 지정해주면 그 제한자(delim)문자 직전까지 읽어서 str에 저장 ```cpp cin.getline(char* str, streamsize n); cin.getline(char* str, streamsize n, char dlim); cin.getline(변수 주소, 최대 입력 가능 문자수, 종결 문자); ex) cin.getline(str, 100); string 라이브러리의 getline() 최대 문자 수를 입력하지 않아도 됨. 원하는 구분자(delimiter)를 만날 때 까지 모든 문자열을 입력 받아 하나의 string 객체에 저장 ```cpp getline(istream& is, string str); getline(istream& is, string str, char dlim); getline(입력스트림 오브젝트, 문자열을 저장할 string객체, 종결 문자); ex) getline(cin, str); ## [](https://kyu9341.github.io/C-C/2020/01/17/C++getline()/#%EC%A3%BC%EC%9D%98 \"주의\")주의[](https://kyu9341.github.io/C-C/2020/01/17/C++getline()/#%EC%A3%BC%EC%9D%98) getline() 함수를 사용할 때 주의할 점이 있다. 1 2 3 4 int n; string str; cin >> n; getline(cin, str); 위와 같은 상황을 보자. 위 코드대로 실행을 하면 n을 입력 받은 후 문자열을 입력받지 않고 바로 다음 코드로 넘어가게 된다. 이유는 버퍼에 정수 값을 입력한 뒤 누른 엔터(‘\\n’)가 그대로 남아있어 getline()에 들어가기 때문이다. 이를 해결하기 위해 cin.ignore() 라는 함수를 사용할 수 있다. 1 2 3 4 5 int n; string str; cin >> n; cin.ignore(); getline(cin, str); 위와 같이 변경하면 cin.ingore()가 입력 버퍼의 모든 내용을 제거해주어 getline()이 정상적으로 동작할 수 있다. 추가적으로 cin.ignore() 함수에 대해 알아보자면 cin.ignore(int n, char dlim); cin.ignore(읽어들일 문자의 개수, 종결 문자); 와 같은 형태로도 사용이 가능하다. 표준 입력 버퍼에서 문자를 하나만 가져온다. 문자 하나만 입력이 가능하며 공백과 개행도 입력으로 포함한다. 1 2 3 char ch1, ch2; ch1 = cin.get(); ch2 = cin.get();",
       "frontmatter": {
@@ -3083,7 +3083,7 @@
       }
     },
     "c,c++ vs code": {
-      "path": "/02.inbox/cc-vs-code/",
+      "path": "/02.inbox/cc++-vs-code/",
       "filename": "c,c++ vs code",
       "content": "컴파일 시에 다음과 같은 3가지 환경 설정이 필요하다(project 내부에서만 작동) ==c_cpp_properties.json== (compiler path and IntelliSense settings) ==tasks.json== ==(build instructions) ==launch.json== ==(debugger settings)== ## mac 기준 task.json ```json { \"tasks\": [ { //c++ 컴파일러 \"type\": \"shell\", \"label\": \"clang++ 빌드 및 터미널 실행\", \"command\": \"/usr/bin/clang++\", \"args\": [ \"-std=c++17\", \"-fcolor-diagnostics\", \"-fansi-escape-codes\", \"-g\", \"${file}\", \"-o\", \"${fileDirname}/${fileBasenameNoExtension}\", // 파일 실행부 \"&&\", \"${fileDirname}/${fileBasenameNoExtension}\", ], \"options\": { \"cwd\": \"${fileDirname}\" }, \"problemMatcher\": [ \"$gcc\" ], \"group\": { \"kind\": \"build\", \"isDefault\": true }, \"detail\": \"직접 실행 task\" }, { //c 컴파일러 \"type\": \"shell\", \"label\": \"clang 빌드 및 터미널 실행\", \"command\": \"/usr/bin/clang\", \"args\": [ \"-std=c11\", \"-fcolor-diagnostics\", \"-fansi-escape-codes\", \"-g\", \"${file}\", \"-o\", \"${fileDirname}/${fileBasenameNoExtension}\", // 파일 실행부 \"&&\", \"${fileDirname}/${fileBasenameNoExtension}\", ], \"options\": { \"cwd\": \"${fileDirname}\" }, \"problemMatcher\": [ \"$gcc\" ], \"group\": { \"kind\": \"build\", \"isDefault\": true }, \"detail\": \"직접 실행 task\" }, { //디버깅시에 사용되는 cpp 빌드 설정 \"type\": \"cppbuild\", \"label\": \"C/C++: clang++ 활성 파일 빌드\", \"command\": \"/usr/bin/clang++\", \"args\": [ \"-std=c++17\", \"-fcolor-diagnostics\", \"-fansi-escape-codes\", \"-g\", \"${file}\", \"-o\", \"${fileDirname}/${fileBasenameNoExtension}\" ], \"options\": { \"cwd\": \"${fileDirname}\" }, \"problemMatcher\": [ \"$gcc\" ], \"group\": { \"kind\": \"build\", \"isDefault\": true }, \"detail\": \"디버거에서 생성된 작업입니다.\" }, { //디버깅시에 사용되는 c 빌드 설정 \"type\": \"cppbuild\", \"label\": \"C/C++: clang 활성 파일 빌드\", \"command\": \"/usr/bin/clang\", \"args\": [ \"-std=c11\", \"-fcolor-diagnostics\", \"-fansi-escape-codes\", \"-g\", \"${file}\", \"-o\", \"${fileDirname}/${fileBasenameNoExtension}\" ], \"options\": { \"cwd\": \"${fileDirname}\" }, \"problemMatcher\": [ \"$gcc\" ], \"group\": { \"kind\": \"build\", \"isDefault\": true }, \"detail\": \"디버거에서 생성된 작업입니다.\" }, { //실행용 \"label\": \"exec\", \"type\": \"shell\", \"command\": \"${fileDirname}/${fileBasenameNoExtension}\", \"group\": { \"kind\": \"build\", \"isDefault\": true } } ], \"version\": \"2.0.0\" } launch.json ```json { // Use IntelliSense to learn about possible attributes. // Hover to view descriptions of existing attributes. // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387 \"version\": \"0.2.0\", \"configurations\": [ { \"name\": \"c++ 디버그\", \"type\": \"lldb\", \"request\": \"launch\", \"program\": \"${fileDirname}/${fileBasenameNoExtension}\", \"args\": [], \"preLaunchTask\": \"C/C++: clang++ 활성 파일 빌드\", \"stdio\": [null, null, null], \"terminal\": \"integrated\" }, { \"name\": \"c 디버그\", \"type\": \"lldb\", \"request\": \"launch\", \"program\": \"${fileDirname}/${fileBasenameNoExtension}\", \"args\": [], \"preLaunchTask\": \"C/C++: clang 활성 파일 빌드\", \"stdio\": [null, null, null], \"terminal\": \"integrated\" }, { \"name\": \"g++ - Build and debug active file\", \"type\": \"cppdbg\", \"request\": \"launch\", \"program\": \"${fileDirname}/${fileBasenameNoExtension}\", \"args\": [], \"stopAtEntry\": true, \"cwd\": \"${workspaceFolder}\", \"environment\": [], \"externalConsole\": true, \"MIMode\": \"lldb\", \"preLaunchTask\": \"C/C++: g++ build active file\" } ] }",
       "frontmatter": {

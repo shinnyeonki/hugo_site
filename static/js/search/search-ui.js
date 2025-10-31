@@ -214,15 +214,15 @@ class SearchUI {
     updateSelection() {
         this.resultItems.forEach((item, index) => {
             if (index === this.selectedIndex) {
-                // 선택된 항목 스타일 적용
-                item.classList.add('bg-blue-100', 'dark:bg-blue-900/30', 'ring-2', 'ring-blue-500');
+                // 선택된 항목 스타일 적용 (primary-blue-light 테마 사용)
+                item.classList.add('bg-blue-50', 'dark:bg-blue-900/20', 'ring-2', 'ring-primary-blue-light');
                 item.classList.remove('hover:bg-neutral-100', 'dark:hover:bg-neutral-800');
                 
                 // 화면에 보이도록 스크롤
                 item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             } else {
                 // 선택 해제된 항목 기본 스타일로 복원
-                item.classList.remove('bg-blue-100', 'dark:bg-blue-900/30', 'ring-2', 'ring-blue-500');
+                item.classList.remove('bg-blue-50', 'dark:bg-blue-900/20', 'ring-2', 'ring-primary-blue-light');
                 item.classList.add('hover:bg-neutral-100', 'dark:hover:bg-neutral-800');
             }
         });

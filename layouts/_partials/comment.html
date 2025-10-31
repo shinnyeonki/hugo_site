@@ -1,35 +1,54 @@
-{{/*  <section
-  class="comments"
-  id="comments-for-post-{{ .File.UniqueID }}"
-  data-post-id="{{ .File.UniqueID }}"
-  data-post-path="{{ .RelPermalink }}"
-  aria-labelledby="comments-heading-{{ .File.UniqueID }}"
->
-  <h2 id="comments-heading-{{ .File.UniqueID }}">댓글</h2>
-  <!-- 댓글은 JS로 비동기 삽입 -->
-</section>  */}}
-{{/*  
-{{- $rawDate := .Params.date -}}
-{{- if $rawDate }}
+{{- if .Params.date }}
+{{- $commentId := .Date.Format "2006-01-02T15:04:05-07:00" }}
+<section class="comments" id="comments-section">
+  <script>console.log("comment ID : {{ $commentId }}");</script>
+  <script async
+    src="https://utteranc.es/client.js"
+    repo="shinnyeonki/blog-comment"
+    issue-term="{{ $commentId }}"
+    label="Comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+  </script>
+</section>
+
 <script>
-  // 원본 문자열 (그대로)
-  console.log("DEBUG: Raw date string =", {{ $rawDate | jsonify }});
+  // Utterances 테마를 사이트 다크모드에 동기화
+  function updateUtterancesTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const theme = isDark ? 'github-dark' : 'github-light';
+    
+    const utterancesFrame = document.querySelector('.utterances-frame');
+    if (utterancesFrame) {
+      const message = {
+        type: 'set-theme',
+        theme: theme
+      };
+      utterancesFrame.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+  }
 
-  // URL 인코딩
-  console.log("DEBUG: URL-encoded =", encodeURIComponent({{ $rawDate | jsonify }}));
+  // MutationObserver로 html 태그의 class 변화 감지
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        updateUtterancesTheme();
+      }
+    });
+  });
 
-  // URL-safe 식별자 (slugify 스타일)
-  const urlSafe = {{ $rawDate | jsonify }}.toLowerCase()
-    .replace(/[:+]/g, '-')      // ':'와 '+'를 '-'로
-    .replace(/[^a-z0-9\-]/g, '-'); // 나머지 특수문자도 하이픈으로
-  console.log("DEBUG: URL-safe ID =", urlSafe);
+  // html 태그 관찰 시작
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
 
-  // Base64 인코딩
-  const base64 = btoa({{ $rawDate | jsonify }});
-  console.log("DEBUG: Base64 =", base64);
-
-  // 페이지별 댓글 섹션 ID로 사용 예시
-  const commentSectionId = "comments-" + urlSafe;
-  console.log("DEBUG: Comment section ID =", commentSectionId);
+  // 초기 테마 설정 (Utterances iframe 로드 후)
+  window.addEventListener('message', (event) => {
+    if (event.origin === 'https://utteranc.es') {
+      updateUtterancesTheme();
+    }
+  });
 </script>
-{{- end }}  */}}
+{{- end }}

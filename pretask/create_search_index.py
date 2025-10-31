@@ -73,7 +73,7 @@ def generate_pretty_url(relative_path_str):
     def clean_part(part):
         part = part.lower()
         part = re.sub(r'\s+', '-', part)               # 공백 → 하이픈
-        part = re.sub(r'[^\w\-@.]', '', part, flags=re.UNICODE)  # 허용되지 않는 문자 제거
+        part = re.sub(r'[^\w\-@.+]', '', part, flags=re.UNICODE)  # 허용되지 않는 문자 제거 (+ 추가)
         part = re.sub(r'-+', '-', part)                # 연속 하이픈 → 하나로
         return part.strip('-')
     
@@ -125,63 +125,6 @@ def extract_frontmatter(content):
         frontmatter[current_key] = current_list
 
     return frontmatter
-
-
-# def clean_markdown_for_search(content):
-#     content = re.sub(r'^---\s*\n[\s\S]*?---\s*\n?', '', content, flags=re.DOTALL)
-#     content = re.sub(r'```[\s\S]*?```', ' ', content)
-#     content = re.sub(r'`[^`]+`', ' ', content)
-#     content = re.sub(r'!\[.*?\]\(.*?\)', ' ', content)
-#     content = re.sub(r'\[([^\]]+)\]\(.*?\)', r'\1', content)
-#     content = re.sub(r'^[#>*+-]+\s*', '', content, flags=re.MULTILINE)
-#     content = re.sub(r'^---\s*$', '', content, flags=re.MULTILINE)
-#     content = re.sub(r'(\*\*|\*|__|_|~~)', '', content)
-#     content = re.sub(r'\s+', ' ', content)
-#     return content.strip()
-
-# def clean_markdown_for_search(content):
-#     """
-#     마크다운 텍스트를 검색 인덱싱에 적합한 순수 텍스트로 정제합니다.
-#     - 1단계: Frontmatter 등 검색에 불필요한 섹션을 완전히 제거합니다.
-#     - 2단계: 코드, 이미지, 링크 등에서 문법(syntax)은 제거하되, 내용(content)은 보존합니다.
-#     - 3단계: 헤더, 목록, 강조 등 순수한 텍스트 서식을 제거합니다.
-#     - 4단계: 공백을 정규화하여 마무리합니다.
-#     """
-#     # 1단계: 버릴 것들을 먼저 확실하게 제거하기 (Unambiguous Removal)
-#     # Frontmatter 제거
-#     content = re.sub(r'^---\s*\n[\s\S]*?---\s*\n?', '', content, flags=re.DOTALL)
-
-#     # 2단계: 내용(Content)은 살리되, 문법(Syntax)만 제거하기
-#     # (TO-BE) 코드 블록: 내용물은 남기고, ``` 구문만 제거
-#     # ```python, ``` 등 코드 블록의 시작과 끝 라인을 제거합니다.
-#     content = re.sub(r'^```[a-zA-Z0-9-]*\s*$', '', content, flags=re.MULTILINE)
-
-#     # (TO-BE) 인라인 코드: 내용물은 남기고, ` 구문만 제거 (캡처 그룹 \1 사용)
-#     # `code` -> code
-#     content = re.sub(r'`([^`]+)`', r'\1', content)
-
-#     # (TO-BE) 이미지: 대체 텍스트(alt text)는 남기고, 나머지 구문 제거 (캡처 그룹 \1 사용)
-#     # ![alt text](url) -> alt text
-#     content = re.sub(r'!\[([^\]]*)\]\(.*?\)', r'\1', content)
-
-#     # (유지) 링크: 링크 텍스트는 남기고, 나머지 구문 제거 (캡처 그룹 \1 사용)
-#     # [link text](url) -> link text
-#     content = re.sub(r'\[([^\]]+)\]\(.*?\)', r'\1', content)
-
-#     # 3단계: 순수 텍스트 서식 제거하기 (Formatting Cleanup)
-#     # 헤더, 목록, 인용 기호 제거
-#     content = re.sub(r'^[#>*+-]+\s*', '', content, flags=re.MULTILINE)
-
-#     # 수평선 제거 (---, *** 등)
-#     content = re.sub(r'^\s*[-*_]{3,}\s*$', '', content, flags=re.MULTILINE)
-
-#     # 강조(볼드, 이탤릭), 취소선 등 인라인 서식 기호 제거
-#     content = re.sub(r'(\*\*|\*|__|_|~~)', '', content)
-
-#     # 4단계: 최종 정제 (Final Polishing)
-#     # 여러 공백/개행을 하나의 공백으로 통합하고, 앞뒤 공백 제거
-#     content = re.sub(r'\s+', ' ', content)
-#     return content.strip()
 
 def clean_markdown_for_search(content: str) -> str:
     """

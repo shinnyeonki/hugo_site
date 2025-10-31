@@ -24,16 +24,19 @@
                     {{ .Content }}
                 </section>
             </article>
-            
-            <!-- 댓글을 직접 포함시킵니다. -->
-            {{/*  site-info 아래의 페이지는 제외  */}}
-            {{ if ne .Params.layout "site-info" }}
-                {{ partial "comment.html" . }}
-            {{ end }}
         </div>
     </div>
 
-    <!-- 4. Footer 영역 -->
+    <!-- 4. 댓글 영역 -->
+    {{- if ne .Params.layout "site-info" }}
+    <div class="w-full mb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            {{ partial "comment.html" . }}
+        </div>
+    </div>
+    {{- end }}
+
+    <!-- 5. Footer 영역 -->
     <div class="w-full">
         <div class="max-w-7xl mx-auto">
             {{ partial "footer.html" . }}
