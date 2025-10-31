@@ -1,18 +1,40 @@
-/* toc 의 경우 id 가 TableOfContents 인 div 에만 적용됩니다. */
-
+/* TOC 기본 스타일 */
 #TableOfContents {
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
 
-/* 최상위 ul - 숨김 처리 (구조적 래퍼) */
-#TableOfContents > ul {
+#TableOfContents ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* 2단계 li - 메인 섹션 (# 헤더 시작) */
+#TableOfContents li {
+    margin-bottom: 0.5rem;
+}
+
+#TableOfContents a {
+    display: block;
+    color: rgb(75 85 99);
+    transition: all 200ms;
+}
+
+:root.dark #TableOfContents a {
+    color: rgb(156 163 175);
+}
+
+#TableOfContents a:hover {
+    color: rgb(31 41 55);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+:root.dark #TableOfContents a:hover {
+    color: rgb(229 231 235);
+}
+
+/* 1단계 - # 헤더 */
 #TableOfContents > ul > li {
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
@@ -27,175 +49,105 @@
     border-bottom: 0;
 }
 
-/* 2단계 ul */
-#TableOfContents > ul > li > ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+#TableOfContents > ul > li > a {
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.75rem;
+    color: rgb(75 85 99);
+    margin-bottom: 0.75rem;
 }
 
-/* 3단계 li - 서브섹션 (## 헤더) */
+:root.dark #TableOfContents > ul > li > a {
+    color: rgb(156 163 175);
+}
+
+/* 2단계 - ## 헤더 */
 #TableOfContents > ul > li > ul > li {
     margin-bottom: 1rem;
 }
 
-/* 3단계 링크 - 서브섹션 제목 */
 #TableOfContents > ul > li > ul > li > a {
-    display: block;
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    color: rgb(38 38 38);
-    margin-bottom: 0.5rem;
-    transition: color 200ms;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: rgb(75 85 99);
 }
 
 :root.dark #TableOfContents > ul > li > ul > li > a {
-    color: rgb(229 229 229);
+    color: rgb(156 163 175);
 }
 
-#TableOfContents > ul > li > ul > li > a:hover {
-    color: rgb(59 130 246);
-}
-
-/* 3단계 ul */
-#TableOfContents > ul > li > ul > li > ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* 4단계 li - ### 헤더 */
-#TableOfContents > ul > li > ul > li > ul > li {
-    margin-bottom: 0.5rem;
-}
-
-/* 4단계 링크 - ### 헤더 제목 */
+/* 3단계 - ### 헤더 (바 있음) */
 #TableOfContents > ul > li > ul > li > ul > li > a {
-    display: block;
     font-weight: 600;
-    font-size: 0.9375rem;
-    line-height: 1.375rem;
-    color: rgb(64 64 64);
-    padding-left: 0.75rem;
-    border-left: 2px solid rgb(229 229 229);
-    transition: all 200ms;
+    font-size: 0.875rem;
+    padding-left: 0.875rem;
+    border-left: 3px solid rgb(156 163 175);
 }
 
 :root.dark #TableOfContents > ul > li > ul > li > ul > li > a {
-    color: rgb(212 212 212);
-    border-left-color: rgb(64 64 64);
+    border-left-color: rgb(107 114 128);
 }
 
 #TableOfContents > ul > li > ul > li > ul > li > a:hover {
-    color: rgb(59 130 246);
-    border-left-color: rgb(59 130 246);
+    padding-left: 1rem;
 }
 
-/* 4단계 ul */
+/* 4단계 - #### 헤더 (바 있음) */
 #TableOfContents > ul > li > ul > li > ul > li > ul {
-    list-style: none;
-    margin-left: 0.75rem;
-    margin-top: 0.25rem;
+    margin-left: 0.5rem;
+    margin-top: 0.375rem;
 }
 
-/* 5단계 li - #### 헤더 */
-#TableOfContents > ul > li > ul > li > ul > li > ul > li {
-    margin-bottom: 0.25rem;
-}
-
-/* 5단계 링크 - #### 헤더 제목 */
 #TableOfContents > ul > li > ul > li > ul > li > ul > li > a {
-    display: block;
+    font-weight: 500;
     font-size: 0.875rem;
-    line-height: 1.25rem;
-    color: rgb(82 82 82);
-    padding: 0.125rem 0;
-    padding-left: 0.5rem;
-    border-left: 1px solid rgb(229 229 229);
-    transition: all 200ms;
+    padding-left: 0.75rem;
+    border-left: 2px solid rgb(209 213 219);
+    margin-left: 0.5rem;
 }
 
 :root.dark #TableOfContents > ul > li > ul > li > ul > li > ul > li > a {
-    color: rgb(163 163 163);
-    border-left-color: rgb(82 82 82);
+    border-left-color: rgb(82 82 91);
 }
 
 #TableOfContents > ul > li > ul > li > ul > li > ul > li > a:hover {
-    color: rgb(59 130 246);
-    border-left-color: rgb(59 130 246);
+    padding-left: 0.875rem;
 }
 
-/* 5단계 ul */
+/* 5단계 - ##### 헤더 */
 #TableOfContents > ul > li > ul > li > ul > li > ul > li > ul {
-    list-style: none;
-    margin-left: 0.5rem;
-    margin-top: 0.125rem;
+    margin-left: 1rem;
+    margin-top: 0.25rem;
 }
 
-/* 6단계 li - ##### 헤더 */
-#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li {
-    margin-bottom: 0.125rem;
-}
-
-/* 6단계 링크 - ##### 헤더 제목 */
 #TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > a {
-    display: block;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    color: rgb(115 115 115);
-    padding: 0.125rem 0;
-    padding-left: 0.5rem;
-    transition: color 200ms;
+    font-size: 0.875rem;
+    padding-left: 0.625rem;
 }
 
-:root.dark #TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > a {
-    color: rgb(115 115 115);
-}
-
-#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > a:hover {
-    color: rgb(59 130 246);
-}
-
-/* 6단계 ul */
+/* 6단계 - ###### 헤더 */
 #TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul {
-    list-style: none;
-    margin-left: 0.5rem;
-    margin-top: 0.125rem;
+    margin-left: 0.75rem;
 }
 
-/* 7단계 li - ###### 헤더 */
-#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li {
-    padding-left: 0.5rem;
-    margin-bottom: 0.125rem;
-}
-
-/* 7단계 링크 - ###### 헤더 제목 */
 #TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
-    display: block;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    color: rgb(115 115 115);
-    padding: 0.125rem 0;
-    transition: color 200ms;
+    font-size: 0.875rem;
+    padding-left: 0.5rem;
+    color: rgb(156 163 175);
 }
 
 :root.dark #TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
-    color: rgb(115 115 115);
+    color: rgb(107 114 128);
 }
 
-#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a:hover {
-    color: rgb(59 130 246);
-}
-
-/* 호버 효과 강화 */
-#TableOfContents a:hover {
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
-/* 현재 활성화된 링크 스타일 (옵션) */
+/* 현재 위치 표시 */
 #TableOfContents a.active {
     color: rgb(59 130 246);
     font-weight: 600;
+    border-left-color: rgb(59 130 246);
+}
+
+:root.dark #TableOfContents a.active {
+    color: rgb(96 165 250);
+    border-left-color: rgb(96 165 250);
 }

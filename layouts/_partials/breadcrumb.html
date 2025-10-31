@@ -1,0 +1,19 @@
+{{ if ne .Kind "home" }}
+<nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+    <a href="{{ .Page.Site.BaseURL }}" class="hover:text-primary-blue-light transition-colors">Home</a>
+    {{ $currentPage := . }}
+    {{ range $index, $item := .Ancestors.Reverse }}
+    {{ if ne $item.Kind "home" }}
+    <span>/</span>
+    <a href="{{ $item.Permalink }}" class="hover:text-primary-blue-light transition-colors">{{ $item.Title }}</a>
+    {{ end }}
+    {{ end }}
+    <span>/</span>
+    <span class="text-neutral-700 dark:text-neutral-300 font-semibold"><a href="{{ .Permalink }}" class="hover:text-primary-blue-light ">{{ .Title }}</a></span>
+</nav>
+{{ else }}
+<nav class="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+    <span class="text-neutral-700 dark:text-neutral-300 font-semibold"><a
+            href="{{ .Page.Site.BaseURL }}" class="hover:text-primary-blue-light">Home</a></span>
+</nav>
+{{ end }}
