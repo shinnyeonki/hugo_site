@@ -146,13 +146,15 @@ class SearchResultRenderer {
         
         const tagsHtml = displayTags.map(tag => {
             const tagStr = String(tag);
-            const isMatched = tagMatches.some(m => 
+            
+            // 해당 태그와 매치되는 검색어 찾기
+            const matchedTerm = tagMatches.find(m => 
                 String(m.value).toLowerCase() === tagStr.toLowerCase()
             );
             
-            if (isMatched) {
-                const highlightClass = 'bg-yellow-200 dark:bg-yellow-600';
-                return `<mark class="${highlightClass}">${this.textHighlighter.escapeHtml(tagStr)}</mark>`;
+            if (matchedTerm) {
+                // 검색어(term)만 부분 하이라이팅
+                return this.textHighlighter.highlightText(tagStr, matchedTerm.term);
             }
             return this.textHighlighter.escapeHtml(tagStr);
         }).join(', ');

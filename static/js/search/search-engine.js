@@ -13,16 +13,16 @@ class SearchEngine {
         // 우선순위 점수 (높을수록 우선)
         this.PRIORITY_SCORES = {
             // 정확한 일치 (Exact Match)
-            EXACT_FILE: 1000,
-            EXACT_TAG: 900,
-            EXACT_METADATA: 800,
-            EXACT_CONTENT: 700,
+            EXACT_FILE: 400,
+            EXACT_TAG: 300,
+            EXACT_METADATA: 200,
+            EXACT_CONTENT: 100,
             
             // 부분 일치 (Substring Match)
-            PARTIAL_FILE: 600,
-            PARTIAL_TAG: 500,
-            PARTIAL_METADATA: 400,
-            PARTIAL_CONTENT: 300
+            PARTIAL_FILE: 40,
+            PARTIAL_TAG: 30,
+            PARTIAL_METADATA: 20,
+            PARTIAL_CONTENT: 10
         };
     }
 
