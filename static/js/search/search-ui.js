@@ -12,6 +12,10 @@ class SearchUI {
         this.debounceTimer = null;
         this.debounceDelay = 150; // ms
         
+        // 키보드 네비게이션 상태
+        this.selectedIndex = -1;
+        this.resultItems = [];
+        
         this.init();
     }
 
@@ -31,6 +35,11 @@ class SearchUI {
             if (e.target.value.trim().length > 0) {
                 this.performSearch(e.target.value);
             }
+        });
+
+        // 키보드 네비게이션 이벤트
+        this.searchInput.addEventListener('keydown', (e) => {
+            this.handleKeyDown(e);
         });
     }
 
@@ -88,6 +97,12 @@ class SearchUI {
         this.searchResults.classList.remove('hidden');
         this.searchResults.innerHTML = html;
 
+        // 결과 아이템 DOM 요소 저장
+        this.resultItems = Array.from(this.searchResults.querySelectorAll('.search-result-item'));
+        
+        // 선택 인덱스 초기화
+        this.selectedIndex = -1;
+
         // 클릭 이벤트 등록
         this.attachClickHandlers();
     }
@@ -120,6 +135,7 @@ class SearchUI {
     hideResults() {
         this.searchResults.classList.add('hidden');
         this.searchResults.innerHTML = '';
+        this.resetSelection();
     }
 
     /**
@@ -128,6 +144,104 @@ class SearchUI {
     showNoResults() {
         this.searchResults.classList.remove('hidden');
         this.searchResults.innerHTML = '<div class="p-2 text-sm text-neutral-500">검색 결과가 없습니다.</div>';
+        this.resetSelection();
+    }
+
+    /**
+     * 키보드 입력 처리
+     */
+    handleKeyDown(e) {
+        const hasResults = this.resultItems.length > 0;
+        
+        switch(e.key) {
+            case 'ArrowDown':
+                if (hasResults) {
+                    e.preventDefault();
+                    this.selectNext();
+                }
+                break;
+            case 'ArrowUp':
+                if (hasResults) {
+                    e.preventDefault();
+                    this.selectPrevious();
+                }
+                break;
+            case 'Enter':
+                if (this.selectedIndex >= 0) {
+                    e.preventDefault();
+                    this.navigateToSelected();
+                }
+                break;
+            case 'Escape':
+                this.hideResults();
+                this.searchInput.blur();
+                break;
+        }
+    }
+
+    /**
+     * 다음 항목 선택
+     */
+    selectNext() {
+        if (this.resultItems.length === 0) return;
+        
+        this.selectedIndex = (this.selectedIndex + 1) % this.resultItems.length;
+        this.updateSelection();
+    }
+
+    /**
+     * 이전 항목 선택
+     */
+    selectPrevious() {
+        if (this.resultItems.length === 0) return;
+        
+        if (this.selectedIndex <= 0) {
+            this.selectedIndex = this.resultItems.length - 1;
+        } else {
+            this.selectedIndex--;
+        }
+        this.updateSelection();
+    }
+
+    /**
+     * 선택 상태 시각적 업데이트
+     */
+    updateSelection() {
+        this.resultItems.forEach((item, index) => {
+            if (index === this.selectedIndex) {
+                // 선택된 항목 스타일 적용
+                item.classList.add('bg-blue-100', 'dark:bg-blue-900/30', 'ring-2', 'ring-blue-500');
+                item.classList.remove('hover:bg-neutral-100', 'dark:hover:bg-neutral-800');
+                
+                // 화면에 보이도록 스크롤
+                item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            } else {
+                // 선택 해제된 항목 기본 스타일로 복원
+                item.classList.remove('bg-blue-100', 'dark:bg-blue-900/30', 'ring-2', 'ring-blue-500');
+                item.classList.add('hover:bg-neutral-100', 'dark:hover:bg-neutral-800');
+            }
+        });
+    }
+
+    /**
+     * 선택된 항목으로 이동
+     */
+    navigateToSelected() {
+        if (this.selectedIndex >= 0 && this.selectedIndex < this.resultItems.length) {
+            const selectedItem = this.resultItems[this.selectedIndex];
+            const url = selectedItem.getAttribute('href');
+            if (url) {
+                window.location.href = url;
+            }
+        }
+    }
+
+    /**
+     * 선택 초기화
+     */
+    resetSelection() {
+        this.selectedIndex = -1;
+        this.resultItems = [];
     }
 }
 
