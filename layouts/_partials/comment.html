@@ -1,6 +1,7 @@
 {{- if .Params.date }}
 {{- $commentId := .Date.Format "2006-01-02T15:04:05-07:00" }}
 <section class="comments" id="comments-section">
+  <hr style="border: none; border-top: 1px solid #e1e4e8; margin: 2rem 0 1rem 0;">
   <script>console.log("comment ID : {{ $commentId }}");</script>
   <script async
     src="https://utteranc.es/client.js"

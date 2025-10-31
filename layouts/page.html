@@ -19,10 +19,19 @@
     <div id="content-container" class="w-full mx-auto">
         <div id="content" class="max-w-[72ch] mx-auto">
             <article id="main-content-container">
+                {{- if .Content }}
                 <!-- prose: tailwindcss typography 플러그인 클래스로 마크다운 콘텐츠 스타일링 -->
                 <section id="markdown-content" class="prose prose-sm dark:prose-invert max-w-none break-words overflow-wrap-anywhere">
                     {{ .Content }}
                 </section>
+                {{- else }}
+                <!-- 내용이 없을 때 경고 메시지 -->
+                <div class="p-6 bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-lg">
+                    <p class="text-neutral-700 dark:text-neutral-300 text-center">
+                        ⚠️ 이 페이지에는 아직 작성된 내용이 없습니다.
+                    </p>
+                </div>
+                {{- end }}
             </article>
         </div>
     </div>
