@@ -6,6 +6,8 @@
 class URLBuilder {
     constructor(indexManager) {
         this.indexManager = indexManager;
+        // baseURL 가져오기 (Hugo에서 제공)
+        this.baseURL = window.HUGO_CONFIG?.baseURL || '';
     }
 
     /**
@@ -65,8 +67,12 @@ class URLBuilder {
         if (index && index.files && index.files[fileName]) {
             const path = index.files[fileName].path;
             if (path) {
-                // 상대 경로 사용 (path는 이미 /로 시작)
-                return path;
+                // baseURL을 존중하여 전체 경로 생성
+                // path가 /로 시작하면 baseURL과 결합
+                if (path.startsWith('/')) {
+                    return `${this.baseURL}${path.substring(1)}`;
+                }
+                return `${this.baseURL}${path}`;
             }
         }
         

@@ -5,10 +5,12 @@
 
 class SearchIndexManager {
     constructor() {
-        // 상대 경로 사용 (CORS 문제 방지)
-        // Hugo가 현재 origin에서 제공하므로 절대 경로만 사용
-        this.versionUrl = '/indexing/version.json';
-        this.indexUrl = '/indexing/search_index.json';
+        // baseURL 가져오기 (Hugo에서 제공)
+        const baseURL = window.HUGO_CONFIG?.baseURL || '';
+        
+        // baseURL을 존중하여 URL 생성
+        this.versionUrl = `${baseURL}indexing/version.json`;
+        this.indexUrl = `${baseURL}indexing/search_index.json`;
         
         // SearchConfig 사용 (있으면 사용, 없으면 기본값)
         const config = window.SearchConfig?.CACHE || {};
