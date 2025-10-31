@@ -66,15 +66,26 @@ def parse_hugo_toml_ignore_files(toml_path):
 
 
 def generate_pretty_url(relative_path_str):
-    """파일 경로를 Hugo의 Pretty URL 형식으로 변환"""
+    """파일 경로를 Hugo의 Pretty URL 형식으로 변환 (공백 포함 경로도 안전하게 처리)"""
     p = Path(relative_path_str)
-    slug = p.stem.lower()
-    slug = re.sub(r'\s+', '-', slug)
-    slug = re.sub(r'[^\w\-@]', '', slug, flags=re.UNICODE)
-    slug = re.sub(r'-+', '-', slug)
-    slug = slug.strip('-')
-    url_path = p.parent / slug
-    return f"/{url_path.as_posix().strip('./')}/"
+    
+    # 모든 경로 구성 요소(디렉터리 + 파일명)를 정제
+    def clean_part(part):
+        part = part.lower()
+        part = re.sub(r'\s+', '-', part)               # 공백 → 하이픈
+        part = re.sub(r'[^\w\-@.]', '', part, flags=re.UNICODE)  # 허용되지 않는 문자 제거
+        part = re.sub(r'-+', '-', part)                # 연속 하이픈 → 하나로
+        return part.strip('-')
+    
+    cleaned_parts = [clean_part(part) for part in p.parts if part]
+    if not cleaned_parts:
+        return "/"
+    
+    # 마지막은 확장자 없는 파일명(stem)이어야 함
+    cleaned_parts[-1] = clean_part(p.stem)
+    
+    url_path = "/".join(cleaned_parts).strip('/')
+    return f"/{url_path}/" if url_path else "/"
 
 
 def extract_frontmatter(content):

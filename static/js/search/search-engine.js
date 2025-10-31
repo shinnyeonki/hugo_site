@@ -238,10 +238,22 @@ class SearchEngine {
     searchInFile(fileName, query, matches, partialOnly = false) {
         const lowerFileName = fileName.toLowerCase();
         
-        // 정확한 일치
-        if (!partialOnly && lowerFileName === query) {
-            matches.push({ scope: 'file', term: query, matchType: 'exact' });
-            return this.PRIORITY_SCORES.EXACT_FILE;
+        // .md 확장자 제거한 파일명
+        const fileNameWithoutExt = lowerFileName.replace(/\.md$/, '');
+        
+        if (!partialOnly) {
+            // 정확한 일치 (확장자 제외한 파일명과 비교)
+            if (fileNameWithoutExt === query || lowerFileName === query) {
+                matches.push({ scope: 'file', term: query, matchType: 'exact' });
+                return this.PRIORITY_SCORES.EXACT_FILE;
+            }
+            
+            // 단어 경계로 정확한 단어 일치
+            const wordRegex = new RegExp(`\\b${this.escapeRegex(query)}\\b`, 'i');
+            if (wordRegex.test(fileName)) {
+                matches.push({ scope: 'file', term: query, matchType: 'exact' });
+                return this.PRIORITY_SCORES.EXACT_FILE;
+            }
         }
 
         // 부분 일치
@@ -266,13 +278,17 @@ class SearchEngine {
         for (const tag of tags) {
             const lowerTag = String(tag).toLowerCase();
 
-            // 정확한 일치
-            if (!partialOnly && lowerTag === query) {
-                matches.push({ scope: 'tag', term: query, matchType: 'exact', value: tag });
-                maxScore = Math.max(maxScore, this.PRIORITY_SCORES.EXACT_TAG);
+            if (!partialOnly) {
+                // 정확한 일치
+                if (lowerTag === query) {
+                    matches.push({ scope: 'tag', term: query, matchType: 'exact', value: tag });
+                    maxScore = Math.max(maxScore, this.PRIORITY_SCORES.EXACT_TAG);
+                    continue;
+                }
             }
+            
             // 부분 일치
-            else if (lowerTag.includes(query)) {
+            if (lowerTag.includes(query)) {
                 matches.push({ scope: 'tag', term: query, matchType: 'partial', value: tag });
                 maxScore = Math.max(maxScore, this.PRIORITY_SCORES.PARTIAL_TAG);
             }
@@ -292,31 +308,55 @@ class SearchEngine {
         let maxScore = 0;
 
         for (const [key, value] of Object.entries(frontmatter)) {
-            // targetKey가 지정된 경우 해당 키만 검색
-            if (targetKey && key.toLowerCase() !== targetKey.toLowerCase()) {
+            // tags는 별도로 처리하므로 제외
+            if (key.toLowerCase() === 'tags') {
                 continue;
             }
 
             const lowerKey = key.toLowerCase();
             const lowerValue = String(value).toLowerCase();
 
-            // 키 또는 값에서 검색
-            const keyMatch = lowerKey.includes(query);
-            const valueMatch = lowerValue.includes(query);
-
-            if (!partialOnly) {
-                // 정확한 일치
-                if (lowerKey === query || lowerValue === query) {
-                    matches.push({ scope: 'metadata', term: query, matchType: 'exact', key, value });
-                    maxScore = Math.max(maxScore, this.PRIORITY_SCORES.EXACT_METADATA);
-                    continue;
+            // targetKey가 지정된 경우
+            if (targetKey) {
+                const lowerTargetKey = targetKey.toLowerCase();
+                
+                // 키가 일치하는 경우에만 값 검색
+                if (lowerKey === lowerTargetKey || lowerKey.includes(lowerTargetKey)) {
+                    if (!partialOnly && lowerValue === query) {
+                        // 정확한 값 일치
+                        matches.push({ scope: 'metadata', term: query, matchType: 'exact', key, value });
+                        maxScore = Math.max(maxScore, this.PRIORITY_SCORES.EXACT_METADATA);
+                    } else if (lowerValue.includes(query)) {
+                        // 부분 값 일치
+                        matches.push({ scope: 'metadata', term: query, matchType: 'partial', key, value });
+                        maxScore = Math.max(maxScore, this.PRIORITY_SCORES.PARTIAL_METADATA);
+                    }
                 }
-            }
+            } else {
+                // targetKey가 없는 경우: 키 또는 값 검색
+                
+                if (!partialOnly) {
+                    // 정확한 일치 (키 또는 값)
+                    if (lowerKey === query) {
+                        matches.push({ scope: 'metadata', term: query, matchType: 'exact', key, value });
+                        maxScore = Math.max(maxScore, this.PRIORITY_SCORES.EXACT_METADATA);
+                        continue;
+                    }
+                    if (lowerValue === query) {
+                        matches.push({ scope: 'metadata', term: query, matchType: 'exact', key, value });
+                        maxScore = Math.max(maxScore, this.PRIORITY_SCORES.EXACT_METADATA);
+                        continue;
+                    }
+                }
 
-            // 부분 일치
-            if (keyMatch || valueMatch) {
-                matches.push({ scope: 'metadata', term: query, matchType: 'partial', key, value });
-                maxScore = Math.max(maxScore, this.PRIORITY_SCORES.PARTIAL_METADATA);
+                // 부분 일치 (키 또는 값)
+                const keyMatch = lowerKey.includes(query);
+                const valueMatch = lowerValue.includes(query);
+                
+                if (keyMatch || valueMatch) {
+                    matches.push({ scope: 'metadata', term: query, matchType: 'partial', key, value });
+                    maxScore = Math.max(maxScore, this.PRIORITY_SCORES.PARTIAL_METADATA);
+                }
             }
         }
 

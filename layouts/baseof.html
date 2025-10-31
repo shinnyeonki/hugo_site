@@ -17,7 +17,8 @@
 
         <!-- Left Navigation Sidebar 틀 -->
         <nav id="left-nav-container"
-            class="fixed top-0 left-0 h-screen z-30 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 transition-transform duration-300 ease-in-out w-[calc(100svw-4rem)] -translate-x-full peer-checked:translate-x-0 overflow-x-hidden overflow-y-hidden">
+            class="fixed top-0 left-0 h-screen z-30 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 transition-transform duration-300 ease-in-out w-[calc(100svw-4rem)] -translate-x-full peer-checked:translate-x-0 overflow-x-hidden overflow-y-hidden"
+            aria-hidden="true">
             {{ partial "left-nav.html" . }}
         </nav>
 
@@ -55,10 +56,13 @@
     <script src="{{ .Site.BaseURL }}js/left-nav.js" defer></script>
     <script src="{{ .Site.BaseURL }}js/util/content_width.js" defer></script>
     
-    <!-- 검색 시스템 (순서 중요: manager -> parser -> engine -> ui) -->
+    <!-- 검색 시스템 (순서 중요: manager -> parser -> engine -> utilities -> renderer -> ui) -->
     <script src="{{ .Site.BaseURL }}js/search/search-index-manager.js" defer></script>
     <script src="{{ .Site.BaseURL }}js/search/search-query-parser.js" defer></script>
     <script src="{{ .Site.BaseURL }}js/search/search-engine.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/search/text-highlighter.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/search/url-builder.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/search/search-result-renderer.js" defer></script>
     <script src="{{ .Site.BaseURL }}js/search/search-ui.js" defer></script>
     
     {{ if eq .Kind "page" }}
