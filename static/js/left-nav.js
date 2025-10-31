@@ -136,4 +136,31 @@ document.addEventListener('DOMContentLoaded', function () {
             if (dateSpan) dateSpan.classList.add('ml-2');
         });
     });
+
+    // ============================================
+    // Inert 속성 관리 (접근성 개선)
+    // ============================================
+    const leftNavContainer = document.getElementById('left-nav-container');
+    const leftNavToggle = document.getElementById('leftNavToggleCheckbox');
+    
+    if (leftNavContainer && leftNavToggle) {
+        // 초기 상태 설정 (체크박스가 체크되지 않은 상태 = 네비게이션 숨김)
+        const updateInertState = () => {
+            if (leftNavToggle.checked) {
+                // 네비게이션이 열려있을 때
+                leftNavContainer.removeAttribute('inert');
+                leftNavContainer.setAttribute('aria-hidden', 'false');
+            } else {
+                // 네비게이션이 닫혀있을 때
+                leftNavContainer.setAttribute('inert', '');
+                leftNavContainer.setAttribute('aria-hidden', 'true');
+            }
+        };
+        
+        // 초기 상태 적용
+        updateInertState();
+        
+        // 체크박스 상태 변경 감지
+        leftNavToggle.addEventListener('change', updateInertState);
+    }
 });

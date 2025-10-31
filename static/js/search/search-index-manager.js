@@ -1,22 +1,24 @@
-/**
- * 검색 인덱스 캐시 관리 모듈
+    /**
+     * 검색 인덱스 캐시 관리 모듈
  * version.json을 체크하여 search_index.json의 캐시를 관리합니다.
  */
 
 class SearchIndexManager {
     constructor() {
-        // Hugo의 baseURL을 가져옵니다 (trailing slash 제거)
-        const baseURL = (window.HUGO_CONFIG?.baseURL || '/').replace(/\/$/, '');
-        this.versionUrl = `${baseURL}/indexing/version.json`;
-        this.indexUrl = `${baseURL}/indexing/search_index.json`;
-        this.cacheKey = 'search_index_cache';
-        this.versionKey = 'search_index_version';
+        // 상대 경로 사용 (CORS 문제 방지)
+        // Hugo가 현재 origin에서 제공하므로 절대 경로만 사용
+        this.versionUrl = '/indexing/version.json';
+        this.indexUrl = '/indexing/search_index.json';
+        
+        // SearchConfig 사용 (있으면 사용, 없으면 기본값)
+        const config = window.SearchConfig?.CACHE || {};
+        this.cacheKey = config.INDEX_KEY || 'search_index_cache';
+        this.versionKey = config.VERSION_KEY || 'search_index_version';
+        
         this.searchIndex = null;
         this.isReady = false;
         this.readyCallbacks = [];
-    }
-
-    /**
+    }    /**
      * 검색 인덱스를 초기화합니다.
      * version을 체크하고 필요시 새로운 인덱스를 로드합니다.
      * @returns {Promise<void>}
@@ -32,11 +34,11 @@ class SearchIndexManager {
             // 3. 버전 비교
             if (cachedVersion && cachedVersion === serverVersion) {
                 // 캐시가 유효한 경우 - 로컬 스토리지에서 로드
-                console.log('Using cached search index (version:', serverVersion + ')');
+                // console.log('Using cached search index (version:', serverVersion + ')');
                 this.loadFromCache();
             } else {
                 // 캐시가 없거나 버전이 다른 경우 - 서버에서 새로 로드
-                console.log('Fetching new search index (version:', serverVersion + ')');
+                // console.log('Fetching new search index (version:', serverVersion + ')');
                 await this.fetchAndCacheIndex(serverVersion);
             }
             
@@ -172,78 +174,6 @@ class SearchIndexManager {
     }
 
     /**
-     * 파일 검색을 수행합니다.
-     * @param {string} query - 검색어
-     * @returns {Array} - 검색 결과 배열
-     */
-    search(query) {
-        if (!this.isReady || !this.searchIndex) {
-            console.warn('Search index not ready');
-            return [];
-        }
-
-        if (!query || query.trim().length === 0) {
-            return [];
-        }
-
-        const lowerQuery = query.toLowerCase().trim();
-        const results = [];
-
-        // search_index.json의 files 객체를 순회하며 검색
-        const files = this.searchIndex.files || {};
-        
-        for (const [fileName, fileData] of Object.entries(files)) {
-            let score = 0;
-            const lowerFileName = fileName.toLowerCase();
-
-            // 1. 파일명 매칭
-            if (lowerFileName.includes(lowerQuery)) {
-                score += 100;
-                if (lowerFileName === lowerQuery) {
-                    score += 50; // 정확한 매칭
-                }
-                if (lowerFileName.startsWith(lowerQuery)) {
-                    score += 30; // 시작 부분 매칭
-                }
-            }
-
-            // 2. 태그 매칭
-            if (fileData.frontmatter && fileData.frontmatter.tags) {
-                const tags = fileData.frontmatter.tags;
-                if (Array.isArray(tags)) {
-                    tags.forEach(tag => {
-                        if (tag.toLowerCase().includes(lowerQuery)) {
-                            score += 50;
-                        }
-                    });
-                }
-            }
-
-            // 3. 콘텐츠 매칭 (있는 경우)
-            if (fileData.content) {
-                const lowerContent = fileData.content.toLowerCase();
-                if (lowerContent.includes(lowerQuery)) {
-                    score += 10;
-                }
-            }
-
-            // 점수가 있는 경우 결과에 추가
-            if (score > 0) {
-                results.push({
-                    fileName,
-                    fileData,
-                    score
-                });
-            }
-        }
-
-        // 점수 순으로 정렬
-        results.sort((a, b) => b.score - a.score);
-
-        return results;
-    }
-
-    /**
      * 캐시 정보를 반환합니다 (디버깅용)
      * @returns {Object}
      */
@@ -257,22 +187,7 @@ class SearchIndexManager {
     }
 }
 
-// 전역 인스턴스 생성 및 자동 초기화
-const searchIndexManager = new SearchIndexManager();
-
-// DOM 로드 완료 시 자동으로 초기화
-if (typeof document !== 'undefined') {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            searchIndexManager.initialize().catch(console.error);
-        });
-    } else {
-        // 이미 로드된 경우 즉시 초기화
-        searchIndexManager.initialize().catch(console.error);
-    }
-}
-
-// ES6 모듈로 export (필요한 경우)
+// ES6 모듈로 export
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { SearchIndexManager, searchIndexManager };
+    module.exports = { SearchIndexManager };
 }

@@ -10,19 +10,20 @@ class SearchEngine {
         this.indexManager = indexManager;
         this.queryParser = queryParser;
         
-        // 우선순위 점수 (높을수록 우선)
+        // SearchConfig에서 우선순위 점수 가져오기 (없으면 기본값)
+        const config = window.SearchConfig?.PRIORITY_SCORES || {};
         this.PRIORITY_SCORES = {
             // 정확한 일치 (Exact Match)
-            EXACT_FILE: 400,
-            EXACT_TAG: 300,
-            EXACT_METADATA: 200,
-            EXACT_CONTENT: 100,
+            EXACT_FILE: config.EXACT_FILE || 400,
+            EXACT_TAG: config.EXACT_TAG || 300,
+            EXACT_METADATA: config.EXACT_METADATA || 200,
+            EXACT_CONTENT: config.EXACT_CONTENT || 100,
             
             // 부분 일치 (Substring Match)
-            PARTIAL_FILE: 40,
-            PARTIAL_TAG: 30,
-            PARTIAL_METADATA: 20,
-            PARTIAL_CONTENT: 10
+            PARTIAL_FILE: config.PARTIAL_FILE || 40,
+            PARTIAL_TAG: config.PARTIAL_TAG || 30,
+            PARTIAL_METADATA: config.PARTIAL_METADATA || 20,
+            PARTIAL_CONTENT: config.PARTIAL_CONTENT || 10
         };
     }
 

@@ -4,13 +4,18 @@
  */
 
 class SearchUI {
-    constructor(searchEngine, resultRenderer) {
+    constructor(searchEngine, resultRenderer, indexManager) {
         this.searchEngine = searchEngine;
         this.resultRenderer = resultRenderer;
+        this.indexManager = indexManager; // IndexManager 주입
         this.searchInput = document.getElementById('search-input');
         this.searchResults = document.getElementById('search-results');
+        
+        // SearchConfig에서 UI 설정 가져오기 (없으면 기본값)
+        const config = window.SearchConfig?.UI || {};
+        this.debounceDelay = config.DEBOUNCE_DELAY || 150; // ms
+        
         this.debounceTimer = null;
-        this.debounceDelay = 150; // ms
         
         // 키보드 네비게이션 상태
         this.selectedIndex = -1;
@@ -64,9 +69,9 @@ class SearchUI {
         }
 
         // 인덱스 준비 확인
-        if (!searchIndexManager.ready()) {
+        if (!this.indexManager.ready()) {
             this.showLoading();
-            searchIndexManager.onReady(() => {
+            this.indexManager.onReady(() => {
                 this.performSearch(query);
             });
             return;
@@ -245,38 +250,7 @@ class SearchUI {
     }
 }
 
-// 전역 인스턴스 생성 (DOMContentLoaded 후)
-let searchUI;
-
-if (typeof document !== 'undefined') {
-    const initSearchUI = () => {
-        // 의존성 확인
-        if (typeof searchIndexManager === 'undefined' || 
-            typeof searchQueryParser === 'undefined' ||
-            typeof TextHighlighter === 'undefined' ||
-            typeof URLBuilder === 'undefined' ||
-            typeof SearchResultRenderer === 'undefined') {
-            console.error('Search dependencies not loaded');
-            return;
-        }
-
-        // 의존성 인스턴스 생성
-        const textHighlighter = new TextHighlighter();
-        const urlBuilder = new URLBuilder(searchIndexManager);
-        const resultRenderer = new SearchResultRenderer(textHighlighter, urlBuilder);
-        const searchEngine = new SearchEngine(searchIndexManager, searchQueryParser);
-        
-        // SearchUI 인스턴스 생성
-        searchUI = new SearchUI(searchEngine, resultRenderer);
-    };
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSearchUI);
-    } else {
-        initSearchUI();
-    }
-}
-
+// ES6 모듈 export
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { SearchUI };
 }

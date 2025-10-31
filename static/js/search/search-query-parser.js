@@ -5,8 +5,8 @@
 
 class SearchQueryParser {
     constructor() {
-        // 지원하는 접두사와 별칭 매핑
-        this.scopeAliases = {
+        // SearchConfig에서 범위 별칭 가져오기 (없으면 기본값)
+        this.scopeAliases = window.SearchConfig?.SCOPE_ALIASES || {
             // Filename
             'filename:': 'file',
             'file:': 'file',
@@ -181,10 +181,7 @@ class SearchQueryParser {
     }
 }
 
-// 전역 인스턴스 생성
-const searchQueryParser = new SearchQueryParser();
-
 // ES6 모듈 export
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { SearchQueryParser, searchQueryParser };
+    module.exports = { SearchQueryParser };
 }

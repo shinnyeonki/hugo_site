@@ -79,10 +79,13 @@ class SearchResultRenderer {
      * @returns {string}
      */
     renderMatchTypeIcon(matchType) {
+        // SearchConfig에서 아이콘 가져오기 (없으면 기본값)
+        const icons = window.SearchConfig?.ICONS || {};
+        
         if (matchType === 'exact') {
-            return '🎯';
+            return icons.EXACT_MATCH || '🎯';
         } else {
-            return '≈';
+            return icons.PARTIAL_MATCH || '≈';
         }
     }
 
@@ -160,8 +163,12 @@ class SearchResultRenderer {
             return '';
         }
 
+        // SearchConfig에서 최대 태그 수 가져오기 (없으면 기본값)
+        const config = window.SearchConfig?.UI || {};
+        const maxTags = config.MAX_TAGS_DISPLAY || 3;
+
         const tagMatches = matches.filter(m => m.scope === 'tag');
-        const displayTags = tags.slice(0, 3);
+        const displayTags = tags.slice(0, maxTags);
         
         const tagsHtml = displayTags.map(tag => {
             const tagStr = String(tag);
@@ -265,18 +272,22 @@ class SearchResultRenderer {
      * @param {number} contextLength 
      * @returns {string}
      */
-    createSnippet(content, term, contextLength = 80) {
+    createSnippet(content, term, contextLength = null) {
+        // SearchConfig에서 스니펫 길이 가져오기 (없으면 기본값 또는 파라미터)
+        const config = window.SearchConfig?.UI || {};
+        const snippetLength = contextLength || config.SNIPPET_LENGTH || 80;
+        
         const lowerContent = content.toLowerCase();
         const lowerTerm = term.toLowerCase();
         const index = lowerContent.indexOf(lowerTerm);
         
         if (index === -1) {
             // 검색어를 찾지 못한 경우 앞부분만 표시
-            return content.substring(0, contextLength) + '...';
+            return content.substring(0, snippetLength) + '...';
         }
 
         // 검색어 위치를 중심으로 앞뒤로 contextLength/2 씩 자름
-        const halfContext = Math.floor(contextLength / 2);
+        const halfContext = Math.floor(snippetLength / 2);
         const start = Math.max(0, index - halfContext);
         const end = Math.min(content.length, index + term.length + halfContext);
         
@@ -317,12 +328,15 @@ class SearchResultRenderer {
      * @returns {string}
      */
     renderBanner(searchType) {
+        // SearchConfig에서 배너 스타일 가져오기 (없으면 기본값)
+        const bannerStyles = window.SearchConfig?.BANNER_STYLES || {};
+        
         const bannerConfig = {
-            'integrated': {
+            'integrated': bannerStyles.integrated || {
                 text: '🔍 통합 검색 결과',
                 className: 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
             },
-            'scoped': {
+            'scoped': bannerStyles.scoped || {
                 text: '🔭 범위 지정 검색 결과',
                 className: 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
             }

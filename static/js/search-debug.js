@@ -6,10 +6,22 @@
 // 전역 객체에 디버그 함수 추가
 window.searchDebug = {
     /**
+     * SearchSystem 인스턴스 가져오기
+     */
+    async _getSystem() {
+        if (typeof getSearchSystem === 'undefined') {
+            throw new Error('SearchSystem not available');
+        }
+        return await getSearchSystem();
+    },
+
+    /**
      * 캐시 정보 출력
      */
-    info() {
-        const info = searchIndexManager.getCacheInfo();
+    async info() {
+        const system = await this._getSystem();
+        const indexManager = system.getComponent('indexManager');
+        const info = indexManager.getCacheInfo();
         console.log('=== Search Index Cache Info ===');
         console.log('Version:', info.version);
         console.log('Has Cache:', info.hasCache);
@@ -22,8 +34,10 @@ window.searchDebug = {
     /**
      * 캐시 클리어
      */
-    clear() {
-        searchIndexManager.clearCache();
+    async clear() {
+        const system = await this._getSystem();
+        const indexManager = system.getComponent('indexManager');
+        indexManager.clearCache();
         console.log('Search index cache cleared. Reload the page to fetch a new index.');
     },
 
@@ -32,11 +46,13 @@ window.searchDebug = {
      */
     async reload() {
         console.log('Reloading search index...');
-        searchIndexManager.clearCache();
+        const system = await this._getSystem();
+        const indexManager = system.getComponent('indexManager');
+        indexManager.clearCache();
         try {
-            await searchIndexManager.initialize();
+            await indexManager.initialize();
             console.log('Search index reloaded successfully.');
-            this.info();
+            await this.info();
         } catch (error) {
             console.error('Failed to reload search index:', error);
         }
@@ -45,12 +61,17 @@ window.searchDebug = {
     /**
      * 검색 테스트
      */
-    test(query) {
-        if (!searchIndexManager.ready()) {
+    async test(query) {
+        const system = await this._getSystem();
+        const searchEngine = system.getComponent('searchEngine');
+        const indexManager = system.getComponent('indexManager');
+        
+        if (!indexManager.ready()) {
             console.warn('Search index not ready yet.');
             return [];
         }
-        const results = searchIndexManager.search(query);
+        
+        const results = searchEngine.search(query);
         console.log(`Found ${results.length} results for "${query}":`);
         results.slice(0, 10).forEach((result, index) => {
             console.log(`${index + 1}. ${result.fileName} (score: ${result.score})`);
@@ -61,8 +82,10 @@ window.searchDebug = {
     /**
      * 전체 인덱스 조회
      */
-    getIndex() {
-        return searchIndexManager.getIndex();
+    async getIndex() {
+        const system = await this._getSystem();
+        const indexManager = system.getComponent('indexManager');
+        return indexManager.getIndex();
     },
 
     /**
@@ -70,9 +93,11 @@ window.searchDebug = {
      */
     async checkVersion() {
         try {
-            const version = await searchIndexManager.fetchVersion();
+            const system = await this._getSystem();
+            const indexManager = system.getComponent('indexManager');
+            const version = await indexManager.fetchVersion();
             console.log('Server version:', version);
-            console.log('Cached version:', localStorage.getItem('search_index_version'));
+            console.log('Cached version:', localStorage.getItem(window.SearchConfig?.CACHE?.VERSION_KEY || 'search_index_version'));
             return version;
         } catch (error) {
             console.error('Failed to check version:', error);
@@ -80,20 +105,35 @@ window.searchDebug = {
     },
 
     /**
+     * 시스템 상태 확인
+     */
+    async status() {
+        const system = await this._getSystem();
+        const components = system.getAllComponents();
+        console.log('=== Search System Status ===');
+        console.log('Initialized:', system.ready());
+        console.log('Components:', Object.keys(components));
+        console.log('===========================');
+        return system;
+    },
+
+    /**
      * 도움말 출력
      */
     help() {
         console.log('=== Search Debug Commands ===');
-        console.log('searchDebug.info()           - Show cache information');
-        console.log('searchDebug.clear()          - Clear cache');
-        console.log('searchDebug.reload()         - Reload search index');
-        console.log('searchDebug.test(query)      - Test search with query');
-        console.log('searchDebug.getIndex()       - Get full search index');
-        console.log('searchDebug.checkVersion()   - Check version information');
-        console.log('searchDebug.help()           - Show this help');
+        console.log('await searchDebug.info()           - Show cache information');
+        console.log('await searchDebug.clear()          - Clear cache');
+        console.log('await searchDebug.reload()         - Reload search index');
+        console.log('await searchDebug.test(query)      - Test search with query');
+        console.log('await searchDebug.getIndex()       - Get full search index');
+        console.log('await searchDebug.checkVersion()   - Check version information');
+        console.log('await searchDebug.status()         - Show system status');
+        console.log('searchDebug.help()                 - Show this help');
         console.log('=============================');
     }
 };
 
 // 페이지 로드 시 간단한 안내 메시지
 console.log('Search Debug Tools available. Type searchDebug.help() for commands.');
+
