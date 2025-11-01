@@ -1,3 +1,4 @@
+<script preconnect href="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 <script>
     tailwind.config = {
@@ -28,9 +29,9 @@
   }
 }
 </style>
+
+
 {{ if eq .Kind "page" }}
-
-
 
 {{/*  본문 영역의 katex 관련 라이브러리  */}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css"

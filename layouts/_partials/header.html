@@ -14,33 +14,41 @@
                 class="block text-xl font-bold latin-font text-neutral-900 dark:text-neutral-100">
                 {{ .Site.Title }}
             </a>
+            <!-- 폴더 버튼 -->
+            <a href="{{ .Site.BaseURL }}" aria-label="홈으로 이동"
+                class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline hover:text-primary-blue-light font-semibold">
+                File
+            </a>
+
+            <!-- 태그 버튼 -->
+            <a href="{{ .Site.BaseURL }}/tags/" aria-label="태그 페이지로 이동"
+                class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline hover:text-primary-blue-light font-semibold">
+                Tags
+            </a>
+
+            <!-- 시리즈 버튼 -->
+            <a href="{{ .Site.BaseURL }}/series/" aria-label="시리즈 페이지로 이동"
+                class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline hover:text-primary-blue-light font-semibold">
+                Series
+            </a>
             <span class="text-sm text-neutral-600 dark:text-neutral-400">{{ .Kind }}</span>
-            {{- if eq hugo.Environment "development" }} 
-                <span class="text-sm text-neutral-500 dark:text-neutral-400">| {{ .Type }}</span>
-                <span class="text-xs text-neutral-500 dark:text-neutral-400">🔗 {{ .Site.BaseURL }}</span> 
-                <span class="text-xs text-neutral-500 dark:text-neutral-400">⚙️ Hugo v{{ hugo.Version }} @ {{ now.Format "15:04:05" }}</span>
+            {{- if eq hugo.Environment "development" }}
+            <span class="text-sm text-neutral-500 dark:text-neutral-400"> {{ .Type }}</span>
+            <span class="text-xs text-neutral-500 dark:text-neutral-400"> {{ .Site.BaseURL }}</span>
             {{ end -}}
         </div>
 
         <!-- 오른쪽 아이콘 버튼 영역 -->
         <div class="flex items-center gap-1 md:gap-2">
+
+
+
             <!-- 본문 너비 조절 슬라이더 (page일 때만 표시) -->
             {{ if eq .Kind "page" }}
             <div class="hidden md:flex items-center p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
                 <input id="contentWidthSlider" type="range" min="40" max="120" value="72" step="4"
-                    class="w-20 accent-neutral-900 dark:accent-neutral-100" 
-                    aria-label="본문 너비 조절" />
+                    class="w-20 accent-neutral-900 dark:accent-neutral-100" aria-label="본문 너비 조절" />
             </div>
-            {{/*  <!-- 본문 너비 조절 버튼 (태블릿/데스크탑 전용) -->
-            <button id="widthToggleBtn" aria-label="본문 너비 전환"
-                class="hidden md:flex p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M20 12H4m16 0l-4-4m4 4l-4 4M4 12l4-4M4 12l4 4" />
-                </svg>
-            </button>  */}}
-
-
 
             <!-- 공유 버튼 -->
             <button id="shareBtn" aria-label="페이지 공유"
@@ -52,7 +60,7 @@
                 </svg>
             </button>
             {{ end }}
-            
+
 
 
             {{ if eq .Kind "page" }}
