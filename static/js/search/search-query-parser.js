@@ -83,53 +83,75 @@ class SearchQueryParser {
     }
 
     /**
-     * 쿼리에서 모든 scope 추출
+     * 정규식 특수 문자를 이스케이프합니다.
+     * @param {string} str 
+     * @returns {string}
+     */
+    escapeRegex(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    /**
+     * 쿼리에서 모든 scope를 추출합니다.
+     * 'prefix:term' 형식을 지원하며, term에는 공백이 포함될 수 있습니다.
      * @param {string} query 
      * @returns {Array} scope 배열
      */
     extractScopes(query) {
         const scopes = [];
-        const parts = query.split(/\s+/);
-        
-        for (const part of parts) {
-            const scope = this.parseScope(part);
-            if (scope) {
-                scopes.push(scope);
+        // 모든 별칭을 길이 내림차순으로 정렬 (e.g., 'filename:'이 'file:'보다 먼저 매치되도록)
+        const sortedAliases = Object.entries(this.scopeAliases).sort((a, b) => b[0].length - a[0].length);
+
+        // 쿼리에서 모든 접두사의 위치를 찾습니다.
+        const foundPrefixes = [];
+        for (const [prefix, scopeName] of sortedAliases) {
+            const regex = new RegExp(this.escapeRegex(prefix), 'gi');
+            let match;
+            while ((match = regex.exec(query)) !== null) {
+                // 더 긴 접두사가 같은 위치에서 이미 발견된 경우 무시합니다 (e.g., 'file:' vs 'filename:')
+                if (!foundPrefixes.some(p => p.index === match.index)) {
+                    foundPrefixes.push({
+                        prefix: match[0],
+                        scopeName,
+                        index: match.index
+                    });
+                }
+            }
+        }
+
+        // 접두사가 없으면 빈 배열 반환
+        if (foundPrefixes.length === 0) {
+            return [];
+        }
+
+        // 인덱스 순으로 정렬
+        foundPrefixes.sort((a, b) => a.index - b.index);
+
+        // 각 접두사 사이의 텍스트를 term으로 추출합니다.
+        for (let i = 0; i < foundPrefixes.length; i++) {
+            const current = foundPrefixes[i];
+            const next = foundPrefixes[i + 1];
+            
+            const termStart = current.index + current.prefix.length;
+            const termEnd = next ? next.index : query.length;
+            
+            const termPart = query.substring(termStart, termEnd).trim();
+
+            if (termPart.length > 0) {
+                if (current.scopeName === 'metadata') {
+                    // metadata는 'key:value' 형식을 추가로 파싱
+                    scopes.push(this.parseMetadataScope(termPart));
+                } else {
+                    scopes.push({
+                        scope: current.scopeName,
+                        term: termPart,
+                        metaKey: null
+                    });
+                }
             }
         }
 
         return scopes;
-    }
-
-    /**
-     * 단일 토큰을 파싱하여 scope 객체 반환
-     * @param {string} token 
-     * @returns {Object|null}
-     */
-    parseScope(token) {
-        // 접두사 찾기
-        for (const [prefix, scopeName] of Object.entries(this.scopeAliases)) {
-            if (token.toLowerCase().startsWith(prefix)) {
-                const termPart = token.substring(prefix.length).trim();
-                
-                if (termPart.length === 0) {
-                    continue; // 빈 term은 무시
-                }
-
-                // metadata의 경우 key:value 형태 지원
-                if (scopeName === 'metadata') {
-                    return this.parseMetadataScope(termPart);
-                }
-
-                return {
-                    scope: scopeName,
-                    term: termPart,
-                    metaKey: null
-                };
-            }
-        }
-
-        return null;
     }
 
     /**

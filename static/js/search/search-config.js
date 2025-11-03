@@ -27,7 +27,7 @@ const SearchConfig = {
      */
     UI: {
         // 검색 입력 디바운스 지연 시간 (ms)
-        DEBOUNCE_DELAY: 200,
+        DEBOUNCE_DELAY: 300,
         
         // 스니펫 최대 길이
         SNIPPET_LENGTH: 80,
@@ -54,7 +54,6 @@ const SearchConfig = {
     SCOPE_ALIASES: {
         // Filename
         'filename:': 'file',
-        'file:': 'file',
         'f:': 'file',
         
         // Tag
@@ -62,10 +61,7 @@ const SearchConfig = {
         't:': 'tag',
         
         // Metadata/Frontmatter
-        'frontmatter:': 'metadata',
-        'fm:': 'metadata',
         'metadata:': 'metadata',
-        'meta:': 'metadata',
         'm:': 'metadata',
         
         // Content
@@ -74,11 +70,11 @@ const SearchConfig = {
     },
 
     /**
-     * 아이콘 및 배지 설정
+     * 아이콘 및 텍스트 설정
      */
-    ICONS: {
-        EXACT_MATCH: '🎯',
-        PARTIAL_MATCH: '≈',
+    MATCH_TYPE_DISPLAYS: {
+        EXACT_MATCH: '정확 매치',
+        PARTIAL_MATCH: '부분 매치',
         INTEGRATED_SEARCH: '🔍',
         SCOPED_SEARCH: '🔭'
     },
@@ -104,7 +100,7 @@ Object.freeze(SearchConfig.PRIORITY_SCORES);
 Object.freeze(SearchConfig.UI);
 Object.freeze(SearchConfig.CACHE);
 Object.freeze(SearchConfig.SCOPE_ALIASES);
-Object.freeze(SearchConfig.ICONS);
+Object.freeze(SearchConfig.MATCH_TYPE_DISPLAYS);
 Object.freeze(SearchConfig.BANNER_STYLES);
 
 // 전역 객체로 노출
