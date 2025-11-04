@@ -131,8 +131,6 @@ def clean_markdown_for_search(content: str) -> str:
     마크다운 텍스트를 검색 인덱싱에 최적화된 순수 텍스트로 정제합니다.
     '보호-처리-복원' 전략을 사용하여 코드(`...` 및 ```...```, ~~~...~~~)를 안전하게 격리하고,
     나머지 마크다운 문법만 제거하여 의미 있는 콘텐츠만 남깁니다.
-    플레이스홀더를 마크다운 문법에 영향을 받지 않는 문자열로 변경하여 안정성을 높였습니다.
-    테이블 구분선 제거를 추가하고, 코드 블록 패턴을 더 유연하게 수정했습니다.
     """
     if not content:
         return ""
@@ -141,103 +139,66 @@ def clean_markdown_for_search(content: str) -> str:
 
     def protect_fragment(match):
         fragment = match.group(0)
-        placeholder = f"PROTECTEDFRAGMENT{len(protected_fragments)}END"
+        # Use unprintable control characters for robust placeholders
+        placeholder = f"\x02PROTECTED{len(protected_fragments)}\x03"
         protected_fragments.append(fragment)
         return placeholder
 
-    # 1단계: 코드 보호 — 인라인 코드와 코드 블록을 플레이스홀더로 대체
-    # 먼저 ~~~ 코드 블록 처리
-    content = re.sub(r'^\s*~~~[a-zA-Z0-9+-]*\s*\n[\s\S]*?^\s*~~~', protect_fragment, content, flags=re.MULTILINE)
-    # 다음 ``` 코드 블록 처리 (멀티라인, 언어 식별자 포함 가능, 공백 허용)
-    content = re.sub(r'^\s*```[a-zA-Z0-9+-]*\s*\n[\s\S]*?^\s*```', protect_fragment, content, flags=re.MULTILINE)
-    # 인라인 코드: 단순 처리 (`code`)
+    # 1단계: 코드 블록 및 인라인 코드 보호
+    content = re.sub(r'^\s*(?:> ?)*```[\s\S]+?^\s*(?:> ?)*```\s*$', protect_fragment, content, flags=re.MULTILINE)
+    content = re.sub(r'^\s*(?:> ?)*~~~[\s\S]+?^\s*(?:> ?)*~~~\s*$', protect_fragment, content, flags=re.MULTILINE)
     content = re.sub(r'`[^`]+?`', protect_fragment, content)
 
-    # 2단계: 마크다운 문법 제거 (코드는 이미 보호됨)
+    # 2단계: Frontmatter 제거
+    content = re.sub(r'\A---[\s\S]+?^---\s*', '', content, flags=re.MULTILINE)
 
-    # Frontmatter (YAML) 제거 — 정확히 문서 시작에만 허용
-    content = re.sub(r'^---\s*\n(?:.*\n)*?---\s*\n?', '', content, count=1, flags=re.MULTILINE)
-
-    # 이미지: ![alt](url) → alt (alt가 비어 있으면 제거)
-    content = re.sub(r'!\[([^\]]*?)\]\([^)]*?\)', lambda m: m.group(1) if m.group(1).strip() else '', content)
-
-    # 링크: [text](url) → text
-    content = re.sub(r'\[([^\]]+?)\]\([^)]*?\)', r'\1', content)
-
-    # 헤더, 리스트, 인용문, 태스크 리스트 등 라인 시작 문법 제거
-    content = re.sub(r'^\s*([#>*+-]|\d+\.)\s+', '', content, flags=re.MULTILINE)
-
-    # 테이블: 파이프(|)를 공백으로 대체 → 셀 내용은 유지
-    content = content.replace('|', ' ')
-
-    # 테이블 구분선 제거 (--- 또는 :--: 등)
-    content = re.sub(r'^\s*[-:=]+(?:\s*[-:=]+)*\s*$', '', content, flags=re.MULTILINE)
-
-    # 볼드/이탤릭/취소선 — 단어 경계를 고려하여 손상 방지
-    # __bold__ 또는 **bold**
-    content = re.sub(r'(\*\*|__)(.+?)\1', r'\2', content)
-    # _italic_ — 단어 경계 확인 (my_var는 건드리지 않음)
-    content = re.sub(r'\b_([^_]+?)_\b', r'\1', content)
-    # *italic* — 단어 경계 없이도 안전하게
-    content = re.sub(r'\*([^*]+?)\*', r'\1', content)
-    # ~~strikethrough~~
-    content = re.sub(r'~~([^~]+?)~~', r'\1', content)
-
-    # 수평선 제거
-    content = re.sub(r'^\s*[-*_]{3,}\s*$', '', content, flags=re.MULTILINE)
-
-    # HTML 태그 제거
+    # 3단계: HTML 태그 제거
     content = re.sub(r'<[^>]+>', '', content)
 
-    # 3단계: 보호된 코드 조각 복원 — 코드 문법 제거, 내용만 추출
+    # 4단계: 테이블 관련 문법 제거
+    content = re.sub(r'^\s*\|?[-|: \t]+-[-|: \t]*\|?\s*$', '', content, flags=re.MULTILINE)
+    content = content.replace('|', ' ')
+
+    # 5단계: 이미지 및 링크 제거
+    content = re.sub(r'!\[([^\]]*)\]\([^\)]*\)', r'\1', content) # 이미지
+    content = re.sub(r'\[([^\]]+)\]\([^\)]*\)', r'\1', content) # 링크
+
+    # 6단계: 헤더, 리스트, 인용문 등 라인 시작 문법을 반복적으로 제거
+    lines = content.split('\n')
+    cleaned_lines = []
+    for line in lines:
+        while True:
+            new_line = re.sub(r'^\s*([#>*+-]|\d+\.)\s*', '', line)
+            if new_line == line:
+                break
+            line = new_line
+        cleaned_lines.append(line)
+    content = '\n'.join(cleaned_lines)
+
+    # 7단계: 나머지 마크다운 문법 제거
+    content = re.sub(r'(\*\*|__)(.*?)\1', r'\2', content) # Bold
+    content = re.sub(r'(\*|_)(.*?)\1', r'\2', content) # Italic
+    content = re.sub(r'~~(.*?)~~', r'\1', content) # Strikethrough
+    content = re.sub(r'^\[\^([^\]]+)\]:.*', '', content) # Footnote definition
+    content = re.sub(r'\[\^([^\]]+)\]', '', content) # Footnote reference
+    content = re.sub(r'^\s*[-*_]{3,}\s*$', '', content, flags=re.MULTILINE) # Horizontal rules
+
+    # 8단계: 보호된 코드 조각 복원 및 정제
     for i, fragment in enumerate(protected_fragments):
-        cleaned = fragment
-        # 코드 블록: ```lang\n...\n``` 또는 ~~~lang\n...\n~~~ → ...
-        if fragment.lstrip().startswith(('```', '~~~')):
-            # 공백과 펜스 제거
-            lines = fragment.split('\n')
-            if len(lines) >= 2:
-                # 첫 줄: ```lang 또는 ~~~lang → 제거
-                # 마지막 줄: ``` 또는 ~~~ → 제거
-                inner = '\n'.join(lines[1:-1]).strip()
-                cleaned = inner
-            else:
-                cleaned = ''
-        elif fragment.startswith('`') and fragment.endswith('`'):
-            # 인라인 코드: `code` → code
-            cleaned = fragment[1:-1]
-        # 플레이스홀더 교체
-        placeholder = f"PROTECTEDFRAGMENT{i}END"
-        content = content.replace(placeholder, " " + cleaned + " ")
+        placeholder = f"\x02PROTECTED{i}\x03"
+        cleaned_fragment = fragment
 
-    # 4단계: 최종 정제
-    # 연속된 공백/탭/개행 → 단일 공백
-    content = re.sub(r'\s+', ' ', content)
-    return content.strip()
+        if '\n' in fragment: # 블록 코드로 간주
+            lines = fragment.strip().split('\n')
+            lines = lines[1:-1] # 펜스 제거
+            lines = [re.sub(r'^\s*(?:> ?)*', '', l) for l in lines] # '>' 제거
+            cleaned_fragment = '\n'.join(lines)
+        else: # 인라인 코드로 간주
+            cleaned_fragment = fragment.strip('`')
+        
+        content = content.replace(placeholder, " " + cleaned_fragment + " ")
 
-    # 3단계: 보호된 코드 조각 복원 — 코드 문법 제거, 내용만 추출
-    for i, fragment in enumerate(protected_fragments):
-        cleaned = fragment
-        # 코드 블록: ```lang\n...\n``` → ...
-        if fragment.startswith('```'):
-            # 언어 식별자와 백틱 제거
-            lines = fragment.split('\n')
-            if len(lines) >= 2:
-                # 첫 줄: ```lang → 제거
-                # 마지막 줄: ``` → 제거
-                inner = '\n'.join(lines[1:-1])
-                cleaned = inner
-            else:
-                cleaned = ''  # 잘못된 코드 블록
-        elif fragment.startswith('`') and fragment.endswith('`'):
-            # 인라인 코드: `code` → code
-            cleaned = fragment[1:-1]
-        # 코드 내부의 불필요한 공백은 유지 (검색 시 의미 있을 수 있음)
-        placeholder = f"__PROTECTED_FRAGMENT_{i}__"
-        content = content.replace(placeholder, " " + cleaned + " ")
-
-    # 4단계: 최종 정제
-    # 연속된 공백/탭/개행 → 단일 공백
+    # 9단계: 최종 정제
     content = re.sub(r'\s+', ' ', content)
     return content.strip()
 

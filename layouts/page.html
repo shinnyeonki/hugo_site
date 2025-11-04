@@ -9,7 +9,7 @@
     <!-- 2. title 영역 -->
     <div class="w-full mb-8">
         <div class="max-w-7xl mx-auto px-4 border-b pb-4">
-            <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font break-words">
+            <h1 class="text-2xl md:text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font break-words">
                 {{ .Title }}{{- if eq hugo.Environment "development" }}<span class="text-sm text-neutral-500 dark:text-neutral-400"> | page.html</span>{{ end }}
             </h1>
         </div>
@@ -20,7 +20,7 @@
         <div id="content" class="max-w-[72ch] mx-auto">
             <article id="main-content-container">
                 <!-- prose: tailwindcss typography 플러그인 클래스로 마크다운 콘텐츠 스타일링 -->
-                <section id="markdown-content" class="prose prose-sm dark:prose-invert max-w-none break-words overflow-wrap-anywhere">
+                <section id="markdown-content" class="prose prose-sm md:prose-base dark:prose-invert max-w-none break-words overflow-wrap-anywhere">
                     {{- if .Content }}
                         {{ .Content }}
                     {{- else }}
