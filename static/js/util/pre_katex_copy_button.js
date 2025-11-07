@@ -1,17 +1,22 @@
+// 페이지가 로드되면 문서 전체에서 하이라이트 블록을 향상시킵니다.
+// When the page is loaded, enhance highlight blocks across the document.
 document.addEventListener('DOMContentLoaded', () => {
-    enhanceCodeBlocks(document.body);
+    enhanceHighlightBlocks(document.body);
 });
 
 /**
  * code 엘리먼트에서 언어 정보 추출
  * Hugo는 code 태그에 language-{lang} 또는 data-lang 속성을 추가
  */
-function getLanguage(codeElement) {
-    // data-lang 속성 먼저 확인 (Hugo 기본 방식)
+/**
+ * 코드 요소에서 언어 정보를 추출합니다.
+ * 우선 data-lang 속성을 확인하고, 없으면 class에서 language- 접두사를 찾습니다.
+ * Extract language information from a <code> element: prefer data-lang, then class names.
+ */
+function getCodeLanguage(codeElement) {
     const dataLang = codeElement.getAttribute('data-lang');
     if (dataLang) return dataLang;
-    
-    // class에서 language- 찾기
+
     const languageClass = [...(codeElement.classList || [])].find(cls => cls.startsWith('language-'));
     return languageClass ? languageClass.replace('language-', '') : null;
 }
@@ -19,7 +24,11 @@ function getLanguage(codeElement) {
 /**
  * Copy 버튼 클릭 핸들러
  */
-function handleCopyClick(copyButton, codeElement) {
+/**
+ * 복사 버튼에 클릭 핸들러를 등록합니다.
+ * Registers a click handler on the copy button that copies the code text to clipboard.
+ */
+function registerCopyClickHandler(copyButton, codeElement) {
     copyButton.addEventListener('click', async (e) => {
         e.stopPropagation();
         try {
@@ -42,7 +51,11 @@ function handleCopyClick(copyButton, codeElement) {
 /**
  * 단일 pre 블록에 언어 태그와 복사 버튼 추가
  */
-function enhanceSingleBlock(pre) {
+/**
+ * 단일 하이라이트(pre/code) 블록에 언어 라벨과 복사 버튼을 추가합니다.
+ * Enhance a single highlight block by adding a language label and a copy button.
+ */
+function enhanceHighlightBlock(pre) {
     // 이미 처리된 블록은 건너뛰기
     if (pre.classList.contains('code-block-enhanced')) return;
 
@@ -51,7 +64,7 @@ function enhanceSingleBlock(pre) {
 
     // pre 태그에 스타일 클래스 추가
     pre.classList.add('code-block-enhanced', 'relative', 'group');
-    const language = getLanguage(codeElement);
+    const language = getCodeLanguage(codeElement);
 
     // 컨트롤 래퍼 생성 (언어 표시 + 복사 버튼)
     const controlsWrapper = document.createElement('div');
@@ -74,15 +87,20 @@ function enhanceSingleBlock(pre) {
 
     pre.appendChild(controlsWrapper);
 
-    // 클릭 이벤트 핸들러 등록
-    handleCopyClick(copyButton, codeElement);
+    // 클릭 이벤트 핸들러 등록 (클립보드 복사 기능)
+    registerCopyClickHandler(copyButton, codeElement);
 }
 
+
 /**
- * 컨테이너 내의 모든 pre 블록 향상
+ * 컨테이너 내의 모든 highlight 블록 향상
  */
-function enhanceCodeBlocks(container) {
+/**
+ * 주어진 컨테이너 내의 모든 하이라이트 블록을 찾아 향상시킵니다.
+ * Enhance all highlight blocks inside a container (expects elements with class "highlight").
+ */
+function enhanceHighlightBlocks(container) {
     if (!container) return;
-    const preElements = container.querySelectorAll('pre');
-    preElements.forEach(enhanceSingleBlock);
+    const highlightElements = container.querySelectorAll('.highlight');
+    highlightElements.forEach(enhanceHighlightBlock);
 }
