@@ -5,7 +5,7 @@ baseURL = 'http://localhost:1313'
 # baseURL = 'http://localhost:5500/public'
 
 languageCode = 'ko-KR'
-title = 'Moadex'
+title = 'Shinnyeonki'
 # theme = "hextra"
 hasCJKLanguage = true
 
