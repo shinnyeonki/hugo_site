@@ -31,8 +31,8 @@
                 class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline hover:text-primary-blue-light font-semibold">
                 Series
             </a>
-            <span class="text-sm text-neutral-600 dark:text-neutral-400">{{ .Kind }}</span>
             {{- if eq hugo.Environment "development" }}
+            <span class="text-sm text-neutral-600 dark:text-neutral-400">{{ .Kind }}</span>
             <span class="text-sm text-neutral-500 dark:text-neutral-400"> {{ .Type }}</span>
             <span class="text-xs text-neutral-500 dark:text-neutral-400"> {{ .Site.BaseURL }}</span>
             {{ end -}}
