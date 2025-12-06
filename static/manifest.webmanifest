@@ -10,12 +10,12 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "/images/image-192.png",
+      "src": "/obsidian_repo/images/image-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/image-512.png",
+      "src": "/obsidian_repo/images/image-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
