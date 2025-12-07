@@ -37,20 +37,19 @@
             <span class="text-xs text-neutral-500 dark:text-neutral-400"> {{ .Site.BaseURL }}</span>
             {{ end -}}
         </div>
-
         <!-- 오른쪽 아이콘 버튼 영역 -->
         <div class="flex items-center gap-1 md:gap-2">
-
-
-
+            
             <!-- 본문 너비 조절 슬라이더 (page일 때만 표시) -->
             {{ if eq .Kind "page" }}
             <div class="hidden md:flex items-center p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
                 <input id="contentWidthSlider" type="range" min="40" max="120" value="72" step="4"
-                    class="w-20 accent-neutral-900 dark:accent-neutral-100" aria-label="본문 너비 조절" />
+                class="w-20 accent-neutral-900 dark:accent-neutral-100" aria-label="본문 너비 조절" />
             </div>
-
-            <!-- 공유 버튼 -->
+            {{ end }}
+            
+            {{/*  <!-- 공유 버튼 -->
+            {{ if eq .Kind "page" }}
             <button id="shareBtn" aria-label="페이지 공유"
                 class="flex p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -59,8 +58,17 @@
                         d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8m-4-6l-4-4-4 4m4-4v13" />
                 </svg>
             </button>
-            {{ end }}
+            {{ end }}  */}}
 
+            <!-- 검색 버튼 -->
+            <button id="header-search-button" aria-label="검색 열기"
+                    class="flex p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+            </button>
 
 
             {{ if eq .Kind "page" }}
