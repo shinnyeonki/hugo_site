@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('header-search-button');
     const leftNavToggle = document.getElementById('leftNavToggleCheckbox');
-    const searchInput = document.getElementById('left-nav-search-input');
+    const searchInput = document.getElementById('search-input');
 
     if (searchButton && leftNavToggle && searchInput) {
         searchButton.addEventListener('click', (e) => {
