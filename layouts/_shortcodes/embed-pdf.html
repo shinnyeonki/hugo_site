@@ -47,7 +47,6 @@
     -webkit-animation: spin 1s ease-in-out infinite;
   }
   
-  {{/*  Download link  */}}
   
   
   
@@ -88,27 +87,27 @@
 {{- end -}}
 
 {{- $.Page.Scratch.Add "embed-pdf-count" 1 -}}
-<div class="embed-pdf-container" id="embed-pdf-container-{{ substr (.Get "url" | md5) 0 8 }}">
-    <div class="pdf-loadingWrapper" id="pdf-loadingWrapper-{{ substr (.Get "url" | md5) 0 8 }}">
-        <div class="pdf-loading" id="pdf-loading-{{ substr (.Get "url" | md5) 0 8 }}"></div>
+<div class="embed-pdf-container" id='embed-pdf-container-{{ substr (.Get "url" | md5) 0 8 }}'>
+    <div class="pdf-loadingWrapper" id='pdf-loadingWrapper-{{ substr (.Get "url" | md5) 0 8 }}'>
+        <div class="pdf-loading" id='pdf-loading-{{ substr (.Get "url" | md5) 0 8 }}'></div>
     </div>
     <div id="overlayText">
-      <a href="{{ .Get "url" }}" aria-label="Download" download>
+      <a href='{{ .Get "url" }}' aria-label="Download" download>
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
             <path d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zm-7 2h14v2H2z" />
         </svg>
       </a>
     </div>
-    <canvas class="pdf-canvas" id="pdf-canvas-{{ substr (.Get "url" | md5) 0 8 }}"></canvas>
+    <canvas class="pdf-canvas" id='pdf-canvas-{{ substr (.Get "url" | md5) 0 8 }}'></canvas>
 </div>
 
-<div class="pdf-paginator" id="pdf-paginator-{{ substr (.Get "url" | md5) 0 8 }}">
-    <button id="pdf-prev-{{ substr (.Get "url" | md5) 0 8 }}">Previous</button>
-    <button id="pdf-next-{{ substr (.Get "url" | md5) 0 8 }}">Next</button> &nbsp; &nbsp;
+<div class="pdf-paginator" id='pdf-paginator-{{ substr (.Get "url" | md5) 0 8 }}'>
+    <button id='pdf-prev-{{ substr (.Get "url" | md5) 0 8 }}'>Previous</button>
+    <button id='pdf-next-{{ substr (.Get "url" | md5) 0 8 }}'>Next</button> &nbsp; &nbsp;
     <span>
-      <span class="pdf-pagenum" id="pdf-pagenum-{{ substr (.Get "url" | md5) 0 8 }}"></span> / <span class="pdf-pagecount" id="pdf-pagecount-{{ substr (.Get "url" | md5) 0 8 }}"></span>
+      <span class="pdf-pagenum" id='pdf-pagenum-{{ substr (.Get "url" | md5) 0 8 }}'></span> / <span class="pdf-pagecount" id='pdf-pagecount-{{ substr (.Get "url" | md5) 0 8 }}'></span>
     </span>
-    <a class="pdf-source" id="pdf-source-{{ substr (.Get "url" | md5) 0 8 }}" href="{{ .Get "url" }}">[pdf]</a>
+    <a class="pdf-source" id='pdf-source-{{ substr (.Get "url" | md5) 0 8 }}' href='{{ .Get "url" }}'>[pdf]</a>
 </div>
 
 <noscript>
@@ -119,16 +118,16 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-{{ substr (.Get 
     (function(){
     var url = '{{ .Get "url" }}';
 
-    var hidePaginator = "{{ .Get "hidePaginator" }}" === "true";
-    var hideLoader = "{{ .Get "hideLoader" }}" === "true";
-    var selectedPageNum = parseInt("{{ .Get "renderPageNum" }}") || 1;
+    var hidePaginator = '{{ .Get "hidePaginator" }}' === "true";
+    var hideLoader = '{{ .Get "hideLoader" }}' === "true";
+    var selectedPageNum = parseInt('{{ .Get "renderPageNum" }}') || 1;
 
     // Loaded via <script> tag, create shortcut to access PDF.js exports.
     var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
     // The workerSrc property shall be specified.
     if (pdfjsLib.GlobalWorkerOptions.workerSrc == '')
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "{{.Site.BaseURL}}" + 'js/pdf-js/build/pdf.worker.js';
+      pdfjsLib.GlobalWorkerOptions.workerSrc = '{{.Site.BaseURL}}' + 'js/pdf-js/build/pdf.worker.js';
 
     // Change the Scale value for lower or higher resolution.
     var pdfDoc = null,
@@ -138,7 +137,7 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-{{ substr (.Get 
         scale = 3,
         canvas = document.getElementById('pdf-canvas-{{ substr (.Get "url" | md5) 0 8 }}'),
         ctx = canvas.getContext('2d'),
-        paginator = document.getElementById("pdf-paginator-{{ substr (.Get "url" | md5) 0 8 }}"),
+        paginator = document.getElementById('pdf-paginator-{{ substr (.Get "url" | md5) 0 8 }}'),
         loadingWrapper = document.getElementById('pdf-loadingWrapper-{{ substr (.Get "url" | md5) 0 8 }}');
 
 

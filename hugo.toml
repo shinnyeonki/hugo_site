@@ -43,6 +43,8 @@ ignoreFiles = [
     startLevel = 1
     endLevel = 6
     ordered = false
+[mermaid]
+  enable = true
 # # 1. 새로운 미디어 타입 정의
 # [mediaTypes]
 #   [mediaTypes."text/markdown"]
