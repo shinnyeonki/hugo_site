@@ -37,17 +37,21 @@
                                 <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 capitalize">{{ $key }}</div>
                                 {{ if eq $key "tags" }}
                                     <div class="flex flex-wrap gap-2">
+                                        {{ $site := $.Site }}
                                         {{ range $value }}
-                                            <a href="/tags/{{ . | urlize }}" 
+                                            {{ $tagPath := printf "tags/%s" . }}
+                                            {{ $tagPage := $site.GetPage "taxonomyTerm" $tagPath }}
+                                            {{ $tagURL := cond $tagPage $tagPage.Permalink (print "/tags/" (urlize .) "/") }}
+                                            <a href="{{ $tagURL }}" 
                                                class="px-2 py-1 text-xs bg-primary-blue-light/10 text-primary-blue-light dark:bg-primary-blue-light/20 rounded hover:bg-primary-blue-light/20 dark:hover:bg-primary-blue-light/30 transition-colors"
                                                onclick="event.stopPropagation()">
-                                                {{ . }}
+                                                {{ . }} 
                                             </a>
                                         {{ end }}
                                     </div>
                                 {{ else }}
                                     <div class="text-sm text-gray-700 dark:text-gray-300">
-                                        {{ if reflect.IsSlice $value }}
+                                        {{ if reflect.IsSlice $value }} 
                                             {{ delimit $value ", " }}
                                         {{ else }}
                                             {{ $value }}
