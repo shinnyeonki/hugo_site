@@ -49,7 +49,11 @@
                     {{ if .Params.tags }}
                     <div class="flex flex-wrap gap-2 mb-3">
                         {{ range .Params.tags }}
-                        <a href="/tags/{{ . | urlize }}"
+                        {{ $site := $.Site }}
+                        {{ $tagPath := printf "tags/%s" . }}
+                        {{ $tagPage := $site.GetPage "taxonomyTerm" $tagPath }}
+                        {{ $tagURL := cond $tagPage $tagPage.Permalink (print "/tags/" (urlize .) "/") }}
+                        <a href="{{ $tagURL }}"
                             class="px-2 py-1 text-xs bg-neutral-100 text-neutral-700 dark:bg-neutral-700 dark:text-neutral-300 rounded hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors flex items-center gap-1"
                             onclick="event.stopPropagation()">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
