@@ -50,6 +50,70 @@ RESTORE_ACCESS_TIME = True
 
 
 # ==============================================================================
+# --- [상세 예시] 설정값에 따른 프론트 메터 변화 ---
+# 아래 예시들은 각 설정 변수가 True/False 또는 특정 값일 때의 동작을 설명합니다.
+# ==============================================================================
+"""
+1. 제목 관리 (FRONTMATTER_TITLE_MANAGE 관련)
+---------------------------------------------------------
+파일명: "01-learning_hugo-guide.md" 일 때,
+
+[설정 A] CONVERT_SYMBOLS_TO_SPACES = True, CAPITALIZE = True, QUOTE_STYLE = 'none'
+  => title: 01 learning hugo guide (기호가 공백으로 바뀌고 첫 글자 대문자)
+
+[설정 B] CONVERT_SYMBOLS_TO_SPACES = False, CAPITALIZE = False, QUOTE_STYLE = 'double'
+  => title: "01-learning_hugo-guide" (파일명 그대로 유지하며 큰따옴표 추가)
+
+
+2. 리소스 경로 관리 (FRONTMATTER_RESOURCE_PATH_MANAGE 관련)
+---------------------------------------------------------
+실제 경로: "content/Project Alpha/Sample Note.md" 일 때,
+
+[설정 A] REPLACE_SPACES_WITH_HYPHENS = True, QUOTE_STYLE = 'none'
+  => resource-path: Project-Alpha/Sample-Note.md (경로 내 공백을 하이픈으로 대체)
+
+[설정 B] REPLACE_SPACES_WITH_HYPHENS = False, QUOTE_STYLE = 'single'
+  => resource-path: 'Project Alpha/Sample Note.md' (공백 유지하며 작은따옴표로 감쌈)
+
+
+3. 별칭 변경 (FRONTMATTER_RENAME_ALIASES_TO_KEYWORDS_MANAGE)
+---------------------------------------------------------
+[설정] True 인 경우
+  변환 전: aliases: [/old-link, /prev-page]
+  변환 후: keywords: [/old-link, /prev-page] (속성 이름만 keywords로 교체됨)
+
+
+4. 프론트 메터 구조 및 정렬 (공통 동작)
+---------------------------------------------------------
+스크립트는 항상 일정한 순서로 상단 데이터를 정렬합니다.
+
+[변환 전 무질서한 상태]
+---
+draft: false
+tags: [hugo]
+title: My Post
+---
+
+[변환 후 정렬된 상태]
+---
+title: My Post
+resource-path: blog/my-post.md
+draft: false
+tags: [hugo]
+---
+(항상 title -> resource-path -> draft 순서가 우선하며, 나머지는 아래에 배치됨)
+
+
+5. 파일 시스템 속성 보존 (RESTORE_MODIFICATION/ACCESS_TIME)
+---------------------------------------------------------
+[설정] True 인 경우
+  - 스크립트가 파일 내용을 수정하더라도, 탐색기나 터미널(ls -l)에서 보이는 
+    '수정 시간(mtime)'이 변하지 않습니다. 
+  - 이는 Hugo가 수정 시간을 기준으로 정렬할 때 의도치 않게 순서가 바뀌는 것을 방지합니다.
+"""
+
+
+# ==============================================================================
 # --- 함수 정의 영역 ---
 # ==============================================================================
 
