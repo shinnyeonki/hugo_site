@@ -7,7 +7,7 @@ class TextHighlighter {
     constructor() {
         // SearchConfig에서 하이라이트 클래스 가져오기 (없으면 기본값)
         const config = window.SearchConfig?.UI || {};
-        this.highlightClass = config.HIGHLIGHT_CLASS || 'bg-yellow-200 dark:bg-yellow-600';
+        this.highlightClass = config.HIGHLIGHT_CLASS || 'bg-primary-blue-light/30 text-neutral-900 dark:text-neutral-100';
     }
 
     /**

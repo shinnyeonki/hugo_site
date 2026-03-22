@@ -41,7 +41,7 @@ class SearchUI {
             this.performSearch(e.target.value);
         });
 
-        // 클릭 이벤트 버블링 방지 (외부 클릭 리스너와 충돌 방지)
+        // 클릭 이벤트 버블링 방지 (전역 클릭 이벤트와 충돌 방지용)
         this.searchInput.addEventListener('click', (e) => {
             e.stopPropagation();
         });
@@ -52,11 +52,6 @@ class SearchUI {
         // 키보드 네비게이션 이벤트
         this.searchInput.addEventListener('keydown', (e) => {
             this.handleKeyDown(e);
-        });
-
-        // 외부 클릭 시 닫기
-        document.addEventListener('click', (e) => {
-            this.hideResults();
         });
     }
 
@@ -200,10 +195,6 @@ class SearchUI {
                     this.navigateToSelected();
                 }
                 break;
-            case 'Escape':
-                this.hideResults();
-                this.searchInput.blur();
-                break;
         }
     }
 
@@ -237,16 +228,16 @@ class SearchUI {
     updateSelection() {
         this.resultItems.forEach((item, index) => {
             if (index === this.selectedIndex) {
-                // 선택된 항목 스타일 적용 (primary-blue-light 테마 사용)
-                item.classList.add('bg-blue-50', 'dark:bg-blue-900/20', 'ring-2', 'ring-primary-blue-light');
-                item.classList.remove('hover:bg-neutral-100', 'dark:hover:bg-neutral-800');
+                // 선택된 항목 스타일 적용
+                item.classList.add('bg-neutral-100', 'dark:bg-neutral-800', 'border-primary-blue-light', 'shadow-md');
+                item.classList.remove('hover:bg-neutral-50', 'dark:hover:bg-neutral-800/50', 'border-transparent');
                 
                 // 화면에 보이도록 스크롤
                 item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             } else {
                 // 선택 해제된 항목 기본 스타일로 복원
-                item.classList.remove('bg-blue-50', 'dark:bg-blue-900/20', 'ring-2', 'ring-primary-blue-light');
-                item.classList.add('hover:bg-neutral-100', 'dark:hover:bg-neutral-800');
+                item.classList.remove('bg-neutral-100', 'dark:bg-neutral-800', 'border-primary-blue-light', 'shadow-md');
+                item.classList.add('hover:bg-neutral-50', 'dark:hover:bg-neutral-800/50', 'border-transparent');
             }
         });
     }

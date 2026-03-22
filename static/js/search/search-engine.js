@@ -191,7 +191,7 @@ class SearchEngine {
 
                 switch (scope) {
                     case 'file':
-                        score = this.searchInFile(fileName, lowerTerm, matches); // 정확한 일치도 확인
+                        score = this.searchInFile(fileName, lowerTerm, matches);
                         break;
                     case 'tag':
                         score = this.searchInTags(fileData.frontmatter?.tags, lowerTerm, matches);

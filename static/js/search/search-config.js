@@ -36,7 +36,7 @@ const SearchConfig = {
         MAX_TAGS_DISPLAY: 10,
         
         // 하이라이트 CSS 클래스
-        HIGHLIGHT_CLASS: 'bg-yellow-200 dark:bg-yellow-600'
+        HIGHLIGHT_CLASS: 'bg-primary-blue-light/30 text-neutral-900 dark:text-neutral-100'
     },
 
     /**
@@ -87,11 +87,11 @@ const SearchConfig = {
     BANNER_STYLES: {
         integrated: {
             text: '🔍 통합 검색 결과',
-            className: 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+            className: 'bg-primary-blue-light/10 text-primary-blue-light border-l-4 border-primary-blue-light'
         },
         scoped: {
             text: '🔭 범위 지정 검색 결과',
-            className: 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
+            className: 'bg-primary-green-light/10 text-primary-green-light border-l-4 border-primary-green-light'
         }
     }
 };

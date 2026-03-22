@@ -135,16 +135,21 @@ class SearchQueryParser {
             const termStart = current.index + current.prefix.length;
             const termEnd = next ? next.index : query.length;
             
-            const termPart = query.substring(termStart, termEnd).trim();
+            let termPart = query.substring(termStart, termEnd).trim();
 
             if (termPart.length > 0) {
                 if (current.scopeName === 'metadata') {
                     // metadata는 'key:value' 형식을 추가로 파싱
-                    scopes.push(this.parseMetadataScope(termPart));
+                    const metaScope = this.parseMetadataScope(termPart);
+                    // value에서 따옴표 제거
+                    metaScope.term = metaScope.term.replace(/^['"]+|['"]+$/g, '');
+                    scopes.push(metaScope);
                 } else {
+                    // 일반 scope: term에서 따옴표 제거
+                    const term = termPart.replace(/^['"]+|['"]+$/g, '');
                     scopes.push({
                         scope: current.scopeName,
-                        term: termPart,
+                        term: term,
                         metaKey: null
                     });
                 }
@@ -160,14 +165,14 @@ class SearchQueryParser {
      * @returns {Object}
      */
     parseMetadataScope(termPart) {
+        // 따옴표를 고려하여 첫 번째 콜론 찾기 (key:"value" 형태 대응)
         const colonIndex = termPart.indexOf(':');
         
         if (colonIndex > 0) {
-            // key:value 형태
             const key = termPart.substring(0, colonIndex).trim();
             const value = termPart.substring(colonIndex + 1).trim();
             
-            if (key && value) {
+            if (key) {
                 return {
                     scope: 'metadata',
                     term: value,
@@ -176,7 +181,6 @@ class SearchQueryParser {
             }
         }
 
-        // value만 있는 경우
         return {
             scope: 'metadata',
             term: termPart,

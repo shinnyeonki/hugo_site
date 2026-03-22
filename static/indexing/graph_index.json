@@ -1,403 +1,7 @@
 {
-  "generated_at": "2026-03-22T16:40:39.724642",
+  "generated_at": "2026-03-22T17:45:17.333810",
   "nodes": {
-    "/02.inbox/cc++-vs-code/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/javascript-자료형/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/드라이버는-커널인가/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/db-book-답지-파일-다운받는-javascript/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/따라it/네트워크/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/싱글톤-패턴의-문제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-project/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/정렬/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/실습으로-배우는-리눅스-구조/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/cpp-stl2/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/원격지-서버-시간-확인하기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/슬라이딩-윈도우/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/06.논리와-사고/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/그래서-컴퓨터는-어떻게-동작하나요-2/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/temp/python-login/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/system-programminguniversity/lab5-과제-추가-설명/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/hash-set-unordered_set-구현체/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/spring-viewresolver-구현체/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/risc-v-명령어-구조/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/tmux/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/zsh-성능-측정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/summarize/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-6/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/prompt/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/04.인간과-로고스/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/나의-웹서버-패킷-분석-이야기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-11/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/프로젝트-금요일-10-1-이후-변경점/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/h2-database-사용법/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/github-workflow/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/spring-mvc-주요-어노테이션/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/remove-urls/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/os/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/대칭키-비대칭기-암호화/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/명지대-공지/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/untitled-8/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/python-인수-규칙/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc2/spring-locale-설정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/데이터베이스2-쿼리-과정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/mvc-1-강의-질문-사항/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/익명-클래스anonymous-class/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/rewrite-as-tweet/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/ipv4-vs-ipv6/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/android-studio-build-sequence/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/xmap-출력/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/cpp-초기화-방식/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/04.excalidraw/drawing-2025-06-02-09.33.51.excalidraw/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/python-이름공간namespace/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/이것이-코딩테스트다-with-python/dfs-알고리즘/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/11.인간과-사회/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/ios-터미널-접근/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/교차검증/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/linux-locale-setting/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/git-reflog/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/프로그래밍-특성-분류/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/python-default-type/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-9/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/linux-커널-업그레이드-방지/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/untitled/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/srg그래픽-랜더링-선택-escape-sequence/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/markdown-test/resource-test/": {
-      "inDegree": 0,
-      "outDegree": 2
-    },
-    "/06.university/고전으로-읽는-인문학-책중간/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/선형대수학-worksheet11-6번/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/04.excalidraw/drawing-2025-06-02-09.38.12.excalidraw/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/execute-run-code/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/untitled-5/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/system-programminguniversity/리눅스-링킹/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/onenote/html-and-css/리눅스/rooting/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/00.data-view-and-bases/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/bash/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/그래서-컴퓨터는-어떻게-동작하나요-1/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/aop/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/cpp-stl/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/http-요청-3가지-방법/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/real-my-sql/04.아키텍쳐/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/git-merge/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/form-태그의-http-패킷massage-전송/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/test/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/소프트웨어-공학-시험문제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/데이터베이스-전공책-chapter6-7-정리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/08.인간과-지식-2/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/00.data-view-and-bases/05.-share-note/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/실습으로-배우는-리눅스-구조/프로세스-생성/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/데이터-베이스-비이진-관계-스키마-생성시/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/university-machine-leaning/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/spring-requestmapping-구현체/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/cdn-링크-찾기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/실습으로-배우는-리눅스-구조/프로그램-메모리-구조-파악하기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-12/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
     "/temp/rest-full-api/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/onenote/책/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-최종-발표/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/javascript-함수/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/실습으로-배우는-리눅스-구조/리눅스-시스템-기본/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode-sql-문제-풀기/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/dbms-잡-정보/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/markdown-test/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/00.data-view-and-bases/학교-database-강의/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -405,599 +9,7 @@
       "inDegree": 1,
       "outDegree": 0
     },
-    "/02.inbox/utf-8/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/이것이-코딩테스트다-with-python/스택과-큐-자료구조/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/gdb-사용법/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/abi/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-system-programming-ubuntu-이미지-설명/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/레지스터/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/system-programminguniversity/05-process/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/문자-찾기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/서브쿼리-종류/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/system-programminguniversity/04-file-조작/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/copilot/copilot-custom-prompts/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/real-my-sql/00.초기-설정/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/spring-handleradapter-구현체/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/temp/알르레기-반응-중-건강검진-피검사/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/코어-덤프core-dump/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/sse-server-sent-event/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/함수포인터/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/disk/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/브라우저-기반-수강신청-알림-시스템-설계서/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/java-쓰레드thread/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/터미널-동작-원리-매우-상세하게2-디버깅/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/untitled/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/forward-vs-redirect/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/디버거-cli-명령어-모음/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/청년창업-2025-창업-기준/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/2의-보수를-음수-표현법으로-정한-이유/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/university-algorizm/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/site-info/about/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/markdown-frontmatter-규칙/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/temp/docker-명령-모음/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/환경변수-목록/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/network/무제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/sql-에서-백틱-작은따옴표-큰따옴표-의미/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-2/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/dockerpty-document/dockerpty-pty/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/python-기본-가상환경-venv/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/fix-grammar-and-spelling/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-10/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/쓰레드의-공유-자원과-분리자원/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/html-화면-z-축/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/01.철학의-개념/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/동작원리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/sql-date-관련-정리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/03.플라톤과-좋은-삶/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/문서-객체-모델-dom/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/transaction-의-acid/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/python-람다lambda/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/onenote/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/따라it/네트워크-4계층/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/환경변수와-셸변수의-차이/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/리눅스-파일-권한/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/temp/unix-도메인-소켓/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/network/university-network/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/wsl-에서-폴더가-초록색-배경으로-보이는-이유/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/cpp-메모리-할당-추척/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-5/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/00.data-view-and-bases/따라it/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/sudo-vs-su/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/클라우드-컴퓨팅-과제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/클라이언트-어플리케이션-구조-변화/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/network/university-network-quiz/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/이것이-코딩테스트다-with-python/알고리즘-성능-평가/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/http-분석/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/바이브-코딩/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/키보드하드웨어-이벤트-인식-과정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/university-mobile-programming/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/prompt/사고과정-제한-프롬프트/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/윈도우-파일이름으로-사용할-수-없는-문자/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/메모리-최대-크기/": {
-      "inDegree": 1,
-      "outDegree": 1
-    },
-    "/06.university/university-architecture/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/이것이-코딩테스트다-with-python/탐욕법greedy/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/산업경영/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/알고리즘-변수명/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/https와-비대칭-키-초기-설정부터-데이터-전송까지의-모든-과정-simulation/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/빌드컴파일-과정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/컴퓨터-구조-chapter1/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/onenote/책/진화-심리학/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/generate-glossary/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/gcc-defalut-버전-확인/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/dockerpty-document/dockerpty-__init__/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/브라우저-기반-수강신청-알림/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/composite-pattern/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/ascii-code/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/dockerpty-document/dockerpty-io/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/실수-표현방법-고정소수점과-부동소수점/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/영어-파트너-챗-질문지-목록/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/hugo-url-관련-method/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/two-pointer-알고리즘/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/cpp-모음-찾기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/클컴/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-프로젝트-발표/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/docker-없이-컨테이너/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/데이터베이스2-er-model/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/가변인자variadic/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/zone.identifier-삭제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/주석-유형-docstring/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/아키텍쳐-기말고사-범위/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/onenote/html-and-css/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-project-발전방향/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/android-sdk-tool-list/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/09.인간과-지식-3/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/spring-intro/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/makefile/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/605-문제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/spring-외부설정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/00.data-view-and-bases/12.-data-view-recent-modified/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/싱글톤-내부-의존관계로-프로토타입-스코프의-bean-을-가질때/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/markdown-test/마크다운-문법/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/데이터베이스2-프로젝트/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/hugo-template-시스템-경우의-수로-비교한-자세한-설명/": {
-      "inDegree": 1,
-      "outDegree": 1
-    },
-    "/02.inbox/네트워크-관련-명령어-모음/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/university-movie/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/system-programminguniversity/03-file-io/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/site-info/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/java-제네릭generic/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/vscode-설정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/join-연산-크기-추청/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/sql-틀린문제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/c-cpp-연산자-우선순위/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/java-리플렉션reflection/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/x86-64-cpu-레지스터register의-개념-및-종류/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/따라it/네트워크-3계층/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/shell-의-로그인-과정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/spring-mvc-주요-처리-과정/": {
-      "inDegree": 0,
-      "outDegree": 4
-    },
-    "/temp/postgresql/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/벨만-포드-알고리즘-상세과정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/프로젝트-로그인-기능-구현/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/백엔드-구조-변화-역사/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/pragma/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/system-programminguniversity/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/데이터베이스2-정규화/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/python-모듈module/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/meterialize-view-의-집계연산에서-삽입-삭제에-따른-변화/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/spring-view-구현체/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/thymeleaf-기본/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/gcc-include-path-확인하기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-7/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/spring-controller-인수parameter/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/2095.-delete-the-middle-node-of-a-linked-list/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/make-shorter/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/데이터베이스-sql/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/markdown-test/math-test/": {
+    "/02.inbox/python-매개변수-전달/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -1005,343 +17,11 @@
       "inDegree": 0,
       "outDegree": 0
     },
-    "/temp/spring-bean-조회/": {
+    "/leetcode75/443.-string-compression/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/copilot/copilot-custom-prompts/emojify/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-발표-스크립트/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/java-cli-compile/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/java-어노테이션anotation/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/doxyzen-키워드/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/dockerpty-document/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/long-vs-float/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/실습으로-배우는-리눅스-구조/05.메모리-관리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/markdown-test/marmaid-test/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/순수-ui-디자인-용어/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/101-문제/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/markdown-test/test-math-lists/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/인사이트-제안-주장의-차이점/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/04.excalidraw/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/터미널-동작-원리-매우-상세하게/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/02.inbox/mac-java-관리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/개인-블로그-사이트-후기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/계층-기반-폴더-구조-vs-서비스-단위-기반-폴더-구조/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/따라it/네트워크-고급/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/university-딥러닝기술-동향/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/정규-표현식/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-4/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/vscode-makefile-자동화/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/git-checkout에서-restore-switch-변경/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-프로젝트/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/temp/mac-java-버전-변경/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/udp와-tcp-demultiplexing-의-이해/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/signal-차이-unixmacos-vs-linux/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/ryugod-프로젝트2/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/site-info/terms/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/알고리즘-의존성/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/이것이-코딩테스트다-with-python/bfs-알고리즘/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/데이터베이스-디자인/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/css-hidden-대신-transition/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/nextint-vs-nextline/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/real-my-sql/05.트랜잭션과-잠금/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-ubuntu-문서/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/att-문법-과-intel-assemble-문법-차이/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/따라it/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/python-클래스-및-인스턴스-변수/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/terminal-auto-logging/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/java-메모리memory/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/tcp-telnet-통신-과정-시뮬레이션/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/07.1.고대에서-근대로/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/sizeof/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/servlet/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/network/네트워크-족보-문제-풀이/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/우분투-리눅스-환경-구성/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/컨테이너-종류/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/network/3장-트랜스포트-계층-transport/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/의존관계-주입dependency-injection/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/toss-technical-writing-guide/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/temp/untitled-4/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/python-매개변수-전달/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/자산-관리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/network/4계층-네트워크-계층-network/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/대학교-운영체제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/window-10-에서-11-로-이전-과정/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/임베디드-os-개발-프로젝트/": {
-      "inDegree": 0,
-      "outDegree": 2
-    },
-    "/copilot/copilot-custom-prompts/make-longer/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/일반-함수-호출-user-level-function-call-vs-시스템-콜-system-call-호출-방식의-차이/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/onenote/html-and-css/리눅스/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/서블릿-객체들/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mjuecs-2/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode-sql-문제-풀기/leetcode-sql-문제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/2024-10-25/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/cpp-문자열-split/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/gitstatus-프롬프트/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/무제-8/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/캐시-매핑-방식의-이해/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/http는-stateless-한데-하위-스택의-tcp-는-stateful-이다-http1.1-기준/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/rewrite-as-tweet-thread/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/java-컬렉션collections-framework/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/generate-table-of-contents/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/1493.-longest-subarray-of-1s-after-deleting-one-element/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/obsidian-데이터-바인딩-처리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/hugo-기본-전제/": {
-      "inDegree": 1,
-      "outDegree": 1
-    },
-    "/02.inbox/리스트-컴프리헨션list-comprehension/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/cloud-computing-과제2-보고서/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/ipc-massage-passing/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/02.철학의-유용성과-가치/": {
+    "/06.university/untitled/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -1349,159 +29,23 @@
       "inDegree": 0,
       "outDegree": 1
     },
-    "/02.inbox/onenote/html-and-css/css-복합-선택자-패턴-우선-적용-순위-규칙/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/stateful-과-stateless-프로토콜/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/markdown-test/markdown-systex/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/temp/untitled/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/주소-바인딩-실습소스코드-부터-프로세스까지/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/untitled-7/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/10.인간과-도덕/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/onenote/책/철학/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/python-연산자-우선순위/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/yt-dlp-명령어-모음/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/고전으로-읽는-인문학-책기말/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/학교-시스템-데이터베이스/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/ps-공부/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/01.publish/c-선언부-문법-읽기/": {
-      "inDegree": 0,
-      "outDegree": 2
-    },
-    "/younghan-mvc2/thymeleaf-정리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/시스템-분석-설계-시험문제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/explain-like-i-am-5/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
     "/temp/python-입력함수/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/02.inbox/mysql-명령-모음/": {
+    "/temp/spring-intro/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/06.university/network/_index/": {
+    "/06.university/university-machine-leaning/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/02.inbox/x86-64-레지스터-최소-설명/": {
+    "/02.inbox/따라it/네트워크-고급/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/04.excalidraw/drawing-2025-10-11-13.12.38.excalidraw/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/02.inbox/이것이-코딩테스트다-with-python/투-포인터-알고리즘/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/spring-controller-추상화-단계별-어노테이션-파라미터/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/서버-db-사용하기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/copilot/copilot-custom-prompts/translate-to-chinese/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/spring-@autowired-의존관계-주입시-중복-문제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/어셈블러/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/00.data-view-and-bases/11.-data-view-all-tag/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/system-programminguniversity/07-signal/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/메모리-기반-database/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/android-이벤트-처리-코드-분리/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/spec-driven-development/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/wordpress-과제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/java-type-확인법/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/network/network-2차-과제/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/html-form태그-요청-put-path-메서드-확장/": {
+    "/temp/python-모듈module/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -1509,7 +53,235 @@
       "inDegree": 0,
       "outDegree": 0
     },
-    "/temp/c-에서-오류를-발생시키는-방법/": {
+    "/signal-차이-unixmacos-vs-linux/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/환경변수와-셸변수의-차이/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/cc++-vs-code/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/bfs-알고리즘/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/ipc-massage-passing/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/python-default-type/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/html-화면-z-축/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/리스트-컴프리헨션list-comprehension/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/markdown-test/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/10.인간과-도덕/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/키보드하드웨어-이벤트-인식-과정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/프로젝트-sample-data-통계/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/window-10-에서-11-로-이전-과정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/나의-웹서버-패킷-분석-이야기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/css-hidden-대신-transition/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/python-인수-규칙/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/markdown-frontmatter-규칙/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/leetcode75/605-문제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/클라우드-컴퓨팅-과제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/벨만-포드-알고리즘-상세과정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/ipv4-vs-ipv6/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/터미널-command-line-shell/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/spring-life-cycle/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/브라우저-기반-수강신청-알림/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/gcc-include-path-확인하기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/java-컬렉션collections-framework/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/university-algorizm/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/서블릿-객체들/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/그래서-컴퓨터는-어떻게-동작하나요-2/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/university-movie/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/html-and-css/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/임베디드-os-개발-프로젝트/": {
+      "inDegree": 0,
+      "outDegree": 2
+    },
+    "/temp/nextint-vs-nextline/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/html-and-css/리눅스/rooting/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/실수-표현방법-고정소수점과-부동소수점/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/network-2차-과제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/sudo-vs-su/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/디버거-cli-명령어-모음/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/4계층-네트워크-계층-network/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/thymeleaf-기본/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/explain-like-i-am-5/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/os/university-operating-system-quiz/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/드라이버는-커널인가/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/temp/find-명확하게-이해하자/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/cpp-메모리-할당-추척/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/cpp-stl2/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/cpp-생성자-소멸자-규칙/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/yt-dlp-명령어-모음/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/university-mobile-programming/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/무제-5/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/계층-기반-폴더-구조-vs-서비스-단위-기반-폴더-구조/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/04.인간과-로고스/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/javascript-자료형/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/스택과-큐-자료구조/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/실습으로-배우는-리눅스-구조/프로세스-생성/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/개인-블로그-사이트-후기/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -1517,31 +289,127 @@
       "inDegree": 0,
       "outDegree": 1
     },
-    "/temp/ansi-escape-code/": {
+    "/universal-clipboard/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/02.inbox/주석-유형-docstring/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/copilot/copilot-custom-prompts/simplify/": {
+    "/무제-9/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/02.inbox/날짜-형식-포멧/": {
+    "/temp/클컴/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/무제-3/": {
+    "/04.excalidraw/_index/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/06.university/mju_ecs-project/oracle-database/": {
+    "/06.university/databaseuniversity/학교-시스템-데이터베이스/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/06.university/mju_ecs-project/학교-네트워크-망-traceroute/": {
+    "/toss-technical-writing-guide/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/00.data-view-and-bases/_index/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/06.university/network/60222100-신년기-네트워크-과제-1/": {
+    "/temp/알고리즘-의존성/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/무제-11/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/데이터-베이스-비이진-관계-스키마-생성시/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/영어2-메모/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/university-architecture/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/spec-driven-development/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/의존관계-주입dependency-injection/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/메모리-최대-크기/": {
+      "inDegree": 1,
+      "outDegree": 1
+    },
+    "/younghan-mvc2/spring-locale-설정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/long-vs-float/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/고전으로-읽는-인문학-책기말/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/form-태그의-http-패킷massage-전송/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/spring-bean-scope/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/06.university/철학과-인간/06.논리와-사고/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/레지스터/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/책/진화-심리학/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/summarize/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-발표-스크립트/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/무제-2/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/system-programminguniversity/lab5-과제-추가-설명/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/c++-입력함수/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -1553,171 +421,31 @@
       "inDegree": 0,
       "outDegree": 0
     },
-    "/02.inbox/대소문자-구분-불가-문제/": {
+    "/02.inbox/cloud-computing-과제2-보고서/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/temp/interactive-shell-vs-non-interactive-shell/": {
+    "/copilot/copilot-custom-prompts/_index/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/06.university/os/university-operating-system-quiz/": {
+    "/temp/쓰레드의-공유-자원과-분리자원/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/universal-clipboard/": {
+    "/02.inbox/spring-requestmapping-구현체/": {
       "inDegree": 1,
       "outDegree": 0
     },
-    "/temp/spring-life-cycle/": {
+    "/00.data-view-and-bases/따라it/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/": {
+    "/06.university/철학과-인간/_index/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/02.inbox/oracle-database-권한/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/이것이-코딩테스트다-with-python/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/tmux-pane-window-차이/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/00.data-view-and-bases/이것이-코딩테스트다-with-python/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/spring-controller-반환return/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/find-명확하게-이해하자/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode75/334.-increasing-triplet-subsequence/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/dockerpty-document/dockerpty-tty/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/elf-구조/": {
-      "inDegree": 1,
-      "outDegree": 0
-    },
-    "/leetcode75/11.-container-with-most-water/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/spring-bean-scope/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/leetcode75/443.-string-compression/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/따라it/네트워크-7계층/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/네트워크-인터페이스/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/leetcode-sql-문제-풀기/대장균-자식-수-구하기/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/arm-cpu/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/데이터베이스-용어-정의-및-relation-algebra/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/asm-parameter-passing-인자-전달-방식/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/영어2-메모/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/컨테이너-포트-할당/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/markdown-test/간단한-수식-테스트/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/c++-입력함수/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/onenote/html-and-css/리눅스/vimrc-파일/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/01.publish/_index/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/younghan-mvc1/younghan-mvc1-프로젝트-변화-과정/": {
-      "inDegree": 0,
-      "outDegree": 1
-    },
-    "/04.excalidraw/drawing-2025-06-02-09.38.04.excalidraw/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/프로젝트-sample-data-통계/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/site-info/privacy/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/02.inbox/따라it/네트워크-2계층/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/mju_ecs-project/mju-ecs-해야할-것/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/markdown-test/test-code-highlight/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/철학과-인간/07.2.인간과-지식-1/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/데이터베이스-질문-목록/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/python-클래스class/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/temp/선형대수학/": {
-      "inDegree": 0,
-      "outDegree": 0
-    },
-    "/06.university/databaseuniversity/요구사항명세서/": {
+    "/02.inbox/tcp-telnet-통신-과정-시뮬레이션/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -1725,7 +453,1051 @@
       "inDegree": 0,
       "outDegree": 0
     },
+    "/무제-8/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/rewrite-as-tweet/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/네트워크-족보-문제-풀이/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/spring-mvc-주요-어노테이션/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/real-my-sql/00.초기-설정/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/temp/산업경영/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/emojify/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/site-info/terms/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/gdb-사용법/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스-sql/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/cpp-초기화-방식/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/시스템-분석-설계-시험문제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-ubuntu-문서/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/무제-6/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/우분투-리눅스-환경-구성/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/00.data-view-and-bases/11.-data-view-all-tag/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/학교-네트워크-망-traceroute/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/git-checkout에서-restore-switch-변경/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/따라it/네트워크/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/따라it/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/test/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/프로그래밍-특성-분류/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/무제-7/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/oracle-database-권한/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/https와-비대칭-키-초기-설정부터-데이터-전송까지의-모든-과정-simulation/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/hugo-template-시스템-경우의-수로-비교한-자세한-설명/": {
+      "inDegree": 1,
+      "outDegree": 1
+    },
+    "/00.data-view-and-bases/12.-data-view-recent-modified/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/vscode-makefile-자동화/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/101-문제/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/02.inbox/real-my-sql/04.아키텍쳐/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/ios-터미널-접근/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/utf-8/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/mysql-명령-모음/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/00.data-view-and-bases/학교-database-강의/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/risc-v-명령어-구조/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/srg그래픽-랜더링-선택-escape-sequence/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/11.-container-with-most-water/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/주소-바인딩-실습소스코드-부터-프로세스까지/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/cpp-stl/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/08.인간과-지식-2/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/가변인자variadic/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/hugo-url-관련-method/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/명지대-공지/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스2-정규화/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/wsl-에서-폴더가-초록색-배경으로-보이는-이유/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/고전으로-읽는-인문학-책중간/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/remove-urls/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/wordpress-과제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/spring-view-구현체/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/무제-4/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/spring-viewresolver-구현체/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/그래서-컴퓨터는-어떻게-동작하나요-1/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/mvc-1-강의-질문-사항/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/composite-pattern/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/07.2.인간과-지식-1/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/att-문법-과-intel-assemble-문법-차이/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/generate-table-of-contents/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/untitled-5/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/system-programminguniversity/03-file-io/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/무제-12/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/university-network/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/서버-db-사용하기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/1493.-longest-subarray-of-1s-after-deleting-one-element/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/zone.identifier-삭제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/백엔드-구조-변화-역사/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/html-form태그-요청-put-path-메서드-확장/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/transaction-의-acid/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/python-클래스class/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/terminal-auto-logging/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/알고리즘-성능-평가/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/334.-increasing-triplet-subsequence/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/06.university/아키텍쳐-기말고사-범위/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/make-shorter/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/네트워크-인터페이스/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/pragma/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/ansi-escape-code/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/system-programminguniversity/04-file-조작/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/02.inbox/일반-함수-호출-user-level-function-call-vs-시스템-콜-system-call-호출-방식의-차이/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/postgresql/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/http-요청-3가지-방법/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode-sql-문제-풀기/대장균-자식-수-구하기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/python-연산자-우선순위/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/bash/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/클라이언트-어플리케이션-구조-변화/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/spring-controller-추상화-단계별-어노테이션-파라미터/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/interactive-shell-vs-non-interactive-shell/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/time-명령어/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/04.excalidraw/drawing-2025-06-02-09.38.04.excalidraw/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스-용어-정의-및-relation-algebra/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/c-에서-오류를-발생시키는-방법/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/tmux-pane-window-차이/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/교차검증/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/oracle-database/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/싱글톤-패턴의-문제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/따라it/네트워크-4계층/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/대학교-운영체제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/sql-틀린문제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/translate-to-chinese/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/브라우저-기반-수강신청-알림-시스템-설계서/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스-인덱스/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/spring-mvc-주요-처리-과정/": {
+      "inDegree": 0,
+      "outDegree": 4
+    },
+    "/06.university/mju_ecs-project/dockerpty-document/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/git-reflog/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/ps-공부/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/프로젝트-금요일-10-1-이후-변경점/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/리눅스-파일-권한/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/01.publish/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/00.data-view-and-bases/05.-share-note/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/메모리-기반-database/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/sql-date-관련-정리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/01.publish/c-선언부-문법-읽기/": {
+      "inDegree": 0,
+      "outDegree": 2
+    },
+    "/02.inbox/linux-locale-setting/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/untitled-4/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/java-리플렉션reflection/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/python-클래스-및-인스턴스-변수/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/spring-controller-반환return/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode-sql-문제-풀기/leetcode-sql-문제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/01.철학의-개념/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/makefile/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/sql-에서-백틱-작은따옴표-큰따옴표-의미/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스2-쿼리-과정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/요구사항명세서/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/정렬/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/spring-handleradapter-구현체/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/temp/java-쓰레드thread/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/docker-명령-모음/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/system-programminguniversity/07-signal/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/zsh-성능-측정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/07.1.고대에서-근대로/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/윈도우-파일이름으로-사용할-수-없는-문자/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/asm-parameter-passing-인자-전달-방식/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/함수포인터/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/02.inbox/문서-객체-모델-dom/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/stateful-과-stateless-프로토콜/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/markdown-test/markdown-systex/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/탐욕법greedy/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/sse-server-sent-event/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-project/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode-sql-문제-풀기/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/system-programminguniversity/05-process/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/데이터베이스-전공책-chapter6-7-정리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/markdown-test/marmaid-test/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/책/철학/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
     "/06.university/databaseuniversity/schema_diagram-및-보고서/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/python-기본-가상환경-venv/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/udp와-tcp-demultiplexing-의-이해/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-프로젝트/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/temp/mac-java-버전-변경/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/dockerpty-document/dockerpty-__init__/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/터미널-동작-원리-매우-상세하게/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/무제-10/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/university-딥러닝기술-동향/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/hash-set-unordered_set-구현체/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/site-info/privacy/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/spring-controller-인수parameter/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/os/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/execute-run-code/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/dockerpty-document/dockerpty-pty/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/java-제네릭generic/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/university-network-quiz/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/python-login/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/03.플라톤과-좋은-삶/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/html-and-css/리눅스/vimrc-파일/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/원격지-서버-시간-확인하기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/04.excalidraw/drawing-2025-10-11-13.12.38.excalidraw/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/02.inbox/선형대수학-worksheet11-6번/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/순수-ui-디자인-용어/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/make-longer/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/실습으로-배우는-리눅스-구조/리눅스-시스템-기본/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/dbms-잡-정보/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/h2-database-사용법/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/markdown-test/test-code-highlight/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/meterialize-view-의-집계연산에서-삽입-삭제에-따른-변화/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/dockerpty-document/dockerpty-io/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/register-x64/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/java-어노테이션anotation/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/site-info/about/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/untitled-7/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/obsidian-데이터-바인딩-처리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/cpp-문자열-split/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/컨테이너-포트-할당/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/mac-java-관리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/02.철학의-유용성과-가치/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/날짜-형식-포멧/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/markdown-test/간단한-수식-테스트/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/인사이트-제안-주장의-차이점/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/html-and-css/리눅스/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/prompt/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-최종-발표/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/cpp-모음-찾기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/빌드컴파일-과정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/소프트웨어-공학-시험문제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/2024-10-25/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/linux-커널-업그레이드-방지/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/forward-vs-redirect/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/실습으로-배우는-리눅스-구조/05.메모리-관리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스-질문-목록/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/gitstatus-프롬프트/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/2095.-delete-the-middle-node-of-a-linked-list/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc2/thymeleaf-정리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/따라it/네트워크-2계층/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/컴퓨터-구조-chapter1/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/docker-없이-컨테이너/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/java-메모리memory/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/unix-도메인-소켓/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/elf-구조/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/java-type-확인법/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/무제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/04.excalidraw/drawing-2025-06-02-09.38.12.excalidraw/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/markdown-test/test-math-lists/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/untitled/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/2의-보수를-음수-표현법으로-정한-이유/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/동작원리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/javascript-함수/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/c-cpp-연산자-우선순위/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/markdown-test/resource-test/": {
+      "inDegree": 0,
+      "outDegree": 2
+    },
+    "/leetcode75/two-pointer-알고리즘/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/실습으로-배우는-리눅스-구조/프로그램-메모리-구조-파악하기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/servlet/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/서브쿼리-종류/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/http는-stateless-한데-하위-스택의-tcp-는-stateful-이다-http1.1-기준/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/markdown-test/마크다운-문법/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/무제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스2-er-model/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/바이브-코딩/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/sizeof/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/younghan-mvc1-프로젝트-변화-과정/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/06.university/system-programminguniversity/리눅스-링킹/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/00.data-view-and-bases/이것이-코딩테스트다-with-python/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/abi/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/markdown-test/math-test/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/60222100-신년기-네트워크-과제-1/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/문자-찾기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/untitled-8/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/청년창업-2025-창업-기준/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-2/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/android-이벤트-처리-코드-분리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/11.인간과-사회/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/선형대수학/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/cdn-링크-찾기/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/코어-덤프core-dump/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/join-연산-크기-추청/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스-디자인/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/dfs-알고리즘/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/site-info/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/aop/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/python-람다lambda/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/대칭키-비대칭기-암호화/": {
+      "inDegree": 0,
+      "outDegree": 1
+    },
+    "/02.inbox/python-이름공간namespace/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/캐시-매핑-방식의-이해/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/android-sdk-tool-list/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -1733,15 +1505,215 @@
       "inDegree": 1,
       "outDegree": 0
     },
-    "/02.inbox/register-x64/": {
+    "/copilot/copilot-custom-prompts/simplify/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/leetcode75/cpp-생성자-소멸자-규칙/": {
+    "/02.inbox/git-merge/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/temp/터미널-command-line-shell/": {
+    "/02.inbox/x86-64-레지스터-최소-설명/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/실습으로-배우는-리눅스-구조/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/db-book-답지-파일-다운받는-javascript/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/java-cli-compile/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/자산-관리/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/younghan-mvc1/http-분석/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-system-programming-ubuntu-이미지-설명/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mju-ecs-해야할-것/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/android-studio-build-sequence/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/real-my-sql/05.트랜잭션과-잠금/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/arm-cpu/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/network/3장-트랜스포트-계층-transport/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/hugo-기본-전제/": {
+      "inDegree": 1,
+      "outDegree": 1
+    },
+    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/알고리즘-변수명/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/따라it/네트워크-7계층/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/generate-glossary/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/tmux/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/정규-표현식/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/disk/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/철학과-인간/09.인간과-지식-3/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/spring-bean-조회/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/터미널-동작-원리-매우-상세하게2-디버깅/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/html-and-css/css-복합-선택자-패턴-우선-적용-순위-규칙/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/databaseuniversity/데이터베이스2-프로젝트/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/onenote/책/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/leetcode75/슬라이딩-윈도우/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/네트워크-관련-명령어-모음/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/github-workflow/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/따라it/네트워크-3계층/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/어셈블러/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/vscode-설정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/gcc-defalut-버전-확인/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/dockerpty-document/dockerpty-tty/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/무제-3/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/spring-외부설정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/shell-의-로그인-과정/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/영어-파트너-챗-질문지-목록/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/알르레기-반응-중-건강검진-피검사/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/x86-64-cpu-레지스터register의-개념-및-종류/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/환경변수-목록/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-프로젝트-발표/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/대소문자-구분-불가-문제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/익명-클래스anonymous-class/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/mjuecs-project-발전방향/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/04.excalidraw/drawing-2025-06-02-09.33.51.excalidraw/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/ryugod-프로젝트2/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/doxyzen-키워드/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/prompt/사고과정-제한-프롬프트/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/mju_ecs-project/컨테이너-종류/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/ascii-code/": {
       "inDegree": 0,
       "outDegree": 0
     },
@@ -1749,11 +1721,39 @@
       "inDegree": 0,
       "outDegree": 1
     },
-    "/02.inbox/time-명령어/": {
+    "/copilot/copilot-custom-prompts/rewrite-as-tweet-thread/": {
       "inDegree": 0,
       "outDegree": 0
     },
-    "/06.university/databaseuniversity/데이터베이스-인덱스/": {
+    "/temp/프로젝트-로그인-기능-구현/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/06.university/system-programminguniversity/_index/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/싱글톤-내부-의존관계로-프로토타입-스코프의-bean-을-가질때/": {
+      "inDegree": 1,
+      "outDegree": 0
+    },
+    "/02.inbox/이것이-코딩테스트다-with-python/투-포인터-알고리즘/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/spring-@autowired-의존관계-주입시-중복-문제/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/temp/untitled/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/copilot/copilot-custom-prompts/fix-grammar-and-spelling/": {
+      "inDegree": 0,
+      "outDegree": 0
+    },
+    "/02.inbox/xmap-출력/": {
       "inDegree": 0,
       "outDegree": 0
     }
@@ -1813,11 +1813,7 @@
     },
     {
       "source": "/younghan-mvc1/spring-mvc-주요-처리-과정/",
-      "target": "/02.inbox/spring-viewresolver-구현체/"
-    },
-    {
-      "source": "/younghan-mvc1/spring-mvc-주요-처리-과정/",
-      "target": "/02.inbox/spring-view-구현체/"
+      "target": "/02.inbox/spring-handleradapter-구현체/"
     },
     {
       "source": "/younghan-mvc1/spring-mvc-주요-처리-과정/",
@@ -1825,7 +1821,11 @@
     },
     {
       "source": "/younghan-mvc1/spring-mvc-주요-처리-과정/",
-      "target": "/02.inbox/spring-handleradapter-구현체/"
+      "target": "/02.inbox/spring-view-구현체/"
+    },
+    {
+      "source": "/younghan-mvc1/spring-mvc-주요-처리-과정/",
+      "target": "/02.inbox/spring-viewresolver-구현체/"
     },
     {
       "source": "/younghan-mvc1/younghan-mvc1-프로젝트-변화-과정/",
@@ -1867,14 +1867,6 @@
   "externalLinks": [
     {
       "source": "/toss-technical-writing-guide/",
-      "url": "https://api.example.com/user',"
-    },
-    {
-      "source": "/toss-technical-writing-guide/",
-      "url": "https://jsonplaceholder.typicode.com/todos/1"
-    },
-    {
-      "source": "/toss-technical-writing-guide/",
       "url": "http://localhost:3000"
     },
     {
@@ -1883,11 +1875,15 @@
     },
     {
       "source": "/toss-technical-writing-guide/",
-      "url": "https://jsonplaceholder.typicode.com/posts/1');"
+      "url": "https://jsonplaceholder.typicode.com/todos/1"
     },
     {
-      "source": "/android-이벤트-처리-코드-분리/",
-      "url": "http://schemas.android.com/tools"
+      "source": "/toss-technical-writing-guide/",
+      "url": "https://api.example.com/user',"
+    },
+    {
+      "source": "/toss-technical-writing-guide/",
+      "url": "https://jsonplaceholder.typicode.com/posts/1');"
     },
     {
       "source": "/android-이벤트-처리-코드-분리/",
@@ -1898,8 +1894,12 @@
       "url": "http://schemas.android.com/apk/res-auto"
     },
     {
+      "source": "/android-이벤트-처리-코드-분리/",
+      "url": "http://schemas.android.com/tools"
+    },
+    {
       "source": "/hugo-url-관련-method/",
-      "url": "http://localhost:1234/"
+      "url": "https://prod.example.com/"
     },
     {
       "source": "/hugo-url-관련-method/",
@@ -1911,7 +1911,7 @@
     },
     {
       "source": "/hugo-url-관련-method/",
-      "url": "https://prod.example.com/"
+      "url": "https://example.com/docs"
     },
     {
       "source": "/hugo-url-관련-method/",
@@ -1919,15 +1919,15 @@
     },
     {
       "source": "/hugo-url-관련-method/",
-      "url": "https://example.com/docs"
-    },
-    {
-      "source": "/hugo-template-시스템-경우의-수로-비교한-자세한-설명/",
-      "url": "https://gohugo.io/methods/page/path/"
+      "url": "http://localhost:1234/"
     },
     {
       "source": "/hugo-template-시스템-경우의-수로-비교한-자세한-설명/",
       "url": "https://gohugo.io/methods/page/kind/"
+    },
+    {
+      "source": "/hugo-template-시스템-경우의-수로-비교한-자세한-설명/",
+      "url": "https://gohugo.io/methods/page/path/"
     },
     {
       "source": "/java-type-확인법/",
@@ -1963,15 +1963,15 @@
     },
     {
       "source": "/무제-11/",
-      "url": "https://example.com#:~:text="
-    },
-    {
-      "source": "/무제-11/",
       "url": "https://.../notes/project-a.md에"
     },
     {
+      "source": "/무제-11/",
+      "url": "https://example.com#:~:text="
+    },
+    {
       "source": "/무제-6/",
-      "url": "http://127.0.0.1:8000/..."
+      "url": "http://127.0.0.1:8000/info"
     },
     {
       "source": "/무제-6/",
@@ -1979,7 +1979,7 @@
     },
     {
       "source": "/무제-6/",
-      "url": "http://127.0.0.1:8000/nonexistent_page"
+      "url": "http://127.0.0.1:8000/"
     },
     {
       "source": "/무제-6/",
@@ -1987,19 +1987,11 @@
     },
     {
       "source": "/무제-6/",
-      "url": "http://127.0.0.1:8000/"
+      "url": "http://127.0.0.1:8000/nonexistent_page"
     },
     {
       "source": "/무제-6/",
-      "url": "http://127.0.0.1:8000/info"
-    },
-    {
-      "source": "/무제-7/",
-      "url": "https://github.com/WayneD/rsync입니다."
-    },
-    {
-      "source": "/무제-7/",
-      "url": "https://rsync.samba.org/에서"
+      "url": "http://127.0.0.1:8000/..."
     },
     {
       "source": "/무제-7/",
@@ -2007,11 +1999,19 @@
     },
     {
       "source": "/무제-7/",
-      "url": "https://download.samba.org/pub/rsync/rsync.1"
+      "url": "https://rsync.samba.org/에서"
+    },
+    {
+      "source": "/무제-7/",
+      "url": "https://github.com/WayneD/rsync입니다."
     },
     {
       "source": "/무제-7/",
       "url": "https://rsync.samba.org/를"
+    },
+    {
+      "source": "/무제-7/",
+      "url": "https://download.samba.org/pub/rsync/rsync.1"
     },
     {
       "source": "/무제/",
@@ -2027,10 +2027,6 @@
     },
     {
       "source": "/바이브-코딩/",
-      "url": "https://news.hada.io/topic?id=23483"
-    },
-    {
-      "source": "/바이브-코딩/",
       "url": "https://news.hada.io/topic?id=23384"
     },
     {
@@ -2038,8 +2034,24 @@
       "url": "https://codemanship.wordpress.com/2025/09/30/comprehension-debt-the-ticking-time-bomb-of-llm-generated-code/"
     },
     {
+      "source": "/바이브-코딩/",
+      "url": "https://news.hada.io/topic?id=23483"
+    },
+    {
       "source": "/프로젝트-주제/",
       "url": "https://allcll.kr"
+    },
+    {
+      "source": "/temp/2024-10-25/",
+      "url": "https://wrtn.ai/"
+    },
+    {
+      "source": "/temp/2024-10-25/",
+      "url": "https://chatgpt.com/"
+    },
+    {
+      "source": "/temp/2024-10-25/",
+      "url": "https://www.deepl.com/ko/translator/files"
     },
     {
       "source": "/temp/2024-10-25/",
@@ -2051,33 +2063,17 @@
     },
     {
       "source": "/temp/2024-10-25/",
+      "url": "https://claude.ai/"
+    },
+    {
+      "source": "/temp/2024-10-25/",
       "url": "https://gemini.google.com/app"
-    },
-    {
-      "source": "/temp/2024-10-25/",
-      "url": "https://chatgpt.com/"
-    },
-    {
-      "source": "/temp/2024-10-25/",
-      "url": "https://wrtn.ai/"
     },
     {
       "source": "/temp/2024-10-25/",
       "url": "https://copilot.microsoft.com/"
     },
     {
-      "source": "/temp/2024-10-25/",
-      "url": "https://www.deepl.com/ko/translator/files"
-    },
-    {
-      "source": "/temp/2024-10-25/",
-      "url": "https://claude.ai/"
-    },
-    {
-      "source": "/temp/ansi-escape-code/",
-      "url": "https://en.wikipedia.org/wiki/In-band_signaling \"대역 내 신호 전송\""
-    },
-    {
       "source": "/temp/ansi-escape-code/",
       "url": "https://en.wikipedia.org/wiki/Text_terminal \"텍스트 터미널\""
     },
@@ -2086,7 +2082,7 @@
       "url": "https://en.wikipedia.org/wiki/Terminal_emulator \"터미널 에뮬레이터\""
     },
     {
-      "source": "/temp/srg그래픽-랜더링-선택-escape-sequence/",
+      "source": "/temp/ansi-escape-code/",
       "url": "https://en.wikipedia.org/wiki/In-band_signaling \"대역 내 신호 전송\""
     },
     {
@@ -2096,6 +2092,10 @@
     {
       "source": "/temp/srg그래픽-랜더링-선택-escape-sequence/",
       "url": "https://en.wikipedia.org/wiki/Terminal_emulator \"터미널 에뮬레이터\""
+    },
+    {
+      "source": "/temp/srg그래픽-랜더링-선택-escape-sequence/",
+      "url": "https://en.wikipedia.org/wiki/In-band_signaling \"대역 내 신호 전송\""
     },
     {
       "source": "/temp/untitled-5/",
@@ -2115,19 +2115,11 @@
     },
     {
       "source": "/temp/java-쓰레드thread/",
-      "url": "https://web.mit.edu/java_v1.0.2/www/tutorial/java/threads/states.html"
-    },
-    {
-      "source": "/temp/java-쓰레드thread/",
-      "url": "https://www.baeldung.com/java-lang-thread-state-waiting-parking"
-    },
-    {
-      "source": "/temp/java-쓰레드thread/",
       "url": "https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html"
     },
     {
       "source": "/temp/java-쓰레드thread/",
-      "url": "https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/"
+      "url": "https://www.atatus.com/blog/jvm-thread-insights-spot-diagnose-waiting-threads/"
     },
     {
       "source": "/temp/java-쓰레드thread/",
@@ -2135,15 +2127,31 @@
     },
     {
       "source": "/temp/java-쓰레드thread/",
+      "url": "https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/"
+    },
+    {
+      "source": "/temp/java-쓰레드thread/",
       "url": "https://stackoverflow.com/questions/15680422/difference-between-wait-and-blocked-thread-states"
     },
     {
       "source": "/temp/java-쓰레드thread/",
-      "url": "https://www.atatus.com/blog/jvm-thread-insights-spot-diagnose-waiting-threads/"
+      "url": "https://web.mit.edu/java_v1.0.2/www/tutorial/java/threads/states.html"
+    },
+    {
+      "source": "/temp/java-쓰레드thread/",
+      "url": "https://www.baeldung.com/java-lang-thread-state-waiting-parking"
     },
     {
       "source": "/temp/nextint-vs-nextline/",
       "url": "https://share.note.sx/5qh8oyi0#jWUxnNYJuELWLPrXroZeBBPL8TUMvHS+yYMx3QmSFjo"
+    },
+    {
+      "source": "/temp/python-login/",
+      "url": "http://127.0.0.1:5000/login"
+    },
+    {
+      "source": "/temp/python-login/",
+      "url": "http://127.0.0.1:5000/refresh"
     },
     {
       "source": "/temp/python-login/",
@@ -2152,14 +2160,6 @@
     {
       "source": "/temp/python-login/",
       "url": "http://127.0.0.1:5000/protected"
-    },
-    {
-      "source": "/temp/python-login/",
-      "url": "http://127.0.0.1:5000/refresh"
-    },
-    {
-      "source": "/temp/python-login/",
-      "url": "http://127.0.0.1:5000/login"
     },
     {
       "source": "/temp/shell-의-로그인-과정/",
@@ -2199,19 +2199,19 @@
     },
     {
       "source": "/temp/알르레기-반응-중-건강검진-피검사/",
-      "url": "https://www.kcllab.com)**"
-    },
-    {
-      "source": "/temp/알르레기-반응-중-건강검진-피검사/",
       "url": "https://www.google.com/search?q=https://www.kcllab.com"
     },
     {
-      "source": "/temp/임베디드-os-개발-프로젝트/",
-      "url": "https://namu.wiki/w/ELF"
+      "source": "/temp/알르레기-반응-중-건강검진-피검사/",
+      "url": "https://www.kcllab.com)**"
     },
     {
       "source": "/temp/임베디드-os-개발-프로젝트/",
       "url": "https://en.wikipedia.org/wiki/Executable_and_Linkable_Format"
+    },
+    {
+      "source": "/temp/임베디드-os-개발-프로젝트/",
+      "url": "https://namu.wiki/w/ELF"
     },
     {
       "source": "/temp/터미널-command-line-shell/",
@@ -2227,22 +2227,6 @@
     },
     {
       "source": "/02.inbox/cdn-링크-찾기/",
-      "url": "https://unpkg.com/"
-    },
-    {
-      "source": "/02.inbox/cdn-링크-찾기/",
-      "url": "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
-    },
-    {
-      "source": "/02.inbox/cdn-링크-찾기/",
-      "url": "https://www.jsdelivr.com/"
-    },
-    {
-      "source": "/02.inbox/cdn-링크-찾기/",
-      "url": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    },
-    {
-      "source": "/02.inbox/cdn-링크-찾기/",
       "url": "https://unpkg.com/react@18/umd/react.production.min.js"
     },
     {
@@ -2250,16 +2234,32 @@
       "url": "https://cdnjs.com/"
     },
     {
+      "source": "/02.inbox/cdn-링크-찾기/",
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    },
+    {
+      "source": "/02.inbox/cdn-링크-찾기/",
+      "url": "https://www.jsdelivr.com/"
+    },
+    {
+      "source": "/02.inbox/cdn-링크-찾기/",
+      "url": "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+    },
+    {
+      "source": "/02.inbox/cdn-링크-찾기/",
+      "url": "https://unpkg.com/"
+    },
+    {
       "source": "/02.inbox/cloud-computing-과제2-보고서/",
       "url": "https://www.gnu.org/software/bash/manual/bash.txt"
     },
     {
       "source": "/02.inbox/https와-비대칭-키-초기-설정부터-데이터-전송까지의-모든-과정-simulation/",
-      "url": "https://dns.google"
+      "url": "https://csp.withgoogle.com/csp/honest_dns/1_0;frame-ancestors"
     },
     {
       "source": "/02.inbox/https와-비대칭-키-초기-설정부터-데이터-전송까지의-모든-과정-simulation/",
-      "url": "https://csp.withgoogle.com/csp/honest_dns/1_0;frame-ancestors"
+      "url": "https://dns.google"
     },
     {
       "source": "/02.inbox/https와-비대칭-키-초기-설정부터-데이터-전송까지의-모든-과정-simulation/",
@@ -2271,19 +2271,11 @@
     },
     {
       "source": "/02.inbox/utf-8/",
-      "url": "https://namu.wiki/w/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C/A000~AFFF"
-    },
-    {
-      "source": "/02.inbox/utf-8/",
-      "url": "https://ko.rakko.tools/tools/89/"
-    },
-    {
-      "source": "/02.inbox/utf-8/",
       "url": "https://namu.wiki/w/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C/3000~3FFF"
     },
     {
       "source": "/02.inbox/utf-8/",
-      "url": "https://news.hada.io/topic?id=23059"
+      "url": "https://namu.wiki/w/%EC%99%84%EC%84%B1%ED%98%95"
     },
     {
       "source": "/02.inbox/utf-8/",
@@ -2291,7 +2283,15 @@
     },
     {
       "source": "/02.inbox/utf-8/",
-      "url": "https://namu.wiki/w/%EC%99%84%EC%84%B1%ED%98%95"
+      "url": "https://news.hada.io/topic?id=23059"
+    },
+    {
+      "source": "/02.inbox/utf-8/",
+      "url": "https://ko.rakko.tools/tools/89/"
+    },
+    {
+      "source": "/02.inbox/utf-8/",
+      "url": "https://namu.wiki/w/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C/A000~AFFF"
     },
     {
       "source": "/02.inbox/android-sdk-tool-list/",
@@ -2307,7 +2307,51 @@
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/channel/UCz0vNDHP6MOTTrTYf5jrYfw"
+      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEt6G9fLlk8"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/@%EC%95%84%EB%AC%B4%EA%B2%83%EB%8F%84%EB%AA%B0%EB%9D%BC%EC%9A%94-d3l"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/@user-yl7oh4jb7k"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/channel/UCixjI7rZIGLxPNM5BGlvZ8g"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEt6Uz9Gmf6"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/@user-vc5vo4ol2g"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://github.com/tc39/proposal-async-context"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/channel/UCMVnKyZl2LDEPl2x3otdpeA"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/@elecricecooker"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/@worldhello-o4w"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEtEACtMtZA"
+    },
+    {
+      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
+      "url": "https://www.youtube.com/@user-xk4jb8si8w"
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
@@ -2319,15 +2363,7 @@
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/@user-xk4jb8si8w"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/@user-vc5vo4ol2g"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEt6Uz9Gmf6"
+      "url": "https://blog.rust-lang.org/2015/05/11/traits.html"
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
@@ -2335,15 +2371,7 @@
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEss3OXVtZ7"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/@elecricecooker"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEt6G9fLlk8"
+      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEt2LeMDW_Y"
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
@@ -2351,39 +2379,15 @@
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEtEACtMtZA"
+      "url": "https://frontend-fundamentals.com/code/examples/form-fields.html"
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/channel/UCMVnKyZl2LDEPl2x3otdpeA"
+      "url": "https://www.youtube.com/channel/UCz0vNDHP6MOTTrTYf5jrYfw"
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/channel/UCixjI7rZIGLxPNM5BGlvZ8g"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/@%EC%95%84%EB%AC%B4%EA%B2%83%EB%8F%84%EB%AA%B0%EB%9D%BC%EC%9A%94-d3l"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/@worldhello-o4w"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/@user-yl7oh4jb7k"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/channel/UCqbggW3oNHHMvgT4BJTcb-A"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEt2LeMDW_Y"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://blog.rust-lang.org/2015/05/11/traits.html"
+      "url": "https://www.youtube.com/watch?v=uY3cn0gv2wc&lc=Ugx8-Nrvdy9W_O7ccUZ4AaABAg.AEpznk5UvajAEss3OXVtZ7"
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
@@ -2391,7 +2395,7 @@
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://frontend-fundamentals.com/code/examples/form-fields.html"
+      "url": "https://www.youtube.com/channel/UCqbggW3oNHHMvgT4BJTcb-A"
     },
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
@@ -2400,10 +2404,6 @@
     {
       "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
       "url": "https://wwdcnotes.com/documentation/wwdcnotes/wwdc15-414-building-better-apps-with-value-types-in-swift/"
-    },
-    {
-      "source": "/02.inbox/di-의존성-주입-의-타-프레임워크-접근-유튜브-댓글/",
-      "url": "https://github.com/tc39/proposal-async-context"
     },
     {
       "source": "/02.inbox/form-태그의-http-패킷massage-전송/",
@@ -2419,11 +2419,11 @@
     },
     {
       "source": "/02.inbox/ios-터미널-접근/",
-      "url": "https://github.com/holzschu/a-Shell-commands/tree/master/packages"
+      "url": "https://google.com"
     },
     {
       "source": "/02.inbox/ios-터미널-접근/",
-      "url": "https://google.com"
+      "url": "https://github.com/holzschu/a-Shell-commands/tree/master/packages"
     },
     {
       "source": "/02.inbox/java-리플렉션reflection/",
@@ -2451,15 +2451,15 @@
     },
     {
       "source": "/02.inbox/가변인자variadic/",
-      "url": "http://blog.woong.org/v/59f9be99e7d0b554c97017cc"
+      "url": "http://blog.woong.org/v/59c0bf15d2db27f70d345e76"
+    },
+    {
+      "source": "/02.inbox/가변인자variadic/",
+      "url": "http://blog.woong.org/v/59aa5b8cd845cbff6d76d418"
     },
     {
       "source": "/02.inbox/가변인자variadic/",
       "url": "http://blog.woong.org/v/59aa6099d845cbff6d76d422"
-    },
-    {
-      "source": "/02.inbox/가변인자variadic/",
-      "url": "http://blog.woong.org/v/5a52fb5aa51c946933994ee3"
     },
     {
       "source": "/02.inbox/가변인자variadic/",
@@ -2475,11 +2475,15 @@
     },
     {
       "source": "/02.inbox/가변인자variadic/",
-      "url": "http://blog.woong.org/v/59aa5b8cd845cbff6d76d418"
+      "url": "http://blog.woong.org/v/59f9be99e7d0b554c97017cc"
     },
     {
       "source": "/02.inbox/가변인자variadic/",
-      "url": "http://blog.woong.org/v/59c0bf15d2db27f70d345e76"
+      "url": "http://blog.woong.org/v/5a52fb5aa51c946933994ee3"
+    },
+    {
+      "source": "/02.inbox/계층-기반-폴더-구조-vs-서비스-단위-기반-폴더-구조/",
+      "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
     },
     {
       "source": "/02.inbox/계층-기반-폴더-구조-vs-서비스-단위-기반-폴더-구조/",
@@ -2490,16 +2494,12 @@
       "url": "https://jimmybogard.com/vertical-slice-architecture/"
     },
     {
-      "source": "/02.inbox/계층-기반-폴더-구조-vs-서비스-단위-기반-폴더-구조/",
-      "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+      "source": "/02.inbox/날짜-형식-포멧/",
+      "url": "https://github.com/moment/moment/issues/162"
     },
     {
       "source": "/02.inbox/날짜-형식-포멧/",
       "url": "https://momentjs.com/docs/#/displaying/format/"
-    },
-    {
-      "source": "/02.inbox/날짜-형식-포멧/",
-      "url": "https://github.com/moment/moment/issues/162"
     },
     {
       "source": "/02.inbox/드라이버는-커널인가/",
@@ -2519,15 +2519,15 @@
     },
     {
       "source": "/02.inbox/브라우저-기반-수강신청-알림/",
-      "url": "https://www.google.com/url?sa=E&q=https%3A%2F%2Fclass.mju.ac.kr%2Fmain%2Fclass"
-    },
-    {
-      "source": "/02.inbox/브라우저-기반-수강신청-알림/",
       "url": "https://www.google.com/url?sa=E&q=https%3A%2F%2Fclass.mju.ac.kr%2Fmain%2Fbag"
     },
     {
       "source": "/02.inbox/브라우저-기반-수강신청-알림/",
       "url": "https://class.mju.ac.kr/main/bag"
+    },
+    {
+      "source": "/02.inbox/브라우저-기반-수강신청-알림/",
+      "url": "https://www.google.com/url?sa=E&q=https%3A%2F%2Fclass.mju.ac.kr%2Fmain%2Fclass"
     },
     {
       "source": "/02.inbox/주소-바인딩-실습소스코드-부터-프로세스까지/",
@@ -2543,6 +2543,10 @@
     },
     {
       "source": "/02.inbox/청년창업-2025-창업-기준/",
+      "url": "https://share.note.sx/tof8u5e5#8XowAUqJEnVOfjKo+IHe1qUdxKXpmPeIHXxRQxVAy4c"
+    },
+    {
+      "source": "/02.inbox/청년창업-2025-창업-기준/",
       "url": "https://mybiz.pay.naver.com/contentsGuide/271"
     },
     {
@@ -2550,12 +2554,8 @@
       "url": "https://m.kin.naver.com/qna/dirs/40309/docs/482005709?answerNo=1"
     },
     {
-      "source": "/02.inbox/청년창업-2025-창업-기준/",
-      "url": "https://share.note.sx/tof8u5e5#8XowAUqJEnVOfjKo+IHe1qUdxKXpmPeIHXxRQxVAy4c"
-    },
-    {
       "source": "/02.inbox/onenote/html-and-css/리눅스/vimrc-파일/",
-      "url": "https://kamang-it.tistory.com/entry/vivimvi%EC%97%90%EC%84%9C-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EA%B4%80%EB%A6%AC-vundle"
+      "url": "https://myeongjae.kim/blog/2017/07/19/vimlinux-10-deoplete%EA%B3%BC-clang_complete-%EC%9E%90%EB%8F%99-%EC%99%84%EC%84%B1-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8"
     },
     {
       "source": "/02.inbox/onenote/html-and-css/리눅스/vimrc-파일/",
@@ -2563,15 +2563,7 @@
     },
     {
       "source": "/02.inbox/onenote/html-and-css/리눅스/vimrc-파일/",
-      "url": "https://myeongjae.kim/blog/2017/07/19/vimlinux-10-deoplete%EA%B3%BC-clang_complete-%EC%9E%90%EB%8F%99-%EC%99%84%EC%84%B1-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8"
-    },
-    {
-      "source": "/02.inbox/따라it/네트워크/",
-      "url": "https://docs.google.com/presentation/d/1cBVIS457shcUV3cfSrM9c1w3Lws3ZVE9/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
-    },
-    {
-      "source": "/02.inbox/따라it/네트워크/",
-      "url": "https://docs.google.com/presentation/d/1vOOj3I0zHIuqLmSKwCicuSLuveZtuz9a/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
+      "url": "https://kamang-it.tistory.com/entry/vivimvi%EC%97%90%EC%84%9C-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EA%B4%80%EB%A6%AC-vundle"
     },
     {
       "source": "/02.inbox/따라it/네트워크/",
@@ -2579,11 +2571,11 @@
     },
     {
       "source": "/02.inbox/따라it/네트워크/",
-      "url": "https://docs.google.com/presentation/d/1GParqmJVI3xwzFDk-FrOqGzFsAFbqUC5/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
+      "url": "https://docs.google.com/presentation/d/1W2AIBsANAttvrbcrh9wLMrPYbaB8Hkht/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
     },
     {
       "source": "/02.inbox/따라it/네트워크/",
-      "url": "https://docs.google.com/presentation/d/1ezrr3wC9UaTGqtjRPfetCrstnd6qZ8G0/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
+      "url": "https://docs.google.com/presentation/d/1GParqmJVI3xwzFDk-FrOqGzFsAFbqUC5/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
     },
     {
       "source": "/02.inbox/따라it/네트워크/",
@@ -2591,11 +2583,11 @@
     },
     {
       "source": "/02.inbox/따라it/네트워크/",
-      "url": "https://docs.google.com/presentation/d/1HYg9YC3_luzxMHzVn-sGd6gzjgExGKV6/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
+      "url": "https://docs.google.com/presentation/d/1vOOj3I0zHIuqLmSKwCicuSLuveZtuz9a/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
     },
     {
       "source": "/02.inbox/따라it/네트워크/",
-      "url": "https://docs.google.com/presentation/d/15SyhelhPtlwbz6wqeodjHhwVfU2bop50/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
+      "url": "https://docs.google.com/presentation/d/1HYg9YC3_luzxMHzVn-sGd6gzjgExGKV6/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
     },
     {
       "source": "/02.inbox/따라it/네트워크/",
@@ -2603,7 +2595,15 @@
     },
     {
       "source": "/02.inbox/따라it/네트워크/",
-      "url": "https://docs.google.com/presentation/d/1W2AIBsANAttvrbcrh9wLMrPYbaB8Hkht/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
+      "url": "https://docs.google.com/presentation/d/1ezrr3wC9UaTGqtjRPfetCrstnd6qZ8G0/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
+    },
+    {
+      "source": "/02.inbox/따라it/네트워크/",
+      "url": "https://docs.google.com/presentation/d/1cBVIS457shcUV3cfSrM9c1w3Lws3ZVE9/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
+    },
+    {
+      "source": "/02.inbox/따라it/네트워크/",
+      "url": "https://docs.google.com/presentation/d/15SyhelhPtlwbz6wqeodjHhwVfU2bop50/edit?usp=sharing&ouid=109006469823185730332&rtpof=true&sd=true"
     },
     {
       "source": "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/",
@@ -2611,15 +2611,11 @@
     },
     {
       "source": "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/",
-      "url": "https://www.acmicpc.net/problem/2667"
-    },
-    {
-      "source": "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/",
-      "url": "https://www.acmicpc.net/problem/1080"
-    },
-    {
-      "source": "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/",
       "url": "https://www.acmicpc.net/problem/2178"
+    },
+    {
+      "source": "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/",
+      "url": "https://www.acmicpc.net/problem/4963"
     },
     {
       "source": "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/",
@@ -2627,11 +2623,11 @@
     },
     {
       "source": "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/",
-      "url": "https://www.acmicpc.net/problem/4963"
+      "url": "https://www.acmicpc.net/problem/1080"
     },
     {
-      "source": "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/",
-      "url": "https://gmlwjd9405.github.io/2018/08/15/algorithm-bfs.html"
+      "source": "/02.inbox/이것이-코딩테스트다-with-python/구현implementation/",
+      "url": "https://www.acmicpc.net/problem/2667"
     },
     {
       "source": "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/",
@@ -2643,6 +2639,14 @@
     },
     {
       "source": "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12978"
+    },
+    {
+      "source": "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42861"
+    },
+    {
+      "source": "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/",
       "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43163"
     },
     {
@@ -2651,15 +2655,7 @@
     },
     {
       "source": "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42861"
-    },
-    {
-      "source": "/02.inbox/이것이-코딩테스트다-with-python/그래프graph/",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12978"
-    },
-    {
-      "source": "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/risc-v-명령어-구조/",
-      "url": "https://drive.google.com/file/d/17GeetSnT5wW3xNuAHI95-SI1gPGd5sJ_/view?usp=drive_link"
+      "url": "https://gmlwjd9405.github.io/2018/08/15/algorithm-bfs.html"
     },
     {
       "source": "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/risc-v-명령어-구조/",
@@ -2670,12 +2666,12 @@
       "url": "https://drive.google.com/file/d/1uviu1nH-tScFfgrovvFCrj7Omv8tFtkp/view?usp=drive_link"
     },
     {
-      "source": "/younghan-mvc2/thymeleaf-정리/",
-      "url": "http://www.thymeleaf.org"
+      "source": "/02.inbox/그래서-컴퓨터는-어떻게-동작하나요/risc-v-명령어-구조/",
+      "url": "https://drive.google.com/file/d/17GeetSnT5wW3xNuAHI95-SI1gPGd5sJ_/view?usp=drive_link"
     },
     {
-      "source": "/younghan-mvc1/thymeleaf-기본/",
-      "url": "http://localhost:8080/basic/items/1"
+      "source": "/younghan-mvc2/thymeleaf-정리/",
+      "url": "http://www.thymeleaf.org"
     },
     {
       "source": "/younghan-mvc1/thymeleaf-기본/",
@@ -2686,8 +2682,8 @@
       "url": "http://localhost:8080/basic/items/1?query=test"
     },
     {
-      "source": "/leetcode75/cpp-stl/",
-      "url": "https://modoocode.com/266"
+      "source": "/younghan-mvc1/thymeleaf-기본/",
+      "url": "http://localhost:8080/basic/items/1"
     },
     {
       "source": "/leetcode75/cpp-stl/",
@@ -2696,6 +2692,10 @@
     {
       "source": "/leetcode75/cpp-stl/",
       "url": "https://modoocode.com/261"
+    },
+    {
+      "source": "/leetcode75/cpp-stl/",
+      "url": "https://modoocode.com/266"
     },
     {
       "source": "/leetcode75/cpp-생성자-소멸자-규칙/",
@@ -2707,11 +2707,11 @@
     },
     {
       "source": "/leetcode75/hash-set-unordered_set-구현체/",
-      "url": "https://modoocode.com/261"
+      "url": "https://modoocode.com/238"
     },
     {
       "source": "/leetcode75/hash-set-unordered_set-구현체/",
-      "url": "https://modoocode.com/238"
+      "url": "https://modoocode.com/261"
     },
     {
       "source": "/leetcode75/hash-set-unordered_set-구현체/",
@@ -2719,11 +2719,31 @@
     },
     {
       "source": "/leetcode75/ps-공부/",
-      "url": "https://plzrun.tistory.com/entry/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4PS-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0"
+      "url": "https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C/dashboard"
     },
     {
       "source": "/leetcode75/ps-공부/",
-      "url": "https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C/dashboard"
+      "url": "https://plzrun.tistory.com/entry/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4PS-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0"
+    },
+    {
+      "source": "/leetcode75/슬라이딩-윈도우/",
+      "url": "https://leetcode.com/problems/minimum-size-subarray-sum/discuss/433123/JavaC++Python-Sliding-Window"
+    },
+    {
+      "source": "/leetcode75/슬라이딩-윈도우/",
+      "url": "https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/"
+    },
+    {
+      "source": "/leetcode75/슬라이딩-윈도우/",
+      "url": "https://leetcode.com/problems/fruit-into-baskets/discuss/170740/Sliding-Window-for-K-Elements"
+    },
+    {
+      "source": "/leetcode75/슬라이딩-윈도우/",
+      "url": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/143726/C%2B%2BJavaPython-O(N"
+    },
+    {
+      "source": "/leetcode75/슬라이딩-윈도우/",
+      "url": "https://leetcode.com/problems/binary-subarrays-with-sum/discuss/186683/"
     },
     {
       "source": "/leetcode75/슬라이딩-윈도우/",
@@ -2735,11 +2755,7 @@
     },
     {
       "source": "/leetcode75/슬라이딩-윈도우/",
-      "url": "https://leetcode.com/problems/minimum-size-subarray-sum/discuss/433123/JavaC++Python-Sliding-Window"
-    },
-    {
-      "source": "/leetcode75/슬라이딩-윈도우/",
-      "url": "https://leetcode.com/problems/fruit-into-baskets/discuss/170740/Sliding-Window-for-K-Elements"
+      "url": "https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697"
     },
     {
       "source": "/leetcode75/슬라이딩-윈도우/",
@@ -2747,23 +2763,7 @@
     },
     {
       "source": "/leetcode75/슬라이딩-윈도우/",
-      "url": "https://leetcode.com/problems/binary-subarrays-with-sum/discuss/186683/"
-    },
-    {
-      "source": "/leetcode75/슬라이딩-윈도우/",
-      "url": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/143726/C%2B%2BJavaPython-O(N"
-    },
-    {
-      "source": "/leetcode75/슬라이딩-윈도우/",
-      "url": "https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697"
-    },
-    {
-      "source": "/leetcode75/슬라이딩-윈도우/",
       "url": "https://leetcode.com/problems/max-consecutive-ones-iii/discuss/247564/javacpython-sliding-window/379427?page=3"
-    },
-    {
-      "source": "/leetcode75/슬라이딩-윈도우/",
-      "url": "https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/"
     },
     {
       "source": "/06.university/mju_ecs-project/mju-ecs-해야할-것/",
@@ -2779,10 +2779,6 @@
     },
     {
       "source": "/06.university/mju_ecs-project/mjuecs-프로젝트-발표/",
-      "url": "https://www.mju.ac.kr/mjukr/154/subview.do"
-    },
-    {
-      "source": "/06.university/mju_ecs-project/mjuecs-프로젝트-발표/",
       "url": "https://share.note.sx/v4psgxdd"
     },
     {
@@ -2794,6 +2790,10 @@
       "url": "https://github.com/iml1111/sejong-univ-auth/issues/21"
     },
     {
+      "source": "/06.university/mju_ecs-project/mjuecs-프로젝트-발표/",
+      "url": "https://www.mju.ac.kr/mjukr/154/subview.do"
+    },
+    {
       "source": "/06.university/mju_ecs-project/mjuecs-프로젝트/",
       "url": "http://localhost/containers/my_container/start"
     },
@@ -2803,19 +2803,19 @@
     },
     {
       "source": "/06.university/mju_ecs-project/mjuecs-프로젝트/",
-      "url": "http://localhost:2375/containers/"
-    },
-    {
-      "source": "/06.university/mju_ecs-project/mjuecs-프로젝트/",
       "url": "http://localhost/containers/my_container/logs?stdout=1"
     },
     {
-      "source": "/06.university/mju_ecs-project/ryugod-프로젝트2/",
-      "url": "https://hub.docker.com/_/mongo"
+      "source": "/06.university/mju_ecs-project/mjuecs-프로젝트/",
+      "url": "http://localhost:2375/containers/"
     },
     {
       "source": "/06.university/mju_ecs-project/ryugod-프로젝트2/",
       "url": "https://hub.docker.com/_/postgres"
+    },
+    {
+      "source": "/06.university/mju_ecs-project/ryugod-프로젝트2/",
+      "url": "https://hub.docker.com/_/mongo"
     },
     {
       "source": "/06.university/mju_ecs-project/ryugod-프로젝트2/",
@@ -2831,51 +2831,7 @@
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/c0dV5Z/btrRhmeFOcr/mJgYfT0gEEkPezGK0WLULK/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bz9xoC/btrRkcpy1v2/oEinjb5NKlOLSJKUUKZGpK/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/I329S/btrRAEMQ1Dz/IuWfVfCOB3YfS3p4fdKffK/img.webp"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/RTQw5/btrRnLRUBtu/YTsC8xfFRmQNmjD0QJwFR1/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/dafhWk/btrRlsThGUo/k3gwUReUWF27rDxFV8fS31/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/b7nEZv/btrRo3kn075/YfKfNG45pJl7k9DwXlBrKK/img.gif"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/FBW9o/btrRjykWwrG/s4lBAaS7iQHtD4xOCSlGpK/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/wtkcr/btrSmYRnoQc/mSbVkISwaBuw9ZKlKB2vm0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/2sOW4/btrRlsy0Fi0/6tcqW5INT1JuxKWNDRFWYk/img.gif"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/CCEb7/btrRmUnW18n/8HkPtkXoKzW1Wewho2Ek90/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bFddjJ/btrRvITXY0n/RqHYQXoJQQ3ztAFc5n4F6k/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bQsfWU/btrRvIfmfVi/S0NlKDy59R89HKGvKeaKf0/img.png"
+      "url": "https://blog.kakaocdn.net/dn/mONhZ/btrSwkeRXbH/FfLeRLkd4XUOLtwgH3xcB0/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
@@ -2883,35 +2839,11 @@
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bqeDAB/btrRqE6yXa1/U76HoLMtCIBFKr5qyzXGJ1/img.png"
+      "url": "https://blog.kakaocdn.net/dn/bz9xoC/btrRkcpy1v2/oEinjb5NKlOLSJKUUKZGpK/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bnUPBl/btrRtVGv8Mr/oGPqxxRAaz6kRWENinuWvk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/vZOJ1/btrSxEDnZQR/9Ld0WQkEQezWLovlI9eBV0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/c9FCJ5/btrRlIOTd2i/BYRSblOoT5cohYsamdCCW0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bvbq4K/btrRssrXB7m/DuPVHKJHB7DlSJnN781xz0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/brHf7i/btrRnDGk6pe/dQPEnLJTjCMA5TNS1P2aN0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/dIbRiK/btrRpXx8YKa/PZJEeEpq9joyI6pOkiNGz1/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://inpa.tistory.com/entry/NW-%F0%9F%8C%90-%EC%95%84%EC%A7%81%EB%8F%84-%EB%AA%A8%ED%98%B8%ED%95%9C-TCP-UDP-%EA%B0%9C%EB%85%90-%E2%9D%93-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EC%9E%90"
+      "url": "https://blog.kakaocdn.net/dn/bFddjJ/btrRvITXY0n/RqHYQXoJQQ3ztAFc5n4F6k/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
@@ -2919,31 +2851,11 @@
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/dg9FUl/btrRsI13m0p/vOEEbMKEenKEjhst0RCMak/img.png"
+      "url": "https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-HTTP-09-HTTP-30-%EA%B9%8C%EC%A7%80-%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94-%ED%86%B5%EC%8B%A0-%EA%B8%B0%EC%88%A0"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/xw5ov/btrRmwmmZYt/uJBxMv7IrUm2OVHMdV7dM1/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bc1WXc/btrRoziSeG9/SpIemkW8YHeYMThkpsnVmk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bZVNjW/btrRnpO6a03/tQx8qsoxYNj3LOhDCGdrrk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/yDcIM/btrSvd00gbO/slq3TpvF9CaknqRRMqcgb0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/dnU7iy/btrSvAbgT06/gKiGEnRuH61IN07Sv3LJA1/img.jpg"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/KdF9r/btrRvI0JD6r/BVphKbZUtXcWQtOl4udv0k/img.png"
+      "url": "https://blog.kakaocdn.net/dn/c9FCJ5/btrRlIOTd2i/BYRSblOoT5cohYsamdCCW0/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
@@ -2951,75 +2863,7 @@
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bovfzI/btrRoqmKpkC/0AuGPTjUW6ZKM2ruwnojPk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/RuPan/btrSq9DX0FB/Ij4U28LlrqhD76QlAir6HK/img.jpg"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://ko.wikipedia.org/wiki/%EC%8A%A4%ED%8A%B8%EB%A6%BC_%EC%A0%9C%EC%96%B4_%EC%A0%84%EC%86%A1_%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/Qwkjv/btrRBadGxGx/zWVdKjMw8kb5YzceLG7Kwk/img.webp"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bl0yhv/btrRjyyHmrJ/cEaFE3mCIBsjFcIOt73U10/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/cqdLVC/btrRo2TdCof/0TF5j9qzcofZwkUyJF4AR0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/cWJ1wO/btrRmTITTgR/LZE6PNIkfm7VwSV7zdaecK/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/db51yE/btrSqYJi9oq/S3qO3t0gaqkFPoW41GqKc0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bnMVmL/btrRg7Pqvma/Lh3Kj0AZ2BKCWEs1uwof90/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/MYfnI/btrSsogkco4/d7WwakzsUgCZkkTOcXuQQ1/img.jpg"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/ZBG1n/btrSxFh9eYR/Gyw8RHrLNW2pcLCx5fZ0ZK/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bfdH9x/btrSwCTPsJP/sCxuf6MAL2aYF3LnMShqsk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bjjqIW/btrSxlD5GUY/TYZBuMdWWTdwYCByKhfSB0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bTDc9a/btrRth3qrzs/wRGZmXOKEaYl7ZvDPEC3vK/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/LnWeN/btrRjphUoWU/VKPlCg7f62mMiRh05EeNKk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/exybYN/btrRAEMQ1SZ/BLYmr3eR29wTEUpjz50fk0/img.webp"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bxhrmF/btrSrnwECWS/vQfp4v5lxaEoy1Dj9I786K/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/zcPzC/btrRjpAv0BS/aB1y8CKT5GTTfj5KcbeDvK/img.png"
+      "url": "https://blog.kakaocdn.net/dn/brHf7i/btrRnDGk6pe/dQPEnLJTjCMA5TNS1P2aN0/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
@@ -3027,35 +2871,7 @@
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/dnua8U/btrRfOoyMzy/FBKdh8CgfBD4MxQnwN5oFK/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/1f9uM/btrSwqyFAre/riaNtR2tKb5EniCE3LgxWk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/cEgsW1/btrSxl4NzIv/MmHiW98lUcmDi8QR1ioK11/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bXzv41/btrRnESShns/4Lbp6LFv1zawLubY8JgMck/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/cmio9u/btrRnElzChU/3y5zSZgQm9xrgkCrnopsd1/img.gif"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/t8oZ6/btrSwCGom8N/Il5l5owKZYhULUoRgLmk4k/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/d0Rj8e/btrRltdNC9n/P6d7qkYzZSgbn3kRd5B4Dk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/40s7g/btrSq71LD3m/5HHEawdJ98R6pBfFNUFrY0/img.png"
+      "url": "https://blog.kakaocdn.net/dn/RuPan/btrSq9DX0FB/Ij4U28LlrqhD76QlAir6HK/img.jpg"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
@@ -3063,15 +2879,63 @@
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/0hZxP/btrSvc9gxsU/51gJCaIiKlW6rFp0ZSk6zk/img.png"
+      "url": "https://blog.kakaocdn.net/dn/RTQw5/btrRnLRUBtu/YTsC8xfFRmQNmjD0QJwFR1/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/mONhZ/btrSwkeRXbH/FfLeRLkd4XUOLtwgH3xcB0/img.png"
+      "url": "https://blog.kakaocdn.net/dn/KdF9r/btrRvI0JD6r/BVphKbZUtXcWQtOl4udv0k/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-HTTP-09-HTTP-30-%EA%B9%8C%EC%A7%80-%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94-%ED%86%B5%EC%8B%A0-%EA%B8%B0%EC%88%A0"
+      "url": "https://blog.kakaocdn.net/dn/CCEb7/btrRmUnW18n/8HkPtkXoKzW1Wewho2Ek90/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/tp5hH/btrRjq01cpU/rH3cTGP5M05tAf41ltcqcK/img.gif"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://inpa.tistory.com/entry/NW-%F0%9F%8C%90-%EC%95%84%EC%A7%81%EB%8F%84-%EB%AA%A8%ED%98%B8%ED%95%9C-TCP-UDP-%EA%B0%9C%EB%85%90-%E2%9D%93-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EC%9E%90"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/1f9uM/btrSwqyFAre/riaNtR2tKb5EniCE3LgxWk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/2sOW4/btrRlsy0Fi0/6tcqW5INT1JuxKWNDRFWYk/img.gif"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/xw5ov/btrRmwmmZYt/uJBxMv7IrUm2OVHMdV7dM1/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bjjqIW/btrSxlD5GUY/TYZBuMdWWTdwYCByKhfSB0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/d0Rj8e/btrRltdNC9n/P6d7qkYzZSgbn3kRd5B4Dk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/Qwkjv/btrRBadGxGx/zWVdKjMw8kb5YzceLG7Kwk/img.webp"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bvbq4K/btrRssrXB7m/DuPVHKJHB7DlSJnN781xz0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/wtkcr/btrSmYRnoQc/mSbVkISwaBuw9ZKlKB2vm0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/c0dV5Z/btrRhmeFOcr/mJgYfT0gEEkPezGK0WLULK/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/t8oZ6/btrSwCGom8N/Il5l5owKZYhULUoRgLmk4k/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
@@ -3079,39 +2943,7 @@
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/Xq0Jh/btrRop1HHKR/0pGKxlJZKyqUzyoZpza9x1/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/GfBZh/btrRmT2CnsQ/tIyrBAkIc9VpssiSi6o0w0/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bl9JGZ/btrSxEDzD2p/Ji11PmfvNkBNRRaGB2qkk1/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-TCP-IP-%EC%A0%95%EB%A6%AC-%F0%9F%91%AB%F0%9F%8F%BD-TCP-IP-4%EA%B3%84%EC%B8%B5"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/boEdAR/btrRicXfhXt/7eWm0PKjVImhikx6jkyifk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/WfBA2/btrSxOZ9IyC/XOoAfG4m0Br4i0fGISbJiK/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/5PnGQ/btrRnZuRO2e/74FHBQDsmfjkHEcuagKMak/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/bseO29/btrSwpUNayJ/RdTC0IgR7vEaGuukMdx0wk/img.png"
-    },
-    {
-      "source": "/06.university/network/network-2차-과제/",
-      "url": "https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-HTTP-20-%ED%86%B5%EC%8B%A0-%EA%B8%B0%EC%88%A0-%EC%9D%B4%EC%A0%9C%EB%8A%94-%ED%99%95%EC%8B%A4%ED%9E%88-%EC%9D%B4%ED%95%B4%ED%95%98%EC%9E%90"
+      "url": "https://blog.kakaocdn.net/dn/dg9FUl/btrRsI13m0p/vOEEbMKEenKEjhst0RCMak/img.png"
     },
     {
       "source": "/06.university/network/network-2차-과제/",
@@ -3119,7 +2951,175 @@
     },
     {
       "source": "/06.university/network/network-2차-과제/",
-      "url": "https://blog.kakaocdn.net/dn/tp5hH/btrRjq01cpU/rH3cTGP5M05tAf41ltcqcK/img.gif"
+      "url": "https://blog.kakaocdn.net/dn/0hZxP/btrSvc9gxsU/51gJCaIiKlW6rFp0ZSk6zk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/zcPzC/btrRjpAv0BS/aB1y8CKT5GTTfj5KcbeDvK/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bseO29/btrSwpUNayJ/RdTC0IgR7vEaGuukMdx0wk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/db51yE/btrSqYJi9oq/S3qO3t0gaqkFPoW41GqKc0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bZVNjW/btrRnpO6a03/tQx8qsoxYNj3LOhDCGdrrk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/cEgsW1/btrSxl4NzIv/MmHiW98lUcmDi8QR1ioK11/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/vZOJ1/btrSxEDnZQR/9Ld0WQkEQezWLovlI9eBV0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/LnWeN/btrRjphUoWU/VKPlCg7f62mMiRh05EeNKk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-HTTP-20-%ED%86%B5%EC%8B%A0-%EA%B8%B0%EC%88%A0-%EC%9D%B4%EC%A0%9C%EB%8A%94-%ED%99%95%EC%8B%A4%ED%9E%88-%EC%9D%B4%ED%95%B4%ED%95%98%EC%9E%90"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/boEdAR/btrRicXfhXt/7eWm0PKjVImhikx6jkyifk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/cWJ1wO/btrRmTITTgR/LZE6PNIkfm7VwSV7zdaecK/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/dIbRiK/btrRpXx8YKa/PZJEeEpq9joyI6pOkiNGz1/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/WfBA2/btrSxOZ9IyC/XOoAfG4m0Br4i0fGISbJiK/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/exybYN/btrRAEMQ1SZ/BLYmr3eR29wTEUpjz50fk0/img.webp"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bc1WXc/btrRoziSeG9/SpIemkW8YHeYMThkpsnVmk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-TCP-IP-%EC%A0%95%EB%A6%AC-%F0%9F%91%AB%F0%9F%8F%BD-TCP-IP-4%EA%B3%84%EC%B8%B5"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/Xq0Jh/btrRop1HHKR/0pGKxlJZKyqUzyoZpza9x1/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/dafhWk/btrRlsThGUo/k3gwUReUWF27rDxFV8fS31/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bfdH9x/btrSwCTPsJP/sCxuf6MAL2aYF3LnMShqsk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/I329S/btrRAEMQ1Dz/IuWfVfCOB3YfS3p4fdKffK/img.webp"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/GfBZh/btrRmT2CnsQ/tIyrBAkIc9VpssiSi6o0w0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/cmio9u/btrRnElzChU/3y5zSZgQm9xrgkCrnopsd1/img.gif"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/40s7g/btrSq71LD3m/5HHEawdJ98R6pBfFNUFrY0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bnMVmL/btrRg7Pqvma/Lh3Kj0AZ2BKCWEs1uwof90/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bl0yhv/btrRjyyHmrJ/cEaFE3mCIBsjFcIOt73U10/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/dnua8U/btrRfOoyMzy/FBKdh8CgfBD4MxQnwN5oFK/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bTDc9a/btrRth3qrzs/wRGZmXOKEaYl7ZvDPEC3vK/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bXzv41/btrRnESShns/4Lbp6LFv1zawLubY8JgMck/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bl9JGZ/btrSxEDzD2p/Ji11PmfvNkBNRRaGB2qkk1/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/MYfnI/btrSsogkco4/d7WwakzsUgCZkkTOcXuQQ1/img.jpg"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bQsfWU/btrRvIfmfVi/S0NlKDy59R89HKGvKeaKf0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/yDcIM/btrSvd00gbO/slq3TpvF9CaknqRRMqcgb0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://ko.wikipedia.org/wiki/%EC%8A%A4%ED%8A%B8%EB%A6%BC_%EC%A0%9C%EC%96%B4_%EC%A0%84%EC%86%A1_%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/5PnGQ/btrRnZuRO2e/74FHBQDsmfjkHEcuagKMak/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bnUPBl/btrRtVGv8Mr/oGPqxxRAaz6kRWENinuWvk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/dnU7iy/btrSvAbgT06/gKiGEnRuH61IN07Sv3LJA1/img.jpg"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/b7nEZv/btrRo3kn075/YfKfNG45pJl7k9DwXlBrKK/img.gif"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bxhrmF/btrSrnwECWS/vQfp4v5lxaEoy1Dj9I786K/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/FBW9o/btrRjykWwrG/s4lBAaS7iQHtD4xOCSlGpK/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/ZBG1n/btrSxFh9eYR/Gyw8RHrLNW2pcLCx5fZ0ZK/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/cqdLVC/btrRo2TdCof/0TF5j9qzcofZwkUyJF4AR0/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bovfzI/btrRoqmKpkC/0AuGPTjUW6ZKM2ruwnojPk/img.png"
+    },
+    {
+      "source": "/06.university/network/network-2차-과제/",
+      "url": "https://blog.kakaocdn.net/dn/bqeDAB/btrRqE6yXa1/U76HoLMtCIBFKr5qyzXGJ1/img.png"
     },
     {
       "source": "/leetcode-sql-문제-풀기/대장균-자식-수-구하기/",
@@ -3128,14 +3128,6 @@
     {
       "source": "/01.publish/c-선언부-문법-읽기/",
       "url": "https://share.note.sx/mjzeq6xi#5sX5dVRXnx4vHvMWNFtDh5m1Eg3GPJXOebapYaDOzFs"
-    },
-    {
-      "source": "/markdown-test/markdown-systex/",
-      "url": "https://www.markdownguide.org"
-    },
-    {
-      "source": "/markdown-test/markdown-systex/",
-      "url": "https://www.markdownguide.org/basic-syntax/"
     },
     {
       "source": "/markdown-test/markdown-systex/",
@@ -3150,16 +3142,16 @@
       "url": "https://mdg.imgix.net/assets/images/tux.png?auto=format&fit=clip&q=40&w=100"
     },
     {
+      "source": "/markdown-test/markdown-systex/",
+      "url": "https://www.markdownguide.org"
+    },
+    {
+      "source": "/markdown-test/markdown-systex/",
+      "url": "https://www.markdownguide.org/basic-syntax/"
+    },
+    {
       "source": "/markdown-test/marmaid-test/",
       "url": "https://mermaid.js.org/"
-    },
-    {
-      "source": "/markdown-test/resource-test/",
-      "url": "https://www.ngii.go.kr/images/child/play_map/img_page09.png"
-    },
-    {
-      "source": "/markdown-test/resource-test/",
-      "url": "http://shinnk.iptime.org/share/sample-0.mp3"
     },
     {
       "source": "/markdown-test/resource-test/",
@@ -3167,7 +3159,15 @@
     },
     {
       "source": "/markdown-test/resource-test/",
+      "url": "http://shinnk.iptime.org/share/sample-0.mp3"
+    },
+    {
+      "source": "/markdown-test/resource-test/",
       "url": "http://shinnk.iptime.org/share/output.mp4"
+    },
+    {
+      "source": "/markdown-test/resource-test/",
+      "url": "https://www.ngii.go.kr/images/child/play_map/img_page09.png"
     }
   ]
 }
