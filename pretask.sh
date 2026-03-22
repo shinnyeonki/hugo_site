@@ -4,5 +4,6 @@
 python3 ./pretask/create_search_index.py
 python3 ./pretask/management_frontmatter.py
 python3 ./pretask/create_hugo_site_file.py
+python3 ./pretask/create_graph_index.py
 
 echo "Pretask scripts executed successfully."
