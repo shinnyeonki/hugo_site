@@ -6,15 +6,6 @@
         </div>
     </div>
 
-    <!-- 2. Header 영역 -->
-    <div class="w-full mb-8">
-        <div class="max-w-7xl mx-auto px-4 border-b pb-4">
-            <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font">
-                {{ .Title }}{{- if eq hugo.Environment "development" }}<span class="text-sm text-neutral-500 dark:text-neutral-400"> | home.html</span>{{ end }}
-            </h1>
-        </div>
-    </div>
-
     <!-- 2.5 Pinned Documents 영역 -->
     {{ $pinned := where site.RegularPages "Params.tags" "intersect" (slice "homepage-pinned") }}
     {{ if $pinned }}
@@ -86,6 +77,15 @@
         </div>
     </div>
     {{ end }}
+
+    <!-- 2. Header 영역 -->
+    <div class="w-full mb-8">
+        <div class="max-w-7xl mx-auto px-4 border-b pb-4">
+            <h1 class="text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 latin-font">
+                {{ .Title }}{{- if eq hugo.Environment "development" }}<span class="text-sm text-neutral-500 dark:text-neutral-400"> | home.html</span>{{ end }}
+            </h1>
+        </div>
+    </div>
 
     <!-- 3. Content 영역 -->
     <div id="content-container" class="w-full">
