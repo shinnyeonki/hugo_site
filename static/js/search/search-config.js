@@ -54,6 +54,7 @@ const SearchConfig = {
     SCOPE_ALIASES: {
         // Filename
         'filename:': 'file',
+        'file:': 'file',
         'f:': 'file',
         
         // Tag
@@ -62,6 +63,7 @@ const SearchConfig = {
         
         // Metadata/Frontmatter
         'metadata:': 'metadata',
+        'meta:': 'metadata',
         'm:': 'metadata',
         
         // Content

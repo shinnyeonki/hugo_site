@@ -25,6 +25,7 @@ class SearchUI {
     }
 
     init() {
+        console.log('Initializing SearchUI...');
         if (!this.searchInput || !this.searchResults) {
             console.warn('Search UI elements not found');
             return;
@@ -37,14 +38,25 @@ class SearchUI {
 
         // 포커스 이벤트
         this.searchInput.addEventListener('focus', (e) => {
-            if (e.target.value.trim().length > 0) {
-                this.performSearch(e.target.value);
-            }
+            this.performSearch(e.target.value);
+        });
+
+        // 클릭 이벤트 버블링 방지 (외부 클릭 리스너와 충돌 방지)
+        this.searchInput.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+        this.searchResults.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
 
         // 키보드 네비게이션 이벤트
         this.searchInput.addEventListener('keydown', (e) => {
             this.handleKeyDown(e);
+        });
+
+        // 외부 클릭 시 닫기
+        document.addEventListener('click', (e) => {
+            this.hideResults();
         });
     }
 
@@ -63,8 +75,9 @@ class SearchUI {
      * 검색 실행
      */
     performSearch(query) {
+        // 검색어가 없으면 즉시 도움말 표시 (인덱스 준비 여부와 상관없음)
         if (!query || query.trim().length === 0) {
-            this.hideResults();
+            this.showHelp();
             return;
         }
 
@@ -82,6 +95,16 @@ class SearchUI {
         
         // 결과 표시
         this.displaySearchResults(results);
+    }
+
+    /**
+     * 도움말 표시
+     */
+    showHelp() {
+        console.log('Showing search help...');
+        this.searchResults.classList.remove('hidden');
+        this.searchResults.innerHTML = this.resultRenderer.renderHelp();
+        this.resetSelection();
     }
 
     /**

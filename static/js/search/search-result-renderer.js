@@ -271,6 +271,52 @@ class SearchResultRenderer {
     }
 
     /**
+     * 검색 도움말 HTML 생성
+     * @returns {string}
+     */
+    renderHelp() {
+        return `
+            <div class="px-3 py-4 text-sm text-neutral-600 dark:text-neutral-400">
+                <div class="font-bold mb-3 text-neutral-800 dark:text-neutral-200 border-b border-neutral-200 dark:border-neutral-700 pb-2">
+                    🔍 검색 가이드
+                </div>
+                
+                <div class="mb-4">
+                    <div class="font-semibold mb-1 text-neutral-700 dark:text-neutral-300">통합 검색 (기본)</div>
+                    <p class="text-xs">키워드 입력 시 파일명, 태그, 본문을 모두 검색합니다.</p>
+                </div>
+
+                <div>
+                    <div class="font-semibold mb-1 text-neutral-700 dark:text-neutral-300">범위 지정 검색 (접두사 사용)</div>
+                    <p class="text-xs mb-2">특정 범위를 지정하여 효율적으로 검색할 수 있습니다.</p>
+                    <ul class="space-y-1.5 ml-1 text-xs">
+                        <li class="flex items-center">
+                            <code class="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded text-blue-600 dark:text-blue-400 font-mono mr-2">file:</code> 
+                            <span>파일명 (단축: f:)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <code class="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded text-blue-600 dark:text-blue-400 font-mono mr-2">tag:</code> 
+                            <span>태그 (단축: t:)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <code class="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded text-blue-600 dark:text-blue-400 font-mono mr-2">meta:</code> 
+                            <span>메타데이터 (단축: m:)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <code class="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded text-blue-600 dark:text-blue-400 font-mono mr-2">content:</code> 
+                            <span>본문 (단축: c:)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mt-4 pt-3 border-t border-neutral-200 dark:border-neutral-700 text-xs text-neutral-500 italic">
+                    예: <code class="bg-neutral-100 dark:bg-neutral-800 px-1 rounded not-italic">t:hugo c:검색</code>
+                </div>
+            </div>
+        `;
+    }
+
+    /**
      * 검색 타입 배너 생성
      * @param {string} searchType 
      * @returns {string}
