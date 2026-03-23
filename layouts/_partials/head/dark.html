@@ -1,10 +1,32 @@
 <script>
-    // 다크 모드 초기 설정
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
+    // 다크 모드 초기 설정 및 상태 관리
+    function updateThemeUI(theme) {
+        const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.style.colorScheme = 'dark';
+            updateMetaThemeColor('#171717'); // 다크 모드 배경색 (neutral-900 등 프로젝트 색상에 맞춰 조정)
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.style.colorScheme = 'light';
+            updateMetaThemeColor('#ffffff');
+        }
     }
+
+    function updateMetaThemeColor(color) {
+        let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (!metaThemeColor) {
+            metaThemeColor = document.createElement('meta');
+            metaThemeColor.setAttribute('name', 'theme-color');
+            document.head.appendChild(metaThemeColor);
+        }
+        metaThemeColor.setAttribute('content', color);
+    }
+
+    // 초기 실행
+    const initialTheme = localStorage.getItem('theme') || 'system';
+    updateThemeUI(initialTheme);
 
     document.addEventListener('DOMContentLoaded', () => {
             // ----------------------------
@@ -38,18 +60,10 @@
             function applyAndSaveTheme(theme) {
                 if (theme === 'system') {
                     localStorage.removeItem('theme');
-                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                        document.documentElement.classList.add('dark');
-                    } else {
-                        document.documentElement.classList.remove('dark');
-                    }
-                } else if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                } else { // light
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
+                } else {
+                    localStorage.setItem('theme', theme);
                 }
+                updateThemeUI(theme);
                 updateIndicator(theme);
             }
 
@@ -78,12 +92,8 @@
 
             // Listen for system theme changes
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                if (!('theme' in localStorage)) { // only if theme is 'system'
-                    if (e.matches) {
-                        document.documentElement.classList.add('dark');
-                    } else {
-                        document.documentElement.classList.remove('dark');
-                    }
+                if (!localStorage.getItem('theme')) { // only if theme is 'system'
+                    updateThemeUI('system');
                 }
             });
         });

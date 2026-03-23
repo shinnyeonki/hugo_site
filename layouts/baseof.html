@@ -87,5 +87,13 @@
     {{ if eq hugo.Environment "development" }}
     <script src="{{ .Site.BaseURL }}js/search-debug.js" defer></script>
     {{ end }}
+
+    {{ if eq .Kind "page" }}
+    <!-- Graph 시스템 (백링크, 아웃링크, 외부링크) -->
+    <script src="{{ .Site.BaseURL }}js/graph/graph-config.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/graph/graph-manager.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/graph/graph-renderer.js" defer></script>
+    <script src="{{ .Site.BaseURL }}js/graph/graph-system.js" defer></script>
+    {{ end }}
 </body>
 </html>
